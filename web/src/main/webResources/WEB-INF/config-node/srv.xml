@@ -34,7 +34,7 @@
 
   <!-- Uncomment the database configuration you need to use -->
   <!-- Default using the db.config.file if it exists and if not then derive the db file based on the db_type -->
-  <import resource="@db.config.file@"/>
+  <!--<import resource="@db.config.file@"/> -->
   <!--<import resource="../config-db/h2.xml"/> -->
   <!--<import resource="../config-db/jndi.xml"/> -->
   <!--<import resource="../config-db/oracle.xml"/>-->
@@ -42,5 +42,5 @@
   <!--<import resource="../config-db/db2.xml"/> -->
   <!--<import resource="../config-db/postgres.xml"/>-->
   <!--<import resource="../config-db/sqlserver.xml"/> -->
-  <!--<import resource="../config-db/postgres-postgis.xml"/> -->
+  <import resource="../config-db/postgres-postgis.xml"/>
 </beans>
