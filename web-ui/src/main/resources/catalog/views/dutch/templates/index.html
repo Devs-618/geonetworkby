@@ -1,0 +1,173 @@
+<!-- Powered by: {{info.site.platform.name}}, version: {{info.site.platform.version}} -->
+<div class="container-fluid">
+  <div class="container">
+
+    <header class="gn-header"
+            data-ng-show="gnCfg.mods.header.enabled && gnCfg.mods.header.isLogoInHeader">
+      <!-- logo left -->
+      <div class="row" data-ng-if="gnCfg.mods.header.logoInHeaderPosition === 'left'">
+        <div class="col-md-6 col-sm-6">
+            <a data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+                <img class="{{gnCfg.mods.header.logoInHeaderPosition}}"
+                      alt="{{'siteLogo' | translate}}"
+                      data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
+              </a>
+        </div>
+        <div class="col-md-6 col-sm-6 hidden-xs text-right">
+          <ul class="gn-static-pages">
+            <li gn-static-pages-list-viewer data-section="top" data-language="{{lang}}"></li>
+          </ul>
+        </div>
+      </div>
+      <!-- logo center -->
+      <div class="row" data-ng-if="gnCfg.mods.header.logoInHeaderPosition === 'center'">
+        <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 text-center">
+          <a data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+            <img class="{{gnCfg.mods.header.logoInHeaderPosition}}"
+                  alt="{{'siteLogo' | translate}}"
+                  data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
+          </a></div>
+        <div class="col-md-4 col-sm-4 hidden-xs text-right">
+          <ul class="gn-static-pages">
+            <li gn-static-pages-list-viewer data-section="top" data-language="{{lang}}"></li>
+          </ul>
+        </div>
+      </div>
+      <!-- logo right -->
+      <div class="row" data-ng-if="gnCfg.mods.header.logoInHeaderPosition === 'right'">
+        <div class="col-md-6 col-sm-6 hidden-xs">
+          <ul class="gn-static-pages">
+            <li gn-static-pages-list-viewer data-section="top" data-language="{{lang}}"></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 text-right">
+          <a data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+            <img class="{{gnCfg.mods.header.logoInHeaderPosition}}"
+                  alt="{{'siteLogo' | translate}}"
+                  data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
+          </a>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-default gn-top-bar"
+        role="navigation"
+        data-ng-show="gnCfg.mods.header.enabled"
+        data-ng-include="isMenubarAccessible ? '../../catalog/templates/top-toolbar-accessible.html' : '../../catalog/templates/top-toolbar.html'"
+        xmlns="http://www.w3.org/1999/html">
+    </nav>
+
+  </div>
+  
+  <!-- <div class="intro-text">
+    <div style="background-color:#2e6d97a8; padding: 110px 0;">
+      <div class="container" >
+        <h1 id="homeHeaderText">{{info['node/name'] || info['system/site/name']}}</h1>
+        <p class="hidden-xs">{{'SomeText' | translate}}</p>
+       </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="ng-scope" data-ng-hide="activeTab == '/map'">
+    <div id="carousel" class="carousel slide" data-ride="carousel" style="display: block;">
+        <ol class="carousel-indicators hidden-xs">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner cii-background">
+            <div class="cii"> 
+              <div class="container" >
+                <h1 id="homeHeaderText">{{info['node/name'] || info['system/site/name']}}</h1>
+                <p class="hidden-xs">{{'SomeText' | translate}}</p>
+              </div>
+            </div>
+            <div class="item active">
+              <img style="width: 100%;" src="https://4esnok.by/wp-content/uploads/2020/01/minsk.jpg" alt="Minsk1">
+            </div>
+            <div class="item">
+              <img style="width: 100%;" src="https://photoclub.by/images/main46/460708_main.jpg" alt="Minsk2">
+            </div>
+            <div class="item">
+              <img style="width: 100%;" src="http://img.tripstore.by/tour/937/logo.jpg" alt="Minsk3">
+            </div>
+        </div>
+    </div>
+  </div>  -->
+
+    <div class="container">
+      <div data-gn-alert-manager="" id="alerts"></div>
+
+      <div class="gn-search-page"
+          data-ng-controller="DutchSearchController" role="main">
+        <div class="gn-divider-bar"></div>
+
+        <div class="" 
+            data-ng-controller="gnsDutch">
+          <gn-extend-mainctrl></gn-extend-mainctrl>
+
+          <div class="ng-scope" data-ng-hide="activeTab == '/map' || activeTab == '/metadata'">
+            <div id="carousel" class="carousel slide" data-ride="carousel" style="display: block;">
+                <ol class="carousel-indicators hidden-xs">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner cii-background">
+                    <div class="cii"> 
+                      <div class="container" >
+                        <h1 id="homeHeaderText">{{info['node/name'] || info['system/site/name']}}</h1>
+                        <p class="hidden-xs">{{'SomeText' | translate}}</p>
+                      </div>
+                    </div>
+                    <div class="item active">
+                      <picture>
+                        <source srcset="../../catalog/views/dutch/images/carousel/1mobile.jpg" media="(max-width: 575px)">
+                        <img style="width: 100%;" src="../../catalog/views/dutch/images/carousel/1.jpg" alt="Minsk1">
+                      </picture>                      
+                    </div>
+                    <div class="item">
+                      <picture>
+                        <source srcset="../../catalog/views/dutch/images/carousel/2mobile.jpg" media="(max-width: 575px)">
+                        <img style="width: 100%;" src="../../catalog/views/dutch/images/carousel/2.jpg" alt="Minsk2">
+                      </picture>
+                    </div>
+                    <div class="item">
+                      <picture>
+                        <source srcset="../../catalog/views/dutch/images/carousel/3mobile.jpg" media="(max-width: 575px)">
+                        <img style="width: 100%;" src="../../catalog/views/dutch/images/carousel/3.jpg" alt="Minsk3">
+                      </picture>
+                    </div>
+                </div>
+            </div>
+          </div>
+          
+          <div data-gn-saved-selections="">
+            <!-- <div>
+              <button data-ng-click='testClick()'>Тест</button>
+            </div> -->
+            <div class="page" data-ng-class="{mappage: activeTab === '/map'}">
+              <div data-ng-include="'../../catalog/views/dutch/templates/home.html'"
+                  data-ng-show="activeTab == '/home'"></div>
+              <div data-ng-include="'../../catalog/views/dutch/templates/results.html'"
+                  data-ng-show="activeTab == '/search'"></div>
+              <div data-ng-if="isMapViewerEnabled && !isExternalViewerEnabled"
+                  data-ng-include="'../../catalog/views/dutch/templates/map.html'"
+                  data-ng-show="activeTab == '/map'"></div>
+              <div data-ng-include="'../../catalog/views/dutch/templates/recordView.html'"
+                data-ng-show="activeTab == '/metadata'" class="gn-view-approved"></div>
+              <div data-ng-include="'../../catalog/views/dutch/templates/recordView.html'"
+                data-ng-show="activeTab == '/metadraf'" class="gn-view-not-approved"></div>
+              <div data-ng-include="'../../catalog/views/dutch/templates/page.html'"
+                data-ng-if="activeTab == '/page'"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- /.gn-search-page -->
+    </div>
+    <div class="navbar navbar-default gn-bottom-bar" role="navigation"
+        data-ng-show="gnCfg.mods.footer.enabled"
+        data-ng-include="'../../catalog/views/dutch/templates/footer.html'">
+    </div>
+</div>
+</html>

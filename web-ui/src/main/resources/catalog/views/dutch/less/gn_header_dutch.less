@@ -1,0 +1,92 @@
+
+// variables for manipulating the theme
+@import "gn_variables_dutch.less"; // must be last
+
+header {
+  margin-top: 0px;
+  background-color: white;
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  // static pages
+  .gn-static-pages {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+}
+[ng-app="gn_editor"], [ng-app="gn_admin"] {
+  .gn-top-bar {
+    margin-bottom: 10px;
+    // remove text
+    .gn-logo + span {
+      display: none;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------
+// home header
+// ----------------------------------------------------------------------
+
+.cii-background {
+  width:100%; 
+  height:400px; 
+  margin: 30px 0;
+  @media (max-width: @screen-sm-min) {
+    height:250px; 
+  }
+  @media (max-width: @screen-xs-min) {
+    height:185px; 
+  }
+  .cii {    
+    display: flex;
+    align-items: center;
+    background-color:#55778da8;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    @media (max-width: @screen-xs-min) {
+      h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+
+.intro-text {
+  // width: 100vw;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  padding: 0;
+  background: url("https://cs5.pikabu.ru/post_img/big/2015/01/20/10/1421770828_745450545.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  @media (max-height: 800px) {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 767px) {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  h1 {
+    width: 60%;
+    font-size: 3em;
+    line-height: 1.3em;
+    margin: 0 auto;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
+    @media (max-width: 450px) {
+      font-size: 2em;
+    }
+  }
+}
