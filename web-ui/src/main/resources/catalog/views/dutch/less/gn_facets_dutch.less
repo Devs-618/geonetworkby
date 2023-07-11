@@ -1,0 +1,81 @@
+/* Facet / this is a hack to hide a facet
+ not to be displayed because used to get complex
+ field for rendering properly INSPIRE theme icons
+ only. It may be more relevant to have this at the
+ facetsConfigService ? */
+[data-facet=inspireThemesWithAc] {
+  display: none;
+}
+
+.gn-facet-list {
+  h4 {
+    font-size: 14px;
+  }
+  .list-group-item {
+    font-size: 12px;
+    border: 0;
+    border-radius: 0;
+    padding: 5px;
+    label {
+      cursor: pointer;
+      margin-bottom: 0;
+      .gn-facet-toggle {
+        width: 0;
+      }
+      .gn-facet-count {
+        color: #707070;
+      }
+    }
+  }
+  .flex-center {
+    justify-content: left;
+  }
+}
+
+// nojs styles
+.gn-nojs {
+  .gn-facet {
+    background-color: #fff;
+    margin-top: 30px;
+    padding-left: 30px;
+    h2 {
+      font-size: 20px;
+      margin-top: 10px;
+      margin-right: 5px;
+    }
+    .fa-3x.gn-icon {
+      display: none;
+    }
+    .badge {
+      background: none;
+      margin-top: 10px;
+      padding-left: 0;
+      color: #777;
+      font-size: 14px;
+      &:before {
+        content: "(";
+      }
+      &:after {
+        content: ")";
+      }
+    }
+    summary {
+      text-transform: uppercase;
+      padding: 5px 0;
+      outline: 0;
+      width: 230px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: list-item;
+    }
+    details {
+      ul {
+        padding-left: 2.5em;
+      }
+      a {
+        font-weight: normal;
+      }
+    }
+  }
+}
