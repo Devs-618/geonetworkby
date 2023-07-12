@@ -3437,12 +3437,28 @@
           <![CDATA[<gmd:MD_ProgressCode xmlns:gmd='http://www.isotc211.org/2005/gmd' codeListValue='{{value}}'/>]]></template>
       </field>
     </section>
-
-    <section name="resourceConstraints">
-      <!-- Insert a new access contraints
+ <!--
+    <section name="resourceConstraints">legalConstraints
+	-->
+	<section name="resourceConstraints">	 
+      <!-- Insert a new, use limitation
             Warning: Duplicates may be inserted.
       -->
-      <field name="legalConstraints"
+      <field name="useLimitation"
+             xpath="gmd:identificationInfo/*/
+                      gmd:resourceConstraints/gmd:MD_LegalConstraints/
+                        gmd:useLimitation"
+             use="textarea"
+             insertMode="gn_create"
+             removable="true">
+        <template>
+          <![CDATA[<gco:CharacterString xmlns:gco='http://www.isotc211.org/2005/gco'>{{value}}</gco:CharacterString>]]></template>
+      </field>
+
+      <!-- Insert a new, access contraints
+            Warning: Duplicates may be inserted.
+      -->
+      <field name="accessConstraints"
              xpath="gmd:identificationInfo/*/
                       gmd:resourceConstraints/gmd:MD_LegalConstraints/
                         gmd:accessConstraints"
@@ -3454,7 +3470,22 @@
           <![CDATA[<gmd:MD_RestrictionCode xmlns:gmd='http://www.isotc211.org/2005/gmd' codeListValue='{{value}}'/>]]></template>
       </field>
 
-      <!-- Insert a new other contraints
+      <!-- Insert a new, use contraints
+            Warning: Duplicates may be inserted.
+      -->
+      <field name="useConstraints"
+             xpath="gmd:identificationInfo/*/
+                      gmd:resourceConstraints/gmd:MD_LegalConstraints/
+                        gmd:useConstraints"
+             use="data-gn-codelist-picker"
+             codelist="gmd:MD_RestrictionCode"
+             insertMode="gn_create"
+             removable="true">
+        <template>
+          <![CDATA[<gmd:MD_RestrictionCode xmlns:gmd='http://www.isotc211.org/2005/gmd' codeListValue='{{value}}'/>]]></template>
+      </field>
+	  	
+      <!-- Insert a new, other contraints
             Warning: Duplicates may be inserted.
       -->
       <field name="otherConstraints"
@@ -3467,6 +3498,25 @@
         <template>
           <![CDATA[<gco:CharacterString xmlns:gco='http://www.isotc211.org/2005/gco'>{{value}}</gco:CharacterString>]]></template>
       </field>
+    </section>	  
+	  
+    <section name="securityConstraints">	  
+	
+      <!-- Insert a new, security contraints
+            Warning: Duplicates may be inserted.
+      -->	
+	
+      <field name="classification"
+             xpath="gmd:identificationInfo/*/
+                      gmd:resourceConstraints/gmd:MD_SecurityConstraints/
+                        gmd:classification"
+             use="data-gn-codelist-picker"
+             codelist="gmd:MD_ClassificationCode"
+             insertMode="gn_create"
+             removable="true">
+        <template>
+          <![CDATA[<gmd:MD_ClassificationCode xmlns:gmd='http://www.isotc211.org/2005/gmd' codeListValue='{{value}}'/>]]></template>
+      </field>	  
     </section>
 
 

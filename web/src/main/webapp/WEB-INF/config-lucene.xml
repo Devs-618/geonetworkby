@@ -162,10 +162,13 @@
       <field name="cl_status_text" tagName="status_text"/>
       <field name="updateFrequency" tagName="updateFrequency"/>
       <field name="lineage" tagName="lineage"/>
-      <field name="responsibleParty" tagName="responsibleParty"/>
-      <field name="MD_LegalConstraintsOtherConstraints" tagName="legalConstraints"/>
+      <field name="responsibleParty" tagName="responsibleParty"/>	  
       <field name="MD_LegalConstraintsUseLimitation" tagName="legalConstraints"/>
+	    <field name="MD_LegalConstraintsAccessConstraints" tagName="legalConstraints"/>
+	    <field name="MD_LegalConstraintsUseConstraints" tagName="legalConstraints"/>
+      <field name="MD_LegalConstraintsOtherConstraints" tagName="legalConstraints"/>
       <field name="MD_SecurityConstraintsUseLimitation" tagName="securityConstraints"/>
+	    <field name="MD_SecurityConstraintsClass" tagName="securityConstraints"/>
       <field name="MD_ConstraintsUseLimitation" tagName="resourceConstraints"/>
       <field name="cl_classification_text" tagName="classification_text"/>
       <field name="cl_maintenanceAndUpdateFrequency_text"

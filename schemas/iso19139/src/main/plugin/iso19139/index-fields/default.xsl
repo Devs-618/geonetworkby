@@ -569,6 +569,12 @@
           <Field name="{$fieldPrefix}AccessConstraints"
                  string="{string(.)}" store="true" index="true"/>
         </xsl:for-each>
+		
+		<xsl:for-each
+          select="gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue[string(.) != 'otherRestrictions']">
+          <Field name="{$fieldPrefix}UseConstraints"
+                 string="{string(.)}" store="true" index="true"/>
+        </xsl:for-each>
 
         <xsl:for-each select="gmd:otherConstraints/gco:CharacterString">
           <Field name="{$fieldPrefix}OtherConstraints"
@@ -609,6 +615,13 @@
           <Field name="{$fieldPrefix}UseLimitation"
                  string="{concat('link|',string(@xlink:href), '|', string(.))}" store="true" index="true"/>
         </xsl:for-each>
+		
+		<xsl:for-each select="gmd:classification/gmd:MD_ClassificationCode/@codeListValue">
+			<Field name="{$fieldPrefix}Class" string="{string(.)}" store="true" index="true"/>
+		</xsl:for-each>
+
+		
+		
       </xsl:for-each>
 
       <!-- Index aggregation info and provides option to query by type of association

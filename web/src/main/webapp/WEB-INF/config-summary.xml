@@ -114,8 +114,14 @@
     <facet name="recordOwner" indexKey="recordOwner" label="recordOwner"/>
     <facet name="groupOwner" indexKey="_groupOwner" label="groupOwners"/>
     <facet name="publishedForGroup" indexKey="_groupPublished" label="publishedForGroup"/>
-	  <facet name="isPublishedToAll" indexKey="_isPublishedToAll" label="isPublishedToAll" />
-    <!--
+    <facet name="isPublishedToAll" indexKey="_isPublishedToAll" label="isPublishedToAll"/>
+    <facet name="MD_LegalConstraintsUseLimitation" indexKey="MD_LegalConstraintsUseLimitation" label="MdLegalConstraintsUseLimitation"/>
+    <facet name="MD_LegalConstraintsAccessConstraints" indexKey="MD_LegalConstraintsAccessConstraints" label="MdLegalConstraintsAccessConstraints"/>
+    <facet name="MD_LegalConstraintsUseConstraints" indexKey="MD_LegalConstraintsUseConstraints" label="MdLegalConstraintsUseConstraints"/>
+    <facet name="MD_LegalConstraintsOtherConstraints" indexKey="MD_LegalConstraintsOtherConstraints" label="MdLegalConstraintsOtherConstraints"/>
+    <facet name="MD_SecurityConstraintsUseLimitation" indexKey="MD_SecurityConstraintsUseLimitation" label="MdSecurityConstraintsUseLimitation"/>
+    <facet name="MD_SecurityConstraintsClass" indexKey="MD_SecurityConstraintsClass" label="MdSecurityConstraintsClass"/>
+<!--
     Example configuration for hierarchical facet based on
     the GeoNetwork region thesaurus or GEMET.
 
@@ -158,7 +164,15 @@
       <item facet="serviceType"/>
       <item facet="denominator" sortBy="numValue" sortOrder="desc"/>
       <item facet="resolution" sortBy="numValue" sortOrder="desc"/>
-      <!--
+	<item facet="MD_LegalConstraintsUseLimitation" sortBy="numValue" sortOrder="desc"/>
+	<item facet="MD_LegalConstraintsAccessConstraints" sortBy="numValue" sortOrder="desc" translator="codelist:gmd:MD_RestrictionCode"/>
+	<item facet="MD_LegalConstraintsUseConstraints" sortBy="numValue" sortOrder="desc" translator="codelist:gmd:MD_RestrictionCode"/>
+	<item facet="MD_LegalConstraintsOtherConstraints" sortBy="numValue" sortOrder="desc"/>
+	<item facet="MD_SecurityConstraintsUseLimitation"/>
+	<item facet="MD_SecurityConstraintsClass" sortBy="numValue" sortOrder="desc" translator="codelist:gmd:MD_ClassificationCode"/>
+	  
+	  
+      <!-- 
       <item facet="region"
             translator="term:http://geonetwork-opensource.org/thesaurus/naturalearth-and-seavox"/>
       <item facet="gemetKeyword"
@@ -184,7 +198,13 @@
       <item facet="standard" max="15" sortBy="value"/>
       <item facet="isHarvested" max="2" sortBy="value" translator="apploc:"/>
       <item facet="metadataType" max="3" sortBy="value" translator="apploc:recordType-"/>
-	    <item facet="isPublishedToAll" max="2" sortBy="value" translator="apploc:"/>
+	<item facet="isPublishedToAll" max="2" sortBy="value" translator="apploc:"/>
+	<item facet="MD_LegalConstraintsUseLimitation" sortBy="numValue" sortOrder="desc"/>
+	<item facet="MD_LegalConstraintsAccessConstraints" sortBy="numValue" sortOrder="desc" translator="codelist:gmd:MD_RestrictionCode"/>
+	<item facet="MD_LegalConstraintsUseConstraints" sortBy="numValue" sortOrder="desc" translator="codelist:gmd:MD_RestrictionCode"/>
+	<item facet="MD_LegalConstraintsOtherConstraints" sortBy="numValue" sortOrder="desc"/>
+	<item facet="MD_SecurityConstraintsUseLimitation"/>
+	<item facet="MD_SecurityConstraintsClass" sortBy="numValue" sortOrder="desc" translator="codelist:gmd:MD_ClassificationCode"/>
     </summaryType>
 
     <!-- (deprecated) old-style configuration supporting only
