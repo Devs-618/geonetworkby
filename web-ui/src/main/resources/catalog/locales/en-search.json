@@ -536,5 +536,12 @@
   "fieldTooLongMax": "The value is too long (max {{maxChar}} characters)",
   "fieldTooShort": "The value is too short",
   "fieldEmailNotValid": "A valid email address is required",
-  "submit": "Submit"
+  "submit": "Submit",
+  "MdLegalConstraintsUseLimitation": "Legal constraints. Usage limitation",
+  "MdLegalConstraintsAccessConstraints": "Legal constraints. Access",
+  "MdLegalConstraintsUseConstraints": "Legal constraints. Usage",
+  "MdLegalConstraintsOtherConstraints": "Legal constraints. Other constraints",
+  "MdSecurityConstraintsUseLimitation": "Security constraints. Usage limitation",
+  "MdSecurityConstraintsClass": "Security constraints. Secrecy stamp",
+  "status": "Status"
 }
