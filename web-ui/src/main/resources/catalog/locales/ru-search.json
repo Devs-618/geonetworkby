@@ -534,5 +534,12 @@
     "fieldTooLong": "The value is too long",
     "fieldTooLongMax": "The value is too long (max {{maxChar}} characters)",
     "fieldTooShort": "The value is too short",
-    "fieldEmailNotValid": "A valid email address is required"
+    "fieldEmailNotValid": "A valid email address is required",
+	"MdLegalConstraintsUseLimitation": "Законодательные ограничения. Пригодность",
+	"MdLegalConstraintsAccessConstraints": "Законодательные ограничения. Доступ",
+	"MdLegalConstraintsUseConstraints": "Законодательные ограничения. Использование",
+	"MdLegalConstraintsOtherConstraints": "Законодательные ограничения. Другие ограничения",
+	"MdSecurityConstraintsUseLimitation": "Ограничения безопастности. Пригодность",
+	"MdSecurityConstraintsClass": "Ограничения безопастности. Гриф",
+    "status": "Статус"
 }
