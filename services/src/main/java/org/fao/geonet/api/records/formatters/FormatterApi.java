@@ -27,6 +27,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.common.io.ByteStreams;
+import com.lowagie.text.pdf.BaseFont;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -554,6 +555,7 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
         try {
             XslUtil.setNoScript();
             ITextRenderer renderer = new ITextRenderer();
+            renderer.getFontResolver().addFont("src/main/resources/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             String siteUrl = context.getBean(SettingManager.class).getSiteURL(lang);
             MapRenderer mapRenderer = new MapRenderer(context);
             renderer.getSharedContext().setReplacedElementFactory(new ImageReplacedElementFactory(siteUrl.replace("/" + lang + "/", "/eng/"), renderer.getSharedContext()
