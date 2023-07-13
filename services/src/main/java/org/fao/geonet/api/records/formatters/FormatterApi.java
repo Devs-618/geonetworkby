@@ -555,6 +555,7 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
         try {
             XslUtil.setNoScript();
             ITextRenderer renderer = new ITextRenderer();
+            renderer.getFontResolver().addFont("src/main/resources/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             String siteUrl = context.getBean(SettingManager.class).getSiteURL(lang);
             MapRenderer mapRenderer = new MapRenderer(context);
             renderer.getSharedContext().setReplacedElementFactory(new ImageReplacedElementFactory(siteUrl.replace("/" + lang + "/", "/eng/"), renderer.getSharedContext()
