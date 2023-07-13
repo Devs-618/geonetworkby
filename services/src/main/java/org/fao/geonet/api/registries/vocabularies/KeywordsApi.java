@@ -101,6 +101,7 @@ import jeeves.server.context.ServiceContext;
 import springfox.documentation.annotations.ApiIgnore;
 
 import net.sf.json.JSON;
+import static org.fao.geonet.constants.Params.CONTENT_TYPE;
 
 
 /**
@@ -167,12 +168,13 @@ public class KeywordsApi {
         path = "/search",
         method = RequestMethod.GET,
         produces = {
-            MediaType.APPLICATION_JSON_VALUE
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE
         })
     @ResponseStatus(
         value = HttpStatus.OK)
     @ResponseBody
-    public List<KeywordBean> searchKeywords(
+    public Object searchKeywords(
         @ApiParam(
             value = "Query",
             required = false
@@ -264,7 +266,8 @@ public class KeywordsApi {
             @ApiParam(hidden = true)
         HttpSession httpSession
     )
-        throws Exception {ConfigurableApplicationContext applicationContext = ApplicationContextHolder.get();
+        throws Exception {
+        ConfigurableApplicationContext applicationContext = ApplicationContextHolder.get();
       try (ServiceContext context = ApiUtils.createServiceContext(request)) {
         UserSession session = ApiUtils.getUserSession(httpSession);
 
@@ -303,9 +306,16 @@ public class KeywordsApi {
         session.setProperty(Geonet.Session.SEARCH_KEYWORDS_RESULT,
             searcher);
 
-
-        // get the results
-        return searcher.getResults();
+        List<KeywordBean> keywords = searcher.getResults();
+        if ("xml".equals(request.getParameter(CONTENT_TYPE))) {
+            Element root = new Element("response");
+            for (KeywordBean kw : keywords) {
+                root.addContent(kw.toElement("eng")); // FIXME: Localize
+            }
+            return root;
+        } else {
+            return keywords;
+        }
       }
     }
 
