@@ -36,7 +36,7 @@
   <xsl:variable name="replaceMode"
                 select="geonet:parseBoolean($replace)"/>
   <xsl:variable name="serviceUrl"
-                select="concat($gurl, '/keywords?pNewSearch=true&amp;pTypeSearch=2&amp;pKeyword=')"/>
+                select="concat(substring($gurl, 1, string-length($gurl)-4), 'api/registries/vocabularies/search?_content_type=xml&amp;q=')"/>
 
 
 
@@ -190,11 +190,10 @@
     <xsl:if test="normalize-space($word)!=''">
       <!-- Get keyword information -->
       <xsl:variable name="keyword" select="document(concat($serviceUrl, encode-for-uri($word)))"/>
-      <xsl:variable name="knode" select="exslt:node-set($keyword)"/>
 
       <!-- It should be one but if one keyword is found in more
           thant one thesaurus, then each will be processed.-->
-      <xsl:for-each select="$knode/response/descKeys/keyword">
+      <xsl:for-each select="$keyword/response/keyword">
         <xsl:if test="geo">
           <mri:extent>
             <xsl:copy-of select="geonet:make-iso19115-3-extent(geo/west, geo/south, geo/east, geo/north, $word)"/>
