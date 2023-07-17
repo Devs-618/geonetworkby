@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Version 3.10.7 &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Version 3.10.8" href="version-3.10.8.html" />
+    <link rel="prev" title="Version 3.10.6" href="version-3.10.6.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Обзор</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../about.html">О</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">Лицензия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html">Автор</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Журнал изменений</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="version-3.0.0.html">Версия 3.0.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.0.1.html">Версия 3.0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.0.2.html">Версия 3.0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.0.3.html">Версия 3.0.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.0.4.html">Версия 3.0.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.2.0.html">Версия 3.2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.2.1.html">Версия 3.2.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.2.2.html">Версия 3.2.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.4.0.html">Версия 3.4.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.4.1.html">Версия 3.4.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.4.2.html">Версия 3.4.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.4.3.html">Версия 3.4.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.4.4.html">Version 3.4.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.6.0.html">Version 3.6.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.8.0.html">Version 3.8.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.8.1.html">Version 3.8.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.8.2.html">Version 3.8.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.8.3.html">Version 3.8.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.0.html">Version 3.10.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.1.html">Version 3.10.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.2.html">Version 3.10.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.3.html">Version 3.10.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.4.html">Version 3.10.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.5.html">Version 3.10.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.6.html">Version 3.10.6</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Version 3.10.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#new-features-fixes">New features/fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.8.html">Version 3.10.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.9.html">Version 3.10.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.10.10.html">Version 3.10.10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.0.html">Version 3.12.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.1.html">Version 3.12.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.2.html">Version 3.12.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.3.html">Version 3.12.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.4.html">Version 3.12.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.5.html">Version 3.12.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.6.html">Version 3.12.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.7.html">Version 3.12.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.8.html">Version 3.12.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.9.html">Version 3.12.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version-3.12.10.html">Version 3.12.10</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Обзор</a> &raquo;</li>
+          <li><a href="index.html">Журнал изменений</a> &raquo;</li>
+      <li>Version 3.10.7</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/overview/change-log/version-3.10.7.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="version-3-10-7">
+<span id="version-3107"></span><h1>Version 3.10.7<a class="headerlink" href="#version-3-10-7" title="Permalink to this heading">¶</a></h1>
+<section id="new-features-fixes">
+<h2>New features/fixes<a class="headerlink" href="#new-features-fixes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Administration</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5804">Create user form issues 2 requests to userselection api that return status code 400.</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5460">Fix parse of logo upload in groups management when the content type includes the charset encoding</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5560">Update user - verify user groups when updating a user by a UserAdmin</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5798">Users without groups assigned are listed in the users lists for any UserAdmin</a></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>CSW</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5400">Record to CSW Capabilities - extract language iso2code with twoCharLangCode function, update in date element to use the text value</a></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Editor</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5083">Associated resource / Feature catalog / Missing list of values</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5440">Fix issue using custom UUIDs</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5455">Fix regression on «Compute extents from keywords» button</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5757">Fix Thumbnail generator</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5220">Fix unhandled error and its xsl regular expression and root element in Schematron title translation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5391">Fix xpath to match only the main citation title, not other titles</a></p></li>
+<li><p>ISO19115-3 / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5456">Add option for PNG images to mcc:fileType Recommended values</a></p></li>
+<li><p>ISO19139 / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5335">Fix Conformity checks in INSPIRE strict rules</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5763">Option to disable OGC Capabilities layer processing in the online resource panel</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5490">Remove non required data-translate directive usage in gnMetadataGroupUpdater directive</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5521">Updated schematron name on error messages so that it does not overlap</a></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Harvesters</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>CSW / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5497">Enable preemptive for csw requests with credentials</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5370">Don’t allow empty group owner in harvesters.</a></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Map viewer</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5292">Add a WMTS error message when the URL can’t be parsed</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5696">Fix map height when there is no footer</a></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Metadata</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5591">Fix for too small privileges popup</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5337">Fix logo in record view</a></p></li>
+<li><p>Formatter / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5406/files">Avoid request check not modified as unsupported on chrome and edge</a></p></li>
+<li><p>Formatter / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5508">Fixes some challenges in google-structured-data-test</a></p></li>
+<li><p>Formatter / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5433">Full view doesn’t work in a draft version of a metadata record</a></p></li>
+<li><p>Formatter / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5793">iso19139 full view - codelist elements - display the codelistValue translation only if the element has a text also</a></p></li>
+<li><p>Import / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5553">Generic error message in „Upload a file from URL“</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5485">Index temporal extent period, fix multiple temporal extent display in the metadata detail page</a></p></li>
+<li><p>INSPIRE / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5816">Update the filter for INSPIRE Atom dataset feed to support the remote operatesOn indexing format</a></p></li>
+<li><p>INSPIRE / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5435">Retrieve INSPIRE Atom feed language from self link element instead of the feed language attribute that is optional</a></p></li>
+<li><p>INSPIRE / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5434">INSPIRE geometry fields lead to 0 results in opensearch</a></p></li>
+<li><p>INSPIRE / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5472">Atom fixes:  filter metadata with schemas based on iso19139 and atom feed parse</a></p></li>
+<li><p>INSPIRE / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5815">Local INSPIRE Atom feed xslt fix for resource constraints with multiple gmd:otherConstraints elements</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5412">Remove schema-org annotations from list pages</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5344">Update getMdObjByUuid to use the draft information in the metadata when the workflow is enabled</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5384">Update message if metadata is not found</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5458">Update Thesaurus keywords to ISO19115-3.2018</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5447">Use the configured CSW Service metadata to fill the meta headers for description / keywords for the html content</a></p></li>
+<li><p>Workflow / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5420">Bulk publish cancels working copy</a></p></li>
+<li><p>Workflow / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5470">Fix draft metadata manager update method to check if should be applied to the draft metadata or the published metadata</a></p></li>
+<li><p>Workflow / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5418">Fix for validation result gets lost when approving record and copy validation results when creating a draft.</a></p></li>
+<li><p>Workflow / <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5805">Search results - metadata with a working copy display a label „Working copy“ if the metadata has a draft copy, even for public users.</a></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Other</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5551">Fixes embedded Cross-Site Scripting issues</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5005">Kibana / Only allow access to authenticated users in the catalog</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5408">Log transaction manager notification failures</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5512">Manage url redirects with URL.openConnection</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5365">Protect AccessManager code using user session</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5371">Reset password service fixes/improvements</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5462">Stream attachments to the browser without reading them first</a></p></li>
+<li><p>Update doc url to point to 3.10.x documentation</p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5526">Update ZipUtil.java to use tempFile configuration to avoid memory issue</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5451">Use maven major, minor, patch, build, qualifier definition for version</a></p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5461">Use $translateProvider.useSanitizeValueStrategy(„escapeParameters“) for encoding sanitizing</a></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>User interface</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5813">Add confirm to delete Category and Cancel edits to metadata</a></p></li>
+<li><p>One styling for all scrollbars and increase the width/height</p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/pull/5478">Use button to recover the password</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="version-3.10.6.html" class="btn btn-neutral float-left" title="Version 3.10.6" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="version-3.10.8.html" class="btn btn-neutral float-right" title="Version 3.10.8" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

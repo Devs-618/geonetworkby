@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Управление каталогами &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Управление тезаурусом" href="managing-thesaurus.html" />
+    <link rel="prev" title="Управление категориями" href="managing-categories.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Руководство администратора</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Настройка каталога</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-users-and-groups/index.html">Управление пользователями и группами</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Управление системой классификации</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="managing-categories.html">Управление категориями</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Управление каталогами</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-directories-of-subtemplates">Управление каталогами подшаблонов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insert-a-directory-entry-in-a-metadata-record">Вставьте запись каталога в запись метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extracting-subtemplates-from-metadata-records">Извлечение подшаблонов из записей метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synchronizing-subtemplates-with-metadata-records">Синхронизация подшаблонов с записями метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-the-fragment-cache">Управление кэшем фрагментов</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="managing-thesaurus.html">Управление тезаурусом</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Руководство администратора</a> &raquo;</li>
+          <li><a href="index.html">Управление системой классификации</a> &raquo;</li>
+      <li>Управление каталогами</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-classification-systems/managing-directories.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-directories">
+<span id="id1"></span><h1>Управление каталогами<a class="headerlink" href="#managing-directories" title="Permalink to this heading">¶</a></h1>
+<p>Каталог поддерживает записи метаданных, состоящие из фрагментов метаданных. Идея состоит в том, что фрагменты метаданных могут использоваться более чем в одной записи метаданных.</p>
+<p>Вот типичный пример фрагмента. Это ответственная сторона, и она может использоваться в одной и той же записи метаданных более одного раза или более чем в одной записи метаданных, если применимо.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:CI_ResponsibleParty</span><span class="w"> </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span><span class="w"> </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:individualName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>John<span class="w"> </span>D&#39;Ath<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:individualName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>Mulligan<span class="w"> </span><span class="ni">&amp;amp;</span><span class="w"> </span>Sons,<span class="w"> </span>Funeral<span class="w"> </span>Directors<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:positionName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>Undertaker<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:positionName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;./resources/codeList.xml#CI_RoleCode&quot;</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+</pre></div>
+</div>
+<p>Фрагменты метаданных, сохраняемые в базе данных каталога, называются подшаблонами. Это в основном по историческим причинам, поскольку подшаблон подобен записи метаданных шаблона в том смысле, что его можно использовать в качестве «шаблона» для создания новой записи метаданных.</p>
+<p>Фрагменты могут быть вставлены в запись метаданных в 2-х режимах:</p>
+<ul class="simple">
+<li><p>путем копирования/вставки</p></li>
+<li><p>по ссылке (если включена поддержка xlink. См. <a class="reference internal" href="../configuring-the-catalog/system-configuration.html#xlink-config"><span class="std std-ref">Метаданные XLink</span></a>)</p></li>
+</ul>
+<p>При использовании XLink, если фрагмент обновляется, то соответствующий фрагмент во всех записях метаданных также будет обновлен (проверьте кэш XLink).</p>
+<p>Фрагменты можно создавать путем сбора (см. <a class="reference internal" href="../../user-guide/harvesting/index.html#harvesting-fragments"><span class="std std-ref">Сбор фрагментов метаданных для поддержки повторного использования</span></a>) или импортировать с помощью страницы импорта метаданных.</p>
+<p>В этом разделе руководства описываются:</p>
+<ul class="simple">
+<li><p>как управлять каталогами подшаблонов</p></li>
+<li><p>как извлечь фрагменты из существующего набора записей метаданных и сохранить их как подшаблоны</p></li>
+<li><p>как управлять кешем фрагментов, используемым для ускорения доступа к фрагментам, которых нет в локальном каталоге</p></li>
+</ul>
+<section id="managing-directories-of-subtemplates">
+<h2>Управление каталогами подшаблонов<a class="headerlink" href="#managing-directories-of-subtemplates" title="Permalink to this heading">¶</a></h2>
+<p>Существуют некоторые различия между обработкой подшаблонов и записей метаданных. В отличие от записей метаданных, подшаблоны не имеют согласованного корневого элемента, используемая ими схема метаданных может быть неузнаваема, они не отображаются в основных результатах поиска (если только они не являются частью записи метаданных). Таким образом, панель редактора позволяет вам искать и управлять привилегиями для записей каталога.</p>
+<figure class="align-default">
+<img alt="../../_images/directories-search.png" src="../../_images/directories-search.png" />
+</figure>
+<p>На панели редактора выберите «Управление каталогом», чтобы получить доступ к редактору записей каталога:</p>
+<figure class="align-default">
+<img alt="../../_images/directories-manager.png" src="../../_images/directories-manager.png" />
+</figure>
+<p>Если вы не видите вкладку «Организации и контакты», убедитесь, что вы создали подшаблоны для контактов для своего профиля метаданных и загрузили их с помощью раздела «Метаданные и шаблоны».</p>
+<p>На этой странице редакторы могут выбирать тип каталога с помощью верхних вкладок, редактировать/удалять/импортировать новые подшаблоны.</p>
+<p>Чтобы импортировать новые записи, используйте страницу импорта метаданных и выберите соответствующий тип записи:</p>
+<figure class="align-default">
+<img alt="../../_images/directories-import.png" src="../../_images/directories-import.png" />
+</figure>
+<p>Как и записи метаданных, им присваивается целочисленный идентификатор, и они хранятся в таблице метаданных каталога (с полем шаблона, установленным в «y»).</p>
+</section>
+<section id="insert-a-directory-entry-in-a-metadata-record">
+<h2>Вставьте запись каталога в запись метаданных<a class="headerlink" href="#insert-a-directory-entry-in-a-metadata-record" title="Permalink to this heading">¶</a></h2>
+<p>В редакторе метаданных каталог можно использовать, например, для заполнения контактов.</p>
+<figure class="align-default">
+<img alt="../../_images/directories-editor-popup.png" src="../../_images/directories-editor-popup.png" />
+</figure>
+<p>Откройте селектор каталогов, выберите контакт, а затем выберите роль контакта.</p>
+<figure class="align-default">
+<img alt="../../_images/directories-editor-popupopen.png" src="../../_images/directories-editor-popupopen.png" />
+</figure>
+</section>
+<section id="extracting-subtemplates-from-metadata-records">
+<h2>Извлечение подшаблонов из записей метаданных<a class="headerlink" href="#extracting-subtemplates-from-metadata-records" title="Permalink to this heading">¶</a></h2>
+<p>Многие сайты имеют существующие записи метаданных с общей информацией, например. контактная информация в элементе ISO CI_Contact. Подобные записи каталога можно извлечь из выбранного набора записей метаданных с помощью API «Извлечение подшаблонов».</p>
+<p>Для использования этой функции необходимо выполнить следующий набор шагов:</p>
+<ul class="simple">
+<li><p>Убедитесь, что вы понимаете, что такое XPath — см., например, <a class="reference external" href="http://www.w3schools.com/xpath/default.asp">http://www.w3schools.com/xpath/default.asp</a>.</p></li>
+<li><p>Определите фрагменты метаданных, которыми они хотели бы управлять как многократно используемые подшаблоны в записи метаданных. Это можно сделать с помощью XPath. например. XPath <code class="docutils literal notranslate"><span class="pre">.//gmd:CI_ResponsibleParty</span></code> идентифицирует все ответственные стороны в записях. Пример такого фрагмента (взятого из одной из выборочных записей) показан в следующем примере:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:individualName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>Jippe<span class="w"> </span>Hoogeveen<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:individualName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>FAO<span class="w"> </span>-<span class="w"> </span>NRCW<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:positionName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>Technical<span class="w"> </span>Officer<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:positionName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:contactInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:CI_Contact&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:phone&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Telephone&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:voice</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:voice&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:facsimile</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:facsimile&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Telephone&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:phone&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:address&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Address&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:deliveryPoint&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Viale<span class="w"> </span>delle<span class="w"> </span>Terme<span class="w"> </span>di<span class="w"> </span>Caracalla<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:deliveryPoint&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:city&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Rome<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:city&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:administrativeArea</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:administrativeArea&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:postalCode&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>00153<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:postalCode&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:country&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Italy<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:country&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:electronicMailAddress&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>jippe.hoogeveen@fao.org<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:electronicMailAddress&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Address&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:address&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:CI_Contact&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:contactInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode&quot;</span>
+<span class="w">                       </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Определите и запишите XPath поля или полей внутри фрагмента, текстовое содержимое которого будет использоваться в качестве идентификатора подшаблона. Этот XPath должен относиться к корневому элементу фрагмента, указанному на предыдущем шаге. Так, например, в приведенном выше фрагменте мы могли бы выбрать <code class="docutils literal notranslate"><span class="pre">.//gmd:electronicMailAddress/gco:CharacterString/text()</span></code> в качестве идентификатора для создаваемых фрагментов.</p></li>
+<li><p>На странице API выбираем операцию registers/collect:</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/directories-api-collect.png" src="../../_images/directories-api-collect.png" />
+</figure>
+<ul class="simple">
+<li><p>Заполните форму данными, собранными на предыдущих шагах.</p></li>
+<li><p>Извлеченные подшаблоны можно предварительно просмотреть в режиме GET, а после проверки использовать метод PUT для сохранения результатов в каталоге.</p></li>
+</ul>
+<p>Наконец, перейдите в интерфейс управления каталогом подшаблонов, и вы сможете выбрать корневой элемент ваших подшаблонов, чтобы изучить извлеченные подшаблоны.</p>
+<p>Индексация подшаблона основана на схеме (подробности см. в папке index-fields). В настоящее время подшаблоны индекса ISO19139 используются в качестве корневого элемента:</p>
+<ul class="simple">
+<li><p>gmd:CI_ResponsibleParty</p></li>
+<li><p>gmd:MD_Distribution</p></li>
+<li><p>gmd:CI_OnlineResource</p></li>
+<li><p>gmd:EX_Extent</p></li>
+</ul>
+</section>
+<section id="synchronizing-subtemplates-with-metadata-records">
+<h2>Синхронизация подшаблонов с записями метаданных<a class="headerlink" href="#synchronizing-subtemplates-with-metadata-records" title="Permalink to this heading">¶</a></h2>
+<p>После создания каталог предоставляет возможность синхронизировать записи метаданных с записями каталога. Для этого воспользуйтесь страницей тестирования API.</p>
+<p>Процесс синхронизации использует те же параметры, что и процесс сбора, с двумя необязательными аргументами:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">propertiesToCopy</span></code> to preserve some element which may be defined in the fragment in the metadata (eg. contact role)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">substituteAsXLink</span></code> to indicate if copy/paste mode or XLink mode should be used.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/directories-api-synch.png" src="../../_images/directories-api-synch.png" />
+</figure>
+</section>
+<section id="managing-the-fragment-cache">
+<h2>Управление кэшем фрагментов<a class="headerlink" href="#managing-the-fragment-cache" title="Permalink to this heading">¶</a></h2>
+<p>Если записи метаданных в вашем каталоге ссылаются на фрагменты с внешних сайтов, каталог кэширует эти фрагменты после первого поиска, чтобы уменьшить объем сетевого трафика и ускорить отображение записей метаданных в результатах поиска.</p>
+<p>Кэш обрабатывается автоматически с помощью Java Cache System (JCS). JCS разумно обрабатывает большие кэши:</p>
+<ul class="simple">
+<li><p>определение максимального количества кэшируемых объектов</p></li>
+<li><p>использование как можно большего объема оперативной памяти перед перемещением во вторичное хранилище (диск)</p></li>
+<li><p>обеспечение постоянства кеша: кеш сохраняется на диск при завершении работы веб-приложения и восстанавливает кеш с диска при перезапуске</p></li>
+</ul>
+<p>Вы можете настроить параметры JCS в GeoNetwork, используя файл конфигурации JCS в <strong>INSTALL_DIR/web/geonetwork/WEB-INF/classes/cache.ccf</strong>.</p>
+<p>Некоторые операции в каталоге (например, сбор), которые создают фрагменты метаданных, автоматически обновляют кэш XLink при создании нового фрагмента. Однако, если вы линкуете фрагменты с внешнего сайта, то в зависимости от того, как часто происходит изменение, вам нужно будет вручную обновлять кэш XLink. Для этого вам необходимо перейти на страницу «Администрирование» и выбрать функцию «Очистить кэш XLink и перестроить индекс записей с помощью XLink», как показано на следующем снимке экрана страницы «Администрирование».</p>
+<figure class="align-default">
+<img alt="../../_images/directories-cache.png" src="../../_images/directories-cache.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="managing-categories.html" class="btn btn-neutral float-left" title="Управление категориями" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="managing-thesaurus.html" class="btn btn-neutral float-right" title="Управление тезаурусом" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

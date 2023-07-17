@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Учебное пособие по настройке службы загрузки INSPIRE на основе WFS с помощью GeoServer &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Приложения" href="../../annexes/index.html" />
+    <link rel="prev" title="Учебное пособие по настройке службы загрузки INSPIRE на базе Atom/OpenSearch" href="download-atom.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Учебники</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Введение в геосеть</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customui/index.html">Настройте свой пользовательский интерфейс GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hookcustomizations/index.html">Подцепите свой собственный код</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Учебники</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="view-geoserver.html">Учебное пособие по настройке службы просмотра INSPIRE с помощью GeoNetwork и GeoServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="view-mapserver.html">Учебное пособие по настройке службы просмотра INSPIRE с GeoNetwork и Mapserver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download-atom.html">Учебное пособие по настройке службы загрузки INSPIRE на базе Atom/OpenSearch</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Учебное пособие по настройке службы загрузки INSPIRE на основе WFS с помощью GeoServer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#geoserver">Геосервер</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geonetwork">Геосеть</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#return-to-geoserver">Вернуться к Геосерверу</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validate-the-implementation">Проверить реализацию</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Учебники</a> &raquo;</li>
+          <li><a href="index.html">Учебники</a> &raquo;</li>
+      <li>Учебное пособие по настройке службы загрузки INSPIRE на основе WFS с помощью GeoServer</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/inspire/download-geoserver.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-setting-up-a-wfs-based-inspire-download-service-with-geoserver">
+<span id="tuto-download-geoserver"></span><h1>Учебное пособие по настройке службы загрузки INSPIRE на основе WFS с помощью GeoServer<a class="headerlink" href="#tutorial-setting-up-a-wfs-based-inspire-download-service-with-geoserver" title="Permalink to this heading">¶</a></h1>
+<p>This tutorial shows how one can set up a combination of GeoNetwork and GeoServer to provide download services following <a class="reference external" href="http://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services">technical guidelines for download services</a>.</p>
+<p>Обратите внимание, что технические рекомендации разрешают использовать как Atom/OpenSearch, так и <a href="#id1"><span class="problematic" id="id2">`</span></a>WFS.&lt;<a class="reference external" href="http://www.opengeospatial.org/standards/wfs">http://www.opengeospatial.org/standards/wfs</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_. В этом руководстве описывается, как настроить службу загрузки с помощью WFS.</p>
+<section id="geoserver">
+<h2>Геосервер<a class="headerlink" href="#geoserver" title="Permalink to this heading">¶</a></h2>
+<p>Для поддержки моделей данных INSPIRE подключаемый модуль геосервера <a href="#id1"><span class="problematic" id="id2">`</span></a>&amp;quot;appschema&amp;quot;&lt;<a class="reference external" href="http://docs.geoserver.org/stable/en/user/data/app-schema/">http://docs.geoserver.org/stable/en/user/data/app-schema/</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_ должен быть установлен. Настройка поддержки схемы приложения в GeoServer не является целью этого руководства. Поддержка Appschema для INSPIRE прекрасно задокументирована Маркусом Сеном.&lt;<a class="reference external" href="https://data.gov.uk/sites/default/files/library/INSPIREWFSCookbook_v1.0.pdf">https://data.gov.uk/sites/default/files/library/INSPIREWFSCookbook_v1.0.pdf</a>&gt; <a href="#id5"><span class="problematic" id="id6">`</span></a>_. Еще один ценный ресурс доступен на сайте <a href="#id7"><span class="problematic" id="id8">`</span></a>geosolutions&lt;<a class="reference external" href="http://www.geo-solutions.it/blog/inspire-support-in-geoserver-made-easy-with-hale/">http://www.geo-solutions.it/blog/inspire-support-in-geoserver-made-easy-with-hale/</a>&gt; <a href="#id9"><span class="problematic" id="id10">`</span></a>_. В этом руководстве мы сосредоточимся на аспектах метаданных службы загрузки WFS.</p>
+<p>Загрузите и установите расширение GeoServer INSPIRE, как описано в разделе «Установка расширения inspire».&lt;<a class="reference external" href="http://docs.geoserver.org/latest/en/user/extensions/inspire/installing.html">http://docs.geoserver.org/latest/en/user/extensions/inspire/installing.html</a>&gt; <a href="#id1"><span class="problematic" id="id2">`</span></a>_</p>
+<p>Create at least one workspace per data model. On workspace properties activate «Settings» and set the selected service type (WFS).</p>
+<img alt="../../_images/image_0.png" src="../../_images/image_0.png" />
+<p>В настройках WFS выберите новую рабочую область и заполните форму (пока оставьте URL-адрес метаданных службы пустым), как описано в разделе «Использование расширения inspire».&lt;<a class="reference external" href="http://docs.geoserver.org/latest/en/user/extensions/inspire/using.html#inspire-using">http://docs.geoserver.org/latest/en/user/extensions/inspire/using.html#inspire-using</a>&gt; <a href="#id1"><span class="problematic" id="id2">`</span></a>_. Если нового рабочего пространства нет в раскрывающемся списке, вернитесь к предыдущему шагу и убедитесь, что для рабочего пространства активированы «Настройки». Если поля INSPIRE не отображаются, убедитесь, что расширение INSPIRE установлено правильно.</p>
+<img alt="../../_images/image_8.png" src="../../_images/image_8.png" />
+<p>Создайте типы функций в соответствии с документацией по схеме приложения.</p>
+</section>
+<section id="geonetwork">
+<h2>Геосеть<a class="headerlink" href="#geonetwork" title="Permalink to this heading">¶</a></h2>
+<p>When deploying GeoNetwork, make sure the GEMET thesauri are loaded and activate the INSPIRE editor as described in <a class="reference external" href="http://geonetwork-opensource.org/manuals/trunk/eng/users/administrator-guide/configuring-the-catalog/inspire-configuration.html">inspire documentation</a>.</p>
+<p>В Admin &amp;gt; Settings активируйте расширение INSPIRE.</p>
+<img alt="../../_images/image_3.png" src="../../_images/image_3.png" />
+<p>Для каждого набора данных, который вы собираетесь опубликовать, создайте запись iso19115, используя шаблон INSPIRE. Свяжите каждую запись со службой загрузки, созданной на геосервере: например, <a class="reference external" href="https:/">https:/</a>/{url}/geoserver/{workspace}/ows?request=getcapabilities&amp;amp;service=wfs&amp;amp;version=2.0.0.</p>
+<img alt="../../_images/image_9.png" src="../../_images/image_9.png" />
+<p>Создайте сборщик OGC, способный извлекать запись метаданных для службы (iso19119) из WFS. Запустите харвестер и запишите идентификатор метаданных созданного сервиса.</p>
+</section>
+<section id="return-to-geoserver">
+<h2>Вернуться к Геосерверу<a class="headerlink" href="#return-to-geoserver" title="Permalink to this heading">¶</a></h2>
+<p>Для каждого уровня добавьте URL-адрес метаданных в конфигурацию уровня типа application/vnd.ogc.csw.GetRecordByIdResponse_xml.</p>
+<p>В рабочей области WFS-settings &amp;gt; INSPIRE добавьте ссылку на метаданные службы. В отличие от WMS, WFS не связывает тип объекта (уровень) с метаданными, вместо этого ссылки на метаданные набора данных должны быть добавлены как часть расширенных возможностей INSPIRE.</p>
+</section>
+<section id="validate-the-implementation">
+<h2>Проверить реализацию<a class="headerlink" href="#validate-the-implementation" title="Permalink to this heading">¶</a></h2>
+<p>Если вы используете указанную выше настройку онлайн, вы можете использовать валидатор Pilot JRC INSPIRE.&lt;<a class="reference external" href="http://inspire-geoportal.ec.europa.eu/validator2/">http://inspire-geoportal.ec.europa.eu/validator2/</a>&gt; <a href="#id1"><span class="problematic" id="id2">`</span></a>_. Если описанная выше установка выполняется локально, вы можете использовать <a href="#id3"><span class="problematic" id="id4">`</span></a>Esdin Test Framework&lt;<a class="reference external" href="https://github.com/Geonovum/etf-test-projects-inspire">https://github.com/Geonovum/etf-test-projects-inspire</a>&gt; <a href="#id5"><span class="problematic" id="id6">`</span></a>_ для проверки установки INSPIRE.</p>
+<img alt="../../_images/image_6.png" src="../../_images/image_6.png" />
+<p>Частое выполнение теста во время разработки помогает выявить проблемы на ранней стадии.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="download-atom.html" class="btn btn-neutral float-left" title="Учебное пособие по настройке службы загрузки INSPIRE на базе Atom/OpenSearch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../annexes/index.html" class="btn btn-neutral float-right" title="Приложения" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

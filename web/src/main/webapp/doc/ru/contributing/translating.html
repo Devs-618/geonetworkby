@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Перевод приложения &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Делаем запрос на вытягивание" href="making-a-pull-request.html" />
+    <link rel="prev" title="Style Guide" href="style-guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Руководство по содействию</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="writing-documentation.html">Написание документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html">Style Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Перевод приложения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#translating-a-standard">Перевод стандарта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="making-a-pull-request.html">Делаем запрос на вытягивание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doing-a-release.html">Doing a GeoNetwork release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Руководство по содействию</a> &raquo;</li>
+      <li>Перевод приложения</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/contributing/translating.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="translating-the-application">
+<span id="translating"></span><h1>Перевод приложения<a class="headerlink" href="#translating-the-application" title="Permalink to this heading">¶</a></h1>
+<p>Чтобы перевести клиентский интерфейс, перейдите в «GeoNetwork на Transifex».&lt;<a class="reference external" href="https://www.transifex.com/geonetwork/core-geonetwork/">https://www.transifex.com/geonetwork/core-geonetwork/</a>&gt; <a href="#id1"><span class="problematic" id="id2">`</span></a>_. Только справочный язык (например, en) ДОЛЖЕН быть обновлен на github. Все остальные переводы ДОЛЖНЫ быть на Transifex.</p>
+<p>Основными файлами для перевода являются файлы <code class="docutils literal notranslate"><span class="pre">Angular</span> <span class="pre">UI</span></code>:</p>
+<figure class="align-default">
+<img alt="../_images/transifex.png" src="../_images/transifex.png" />
+</figure>
+<p>После перевода новый язык необходимо добавить в приложение.</p>
+<ul class="simple">
+<li><p>Добавьте файлы в клиентское приложение в <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/web-ui/src/main/resources/catalog/locales">source file web-ui/src/main/resources/catalog/locales</a></p></li>
+<li><p>Зарегистрируйте новый язык в <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/web-ui/src/main/resources/catalog/js/CatController.js">source file web-ui/src/main/resources/catalog/js/CatController.js</a></p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Add the language here</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">constant</span><span class="p">(</span><span class="s1">&#39;gnLangs&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">langs</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;eng&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;en&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;dut&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;du&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;fre&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fr&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;ger&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ge&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;kor&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ko&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;spa&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;es&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;cze&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cz&#39;</span>
+<span class="w">  </span><span class="p">},</span>
+
+
+<span class="c1">// Lang names to be displayed in language selector</span>
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">langLabels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;eng&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;English&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dut&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Nederlands&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;fre&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Français&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ger&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Deutsch&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;kor&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;한국의&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;spa&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Español&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cze&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Czech&#39;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>To automatically retrieve &amp; update translations files, the script
+<a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/web-ui/download-from-transifex.sh">source file web-ui/download-from-transifex.sh</a> can be used. To use the script you have to join the translation team on Transifex.</p>
+</section>
+<section id="translating-a-standard">
+<h1>Перевод стандарта<a class="headerlink" href="#translating-a-standard" title="Permalink to this heading">¶</a></h1>
+<p>Чтобы перевести стандарт, см. папку схемы (<a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/iso19139/src/main/plugin/iso19139/loc">source file schemas/iso19139/src/main/plugin/iso19139/loc</a>). Эти файлы используются в редакторе и средствах форматирования для перевода стандартных элементов, предоставления текста справки, списка рекомендуемых значений, …</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="style-guide.html" class="btn btn-neutral float-left" title="Style Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="making-a-pull-request.html" class="btn btn-neutral float-right" title="Делаем запрос на вытягивание" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

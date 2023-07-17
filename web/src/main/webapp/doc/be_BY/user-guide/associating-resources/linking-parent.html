@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Групоўка набораў даных у серыі (напрыклад, адносіны бацькоў/даччыны) &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Спасылка на крыніцы набору даных" href="linking-source.html" />
+    <link rel="prev" title="Звязванне іншага запісу" href="linking-records.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва карыстальніка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Хуткі старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Апісанне інфармацыі</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Аб&amp;#39;яднанне рэсурсаў</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="linking-documents.html">Спалучаючыя дакументы</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="linking-records.html">Звязванне іншага запісу</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Групоўка набораў даных у серыі (напрыклад, адносіны бацькоў/даччыны)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linking-source.html">Спасылка на крыніцы набору даных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linking-dataset-or-service.html">Звязванне набору даных са службай</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linking-feature-catalog.html">Табліца атрыбутаў з апісаннем у каталогу функцый</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linking-others.html">Іншыя тыпы рэсурсаў (напрыклад, датчык, публікацыя)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doi.html">Digital Object Identifier (DOI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Класіфікаваць інфармацыю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Выдавецкая справа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Аналіз дадзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочы працэс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Уборка ўраджаю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспарт запісаў</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва карыстальніка</a> &raquo;</li>
+          <li><a href="index.html">Аб&amp;#39;яднанне рэсурсаў</a> &raquo;</li>
+          <li><a href="linking-records.html">Звязванне іншага запісу</a> &raquo;</li>
+      <li>Групоўка набораў даных у серыі (напрыклад, адносіны бацькоў/даччыны)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/associating-resources/linking-parent.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="grouping-datasets-in-a-series-ie-parent-child-relation">
+<span id="linking-parent"></span><h1>Групоўка набораў даных у серыі (напрыклад, адносіны бацькоў/даччыны)<a class="headerlink" href="#grouping-datasets-in-a-series-ie-parent-child-relation" title="Permalink to this heading">¶</a></h1>
+<p>У некаторых сітуацыях набор даных з&amp;#39;яўляецца часткай часавых або прасторавых калекцый запісаў, якія могуць мець аднолькавую спецыфікацыю (напрыклад, зямны покрыва за розныя гады). Каб згрупаваць гэты набор запісаў, агульнае апісанне калекцыі можа быць зроблена ў бацькоўскіх метададзеных, якія потым можна далучыць да кожнага набору даных серыі.</p>
+<ul class="simple">
+<li><p>Зямельнае покрыва Карына</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Corine Land Cover 2002</p></li>
+<li><p>Corine Land Cover 2012</p></li>
+<li><p>...</p></li>
+</ul>
+</div></blockquote>
+<p>Адносіны бацькоў і дзяцей можна ўсталяваць на запісах ISO19139 і Dublin Core. У ISO19139 спасылка на бацькоўскі запіс кадуецца ў даччыным запісе з дапамогай наступнага:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:parentIdentifier&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:CharacterString&gt;</span>78f93047-74f8-4419-ac3d-fc62e4b0477b<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="nt">&lt;/gmd:parentIdentifier&gt;</span>
+</pre></div>
+</div>
+<p>Адносіны бацькоў/даччын у ISO19139 таксама могуць быць закадзіраваны з выкарыстаннем агрэгатаў (гл. <a class="reference internal" href="linking-others.html#linking-others"><span class="std std-ref">Іншыя тыпы рэсурсаў (напрыклад, датчык, публікацыя)</span></a>).</p>
+<p>Пры стварэнні такой сувязі карыстальнікі змогуць перамяшчацца паміж запісамі ў праглядзе пошуку і запісу.</p>
+<figure class="align-default">
+<img alt="../../_images/nav-series.png" src="../../_images/nav-series.png" />
+</figure>
+<p>Націсніце на <code class="docutils literal notranslate"><span class="pre">Спасылка</span> <span class="pre">на</span> <span class="pre">бацькоўскі</span> <span class="pre">элемент</span></code>, каб атрымаць доступ да панэлі з простым пошукам для выбару мэтавых бацькоўскіх метаданых</p>
+<figure class="align-default">
+<img alt="../../_images/parent.png" src="../../_images/parent.png" />
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="linking-records.html" class="btn btn-neutral float-left" title="Звязванне іншага запісу" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linking-source.html" class="btn btn-neutral float-right" title="Спасылка на крыніцы набору даных" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

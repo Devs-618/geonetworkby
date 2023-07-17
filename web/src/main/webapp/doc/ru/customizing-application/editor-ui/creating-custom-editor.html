@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Редактор настройки &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Тематика" href="../changing-layout.html" />
+    <link rel="prev" title="Настройка представлений метаданных" href="../creating-custom-view.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Руководство по настройке</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../search-ui/index.html">Поисковое приложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../creating-custom-view.html">Настройка представлений метаданных</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Редактор настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#defining-field-type">Определение типа поля</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouping-element-from-the-standards">Элемент группировки из стандартов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-multilingual-fields">Определение многоязычных полей</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-views">Настройка представлений</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-a-view">Определение представления</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-a-tab">Определение вкладки</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-complex-element-display">Настройка отображения сложных элементов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-thesaurus">Настройка тезауруса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-section-to-a-tab">Добавление раздела на вкладку</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-field">Добавление поля</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-template-based-field">Добавление поля на основе шаблона</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-documentation-or-help">Добавление документации или справки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-button">Добавление кнопки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-group">Adding a group</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changing-layout.html">Тематика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuring-search-fields.html">Настройка полей поиска</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuring-faceted-search.html">Configuring faceted search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced-configuration.html">Расширенная конфигурация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adding-static-pages.html">Adding static pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../implementing-a-schema-plugin.html">Реализация плагинов схемы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../characterset.html">Набор символов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Разнообразный</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Руководство по настройке</a> &raquo;</li>
+      <li>Редактор настройки</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/customizing-application/editor-ui/creating-custom-editor.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="customizing-editor">
+<span id="creating-custom-editor"></span><h1>Редактор настройки<a class="headerlink" href="#customizing-editor" title="Permalink to this heading">¶</a></h1>
+<p id="creating-custom-editor-editor">Конфигурация редактора метаданных определяется для конкретного стандарта подключаемого модуля схемы (см. <a class="reference internal" href="../implementing-a-schema-plugin.html#implementing-a-schema-plugin"><span class="std std-ref">Реализация плагинов схемы</span></a>).</p>
+<p>Конфигурация редактора определяет меню навигации (т. е. список представлений и вкладок) для редактора, список полей и тип используемого элемента управления. Элементы управления могут иметь тип HTML (например, текст, дата) или более сложные элементы управления, созданные с использованием директивы <a href="#id1"><span class="problematic" id="id2">`</span></a>AngularJS.&lt;<a class="reference external" href="https://docs.angularjs.org/guide/directive">https://docs.angularjs.org/guide/directive</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_.</p>
+<p>Чтобы создать такую конфигурацию редактора, пользователю необходимо знать XSD стандарта, чтобы правильно создавать представления, вкладки и поля в соответствии с именами элементов (см. <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/config-editor.xsd">source file schemas/config-editor.xsd</a>). Создайте корневой элемент редактора и прикрепите:</p>
+<ul class="simple">
+<li><p>схема и</p></li>
+<li><p>пространства имен для стандартов</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;editor</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">  </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;../../../../../../config-editor.xsd&quot;</span>
+<span class="w">  </span><span class="na">xmlns:gn=</span><span class="s">&quot;http://www.fao.org/geonetwork&quot;</span>
+<span class="w">  </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span>
+<span class="w">  </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+<span class="w">  </span><span class="na">xmlns:gmx=</span><span class="s">&quot;http://www.isotc211.org/2005/gmx&quot;</span>
+<span class="w">  </span><span class="na">xmlns:srv=</span><span class="s">&quot;http://www.isotc211.org/2005/srv&quot;</span>
+<span class="w">  </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span>
+<span class="w">  </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<p>Конфигурация редактора должна определять сначала некоторое общее описание элемента, а затем набор представлений, по крайней мере, с одним.</p>
+<p>Дочерние элементы:</p>
+<ul class="simple">
+<li><p><strong>поля</strong>, необязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-fields"><span class="std std-ref">Определение типа поля</span></a>)</p></li>
+<li><p><strong>fieldsWithFieldset</strong>, необязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-fieldswithfieldset"><span class="std std-ref">Элемент группировки из стандартов</span></a>)</p></li>
+<li><p><strong>multilingualFields</strong>, необязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-multilingualfields"><span class="std std-ref">Определение многоязычных полей</span></a>)</p></li>
+<li><p><strong>представления</strong>, обязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-views"><span class="std std-ref">Настройка представлений</span></a>)</p></li>
+</ul>
+<section id="defining-field-type">
+<span id="creating-custom-editor-fields"></span><h2>Определение типа поля<a class="headerlink" href="#defining-field-type" title="Permalink to this heading">¶</a></h2>
+<p>Определите конфигурацию типа полей формы. По умолчанию используется простой текстовый ввод. Этот список содержит список исключений, которые не используют простой ввод текста. Список возможных значений:</p>
+<ul class="simple">
+<li><p>все типы ввода HTML5 или</p></li>
+<li><p>an AngularJS directive name. MUST starts with „data-“ and
+could end with „-textarea“ to create a textarea element.
+It could end with „-div“ if the directive does not apply
+to the input or textarea but to the div containing it.</p></li>
+</ul>
+<p>У элемента может быть определен только один тип.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;editor&gt;</span>
+<span class="w"> </span><span class="nt">&lt;fields&gt;</span>
+<span class="w">   </span><span class="nt">&lt;for</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:abstract&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;textarea&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;for</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gco:Real&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;number&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;for</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gco:Boolean&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;checkbox&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;for</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gco:Date&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;data-gn-date-picker&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Другой вариант определения более сложного типа поля — перехватить элемент с помощью шаблона XSL. Этот подход используется, например, для ключевых слов в ISO19139 (см. <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/iso19139/src/main/plugin/iso19139/layout/layout-custom-fields-keywords.xsl">source file schemas/iso19139/src/main/plugin/iso19139/layout/layout-custom-fields-keywords.xsl</a>).</p>
+</section>
+<section id="grouping-element-from-the-standards">
+<span id="creating-custom-editor-fieldswithfieldset"></span><h2>Элемент группировки из стандартов<a class="headerlink" href="#grouping-element-from-the-standards" title="Permalink to this heading">¶</a></h2>
+<p>Список элементов, которые будут отображаться в наборе полей (т. е. элемент в штучной упаковке). Эти элементы обычно содержат дочерние элементы и определяют основной раздел стандарта. Например, в ISO19139 идентификация и распространение являются основными разделами и обычно должны отображаться как группа информации.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;editor&gt;</span>
+<span class="w">   </span><span class="nt">&lt;fields&gt;</span>...<span class="nt">&lt;/fields&gt;</span>
+<span class="w">   </span><span class="nt">&lt;fieldsWithFieldset&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>gmd:identificationInfo<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>gmd:distributionInfo<span class="nt">&lt;/name&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="defining-multilingual-fields">
+<span id="creating-custom-editor-multilingualfields"></span><h2>Определение многоязычных полей<a class="headerlink" href="#defining-multilingual-fields" title="Permalink to this heading">¶</a></h2>
+<p>Настройте здесь список многоязычных полей для стандарта.</p>
+<p>По умолчанию, если стандарт поддерживает многоязычие, например ISO19139, все поля будут отображаться как многоязычные поля. Определите в разделе исключения исключение (например, gmd:identifier, например, в ISO19139).</p>
+<p>Затем этот раздел также позволяет определить, как многоязычные поля отображаются с помощью развернутых элементов. Если развернуто, то отображается одно поле для каждого языка без необходимости нажимать на переключатель языка.</p>
+<figure class="align-default">
+<img alt="../../_images/multilingual-editing.png" src="../../_images/multilingual-editing.png" />
+</figure>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;editor&gt;</span>
+<span class="w">   </span><span class="nt">&lt;fields&gt;</span>...<span class="nt">&lt;/fields&gt;</span>
+<span class="w">   </span><span class="nt">&lt;fieldsWithFieldset&gt;</span>...<span class="nt">&lt;/fieldsWithFieldset&gt;</span>
+<span class="w">    </span><span class="nt">&lt;multilingualFields&gt;</span>
+<span class="w">      </span><span class="nt">&lt;expanded&gt;</span>
+<span class="w">        </span><span class="nt">&lt;name&gt;</span>gmd:title<span class="nt">&lt;/name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;name&gt;</span>gmd:abstract<span class="nt">&lt;/name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/expanded&gt;</span>
+<span class="w">      </span><span class="nt">&lt;exclude&gt;</span>
+<span class="w">        </span><span class="nt">&lt;name&gt;</span>gmd:identifier<span class="nt">&lt;/name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;name&gt;</span>gmd:metadataStandardName<span class="nt">&lt;/name&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring-views">
+<span id="creating-custom-editor-views"></span><h2>Настройка представлений<a class="headerlink" href="#configuring-views" title="Permalink to this heading">¶</a></h2>
+<p>ДОЛЖЕН быть определен хотя бы один вид, но в зависимости от потребностей можно определить и другие режимы просмотра.</p>
+<p>По умолчанию ISO19139 определяет 3 вида (т. е. по умолчанию, расширенный, xml) и один отключенный (т. е. INSPIRE). См. <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/iso19139/src/main/plugin/iso19139/layout/config-editor.xml">source file schemas/iso19139/src/main/plugin/iso19139/layout/config-editor.xml</a> для конфигурации.</p>
+<figure class="align-default">
+<img alt="../../_images/view-mode.png" src="../../_images/view-mode.png" />
+</figure>
+<p>Еще одним базовым примером является представление Dublin Core (см. <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/dublin-core/src/main/plugin/dublin-core/layout/config-editor.xml">source file schemas/dublin-core/src/main/plugin/dublin-core/layout/config-editor.xml</a>).</p>
+<p>Чтобы создать новое представление, используйте следующее:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;views&gt;</span>
+<span class="w">    </span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;viewNameInLocalizationFile&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span>...
+<span class="w">    </span><span class="nt">&lt;/view&gt;</span>
+</pre></div>
+</div>
+<p>Дочерние элементы:</p>
+<ul class="simple">
+<li><p><strong>представление</strong>, одно или несколько (см. <a class="reference internal" href="#creating-custom-editor-view"><span class="std std-ref">Определение представления</span></a>)</p></li>
+</ul>
+</section>
+<section id="defining-a-view">
+<span id="creating-custom-editor-view"></span><h2>Определение представления<a class="headerlink" href="#defining-a-view" title="Permalink to this heading">¶</a></h2>
+<p>Представление имеет метку и определяет конкретное отображение записей метаданных. Представление состоит из одной или нескольких вкладок.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;views&gt;</span>
+<span class="w">    </span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span>....
+<span class="w">    </span><span class="nt">&lt;/view&gt;</span>
+</pre></div>
+</div>
+<p>Представление может отображаться или нет в зависимости от содержимого записи метаданных или текущего сеанса пользователя с использованием атрибутов displayIfRecord и displayIfServiceInfo.</p>
+<p>Атрибуты:</p>
+<ul class="simple">
+<li><p><strong>имя</strong> (Обязательно)</p></li>
+</ul>
+<p>Ключ имени представления, хранящийся в <code class="docutils literal notranslate"><span class="pre">{schema}/loc/{lang}/strings.xml</span></code>, или имя элемента с префиксом пространства имен.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;strings&gt;</span>
+<span class="w">  </span><span class="nt">&lt;default&gt;</span>Simple<span class="nt">&lt;/default&gt;</span>
+<span class="w">  </span><span class="nt">&lt;inspire&gt;</span>INSPIRE<span class="nt">&lt;/inspire&gt;</span>
+<span class="w">  </span><span class="nt">&lt;custom-view&gt;</span>My<span class="w"> </span>view<span class="nt">&lt;/custom-view&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>отключено</strong> (необязательно) Фиксированное значение: <strong>true</strong></p></li>
+</ul>
+<p>Скрыть вид из меню, если атрибут определен. Позволяет легко отключить представление.</p>
+<ul class="simple">
+<li><p><strong>class</strong> (Optional)</p></li>
+</ul>
+<p>Define custom CSS class to be set on the form element. This is mainly used
+to set the type of indent:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>gn-label-above-input: to put label above form input</p></li>
+<li><p>gn-indent-colored: colored left border on each fieldset</p></li>
+<li><p>gn-indent-bluescale: blue scale colored left border on each fieldset</p></li>
+</ul>
+</div></blockquote>
+<p>See catalog/views/default/less/gn_editor_default.less to add your custom editor styles.</p>
+<ul class="simple">
+<li><p><strong>upAndDownControlHidden</strong> (необязательно) Фиксированное значение: <strong>true</strong></p></li>
+</ul>
+<p>Определите, должны ли отображаться элементы управления вверх и вниз в этом представлении. Если не определено, отображаются элементы управления. Скройте эти элементы управления в представлении, чтобы упростить работу с меньшим количеством элементов управления для конечного пользователя.</p>
+<figure class="align-default">
+<img alt="../../_images/editor-control-updown.png" src="../../_images/editor-control-updown.png" />
+</figure>
+<ul class="simple">
+<li><p><strong>displayAttributes</strong> (Optional) Fixed value: <strong>true</strong></p></li>
+</ul>
+<p>Display attributes by default when loading the view.</p>
+<ul class="simple">
+<li><p><strong>displayTooltips</strong> (Optional) Fixed value: <strong>true</strong></p></li>
+</ul>
+<p>Display help documentation for all elements by default when loading the view.</p>
+<ul class="simple">
+<li><p><strong>displayTooltipsMode</strong> (Optional)</p></li>
+</ul>
+<p>Display help documentation onhover elements (default) or by clicking on an icon.</p>
+<ul class="simple">
+<li><p><strong>hideTimeInCalendar</strong> (необязательно) Фиксированное значение: <strong>true</strong></p></li>
+</ul>
+<p>Определите, должен ли элемент управления календарем разрешать пользователям устанавливать только дату или дату и время. Если атрибут не установлен, то можно установить дату и время. Это контролируется на уровне представления, переключение на другое представление может обеспечить больший контроль над датами.</p>
+<ul class="simple">
+<li><p><strong>displayIfRecord</strong> (необязательно)</p></li>
+</ul>
+<p>Выражение XPath, возвращающее логическое значение, которое будет сравниваться с записью метаданных. если true, представление будет отображаться. например. Отображать пользовательское представление, если стандартное имя метаданных содержит Medsea:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span>
+<span class="w">      </span><span class="na">displayIfRecord=</span><span class="s">&quot;contains(gmd:MD_Metadata/</span>
+<span class="s">                                  gmd:metadataStandardName/gco:CharacterString,</span>
+<span class="s">                                &#39;MedSea&#39;)&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>displayIfServiceInfo</strong> (необязательно)</p></li>
+</ul>
+<p>Выражение XPath, возвращающее логическое значение, которое будет оцениваться относительно информационного дерева службы (элемент Jeeves /root/gui). если true, представление будет отображаться.</p>
+<p>например. Отображать настраиваемый вид, если пользователь является администратором:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span>
+<span class="w">      </span><span class="na">displayIfServiceInfo=</span><span class="s">&quot;count(session[profile = &#39;Administrator&#39;]) = 1&quot;</span>
+</pre></div>
+</div>
+<p>displayIfRecord и displayIfServiceInfo можно комбинировать. Используется оператор И. Оба условия ДОЛЖНЫ возвращать значение true, чтобы представление отображалось.</p>
+<p>Дочерние элементы:</p>
+<ul class="simple">
+<li><p><strong>вкладка</strong>, одна или несколько (см. <a class="reference internal" href="#creating-custom-editor-tab"><span class="std std-ref">Определение вкладки</span></a>)</p></li>
+<li><p><strong>flatModeExceptions</strong>, необязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-flatmodeexceptions"><span class="std std-ref">Настройка отображения сложных элементов</span></a>)</p></li>
+<li><p><strong>thesaurusList</strong>, необязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-thesauruslist"><span class="std std-ref">Настройка тезауруса</span></a>)</p></li>
+</ul>
+</section>
+<section id="defining-a-tab">
+<span id="creating-custom-editor-tab"></span><h2>Определение вкладки<a class="headerlink" href="#defining-a-tab" title="Permalink to this heading">¶</a></h2>
+<p>Представление содержит как минимум одну вкладку. В этом случае он будет отображаться по умолчанию, и верхняя панель инструментов не будет отображаться для переключения с одной вкладки на другую.</p>
+<figure class="align-default">
+<img alt="../../_images/editor-tab-switcher.png" src="../../_images/editor-tab-switcher.png" />
+</figure>
+<p>Добавьте пользовательский вид, одну вкладку по умолчанию и поле для заголовка:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;views&gt;</span>
+<span class="w">  </span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tab</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;custom-tab&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;section&gt;</span>
+<span class="w">        </span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/section&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/tab&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/view&gt;</span>
+</pre></div>
+</div>
+<p>Атрибуты:</p>
+<ul class="simple">
+<li><p><strong>id</strong> (Обязательно)</p></li>
+</ul>
+<p>Клавиша табуляции, используемая в параметре URL для активации этой вкладки. Ключ также используется для метки вкладки, как определено в <code class="docutils literal notranslate"><span class="pre">{schema}/loc/{lang}/strings.xml</span></code>.</p>
+<ul class="simple">
+<li><p><strong>по умолчанию</strong> (необязательно) Фиксированное значение: <strong>true</strong></p></li>
+</ul>
+<p>Определите, является ли эта вкладка вкладкой по умолчанию для представления. Только одна вкладка должна быть по умолчанию в представлении.</p>
+<ul class="simple">
+<li><p><strong>toggle</strong> (необязательно) Фиксированное значение: <strong>true</strong></p></li>
+</ul>
+<p>Определите, должна ли вкладка отображаться в раскрывающемся меню вместо вкладки. Это используется для расширенного раздела, который не часто используется конечным пользователем. В этом раскрывающемся меню вкладок может быть сгруппировано более одной вкладки.</p>
+<ul class="simple">
+<li><p><strong>formatter-order</strong> (Optional)</p></li>
+</ul>
+<p>Define the ordering index of this tab in the XSLT formatter (Note used for editor).</p>
+<ul class="simple">
+<li><p><strong>mode</strong> (необязательно) Фиксированное значение: <strong>flat</strong></p></li>
+</ul>
+<p>«Плоский» режим — важная концепция для понимания редактором. Он контролирует путь:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>отображаются сложные элементы (т.е. элементы, имеющие дочерние элементы) и</p></li>
+<li><p>отображаются несуществующие элементы (т.е. элементы в стандарте, а не в текущем документе).</p></li>
+</ul>
+</div></blockquote>
+<p>Когда вкладка находится в плоском режиме, на этой вкладке не будут отображаться элементы, которых нет в текущем документе метаданных, и будет отображаться сложный элемент как группа, только если он определен в списке элементов с набором полей (см. <span class="xref std std-ref">creating-custom -editor-fieldsWithFieldset</span>).</p>
+<p>Пример для контакта в не &amp;quot;плоском&amp;quot; режиме:</p>
+<figure class="align-default">
+<img alt="../../_images/editor-contact-nonflatmode.png" src="../../_images/editor-contact-nonflatmode.png" />
+</figure>
+<p>Пример для контакта в &amp;quot;плоском&amp;quot; режиме:</p>
+<figure class="align-default">
+<img alt="../../_images/editor-contact-flatmode.png" src="../../_images/editor-contact-flatmode.png" />
+</figure>
+<p>Этот режим упрощает компоновку, но не предоставляет всех элементов управления для удаления некоторых элементов, обычно заключенных в рамки. Конечный пользователь по-прежнему может перейти в расширенный режим просмотра, чтобы получить доступ к этим скрытым элементам в плоском режиме.</p>
+<p>Рекомендуется сохранить по крайней мере одно представление в не &amp;quot;плоском&amp;quot; режиме для рецензента или администратора, чтобы иметь возможность:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>создавать правильные шаблоны на основе стандартов</p></li>
+<li><p>для исправления любых типов ошибок.</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p><strong>mode</strong> (Mandatory)</p></li>
+<li><p><strong>displayIfRecord</strong> (необязательно)</p>
+<p>XPath expression returning boolean value which will be evaluated against the metadata record. if true the view will be displayed.</p>
+<p>eg. Display custom-view if metadata standard name contains Medsea:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span>
+<span class="w">      </span><span class="na">displayIfRecord=</span><span class="s">&quot;contains(gmd:MD_Metadata/</span>
+<span class="s">                                  gmd:metadataStandardName/gco:CharacterString,</span>
+<span class="s">                                &#39;MedSea&#39;)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>displayIfServiceInfo</strong> (необязательно)</p>
+<p>Выражение XPath, возвращающее логическое значение, которое будет оцениваться относительно информационного дерева службы (элемент Jeeves /root/gui). если true, представление будет отображаться.</p>
+<p>например. Отображать настраиваемый вид, если пользователь является администратором:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span>
+<span class="w">      </span><span class="na">displayIfServiceInfo=</span><span class="s">&quot;count(session[profile = &#39;Administrator&#39;]) = 1&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>To combine <cite>displayIfRecord</cite> and <cite>displayIfServiceInfo</cite> use an <cite>AND</cite> operator. In this case both condition MUST returned <cite>true</cite> for the view to be displayed.</p>
+<section id="configuring-complex-element-display">
+<span id="creating-custom-editor-flatmodeexceptions"></span><h3>Настройка отображения сложных элементов<a class="headerlink" href="#configuring-complex-element-display" title="Permalink to this heading">¶</a></h3>
+<p>Элементы для применения исключений «плоского» режима. По умолчанию в «плоском» режиме не отображаются элементы, содержащие только дочерние элементы и не имеющие значения.</p>
+<p>Use or and in attribute to display non existing element.
+To display gmd:descriptiveKeywords element even if does not exist in the metadata
+record or if the field should be displayed to add new occurrences:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="nt">&lt;field</span>
+<span class="w">           </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords/*/gmd:keyword&quot;</span>
+<span class="w">           </span><span class="na">or=</span><span class="s">&quot;keyword&quot;</span>
+<span class="w">           </span><span class="na">in=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords/*&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/tab&gt;</span>
+
+<span class="w">  </span><span class="cm">&lt;!-- Elements that should not use the &quot;flat&quot; mode --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;flatModeExceptions&gt;</span>
+<span class="w">    </span><span class="nt">&lt;for</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:descriptiveKeywords&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/flatModeExceptions&gt;</span>
+<span class="nt">&lt;/view&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-thesaurus">
+<span id="creating-custom-editor-thesauruslist"></span><h3>Настройка тезауруса<a class="headerlink" href="#customizing-thesaurus" title="Permalink to this heading">¶</a></h3>
+<p>To configure the type of transformations
+or the number of keyword allowed or if the widget
+has to be displayed in a fieldset or as simple field for e
+thesaurus define a specific configuration:</p>
+<p>например. только 2 темы INSPIRE.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;thesaurusList&gt;</span>
+<span class="w">  </span><span class="nt">&lt;thesaurus</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;external.theme.httpinspireeceuropaeutheme-theme&quot;</span>
+<span class="w">             </span><span class="na">maxtags=</span><span class="s">&quot;2&quot;</span>
+<span class="w">             </span><span class="na">fieldset=</span><span class="s">&quot;false&quot;</span>
+<span class="w">             </span><span class="na">transformations=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/thesaurusList&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-a-section-to-a-tab">
+<span id="creating-custom-editor-section"></span><h2>Добавление раздела на вкладку<a class="headerlink" href="#adding-a-section-to-a-tab" title="Permalink to this heading">¶</a></h2>
+<p>A section is a group of fields. If a name attribute is provided,
+then it will create an HTML fieldset which is collapsible.
+If no name attribute is provided, then it just render the inner elements.
+For example, if you need a tab without a root fieldset, just create
+the mandatory section with no name and then the inner elements.</p>
+<p>Атрибуты:</p>
+<ul>
+<li><p><strong>имя</strong> (необязательно)</p>
+<p>Необязательное имя для переопределения имени по умолчанию на основе имени поля для раздела. Имя должно быть определено в <code class="docutils literal notranslate"><span class="pre">{schema}/loc/{lang}/strings.xml</span></code>.</p>
+</li>
+<li><p><strong>xpath</strong> (необязательно)</p>
+<p>Xpath элемента для сопоставления. Если для раздела задан XPath, он не должен содержать никаких полей.</p>
+</li>
+<li><p><strong>mode</strong> (необязательно) Фиксированное значение: <strong>flat</strong></p>
+<p>«Плоский» режим — важная концепция для понимания редактором. Он контролирует путь:</p>
+<ul class="simple">
+<li><p>отображаются сложные элементы (т.е. элементы, имеющие дочерние элементы) и</p></li>
+<li><p>отображаются несуществующие элементы (т.е. элементы в стандарте, а не в текущем документе).</p></li>
+</ul>
+<p>Когда вкладка находится в плоском режиме, на этой вкладке не будут отображаться элементы, которых нет в текущем документе метаданных, и будет отображаться сложный элемент как группа, только если он определен в списке элементов с набором полей (см. <span class="xref std std-ref">creating-custom -editor-fieldsWithFieldset</span>).</p>
+<p>Пример для контакта в не &amp;quot;плоском&amp;quot; режиме:</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/editor-contact-nonflatmode.png" src="../../_images/editor-contact-nonflatmode.png" />
+<figcaption>
+<p><span class="caption-text">Contact in non «flat» mode</span><a class="headerlink" href="#id1" title="Постоянная ссылка на рисунок">¶</a></p>
+</figcaption>
+</figure>
+<p>Пример для контакта в &amp;quot;плоском&amp;quot; режиме:</p>
+<figure class="align-default" id="id2">
+<img alt="../../_images/editor-contact-flatmode.png" src="../../_images/editor-contact-flatmode.png" />
+<figcaption>
+<p><span class="caption-text">Contact in «flat» mode</span><a class="headerlink" href="#id2" title="Постоянная ссылка на рисунок">¶</a></p>
+</figcaption>
+</figure>
+<p>Этот режим упрощает компоновку, но не предоставляет всех элементов управления для удаления некоторых элементов, обычно заключенных в рамки. Конечный пользователь по-прежнему может перейти в расширенный режим просмотра, чтобы получить доступ к этим скрытым элементам в плоском режиме.</p>
+<p>Рекомендуется сохранить по крайней мере одно представление в не &amp;quot;плоском&amp;quot; режиме для рецензента или администратора, чтобы иметь возможность:</p>
+<ul class="simple">
+<li><p>создавать правильные шаблоны на основе стандартов</p></li>
+<li><p>для исправления любых типов ошибок.</p></li>
+</ul>
+</li>
+<li><p><strong>mode</strong> (Mandatory)</p></li>
+<li><p><strong>или</strong> (необязательно)</p>
+<p>Локальное имя для сопоставления, если элемент не существует.</p>
+</li>
+<li><p><strong>или</strong> (необязательно)</p>
+<p>Локальное имя дочерней геосети (т.е. несуществующий элемент) для сопоставления.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:language&quot;</span>
+<span class="w">       </span><span class="na">or=</span><span class="s">&quot;language&quot;</span>
+<span class="w">       </span><span class="na">in=</span><span class="s">&quot;/gmd:MD_Metadata&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>или</strong> (необязательно)</p></li>
+<li><p><strong>в</strong> (необязательно)</p>
+<p>XPath элемента geonet:child с именем или для поиска. Обычно указывает на родителя последнего элемента атрибута XPath.</p>
+</li>
+<li><p><strong>в</strong> (необязательно)</p>
+<p>Элемент для поиска дочернего элемента геосети.</p>
+</li>
+<li><p><strong>displayIfRecord</strong> (необязательно)</p>
+<p>XPath expression returning boolean value which will be evaluated against the metadata record. if true the view will be displayed.</p>
+<p>eg. Display custom-view if metadata standard name contains Medsea:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span>
+<span class="w">      </span><span class="na">displayIfRecord=</span><span class="s">&quot;contains(gmd:MD_Metadata/</span>
+<span class="s">                                  gmd:metadataStandardName/gco:CharacterString,</span>
+<span class="s">                                &#39;MedSea&#39;)&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="adding-a-field">
+<span id="creating-custom-editor-field"></span><h2>Добавление поля<a class="headerlink" href="#adding-a-field" title="Permalink to this heading">¶</a></h2>
+<p>Чтобы отобразить простой элемент, используйте атрибут <code class="docutils literal notranslate"><span class="pre">xpath</span></code>, чтобы указать на отображаемый элемент:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Чтобы переопределить метку поля, используйте атрибут <code class="docutils literal notranslate"><span class="pre">name</span></code> и определите новую метку в <code class="docutils literal notranslate"><span class="pre">{schema}/loc/{lang}/strings.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;myTitle&quot;</span>
+<span class="w">       </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Чтобы отобразить сложный элемент, существующий в документе метаданных:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pointOfContact&quot;</span>
+<span class="w">       </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:pointOfContact&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>В этом случае также отображаются все дочерние элементы.</p>
+<p>Чтобы отобразить поле, если оно существует в документе метаданных, или предоставить кнопку добавления, если оно не существует (укажите атрибуты <code class="docutils literal notranslate"><span class="pre">in</span></code> и <code class="docutils literal notranslate"><span class="pre">or</span></code>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pointOfContact&quot;</span>
+<span class="w">       </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:pointOfContact&quot;</span>
+<span class="w">       </span><span class="na">or=</span><span class="s">&quot;pointOfContact&quot;</span>
+<span class="w">       </span><span class="na">in=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*&quot;</span>
+<span class="w">       </span><span class="na">del=</span><span class="s">&quot;.&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Активируйте «плоский» режим на уровне вкладки, чтобы форма отображала только существующие элементы:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;view</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;custom-view&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tab</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;custom-tab&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;flat&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;section&gt;</span>
+<span class="w">        </span><span class="nt">&lt;field</span>
+<span class="w">                </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pointOfContact&quot;</span>
+<span class="w">               </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:pointOfContact&quot;</span>
+<span class="w">               </span><span class="na">or=</span><span class="s">&quot;pointOfContact&quot;</span>
+<span class="w">               </span><span class="na">in=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*&quot;</span>
+<span class="w">               </span><span class="na">del=</span><span class="s">&quot;.&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/section&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/tab&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/view&gt;</span>
+</pre></div>
+</div>
+<p>Атрибуты:</p>
+<ul class="simple">
+<li><p><strong>xpath</strong> (Обязательно)</p></li>
+</ul>
+<p>Xpath элемента для сопоставления.</p>
+<ul class="simple">
+<li><p><strong>если</strong> (необязательно)</p></li>
+</ul>
+<p>Необязательное выражение xpath для оценки, чтобы определить, должен ли элемент отображаться только в некоторой ситуации (например, только для записей метаданных службы). например.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span>
+<span class="w">  </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/</span>
+<span class="s">  gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints&quot;</span>
+<span class="w">  </span><span class="na">if=</span><span class="s">&quot;count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification) &gt; 0&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>имя</strong> (необязательно)</p></li>
+</ul>
+<p>Имя поля для переопределения имени по умолчанию.</p>
+<ul class="simple">
+<li><p><strong>isMissingLabel</strong> (необязательно)</p></li>
+</ul>
+<p>Метка, отображаемая, если элемент не существует в записи метаданных. Это указывает на то, что элемент отсутствует в текущей записи. Его можно использовать для раздела соответствия, в котором говорится, что элемент «не оценивается». ЭКСПЕРИМЕНТАЛЬНАЯ</p>
+<ul>
+<li><p><strong>или</strong> (необязательно)</p>
+<p>Локальное имя дочерней геосети (т.е. несуществующий элемент) для сопоставления.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:language&quot;</span>
+<span class="w">       </span><span class="na">or=</span><span class="s">&quot;language&quot;</span>
+<span class="w">       </span><span class="na">in=</span><span class="s">&quot;/gmd:MD_Metadata&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>в</strong> (необязательно)</p>
+<p>Элемент для поиска дочернего элемента геосети.</p>
+</li>
+<li><p><strong>удалить</strong> (необязательно)</p>
+<p>Относительный XPath удаляемого элемента при нажатии кнопки удаления.</p>
+<p>например. Если поле шаблона соответствует привязке и позволяет редактировать URL-адрес поля, элемент управления удалением должен удалить родительский элемент gmd:onLine.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;url&quot;</span>
+<span class="w">  </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions</span>
+<span class="s">            /gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage&quot;</span>
+<span class="w">  </span><span class="na">del=</span><span class="s">&quot;../..&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;template&gt;</span>
+</pre></div>
+</div>
+<p>Del attribute can be used in template mode or not. Example to remove
+spatialResolution while only editing denominator or distance. Denominator or distance
+are mandatory but as the del element point to the spatialResolution
+ancestor, there is no mandatory flag displayed and the remove control
+remove the spatialResolution element.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/</span>
+<span class="s">                */gmd:spatialResolution/*/gmd:distance&quot;</span>
+<span class="w">       </span><span class="na">del=</span><span class="s">&quot;../..&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/</span>
+<span class="s">                */gmd:spatialResolution/</span>
+<span class="s">                  */gmd:equivalentScale/*/gmd:denominator&quot;</span>
+<span class="w">       </span><span class="na">del=</span><span class="s">&quot;../../../..&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>templateModeOnly</strong> (необязательно) Фиксированное значение: <strong>true</strong></p>
+<p>Определите, должен ли режим шаблона быть единственным используемым режимом. В этом случае поле всегда отображается на основе конфигурации поля фрагмента шаблона XML. Значение по умолчанию — ложь.</p>
+</li>
+<li><p><strong>notDisplayedIfMissing</strong> (необязательно) Фиксированное значение: <strong>true</strong></p>
+<p>Если поле найдено, а также дочерняя геосеть, дочерняя геосеть для добавления новой не отображается.</p>
+</li>
+<li><p><strong>use</strong> (Optional)</p>
+<p>The form field type to use (one of the HTML5 type) or an AngularJS directive to use.
+This list is defined as an open enumeration. For directive, the value will be set in a simple
+text input by default. If the directive needs to deal with carriage return character, the
+directive name MUST contains «-textarea» in order to set the value in a textarea
+instead of the text input.</p>
+</li>
+<li><p><strong>use</strong> (Optional)</p>
+<p>Field type. Register here any Angular directive to be used
+on the client side. Default is simple text field.</p>
+</li>
+</ul>
+<p>Дочерние элементы:</p>
+<ul class="simple">
+<li><p><strong>template</strong>, необязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-template"><span class="std std-ref">Добавление поля на основе шаблона</span></a>)</p></li>
+</ul>
+</section>
+<section id="adding-a-template-based-field">
+<span id="creating-custom-editor-template"></span><h2>Добавление поля на основе шаблона<a class="headerlink" href="#adding-a-template-based-field" title="Permalink to this heading">¶</a></h2>
+<p>A template configuration for an XML snippet to edit.</p>
+<p>Поле шаблона состоит из фрагмента XML, соответствующего редактируемому элементу, где редактируемые значения идентифицируются с помощью нотации {{fields}}. Каждое поле должно быть определено как значение, из которого будет создано одно поле ввода.</p>
+<p>Этот режим используется, чтобы скрыть сложность редактируемого элемента XML. например.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;url&quot;</span>
+<span class="w">       </span><span class="na">templateModeOnly=</span><span class="s">&quot;true&quot;</span>
+<span class="w">       </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:distributionInfo/g.../gmd:linkage&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;template&gt;</span>
+<span class="w">     </span><span class="nt">&lt;values&gt;</span>
+<span class="w">       </span><span class="nt">&lt;key</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;url&quot;</span>
+<span class="w">            </span><span class="na">xpath=</span><span class="s">&quot;gmd:URL&quot;</span>
+<span class="w">            </span><span class="na">tooltip=</span><span class="s">&quot;gmd:linkage&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/values&gt;</span>
+<span class="w">     </span><span class="nt">&lt;snippet&gt;</span>t
+<span class="w">       </span><span class="nt">&lt;gmd:linkage&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:URL&gt;</span>{{url}}<span class="nt">&lt;/gmd:URL&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:linkage&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/snippet&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/template&gt;</span>
+</pre></div>
+</div>
+<p>Режим поля шаблона обеспечит редактирование только части элемента сниппета. В некоторых случаях сниппет может содержать больше элементов, чем редактируемый. В таком случае сниппет ДОЛЖЕН указывать список потенциальных элементов, чтобы не потерять информацию при использовании этого режима. Используйте элемент gn:copy, чтобы правильно объединить шаблон с текущим документом.</p>
+<p>например. gmd:MD_Identifier может содержать узел gmd:authority, который необходимо сохранить.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;snippet&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:identifier&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_Identifier&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gn:copy</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;gmd:authority&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gco:CharacterString&gt;</span>{{code}}<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:MD_Identifier&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:identifier&gt;</span>
+<span class="nt">&lt;/snippet&gt;</span>
+</pre></div>
+</div>
+<p>Warning: Template based field does not support multilingual editing for ISO standards (ie. only the main language is edited - therefore, multilingual elements will be preserved).</p>
+</section>
+<section id="adding-documentation-or-help">
+<span id="creating-custom-editor-text"></span><h2>Добавление документации или справки<a class="headerlink" href="#adding-documentation-or-help" title="Permalink to this heading">¶</a></h2>
+<p>Вставьте фрагмент HTML в редактор.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edmerpName&quot;</span>
+<span class="w">       </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/*/</span>
+<span class="s">                gmd:pointOfContact[*/gmd:role/*/@codeListValue=&#39;edmerp&#39;]&quot;</span>
+<span class="w">       </span><span class="na">del=</span><span class="s">&quot;.&quot;</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;text</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;edmerp-help&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Фрагмент определен в файле локализации strings.xml:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;edmerp-help&gt;</span>
+<span class="w">  </span><span class="nt">&lt;div</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;div</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;col-xs-offset-2 col-xs-8&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;help-block&quot;</span><span class="nt">&gt;</span>The<span class="w"> </span>European<span class="w"> </span>Directory<span class="w"> </span>for<span class="w"> </span>Marine<span class="w"> </span>Environment
+<span class="w">          </span>Research<span class="w"> </span>Project<span class="w"> </span>(EDMERP)<span class="w"> </span>contains<span class="w"> </span>descriptions<span class="w"> </span>of<span class="w"> </span>many<span class="w"> </span>projects.
+<span class="w">          </span>This<span class="w"> </span>catalogue<span class="w"> </span>is<span class="w"> </span>maintained<span class="w"> </span>...<span class="nt">&lt;/p&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/div&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/edmerp-help&gt;</span>
+</pre></div>
+</div>
+<p>Атрибуты:</p>
+<ul class="simple">
+<li><p><strong>ref</strong> (Обязательно)</p></li>
+</ul>
+<p>Имя тега элемента для вставки в файл локализации.</p>
+<ul class="simple">
+<li><p><strong>если</strong> (необязательно)</p></li>
+</ul>
+<p>An XPath expression to evaluate. If true, the text is displayed.</p>
+</section>
+<section id="adding-a-button">
+<span id="creating-custom-editor-action"></span><h2>Добавление кнопки<a class="headerlink" href="#adding-a-button" title="Permalink to this heading">¶</a></h2>
+<p>Кнопка, запускающая действие (обычно процесс или кнопка добавления).</p>
+<p>Пример кнопки добавления экстента:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;add&quot;</span>
+<span class="w">        </span><span class="na">name=</span><span class="s">&quot;extent&quot;</span>
+<span class="w">        </span><span class="na">or=</span><span class="s">&quot;extent&quot;</span>
+<span class="w">        </span><span class="na">in=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;template&gt;</span>
+<span class="w">      </span><span class="nt">&lt;snippet&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:extent&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:EX_Extent&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:geographicElement&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:EX_GeographicBoundingBox&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:westBoundLongitude&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:Decimal/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:westBoundLongitude&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:eastBoundLongitude&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:Decimal/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:eastBoundLongitude&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:southBoundLatitude&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:Decimal/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:southBoundLatitude&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:northBoundLatitude&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:Decimal/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:northBoundLatitude&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:EX_GeographicBoundingBox&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:geographicElement&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:EX_Extent&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:extent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/snippet&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/template&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/action&gt;</span>
+</pre></div>
+</div>
+<p>Пример кнопки, отображаемой только при отсутствии идентификатора ресурса, оканчивающегося идентификатором записи метаданных (т.е. атрибута <code class="docutils literal notranslate"><span class="pre">if</span></code>) и запущенного процесса с идентификатором <code class="docutils literal notranslate"><span class="pre">add-resource-id</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;process&quot;</span>
+<span class="w">        </span><span class="na">process=</span><span class="s">&quot;add-resource-id&quot;</span>
+<span class="w">        </span><span class="na">if=</span><span class="s">&quot;count(gmd:MD_Metadata/gmd:identificationInfo/*/</span>
+<span class="s">                      gmd:citation/*/gmd:identifier[</span>
+<span class="s">                        ends-with(gmd:MD_Identifier/gmd:code/gco:CharacterString,</span>
+<span class="s">                                  //gmd:MD_Metadata/gmd:fileIdentifier/gco:CharacterString)]) = 0&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Example of a button based on custom directive with some directive attributes set by
+XPath:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;add&quot;</span>
+<span class="w">        </span><span class="na">btnLabel=</span><span class="s">&quot;checkpoint-tdp-add-component&quot;</span>
+<span class="w">        </span><span class="na">name=</span><span class="s">&quot;dataQualityInfo&quot;</span><span class="w"> </span><span class="na">or=</span><span class="s">&quot;dataQualityInfo&quot;</span>
+<span class="w">        </span><span class="na">in=</span><span class="s">&quot;/mdb:MD_Metadata&quot;</span>
+<span class="w">        </span><span class="na">addDirective=</span><span class="s">&quot;data-gn-record-fragment-selector&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;directiveAttributes</span><span class="w"> </span><span class="na">data-source-records=</span><span class="s">&quot;xpath::string-join(</span>
+<span class="s">    //mri:associatedResource/*[mri:initiativeType/*/@codeListValue = &#39;specification&#39;]</span>
+<span class="s">      /mri:metadataReference/@uuidref, &#39;,&#39;)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/action&gt;</span>
+</pre></div>
+</div>
+<p>Example of a drowdown button with 3 coordinates system to choose from:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Display CRS description only,</span>
+<span class="cm">        customize label</span>
+<span class="cm">        and drop the refSysInfo element if removed --&gt;</span>
+<span class="w"> </span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/mdb:MD_Metadata/mdb:referenceSystemInfo/*/</span>
+<span class="s">                  mrs:referenceSystemIdentifier/*/mcc:description&quot;</span>
+<span class="w">        </span><span class="na">name=</span><span class="s">&quot;referenceSystemInfo&quot;</span>
+<span class="w">        </span><span class="na">del=</span><span class="s">&quot;../../../..&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w"> </span><span class="cm">&lt;!-- Add one of the 3 CRS proposed using the dropdown --&gt;</span>
+<span class="w"> </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;add&quot;</span>
+<span class="w">         </span><span class="na">btnLabel=</span><span class="s">&quot;addCrs&quot;</span>
+<span class="w">         </span><span class="na">name=</span><span class="s">&quot;referenceSystemInfo&quot;</span><span class="w"> </span><span class="na">or=</span><span class="s">&quot;referenceSystemInfo&quot;</span>
+<span class="w">         </span><span class="na">in=</span><span class="s">&quot;/mdb:MD_Metadata&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;template&gt;</span>
+<span class="w">     </span><span class="nt">&lt;snippet</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;addCrs4326&quot;</span><span class="nt">&gt;</span>
+<span class="w">       </span><span class="nt">&lt;mdb:referenceSystemInfo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">           </span><span class="nt">&lt;mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">             </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gco:CharacterString&gt;</span>http://www.opengis.net/def/crs/EPSG/0/4326<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:description&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gco:CharacterString&gt;</span>WGS<span class="w"> </span>84<span class="w"> </span>(EPSG:4326)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:description&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/mdb:referenceSystemInfo&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/snippet&gt;</span>
+<span class="w">     </span><span class="nt">&lt;snippet</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;addCrs4258&quot;</span><span class="nt">&gt;</span>
+<span class="w">       </span><span class="nt">&lt;mdb:referenceSystemInfo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">           </span><span class="nt">&lt;mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">             </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gco:CharacterString&gt;</span>http://www.opengis.net/def/crs/EPSG/0/4258<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:description&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gco:CharacterString&gt;</span>ETRS89<span class="w"> </span>(EPSG:4258)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:description&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/mdb:referenceSystemInfo&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/snippet&gt;</span>
+<span class="w">     </span><span class="nt">&lt;snippet</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;addCrs3035&quot;</span><span class="nt">&gt;</span>
+<span class="w">       </span><span class="nt">&lt;mdb:referenceSystemInfo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">           </span><span class="nt">&lt;mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">             </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gco:CharacterString&gt;</span>http://www.opengis.net/def/crs/EPSG/0/3035<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:description&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gco:CharacterString&gt;</span>ETRS89<span class="w"> </span>/<span class="w"> </span>LAEA<span class="w"> </span>Europe<span class="w"> </span>(EPSG:3035)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:description&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/mdb:referenceSystemInfo&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/snippet&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/template&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/action&gt;</span>
+</pre></div>
+</div>
+<p>Example of a button to display a suggestion form:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;suggest&quot;</span>
+<span class="w">        </span><span class="na">process=</span><span class="s">&quot;add-columns-from-csv&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Атрибуты:</p>
+<ul>
+<li><p><strong>имя</strong> (необязательно)</p>
+<p>ДЕЛАТЬ</p>
+</li>
+<li><p><strong>тип</strong> (необязательно)</p>
+<p>Тип контроля</p>
+</li>
+<li><p><strong>процесс</strong> (необязательно)</p>
+<p>The process identifier (eg. add-resource-id) or the associated resource type to open
+(eg. onlinesrc, fcats, parent, source, sibling, service, dataset, thumbnail) See
+onlinesrc directive.</p>
+</li>
+<li><p><strong>forceLabel</strong> (необязательно)</p>
+<p>Принудительно отображать метку для этого действия, даже если действие не является первым элементом в своем роде. Ярлык всегда будет отображаться.</p>
+</li>
+<li><p><strong>если</strong> (необязательно)</p>
+<p>Выражение XPath для оценки. Если true, элемент управления отображается. например.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>count(gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/
+gmd:identifier[ends-with(gmd:MD_Identifier/gmd:code/gco:CharacterString,
+//gmd:MD_Metadata/gmd:fileIdentifier/gco:CharacterString)])<span class="w"> </span>=<span class="w"> </span>0
+</pre></div>
+</div>
+<p>будет отображать элемент управления только в том случае, если идентификатор ресурса не заканчивается идентификатором метаданных.</p>
+</li>
+<li><p><strong>class</strong> (Optional)</p>
+<p>Optional CSS class to add to the parent div element. eg. gn-required to show a <cite>*</cite>.</p>
+</li>
+<li><p><strong>btnLabel</strong> (Optional)</p>
+<p>Optional label to be added to the button.</p>
+</li>
+<li><p><strong>btnClass</strong> (Optional)</p>
+<p>Optional CSS class to be added to the button.</p>
+</li>
+<li><p><strong>или</strong> (необязательно)</p>
+<p>Локальное имя для сопоставления, если элемент не существует.</p>
+</li>
+<li><p><strong>или</strong> (необязательно)</p>
+<p>Локальное имя дочерней геосети (т.е. несуществующий элемент) для сопоставления.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;/gmd:MD_Metadata/gmd:language&quot;</span>
+<span class="w">       </span><span class="na">or=</span><span class="s">&quot;language&quot;</span>
+<span class="w">       </span><span class="na">in=</span><span class="s">&quot;/gmd:MD_Metadata&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>или</strong> (необязательно)</p></li>
+<li><p><strong>в</strong> (необязательно)</p>
+<p>XPath элемента geonet:child с именем или для поиска. Обычно указывает на родителя последнего элемента атрибута XPath.</p>
+</li>
+<li><p><strong>в</strong> (необязательно)</p>
+<p>Элемент для поиска дочернего элемента геосети.</p>
+</li>
+<li><p><strong>addDirective</strong> (необязательно)</p>
+<p>Директива, используемая для добавления элемента управления для этого поля.</p>
+</li>
+</ul>
+<p>Дочерние элементы:</p>
+<ul class="simple">
+<li><p><strong>template</strong>, необязательный элемент (см. <a class="reference internal" href="#creating-custom-editor-template"><span class="std std-ref">Добавление поля на основе шаблона</span></a>)</p></li>
+</ul>
+</section>
+<section id="adding-a-group">
+<span id="creating-custom-editor-group"></span><h2>Adding a group<a class="headerlink" href="#adding-a-group" title="Permalink to this heading">¶</a></h2>
+<p>A group of field</p>
+<p>Атрибуты:</p>
+<ul>
+<li><p><strong>имя</strong> (Обязательно)</p>
+<p>Section identifier.
+Translations are set on client side.</p>
+</li>
+</ul>
+<p>A field on which user can do batch editing.</p>
+<p>Атрибуты:</p>
+<ul>
+<li><p><strong>имя</strong> (Обязательно)</p>
+<p>Field identifier.
+Translations are set on client side.</p>
+</li>
+<li><p><strong>xpath</strong> (Обязательно)</p>
+<p>XPath of the element to edit.</p>
+</li>
+<li><p><strong>indexField</strong> (Optional)</p>
+<p>Lucene index field name (as defined in dumpfields).
+The field will be used to preview current record values (TODO).</p>
+</li>
+<li><p><strong>use</strong> (Optional)</p>
+<p>Field type. Register here any Angular directive to be used
+on the client side. Default is simple text field.</p>
+</li>
+<li><p><strong>removable</strong> (Optional) Fixed value: <strong>true</strong></p>
+<p>Define if the field could be marked as deleted.</p>
+</li>
+<li><p><strong>insertMode</strong> (Optional)</p>
+<p>Define if the field should be insert or replace.
+Do not set this property for mandatory field (eg. title).</p>
+</li>
+<li><p><strong>codelist</strong> (Optional)</p>
+<p>The codelist identifier. eg. gmd:MD_TopicCategoryCode for topic category.</p>
+</li>
+<li><p><strong>template</strong></p>
+<p>Define an XML template to use for the value to insert.</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../creating-custom-view.html" class="btn btn-neutral float-left" title="Настройка представлений метаданных" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../changing-layout.html" class="btn btn-neutral float-right" title="Тематика" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кіраванне карыстальнікамі і групамі &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Стварэнне групы" href="creating-group.html" />
+    <link rel="prev" title="Канфігурацыя картографічных сервераў для геапублікацыі" href="../configuring-the-catalog/map-server-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва адміністратара</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Канфігурацыя каталога</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Кіраванне карыстальнікамі і групамі</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="creating-group.html">Стварэнне групы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-user.html">Стварэнне карыстальніка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user-self-registration.html">Самарэгістрацыя карыстальніка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentication-mode.html">Рэжым аўтэнтыфікацыі</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-user">Карыстальнік па змаўчанні</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-session">Сесія карыстальніка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#users-groups-and-roles">Карыстальнікі, групы і ролі</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-classification-systems/index.html">Кіруючая сістэма класіфікацыі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва адміністратара</a> &raquo;</li>
+      <li>Кіраванне карыстальнікамі і групамі</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-users-and-groups/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-users-and-groups">
+<span id="id1"></span><h1>Кіраванне карыстальнікамі і групамі<a class="headerlink" href="#managing-users-and-groups" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="creating-group.html">Стварэнне групы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating-user.html">Стварэнне карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-self-registration.html">Самарэгістрацыя карыстальніка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-self-registration.html#what-happens-when-a-user-self-registers">Што адбываецца, калі карыстальнік самастойна рэгіструецца?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-self-registration.html#the-forgot-your-password-function">Параметр «Забылі пароль?» функцыя</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-mode.html">Рэжым аўтэнтыфікацыі</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-ldap">Налада LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-ldap-hierarchy">Configuring LDAP - Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-cas">Налада CAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-keycloak">Configuring Keycloak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-shibboleth">Налада Shibboleth</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="default-user">
+<span id="user-defaults"></span><h2>Карыстальнік па змаўчанні<a class="headerlink" href="#default-user" title="Permalink to this heading">¶</a></h2>
+<p>Upon installation a default user with name <code class="docutils literal notranslate"><span class="pre">admin</span></code> and password <code class="docutils literal notranslate"><span class="pre">admin</span></code>
+is created. It is recommended to log in with these credentials directly after the installation has completed and to change the default password.</p>
+</section>
+<section id="user-session">
+<span id="id2"></span><h2>Сесія карыстальніка<a class="headerlink" href="#user-session" title="Permalink to this heading">¶</a></h2>
+<p>After the authentication process, a user session is created. This session will be closed
+automatically at some point by the server for security reasons. The default session
+timeout is set to 35 min (see <a class="reference internal" href="../../customizing-application/advanced-configuration.html#session-timeout-configuration"><span class="std std-ref">Канфігурацыя часу чакання сеанса карыстальніка</span></a> for details).</p>
+<p>When there is no activity in the browser and the session is about
+to expire, a warning is displayed next to the user details 3 minutes before the timeout takes place:</p>
+<figure class="align-default">
+<img alt="../../_images/session-will-expire-soon.png" src="../../_images/session-will-expire-soon.png" />
+</figure>
+<p>One (1) minute before the timeout, another message is displayed:</p>
+<figure class="align-default">
+<img alt="../../_images/session-about-to-be-cancelled.png" src="../../_images/session-about-to-be-cancelled.png" />
+</figure>
+<p>When the session seems to have been destroyed by the catalog, a message recommends
+to refresh the page and sign in again if needed:</p>
+<figure class="align-default">
+<img alt="../../_images/session-has-expired.png" src="../../_images/session-has-expired.png" />
+</figure>
+</section>
+<section id="users-groups-and-roles">
+<span id="user-profiles"></span><h2>Карыстальнікі, групы і ролі<a class="headerlink" href="#users-groups-and-roles" title="Permalink to this heading">¶</a></h2>
+<p>У каталогу выкарыстоўваецца канцэпцыя карыстальнікаў, груп і профіляў карыстальнікаў.</p>
+<ul class="simple">
+<li><p>Карыстальнік можа быць часткай адной або некалькіх груп.</p></li>
+<li><p>Карыстальнік мае ролю ў групе.</p></li>
+<li><p>Роля адміністратара не звязана з групай.</p></li>
+</ul>
+<p>Спалучэнне ролі і групы вызначае, якія задачы карыстальнік можа выконваць у сістэме або ў пэўных запісах метададзеных.</p>
+<p>Карыстальнікі могуць мець розныя ролі ў розных групах. Роля вызначае, якія задачы можа выконваць карыстальнік.</p>
+<p>Ролі іерархічныя і заснаваныя на спадчыне. Гэта азначае, што карыстальнік з профілем рэдактара можа ствараць і змяняць новыя запісы метададзеных, але таксама можа выкарыстоўваць усе функцыі, якія можа выкарыстоўваць зарэгістраваны карыстальнік.</p>
+<p>Правы, звязаныя з ролямі, падрабязна праілюстраваны ў спісе ніжэй:</p>
+<ol class="arabic">
+<li><p><strong>Профіль адміністратара</strong></p>
+<p>Адміністратар мае спецыяльныя прывілеі, якія даюць доступ да ўсіх даступных функцый.</p>
+<p>Да іх адносяцца:</p>
+<ul class="simple">
+<li><p>Full rights for creating new groups and new users.</p></li>
+<li><p>Rights to change users/groups profiles.</p></li>
+<li><p>Full rights for creating/editing/deleting new/old metadata.</p></li>
+<li><p>Выконвайце задачы па адміністраванні і канфігурацыі сістэмы.</p></li>
+</ul>
+</li>
+<li><p><strong>Профіль адміністратара</strong></p>
+<p>The user administrator is the administrator of his/her own group(s) with the
+following privileges:</p>
+<ul class="simple">
+<li><p>Full rights on creating new users within their own groups.</p></li>
+<li><p>Rights to change users profiles within their own groups.</p></li>
+</ul>
+</li>
+<li><p><strong>Профіль аглядальніка кантэнту</strong></p>
+<p>The content reviewer is the only person allowed to give final clearance on the metadata publication on the Intranet and/or on the Internet:</p>
+<ul class="simple">
+<li><p>Rights on reviewing metadata content within their own groups and authorising its approval and publication.</p></li>
+</ul>
+</li>
+<li><p><strong>Профіль рэдактара</strong></p>
+<p>Рэдактар працуе з метададзенымі з наступнымі прывілеямі:</p>
+<ul class="simple">
+<li><p>Full rights on creating/editing/ deleting new/old data within their own groups.</p></li>
+</ul>
+</li>
+<li><p><strong>Профіль зарэгістраванага карыстальніка</strong></p>
+<p>Зарэгістраваны карыстальнік мае больш прывілеяў доступу, чым госці, якія не прайшлі аўтэнтыфікацыю:</p>
+<ul class="simple">
+<li><p>Right to download protected data.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../configuring-the-catalog/map-server-configuration.html" class="btn btn-neutral float-left" title="Канфігурацыя картографічных сервераў для геапублікацыі" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="creating-group.html" class="btn btn-neutral float-right" title="Стварэнне групы" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

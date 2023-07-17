@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q Search &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Канчатковы пункт RDF DCAT" href="rdf-dcat.html" />
+    <link rel="prev" title="OpenSearch and INSPIRE ATOM" href="opensearch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Кіраўніцтва па API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="the-geonetwork-api.html">API GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="csw.html">Служба каталогаў для Інтэрнэту (CSW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opensearch.html">OpenSearch and INSPIRE ATOM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Q Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#query-results-parameters">Query results parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query-filter-parameters">Query filter parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#date-searches">Date Searches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query-examples">Query examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rdf-dcat.html">Канчатковы пункт RDF DCAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oai-pmh.html">Ініцыятыва адкрытых архіваў (OAI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="z39-50.html">Z39-50</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Кіраўніцтва па API</a> &raquo;</li>
+      <li>Q Search</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/api/q-search.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="q-search">
+<span id="id1"></span><h1>Q Search<a class="headerlink" href="#q-search" title="Permalink to this heading">¶</a></h1>
+<p>The Q Search endpoint allows you to query the catalog programmatically. It is available in the local catalog at <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/q">http://localhost:8080/geonetwork/srv/eng/q</a> (otherwise substitute your catalog URL).</p>
+<section id="query-results-parameters">
+<h2>Query results parameters<a class="headerlink" href="#query-results-parameters" title="Permalink to this heading">¶</a></h2>
+<p>The following parameters can be appended to your request to format the results:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">_content_type=json</span></code>: returns results in json format. If this parameter is not provided, then the results are returned in xml format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sortBy</span></code>: sorts the results by different criteria (example: <code class="docutils literal notranslate"><span class="pre">sortBy=relevance</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">relevance</span></code> (default sorting method if not provided)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> (metadata title)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">changeDate</span></code> (metadata datestamp)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rating</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">popularity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">denominatorDesc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">denominatorAsc</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sortOrder=reverse</span></code>: Used to sort alphabetically. Note this will sort in <strong>ASCENDING</strong> order (eg A - Z)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code>, <code class="docutils literal notranslate"><span class="pre">to</span></code>: Used to return a subset of the results, usually for pagination (example: <code class="docutils literal notranslate"><span class="pre">from=1&amp;to=20</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fast</span></code>: Used to indicate the information to return. Possible values:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: returns the metadata information from the Lucene index (a subset of the information). In most cases this is the best option as the retrieval of information from the Lucene index is very fast.</p>
+<p>The fields returned are configured in the <code class="docutils literal notranslate"><span class="pre">dumpFields</span></code> section in <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-lucene.xml#L107">https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-lucene.xml#L107</a></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code>: returns the raw (full) metadata. This is slower as it will retrieve every metadata attribute from the database. If this parameter is not provided, it returns a minimal set of information for each record: uuid, internal id, metadata schema, create/change dates</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buildSummary</span></code>: Returns a summary element with search facets that can be used to filter the metadata, typically used to provide quick filters (facets) on the search results page. Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code> (default, if the parameter is not provided).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code>: does not return the summary.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">summaryOnly</span></code>: Returns the summary (depending on the value of the parameter <code class="docutils literal notranslate"><span class="pre">buildSummary</span></code>) and results. Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (default, if the parameter is not provided).</p></li>
+<li><p>Any other value returns the summary only.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resultType</span></code>: type of summary to return. Summaries are configured in the <code class="docutils literal notranslate"><span class="pre">summaryTypes</span></code> section in <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L132-L249">https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L132-L249</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hits</span></code> (default value if not provided), returns the fields configured in the <code class="docutils literal notranslate"><span class="pre">hits</span></code> section in <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L185">https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L185</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">details</span></code> (recommended value to send), returns the fields configured in the <code class="docutils literal notranslate"><span class="pre">details</span></code> section in <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L133">https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L133</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extraDumpFields</span></code>: a comma-separated list of additional fields that you wish to return alongside the fields returned according to the resultType you have chosen. The wildcard character <code class="docutils literal notranslate"><span class="pre">*</span></code> can be used to match multiple fields. For example <code class="docutils literal notranslate"><span class="pre">extraDumpFields=mycustomfield*</span></code> would match mycustomfield1 and mycustomfield2.</p></li>
+<li><p>Other values in the summaries section are allowed</p></li>
+</ul>
+</section>
+<section id="query-filter-parameters">
+<h2>Query filter parameters<a class="headerlink" href="#query-filter-parameters" title="Permalink to this heading">¶</a></h2>
+<p>You can search on any field(s) indexed in Lucene. For a complete reference see
+<a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/master/schemas/iso19139/src/main/plugin/iso19139/index-fields/default.xsl">https://github.com/geonetwork/core-geonetwork/blob/master/schemas/iso19139/src/main/plugin/iso19139/index-fields/default.xsl</a></p>
+<p>Note you can query the Lucene index graphically,using a Java-based graphical tool such as <a class="reference external" href="https://github.com/DmitryKey/luke">Luke</a>. Version <a class="reference external" href="https://github.com/DmitryKey/luke/releases/tag/luke-4.10.4.1/">4.10.4</a> is required to work with the version of Lucene bundled with GeoNetwork. Download the jar file where you can access the GeoNetwork index files, then execute with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span> <span class="pre">luke-with-deps.jar</span></code></p>
+<p>Then follow the instructions in the tool.</p>
+<p>Most relevant fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">any</span></code>: A special Lucene field that indexes all the text content in the metadata. Example: <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/q?any=water&amp;from=1&amp;to=20&amp;resultType=details&amp;fast=index&amp;_content_type=json">http://localhost:8080/geonetwork/srv/eng/q?any=water&amp;from=1&amp;to=20&amp;resultType=details&amp;fast=index&amp;_content_type=json</a></p></li>
+</ul>
+<p>There are some additional query fields, that use the content from the Lucene
+field <code class="docutils literal notranslate"><span class="pre">any</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">or</span></code>: extract the tokens of the query parameter to return the results that contain at least 1 of the tokens</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">without</span></code>: extract the tokens of the query parameter to return the results that don’t contain any of the tokens.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phrase</span></code>: return the results that contain the exact text as provided in the search query parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>: metadata title.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">abstract</span></code>: metadata abstract.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">topicCat</span></code>: metadata topic categories.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keyword</span></code>: metadata keywords.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: hierarchyLevel (dataset, service, etc.)</p></li>
+</ul>
+<p>If several tokens are included in the query, an AND query with all the tokens is executed. For example, <code class="docutils literal notranslate"><span class="pre">title=roads&amp;topicCat=biota</span></code>. This query will return the results that contain roads in the title AND have the topic category biota.</p>
+<p>An OR query of several fields can be executed using the format: <code class="docutils literal notranslate"><span class="pre">field1_OR_field2_OR_...</span> <span class="pre">=value</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">title_OR_abstract=roads</span></code> returns the metadata that contain roads in the title OR the abstract.</p>
+<p>Additionally an OR query of several values for a single field can be executed, if the Lucene configuration for that field allows it, with the following format: <code class="docutils literal notranslate"><span class="pre">field=value1</span> <span class="pre">or</span> <span class="pre">value2</span> <span class="pre">or</span> <span class="pre">...</span></code>  For example <code class="docutils literal notranslate"><span class="pre">topicCat=biota</span> <span class="pre">or</span> <span class="pre">farming</span></code>, returns the metadata where the topic category is either biota OR farming.
+If the query was executed as <code class="docutils literal notranslate"><span class="pre">topicCat=biota&amp;topicCat=farming</span></code> then only the metadata with BOTH topic categories would be returned.</p>
+</section>
+<section id="date-searches">
+<h2>Date Searches<a class="headerlink" href="#date-searches" title="Permalink to this heading">¶</a></h2>
+<p>There are a number of ways that you can search by date. Date searches should be of the form YYYY-MM-DD</p>
+<ul class="simple">
+<li><p>dateFrom/dateTo: uses the changeDate parameter in the index.</p></li>
+<li><p>creationDateFrom/To: uses the creation date.</p></li>
+<li><p>revisionDateFrom/To: uses the revision date.</p></li>
+</ul>
+</section>
+<section id="query-examples">
+<h2>Query examples<a class="headerlink" href="#query-examples" title="Permalink to this heading">¶</a></h2>
+<p>Query with any field for metadata containing the string 'infrastructure', returning json, using the fast index to return results, and returning the fields configured in <code class="docutils literal notranslate"><span class="pre">config-summary.xml</span></code>:</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/q?any=infrastructure&amp;_content_type=json&amp;fast=index&amp;from=1&amp;resultType=details&amp;sortBy=relevance&amp;to=20">http://localhost:8080/geonetwork/srv/eng/q?any=infrastructure&amp;_content_type=json&amp;fast=index&amp;from=1&amp;resultType=details&amp;sortBy=relevance&amp;to=20</a></p>
+<p>Query datasets with title containing the string 'infrastructure', returning json, using the fast index to return results, returning the fields configured in <code class="docutils literal notranslate"><span class="pre">config-summary.xml</span></code> and returning only the first 20 results (ordered by relevance):</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/q?title=infrastructure&amp;type=dataset&amp;_content_type=json&amp;fast=index&amp;from=1&amp;resultType=details&amp;sortBy=relevance&amp;to=20">http://localhost:8080/geonetwork/srv/eng/q?title=infrastructure&amp;type=dataset&amp;_content_type=json&amp;fast=index&amp;from=1&amp;resultType=details&amp;sortBy=relevance&amp;to=20</a></p>
+<p>Query datasets with a revision date in June 2019 using the fast index to return results, returning the fields configured in <code class="docutils literal notranslate"><span class="pre">config-summary.xml</span></code> and returning only the first 20 results (ordered by relevance):</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/q?_content_type=json&amp;revisionDateFrom=2019-06-01&amp;revisionDateTo=2019-06-30&amp;fast=index&amp;from=1&amp;resultType=details&amp;sortBy=relevance&amp;to=20">http://localhost:8080/geonetwork/srv/eng/q?_content_type=json&amp;revisionDateFrom=2019-06-01&amp;revisionDateTo=2019-06-30&amp;fast=index&amp;from=1&amp;resultType=details&amp;sortBy=relevance&amp;to=20</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="opensearch.html" class="btn btn-neutral float-left" title="OpenSearch and INSPIRE ATOM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rdf-dcat.html" class="btn btn-neutral float-right" title="Канчатковы пункт RDF DCAT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

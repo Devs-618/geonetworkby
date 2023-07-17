@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dublin core (dublin-core) &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="prev" title="Geographic information – Methodology for feature cataloguing (iso19110)" href="iso19110.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Приложения</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../mef-format.html">Формат обмена метаданными (MEF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gallery/gallery.html">Some GeoNetwork nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/index.html">Глоссарий</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Стандарты</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="iso19115-3.2018.html">Geographic information – Metadata (iso19115-3.2018)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iso19139.html">Geographic information – Metadata (iso19139:2007) (iso19139)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iso19110.html">Geographic information – Methodology for feature cataloguing (iso19110)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Dublin core (dublin-core)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-editor">Metadata editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schema-technical-details">Schema technical details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-elements">Standard elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-codelists">Standard codelists</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Приложения</a> &raquo;</li>
+          <li><a href="index.html">Стандарты</a> &raquo;</li>
+      <li>Dublin core (dublin-core)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/annexes/standards/dublin-core.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dublin-core-dublin-core">
+<span id="dublin-core"></span><h1>Dublin core (dublin-core)<a class="headerlink" href="#dublin-core-dublin-core" title="Permalink to this heading">¶</a></h1>
+<dl class="simple">
+<dt>The Dublin Core Metadata Element Set is a vocabulary of fifteen properties for</dt><dd><p>use in resource description. The name «Dublin» is due to its origin at a 1995 invitational
+workshop in Dublin, Ohio; «core» because its elements are broad and generic, usable for
+describing a wide range of resources.</p>
+</dd>
+</dl>
+<p>More details:http://dublincore.org/documents/dces/</p>
+<section id="metadata-editor">
+<h2>Metadata editor<a class="headerlink" href="#metadata-editor" title="Permalink to this heading">¶</a></h2>
+<p>This standard can be encoded using 3 view(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dublin-core-view-default"><span class="std std-ref">View: Simple (default)</span></a></p></li>
+<li><p><a class="reference internal" href="#dublin-core-view-advanced"><span class="std std-ref">View: Full (advanced)</span></a></p></li>
+<li><p><a class="reference internal" href="#dublin-core-view-xml"><span class="std std-ref">View: XML (xml)</span></a></p></li>
+</ul>
+<section id="view-simple-default">
+<span id="dublin-core-view-default"></span><h3>View: Simple (default)<a class="headerlink" href="#view-simple-default" title="Permalink to this heading">¶</a></h3>
+<p>This view is composed of1tab(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dublin-core-tab-default"><span class="std std-ref">Tab: Simple (default)</span></a></p></li>
+</ul>
+<p>This view also allows to add the following element even if not in the current record:</p>
+<ul class="simple">
+<li><p>Subject and Keywords (dc:subject)</p></li>
+</ul>
+<section id="tab-simple-default">
+<span id="dublin-core-tab-default"></span><h4>Tab: Simple (default)<a class="headerlink" href="#tab-simple-default" title="Permalink to this heading">¶</a></h4>
+<figure class="align-default">
+<img alt="../../_images/dublin-core-tab-default.png" src="../../_images/dublin-core-tab-default.png" />
+</figure>
+<p>This tab display elements from the XML metadata record.</p>
+<section id="section-metadata">
+<h5>Section: Metadata<a class="headerlink" href="#section-metadata" title="Permalink to this heading">¶</a></h5>
+<p>See:ref:<cite>dublin-core-elem-simpledc-8506dd4a73872a53513368db419204a3</cite></p>
+</section>
+</section>
+</section>
+<section id="view-full-advanced">
+<span id="dublin-core-view-advanced"></span><h3>View: Full (advanced)<a class="headerlink" href="#view-full-advanced" title="Permalink to this heading">¶</a></h3>
+<p>This view is composed of1tab(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dublin-core-tab-advanced"><span class="std std-ref">Tab: Full (advanced)</span></a></p></li>
+</ul>
+<section id="tab-full-advanced">
+<span id="dublin-core-tab-advanced"></span><h4>Tab: Full (advanced)<a class="headerlink" href="#tab-full-advanced" title="Permalink to this heading">¶</a></h4>
+<p>This tab display elements from the XML metadata record and also provide controls to add all elements defined in the schema (XSD).</p>
+<section id="id1">
+<h5>Section: Metadata<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h5>
+<p>See:ref:<cite>dublin-core-elem-simpledc-8506dd4a73872a53513368db419204a3</cite></p>
+</section>
+</section>
+</section>
+<section id="view-xml-xml">
+<span id="dublin-core-view-xml"></span><h3>View: XML (xml)<a class="headerlink" href="#view-xml-xml" title="Permalink to this heading">¶</a></h3>
+<p>This view is composed of1tab(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dublin-core-tab-xml"><span class="std std-ref">Tab: XML (xml)</span></a></p></li>
+</ul>
+<section id="tab-xml-xml">
+<span id="dublin-core-tab-xml"></span><h4>Tab: XML (xml)<a class="headerlink" href="#tab-xml-xml" title="Permalink to this heading">¶</a></h4>
+<p>This tab display elements from the XML metadata record and also provide controls to add all elements defined in the schema (XSD).</p>
+</section>
+</section>
+</section>
+<section id="schema-technical-details">
+<h2>Schema technical details<a class="headerlink" href="#schema-technical-details" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Standard identifier<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dublin-core</p>
+</dd>
+<dt class="field-even">Version<span class="colon">:</span></dt>
+<dd class="field-even"><p>1.0</p>
+</dd>
+<dt class="field-odd">Schema location<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Schema namespaces<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><a class="reference external" href="http://geonetwork-opensource.org/schemas/schema-ident">http://geonetwork-opensource.org/schemas/schema-ident</a></p></li>
+<li><p><a class="reference external" href="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a></p></li>
+<li><p><a class="reference external" href="http://www.w3.org/XML/1998/namespace">http://www.w3.org/XML/1998/namespace</a></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Schema detection mode<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gns:elements (root)</p>
+</dd>
+<dt class="field-even">Schema detection elements<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p>simpledc</p></li>
+</ul>
+</section>
+<section id="standard-elements">
+<h2>Standard elements<a class="headerlink" href="#standard-elements" title="Permalink to this heading">¶</a></h2>
+<p>List of all elements available in the standard.</p>
+<section id="contributor">
+<span id="dublin-core-elem-dc-contributor-0974cafd6cf5302fe8501874dbe3b3ac"></span><h3>Contributor<a class="headerlink" href="#contributor" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:contributor</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An entity responsible for making contributions to the content of the resource.</section>
+<section id="coverage">
+<span id="dublin-core-elem-dc-coverage-8a3ad050a5c9949ad92271f646817e10"></span><h3>Coverage<a class="headerlink" href="#coverage" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:coverage</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The extent or scope of the content of the resource. Typically, Coverage will
+      include spatial location (a place name or geographic coordinates), temporal period (a period
+      label, date, or date range), or jurisdiction (such as a named administrative entity).<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:coverage</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">             </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>North<span class="w"> </span>45.668,<span class="w"> </span>South<span class="w"> </span>45.635,<span class="w"> </span>East<span class="w"> </span>4.805,<span class="w"> </span>West<span class="w"> </span>4.768.<span class="w"> </span>CHARLY
+<span class="w">  </span><span class="nt">&lt;/dc:coverage&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="creator">
+<span id="dublin-core-elem-dc-creator-f6d71ca3a0b4e9aeb0e518f195f8256e"></span><h3>Creator<a class="headerlink" href="#creator" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:creator</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An entity primarily responsible for making the content of the resource.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:creator</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">            </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>Métropole<span class="w"> </span>de<span class="w"> </span>Lyon<span class="w"> </span>/<span class="w"> </span>Direction<span class="w"> </span>Innovation<span class="w"> </span>Numérique<span class="w"> </span>et<span class="w"> </span>Systèmes<span class="w"> </span>d&#39;Information
+<span class="w">    </span>(DINSI)<span class="w"> </span>(Géomatique<span class="w"> </span>et<span class="w"> </span>données<span class="w"> </span>métropolitaines)
+<span class="w">  </span><span class="nt">&lt;/dc:creator&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="date">
+<span id="dublin-core-elem-dc-date-23c64254f66925f9eb6e3bd19c442233"></span><h3>Date<a class="headerlink" href="#date" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:date</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A date of an event in the lifecycle of the resource. Typically, Date will be
+      associated with the creation or availability of the resource.</section>
+<section id="description">
+<span id="dublin-core-elem-dc-description-8918d5eea5202286bfa9ceaac948b704"></span><h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:description</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An account of the content of the resource.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:description</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">                </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>La<span class="w"> </span>maquette<span class="w"> </span>3D<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>commune<span class="w"> </span>(2009<span class="w"> </span>ou<span class="w"> </span>2012)<span class="w"> </span>est<span class="w"> </span>composée<span class="w"> </span>de<span class="w"> </span>deux<span class="w"> </span>à<span class="w"> </span>six
+<span class="w">    </span>couches<span class="w"> </span>de<span class="w"> </span>données.<span class="w"> </span>A<span class="w"> </span>minima,<span class="w"> </span>toutes<span class="w"> </span>les<span class="w"> </span>maquettes<span class="w"> </span>se<span class="w"> </span>composent<span class="w"> </span>des<span class="w"> </span>deux
+<span class="w">    </span>couches<span class="w"> </span>suivantes<span class="w"> </span>:<span class="w"> </span>-<span class="w"> </span>Le<span class="w"> </span>Modèle<span class="w"> </span>numérique<span class="w"> </span>de<span class="w"> </span>terrain<span class="w"> </span>(TIN)<span class="w"> </span>et<span class="w"> </span>ses<span class="w"> </span>textures
+<span class="w">    </span>associées<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>bâtiments<span class="w"> </span>3D<span class="w"> </span>texturés<span class="w"> </span>(BATIS).<span class="w"> </span>Elle<span class="w"> </span>est<span class="w"> </span>complétée<span class="w"> </span>par<span class="w"> </span>une
+<span class="w">    </span>ou<span class="w"> </span>plusieurs<span class="w"> </span>des<span class="w"> </span>couches<span class="w"> </span>ci-dessous<span class="w"> </span>:<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>surfaces<span class="w"> </span>en<span class="w"> </span>eau<span class="w"> </span>(WATER)<span class="w"> </span>et<span class="w"> </span>leurs
+<span class="w">    </span>textures<span class="w"> </span>associées<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>bâtiments<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>(Mairies,<span class="w"> </span>Eglises
+<span class="w">    </span>etc…)<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>ponts<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>objets<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»
+<span class="w">    </span>(Statues,<span class="w"> </span>Fontaines<span class="w"> </span>etc…).<span class="w"> </span>Ces<span class="w"> </span>données<span class="w"> </span>sont<span class="w"> </span>modélisées<span class="w"> </span>suivant<span class="w"> </span>la<span class="w"> </span>norme
+<span class="w">    </span>CityGML<span class="w"> </span>et<span class="w"> </span>fournies<span class="w"> </span>dans<span class="w"> </span>ce<span class="w"> </span>format.<span class="w"> </span>Ces<span class="w"> </span>maquettes<span class="w"> </span>sont<span class="w"> </span>produites<span class="w"> </span>avec<span class="w"> </span>le
+<span class="w">    </span>logiciel<span class="w"> </span>RhinoTerrain/RhinoCity.
+<span class="w">  </span><span class="nt">&lt;/dc:description&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="format">
+<span id="dublin-core-elem-dc-format-3842730cdb5c8559fe6f2737815429ea"></span><h3>Format<a class="headerlink" href="#format" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:format</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The physical or digital manifestation of the resource. Typically, Format will
+      include the media-type or dimensions of the resource. Format may be used to identify the
+      software, hardware, or other equipment needed to display or operate the resource.</section>
+<section id="resource-identifier">
+<span id="dublin-core-elem-dc-identifier-7d64a0a5c40868491c49bf7df7574752"></span><h3>Resource Identifier<a class="headerlink" href="#resource-identifier" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:identifier</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An unambiguous reference to the resource within a given context.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:identifier</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">               </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>a806d3e1-c240-43a9-bbc3-643e8c93b10d<span class="nt">&lt;/dc:identifier&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="language">
+<span id="dublin-core-elem-dc-language-74e0ef625be0b45d0e6c64d5f76e1895"></span><h3>Language<a class="headerlink" href="#language" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:language</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A language of the intellectual content of the resource. Recommended best practice
+      is to use RFC 3066, which, in conjunction with ISO 639, defines two- and three-letter primary
+      language tags with optional subtags.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:language</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">             </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>fre<span class="nt">&lt;/dc:language&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="publisher">
+<span id="dublin-core-elem-dc-publisher-5534d3efaa13b75c3aa34c379dd91025"></span><h3>Publisher<a class="headerlink" href="#publisher" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:publisher</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An entity responsible for making the resource available.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:publisher</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">              </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>Métropole<span class="w"> </span>de<span class="w"> </span>Lyon<span class="w"> </span>/<span class="w"> </span>Direction<span class="w"> </span>Innovation<span class="w"> </span>Numérique<span class="w"> </span>et<span class="w"> </span>Systèmes<span class="w"> </span>d&#39;Information
+<span class="w">    </span>(DINSI)<span class="w"> </span>(Géomatique<span class="w"> </span>et<span class="w"> </span>données<span class="w"> </span>métropolitaines)
+<span class="w">  </span><span class="nt">&lt;/dc:publisher&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="relation">
+<span id="dublin-core-elem-dc-relation-3772ef19f1f075e519d2d0a60ec6f05a"></span><h3>Relation<a class="headerlink" href="#relation" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:relation</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A reference to a related resource.</section>
+<section id="rights-management">
+<span id="dublin-core-elem-dc-rights-32dce43ec1342a098287b03b6a5cb72f"></span><h3>Rights Management<a class="headerlink" href="#rights-management" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:rights</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Information about rights held in and over the resource.</section>
+<section id="source">
+<span id="dublin-core-elem-dc-source-104607b158c41c5855de1ed62ae223dd"></span><h3>Source<a class="headerlink" href="#source" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:source</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A Reference to a resource from which the present resource is derived. The present
+      resource may be derived from the Source resource in whole or in part.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:source</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">           </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>Le<span class="w"> </span>Modèle<span class="w"> </span>numérique<span class="w"> </span>de<span class="w"> </span>terrain<span class="w"> </span>est<span class="w"> </span>issu<span class="w"> </span>d’une<span class="w"> </span>saisie<span class="w"> </span>photogrammétrique
+<span class="w">    </span>réalisée<span class="w"> </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>prise<span class="w"> </span>de<span class="w"> </span>vue<span class="w"> </span>aérienne<span class="w"> </span>(2009<span class="w"> </span>ou<span class="w"> </span>2012).<span class="w"> </span>Les<span class="w"> </span>fichiers
+<span class="w">    </span>des<span class="w"> </span>textures<span class="w"> </span>associées<span class="w"> </span>plaquées<span class="w"> </span>sur<span class="w"> </span>le<span class="w"> </span>MNT<span class="w"> </span>correspondent<span class="w"> </span>à
+<span class="w">    </span>l’orthophotographie<span class="w"> </span>aérienne<span class="w"> </span>qui<span class="w"> </span>possède<span class="w"> </span>une<span class="w"> </span>résolution<span class="w"> </span>de<span class="w"> </span>10<span class="w"> </span>cm<span class="w"> </span>pour<span class="w"> </span>2012
+<span class="w">    </span>et<span class="w"> </span>16<span class="w"> </span>cm<span class="w"> </span>pour<span class="w"> </span>2009.<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>surfaces<span class="w"> </span>en<span class="w"> </span>eau<span class="w"> </span>(WATER)<span class="w"> </span>ont<span class="w"> </span>été<span class="w"> </span>identifiées<span class="w"> </span>à
+<span class="w">    </span>partir<span class="w"> </span>d’une<span class="w"> </span>saisie<span class="w"> </span>photogrammétrique<span class="w"> </span>réalisée<span class="w"> </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>même<span class="w"> </span>prise<span class="w"> </span>de
+<span class="w">    </span>vue<span class="w"> </span>aérienne.<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>bâtiments<span class="w"> </span>3D<span class="w"> </span>proviennent<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>saisie<span class="w"> </span>photogrammétrique
+<span class="w">    </span>réalisée<span class="w"> </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>prise<span class="w"> </span>de<span class="w"> </span>vue<span class="w"> </span>aérienne.<span class="w"> </span>Les<span class="w"> </span>textures<span class="w"> </span>plaquées<span class="w"> </span>sur<span class="w"> </span>ces
+<span class="w">    </span>bâtiments<span class="w"> </span>proviennent<span class="w"> </span>des<span class="w"> </span>clichés<span class="w"> </span>issus<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>prise<span class="w"> </span>de<span class="w"> </span>vue<span class="w"> </span>aérienne.<span class="w"> </span>-<span class="w"> </span>Les
+<span class="w">    </span>bâtiments<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>(Mairies,<span class="w"> </span>Eglises<span class="w"> </span>etc…),<span class="w"> </span>les<span class="w"> </span>ponts<span class="w"> </span>«<span class="w"> </span>remarquables
+<span class="w">    </span>»<span class="w"> </span>et<span class="w"> </span>les<span class="w"> </span>objets<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>(Statues,<span class="w"> </span>Fontaines<span class="w"> </span>etc…)<span class="w"> </span>ont<span class="w"> </span>été<span class="w"> </span>texturés
+<span class="w">    </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>photographies<span class="w"> </span>terrestres.
+<span class="w">  </span><span class="nt">&lt;/dc:source&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="subject-and-keywords">
+<span id="dublin-core-elem-dc-subject-a88bd90b4991695f8c45fe01df3f64d6"></span><h3>Subject and Keywords<a class="headerlink" href="#subject-and-keywords" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:subject</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A topic of the content of the resource. Typically, Subject will be expressed as
+      keywords, key phrases, or classification codes that describe a topic of the resource.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:subject</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">            </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>Localisation<span class="nt">&lt;/dc:subject&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="title">
+<span id="dublin-core-elem-dc-title-18e3be863c870257c8b70d577038ee5f"></span><h3>Title<a class="headerlink" href="#title" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:title</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A name given to the resource. Typically, Title will be a name by which the resource
+      is formally known.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:title</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">          </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>Maquette<span class="w"> </span>3D<span class="w"> </span>texturée<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>commune<span class="w"> </span>de<span class="w"> </span>Charly<span class="w"> </span>(la<span class="w"> </span>Métropole<span class="w"> </span>de<span class="w"> </span>Lyon)
+<span class="w">  </span><span class="nt">&lt;/dc:title&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="resource-type">
+<span id="dublin-core-elem-dc-type-15bbc75f8dbe617d6ed609fcf1202ee1"></span><h3>Resource Type<a class="headerlink" href="#resource-type" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:type</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The nature or genre of the content of the resource. Type includes terms describing
+      general categories, functions, genres, or aggregation levels for content.<p>Recommended values</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>code</p></th>
+<th class="head"><p>label</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>dataset</p></td>
+<td><p>Dataset</p></td>
+</tr>
+<tr class="row-odd"><td><p>service</p></td>
+<td><p>Service</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dc:type</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">         </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>nonGeographicDataset<span class="nt">&lt;/dc:type&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="uri">
+<span id="dublin-core-elem-dc-uri-8f2cb1e27778e1b1977e670ca7e7a282"></span><h3>URI<a class="headerlink" href="#uri" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dc:URI</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="abstract">
+<span id="dublin-core-elem-dct-abstract-a48c3a17636153c58749c5fc29d1bd28"></span><h3>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:abstract</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A summary of the content of the resource.</section>
+<section id="access-rights">
+<span id="dublin-core-elem-dct-accessrights-972cd1c89a0274325b1a3b99e34c95be"></span><h3>Access Rights<a class="headerlink" href="#access-rights" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:accessRights</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Information about who can access the resource or an indication of its security
+      status.</section>
+<section id="accrual-method">
+<span id="dublin-core-elem-dct-accrualmethod-6fa8ea67638a1578c231025e31dd40e9"></span><h3>Accrual Method<a class="headerlink" href="#accrual-method" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:accrualMethod</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The method by which items are added to a collection.</section>
+<section id="accrual-periodicity">
+<span id="dublin-core-elem-dct-accrualperiodicity-2a4c9a8426dd588e960559174a3df263"></span><h3>Accrual Periodicity<a class="headerlink" href="#accrual-periodicity" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:accrualPeriodicity</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The frequency with which items are added to a collection.<p>Recommended values</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>code</p></th>
+<th class="head"><p>label</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>continual</p></td>
+<td><p>Continual</p></td>
+</tr>
+<tr class="row-odd"><td><p>daily</p></td>
+<td><p>Daily</p></td>
+</tr>
+<tr class="row-even"><td><p>weekly</p></td>
+<td><p>Weekly</p></td>
+</tr>
+<tr class="row-odd"><td><p>fortnightly</p></td>
+<td><p>Fortnightly</p></td>
+</tr>
+<tr class="row-even"><td><p>monthly</p></td>
+<td><p>Monthly</p></td>
+</tr>
+<tr class="row-odd"><td><p>quarterly</p></td>
+<td><p>Quarterly</p></td>
+</tr>
+<tr class="row-even"><td><p>biannually</p></td>
+<td><p>Biannually</p></td>
+</tr>
+<tr class="row-odd"><td><p>annually</p></td>
+<td><p>Annually</p></td>
+</tr>
+<tr class="row-even"><td><p>asNeeded</p></td>
+<td><p>As needed</p></td>
+</tr>
+<tr class="row-odd"><td><p>irregular</p></td>
+<td><p>Irregular</p></td>
+</tr>
+<tr class="row-even"><td><p>notPlanned</p></td>
+<td><p>Not planned</p></td>
+</tr>
+<tr class="row-odd"><td><p>unknown</p></td>
+<td><p>Unknown</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dct:accrualPeriodicity</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">                        </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>Irregular<span class="nt">&lt;/dct:accrualPeriodicity&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="accrual-policy">
+<span id="dublin-core-elem-dct-accrualpolicy-0ae937a1f9081db219a5dd04ed4610d4"></span><h3>Accrual Policy<a class="headerlink" href="#accrual-policy" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:accrualPolicy</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The policy governing the addition of items to a collection.</section>
+<section id="alternative-title">
+<span id="dublin-core-elem-dct-alternative-2518e8fc9fa67f5a10348016aae8bb0f"></span><h3>Alternative Title<a class="headerlink" href="#alternative-title" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:alternative</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An alternative name for the resource.</section>
+<section id="audience">
+<span id="dublin-core-elem-dct-audience-a610cbdc155d7cd9c87c8f22ef245521"></span><h3>Audience<a class="headerlink" href="#audience" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:audience</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A class of entity for whom the resource is intended or useful.</section>
+<section id="bibliographic-citation">
+<span id="dublin-core-elem-dct-bibliographiccitation-0d3ba175bdb84be48dec71bdb6b318da"></span><h3>Bibliographic Citation<a class="headerlink" href="#bibliographic-citation" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:bibliographicCitation</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A bibliographic reference for the resource.</section>
+<section id="conforms-to">
+<span id="dublin-core-elem-dct-conformsto-703d80b57bd6629b2bff3f57efd52dc5"></span><h3>Conforms To<a class="headerlink" href="#conforms-to" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:conformsTo</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An established standard to which the described resource conforms.</section>
+<section id="date-created">
+<span id="dublin-core-elem-dct-created-9aebe20151c1c962d66737fcb9b87c2c"></span><h3>Date Created<a class="headerlink" href="#date-created" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:created</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Date of creation of the resource.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dct:created</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">             </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>2014-12-19<span class="nt">&lt;/dct:created&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="date-accepted">
+<span id="dublin-core-elem-dct-dateaccepted-9f6f7b46bae794b317c939c75170b0f1"></span><h3>Date Accepted<a class="headerlink" href="#date-accepted" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:dateAccepted</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Date of acceptance of the resource.</section>
+<section id="date-copyrighted">
+<span id="dublin-core-elem-dct-datecopyrighted-1a3940c001fd2db761829940957d8bf7"></span><h3>Date Copyrighted<a class="headerlink" href="#date-copyrighted" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:dateCopyrighted</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Date of copyright.</section>
+<section id="date-submitted">
+<span id="dublin-core-elem-dct-datesubmitted-0e038c3b8ac6daca57211a938eca6154"></span><h3>Date Submitted<a class="headerlink" href="#date-submitted" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:dateSubmitted</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Date of submission of the resource<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dct:dateSubmitted</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">                   </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>2015-01-23<span class="nt">&lt;/dct:dateSubmitted&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="audience-education-level">
+<span id="dublin-core-elem-dct-educationlevel-fa33466d34d56fb066753a6d97089631"></span><h3>Audience Education Level<a class="headerlink" href="#audience-education-level" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:educationLevel</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A class of entity, defined in terms of progression through an educational or
+      training context, for which the described resource is intended.</section>
+<section id="extent">
+<span id="dublin-core-elem-dct-extent-8a3a9adeaaac054e64dff722ad23c776"></span><h3>Extent<a class="headerlink" href="#extent" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:extent</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The size or duration of the resource.</section>
+<section id="has-format">
+<span id="dublin-core-elem-dct-hasformat-d136ed16dc44af39fdf1b98b9fb4bc33"></span><h3>Has Format<a class="headerlink" href="#has-format" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:hasFormat</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that is substantially the same as the pre-existing described
+      resource, but in another format.</section>
+<section id="has-part">
+<span id="dublin-core-elem-dct-haspart-f251f156dd8774a81f44c13c7b4a9e7d"></span><h3>Has Part<a class="headerlink" href="#has-part" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:hasPart</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that is included either physically or logically in the described
+      resource.</section>
+<section id="has-version">
+<span id="dublin-core-elem-dct-hasversion-b8dc08cd4fc15cf1df605c2905b0c5e3"></span><h3>Has Version<a class="headerlink" href="#has-version" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:hasVersion</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that is a version, edition, or adaptation of the described
+      resource.</section>
+<section id="instructional-method">
+<span id="dublin-core-elem-dct-instructionalmethod-d220d889250a4a0f7e3efe29fc0f0ada"></span><h3>Instructional Method<a class="headerlink" href="#instructional-method" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:instructionalMethod</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A process, used to engender knowledge, attitudes and skills, that the resource is
+      designed to support.</section>
+<section id="is-format-of">
+<span id="dublin-core-elem-dct-isformatof-8378903643254b5b83ae2acdc251b6a6"></span><h3>Is Format Of<a class="headerlink" href="#is-format-of" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:isFormatOf</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that is substantially the same as the described resource, but in
+      another format.</section>
+<section id="is-part-of">
+<span id="dublin-core-elem-dct-ispartof-6697c98943756abf56d4c2a50f9dc9a2"></span><h3>Is part of<a class="headerlink" href="#is-part-of" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:isPartOf</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource in which the described resource is physically or logically
+      included.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dct:isPartOf</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">              </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>8017c69a-5b17-404f-acdd-d9c37a0afac4<span class="nt">&lt;/dct:isPartOf&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="is-referenced-by">
+<span id="dublin-core-elem-dct-isreferencedby-4cf2c75a368a7773ec781eaa6f4a7c03"></span><h3>Is Referenced By<a class="headerlink" href="#is-referenced-by" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:isReferencedBy</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that references, cites, or otherwise points to the described
+      resource.</section>
+<section id="is-replaced-by">
+<span id="dublin-core-elem-dct-isreplacedby-1e391e071c75e45dcf0a309285a642a0"></span><h3>Is Replaced By<a class="headerlink" href="#is-replaced-by" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:isReplacedBy</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that supplants, displaces, or supersedes the described
+      resource.</section>
+<section id="is-required-by">
+<span id="dublin-core-elem-dct-isrequiredby-def534523d854e3440e36701bea47cc4"></span><h3>Is Required By<a class="headerlink" href="#is-required-by" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:isRequiredBy</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that requires the described resource to support its function,
+      delivery, or coherence.</section>
+<section id="date-issued">
+<span id="dublin-core-elem-dct-issued-9f6ad8cb4b5e6225c1cb755489adb774"></span><h3>Date Issued<a class="headerlink" href="#date-issued" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:issued</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Date of formal issuance (e.g., publication) of the resource.</section>
+<section id="is-version-of">
+<span id="dublin-core-elem-dct-isversionof-d1658a9e84f777d0a335528e82921417"></span><h3>Is Version Of<a class="headerlink" href="#is-version-of" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:isVersionOf</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource of which the described resource is a version, edition, or
+      adaptation.</section>
+<section id="license">
+<span id="dublin-core-elem-dct-license-865405c25292b886c12f7d056ebaabda"></span><h3>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:license</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A legal document giving official permission to do something with the resource.</section>
+<section id="mediator">
+<span id="dublin-core-elem-dct-mediator-ab02c72730e6dbccbfb74b07e00edf10"></span><h3>Mediator<a class="headerlink" href="#mediator" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:mediator</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+An entity that mediates access to the resource and for whom the resource is
+      intended or useful.</section>
+<section id="medium">
+<span id="dublin-core-elem-dct-medium-95f834fde8ee306293ebebcfd7a3aba5"></span><h3>Medium<a class="headerlink" href="#medium" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:medium</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+The material or physical carrier of the resource.</section>
+<section id="date-modified">
+<span id="dublin-core-elem-dct-modified-66ecff9b0ec74fad28c5babebc1eec7d"></span><h3>Date Modified<a class="headerlink" href="#date-modified" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:modified</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Data metadata was modified<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dct:modified</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">              </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>2016-02-03T21:33:45<span class="nt">&lt;/dct:modified&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="provenance">
+<span id="dublin-core-elem-dct-provenance-4ec9c18f260230d4455195d6a6f28c17"></span><h3>Provenance<a class="headerlink" href="#provenance" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:provenance</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A statement of any changes in ownership and custody of the resource since its
+      creation that are significant for its authenticity, integrity and interpretation.</section>
+<section id="related-resource">
+<span id="dublin-core-elem-dct-references-3a44416fcd20eea0684aad2fd3228fdd"></span><h3>Related resource<a class="headerlink" href="#related-resource" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:references</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that is referenced, cited, or otherwise pointed to by the
+      described resource.</section>
+<section id="replaces">
+<span id="dublin-core-elem-dct-replaces-c5b09017642a464af7a04db426f6d74f"></span><h3>Replaces<a class="headerlink" href="#replaces" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:replaces</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that is supplanted, displaced, or superseded by the described
+      resource.</section>
+<section id="requires">
+<span id="dublin-core-elem-dct-requires-2ad52ab491717dc624f79f92303f4679"></span><h3>Requires<a class="headerlink" href="#requires" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:requires</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A related resource that is required by the described resource to support its
+      function, delivery, or coherence.</section>
+<section id="rights-holder">
+<span id="dublin-core-elem-dct-rightsholder-0f4304cc1135f8fc29f7a0ede8daa268"></span><h3>Rights Holder<a class="headerlink" href="#rights-holder" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:rightsHolder</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A person or organization owning or managing rights over the resource.</section>
+<section id="spatial">
+<span id="dublin-core-elem-dct-spatial-5100d679492a6f79fd3e53db624bcab2"></span><h3>Spatial<a class="headerlink" href="#spatial" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:spatial</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Spatial characteristics of the intellectual content of the resource.<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dct:spatial</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">             </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>RGF93<span class="w"> </span>/<span class="w"> </span>CC46<span class="w"> </span>(EPSG:3946)<span class="nt">&lt;/dct:spatial&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="table-of-contents">
+<span id="dublin-core-elem-dct-tableofcontents-c20c496386cad7aa48ad05ca41a6340b"></span><h3>Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:tableOfContents</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+A list of subunits of the resource.</section>
+<section id="temporal-coverage">
+<span id="dublin-core-elem-dct-temporal-0a2abb1d37421418cafeb48bd21e6854"></span><h3>Temporal Coverage<a class="headerlink" href="#temporal-coverage" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:temporal</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Temporal characteristics of the resource.</section>
+<section id="date-valid">
+<span id="dublin-core-elem-dct-valid-343768fccc581bc0822c69e6ca19c70c"></span><h3>Date Valid<a class="headerlink" href="#date-valid" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dct:valid</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Date (often a range) of validity of a resource.</section>
+<section id="metadata">
+<span id="dublin-core-elem-simpledc-8506dd4a73872a53513368db419204a3"></span><h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>simpledc</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;simpledc</span><span class="w"> </span><span class="na">xmlns:dc=</span><span class="s">&quot;http://purl.org/dc/elements/1.1/&quot;</span><span class="w"> </span><span class="na">xmlns:dct=</span><span class="s">&quot;http://purl.org/dc/terms/&quot;</span>
+<span class="w">          </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;http://localhost/geonetwork/xml/schemas/dublin-core/schema.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:title&gt;</span>
+<span class="w">    </span>Maquette<span class="w"> </span>3D<span class="w"> </span>texturée<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>commune<span class="w"> </span>de<span class="w"> </span>Charly<span class="w"> </span>(la<span class="w"> </span>Métropole<span class="w"> </span>de<span class="w"> </span>Lyon)
+<span class="w">  </span><span class="nt">&lt;/dc:title&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:creator&gt;</span>
+<span class="w">    </span>Métropole<span class="w"> </span>de<span class="w"> </span>Lyon<span class="w"> </span>/<span class="w"> </span>Direction<span class="w"> </span>Innovation<span class="w"> </span>Numérique<span class="w"> </span>et<span class="w"> </span>Systèmes<span class="w"> </span>d&#39;Information
+<span class="w">    </span>(DINSI)<span class="w"> </span>(Géomatique<span class="w"> </span>et<span class="w"> </span>données<span class="w"> </span>métropolitaines)
+<span class="w">  </span><span class="nt">&lt;/dc:creator&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:subject&gt;</span>Localisation<span class="nt">&lt;/dc:subject&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:description&gt;</span>
+<span class="w">    </span>La<span class="w"> </span>maquette<span class="w"> </span>3D<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>commune<span class="w"> </span>(2009<span class="w"> </span>ou<span class="w"> </span>2012)<span class="w"> </span>est<span class="w"> </span>composée<span class="w"> </span>de<span class="w"> </span>deux<span class="w"> </span>à<span class="w"> </span>six
+<span class="w">    </span>couches<span class="w"> </span>de<span class="w"> </span>données.<span class="w"> </span>A<span class="w"> </span>minima,<span class="w"> </span>toutes<span class="w"> </span>les<span class="w"> </span>maquettes<span class="w"> </span>se<span class="w"> </span>composent<span class="w"> </span>des<span class="w"> </span>deux
+<span class="w">    </span>couches<span class="w"> </span>suivantes<span class="w"> </span>:<span class="w"> </span>-<span class="w"> </span>Le<span class="w"> </span>Modèle<span class="w"> </span>numérique<span class="w"> </span>de<span class="w"> </span>terrain<span class="w"> </span>(TIN)<span class="w"> </span>et<span class="w"> </span>ses<span class="w"> </span>textures
+<span class="w">    </span>associées<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>bâtiments<span class="w"> </span>3D<span class="w"> </span>texturés<span class="w"> </span>(BATIS).<span class="w"> </span>Elle<span class="w"> </span>est<span class="w"> </span>complétée<span class="w"> </span>par<span class="w"> </span>une
+<span class="w">    </span>ou<span class="w"> </span>plusieurs<span class="w"> </span>des<span class="w"> </span>couches<span class="w"> </span>ci-dessous<span class="w"> </span>:<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>surfaces<span class="w"> </span>en<span class="w"> </span>eau<span class="w"> </span>(WATER)<span class="w"> </span>et<span class="w"> </span>leurs
+<span class="w">    </span>textures<span class="w"> </span>associées<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>bâtiments<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>(Mairies,<span class="w"> </span>Eglises
+<span class="w">    </span>etc…)<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>ponts<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>;<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>objets<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»
+<span class="w">    </span>(Statues,<span class="w"> </span>Fontaines<span class="w"> </span>etc…).<span class="w"> </span>Ces<span class="w"> </span>données<span class="w"> </span>sont<span class="w"> </span>modélisées<span class="w"> </span>suivant<span class="w"> </span>la<span class="w"> </span>norme
+<span class="w">    </span>CityGML<span class="w"> </span>et<span class="w"> </span>fournies<span class="w"> </span>dans<span class="w"> </span>ce<span class="w"> </span>format.<span class="w"> </span>Ces<span class="w"> </span>maquettes<span class="w"> </span>sont<span class="w"> </span>produites<span class="w"> </span>avec<span class="w"> </span>le
+<span class="w">    </span>logiciel<span class="w"> </span>RhinoTerrain/RhinoCity.
+<span class="w">  </span><span class="nt">&lt;/dc:description&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:publisher&gt;</span>
+<span class="w">    </span>Métropole<span class="w"> </span>de<span class="w"> </span>Lyon<span class="w"> </span>/<span class="w"> </span>Direction<span class="w"> </span>Innovation<span class="w"> </span>Numérique<span class="w"> </span>et<span class="w"> </span>Systèmes<span class="w"> </span>d&#39;Information
+<span class="w">    </span>(DINSI)<span class="w"> </span>(Géomatique<span class="w"> </span>et<span class="w"> </span>données<span class="w"> </span>métropolitaines)
+<span class="w">  </span><span class="nt">&lt;/dc:publisher&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:type&gt;</span>nonGeographicDataset<span class="nt">&lt;/dc:type&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>application/zip<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>CityGML<span class="w"> </span>(taille<span class="w"> </span>:<span class="w"> </span>260.0<span class="w"> </span>Mo)<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>application/zip<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>executable<span class="w"> </span>(taille<span class="w"> </span>:<span class="w"> </span>829.2<span class="w"> </span>Mo)<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>application/zip<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>CityGML<span class="w"> </span>(taille<span class="w"> </span>:<span class="w"> </span>113.5<span class="w"> </span>Mo)<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>application/zip<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>executable<span class="w"> </span>(taille<span class="w"> </span>:<span class="w"> </span>339.2<span class="w"> </span>Mo)<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>application/pdf<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:format&gt;</span>pdf<span class="w"> </span>(taille<span class="w"> </span>:<span class="w"> </span>315<span class="w"> </span>Ko)<span class="nt">&lt;/dc:format&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:source&gt;</span>
+<span class="w">    </span>Le<span class="w"> </span>Modèle<span class="w"> </span>numérique<span class="w"> </span>de<span class="w"> </span>terrain<span class="w"> </span>est<span class="w"> </span>issu<span class="w"> </span>d’une<span class="w"> </span>saisie<span class="w"> </span>photogrammétrique
+<span class="w">    </span>réalisée<span class="w"> </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>prise<span class="w"> </span>de<span class="w"> </span>vue<span class="w"> </span>aérienne<span class="w"> </span>(2009<span class="w"> </span>ou<span class="w"> </span>2012).<span class="w"> </span>Les<span class="w"> </span>fichiers
+<span class="w">    </span>des<span class="w"> </span>textures<span class="w"> </span>associées<span class="w"> </span>plaquées<span class="w"> </span>sur<span class="w"> </span>le<span class="w"> </span>MNT<span class="w"> </span>correspondent<span class="w"> </span>à
+<span class="w">    </span>l’orthophotographie<span class="w"> </span>aérienne<span class="w"> </span>qui<span class="w"> </span>possède<span class="w"> </span>une<span class="w"> </span>résolution<span class="w"> </span>de<span class="w"> </span>10<span class="w"> </span>cm<span class="w"> </span>pour<span class="w"> </span>2012
+<span class="w">    </span>et<span class="w"> </span>16<span class="w"> </span>cm<span class="w"> </span>pour<span class="w"> </span>2009.<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>surfaces<span class="w"> </span>en<span class="w"> </span>eau<span class="w"> </span>(WATER)<span class="w"> </span>ont<span class="w"> </span>été<span class="w"> </span>identifiées<span class="w"> </span>à
+<span class="w">    </span>partir<span class="w"> </span>d’une<span class="w"> </span>saisie<span class="w"> </span>photogrammétrique<span class="w"> </span>réalisée<span class="w"> </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>même<span class="w"> </span>prise<span class="w"> </span>de
+<span class="w">    </span>vue<span class="w"> </span>aérienne.<span class="w"> </span>-<span class="w"> </span>Les<span class="w"> </span>bâtiments<span class="w"> </span>3D<span class="w"> </span>proviennent<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>saisie<span class="w"> </span>photogrammétrique
+<span class="w">    </span>réalisée<span class="w"> </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>prise<span class="w"> </span>de<span class="w"> </span>vue<span class="w"> </span>aérienne.<span class="w"> </span>Les<span class="w"> </span>textures<span class="w"> </span>plaquées<span class="w"> </span>sur<span class="w"> </span>ces
+<span class="w">    </span>bâtiments<span class="w"> </span>proviennent<span class="w"> </span>des<span class="w"> </span>clichés<span class="w"> </span>issus<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>prise<span class="w"> </span>de<span class="w"> </span>vue<span class="w"> </span>aérienne.<span class="w"> </span>-<span class="w"> </span>Les
+<span class="w">    </span>bâtiments<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>(Mairies,<span class="w"> </span>Eglises<span class="w"> </span>etc…),<span class="w"> </span>les<span class="w"> </span>ponts<span class="w"> </span>«<span class="w"> </span>remarquables
+<span class="w">    </span>»<span class="w"> </span>et<span class="w"> </span>les<span class="w"> </span>objets<span class="w"> </span>«<span class="w"> </span>remarquables<span class="w"> </span>»<span class="w"> </span>(Statues,<span class="w"> </span>Fontaines<span class="w"> </span>etc…)<span class="w"> </span>ont<span class="w"> </span>été<span class="w"> </span>texturés
+<span class="w">    </span>à<span class="w"> </span>partir<span class="w"> </span>de<span class="w"> </span>photographies<span class="w"> </span>terrestres.
+<span class="w">  </span><span class="nt">&lt;/dc:source&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:language&gt;</span>fre<span class="nt">&lt;/dc:language&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:relation&gt;</span>
+<span class="w">    </span>https://download.data.grandlyon.com/files/grandlyon/localisation/bati3d/CHARLY_2012.zip
+<span class="w">  </span><span class="nt">&lt;/dc:relation&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:relation&gt;</span>
+<span class="w">    </span>https://download.data.grandlyon.com/files/grandlyon/localisation/bati3d/_EXE_CHARLY_2012.zip
+<span class="w">  </span><span class="nt">&lt;/dc:relation&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:relation&gt;</span>
+<span class="w">    </span>https://download.data.grandlyon.com/files/grandlyon/localisation/bati3d/CHARLY_2009.zip
+<span class="w">  </span><span class="nt">&lt;/dc:relation&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:relation&gt;</span>
+<span class="w">    </span>https://download.data.grandlyon.com/files/grandlyon/localisation/bati3d/_EXE_CHARLY_2009.zip
+<span class="w">  </span><span class="nt">&lt;/dc:relation&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:relation&gt;</span>
+<span class="w">    </span>https://download.data.grandlyon.com/files/grandlyon/localisation/bati3d/Maquettes_3D_CityGML.pdf
+<span class="w">  </span><span class="nt">&lt;/dc:relation&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:relation&gt;</span>
+<span class="w">    </span>https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf
+<span class="w">  </span><span class="nt">&lt;/dc:relation&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:coverage&gt;</span>
+<span class="w">    </span>North<span class="w"> </span>45.668,<span class="w"> </span>South<span class="w"> </span>45.635,<span class="w"> </span>East<span class="w"> </span>4.805,<span class="w"> </span>West<span class="w"> </span>4.768.<span class="w"> </span>CHARLY
+<span class="w">  </span><span class="nt">&lt;/dc:coverage&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:rights&gt;</span>Licence<span class="w"> </span>Ouverte<span class="nt">&lt;/dc:rights&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:rights&gt;</span>Pas<span class="w"> </span>de<span class="w"> </span>restriction<span class="w"> </span>d&#39;accès<span class="w"> </span>public<span class="w"> </span>selon<span class="w"> </span>INSPIRE<span class="nt">&lt;/dc:rights&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dct:created&gt;</span>2014-12-19<span class="nt">&lt;/dct:created&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dct:dateSubmitted&gt;</span>2015-01-23<span class="nt">&lt;/dct:dateSubmitted&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dct:isPartOf&gt;</span>8017c69a-5b17-404f-acdd-d9c37a0afac4<span class="nt">&lt;/dct:isPartOf&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dct:spatial&gt;</span>RGF93<span class="w"> </span>/<span class="w"> </span>CC46<span class="w"> </span>(EPSG:3946)<span class="nt">&lt;/dct:spatial&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dct:accrualPeriodicity&gt;</span>Irregular<span class="nt">&lt;/dct:accrualPeriodicity&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dct:modified&gt;</span>2016-02-03T21:33:45<span class="nt">&lt;/dct:modified&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dc:identifier&gt;</span>a806d3e1-c240-43a9-bbc3-643e8c93b10d<span class="nt">&lt;/dc:identifier&gt;</span>
+<span class="nt">&lt;/simpledc&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="standard-codelists">
+<h2>Standard codelists<a class="headerlink" href="#standard-codelists" title="Permalink to this heading">¶</a></h2>
+<p>List of all codelists available in the standard.</p>
+<p>No codelist defined.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="iso19110.html" class="btn btn-neutral float-left" title="Geographic information – Methodology for feature cataloguing (iso19110)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Даданне новага карыстальніцкага інтэрфейсу &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Убудовы схемы" href="../schemaplugins/index.html" />
+    <link rel="prev" title="Выкарыстанне падзей" href="../events/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Падручнікі</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">Уводзіны ў GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../customui/index.html">Наладзьце карыстацкі інтэрфейс GeoNetwork</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Падключыце свой уласны код</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../newproject/index.html">Аддзяліце свой код</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../events/index.html">Выкарыстанне падзей</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Даданне новага карыстальніцкага інтэрфейсу</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-empty-style">Стварыце пусты стыль</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-default-style">Імпартаваць стыль па змаўчанні</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modify-search-results">Змяніць вынікі пошуку</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../schemaplugins/index.html">Убудовы схемы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../searchfields/index.html">Палі пошуку</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Падручнікі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Падручнікі</a> &raquo;</li>
+          <li><a href="../index.html">Падключыце свой уласны код</a> &raquo;</li>
+      <li>Даданне новага карыстальніцкага інтэрфейсу</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/hookcustomizations/ui/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adding-new-user-interface">
+<span id="tuto-hookcustomizations-ui"></span><h1>Даданне новага карыстальніцкага інтэрфейсу<a class="headerlink" href="#adding-new-user-interface" title="Permalink to this heading">¶</a></h1>
+<p>Каб цалкам зразумець гэтую частку падручніка, было б добра спачатку азнаёміцца з падручнікам <a class="reference internal" href="../../customui/index.html#tuto-customui"><span class="std std-ref">Наладзьце карыстацкі інтэрфейс GeoNetwork</span></a>.</p>
+<p>У GeoNetwork вы можаце мець больш чым адзін стыль, усталяваны ў адным разгортванні. Вы можаце выбраць, які стыль выкарыстоўваць у мэнэджару налад. Акрамя таго, вы можаце выкарыстаць параметр &amp;quot;?view=$name&amp;quot;, каб прымусіць пэўны стыль у запыце старонкі.</p>
+<section id="create-an-empty-style">
+<h2>Стварыце пусты стыль<a class="headerlink" href="#create-an-empty-style" title="Permalink to this heading">¶</a></h2>
+<p>Now, we are going to create our custom style on the separated Maven project we created before. First we define the minimal user interface customization so we can test that our style is being generated and used.</p>
+<p>Нам патрэбны пусты файл па шляху custom/src/main/resources/catalog/views/custom/less/gn_search_custom.less</p>
+<p>Затым нам трэба вызначыць асноўны модуль Angular, які будзе выкарыстоўвацца ў гэтым стылі. Стварыце файл на custom/src/main/resources/catalog/views/custom/module.js і дадайце наступнае змесціва:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="w">  </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nx">goog</span><span class="p">.</span><span class="nx">provide</span><span class="p">(</span><span class="s1">&#39;gn_search_custom&#39;</span><span class="p">);</span>
+<span class="w">     </span><span class="nx">goog</span><span class="p">.</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gn_search&#39;</span><span class="p">);</span>
+<span class="w">     </span><span class="kd">var</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;gn_search_custom&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;gn_search&#39;</span><span class="p">]);</span>
+<span class="p">})();</span>
+</pre></div>
+</div>
+<p>Далей мы ствараем новы файл на custom/src/main/resources/catalog/views/custom/templates/index.html і дадаем наступны кантэнт:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>This is my custom GeoNetwork<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Нарэшце, мы павінны сказаць бібліятэцы wro4j, дзе будуць нашы файлы. Адрэдагуйце файл web-ui/src/main/resources/WEB-INF/classes/web-ui-wro-sources.xml і дадайце нашы папкі:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;require</span><span class="w"> </span><span class="na">pathOnDisk=</span><span class="s">&quot;web-ui/src/main/resources&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;jsSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/js/&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;jsSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/views/default/&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;jsSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/views/custom/&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;jsSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/components/&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;cssSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/views/default/&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;cssSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/views/custom/&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;cssSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/style/&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;cssSource</span><span class="w"> </span><span class="na">webappPath=</span><span class="s">&quot;/catalog/lib/bootstrap-table/dist&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/require&gt;</span>
+</pre></div>
+</div>
+<p>Цяпер, калі мы пабудуем, разгорнем і ўвядзем GeoNetwork, мы можам выкарыстоўваць гэты новы стыль пад назвай &amp;quot;карыстальніцкі&amp;quot;: <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/catalog.search?view=custom">http://localhost:8080/geonetwork/srv/eng/catalog.search?view=custom</a></p>
+</section>
+<section id="import-default-style">
+<h2>Імпартаваць стыль па змаўчанні<a class="headerlink" href="#import-default-style" title="Permalink to this heading">¶</a></h2>
+<p>Вы можаце імпартаваць стыль па змаўчанні, каб лёгка пачаць свой новы стыль.</p>
+<p>Адрэдагуйце custom/src/main/resources/catalog/views/custom/less/gn_search_custom.less і дадайце наступны радок:</p>
+<div class="highlight-less notranslate"><div class="highlight"><pre><span></span><span class="nv">@import</span><span class="w"> </span><span class="s2">&quot;gn_search_default.css&quot;</span><span class="o">;</span>
+</pre></div>
+</div>
+<p>Затым зрабіце модуль Angular залежным ад стандартнага модуля інтэрфейсу Angular. Адрэдагуйце custom/src/main/resources/catalog/views/custom/module.js і заменіце змесціва на:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="w">  </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">goog</span><span class="p">.</span><span class="nx">provide</span><span class="p">(</span><span class="s1">&#39;gn_search_custom&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">goog</span><span class="p">.</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gn_search_default&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">var</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;gn_search_custom&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;gn_search_default&#39;</span><span class="p">]);</span>
+<span class="p">})();</span>
+</pre></div>
+</div>
+<p>Нарэшце, заменіце файл custom/src/main/resources/catalog/views/custom/templates/index.html зместам файла web-ui/src/main/resources/catalog/views/default/templates/index. html</p>
+<p>You have now a duplicate of the default style you can improve with your own customizations.</p>
+<p>Адной з галоўных пераваг аддзялення вашага кода з&amp;#39;яўляецца тое, што вы можаце перавызначыць некаторыя файлы, якія пастаўляюцца па змаўчанні ў карыстальніцкім інтэрфейсе GeoNetwork, і гэта перавызначэнне не будзе супярэчыць будучым абнаўленням кода.</p>
+</section>
+<section id="modify-search-results">
+<h2>Змяніць вынікі пошуку<a class="headerlink" href="#modify-search-results" title="Permalink to this heading">¶</a></h2>
+<p>Адной з найбольш распаўсюджаных налад стылю GeoNetwork з&amp;#39;яўляецца змяненне вонкавага выгляду спісу вынікаў пошуку. Мы можам паказаць на іншы шаблон у файле config.js. Адрэдагуйце файл custom/src/main/resources/catalog/views/custom/config.js і змяніце ўласцівасць searchSettings.resultViewTpls.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">searchSettings</span><span class="p">.</span><span class="nx">resultViewTpls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">                </span><span class="nx">tplUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;../../catalog/views/custom/resultsview/&#39;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                </span><span class="s1">&#39;partials/viewtemplates/grid.html&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">tooltip</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Grid&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fa-th&#39;</span>
+<span class="w">              </span><span class="p">}];</span>
+</pre></div>
+</div>
+<p>І цяпер мы павінны стварыць файл web-ui/src/main/resources/catalog/views/custom/resultsview/partials/viewtemplates/grid.html і выкарыстаць патрэбны шаблон, напрыклад:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group gn-resultview gn-resultview-sumup&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group-item gn-grid&quot;</span>
+    <span class="na">data-ng-repeat</span><span class="o">=</span><span class="s">&quot;md in searchResults.records&quot;</span>
+    <span class="na">data-gn-fix-mdlinks</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+    <span class="na">data-gn-displayextent-onhover</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+    <span class="na">data-gn-zoomto-onclick</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;{{(md.abstract || md.defaultAbstract) | striptags}}&quot;</span>
+       <span class="na">data-ng-click</span><span class="o">=</span><span class="s">&quot;openRecord($index, md, searchResults.records)&quot;</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- Thumbnail --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;gn-md-thumbnail&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;gn-img-thumbnail&quot;</span>
+           <span class="na">data-ng-src</span><span class="o">=</span><span class="s">&quot;{{md.getThumbnails().list[0].url}}&quot;</span>
+           <span class="na">data-ng-if</span><span class="o">=</span><span class="s">&quot;md.getThumbnails().list[0].url&quot;</span><span class="p">/&gt;</span>
+
+      <span class="cm">&lt;!-- Display the first metadata status (apply to ISO19139 record) --&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-ng-if</span><span class="o">=</span><span class="s">&quot;md.status_text.length &gt; 0&quot;</span>
+           <span class="na">title</span><span class="o">=</span><span class="s">&quot;{{md.status_text[0]}}&quot;</span>
+           <span class="na">class</span><span class="o">=</span><span class="s">&quot;gn-status gn-status-{{md.status[0]}}&quot;</span><span class="p">&gt;</span>{{md.status_text[0]}}
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Мы можам вызначыць любы клас, які хочам, і спасылацца на яго ў файле gn_search_default.css, каб надаць яму стыль.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../events/index.html" class="btn btn-neutral float-left" title="Выкарыстанне падзей" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../schemaplugins/index.html" class="btn btn-neutral float-right" title="Убудовы схемы" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

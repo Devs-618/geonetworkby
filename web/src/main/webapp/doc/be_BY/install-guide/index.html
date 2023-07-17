@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation guide &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installing using a ZIP file" href="installing-from-zip.html" />
+    <link rel="prev" title="Version 3.12.10" href="../overview/change-log/version-3.12.10.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Агляд</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-zip.html">Installing using a ZIP file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-war-file.html">Installing using a WAR file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-source-code.html">Building from Source Code</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://geonetwork-opensource.org/downloads.html#third-party-distributions">Installing a third-party distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html">Installing remote index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html">Configuring the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html">Customizing the data directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-multinode-mode.html">Using multinode mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map-print-setup.html">Configuring printing of the map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading-samples.html">Loading templates and sample data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installation guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/install-guide/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-guide">
+<span id="installation"></span><h1>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this heading">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.2.</span></p>
+</div>
+<p><strong>Important: GeoNetwork requires a Java 8 environment (JRE) to be installed on your system. Later versions of Java will not work at present. This must be done prior to installation.</strong></p>
+<p>Before you can use GeoNetwork on your own computer, you need to install it.
+There are several different ways to install GeoNetwork:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installing-from-zip.html">Installing using a ZIP file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-from-war-file.html">Installing using a WAR file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-from-source-code.html">Building from Source Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-source-code.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-source-code.html#tools">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-source-code.html#building-running">Building &amp; Running</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://geonetwork-opensource.org/downloads.html#third-party-distributions">Installing a third-party distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-index.html">Installing remote index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html#manual-installation">Manual installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html#install-using-maven">Install using Maven</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html#check-installation">Check installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html#configure-connection">Configure connection</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>After installing the application, you can configure the following:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuring-database.html">Configuring the database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html#h2-database">H2 database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html#configuring-a-database-via-config-files">Configuring a database via config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html#configuring-a-database-via-jndi">Configuring a database via JNDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html#configuring-a-database-via-environment">Configuring a database via environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="customizing-data-directory.html">Customizing the data directory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#creating-a-new-data-directory">Creating a new data directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#setting-the-data-directory">Setting the data directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#java-system-property">Java System Property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#bean-configuration">Bean configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#using-a-s3-object-storage">Using a S3 object storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#structure-of-the-data-directory">Structure of the data directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#advanced-data-directory-configuration">Advanced data directory configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html#check-the-configuration">Check the configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#customising-the-log-file-location">Customising the log file location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#setting-the-loglevel">Setting the Loglevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#log4j">Log4j</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="using-multinode-mode.html">Using multinode mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="using-multinode-mode.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-multinode-mode.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map-print-setup.html">Configuring printing of the map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loading-samples.html">Loading templates and sample data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="loading-samples.html#signing-in-and-loading-templates">Signing in and loading templates</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../overview/change-log/version-3.12.10.html" class="btn btn-neutral float-left" title="Version 3.12.10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installing-from-zip.html" class="btn btn-neutral float-right" title="Installing using a ZIP file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

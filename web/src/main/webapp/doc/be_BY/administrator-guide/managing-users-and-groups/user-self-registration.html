@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Самарэгістрацыя карыстальніка &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Рэжым аўтэнтыфікацыі" href="authentication-mode.html" />
+    <link rel="prev" title="Стварэнне карыстальніка" href="creating-user.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва адміністратара</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Канфігурацыя каталога</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Кіраванне карыстальнікамі і групамі</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="creating-group.html">Стварэнне групы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-user.html">Стварэнне карыстальніка</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Самарэгістрацыя карыстальніка</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-happens-when-a-user-self-registers">Што адбываецца, калі карыстальнік самастойна рэгіструецца?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-forgot-your-password-function">Параметр «Забылі пароль?» функцыя</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="authentication-mode.html">Рэжым аўтэнтыфікацыі</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#default-user">Карыстальнік па змаўчанні</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#user-session">Сесія карыстальніка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#users-groups-and-roles">Карыстальнікі, групы і ролі</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-classification-systems/index.html">Кіруючая сістэма класіфікацыі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва адміністратара</a> &raquo;</li>
+          <li><a href="index.html">Кіраванне карыстальнікамі і групамі</a> &raquo;</li>
+      <li>Самарэгістрацыя карыстальніка</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-users-and-groups/user-self-registration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-self-registration">
+<span id="id1"></span><h1>Самарэгістрацыя карыстальніка<a class="headerlink" href="#user-self-registration" title="Permalink to this heading">¶</a></h1>
+<p>To enable the self-registration functions, see <a class="reference internal" href="../configuring-the-catalog/system-configuration.html#system-configuration"><span class="std std-ref">Канфігурацыя сістэмы</span></a>.
+When self-registration is enabled, for users that are not logged in, an additional link is shown on the login page:</p>
+<figure class="align-default">
+<img alt="../../_images/selfregistration-start.png" src="../../_images/selfregistration-start.png" />
+</figure>
+<p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">an</span> <span class="pre">account</span></code> button and fill out the registration form:</p>
+<figure class="align-default">
+<img alt="../../_images/selfregistration-form.png" src="../../_images/selfregistration-form.png" />
+</figure>
+<p>Палі ў гэтай форме тлумачацца самі за сябе, за выключэннем наступнага:</p>
+<ul class="simple">
+<li><p><strong>Электронная пошта</strong>: адрас электроннай пошты карыстальніка. Гэта з&amp;#39;яўляецца абавязковым і будзе выкарыстоўвацца ў якасці імя карыстальніка.</p></li>
+<li><p><strong>Профіль</strong>: па змаўчанні самастойна зарэгістраваныя карыстальнікі атрымліваюць профіль <code class="docutils literal notranslate"><span class="pre">Зарэгістраваны</span> <span class="pre">карыстальнік</span></code> (гл. папярэдні раздзел). Калі абраны іншы профіль:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>карыстачу ўсё роўна будзе прадастаўлены профіль <code class="docutils literal notranslate"><span class="pre">Зарэгістраваны</span> <span class="pre">карыстальнік</span></code></p></li>
+<li><p>на адрас электроннай пошты, указаны ў раздзеле &amp;quot;Зваротная сувязь&amp;quot; меню &amp;quot;Сістэмнае адміністраванне&amp;quot;, будзе адпраўлены электронны ліст з інфармацыяй аб запыце на больш прывілеяваны профіль</p></li>
+</ul>
+</div></blockquote>
+<section id="what-happens-when-a-user-self-registers">
+<h2>Што адбываецца, калі карыстальнік самастойна рэгіструецца?<a class="headerlink" href="#what-happens-when-a-user-self-registers" title="Permalink to this heading">¶</a></h2>
+<p>Калі адбываецца самастойная рэгістрацыя карыстальніка, карыстальнік атрымлівае паведамленне электроннай пошты з новымі дадзенымі ўліковага запісу, якія выглядаюць прыкладна так:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dear</span> <span class="n">User</span><span class="p">,</span>
+
+<span class="n">Your</span> <span class="n">registration</span> <span class="n">at</span> <span class="n">The</span> <span class="n">Greenhouse</span> <span class="n">GeoNetwork</span> <span class="n">Site</span> <span class="n">was</span> <span class="n">successful</span><span class="o">.</span>
+
+<span class="n">Your</span> <span class="n">account</span> <span class="ow">is</span><span class="p">:</span>
+<span class="n">username</span> <span class="p">:</span>    <span class="n">dubya</span><span class="o">.</span><span class="n">shrub</span><span class="nd">@greenhouse</span><span class="o">.</span><span class="n">gov</span>
+<span class="n">password</span> <span class="p">:</span>    <span class="mi">0110</span><span class="n">O3</span>
+<span class="n">usergroup</span><span class="p">:</span>    <span class="n">GUEST</span>
+<span class="n">usertype</span> <span class="p">:</span>    <span class="n">REGISTEREDUSER</span>
+
+<span class="n">You</span><span class="s1">&#39;ve told us that you want to be &quot;Editor&quot;, you will be contacted by our office soon.</span>
+
+<span class="n">To</span> <span class="n">log</span> <span class="ow">in</span> <span class="ow">and</span> <span class="n">access</span> <span class="n">your</span> <span class="n">account</span><span class="p">,</span> <span class="n">please</span> <span class="n">click</span> <span class="n">on</span> <span class="n">the</span> <span class="n">link</span> <span class="n">below</span><span class="o">.</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">greenhouse</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">geonetwork</span>
+
+<span class="n">Thanks</span> <span class="k">for</span> <span class="n">your</span> <span class="n">registration</span><span class="o">.</span>
+
+<span class="n">Yours</span> <span class="n">sincerely</span><span class="p">,</span>
+<span class="n">The</span> <span class="n">team</span> <span class="n">at</span> <span class="n">The</span> <span class="n">Greenhouse</span> <span class="n">GeoNetwork</span> <span class="n">Site</span>
+</pre></div>
+</div>
+<p>Звярніце ўвагу, што карыстальнік запытаў профіль «Рэдактар». У выніку электронны ліст будзе адпраўлены на адрас электроннай пошты, указаны ў раздзеле «Зваротная сувязь» (гл. <a class="reference internal" href="../configuring-the-catalog/system-configuration.html#system-config-feedback"><span class="std std-ref">Зваротная сувязь</span></a>) меню «Сістэмнае адміністраванне», які выглядае прыкладна так:</p>
+<p>Заўважце таксама, што карыстальнік быў дададзены ва ўбудаваную групу карыстальнікаў «ГОСЬ». Гэта абмежаванне бяспекі. Адміністратар/карыстальнік-адміністратар можа дадаць карыстальніка ў іншыя групы, калі гэта спатрэбіцца пазней.</p>
+<p>Калі вы хочаце змяніць змест гэтага электроннага ліста, вам трэба змяніць <code class="docutils literal notranslate"><span class="pre">xslt/service/account/registration-pwd-email.xsl</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dear</span> <span class="n">Admin</span><span class="p">,</span>
+
+    <span class="n">Newly</span> <span class="n">registered</span> <span class="n">user</span> <span class="n">dubya</span><span class="o">.</span><span class="n">shrub</span><span class="nd">@greenhouse</span><span class="o">.</span><span class="n">gov</span> <span class="n">has</span> <span class="n">requested</span> <span class="s2">&quot;Editor&quot;</span> <span class="n">access</span> <span class="k">for</span><span class="p">:</span>
+
+    <span class="n">Instance</span><span class="p">:</span>     <span class="n">The</span> <span class="n">Greenhouse</span> <span class="n">GeoNetwork</span> <span class="n">Site</span>
+    <span class="n">Url</span><span class="p">:</span>          <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">greenhouse</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">geonetwork</span>
+
+    <span class="n">User</span> <span class="n">registration</span> <span class="n">details</span><span class="p">:</span>
+
+    <span class="n">Name</span><span class="p">:</span>         <span class="n">Dubya</span>
+    <span class="n">Surname</span><span class="p">:</span>      <span class="n">Shrub</span>
+    <span class="n">Email</span><span class="p">:</span>        <span class="n">dubya</span><span class="o">.</span><span class="n">shrub</span><span class="nd">@greenhouse</span><span class="o">.</span><span class="n">gov</span>
+    <span class="n">Organisation</span><span class="p">:</span> <span class="n">The</span> <span class="n">Greenhouse</span>
+    <span class="n">Type</span><span class="p">:</span>         <span class="n">gov</span>
+    <span class="n">Address</span><span class="p">:</span>      <span class="mi">146</span> <span class="n">Main</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Creationville</span>
+    <span class="n">State</span><span class="p">:</span>        <span class="n">Clerical</span>
+    <span class="n">Post</span> <span class="n">Code</span><span class="p">:</span>    <span class="mi">92373</span>
+    <span class="n">Country</span><span class="p">:</span>      <span class="n">Mythical</span>
+
+<span class="n">Please</span> <span class="n">action</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">Greenhouse</span> <span class="n">GeoNetwork</span> <span class="n">Site</span>
+</pre></div>
+</div>
+<p>Калі вы хочаце змяніць змест гэтага электроннага ліста, вам трэба змяніць <code class="docutils literal notranslate"><span class="pre">xslt/service/account/registration-prof-email.xsl</span></code>.</p>
+</section>
+<section id="the-forgot-your-password-function">
+<h2>Параметр «Забылі пароль?» функцыя<a class="headerlink" href="#the-forgot-your-password-function" title="Permalink to this heading">¶</a></h2>
+<p>Гэтая функцыя дазваляе карыстальнікам, якія забылі пароль, запытаць новы. Перайдзіце на старонку ўваходу, каб атрымаць доступ да формы:</p>
+<figure class="align-default">
+<img alt="../../_images/password-forgot.png" src="../../_images/password-forgot.png" />
+</figure>
+<p>З меркаванняў бяспекі толькі карыстальнікі з профілем <code class="docutils literal notranslate"><span class="pre">Зарэгістраваны</span> <span class="pre">карыстальнік</span></code> могуць запытаць новы пароль.</p>
+<p>Калі карыстальнік выбірае гэты варыянт, ён атрымае ліст з запрашэннем змяніць пароль наступным чынам:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You have requested to change your Greenhouse GeoNetwork Site password.
+
+You can change your password using the following link:
+
+http://localhost:8080/geonetwork/srv/en/password.change.form?username=dubya.shrub@greenhouse.gov&amp;changeKey=635d6c84ddda782a9b6ca9dda0f568b011bb7733
+
+This link is valid for today only.
+
+Greenhouse GeoNetwork Site
+</pre></div>
+</div>
+<p>Каталог згенераваў changeKey з забытага пароля і бягучай даты і адправіў яго па электроннай пошце карыстальніку як частку спасылкі на форму змены пароля.</p>
+<p>Калі вы хочаце змяніць змест гэтага электроннага ліста, вам трэба змяніць <code class="docutils literal notranslate"><span class="pre">xslt/service/account/password-forgotten-email.xsl</span></code>.</p>
+<p>Калі карыстальнік націскае на спасылку, у яго браўзеры адлюстроўваецца форма змены пароля, і можна ўвесці новы пароль. Калі гэтая форма адпраўлена, changeKey ствараецца паўторна і правяраецца з дапамогай changeKey, указанага ў спасылцы, калі яны супадаюць, то пароль змяняецца на новы пароль, уведзены карыстальнікам.</p>
+<p>Апошнім этапам гэтага працэсу з&amp;#39;яўляецца праверка электроннага ліста, адпраўленага на адрас электроннай пошты карыстальніка, які пацвярджае, што пароль быў зменены:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Your</span> <span class="n">Greenhouse</span> <span class="n">GeoNetwork</span> <span class="n">Site</span> <span class="n">password</span> <span class="n">has</span> <span class="n">been</span> <span class="n">changed</span><span class="o">.</span>
+
+<span class="n">If</span> <span class="n">you</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">change</span> <span class="n">this</span> <span class="n">password</span> <span class="n">contact</span> <span class="n">the</span> <span class="n">Greenhouse</span> <span class="n">GeoNetwork</span> <span class="n">Site</span> <span class="n">helpdesk</span>
+
+<span class="n">The</span> <span class="n">Greenhouse</span> <span class="n">GeoNetwork</span> <span class="n">Site</span> <span class="n">team</span>
+</pre></div>
+</div>
+<p>Калі вы хочаце змяніць змест гэтага электроннага ліста, вам трэба змяніць <code class="docutils literal notranslate"><span class="pre">xslt/service/account/password-changed-email.xsl</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="creating-user.html" class="btn btn-neutral float-left" title="Стварэнне карыстальніка" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authentication-mode.html" class="btn btn-neutral float-right" title="Рэжым аўтэнтыфікацыі" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

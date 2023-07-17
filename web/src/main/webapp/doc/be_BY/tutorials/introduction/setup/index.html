@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Усталяваць &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Рэдагаванне метаданых" href="../edit/index.html" />
+    <link rel="prev" title="Разгортванне з дапамогай ваеннага файла" href="../deployment/deploy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Падручнікі</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Уводзіны ў GeoNetwork</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../deployment/index.html">Разгортванне</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Усталяваць</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-administrator-password">Змяніць пароль адміністратара</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-settings">Асноўныя налады</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-schemas">Загрузка схем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-users">Стварэнне карыстальнікаў</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-groups">Стварэнне груп</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../edit/index.html">Рэдагаванне метаданых</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../harvesting/index.html">Уборка ўраджаю</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../customui/index.html">Наладзьце карыстацкі інтэрфейс GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hookcustomizations/index.html">Падключыце свой уласны код</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Падручнікі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Падручнікі</a> &raquo;</li>
+          <li><a href="../index.html">Уводзіны ў GeoNetwork</a> &raquo;</li>
+      <li>Усталяваць</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/introduction/setup/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup">
+<span id="tuto-introduction-setup"></span><h1>Усталяваць<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h1>
+<section id="change-administrator-password">
+<h2>Змяніць пароль адміністратара<a class="headerlink" href="#change-administrator-password" title="Permalink to this heading">¶</a></h2>
+<p>Першы крок, які вы павінны зрабіць пасля разгортвання GeoNetwork, - гэта ўвайсці ў сістэму з правам адміністратара і змяніць пароль адміністратара. Адміністратар па змаўчанні называецца <em>admin</em>, а пароль <em>admin</em>. Пасля таго, як вы ўвайшлі ў сістэму, вы павінны ўвайсці ў кансоль адміністравання, каб наладзіць асноўныя параметры.</p>
+<p>Зменіце пароль адміністратара тут:</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/admin.console#/organization/users">http://localhost:8080/geonetwork/srv/eng/admin.console#/organization/users</a>?userOrGroup=admin</p>
+<img alt="../../../_images/password.png" src="../../../_images/password.png" />
+</section>
+<section id="basic-settings">
+<h2>Асноўныя налады<a class="headerlink" href="#basic-settings" title="Permalink to this heading">¶</a></h2>
+<p>Затым перайдзіце на старонку налад:</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/admin.console#/settings">http://localhost:8080/geonetwork/srv/eng/admin.console#/settings</a></p>
+<p>Тут ёсць некалькі значэнняў канфігурацыі, якія трэба змяніць, як дамен URL для вашага каталога, калі ён збіраецца выкарыстоўваць https або назву для вашага каталога.</p>
+<img alt="../../../_images/catalogServer.png" src="../../../_images/catalogServer.png" />
+<p>Пераканайцеся, што вы выкарыстоўваеце імя хаста, порт і пратакол, якія вашы карыстальнікі будуць выкарыстоўваць для доступу да геапарталу, бо гэтыя налады будуць выкарыстоўвацца для генерацыі URL-адрасоў па змаўчанні, такіх як паказаныя на карце сайта.</p>
+<p>Пераважным пратаколам павінен быць https, бо гэта будзе азначаць бяспечную навігацыю для вашых карыстальнікаў, але HTTP з&amp;#39;яўляецца пратаколам па змаўчанні для лёгкага разгортвання і распрацоўкі. <strong>Уваход не павінен ажыццяўляцца па-за пратаколам https</strong> з меркаванняў бяспекі. Выкарыстанне пратаколу https у строгай палітыцы браўзера, як у Firefox, можа азначаць, што некаторыя сэрвісы карт http будуць заблакіраваны і пры спробе загрузкі на карту вывесці памылку. Гэта можна вырашыць, выкарыстоўваючы толькі сэрвісы карт https. Паколькі http з&amp;#39;яўляецца састарэлым пратаколам, гэтая праблема з часам будзе вырашана. Пракансультуйцеся з вашым пастаўшчыком картаграфічных паслуг, каб выкарыстоўваць https з сапраўдным сертыфікатам для картаграфічных службаў.</p>
+<img alt="../../../_images/hostandname.png" src="../../../_images/hostandname.png" />
+<p>Ідэнтыфікатар каталога павінен быць унікальным імем ва ўсім Інтэрнэце. Ідэнтыфікатар па змаўчанні ствараецца GeoNetwork аўтаматычна і павінен быць бяспечным у выкарыстанні. Калі ў вас няма лепшага ідэнтыфікатара, вы можаце пакінуць той, які ствараецца па змаўчанні.</p>
+</section>
+<section id="loading-schemas">
+<h2>Загрузка схем<a class="headerlink" href="#loading-schemas" title="Permalink to this heading">¶</a></h2>
+<p>Апошняе важнае, што трэба наладзіць, - гэта тое, якія схемы мы будзем выкарыстоўваць у нашым каталогу. Па змаўчанні GeoNetwork ужо ўсталявала некаторыя найбольш часта выкарыстоўваюцца схемы. Гэтыя схемы звычайна маюць узоры і шаблоны, якія вы можаце лёгка дадаць у свой каталог на кансолі адміністравання:</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/admin">http://localhost:8080/geonetwork/srv/eng/admin</a>.console#/метададзеныя</p>
+<img alt="../../../_images/schemas.png" src="../../../_images/schemas.png" />
+<p>Узоры дадзеных не прымяняюцца ў рэальных каталогах, яны проста выкарыстоўваюцца, каб паказаць, як трэба запаўняць метададзеныя і як яны будуць выглядаць пасля ўстаўкі дадзеных у каталог.</p>
+<p>З іншага боку, шаблоны патрэбныя, калі вы хочаце рэдагаваць метададзеныя. Замест выкарыстання пустых xml-файлаў для стварэння метададзеных пры стварэнні новага запісу выкарыстоўваецца шаблон. Вы заўсёды можаце імпартаваць або сабраць ужо створаныя метаданыя замест выкарыстання рэдактара для ручнога стварэння запісаў, калі гэта адпавядае вашаму выпадку выкарыстання.</p>
+<p>Калі вы дадасце некалькі шаблонаў, ваш каталог гатовы да выкарыстання.</p>
+</section>
+<section id="creating-users">
+<h2>Стварэнне карыстальнікаў<a class="headerlink" href="#creating-users" title="Permalink to this heading">¶</a></h2>
+<p>Нягледзячы на тое, што вы можаце ўключыць самарэгістрацыю карыстальнікаў, больш звычайна ствараць карыстальнікаў уручную, так што вы дакладна кантралюеце, хто да чаго мае доступ. У каталогу выкарыстоўваецца канцэпцыя карыстальнікаў, груп і профіляў карыстальнікаў.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Карыстальнік можа быць часткай адной або некалькіх груп.</p></li>
+<li><p>Карыстальнік мае ролю ў групе.</p></li>
+<li><p>Роля адміністратара не звязана з групай, а з усёй платформай.</p></li>
+</ul>
+</div></blockquote>
+<p>Карыстальнікі могуць мець розныя ролі ў розных групах. Роля вызначае, якія задачы можа выконваць карыстальнік:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Госць - гэта карыстальнік, які можа бачыць запісы ў групе, але не можа іх змяняць.</p></li>
+<li><p>Рэдактар - гэта карыстальнік, які можа ствараць або рэдагаваць запісы ў групе.</p></li>
+<li><p>Рэцэнзент - гэта карыстальнік, які можа рэдагаваць і публікаваць запісы ў групе.</p></li>
+<li><p>UserAdmin - гэта карыстальнік, які мае адміністрацыйныя прывілеі над запісамі і карыстальнікамі ў групе.</p></li>
+</ul>
+</div></blockquote>
+<p>Каб дадаць новага карыстальніка ў сістэму GeoNetwork, вы зробіце наступнае:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Выберыце ў меню кнопку «Адміністраванне».</p></li>
+<li><p>На старонцы адміністравання абярыце Кіраванне карыстальнікамі</p></li>
+<li><p>Націсніце кнопку Дадаць новага карыстальніка</p></li>
+<li><p>Дайце інфармацыю, неабходную для новага карыстальніка</p></li>
+<li><p>Прызначце правільны профіль</p></li>
+<li><p>Прывязаць карыстальніка да групы</p></li>
+<li><p>Націсніце на Захаваць</p></li>
+</ul>
+</div></blockquote>
+<img alt="../../../_images/createuser.png" src="../../../_images/createuser.png" />
+<p>Для кожнай магчымай ролі ёсць спіс груп. Такім чынам, карыстальнік можа мець розныя ролі для розных груп, дазваляючы карыстальніку быць госцем толькі для чытання ў адной групе, маючы магчымасць рэдагаваць і праглядаць запісы ў іншай групе.</p>
+<img alt="../../../_images/roles.png" src="../../../_images/roles.png" />
+</section>
+<section id="creating-groups">
+<h2>Стварэнне груп<a class="headerlink" href="#creating-groups" title="Permalink to this heading">¶</a></h2>
+<p>Каб ствараць новыя групы, вы павінны ўвайсці ў сістэму з уліковым запісам з правамі адміністратара.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Выберыце ў меню кнопку «Адміністраванне». На старонцы адміністравання абярыце Кіраванне групамі.</p></li>
+<li><p>Абярыце Дадаць новую групу. Вы можаце выдаліць групу ўзораў;</p></li>
+<li><p>Запоўніце дэталі. Адрас электроннай пошты будзе выкарыстоўвацца для адпраўкі водгукаў аб спампоўках даных, калі яны адбываюцца для рэсурсаў, якія ўваходзяць у групу.</p></li>
+<li><p>Націсніце на Захаваць</p></li>
+</ul>
+</div></blockquote>
+<p>Прывілеі доступу могуць быць устаноўлены для запісу метададзеных. Вы можаце вызначыць прывілеі для кожнай групы.</p>
+<p>Глядзіце больш на <a class="reference internal" href="../../../administrator-guide/configuring-the-catalog/index.html#configuring-the-catalog"><span class="std std-ref">Канфігурацыя каталога</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../deployment/deploy.html" class="btn btn-neutral float-left" title="Разгортванне з дапамогай ваеннага файла" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../edit/index.html" class="btn btn-neutral float-right" title="Рэдагаванне метаданых" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing metadata standards &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuring validation levels" href="configure-validation.html" />
+    <link rel="prev" title="Managing metadata &amp; template" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва адміністратара</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Канфігурацыя каталога</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-users-and-groups/index.html">Кіраванне карыстальнікамі і групамі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-classification-systems/index.html">Кіруючая сістэма класіфікацыі</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Managing metadata &amp; template</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Managing metadata standards</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-schema">Adding a schema</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configure-validation.html">Configuring validation levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metadata-identifier.html">Configuring metadata identifier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва адміністратара</a> &raquo;</li>
+          <li><a href="index.html">Managing metadata &amp; template</a> &raquo;</li>
+      <li>Managing metadata standards</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-metadata-standards/standards.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-metadata-standards">
+<span id="id1"></span><h1>Managing metadata standards<a class="headerlink" href="#managing-metadata-standards" title="Permalink to this heading">¶</a></h1>
+<p>Metadata records in GeoNetwork are described by a schema. The schema sets out the structuring of the metadata record and provides all the ancillary data and functions to use the schema in GeoNetwork.</p>
+<p>A metadata schema plugin capability was introduced in GeoNetwork 2.8.0. In 3.0.0 the plugin capability was expanded to facilitate the fact that plugins can contain java-code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adding a metadata schema to GeoNetwork that is incorrect or invalid can thoroughly break your GeoNetwork instance. This section is for catalogue administrators who are confident about metadata schemas and understand the different technologies involved with a GeoNetwork metadata schema.</p>
+</div>
+<p>A detailed description of what constitutes a metadata schema for GeoNetwork can be found in the GeoNetwork Developers Manual. This section will describe how to access the schema add, update and delete functions and how those functions should be used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Metadata schemas should be thoroughly tested in a development instance of GeoNetwork <strong>before</strong> they are deployed in a production instance. Errors in a schema plugin (particularly in the presentation XSLTs) may make your GeoNetwork instance unusable.</p>
+</div>
+<section id="adding-a-schema">
+<h2>Adding a schema<a class="headerlink" href="#adding-a-schema" title="Permalink to this heading">¶</a></h2>
+<p>To add a metadata schema to the catalog, a rebuild of the sources is required. In a source-code tree there are 4 actions to be done in the settings (database).</p>
+<ul class="simple">
+<li><p>Place the schema-folder in /schemas</p></li>
+<li><p>Verify and if compatible update the version of GeoNetwork (parent) referenced from the pom.xml file in the schema plugin.</p></li>
+<li><p>Add a reference in /schemas/pom.xml to the newly added schema</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;module&gt;</span>{myschema}<span class="nt">&lt;/module&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add references to the newly added schema in /web/pom.xml</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">  </span><span class="nt">&lt;groupId&gt;</span>${project.groupId}<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>{myschema}<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;version&gt;</span>${project.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>and</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resource&gt;</span>
+<span class="w">  </span><span class="nt">&lt;directory&gt;</span>${project.basedir}/../schemas/{myschema}/src/main/plugin<span class="nt">&lt;/directory&gt;</span>
+<span class="w">  </span><span class="nt">&lt;targetPath&gt;</span>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins<span class="nt">&lt;/targetPath&gt;</span>
+<span class="nt">&lt;/resource&gt;</span>
+</pre></div>
+</div>
+<p>Then Build and deploy your instance of GeoNetwork.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Managing metadata &amp; template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configure-validation.html" class="btn btn-neutral float-right" title="Configuring validation levels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

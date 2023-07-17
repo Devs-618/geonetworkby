@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Імпарт новага запісу &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Рэдагаванне метададзеных" href="editing-metadata.html" />
+    <link rel="prev" title="Стварэнне новага запісу" href="creating-metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва карыстальніка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Хуткі старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Апісанне інфармацыі</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="managing-templates.html">Managing templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-metadata.html">Стварэнне новага запісу</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Імпарт новага запісу</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#before-you-begin">Before you begin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="editing-metadata.html">Рэдагаванне метададзеных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleting-metadata.html">Выдаленне запісу</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multilingual-editing.html">Шматмоўнае рэдагаванне</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-editing.html">Describing resources for the INSPIRE directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-editing.html#migrating-from-technical-guidance-version-1-3-to-version-2-0">Migrating from Technical guidance version 1.3 to version 2.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Аб&amp;#39;яднанне рэсурсаў</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Класіфікаваць інфармацыю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Выдавецкая справа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Аналіз дадзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочы працэс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Уборка ўраджаю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспарт запісаў</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва карыстальніка</a> &raquo;</li>
+          <li><a href="index.html">Апісанне інфармацыі</a> &raquo;</li>
+      <li>Імпарт новага запісу</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/describing-information/importing-metadata.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="importing-a-new-record">
+<span id="import1"></span><h1>Імпарт новага запісу<a class="headerlink" href="#importing-a-new-record" title="Permalink to this heading">¶</a></h1>
+<p>Рэдактар можа імпартаваць метададзеныя ў файл каталога ў розных фарматах: XML, MEF або ZIP (гл. <a class="reference internal" href="../../annexes/mef-format.html#mef-format"><span class="std std-ref">Фармат абмену метададзенымі (MEF)</span></a>).</p>
+<span class="target" id="index-0"></span><section id="before-you-begin">
+<span id="index-1"></span><h2>Before you begin<a class="headerlink" href="#before-you-begin" title="Permalink to this heading">¶</a></h2>
+<p>The user should have an <code class="docutils literal notranslate"><span class="pre">editor</span></code> profile to access metadata.</p>
+<ol class="arabic simple">
+<li><p>Go to the contribute page and select <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">new</span> <span class="pre">records</span></code>.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/import-record-button.png" src="../../_images/import-record-button.png" />
+</figure>
+<p>Using the import new records page, you can:</p>
+<ul class="simple">
+<li><p>абярыце <code class="docutils literal notranslate"><span class="pre">Загрузіць</span> <span class="pre">файл</span> <span class="pre">з</span> <span class="pre">вашага</span> <span class="pre">кампутара</span></code> і абярыце адзін файл XML або MEF для загрузкі</p></li>
+<li><p>абярыце <code class="docutils literal notranslate"><span class="pre">Капіяваць/Уставіць</span></code> і скапіруйце дакумент XML у тэкставае поле</p></li>
+<li><p>абярыце <code class="docutils literal notranslate"><span class="pre">Імпартаваць</span> <span class="pre">набор</span> <span class="pre">файлаў</span> <span class="pre">з</span> <span class="pre">папкі</span> <span class="pre">на</span> <span class="pre">серверы</span></code> і ўсталюйце шлях да папкі на серверы</p></li>
+</ul>
+<p>Каб імпартаваць некалькі файлаў адначасова, выкарыстоўвайце фармат MEF або параметры імпарту з сервера.</p>
+<ol class="arabic simple" start="2">
+<li><p>After you have defined the type of import, configure the other import settings:</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/import-form.png" src="../../_images/import-form.png" />
+</figure>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Тып</span> <span class="pre">файла</span></code>: пры загрузцы або загрузцы файла з сервера вызначце тып файла для загрузкі. Гэта можа быць XML для імпарту дакумента XML або MEF (эквівалент ZIP) для імпарту фармату MEF.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Тып</span> <span class="pre">запісу</span></code>:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Metadata</span></code> when loading a normal metadata record</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Template</span></code> when the loaded metadata record will be used as a template.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Апрацоўка</span> <span class="pre">ідэнтыфікатара</span> <span class="pre">запісу</span></code> вызначае, як апрацоўваць патэнцыйныя канфлікты паміж UUID загружанага запісу і UUID запісаў метададзеных, якія ўжо ёсць у каталогу. Даступныя 3 стратэгіі:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Няма</span></code>: UUID загружанага запісу не змяняецца. Калі запіс метададзеных з такім жа UUID ужо прысутнічае ў каталогу, вяртаецца паведамленне пра памылку.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Перазапісаць</span> <span class="pre">метададзеныя</span> <span class="pre">такім</span> <span class="pre">жа</span> <span class="pre">UUID</span></code>: любы існуючы запіс метададзеных у каталогу, які мае той самы UUID, што і загружаны запіс, будзе абноўлены.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Стварыць</span> <span class="pre">UUID</span> <span class="pre">для</span> <span class="pre">ўстаўленых</span> <span class="pre">метададзеных</span></code>: новы UUID уплывае на загружаны запіс.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Ужыць</span> <span class="pre">пераўтварэнне</span> <span class="pre">XSLT</span></code> дазваляе трансфармаваць запіс, загружаны з дапамогай табліцы стыляў XSLT. Прадугледжаны спіс наканаваных пераўтварэнняў. Выбранае пераўтварэнне павінна быць сумяшчальным са стандартам загружанага запісу (гл. <a class="reference internal" href="../workflow/batchupdate-xsl.html#customizing-xslt-conversion"><span class="std std-ref">Даданне пераўтварэння XSLT для імпарту</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Validate</span></code> запускае праверку запісу перад яго загрузкай. У выпадку памылкі запіс адхіляецца і паведамляецца пра памылку.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Прызначыць</span> <span class="pre">да</span> <span class="pre">бягучага</span> <span class="pre">каталога</span></code> прызначыць бягучы каталог у якасці крыніцы для запісу, калі файл MEF паказвае іншую крыніцу.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assign</span> <span class="pre">to</span> <span class="pre">Group</span></code> вызначае групу загружанага запісу.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Прызначыць</span> <span class="pre">катэгорыю</span></code> вызначае лакальную катэгорыю для прызначэння загружанага запісу.</p></li>
+</ul>
+<p>3. Click <code class="docutils literal notranslate"><span class="pre">import</span></code> to trigger the import. After processing, a summary is provided with
+the following details:</p>
+<ul class="simple">
+<li><p>агульная колькасць імпартаваных метададзеных</p></li>
+<li><p>паведамленні пра памылкі</p></li>
+<li><p>калі імпартуецца толькі адзін запіс, прадастаўляецца спасылка на гэты запіс.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="creating-metadata.html" class="btn btn-neutral float-left" title="Стварэнне новага запісу" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="editing-metadata.html" class="btn btn-neutral float-right" title="Рэдагаванне метададзеных" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

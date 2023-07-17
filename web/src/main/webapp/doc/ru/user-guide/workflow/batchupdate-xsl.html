@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Обновление набора записей с помощью XSLT &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Сбор урожая" href="../harvesting/index.html" />
+    <link rel="prev" title="Обновление набора записей из консоли администратора" href="batchupdate-from-admin.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Гид пользователя</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Быстрый старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Описание информации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Связывание ресурсов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Классифицировать информацию</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Издательский</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Анализ данных</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Рабочий процесс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Validating records</a></li>
+<li class="toctree-l3"><a class="reference internal" href="suggestion.html">Suggestions for improving metadata content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="life-cycle.html">Жизненный цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopublication.html">Публикация ГИС-данных на картографическом сервере</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versioning.html">Версии</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="batchupdate.html">Обновление набора записей</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="batchediting.html">Updating a set of records</a></li>
+<li class="toctree-l4"><a class="reference internal" href="batchupdate-from-admin.html">Обновление набора записей из консоли администратора</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Обновление набора записей с помощью XSLT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Сбор урожая</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспорт записей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Гид пользователя</a> &raquo;</li>
+          <li><a href="index.html">Рабочий процесс</a> &raquo;</li>
+          <li><a href="batchupdate.html">Обновление набора записей</a> &raquo;</li>
+      <li>Обновление набора записей с помощью XSLT</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/workflow/batchupdate-xsl.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="updating-a-set-of-records-using-xslt">
+<span id="batchupdate-xsl"></span><h1>Обновление набора записей с помощью XSLT<a class="headerlink" href="#updating-a-set-of-records-using-xslt" title="Permalink to this heading">¶</a></h1>
+<section id="applying-changes">
+<span id="batch-process-apply"></span><h2>Применение изменений<a class="headerlink" href="#applying-changes" title="Permalink to this heading">¶</a></h2>
+<p>Пользователь с правами администратора может использовать API каталога для обновления набора записей с помощью XSLT-преобразования. Шаги следующие:</p>
+<ul class="simple">
+<li><p>Войдите в систему как администратор</p></li>
+<li><p>Поиск записей для обновления с использованием сервиса <code class="docutils literal notranslate"><span class="pre">q</span></code>, например. выберите все шаблоны в определенном стандарте: <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/q?_schema=iso19115-3&amp;amp;_isTemplate=y">http://localhost:8080/geonetwork/srv/eng/q?_schema=iso19115-3&amp;amp;_isTemplate=y</a></p></li>
+<li><p>Выберите все записи, соответствующие поиску с <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/metadata.select?selected=add-all">http://localhost:8080/geonetwork/srv/eng/metadata.select?selected=add-all</a></p></li>
+<li><p>Запустите процесс с помощью <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/md.processing.batch?process=my-custom-process">http://localhost:8080/geonetwork/srv/eng/md.processing.batch?process=my-custom-process</a>.</p></li>
+<li><p>Проверьте отчет о проделанной работе с помощью <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/md.processing.batch.report">http://localhost:8080/geonetwork/srv/eng/md.processing.batch.report</a>.</p></li>
+</ul>
+<p>В конце процесса в резюме описывается:</p>
+<ul class="simple">
+<li><p>Количество записей для обработки</p></li>
+<li><p>Количество записей для обработки</p></li>
+<li><p>Количество не найденных записей (в случае удаления одной записи после выбора)</p></li>
+<li><p>Количество записей с ошибками</p></li>
+<li><p>Количество записей с процессом, не определенным в его стандарте</p></li>
+<li><p>Количество записей, которые текущий пользователь не может редактировать</p></li>
+</ul>
+<p>Процесс также можно применить к одной записи метаданных с помощью службы md.processing. например. <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/md.processing?uuid=46eac9e4-33cb-45b7-a104-7bcc8e654c98&amp;amp;process=keywords-mapper&amp;amp;search=water&amp;amp;replace=Water">http://localhost:8080/geonetwork/srv/eng/md.processing?uuid=46eac9e4-33cb-45b7-a104-7bcc8e654c98&amp;amp;process=keywords-mapper&amp;amp;search=water&amp;amp;replace=Water</a></p>
+<p>Параметры:</p>
+<ul class="simple">
+<li><p>uuid или id: UUID метаданных или внутренний идентификатор метаданных</p></li>
+<li><p>процесс: идентификатор процесса</p></li>
+<li><p>добавить другие дополнительные параметры в зависимости от процесса (см. ниже).</p></li>
+</ul>
+</section>
+<section id="adding-batch-process">
+<span id="batch-process-add"></span><h2>Добавление пакетного процесса<a class="headerlink" href="#adding-batch-process" title="Permalink to this heading">¶</a></h2>
+<section id="creating-the-processing-file">
+<h3>Создание файла обработки<a class="headerlink" href="#creating-the-processing-file" title="Permalink to this heading">¶</a></h3>
+<p>Пакетный процесс определяется для каждой схемы. Чтобы проверить список доступных процессов для стандартной проверки <code class="docutils literal notranslate"><span class="pre">&lt;datadirectory&gt;</span> <span class="pre">/config/плагины</span> <span class="pre">схемы/&lt;schemaId&gt;</span> <span class="pre">/процесс</span></code> папка.</p>
+<p>Папка процесса содержит набор XSLT. Имя файла XSLT без расширения используется для запуска процесса. Например, при использовании <code class="docutils literal notranslate"><span class="pre">md.processing.batch?process=my-custom-process</span></code> процесс XSLT ДОЛЖЕН называться <code class="docutils literal notranslate"><span class="pre">my-custom-process.xsl</span></code>.</p>
+</section>
+<section id="processing-the-xml-of-the-record">
+<h3>Обработка XML записи<a class="headerlink" href="#processing-the-xml-of-the-record" title="Permalink to this heading">¶</a></h3>
+<p>Процесс XSLT будет применяться к каждой записи метаданных в выборке. Каждый документ будет иметь в качестве корневого элемента XML-документ метаданных с элементом <code class="docutils literal notranslate"><span class="pre">geonet:info</span></code>. Элемент geonet:info содержит метаданные о метаданных. Этот элемент ДОЛЖЕН быть удален процессом, чтобы не изменять запись при сохранении в базе данных.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:MD_Metadata&gt;</span>
+<span class="w">    </span>...
+<span class="w">    </span><span class="nt">&lt;geonet:info</span><span class="w"> </span><span class="na">xmlns:geonet=</span><span class="s">&quot;http://www.fao.org/geonetwork&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;id&gt;</span>73481<span class="nt">&lt;/id&gt;</span>
+<span class="w">        </span><span class="nt">&lt;uuid&gt;</span>bb151890-2da5-4cfb-8659-7839e7138be7<span class="nt">&lt;/uuid&gt;</span>
+<span class="w">        </span><span class="nt">&lt;schema&gt;</span>iso19139<span class="nt">&lt;/schema&gt;</span>
+<span class="w">        </span><span class="nt">&lt;createDate&gt;</span>2015-12-23T17:05:36<span class="nt">&lt;/createDate&gt;</span>
+<span class="w">        </span><span class="nt">&lt;changeDate&gt;</span>2015-12-23T18:07:40<span class="nt">&lt;/changeDate&gt;</span>
+<span class="w">        </span><span class="nt">&lt;source&gt;</span>2cc603e1-981c-41a2-a183-39429c7dcc49<span class="nt">&lt;/source&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ownerId&gt;</span>1<span class="nt">&lt;/ownerId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;edit&gt;</span>true<span class="nt">&lt;/edit&gt;</span>
+<span class="w">        </span><span class="nt">&lt;owner&gt;</span>true<span class="nt">&lt;/owner&gt;</span>
+<span class="w">        </span><span class="nt">&lt;isPublishedToAll&gt;</span>false<span class="nt">&lt;/isPublishedToAll&gt;</span>
+<span class="w">        </span><span class="nt">&lt;view&gt;</span>true<span class="nt">&lt;/view&gt;</span>
+<span class="w">        </span><span class="nt">&lt;notify&gt;</span>true<span class="nt">&lt;/notify&gt;</span>
+<span class="w">        </span><span class="nt">&lt;download&gt;</span>true<span class="nt">&lt;/download&gt;</span>
+<span class="w">        </span><span class="nt">&lt;dynamic&gt;</span>true<span class="nt">&lt;/dynamic&gt;</span>
+<span class="w">        </span><span class="nt">&lt;featured&gt;</span>true<span class="nt">&lt;/featured&gt;</span>
+<span class="w">        </span><span class="nt">&lt;selected&gt;</span>true<span class="nt">&lt;/selected&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geonet:info&gt;</span>
+<span class="nt">&lt;/gmd:MD_Metadata&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-parameters">
+<h3>Добавление параметров<a class="headerlink" href="#adding-parameters" title="Permalink to this heading">¶</a></h3>
+<p>Процесс XSLT может извлекать параметры, которые могут быть предоставлены в URL-адресе, с помощью xsl:param. Например, при использовании <code class="docutils literal notranslate"><span class="pre">md.processing.batch?process=my-custom-process&amp;amp;myParameter=test</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;xsl:stylesheet</span><span class="w"> </span><span class="na">xmlns:xsl=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;2.0&quot;</span>
+<span class="w">                </span><span class="na">exclude-result-prefixes=</span><span class="s">&quot;#all&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;myParameter&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;&#39;&#39;&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>В этом примере <code class="docutils literal notranslate"><span class="pre">xsl:param</span></code> будет доступен как переменная с использованием <code class="docutils literal notranslate"><span class="pre">$myParameter</span></code> и будет иметь пустое значение, если не задано параметром URL. Чтобы проверить правильность установки параметра, используйте xsl:message для вывода информации в файл журнала.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;myParameter&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;&#39;&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xsl:message&gt;</span>myParameter:<span class="w"> </span><span class="nt">&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$myParameter&quot;</span><span class="nt">/&gt;&lt;/xsl:message&gt;</span>
+</pre></div>
+</div>
+<p>Процесс XSLT также имеет доступ к параметрам каталога:</p>
+<ul class="simple">
+<li><p>guiLang: Текущий язык пользовательского интерфейса</p></li>
+<li><p>baseUrl: базовый URL службы (например, <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/geonetwork</span></code>)</p></li>
+<li><p>catalogUrl: URL-адрес каталога (например, <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/geonetwork/srv/eng</span></code>)</p></li>
+<li><p>nodeId: идентификатор узла (по умолчанию <code class="docutils literal notranslate"><span class="pre">srv</span></code>)</p></li>
+</ul>
+<p>Чтобы использовать один из этих параметров в процессе, используйте <code class="docutils literal notranslate"><span class="pre">xsl:param</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;guiLang&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;&#39;&#39;&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="making-a-copy-is-a-minimum">
+<h3>Сделать копию - это минимум.<a class="headerlink" href="#making-a-copy-is-a-minimum" title="Permalink to this heading">¶</a></h3>
+<p>Процесс ДОЛЖЕН, по крайней мере, делать:</p>
+<ul class="simple">
+<li><p>копия всего</p></li>
+<li><p>удалить метаданные geonet:info</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;xsl:stylesheet</span><span class="w"> </span><span class="na">xmlns:xsl=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>
+<span class="w">                </span><span class="na">xmlns:geonet=</span><span class="s">&quot;http://www.fao.org/geonetwork&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;2.0&quot;</span>
+<span class="w">                </span><span class="na">exclude-result-prefixes=</span><span class="s">&quot;#all&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- Do a copy of every nodes and attributes recursively --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;@*|node()&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:copy&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;@*|node()&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/xsl:copy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:template&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- Remove geonet:* elements. --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;geonet:*&quot;</span><span class="w"> </span><span class="na">priority=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsl:stylesheet&gt;</span>
+</pre></div>
+</div>
+<p>Затем настройте процесс для обновления записи метаданных.</p>
+</section>
+<section id="processing-examples">
+<h3>Примеры обработки<a class="headerlink" href="#processing-examples" title="Permalink to this heading">¶</a></h3>
+<p>См. примеры в <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/iso19139/src/main/plugin/iso19139/process">source file schemas/iso19139/src/main/plugin/iso19139/process</a>.</p>
+<p>Помимо того минимума, который ДОЛЖЕН выполнять процесс, процесс может определять дополнительные действия, используя новые шаблоны:</p>
+<ul class="simple">
+<li><p>Удаление элемента. Например. удаление всего отчета о DQ_TopologicalConsistency:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;gmd:report[gmd:DQ_TopologicalConsistency]&quot;</span>
+<span class="w">              </span><span class="na">priority=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Установите приоритет на 2, чтобы ваш шаблон имел приоритет над основным шаблоном, делающим копию всего.</p>
+</section>
+</section>
+<section id="registering-a-process-as-a-suggestion">
+<span id="customizing-xslt-suggestion"></span><h2>Регистрация процесса как предложения<a class="headerlink" href="#registering-a-process-as-a-suggestion" title="Permalink to this heading">¶</a></h2>
+<p>См. <a class="reference internal" href="suggestion.html#metadata-suggestion"><span class="std std-ref">Suggestions for improving metadata content</span></a>.</p>
+</section>
+<section id="registering-a-process-as-an-editor-action">
+<span id="xslt-in-editor"></span><h2>Регистрация процесса как действия редактора<a class="headerlink" href="#registering-a-process-as-an-editor-action" title="Permalink to this heading">¶</a></h2>
+<p>Процесс XSLT можно использовать в редакторе для запуска определенных действий. Например, в представлении INSPIRE отображается кнопка для добавления идентификатора ресурса, если он не определен, заканчивающийся идентификатором метаданных.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;batch&quot;</span>
+<span class="w">        </span><span class="na">process=</span><span class="s">&quot;add-resource-id&quot;</span>
+<span class="w">        </span><span class="na">if=</span><span class="s">&quot;count(gmd:MD_Metadata/gmd:identificationInfo/*/</span>
+<span class="s">                      gmd:citation/gmd:CI_Citation/</span>
+<span class="s">                          gmd:identifier[</span>
+<span class="s">                          ends-with(</span>
+<span class="s">                              gmd:MD_Identifier/gmd:code/gco:CharacterString,</span>
+<span class="s">                              //gmd:MD_Metadata/gmd:fileIdentifier/gco:CharacterString</span>
+<span class="s">                          )]) = 0&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>См. ссылку: «создание пользовательского редактора».</p>
+</section>
+<section id="adding-xslt-conversion-for-import">
+<span id="customizing-xslt-conversion"></span><h2>Добавление преобразования XSLT для импорта<a class="headerlink" href="#adding-xslt-conversion-for-import" title="Permalink to this heading">¶</a></h2>
+<p>Добавьте преобразования XSL в папку <code class="docutils literal notranslate"><span class="pre">web/geonetwork/xsl/conversion/import</span></code>, чтобы предоставить пользователю новые параметры импорта. Файлы можно добавлять в эту папку без перезапуска приложения.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="batchupdate-from-admin.html" class="btn btn-neutral float-left" title="Обновление набора записей из консоли администратора" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../harvesting/index.html" class="btn btn-neutral float-right" title="Сбор урожая" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

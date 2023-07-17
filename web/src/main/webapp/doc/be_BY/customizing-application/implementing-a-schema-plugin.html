@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Укараненне ўбудоў схемы &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Набор знакаў" href="characterset.html" />
+    <link rel="prev" title="Adding static pages" href="adding-static-pages.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Iнсткукцыя па наладцы</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="search-ui/index.html">Прыкладанне для пошуку</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-custom-view.html">Настройка відаў метададзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor-ui/creating-custom-editor.html">Рэдактар наладкі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changing-layout.html">Тэматызацыя</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-search-fields.html">Настройка палёў пошуку</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-faceted-search.html">Configuring faceted search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-configuration.html">Пашыраная канфігурацыя</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-static-pages.html">Adding static pages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Укараненне ўбудоў схемы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metadata-schemas-and-profiles">Схемы і профілі метададзеных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-metadata-schema-or-profile">Рэалізацыя схемы метададзеных або профілю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schema-plugins">Убудовы схемы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contents-of-a-geonetwork-schema">Змест схемы GeoNetwork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation">Падрыхтоўка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-iso19115-19139-marine-community-profile-mcp">Прыклад - ISO19115/19139 Профіль марской супольнасці (MCP)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="characterset.html">Набор знакаў</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Рознае</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Iнсткукцыя па наладцы</a> &raquo;</li>
+      <li>Укараненне ўбудоў схемы</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/customizing-application/implementing-a-schema-plugin.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="implementing-schema-plugins">
+<span id="implementing-a-schema-plugin"></span><h1>Укараненне ўбудоў схемы<a class="headerlink" href="#implementing-schema-plugins" title="Permalink to this heading">¶</a></h1>
+<section id="metadata-schemas-and-profiles">
+<h2>Схемы і профілі метададзеных<a class="headerlink" href="#metadata-schemas-and-profiles" title="Permalink to this heading">¶</a></h2>
+<p>Схема метададзеных апісвае:</p>
+<ol class="arabic simple">
+<li><p>імёны, апісанні і любыя спісы кодаў значэнняў элементаў у схеме метададзеных</p></li>
+<li><p>як элементы схемы метададзеных размешчаны ў дакуменце метададзеных (структура)</p></li>
+<li><p>абмежаванні на элементы і змест у дакуменце метададзеных</p></li>
+<li><p>дакументацыя аб тым, як павінны выкарыстоўвацца элементы схемы метададзеных</p></li>
+<li><p>прыклады дакументаў з метададзенымі і шаблоны метададзеных</p></li>
+<li><p>скрыпты для пераўтварэння дакументаў метададзеных у і з іншых схем метададзеных</p></li>
+</ol>
+<p>Схема метададзеных звычайна з&amp;#39;яўляецца рэалізацыяй стандарту метададзеных.</p>
+<p>Профіль метададзеных - гэта адаптацыя схемы метададзеных для задавальнення патрэб пэўнай супольнасці. Профіль метададзеных змяшчае ўсе кампаненты схемы метададзеных, але можа пашыраць, абмежаваць або перавызначаць гэтыя кампаненты.</p>
+</section>
+<section id="implementing-a-metadata-schema-or-profile">
+<h2>Рэалізацыя схемы метададзеных або профілю<a class="headerlink" href="#implementing-a-metadata-schema-or-profile" title="Permalink to this heading">¶</a></h2>
+<p>Ёсць шмат спосабаў, якімі можна рэалізаваць схему метададзеных або профіль. У гэтым раздзеле будзе апісана спосаб рэалізацыі схем метададзеных на <a class="reference external" href="https://github.com/geonetwork/schema-plugins">https://github.com/geonetwork/schema-plugins</a> або <a class="reference external" href="https://github.com/metadata101">https://github.com/metadata101</a>.</p>
+<p>Each metadata schema is a Maven module implemented as a filesystem tree.
+The root of the tree is the name of the metadata schema in abbreviated form.
+The essential components of a metadata schema in the
+<code class="docutils literal notranslate"><span class="pre">src/main/plugin/&lt;schema_id&gt;</span></code> folder and are laid out as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>loc</strong> directory with sub-directories for each three letter language code
+that this information is localized into, with the content in XML files
+(labels.xml, codelists.xml).  For example: <code class="docutils literal notranslate"><span class="pre">loc/eng/codelists.xml</span></code>
+describes the english codelists for metadata elements</p></li>
+<li><p>Каталог <strong>schema</strong> і файл з імем <strong>schema.xsd</strong> забяспечваюць адзіную кропку ўваходу ў іерархію XSD. Напрыклад: <code class="docutils literal notranslate"><span class="pre">schema/gmd/gmd.xsd</span></code></p></li>
+<li><p>Каталог <strong>schematron</strong> мае абмежаванні на элементы і змесціва ў дакуменце метададзеных, рэалізаваным з выкарыстаннем мовы ISO schematron</p></li>
+<li><p>У каталогу <strong>docs</strong> ёсць дакументацыя аб тым, як трэба выкарыстоўваць элементы схемы метададзеных.</p></li>
+<li><p>У каталогу <strong>sample-data</strong> ёсць прыклады дакументаў з метададзенымі</p></li>
+<li><p>У каталогу <strong>convert</strong> ёсць XSLT, якія пераўтвараюць дакументы метададзеных у іншыя схемы і з іх</p></li>
+</ol>
+<p>Дадатковая інфармацыя пра змест гэтых каталогаў і файлаў будзе дадзена ў наступным раздзеле.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Некаторыя схемы на <a class="reference external" href="https://github.com/geonetwork/schema-plugins">https://github.com/geonetwork/schema-plugins</a> або <a class="reference external" href="https://github.com/metadata101">https://github.com/metadata101</a> маюць больш інфармацыі, чым апісана вышэй, таму што яны былі рэалізаваны як убудовы схемы GeoNetwork.</p>
+</div>
+</section>
+<section id="schema-plugins">
+<h2>Убудовы схемы<a class="headerlink" href="#schema-plugins" title="Permalink to this heading">¶</a></h2>
+<p>Убудова схемы, які можна выкарыстоўваць у GeoNetwork, - гэта каталог табліц стыляў, апісанняў схемы XML (XSD) і іншай інфармацыі, неабходнай GeoNetwork для індэксавання, прагляду і, магчыма, рэдагавання кантэнту з запісаў метададзеных XML.</p>
+<p>Для выкарыстання ў GeoNetwork каталог схемы можна ўручную змясціць у падкаталог <code class="docutils literal notranslate"><span class="pre">schema_plugins</span></code> каталога дадзеных GeoNetwork. Для некаторых схем у тэчку WEB-INF/lib трэба дадаць дадатковы файл JAR. Размяшчэнне каталога дадзеных GeoNetwork па змаўчанні - <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/WEB-INF/data</span></code>.</p>
+<p>Змесціва гэтых схем аналізуецца падчас ініцыялізацыі GeoNetwork. Калі яны сапраўдныя, яны будуць даступныя для выкарыстання пры запуску GeoNetwork.</p>
+<p>Схемы таксама могуць дадавацца ў GeoNetwork дынамічна, калі створаны zip-архіў каталога схем і затым загружаны ў GeoNetwork адным з наступных спосабаў з дапамогай функцый у меню Адміністравання:</p>
+<ol class="arabic simple">
+<li><p>Шлях да файла сервера (вызначаецца з дапамогай інструмента выбару файлаў)</p></li>
+<li><p>HTTP URL (напрыклад, <a class="reference external" href="http://somehost/somedirectory/iso19139.mcp.zip">http://somehost/somedirectory/iso19139.mcp.zip</a>)</p></li>
+<li><p>Як інтэрнэт-рэсурс, далучаны да запісу метададзеных ISO19115/19139</p></li>
+</ol>
+<p>Загружаныя схемы таксама захоўваюцца ў падкаталогу <code class="docutils literal notranslate"><span class="pre">schema_plugins</span></code> каталога дадзеных GeoNetwork.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Модуль шаблону даступны тут <a class="reference external" href="https://github.com/geonetwork/schema-plugins/tree/develop/iso19139.xyz">https://github.com/geonetwork/schema-plugins/tree/develop/iso19139.xyz</a> і з&amp;#39;яўляецца добрым прыкладам для пачатку.</p>
+</div>
+<section id="contents-of-a-geonetwork-schema">
+<h3>Змест схемы GeoNetwork<a class="headerlink" href="#contents-of-a-geonetwork-schema" title="Permalink to this heading">¶</a></h3>
+<p>Пасля ўстаноўкі схема GeoNetwork з&amp;#39;яўляецца каталогам.</p>
+<p>The following sub-directories can be present in <code class="docutils literal notranslate"><span class="pre">src/main/plugin/&lt;schema_id&gt;</span></code>:</p>
+<ul class="simple">
+<li><p><strong>схема</strong>: (<em>Неабавязкова</em>) Каталог, які змяшчае афіцыйныя XSD-файлы схемы метададзеных. Калі схема апісана DTD, гэты каталог неабавязковы. Звярніце ўвагу, што схемы, апісаныя DTD, нельга рэдагаваць GeoNetwork.</p></li>
+<li><p><strong>schematron</strong>: (<em>Неабавязкова</em>) Каталог, які змяшчае схемы, якія выкарыстоўваюцца для праверкі ўмоў змесціва.</p></li>
+<li><p><strong>дакументы</strong>: (<em>Неабавязкова</em>) Дакументацыя аб схеме</p></li>
+<li><p><strong>index-fields</strong>: (<em>Абавязковы</em>) Каталог XSLT, неабходны для індэксацыі запісу метададзеных.</p></li>
+<li><p><strong>loc</strong>: (<em>Абавязковы</em>) Каталог лакалізаванай інфармацыі: этыкеткі, спісы кодаў або спецыфічныя радкі схемы. напр. <code class="docutils literal notranslate"><span class="pre">loc/eng/codelists.xml</span></code></p></li>
+<li><p><strong>пераўтварыць</strong>: (<em>Абавязковы</em>) Каталог XSLT для пераўтварэння метададзеных з або ў гэтую схему. Гэта можа быць пераўтварэнне метададзеных у іншыя схемы або пераўтварэнне метададзеных з іншых схем і фарматаў у гэтую схему. напр. <code class="docutils literal notranslate"><span class="pre">convert/oai_dc.xsl</span></code></p></li>
+<li><p><strong>Макет</strong>: (<em>Абавязковы для версіі 3.x</em>) змяшчае канфігурацыю для прадстаўлення метададзеных у рэдактары.</p></li>
+<li><p><strong>фармататар</strong>: (<em>Неабавязковы для версіі 3.x</em>) утрымлівае канфігурацыю для прадстаўлення метададзеных з выкарыстаннем інструмента фарматавання Groovy або XSLT.</p></li>
+<li><p><strong>present</strong>: (<em>Абавязкова для версіі 2.x</em>) утрымлівае XSLT для прадстаўлення метададзеных у праглядальніку/рэдактары.</p></li>
+<li><p><strong>present/csw</strong>: (<em>Абавязковы</em>) змяшчае XSLT для адказу на запыты CSW для кароткіх, зводных і поўных запісаў.</p></li>
+<li><p><strong>працэс</strong>: (<em>Неабавязкова</em>) змяшчае XSLT для апрацоўкі элементаў метададзеных з дапамогай механізму прапаноў метададзеных (гл. <strong>suggest.xsl</strong> ніжэй).</p></li>
+<li><p><strong>sample-data</strong>: (<em>Неабавязкова</em>) Прыклады метададзеных для гэтай схемы. Узоры метададзеных знаходзяцца ў фармаце MEF, так што ўзоры могуць мець мініяцюры або праглядаць графіку, а таксама інтэрнэт-рэсурсы.</p></li>
+<li><p><strong>шаблоны</strong>: (<em>Неабавязкова</em>) Каталог, які змяшчае запісы метаданых шаблонаў і падшаблонаў для гэтай схемы. Шаблонныя запісы метададзеных - гэта звычайна запісы метададзеных з наборам элементаў (і зместам), якія будуць выкарыстоўвацца для пэўнай мэты. напр. Схема iso19139.mcp мае шаблон «Мінімальны элемент», які змяшчае абавязковыя элементы для схемы і прыклад чаканага змесціва.</p></li>
+</ul>
+<p>Могуць прысутнічаць наступныя табліцы стыляў:</p>
+<ul class="simple">
+<li><p><strong>extract-date-modified.xsl</strong>: (<em>Абавязкова</em>) Выняць дату мадыфікацыі з запісу метададзеных.</p></li>
+<li><p><strong>extract-gml.xsl</strong>: (<em>Абавязкова</em>) Выняць прасторавы экстэнт з запісу метададзеных як элемент GML GeometryCollection.</p></li>
+<li><p><strong>extract-thumbnails.xsl</strong>: (<em>Неабавязкова</em>) Выняць малюнак/мініяцюру прагляду з запісу метададзеных.</p></li>
+<li><p><strong>extract-uuid.xsl</strong>: (<em>Абавязкова</em>) Выняць UUID запісу метададзеных.</p></li>
+<li><p><strong>extract-relations.xsl</strong>: (<em>Неабавязкова</em>) Выманне звязаных з запісам рэсурсаў метададзеных (напрыклад, інтэрнэт-крыніца, мініяцюры).</p></li>
+<li><p><strong>set-thumbnail.xsl</strong>: (<em>Неабавязкова</em>) Усталюйце малюнак/мініяцюру прагляду ў запісе метададзеных.</p></li>
+<li><p><strong>set-uuid.xsl</strong>: (<em>Неабавязкова</em>) Усталюйце UUID запісу метададзеных.</p></li>
+<li><p><strong>suggest.xsl</strong>: (<em>Неабавязкова</em>) XSLT запускаецца сэрвісам прапаноў метададзеных. XSLT змяшчае працэсы, якія можна зарэгістраваць і запускаць на розных элементах запісу метададзеных. напр. разгарнуць поле ключавых слоў з раздзеленым коскамі змесцівам на некалькі палёў ключавых слоў. Глядзіце <a class="reference internal" href="../user-guide/workflow/suggestion.html#metadata-suggestion"><span class="std std-ref">Suggestions for improving metadata content</span></a> для атрымання дадатковай інфармацыі.</p></li>
+<li><p><strong>unset-thumbnail.xsl</strong>: (<em>Неабавязкова</em>) Выдаліць малюнак/мініяцюру прагляду з запісу метададзеных.</p></li>
+<li><p><strong>update-child-from-parent-info.xsl</strong>: (<em>Неабавязкова</em>) XSLT, каб вызначыць, якія элементы ў даччыным запісе абнаўляюцца з бацькоўскага запісу. Выкарыстоўваецца для кіравання іерархічнымі адносінамі паміж запісамі метададзеных.</p></li>
+<li><p><strong>update-fixed-info.xsl</strong>: (<em>Неабавязкова</em>) XSLT для абнаўлення «выпраўленага» кантэнту ў запісах метададзеных.</p></li>
+</ul>
+<p>Могуць прысутнічаць наступныя файлы канфігурацыі:</p>
+<ul class="simple">
+<li><p><strong>oasis-catalog.xml</strong>: (<em>Неабавязкова</em>) Каталог аазіса, які апісвае любыя супастаўленні, якія павінны выкарыстоўвацца для гэтай схемы, напрыклад. супастаўленне URL-адрасоў з лакальнымі копіямі, такімі як schemaLocations, напрыклад. <a class="reference external" href="http://www.isotc211.org/2005/gmd/gmd.xsd">http://www.isotc211.org/2005/gmd/gmd.xsd</a> адлюстроўваецца ў <code class="docutils literal notranslate"><span class="pre">schema/gmd/gmd.xsd</span></code>. Імёны шляхоў, якія выкарыстоўваюцца ў каталогу oasis, адносяцца да месцазнаходжання гэтага файла, які з&amp;#39;яўляецца каталогам схемы.</p></li>
+<li><p><strong>schema.xsd</strong>: (<em>Неабавязкова</em>) Файл каталога схемы XML, які ўключае XSD, якія выкарыстоўваюцца гэтай схемай метададзеных. Калі ў схеме выкарыстоўваецца DTD, гэты файл не павінен прысутнічаць. Запісы метаданых са схем, якія выкарыстоўваюць DTD, нельга рэдагаваць у GeoNetwork.</p></li>
+<li><p><strong>schema-conversions.xml</strong>: (<em>Неабавязкова</em>) файл XML, які апісвае пераўтваральнікі, якія могуць прымяняцца да запісаў, якія належаць гэтай схеме. Гэтая інфармацыя выкарыстоўваецца, каб паказаць гэтыя пераўтварэнні ў якасці варыянтаў для карыстальніка, калі запіс метададзеных, які належыць да гэтай схемы, будзе паказаны ў выніках пошуку.</p></li>
+<li><p><strong>schema-ident.xml</strong>: (<em>Абавязковы</em>) файл XML, які змяшчае назву схемы, ідэнтыфікатар, нумар версіі і падрабязную інфармацыю аб тым, як распазнаць запісы метададзеных, якія належаць гэтай схеме. Гэты файл мае вызначэнне схемы XML у <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/xml/validation/schemaPlugins/schema-ident.xsd</span></code>, якое выкарыстоўваецца для яго праверкі пры загрузцы схемы.</p></li>
+<li><p><strong>schema-substitutes.xml</strong>: (<em>Неабавязкова</em>) файл XML, які перавызначае набор элементаў, якія могуць выкарыстоўвацца ў якасці замены для пэўнага элемента.</p></li>
+<li><p><strong>schema-suggestions.xml</strong>: (<em>Неабавязкова</em>) файл XML, які паведамляе рэдактару, якія даччыныя элементы складанага элемента трэба аўтаматычна разгарнуць у рэдактары.</p></li>
+</ul>
+<p>У тэчцы <code class="docutils literal notranslate"><span class="pre">index-fields</span></code> неабходныя наступныя файлы:</p>
+<ul class="simple">
+<li><p><strong>default.xsl</strong>: (<em>Абавязковы</em>) індэкс змесціва запісу метададзеных у Lucene. Стварае дакумент Lucene, які выкарыстоўваецца GeoNetwork для індэксацыі змесціва запісу метададзеных.</p></li>
+<li><p><strong>language-default.xsl</strong>: (<em>Неабавязкова</em>) Патрабуецца для індэксацыі шматмоўных метададзеных</p></li>
+</ul>
+<p>Каб дапамагчы зразумець, што ўяўляе сабой кожны з гэтых кампанентаў і што патрабуецца, зараз мы прывядзем пакрокавы прыклад таго, як стварыць schemaPlugin для GeoNetwork.</p>
+</section>
+<section id="preparation">
+<span id="id1"></span><h3>Падрыхтоўка<a class="headerlink" href="#preparation" title="Permalink to this heading">¶</a></h3>
+<p>Каб стварыць убудову схемы для GeoNetwork, вы павінны праверыць зыходны код:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/geonetwork/core-geonetwork
+</pre></div>
+</div>
+<p>Затым вы можаце праверыць рэпазітар убудовы схемы, які змяшчае прыклады:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/geonetwork/schema-plugins
+</pre></div>
+</div>
+<p>To work with the example shown here, you should create your new schema plugin
+in a sub-directory of the schemas Maven module (see <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas">source file schemas</a>). The
+<code class="docutils literal notranslate"><span class="pre">iso19139.xyz</span></code> plugin from the schema plugin repository could be a good start.</p>
+<p>Пасля стварэння вам трэба зарэгістраваць свой новы плагін у зборцы прыкладання. Каб зрабіць гэта:</p>
+<ul class="simple">
+<li><p>Дадайце плагін у якасці модуля модуля схем (гл. <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/pom.xml">source file schemas/pom.xml</a>):</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;module&gt;</span>iso19139.xyz<span class="nt">&lt;/module&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Зарэгіструйце плагін у вэб-прыкладанні ў выкананні <code class="docutils literal notranslate"><span class="pre">copy-schemas</span></code> (гл. <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/web/pom.xml">source file web/pom.xml</a>):</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resource&gt;</span>
+<span class="w">   </span><span class="nt">&lt;directory&gt;</span>${project.basedir}/../schemas/iso19139.xyz/src/main/plugin<span class="nt">&lt;/directory&gt;</span>
+<span class="w">   </span><span class="nt">&lt;targetPath&gt;</span>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins<span class="nt">&lt;/targetPath&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/resource&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Неабавязкова зарэгіструйце залежнасць, калі вы ўбудоўваеце карыстальніцкую Java (гл. <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/web/pom.xml">source file web/pom.xml</a>):</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">  </span><span class="nt">&lt;groupId&gt;</span>${project.groupId}<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>schema-iso19139.xyz<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;version&gt;</span>${project.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="example-iso19115-19139-marine-community-profile-mcp">
+<h3>Прыклад - ISO19115/19139 Профіль марской супольнасці (MCP)<a class="headerlink" href="#example-iso19115-19139-marine-community-profile-mcp" title="Permalink to this heading">¶</a></h3>
+<p>Профіль марской супольнасці (MCP) - гэта профіль ISO19115/19139, распрацаваны для марской супольнасці і сумесна з ёй. Профіль пашырае стандарт метададзеных ISO19115 і рэалізаваны з дапамогай пашырэння рэалізацыі XML ISO19115, апісанага ў ISO19139. Як стандарт метададзеных ISO19115, так і яго рэалізацыя XML, ISO19139, даступныя праз каналы распаўсюджвання ISO.</p>
+<p>Дакументацыю для профілю марской супольнасці можна знайсці на <a class="reference external" href="http://www.aodc.gov.au/files/MarineCommunityProfilev1.4.pdf">http://www.aodc.gov.au/files/MarineCommunityProfilev1.4.pdf</a>. Рэалізацыя марскога профілю супольнасці ў выглядзе азначэнняў схемы XML заснавана на падыходзе, апісаным на <a class="reference external" href="https://www.seegrid.csiro.au/wiki/AppSchemas/MetadataProfiles">https://www.seegrid.csiro.au/wiki/AppSchemas/MetadataProfiles</a>. Вызначэнні схемы XML (XSD) даступныя па адрасе <a class="reference external" href="http://bluenet3.antcrc.utas.edu.au/mcp-1.4">http://bluenet3.antcrc.utas.edu.au/mcp-1.4</a>.</p>
+<p>Гледзячы на азначэнні схемы XML, профіль дадае некалькі новых элементаў да базавага стандарту ISO19139. Такім чынам, асноўная ідэя пры вызначэнні схемы плагіна Marine Community Profile для GeoNetwork заключаецца ў тым, каб выкарыстоўваць як мага больш асноўных азначэнняў схемы ISO19139, якія пастаўляюцца разам з GeoNetwork.</p>
+<p>Зараз мы апішам асноўныя крокі, як стварыць кожны з кампанентаў схемы плагіна для GeoNetwork, якая рэалізуе MCP.</p>
+<section id="creating-the-schema-ident-xml-file">
+<h4>Стварэнне файла schema-ident.xml<a class="headerlink" href="#creating-the-schema-ident-xml-file" title="Permalink to this heading">¶</a></h4>
+<p>Цяпер нам трэба прадаставіць інфармацыю, неабходную для ідэнтыфікацыі схемы і запісаў метададзеных, якія належаць да схемы. Файл schema-ident.xml для MCP выглядае наступным чынам:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;schema</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://geonetwork-opensource.org/schemas/schema-ident&quot;</span>
+<span class="w">        </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;name&gt;</span>iso19139.mcp<span class="nt">&lt;/name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;id&gt;</span>19c9a2b2-dddb-11df-9df4-001c2346de4c<span class="nt">&lt;/id&gt;</span>
+<span class="w">  </span><span class="nt">&lt;version&gt;</span>1.5<span class="nt">&lt;/version&gt;</span>
+<span class="w">  </span><span class="nt">&lt;schemaLocation&gt;</span>
+<span class="w">    </span>http://bluenet3.antcrc.utas.edu.au/mcp
+<span class="w">    </span>http://bluenet3.antcrc.utas.edu.au/mcp-1.5-experimental/schema.xsd
+<span class="w">    </span>http://www.isotc211.org/2005/gmd
+<span class="w">    </span>http://www.isotc211.org/2005/gmd/gmd.xsd
+<span class="w">    </span>http://www.isotc211.org/2005/srv
+<span class="w">    </span>http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd
+<span class="w">  </span><span class="nt">&lt;/schemaLocation&gt;</span>
+<span class="w">  </span><span class="nt">&lt;autodetect</span><span class="w"> </span><span class="na">xmlns:mcp=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">              </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+<span class="w">              </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;elements&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:metadataStandardName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gco:CharacterString&gt;</span>
+<span class="w">          </span>Australian<span class="w"> </span>Marine<span class="w"> </span>Community<span class="w"> </span>Profile<span class="w"> </span>of<span class="w"> </span>ISO<span class="w"> </span>19115:2005/19139|
+<span class="w">          </span>Marine<span class="w"> </span>Community<span class="w"> </span>Profile<span class="w"> </span>of<span class="w"> </span>ISO<span class="w"> </span>19115:2005/19139
+<span class="w">        </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:metadataStandardName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:metadataStandardVersion&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gco:CharacterString&gt;</span>
+<span class="w">          </span>1.5-experimental|
+<span class="w">          </span>MCP:BlueNet<span class="w"> </span>V1.5-experimental|
+<span class="w">          </span>MCP:BlueNet<span class="w"> </span>V1.5
+<span class="w">        </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:metadataStandardVersion&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/elements&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/autodetect&gt;</span>
+<span class="nt">&lt;/schema&gt;</span>
+</pre></div>
+</div>
+<p>Кожны з элементаў выглядае наступным чынам:</p>
+<ul class="simple">
+<li><p><strong>імя</strong> - імя, пад якім схема будзе вядомая ў GeoNetwork. Калі схема з&amp;#39;яўляецца профілем базавай схемы, ужо дададзенай у GeoNetwork, тады схема павінна называцца&lt;base_schema_name&gt; .&lt;namespace_of_profile&gt; .</p></li>
+<li><p><strong>id</strong> - унікальны ідэнтыфікатар для схемы.</p></li>
+<li><p><strong>version</strong> - нумар версіі схемы. У GeoNetwork можа прысутнічаць некалькі версій схемы.</p></li>
+<li><p><strong>schemaLocation</strong> - набор пар, дзе першым членам пары з&amp;#39;яўляецца URI прасторы імёнаў, а другім членам з&amp;#39;яўляецца афіцыйны URL XSD. Змесціва гэтага элемента будзе дададзена ў каранёвы элемент любога запісу метададзеных, які адлюстроўваецца GeoNetwork як атрыбут schemaLocation/noNamespaceSchemaLocation, калі такі атрыбут яшчэ не існуе. Ён таксама будзе выкарыстоўвацца, калі патрабуецца афіцыйны schemaLocation/noNamespaceSchemaLocation (напрыклад, у адказ на запыт OAI ListMetadataFormats).</p></li>
+<li><p><strong>аўтаматычнае вызначэнне</strong> - змяшчае элементы або атрыбуты (са зместам), якія павінны прысутнічаць у любым запісе метададзеных, які належыць да гэтай схемы. Гэта выкарыстоўваецца падчас выяўлення схемы кожны раз, калі GeoNetwork атрымлівае запіс метададзеных невядомай схемы.</p></li>
+<li><p><strong>фільтры</strong> - (неабавязкова) змяшчае карыстальніцкі фільтр, які будзе прымяняцца на аснове прывілеяў карыстальніка</p></li>
+</ul>
+<p>After creating this file you can validate it manually using the XML schema
+definition (XSD) in <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/xml/validation/schemaPlugins/schema-ident.xsd</span></code>.
+This XSD is also used to validate this file when the schema is loaded.
+If schema-ident.xml fails validation, the schema will not be loaded.</p>
+</section>
+<section id="more-on-autodetect">
+<h4>Больш падрабязна пра аўтавызначэнне<a class="headerlink" href="#more-on-autodetect" title="Permalink to this heading">¶</a></h4>
+<p>Раздзел аўтавызначэння schema-ident.xml выкарыстоўваецца, калі GeoNetwork неабходна вызначыць, да якой схемы метададзеных належыць запіс.</p>
+<p>Пяць правілаў, якія можна выкарыстоўваць у гэтым раздзеле ў парадку ацэнкі:</p>
+<p><strong>1. Атрыбуты</strong> - Знайдзіце ў дакуменце адзін ці некалькі атрыбутаў і/ці прастор імёнаў. Прыклад выкарыстання - профіль ISO19115/19139, які дадае неабавязковыя элементы ў новую прастору імёнаў у gmd:identificationInfo/gmd:MD_DataIdentification. Каб выявіць запісы, якія належаць да гэтага профілю, раздзел аўтавызначэння ў файле schema-ident.xml можа выглядаць прыкладна так:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;autodetect</span><span class="w"> </span><span class="na">xmlns:cmar=</span><span class="s">&quot;http://www.marine.csiro.au/schemas/cmar.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- catch all cmar records that have the cmar vocab element --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;attributes</span><span class="w"> </span><span class="na">cmar:vocab=</span><span class="s">&quot;http://www.marine.csiro.au/vocabs/projectCodes.xml&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/autodetect&gt;</span>
+</pre></div>
+</div>
+<p>Некаторыя іншыя моманты аб аўтавызначэнні атрыбутаў:</p>
+<ul class="simple">
+<li><p>можна ўказаць некалькі атрыбутаў - усе павінны супадаць, каб запіс быў прызнаны прыналежным да гэтай схемы.</p></li>
+<li><p>калі атрыбуты маюць прастору імёнаў, то прастора імёнаў павінна быць указана ў элеменце аўтаматычнага вызначэння або дзе-небудзь у дакуменце schema-ident.xml.</p></li>
+</ul>
+<p><strong>2. Элементы</strong> - Знайдзіце адзін або некалькі элементаў у дакуменце. Прыкладам выкарыстання з&amp;#39;яўляецца той, які паказаны ў прыкладзе файла schema-ident.xml раней:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;autodetect</span><span class="w"> </span><span class="na">xmlns:mcp=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">            </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+<span class="w">            </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;elements&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:metadataStandardName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>
+<span class="w">        </span>Australian<span class="w"> </span>Marine<span class="w"> </span>Community<span class="w"> </span>Profile<span class="w"> </span>of<span class="w"> </span>ISO<span class="w"> </span>19115:2005/19139|
+<span class="w">        </span>Marine<span class="w"> </span>Community<span class="w"> </span>Profile<span class="w"> </span>of<span class="w"> </span>ISO<span class="w"> </span>19115:2005/19139
+<span class="w">      </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:metadataStandardName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:metadataStandardVersion&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>
+<span class="w">        </span>1.5-experimental|
+<span class="w">        </span>MCP:BlueNet<span class="w"> </span>V1.5-experimental|
+<span class="w">        </span>MCP:BlueNet<span class="w"> </span>V1.5
+<span class="w">      </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:metadataStandardVersion&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/elements&gt;</span>
+<span class="nt">&lt;/autodetect&gt;</span>
+</pre></div>
+</div>
+<p>Некаторыя іншыя моманты аб аўтавызначэнні элементаў:</p>
+<ul class="simple">
+<li><p>можа быць указана некалькі элементаў - напр. як і ў вышэйсказаным, былі ўказаны метаданыя StandardName і метаданыяStandardVersion - усе павінны супадаць, каб запіс быў прызнаны прыналежным да гэтай схемы.</p></li>
+<li><p>можна задаць некалькі значэнняў для элементаў. напр. як і вышэй, адпаведнасць gmd:metadataStandardVersion будзе знойдзена для <code class="docutils literal notranslate"><span class="pre">1.5-experimental</span></code> АБО <code class="docutils literal notranslate"><span class="pre">MCP:BlueNet</span> <span class="pre">V1.5-experimental</span></code> АБО <code class="docutils literal notranslate"><span class="pre">MCP:BlueNet</span> <span class="pre">V1.5</span></code> - вертыкальная лінія або вертыкальная лінія &amp;#39;|&amp;#39; выкарыстоўваецца для падзелу варыянтаў тут. Таксама можна выкарыстоўваць рэгулярны выраз.</p></li>
+<li><p>калі элементы маюць прастору імёнаў, то прастора імёнаў павінна быць указана ў элеменце аўтаматычнага вызначэння або дзе-небудзь у дакуменце schema-ident.xml перад элементам, у якім яны выкарыстоўваюцца - напрыклад. у вышэйзгаданым ёсць дэкларацыі прасторы імёнаў для элемента аўтавызначэння, каб не загрувашчваць змесціва.</p></li>
+</ul>
+<p><strong>3. Каранёвы элемент</strong> - каранёвы элемент дакумента павінен супадаць. Прыклад выкарыстання - той, які выкарыстоўваецца для схемы eml-gbif. Дакументы, якія належаць да гэтай схемы, заўсёды маюць каранёвы элемент eml:eml, таму раздзел аўтавызначэння для гэтай схемы:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;autodetect</span><span class="w"> </span><span class="na">xmlns:eml=</span><span class="s">&quot;eml://ecoinformatics.org/eml-2.1.1&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;elements</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;root&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;eml:eml/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/elements&gt;</span>
+<span class="nt">&lt;/autodetect&gt;</span>
+</pre></div>
+</div>
+<p>Некаторыя іншыя моманты аб аўтавызначэнні каранёвага элемента:</p>
+<ul class="simple">
+<li><p>можна ўказаць некалькі элементаў - любы элемент у наборы, які адпавядае каранёваму элементу запісу, выкліча супадзенне.</p></li>
+<li><p>калі элементы маюць прастору імёнаў, то прастора імёнаў павінна быць указана ў элеменце аўтаматычнага вызначэння або дзе-небудзь у дакуменце schema-ident.xml перад элементам, які іх выкарыстоўвае - напрыклад. як і ў вышэйзгаданым, для яснасці ёсць дэкларацыя прасторы імёнаў для элемента аўтавызначэння.</p></li>
+</ul>
+<p><strong>4. Прасторы імёнаў</strong> - Знайдзіце адну або некалькі прастор імёнаў у дакуменце. Прыкладам выкарыстання з&amp;#39;яўляецца той, які выкарыстоўваецца для схемы csw:Record. Запісы, якія належаць да схемы csw:Record, могуць мець тры магчымыя каранёвыя элементы: csw:Record, csw:SummaryRecord і csw:BriefRecord, але замест таго, каб выкарыстоўваць каранёвае аўтаматычнае вызначэнне некалькіх элементаў, мы маглі б выкарыстоўваць агульную прастору імёнаў csw для аўтавызначэння наступным чынам:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;autodetect&gt;</span>
+<span class="w">  </span><span class="nt">&lt;namespaces</span><span class="w"> </span><span class="na">xmlns:csw=</span><span class="s">&quot;http://www.opengis.net/cat/csw/2.0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/autodetect&gt;</span>
+</pre></div>
+</div>
+<p>Некаторыя іншыя моманты пра аўтавызначэнне прастор імёнаў:</p>
+<ul class="simple">
+<li><p>можна ўказаць некалькі прастор імёнаў - усе яны павінны прысутнічаць, каб запіс быў прызнаны прыналежным да гэтай схемы.</p></li>
+<li><p>прэфікс ігнаруецца. Супадзенне прасторы імёнаў адбываецца, калі URI прасторы імёнаў, знойдзены ў запісе, супадае з URI прасторы імёнаў, указаным у элеменце аўтаматычнага вызначэння прастор імёнаў.</p></li>
+</ul>
+<p><strong>5. Схема па змаўчанні</strong> - гэта бяспечнае становішча для запісаў, якія не адпавядаюць ніводнай з усталяваных схем. Значэнне для схемы па змаўчанні вызначана ў канфігурацыі appHandler файла канфігурацыі <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/WEB-INF/config.xml</span></code> або гэта можа быць значэнне па змаўчанні, вызначанае аперацыяй, якая выклікае аўтавызначэнне (напрыклад, значэнне аналізуецца з масавай загрузкі карыстальнікам некаторых запісаў метададзеных). З меркаванняў гнуткасці і дакладнасці пажадана, каб запісы выяўляліся з дапамогай інфармацыі аўтаматычнага вызначэння ўсталяванай схемы. Схема па змаўчанні - гэта проста метад &amp;quot;ахопу ўсіх&amp;quot; для прызначэння запісаў пэўнай схеме. Элемент канфігурацыі ў <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/WEB-INF/config.xml</span></code> выглядае наступным чынам:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;appHandler</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;org.fao.geonet.Geonetwork&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span>.....
+<span class="w">  </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;preferredSchema&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;iso19139&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span>.....
+<span class="nt">&lt;/appHandler&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="more-on-autodetect-evaluation">
+<h4>Больш падрабязна пра ацэнку аўтаматычнага вызначэння<a class="headerlink" href="#more-on-autodetect-evaluation" title="Permalink to this heading">¶</a></h4>
+<p>Правілы для аўтавызначэння ацэньваюцца наступным чынам:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="k">for</span>-each<span class="w"> </span>autodetect<span class="w"> </span>rule<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s1">&#39;attributes/namespaces&#39;</span>,<span class="w"> </span><span class="s1">&#39;elements&#39;</span>,
+<span class="w">                                   </span><span class="s1">&#39;namespaces&#39;</span>,<span class="w"> </span><span class="s1">&#39;root element&#39;</span><span class="w"> </span><span class="o">)</span>
+<span class="w">  </span><span class="k">for</span>-each<span class="w"> </span>schema
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>schema<span class="w"> </span>has<span class="w"> </span>autodetect<span class="w"> </span>rule<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>check<span class="w"> </span>rule<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>match
+<span class="w">      </span><span class="k">if</span><span class="w"> </span>match<span class="w"> </span>add<span class="w"> </span>to<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>previous<span class="w"> </span>matches
+<span class="w">    </span>end<span class="w"> </span><span class="k">if</span>
+<span class="w">  </span>end<span class="w"> </span><span class="k">for</span>-each
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span>more<span class="w"> </span>than<span class="w"> </span>one<span class="w"> </span>match<span class="w"> </span>throw<span class="w"> </span><span class="s1">&#39;SCHEMA RULE CONFLICT EXCEPTION&#39;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span>one<span class="w"> </span>match<span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">matched</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>first<span class="w"> </span>match<span class="w"> </span>and<span class="w"> </span><span class="k">break</span><span class="w"> </span>loop
+end<span class="w"> </span><span class="k">for</span>-each
+
+<span class="k">if</span><span class="w"> </span>no<span class="w"> </span>match<span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span>namespaces<span class="w"> </span>of<span class="w"> </span>record<span class="w"> </span>and<span class="w"> </span>default<span class="w"> </span>schema<span class="w"> </span>overlap<span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">set</span><span class="w"> </span><span class="nv">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>default<span class="w"> </span>schema
+<span class="w">  </span><span class="k">else</span><span class="w"> </span>throw<span class="w"> </span><span class="s1">&#39;NO SCHEMA MATCHES EXCEPTION&#39;</span>
+end<span class="w"> </span><span class="k">if</span>
+
+<span class="k">return</span><span class="w"> </span>matched<span class="w"> </span>schema
+</pre></div>
+</div>
+<p>У якасці прыкладу выкажам здагадку, што ў нас ёсць тры схемы iso19139.mcp, iso19139.mcp-1.4 і iso19139.mcp-cmar з наступнымі элементамі аўтавызначэння:</p>
+<p><strong>iso19139.mcp-1.4:</strong></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;autodetect</span><span class="w"> </span><span class="na">xmlns:mcp=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">            </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+<span class="w">            </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;elements&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:metadataStandardName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>
+<span class="w">        </span>Australian<span class="w"> </span>Marine<span class="w"> </span>Community<span class="w"> </span>Profile<span class="w"> </span>of<span class="w"> </span>ISO<span class="w"> </span>19115:2005/19139
+<span class="w">      </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:metadataStandardName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:metadataStandardVersion&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>MCP:BlueNet<span class="w"> </span>V1.4<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:metadataStandardVersion&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/elements&gt;</span>
+<span class="nt">&lt;/autodetect&gt;</span>
+</pre></div>
+</div>
+<p><strong>iso19139.mcp-cmar:</strong></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;autodetect&gt;</span>
+<span class="w">    </span><span class="nt">&lt;attributes</span><span class="w"> </span><span class="na">xmlns:mcp-cmar=</span><span class="s">&quot;http://www.marine.csiro.au/schemas/mcp-cmar&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/autodetect&gt;</span>
+</pre></div>
+</div>
+<p><strong>iso19139.mcp:</strong></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;autodetect</span><span class="w"> </span><span class="na">xmlns:mcp=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;elements</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;root&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;mcp:MD_Metadata/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/elements&gt;</span>
+<span class="nt">&lt;/autodetect&gt;</span>
+</pre></div>
+</div>
+<p>Запіс, які праходзіць апрацоўку аўтаматычнага вызначэння (напрыклад, пры імпарце), будзе правярацца на:</p>
+<ul class="simple">
+<li><p>спачатку iso19139.mcp-cmar, паколькі ён мае правіла «атрыбутаў».</p></li>
+<li><p>затым iso19139.mcp-1.4, паколькі ён мае правілы «элементаў».</p></li>
+<li><p>затым, нарэшце, супраць iso19139.mcp, паколькі ён мае правіла «каранёвага элемента».</p></li>
+</ul>
+<p>Ідэя гэтага алгарытму апрацоўкі заключаецца ў тым, што базавыя схемы будуць выкарыстоўваць правіла «каранёвага элемента» (або больш складанае для кантролю правіла «прасторы імёнаў»), а профілі будуць выкарыстоўваць больш тонкае або больш канкрэтнае правіла, напрыклад «атрыбуты» або «элементы».</p>
+</section>
+<section id="more-on-filters">
+<h4>Яшчэ пра фільтры<a class="headerlink" href="#more-on-filters" title="Permalink to this heading">¶</a></h4>
+<p>Мэта складаецца ў тым, каб дадаць магчымасць канфігураваць загрузку і дынамічную працу на аснове зместу каталога, дзе яны могуць мець розныя значэнні ў залежнасці ад:</p>
+<ul class="simple">
+<li><p>у схеме (напрыклад, URL-адрас файла для загрузкі не знаходзіцца ў адным месцы для Dublin Core і ISO19139)</p></li>
+<li><p>аб правілах кадавання запісаў (напрыклад, загрузка можа быць спасылкамі WFS, а не толькі загружаным файлам).</p></li>
+</ul>
+<p>Канфігурацыя фільтра для кожнага тыпу аперацыі вызначана ў schema-ident.xml у раздзеле фільтраў.</p>
+<p>Фільтр вызначае:</p>
+<ul class="simple">
+<li><p>аперацыя (якая адпавядае метадам canEdit, canDownload, canDynamic у AccessManager)</p></li>
+<li><p>XPath для выбару элементаў для фільтрацыі</p></li>
+<li><p>неабавязковае вызначэнне элемента, якім трэба замяніць заменены элемент (пры выяўленні супадзення ўстаўляюцца атрыбуты або даччыныя элементы гэтага элемента). Гэта выкарыстоўваецца для вылучэння выдаленага элемента.</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;filters&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- Filter element having withheld nilReason for user who can not edit --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;filter</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;*//*[@gco:nilReason=&#39;withheld&#39;]&quot;</span>
+<span class="w">          </span><span class="na">ifNotOperation=</span><span class="s">&quot;editing&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;keepMarkedElement</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;withheld&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/filter&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- Filter element having protocol download for user who can not download --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;filter</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;*//gmd:onLine[*/gmd:protocol/gco:CharacterString = &#39;WWW:DOWNLOAD-1.0-http--download&#39;]&quot;</span>
+<span class="w">          </span><span class="na">ifNotOperation=</span><span class="s">&quot;download&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- Filter element having protocol WMS for user who can not dynamic --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;filter</span><span class="w"> </span><span class="na">xpath=</span><span class="s">&quot;*//gmd:onLine[starts-with(*/gmd:protocol/gco:CharacterString, &#39;OGC:WMS&#39;)]&quot;</span>
+<span class="w">          </span><span class="na">ifNotOperation=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/filters&gt;</span>
+</pre></div>
+</div>
+<p>Фільтры прымяняюцца ў XMLSerializer у адпаведнасці з прывілеямі карыстальніка.</p>
+<p>Пасля наладжвання schema-ident.xml наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span><span class="o">-</span><span class="n">ident</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-the-schema-conversions-xml-file">
+<span id="schema-conversions"></span><h4>Стварэнне файла schema-conversions.xml<a class="headerlink" href="#creating-the-schema-conversions-xml-file" title="Permalink to this heading">¶</a></h4>
+<p>Гэты файл апісвае пераўтваральнікі, якія можна прымяніць да запісаў метададзеных, якія належаць да схемы. Кожны канвертар павінен быць уручную вызначаны як служба GeoNetwork (Jeeves), якую можна выклікаць для пераўтварэння пэўнага запісу метададзеных у іншую схему. Файл schema-conversions.xml для MCP выглядае наступным чынам:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;conversions&gt;</span>
+<span class="w">   </span><span class="nt">&lt;converter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;xml_iso19139.mcp&quot;</span>
+<span class="w">              </span><span class="na">nsUri=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">              </span><span class="na">schemaLocation=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp-1.5-experimental/schema.xsd&quot;</span>
+<span class="w">              </span><span class="na">xslt=</span><span class="s">&quot;xml_iso19139.mcp.xsl&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;converter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;xml_iso19139.mcp-1.4&quot;</span>
+<span class="w">              </span><span class="na">nsUri=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">              </span><span class="na">schemaLocation=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp/schema.xsd&quot;</span>
+<span class="w">              </span><span class="na">xslt=</span><span class="s">&quot;xml_iso19139.mcp-1.4.xsl&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;converter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;xml_iso19139.mcpTooai_dc&quot;</span>
+<span class="w">              </span><span class="na">nsUri=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/&quot;</span>
+<span class="w">              </span><span class="na">schemaLocation=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc.xsd&quot;</span>
+<span class="w">              </span><span class="na">xslt=</span><span class="s">&quot;oai_dc.xsl&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;converter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;xml_iso19139.mcpTorifcs&quot;</span>
+<span class="w">              </span><span class="na">nsUri=</span><span class="s">&quot;http://ands.org.au/standards/rif-cs/registryObjects&quot;</span>
+<span class="w">              </span><span class="na">schemaLocation=</span><span class="s">&quot;http://services.ands.org.au/home/orca/schemata/registryObjects.xsd&quot;</span>
+<span class="w">              </span><span class="na">xslt=</span><span class="s">&quot;rif.xsl&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/conversions&gt;</span>
+</pre></div>
+</div>
+<p>Кожны канвертар мае наступныя атрыбуты:</p>
+<ul class="simple">
+<li><p><strong>імя</strong> - імя канвертара. Гэта назва службы GeoNetwork (Jeeves) і павінна быць унікальнай (з прэфіксам <a href="#id2"><span class="problematic" id="id3">xml_</span></a> да назвы службы&lt;schema_name&gt; гэта добры спосаб зрабіць гэта імя унікальным).</p></li>
+<li><p><strong>nsUri</strong> - асноўная прастора імёнаў схемы, створанай канвэртарам. напр. xml_iso19139.mcpTorifcs пераўтварае запісы метададзеных з iso19139.mcp у схему RIFCS. Запісы метададзеных у схеме метададзеных RIFCS маюць першасны URI прасторы імёнаў <a class="reference external" href="http://ands.org.au/standards/rif-cs/registryObjects">http://ands.org.au/standards/rif-cs/registryObjects</a>.</p></li>
+<li><p><strong>schemaLocation</strong> - размяшчэнне (URL) вызначэння схемы XML (XSD), якое адпавядае nsURI.</p></li>
+<li><p><strong>xslt</strong> - імя XSLT, які фактычна выконвае пераўтварэнне. Гэты XSLT павінен знаходзіцца ў падкаталогу канвертавання плагіна схемы.</p></li>
+</ul>
+<p>Пасля наладжвання schema-conversions.xml наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>schema-conversions.xml<span class="w"> </span>schema-ident.xml
+</pre></div>
+</div>
+</section>
+<section id="creating-the-schema-directory-and-schema-xsd-file">
+<span id="schema-and-schema-xsd"></span><h4>Стварэнне каталога схем і файла schema.xsd<a class="headerlink" href="#creating-the-schema-directory-and-schema-xsd-file" title="Permalink to this heading">¶</a></h4>
+<p>Кампаненты schema і schema.xsd выкарыстоўваюцца рэдактарам GeoNetwork і функцыямі праверкі.</p>
+<p>Рэдактар GeoNetwork выкарыстоўвае XSD для стварэння формы, якая будзе не толькі правільна ўпарадкоўваць элементы ў дакуменце метададзеных, але таксама прапануе варыянты стварэння любых элементаў, якіх няма ў дакуменце метададзеных. Ідэя гэтага падыходу дваякая. Па-першае, рэдактар можа выкарыстоўваць правілы вызначэння схемы XML, каб дапамагчы карыстальніку пазбегнуць стварэння дакумента, які з&amp;#39;яўляецца структурна няправільным, напрыклад. адсутнічаюць абавязковыя элементы або элементы ўпарадкаваны няправільна. Па-другое, адзін і той жа код рэдактара можа выкарыстоўвацца ў любым дакуменце метададзеных XML з вызначаным XSD.</p>
+<p>Калі вы вызначаеце ўласную схему метададзеных, вы можаце стварыць дакумент схемы XML, выкарыстоўваючы мову XSD. Элементы мовы можна знайсці ў інтэрнэце па адрасе <a class="reference external" href="http://www.w3schools.com/schema/">http://www.w3schools.com/schema/</a> або вы можаце звярнуцца да падручніка, напрыклад, да Канчатковай XML-схемы Прысцылы Уолмслі (Prentice Hall, 2002). Код разбору XML-схемы GeoNetwork разумее амаль усю мову XSD, за выключэннем redefine, any і anyAttribute (хаця апошнія два можна апрацоўваць пры асаблівых абставінах).</p>
+<p>In the case of the Marine Community Profile, we are basically defining a number
+of extensions to the base standard ISO19115/19139. These extensions are defined
+using the XSD extension mechanism on the types defined in ISO19139. The
+following snippet shows how the Marine Community Profile extends the
+gmd:MD_Metadata element to add a new element called revisionDate:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">targetNamespace=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">           </span><span class="na">xmlns:mcp=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MD_Metadata&quot;</span><span class="w"> </span><span class="na">substitutionGroup=</span><span class="s">&quot;gmd:MD_Metadata&quot;</span>
+<span class="w">                                 </span><span class="na">type=</span><span class="s">&quot;mcp:MD_Metadata_Type&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MD_Metadata_Type&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xs:annotation&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:documentation&gt;</span>
+<span class="w">       </span>Extends<span class="w"> </span>the<span class="w"> </span>metadata<span class="w"> </span>element<span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span>revisionDate
+<span class="w">      </span><span class="nt">&lt;/xs:documentation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xs:annotation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;gmd:MD_Metadata_Type&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;revisionDate&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gco:Date_PropertyType&quot;</span>
+<span class="w">                      </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;gco:isoType&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span>
+<span class="w">                      </span><span class="na">fixed=</span><span class="s">&quot;gmd:MD_Metadata&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xs:complexType&gt;</span>
+
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+<p>Карацей кажучы, мы вызначылі новы элемент mcp:MD_Metadata з тыпам mcp:MD_Metadata_Type, які з&amp;#39;яўляецца пашырэннем gmd:MD_Metadata_Type. Пад пашырэннем мы маем на ўвазе, што новы тып уключае ўсе элементы старога тыпу плюс адзін новы элемент, mcp:revisionDate. Абавязковы атрыбут (gco:isoType) таксама далучаецца да mcp:MD_Metadata з фіксаваным значэннем, усталяваным у імя элемента, які мы пашырылі (gmd:MD_Metadata).</p>
+<p>Вызначыўшы профіль такім чынам, няма неабходнасці змяняць асноўныя схемы ISO19139. Такім чынам, каталог схем для MCP па сутнасці складаецца з пашырэнняў і базавых схем ISO19139. Адна з магчымых структур каталогаў выглядае наступным чынам:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>extensions<span class="w"> </span>gco<span class="w"> </span>gmd<span class="w"> </span>gml<span class="w"> </span>gmx<span class="w"> </span>gsr<span class="w"> </span>gss<span class="w"> </span>gts<span class="w"> </span>resources<span class="w"> </span>srv<span class="w"> </span>xlink
+</pre></div>
+</div>
+<p>Каталог пашырэнняў змяшчае адзін файл mcpExtensions.xsd, які імпартуе прастору імёнаў gmd. Астатнія каталогі з&amp;#39;яўляюцца базавымі схемамі ISO19139.</p>
+<p>Файл schema.xsd, які шукае GeoNetwork, імпартуе файл mcpExtensions.xsd і любыя іншыя прасторы імёнаў, не імпартаваныя як частка базавай схемы ISO19139. Гэта паказваецца наступным чынам:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">targetNamespace=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">           </span><span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span>
+<span class="w">        </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+<span class="w">        </span><span class="na">xmlns:mcp=</span><span class="s">&quot;http://bluenet3.antcrc.utas.edu.au/mcp&quot;</span>
+<span class="w">        </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+<span class="w">        </span><span class="na">xmlns:gmx=</span><span class="s">&quot;http://www.isotc211.org/2005/gmx&quot;</span>
+<span class="w">        </span><span class="na">xmlns:srv=</span><span class="s">&quot;http://www.isotc211.org/2005/srv&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xs:include</span><span class="w"> </span><span class="na">schemaLocation=</span><span class="s">&quot;schema/extensions/mcpExtensions.xsd&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- this is a logical place to include any additional schemas that are</span>
+<span class="cm">       related to ISO19139 including ISO19119 --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xs:import</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;http://www.isotc211.org/2005/srv&quot;</span>
+<span class="w">             </span><span class="na">schemaLocation=</span><span class="s">&quot;schema/srv/srv.xsd&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xs:import</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;http://www.isotc211.org/2005/gmx&quot;</span>
+<span class="w">             </span><span class="na">schemaLocation=</span><span class="s">&quot;schema/gmx/gmx.xsd&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+<p>На гэтым этапе наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>schema-conversions.xml<span class="w">  </span>schema-ident.xml<span class="w">  </span>schema.xsd<span class="w">  </span>schema
+</pre></div>
+</div>
+</section>
+<section id="creating-the-extract-xslts">
+<h4>Стварэнне экстрактаў XSLT<a class="headerlink" href="#creating-the-extract-xslts" title="Permalink to this heading">¶</a></h4>
+<p>GeoNetwork неабходна атрымаць пэўную інфармацыю з запісу метададзеных і перавесці яе ў агульную спрошчаную структуру XML, якая не залежыць ад схемы метададзеных. Замест таго, каб рабіць гэта з дапамогай Java XPaths, XSLT выкарыстоўваюцца для апрацоўкі XML і вяртання агульнай, спрошчанай структуры XML.</p>
+<p>Тры xslts, якія мы створым:</p>
+<ul class="simple">
+<li><p><strong>extract-date-modified.xsl</strong> - гэты XSLT апрацоўвае запіс метададзеных і здабывае дату апошняга змянення запісу метададзеных. Для MCP гэтая інфармацыя захоўваецца ў элеменце mcp:revisionDate, які з&amp;#39;яўляецца даччыным элементам mcp:MD_Metadata. Самы просты спосаб стварыць гэта для MCP - скапіяваць extract-date-modified.xsl са схемы iso19139 і змяніць яго ў адпаведнасці з прасторай імёнаў MCP і выкарыстоўваць mcp:revisionDate замест gmd:dateStamp.</p></li>
+<li><p><strong>extract-gml.xsl</strong> - гэты XSLT апрацоўвае запіс метададзеных і здабывае прасторавы экстэнт у выглядзе элемента gml GeometryCollection. GML перадаецца ў geotools для ўстаўкі ў прасторавы індэкс (альбо ў шейп-файл, альбо ў прасторавую базу дадзеных). Для ISO19115/19139 і профіляў гэтая задача даволі простая, таму што прасторавыя экстэнты (акрамя абмежавальнай рамкі) кадуюцца як gml у запісе метададзеных. Зноў жа, самы просты спосаб стварыць гэта для MCP - скапіяваць extract-gml.xsd са схемы iso19139 і змяніць яго ў адпаведнасці з прасторай імёнаў MCP.</p></li>
+</ul>
+<p>Прыклад фрагмента абмежавальнай рамкі з запісу метададзеных MCP:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:extent&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:EX_Extent&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:geographicElement&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:EX_GeographicBoundingBox&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:westBoundLongitude&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gco:Decimal&gt;</span>112.9<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:westBoundLongitude&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:eastBoundLongitude&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gco:Decimal&gt;</span>153.64<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:eastBoundLongitude&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:southBoundLatitude&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gco:Decimal&gt;</span>-43.8<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:southBoundLatitude&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:northBoundLatitude&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gco:Decimal&gt;</span>-9.0<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:northBoundLatitude&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:EX_GeographicBoundingBox&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:geographicElement&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:EX_Extent&gt;</span>
+<span class="nt">&lt;/gmd:extent&gt;</span>
+</pre></div>
+</div>
+<p>Запуск extract-gml.xsl для запісу метададзеных, які змяшчае гэты XML, прывядзе да:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gml:GeometryCollection</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gml:Polygon&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gml:exterior&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gml:LinearRing&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gml:coordinates&gt;</span>
+<span class="w">          </span>112.9,-9.0,<span class="w"> </span>153.64,-9.0,<span class="w"> </span>153.64,-43.8,<span class="w"> </span>112.9,-43.8,<span class="w"> </span>112.9,-9.0
+<span class="w">        </span><span class="nt">&lt;/gml:coordinates&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gml:LinearRing&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gml:exterior&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gml:Polygon&gt;</span>
+<span class="nt">&lt;/gml:GeometryCollection&gt;</span>
+</pre></div>
+</div>
+<p>Калі ў запісе метададзеных ёсць больш чым адзін экстэнт, яны таксама павінны з&amp;#39;явіцца ў гэтым элеменце gml:GeometryCollection.</p>
+<p>Каб даведацца больш пра gml, гл. Lake, Burggraf, Trninic and Rae, &amp;quot;GML Geography Mark-Up Language, Foundation for the Geo-Web&amp;quot;, Wiley, 2004.</p>
+<p>Нарэшце, заўвага аб прагнозах. Можна мець абмежавальныя палігоны ў запісе MCP у праекцыі, адрознай ад EPSG:4326. GeoNetwork трансфармуе ўсе прагнозы, вядомыя GeoTools (і закадаваныя ў форме, якую GeoTools разумее) у EPSG:4326 пры запісе прасторавых экстэнтаў у шейп-файл або прасторавую базу дадзеных.</p>
+<ul class="simple">
+<li><p><strong>extract-uuid.xsl</strong> - гэты XSLT апрацоўвае запіс метададзеных і здабывае ідэнтыфікатар для запісу. Для MCP і базавага стандарту ISO гэтая інфармацыя захоўваецца ў элеменце gmd:fileIdentifier, які з&amp;#39;яўляецца даччыным элементам mcp:MD_Metadata.</p></li>
+</ul>
+<p>Гэтыя xslts можна праверыць, запусціўшы іх на запіс метададзеных са схемы. Вы павінны выкарыстоўваць працэсар saxon xslt. Напрыклад:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>java<span class="w"> </span>-jar<span class="w"> </span>INSTALL_DIR/web/geonetwork/WEB-INF/lib/saxon-9.1.0.8b-patch.jar
+<span class="w">     </span>-s<span class="w"> </span>testmcp.xml<span class="w"> </span>-o<span class="w"> </span>output.xml<span class="w"> </span>extract-gml.xsl
+</pre></div>
+</div>
+<p>На гэтым этапе наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>extract-date-modified.xsl<span class="w">  </span>extract-gml.xsd<span class="w">   </span>extract-uuid.xsl
+schema-conversions.xml<span class="w">  </span>schema-ident.xml<span class="w">  </span>schema.xsd<span class="w">  </span>schema
+</pre></div>
+</div>
+</section>
+<section id="creating-the-localized-strings-in-the-loc-directory">
+<h4>Стварэнне лакалізаваных радкоў у каталогу loc<a class="headerlink" href="#creating-the-localized-strings-in-the-loc-directory" title="Permalink to this heading">¶</a></h4>
+<p>Каталог loc змяшчае лакалізаваныя радкі, характэрныя для гэтай схемы, упарадкаваныя па моўных абрэвіятурах у падкаталогах.</p>
+<p>Вы павінны прадаставіць лакалізаваныя радкі на тых мовах, на якіх вы мяркуеце выкарыстоўваць вашу схему.</p>
+<p>Лакалізаваныя радкі для гэтай схемы можна выкарыстоўваць у прэзентацыі xslts і паведамленнях пра памылкі schematron. Для прэзентацыі xslts:</p>
+<ul class="simple">
+<li><p>спісы кодаў для палёў кантраляванага слоўніка павінны быць у loc/&lt;language_abbreviation&gt; /codelists.xml напрыклад. <code class="docutils literal notranslate"><span class="pre">loc/eng/codelists.xml</span></code></p></li>
+<li><p>радкі цэтлікаў, якія замяняюць імёны элементаў XML больш зразумелымі/альтэрнатыўнымі фразамі, і радкі даведкі пры пераходзе павінны быць у loc/&lt;language_abbreviation&gt; /labels.xml, напрыклад. <code class="docutils literal notranslate"><span class="pre">loc/eng/labels.xml</span></code>.</p></li>
+<li><p>усе іншыя лакалізаваныя радкі павінны быць у loc/&lt;language_abbreviation&gt; /strings.xml, напрыклад. <code class="docutils literal notranslate"><span class="pre">loc/eng/strings.xml</span></code></p></li>
+</ul>
+<p>Звярніце ўвагу, што паколькі MCP з&amp;#39;яўляецца профілем ISO19115/19139 і мы прытрымліваліся пагаднення аб найменні GeoNetwork для профіляў, нам трэба ўключаць толькі меткі і спісы кодаў, якія з&amp;#39;яўляюцца спецыфічнымі для MCP або якія мы хочам перавызначыць. Іншыя меткі і спісы кодаў будуць атрыманы з базавай схемы iso19139.</p>
+</section>
+<section id="more-on-codelists-xml">
+<h4>Больш падрабязна на codelists.xml<a class="headerlink" href="#more-on-codelists-xml" title="Permalink to this heading">¶</a></h4>
+<p>Звычайна спісы кодаў ствараюцца з пералічаных спісаў у XSD-файлах схемы метададзеных, напрыклад, з <a class="reference external" href="http://www.isotc211.org/2005/gmd/identification.xsd">http://www.isotc211.org/2005/gmd/identification.xsd</a> для gmd:MD_TopicCategoryCode у схеме iso19139:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MD_TopicCategoryCode&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gmd:MD_TopicCategoryCode_Type&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MD_TopicCategoryCode_Type&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;farming&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;biota&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;boundaries&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;climatologyMeteorologyAtmosphere&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;economy&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;elevation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;environment&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;geoscientificInformation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;health&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;imageryBaseMapsEarthCover&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;intelligenceMilitary&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;inlandWaters&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;location&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;oceans&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;planningCadastre&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;society&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;structure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;transportation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;utilitiesCommunication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+</pre></div>
+</div>
+<p>Ніжэй прыводзіцца частка запісу codelists.xml, створанага ўручную для гэтага элемента:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;codelist</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:MD_TopicCategoryCode&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;entry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;code&gt;</span>farming<span class="nt">&lt;/code&gt;</span>
+<span class="w">    </span><span class="nt">&lt;label&gt;</span>Farming<span class="nt">&lt;/label&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>Rearing<span class="w"> </span>of<span class="w"> </span>animals<span class="w"> </span>and/or<span class="w"> </span>cultivation<span class="w"> </span>of<span class="w"> </span>plants.<span class="w"> </span>Examples:<span class="w"> </span>agriculture,
+<span class="w">      </span>irrigation,<span class="w"> </span>aquaculture,<span class="w"> </span>plantations,<span class="w"> </span>herding,<span class="w"> </span>pests<span class="w"> </span>and<span class="w"> </span>diseases<span class="w"> </span>affecting<span class="w"> </span>crops<span class="w"> </span>and
+<span class="w">      </span>livestock<span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/entry&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- - - - - - - - - - - - - - - - - - - - - - - - - --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;entry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;code&gt;</span>biota<span class="nt">&lt;/code&gt;</span>
+<span class="w">    </span><span class="nt">&lt;label&gt;</span>Biota<span class="nt">&lt;/label&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>Flora<span class="w"> </span>and/or<span class="w"> </span>fauna<span class="w"> </span>in<span class="w"> </span>natural<span class="w"> </span>environment.<span class="w"> </span>Examples:<span class="w"> </span>wildlife,<span class="w"> </span>vegetation,
+<span class="w">      </span>biological<span class="w"> </span>sciences,<span class="w"> </span>ecology,<span class="w"> </span>wilderness,<span class="w"> </span>sealife,<span class="w"> </span>wetlands,<span class="w"> </span>habitat<span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/entry&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- - - - - - - - - - - - - - - - - - - - - - - - - --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;entry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;code&gt;</span>boundaries<span class="nt">&lt;/code&gt;</span>
+<span class="w">    </span><span class="nt">&lt;label&gt;</span>Boundaries<span class="nt">&lt;/label&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>Legal<span class="w"> </span>land<span class="w"> </span>descriptions.<span class="w"> </span>Examples:<span class="w"> </span>political<span class="w"> </span>and<span class="w"> </span>administrative
+<span class="w">    </span>boundaries<span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/entry&gt;</span>
+
+<span class="w">  </span>.....
+
+<span class="nt">&lt;/codelist&gt;</span>
+</pre></div>
+</div>
+<p>Файл codelists.xml адлюстроўвае пералічаныя значэнні з XSD у лакалізаваную метку і апісанне праз элемент кода.</p>
+<p>Лакалізаваная копія codelists.xml робіцца даступнай на XPath для прэзентацыйных XSLT, напрыклад. /root/gui/schemas/iso19139/codelist для схемы iso19139.</p>
+<p>XSLT metadata.xsl, які змяшчае шаблоны, якія выкарыстоўваюцца ўсімі XSLT прэзентацыі схемы метададзеных, апрацоўвае стварэнне спісу выбару/выпадальнага меню ў рэдактары і адлюстраванне кода і апісання ў сродку прагляду метададзеных.</p>
+<p>Codelist entries can also contain a <code class="docutils literal notranslate"><span class="pre">displayIf</span></code> parameter that indicates the
+context (xpath) where the codelist should be used. This allows the definition of
+different codelists and dropdown menus for different elements in the editor.</p>
+<p>The following example restricts the use of the codelist to service records only:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;codelist</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:MD_ScopeCode&quot;</span>
+<span class="w">          </span><span class="na">displayIf=</span><span class="s">&quot;../gmd:identificationInfo/srv:SV_ServiceIdentification&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;entry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;code&gt;</span>service<span class="nt">&lt;/code&gt;</span>
+<span class="w">    </span><span class="nt">&lt;label&gt;</span>Service<span class="nt">&lt;/label&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>Information<span class="w"> </span>applies<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>capability<span class="w"> </span>which<span class="w"> </span>a<span class="w"> </span>service<span class="w"> </span>provider<span class="w"> </span>entity<span class="w"> </span>makes
+<span class="w">      </span>available<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>service<span class="w"> </span>user<span class="w"> </span>entity<span class="w"> </span>through<span class="w"> </span>a<span class="w"> </span>set<span class="w"> </span>of<span class="w"> </span>interfaces<span class="w"> </span>that<span class="w"> </span>define<span class="w"> </span>a<span class="w"> </span>behaviour,
+<span class="w">      </span>such<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>use<span class="w"> </span>case
+<span class="w">    </span><span class="nt">&lt;/description&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/entry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/codelist&gt;</span>
+</pre></div>
+</div>
+<p>The iso19139 schema has additional codelists that are managed external to
+the XSDs in catalog/vocabulary files, such as
+<a class="reference external" href="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml">http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml</a> These have
+also been added to the codelists.xml file so that they can be localized or
+overridden in profiles, and include an extended description to provide more
+useful information when viewing the metadata record.</p>
+<p>To use the ISO19139 codelist in a profile you can add a template to point to the codelist to use:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;mode-iso19139.xyz&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;*[*/@codeList]&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="w"> </span><span class="na">required=</span><span class="s">&quot;no&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;labels&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$labels&quot;</span><span class="w"> </span><span class="na">required=</span><span class="s">&quot;no&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;mode-iso19139&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;labels&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$labels&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;codelists&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$codelists&quot;</span><span class="nt">/&gt;</span><span class="cm">&lt;!-- Will be the profile codelist --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:apply-templates&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>To override some of the ISO19139 codelist, you can check if the codelist is defined in xyz profile and if not use the ISO19139 one:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- check iso19139.xyz first, then fall back to iso19139 --&gt;</span>
+<span class="nt">&lt;xsl:variable</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;listOfValues&quot;</span><span class="w"> </span><span class="na">as=</span><span class="s">&quot;node()&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:variable</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;profileCodeList&quot;</span><span class="w"> </span><span class="na">as=</span><span class="s">&quot;node()&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;gn-fn-metadata:getCodeListValues($schema, name(*[@codeListValue]), $codelists, .)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:choose&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:when</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;count($profileCodeList/*) = 0&quot;</span><span class="nt">&gt;</span><span class="w"> </span><span class="cm">&lt;!-- do iso19139 --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:copy-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;gn-fn-metadata:getCodeListValues(&#39;iso19139&#39;, name(*[@codeListValue]), $iso19139codelists, .)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:when&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:otherwise&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:copy-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$profileCodeList&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:otherwise&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:choose&gt;</span>
+<span class="nt">&lt;/xsl:variable&gt;</span>
+</pre></div>
+</div>
+<p>The iso19139 schema has additional templates in its presentation xslts to
+handle codelists because they are specific to that schema. These are
+discussed in the section on presentation XSLTs later in this manual.</p>
+</section>
+<section id="more-on-labels-xml">
+<h4>Больш падрабязна пра labels.xml<a class="headerlink" href="#more-on-labels-xml" title="Permalink to this heading">¶</a></h4>
+<p>A localized copy of <code class="docutils literal notranslate"><span class="pre">labels.xml</span></code> is made available on an XPath to the presentation
+XSLTs eg. /root/gui/schemas/iso19139/labels for the iso19139 schema.</p>
+<p>Файл <code class="docutils literal notranslate"><span class="pre">labels.xml</span></code> таксама можна выкарыстоўваць для прадастаўлення дапаможных значэнняў у выглядзе выпадальнага спісу/спісу выбару для вольных тэкставых палёў. У якасці прыкладу:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:credit&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;27.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;label&gt;</span>Credit<span class="nt">&lt;/label&gt;</span>
+<span class="w">  </span><span class="nt">&lt;description&gt;</span>Recognition<span class="w"> </span>of<span class="w"> </span>those<span class="w"> </span>who<span class="w"> </span>contributed<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>resource(s)<span class="nt">&lt;/description&gt;</span>
+<span class="w">  </span><span class="nt">&lt;helper&gt;</span>
+<span class="w">    </span><span class="nt">&lt;option</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;University of Tasmania&quot;</span><span class="nt">&gt;</span>UTAS<span class="nt">&lt;/option&gt;</span>
+<span class="w">    </span><span class="nt">&lt;option</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;University of Queensland&quot;</span><span class="nt">&gt;</span>UQ<span class="nt">&lt;/option&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/helper&gt;</span>
+<span class="nt">&lt;/element&gt;</span>
+</pre></div>
+</div>
+<p>Гэта прывядзе да таго, што рэдактар (праз XSLT metadata.xsl) будзе адлюстроўваць поле крэдыту з гэтымі дапаможнымі параметрамі, пералічанымі побач з ім у выпадальным меню/меню выбару прыкладна так:</p>
+<figure class="align-default">
+<img alt="../_images/editor-helper.png" src="../_images/editor-helper.png" />
+</figure>
+</section>
+<section id="more-on-strings-xml">
+<h4>Больш пра strings.xml<a class="headerlink" href="#more-on-strings-xml" title="Permalink to this heading">¶</a></h4>
+<p>Лакалізаваная копія <code class="docutils literal notranslate"><span class="pre">strings.xml</span></code> робіцца даступнай у XPath для прэзентацыйных XSLT, напрыклад. /root/gui/schemas/iso19139/strings для схемы iso19139.</p>
+<p>Пасля дадання лакалізаваных радкоў наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extract</span><span class="o">-</span><span class="n">date</span><span class="o">-</span><span class="n">modified</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">extract</span><span class="o">-</span><span class="n">gml</span><span class="o">.</span><span class="n">xsd</span>  <span class="n">extract</span><span class="o">-</span><span class="n">uuid</span><span class="o">.</span><span class="n">xsl</span>
+<span class="n">loc</span>  <span class="n">present</span>  <span class="n">schema</span><span class="o">-</span><span class="n">conversions</span><span class="o">.</span><span class="n">xml</span>  <span class="n">schema</span><span class="o">-</span><span class="n">ident</span><span class="o">.</span><span class="n">xml</span>  <span class="n">schema</span><span class="o">.</span><span class="n">xsd</span>
+<span class="n">schema</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-the-presentations-using-formatter">
+<h4>Стварэнне прэзентацый з дапамогай фарматаўкі<a class="headerlink" href="#creating-the-presentations-using-formatter" title="Permalink to this heading">¶</a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See <a class="reference internal" href="../tutorials/customui/view/formatter.html#tuto-formatter"><span class="std std-ref">Стварыце новы фарматавальнік</span></a></p>
+</div>
+</section>
+<section id="customizing-the-editor">
+<h4>Настройка рэдактара<a class="headerlink" href="#customizing-the-editor" title="Permalink to this heading">¶</a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See <a class="reference internal" href="editor-ui/creating-custom-editor.html#creating-custom-editor"><span class="std std-ref">Рэдактар наладкі</span></a></p>
+</div>
+</section>
+<section id="creating-the-presentations-xslts-in-the-present-directory">
+<h4>Стварэнне XSLT прэзентацый у бягучым каталогу<a class="headerlink" href="#creating-the-presentations-xslts-in-the-present-directory" title="Permalink to this heading">¶</a></h4>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.0.0.</span></p>
+</div>
+<p>Кожная схема метададзеных павінна ўтрымліваць XSLT, якія адлюстроўваюць і, магчыма, рэдагуюць запісы метададзеных, якія належаць да схемы. Гэтыя XSLT захоўваюцца ў каталогу <code class="docutils literal notranslate"><span class="pre">present</span></code>.</p>
+<p>To be used in the XSLT include/import hierarchy these XSLTs must follow a
+naming convention: metadata-&lt;schema-name&gt;.xsl. So for example, the presentation
+xslt for the iso19139 schema is <code class="docutils literal notranslate"><span class="pre">metadata-iso19139.xsl</span></code>. For the MCP, since
+our schema name is iso19139.mcp, the presentation XSLT would be called
+<code class="docutils literal notranslate"><span class="pre">metadata-iso19193.mcp.xsl</span></code>.</p>
+<p>Любыя XSLT, якія ўваходзяць у прэзентацыйны XSLT, таксама павінны быць у цяперашнім каталогу (гэта ўмоўнае ўмоўнае ўмоўнае абазначэнне для яснасці - яно не з&amp;#39;яўляецца абавязковым, паколькі URL-адрасы ўключэння/імпарту могуць адлюстроўвацца ў oasis-catalog.xml для схемы ў іншых месцах).</p>
+<p>Існуюць пэўныя шаблоны XSLT, якія павінен мець прэзентацыйны XSLT:</p>
+<ul class="simple">
+<li><p><strong>асноўны</strong> шаблон, які павінен называцца: metadata-&lt;schema-name&gt; . Для профілю MCP iso19139 асноўны шаблон будзе выглядаць наступным чынам (узяты з metadata-iso19139.mcp.xsl):</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">template</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;metadata-iso19139.mcp&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;schema&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;false()&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;embedded&quot;</span><span class="o">/&gt;</span>
+
+  <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">apply</span><span class="o">-</span><span class="n">templates</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;iso19139&quot;</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;.&quot;</span> <span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="k">with</span><span class="o">-</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;schema&quot;</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;$schema&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="k">with</span><span class="o">-</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span>   <span class="n">select</span><span class="o">=</span><span class="s2">&quot;$edit&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="k">with</span><span class="o">-</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;embedded&quot;</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;$embedded&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="n">apply</span><span class="o">-</span><span class="n">templates</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="n">template</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Аналіз гэтага шаблону:</p>
+<ol class="arabic simple">
+<li><p>Назва = &amp;quot;metadata-iso19139.mcp&amp;quot; выкарыстоўваецца ў шаблоне апрацоўкі асноўнага элемента ў metadata.xsl: elementEP. Асноўныя сэрвісы метададзеных, show і edit, у канчатковым выніку выклікаюць metadata-show.xsl і metadata-edit.xsl адпаведна з запісам метададзеных, перададзеным ад службы Java. Абодва гэтыя XSLT апрацоўваюць запіс метададзеных, ужываючы шаблон elementEP з metadata.xsl да каранёвага элемента. Шаблон elementEP выклікае гэты асноўны шаблон схемы з выкарыстаннем імя схемы iso19139.mcp.</p></li>
+<li><p>Задача гэтага асноўнага шаблону настроена на апрацоўку ўсіх элементаў запісу метададзеных з выкарыстаннем шаблонаў, аб&amp;#39;яўленых з назвай рэжыму, якая адпавядае назве схемы або назве базавай схемы (у дадзеным выпадку iso19139). Гэтая мадальная апрацоўка гарантуе, што прымяняюцца толькі шаблоны, прызначаныя для апрацоўкі элементаў метададзеных з гэтай схемы або базавай схемы. Прычына гэтага заключаецца ў тым, што амаль усе профілі змяняюць або дадаюць невялікую колькасць элементаў у базавую схему. Такім чынам, большасць элементаў метададзеных у профілі можна апрацоўваць у рэжыме базавай схемы. Пазней у гэтым раздзеле мы паглядзім, як перавызначыць апрацоўку элемента ў базавай схеме.</p></li>
+</ol>
+<ul class="simple">
+<li><p>шаблон <strong>completeTab</strong>, які трэба выклікаць:&lt;schema-name&gt; CompleteTab. Гэты шаблон будзе адлюстроўваць усе ўкладкі, акрамя ўкладак «па змаўчанні» (або простага рэжыму) і ўкладак «Прагляд XML» у левай рамцы экрана рэдактара/прагляду. Вось прыклад для MCP:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;iso19139.mcpCompleteTab&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tabLink&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xsl:call-template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;displayTab&quot;</span><span class="nt">&gt;</span><span class="w"> </span><span class="cm">&lt;!-- non existent tab - by profile --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tab&quot;</span><span class="w">     </span><span class="na">select=</span><span class="s">&quot;&#39;&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;text&quot;</span><span class="w">    </span><span class="na">select=</span><span class="s">&quot;/root/gui/strings/byGroup&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tabLink&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;&#39;&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:call-template&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xsl:call-template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;displayTab&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tab&quot;</span><span class="w">     </span><span class="na">select=</span><span class="s">&quot;&#39;mcpMinimum&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;text&quot;</span><span class="w">    </span><span class="na">select=</span><span class="s">&quot;/root/gui/strings/iso19139.mcp/mcpMinimum&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;indent&quot;</span><span class="w">  </span><span class="na">select=</span><span class="s">&quot;&#39;&amp;#xA0;&amp;#xA0;&amp;#xA0;&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tabLink&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$tabLink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:call-template&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xsl:call-template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;displayTab&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tab&quot;</span><span class="w">     </span><span class="na">select=</span><span class="s">&quot;&#39;mcpCore&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;text&quot;</span><span class="w">    </span><span class="na">select=</span><span class="s">&quot;/root/gui/strings/iso19139.mcp/mcpCore&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;indent&quot;</span><span class="w">  </span><span class="na">select=</span><span class="s">&quot;&#39;&amp;#xA0;&amp;#xA0;&amp;#xA0;&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tabLink&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$tabLink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:call-template&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xsl:call-template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;displayTab&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tab&quot;</span><span class="w">     </span><span class="na">select=</span><span class="s">&quot;&#39;complete&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;text&quot;</span><span class="w">    </span><span class="na">select=</span><span class="s">&quot;/root/gui/strings/iso19139.mcp/mcpAll&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;indent&quot;</span><span class="w">  </span><span class="na">select=</span><span class="s">&quot;&#39;&amp;#xA0;&amp;#xA0;&amp;#xA0;&#39;&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tabLink&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$tabLink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:call-template&gt;</span>
+
+<span class="w">  </span>......<span class="w"> </span>(same<span class="w"> </span>as<span class="w"> </span>for<span class="w"> </span>iso19139CompleteTab<span class="w"> </span>in
+<span class="w"> </span>GEONETWORK_DATA_DIR/schema_plugins/iso19139/present/
+<span class="w"> </span>metadata-iso19139.xsl)<span class="w"> </span>......
+
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Гэты шаблон выклікаецца шаблонам пад назвай &amp;quot;tab&amp;quot; (які таксама дадае ўкладкі &amp;quot;default&amp;quot; і &amp;quot;XML View&amp;quot;) у <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/xsl/metadata-tab-utils.xsl</span></code> з выкарыстаннем назвы схемы . Гэты XSLT таксама мае код для шаблону «displayTab».</p>
+<p>«mcpMinimum», «mcpCore», «complete» і г.д. - гэта назвы ўкладак. Імя бягучай або актыўнай укладкі захоўваецца ў глабальнай зменнай &amp;quot;currTab&amp;quot;, даступнай для ўсіх прэзентацыйных XSLT. Логіка рашэння аб тым, што адлюстроўваць, калі пэўная ўкладка актыўная, павінна ўтрымлівацца ва ўкладцы апрацоўкі каранёвага элемента.</p>
+<ul class="simple">
+<li><p>ўкладка апрацоўкі <strong>каранёвага элемента</strong>. Гэтая ўкладка павінна супадаць з каранёвым элементам запісу метададзеных. Напрыклад, для схемы iso19139:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;gmd:MD_Metadata&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;embedded&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xsl:choose&gt;</span>
+
+<span class="w">  </span><span class="cm">&lt;!-- metadata tab --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:when</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;$currTab=&#39;metadata&#39;&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:call-template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;iso19139Metadata&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w">   </span><span class="na">select=</span><span class="s">&quot;$edit&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:call-template&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:when&gt;</span>
+
+<span class="w">  </span><span class="cm">&lt;!-- identification tab --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:when</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;$currTab=&#39;identification&#39;&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;elementEP&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;gmd:identificationInfo|geonet:child[string(@name)=&#39;identificationInfo&#39;]&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w">   </span><span class="na">select=</span><span class="s">&quot;$edit&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:apply-templates&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:when&gt;</span>
+
+<span class="w">  </span>.........
+
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Гэты шаблон у асноўным уяўляе сабой вельмі доўгі аператар &amp;quot;выбраць&amp;quot; з пунктамі &amp;quot;калі&amp;quot;, якія правяраюць значэнне вызначанай у цяперашні час табуляцыі (у глабальнай зменнай currTab). Кожны пункт «калі» будзе адлюстроўваць набор элементаў метададзеных, якія адпавядаюць вызначэнню ўкладкі з выкарыстаннем «elementEP» непасрэдна (як у пункте «калі» для ўкладкі «ідэнтыфікацыя» вышэй) або праз названы шаблон (як у «метададзеныя» &amp;#39; ўкладка вышэй). Для MCP наш шаблон падобны да прыведзенага вышэй для iso19139, за выключэннем таго, што супадзенне будзе на &amp;quot;mcp:MD_Metadata&amp;quot; (і рэжым апрацоўкі можа адрознівацца - для больш падрабязнай інфармацыі глядзіце раздзел &amp;quot;Альтэрнатыўны дызайн XSLT для профіляў&amp;quot; ніжэй) .</p>
+<ul class="simple">
+<li><p><strong>кароткі</strong> шаблон, які павінен называцца:&lt;schema-name&gt; Кароткі. Гэты шаблон апрацоўвае запіс метададзеных і здабывае з яе нейтральнае па фармаце рэзюмэ метададзеных для такіх мэт, як адлюстраванне вынікаў пошуку. Вось прыклад схемы eml-gbif (таму што яна даволі кароткая!):</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;eml-gbifBrief&quot;</span><span class="nt">&gt;</span>
+<span class="w"> </span><span class="nt">&lt;xsl:for-each</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;/metadata/*[1]&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;metadata&gt;</span>
+<span class="w">    </span><span class="nt">&lt;title&gt;&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;normalize-space(dataset/title[1])&quot;</span><span class="nt">/&gt;&lt;/title&gt;</span>
+<span class="w">    </span><span class="nt">&lt;abstract&gt;&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;dataset/abstract&quot;</span><span class="nt">/&gt;&lt;/abstract&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;xsl:for-each</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;dataset/keywordSet/keyword&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:copy-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:for-each&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;geoBox&gt;</span>
+<span class="w">        </span><span class="nt">&lt;westBL&gt;&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;dataset/coverage/geographicCoverage/boundingCoordinates/westBoundingCoordinate&quot;</span><span class="nt">/&gt;&lt;/westBL&gt;</span>
+<span class="w">        </span><span class="nt">&lt;eastBL&gt;&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;dataset/coverage/geographicCoverage/boundingCoordinates/eastBoundingCoordinate&quot;</span><span class="nt">/&gt;&lt;/eastBL&gt;</span>
+<span class="w">        </span><span class="nt">&lt;southBL&gt;&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;dataset/coverage/geographicCoverage/boundingCoordinates/southBoundingCoordinate&quot;</span><span class="nt">/&gt;&lt;/southBL&gt;</span>
+<span class="w">        </span><span class="nt">&lt;northBL&gt;&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;dataset/coverage/geographicCoverage/boundingCoordinates/northBoundingCoordinate&quot;</span><span class="nt">/&gt;&lt;/northBL&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geoBox&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:copy-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;geonet:info&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/metadata&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/xsl:for-each&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Аналіз гэтага шаблону:</p>
+<ol class="arabic simple">
+<li><p>Шаблон супадае з элементам eml-gbifBrief, створаным шаблонам mode=&amp;quot;brief&amp;quot; у metadata-utils.xsl. Запіс метададзеных будзе першым даччыным элементам у /metadata XPath.</p></li>
+<li><p>Затым апрацуйце элементы метададзеных, каб стварыць плоскую структуру XML, якая выкарыстоўваецца search-results-xhtml.xsl для адлюстравання зводкі запісу метададзеных, знойдзенага ў выніку пошуку.</p></li>
+</ol>
+<p>Once again, for profiles of an existing schema, it makes sense to use a
+slightly different approach so that the profile need not duplicate templates.
+Here is an example from metadata-iso19139.mcp.xsl:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;iso19139.mcpBrief&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;metadata&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:for-each</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;/metadata/*[1]&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- call iso19139 brief --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:call-template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;iso19139-brief&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- now brief elements for mcp specific elements --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:call-template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;iso19139.mcp-brief&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:for-each&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/metadata&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Гэты шаблон падзяляе апрацоўку паміж базавай схемай iso19139 і кароткім шаблонам, які апрацоўвае элементы, характэрныя для профілю. Гэта мяркуе, што:</p>
+<ol class="arabic simple">
+<li><p>Базавая схема аддзяліла&lt;metadata&gt; элемент з астатняй часткі яго кароткай апрацоўкі, каб яго можна было выклікаць па профілях</p></li>
+<li><p>Профіль змяшчае спасылкі на эквівалентныя элементы, якія могуць выкарыстоўвацца базавай схемай для апрацоўкі агульных элементаў, напрыклад. для ISO19139 элементы ў профілі маюць атрыбуты gco:isoType, якія даюць імя базавага элемента і могуць выкарыстоўвацца ў супадзеннях XPath, такіх як «gmd:MD_DataIdentification|*[&#64;gco:isoType=&amp;#39;gmd:MD_DataIdentification&amp;#39;]».</p></li>
+</ol>
+<ul class="simple">
+<li><p>шаблоны, якія супадаюць па элементах, характэрных для схемы. Вось прыклад са схемы eml-gbif:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- keywords are processed to add thesaurus name in brackets afterwards</span>
+<span class="cm">     in view mode --&gt;</span>
+
+<span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;eml-gbif&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;keywordSet&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;xsl:choose&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:when</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;$edit=false()&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:variable</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:for-each</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;keyword&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:if</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;position() &amp;gt; 1&quot;</span><span class="nt">&gt;</span>,<span class="w">  </span><span class="nt">&lt;/xsl:if&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/xsl:for-each&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:if</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;keywordThesaurus&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:text&gt;</span><span class="w"> </span>(<span class="nt">&lt;/xsl:text&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;keywordThesaurus&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:text&gt;</span>)<span class="nt">&lt;/xsl:text&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/xsl:if&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xsl:variable&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;simpleElement&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w">   </span><span class="na">select=</span><span class="s">&quot;$edit&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;text&quot;</span><span class="w">    </span><span class="na">select=</span><span class="s">&quot;$keyword&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xsl:apply-templates&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:when&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:otherwise&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;complexElement&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w">   </span><span class="na">select=</span><span class="s">&quot;$edit&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xsl:apply-templates&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:otherwise&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:choose&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Аналіз гэтага шаблону:</p>
+<ol class="arabic simple">
+<li><p>У рэжыме прагляду асобныя ключавыя словы з набору аб&amp;#39;ядноўваюцца ў радок, падзелены коскамі з назвай тэзаўруса ў дужках у канцы.</p></li>
+<li><p>У рэжыме рэдагавання, keywordSet апрацоўваецца як складаны элемент, г. зн. карыстальнік можа дадаваць асобныя элементы ключавога слова са зместам і адной назвай тэзаўруса.</p></li>
+<li><p>Гэта прыклад тыпу апрацоўкі, якая можа быць выканана з элементам у запісе метададзеных.</p></li>
+</ol>
+<p>Для профіляў шаблоны для элементаў можна вызначыць такім жа чынам, за выключэннем таго, што шаблон будзе апрацоўвацца ў рэжыме базавай схемы. Вось прыклад, які паказвае некалькі першых радкоў шаблону для апрацоўкі элемента mcp:revisionDate:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;mcp:revisionDate&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xsl:choose&gt;</span>
+<span class="w">     </span><span class="nt">&lt;xsl:when</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;$edit=true()&quot;</span><span class="nt">&gt;</span>
+<span class="w">       </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;simpleElement&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w">  </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w">   </span><span class="na">select=</span><span class="s">&quot;$edit&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">   </span>......
+</pre></div>
+</div>
+<p>Калі шаблон для профілю прызначаны для перавызначэння шаблону ў базавай схеме, то шаблон можа быць вызначаны ў прэзентацыі XSLT для профілю з атрыбутам прыярытэту, усталяваным у вялікае лік, і ўмовай XPath, якая забяспечвае апрацоўку шаблона для толькі профіль. Напрыклад, у MCP мы можам перавызначыць апрацоўку gmd:EX_GeographicBoundingBox у metadata-iso19139.xsl, вызначыўшы шаблон у metadata-iso19139.mcp.xsl наступным чынам:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;gmd:EX_GeographicBoundingBox[starts-with(//geonet:info/schema,&#39;iso19139.mcp&#39;)]&quot;</span><span class="w"> </span><span class="na">priority=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+
+......
+</pre></div>
+</div>
+<p>Нарэшце, профіль можа таксама пашыраць некаторыя з існуючых спісаў кодаў у базавай схеме. Гэтыя пашыраныя спісы кодаў павінны захоўвацца ў лакалізаваным codelists.xml. Напрыклад, у iso19139 гэтыя спісы кодаў часта далучаюцца да наступных элементаў:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode&quot;</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;custodian&quot;</span><span class="nt">&gt;</span>custodian<span class="nt">&lt;/gmd:CI_RoleCode&gt;</span>
+<span class="nt">&lt;/gmd:role&gt;</span>
+</pre></div>
+</div>
+<p>Шаблоны для апрацоўкі гэтых элементаў знаходзяцца ў прэзентацыі ISO19139 XSLT <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/schema_plugins/iso19139/present/metadata-iso19139.xsl</span></code>. Гэтыя шаблоны выкарыстоўваюць назву элемента (напрыклад, gmd:CI_RoleCode) і спіс кодаў XPath (напрыклад, /root/gui/schemas/iso19139/codelists) для стварэння спісу выбару/выпадальных меню пры рэдагаванні і для адлюстравання поўнага апісання пры прагляд. Глядзіце шаблоны побач з шаблонам пад назвай &amp;quot;iso19139Codelist&amp;quot;. Гэтыя шаблоны могуць апрацоўваць пашыраныя спісы кодаў для любога профілю, таму што яны:</p>
+<ul class="simple">
+<li><p>супадаць з любым элементам, які мае даччыны элемент з атрыбутам codeList</p></li>
+<li><p>выкарыстоўваць назву схемы ў спісах кодаў XPath</p></li>
+<li><p>вярнуцца да базавай схемы iso19139, калі спіс кодаў профілю не мае неабходнага спісу кодаў</p></li>
+</ul>
+<p>Аднак, калі вам не патрэбныя лакалізаваныя спісы кодаў, часта прасцей і прасцей атрымаць спісы кодаў непасрэдна з файла <code class="docutils literal notranslate"><span class="pre">gmxCodelists.xml</span></code>. Гэта фактычна рашэнне, якое было прынята для MCP. Файл <code class="docutils literal notranslate"><span class="pre">gmxCodelists.xml</span></code> уключаны ў прэзентацыю xslt для MCP з дапамогай інструкцыі накшталт:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:variable</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;codelistsmcp&quot;</span>
+<span class="w">              </span><span class="na">select=</span><span class="s">&quot;document(&#39;../schema/resources/Codelist/gmxCodelists.xml&#39;)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Каб убачыць, як гэта працуе, праверце шаблоны апрацоўкі спісаў кодаў у метададзеных-iso19139.mcp.xsl.</p>
+</section>
+<section id="an-alternative-xslt-design-for-profiles">
+<h4>Альтэрнатыўны дызайн XSLT для профіляў<a class="headerlink" href="#an-alternative-xslt-design-for-profiles" title="Permalink to this heading">¶</a></h4>
+<p>Ва ўсіх магутных мовах будзе больш чым адзін спосаб дасягнуць пэўнай мэты. Гэты альтэрнатыўны дызайн XSLT прызначаны для апрацоўкі профіляў. Ідэя альтэрнатывы заснавана на наступных назіраннях аб GeoNetwork XSLT:</p>
+<ol class="arabic simple">
+<li><p>Усе элементы першапачаткова апрацоўваюцца шаблонамі apply ў рэжыме &amp;quot;elementEP&amp;quot;.</p></li>
+<li><p>Шаблон &amp;quot;elementEP&amp;quot; (гл. <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/xsl/metadata.xsl</span></code>) у выніку выклікае <strong>галоўны</strong> шаблон схемы/профілю.</p></li>
+<li><p>Асноўны шаблон можа першапачаткова апрацаваць элемент у рэжыме, характэрным для профілю, і калі гэта не ўдаецца (г.зн. шаблон не адпавядае і, такім чынам, элементы HTML не вяртаюцца), апрацуйце элемент у рэжыме базавай схемы.</p></li>
+</ol>
+<p>Перавага гэтай канструкцыі заключаецца ў тым, што для перавызначэння шаблона для элемента ў базавай схеме не патрэбны атрыбут priority або праверка ўмоў XPath у назве схемы.</p>
+<p>Вось прыклад для MCP (iso19139.mcp) з базавай схемай iso19139:</p>
+<ul class="simple">
+<li><p><strong>галоўны</strong> шаблон, які трэба выклікаць: metadata-iso19139.mcp.xsl:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- main template - the way into processing iso19139.mcp --&gt;</span>
+<span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;metadata-iso19139.mcp&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;false()&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;embedded&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- process in profile mode first --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsl:variable</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mcpElements&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139.mcp&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w">   </span><span class="na">select=</span><span class="s">&quot;$edit&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;embedded&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$embedded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xsl:apply-templates&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:variable&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;xsl:choose&gt;</span>
+
+<span class="w">      </span><span class="cm">&lt;!-- if we got a match in profile mode then show it --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:when</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;count($mcpElements/*)&gt;0&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:copy-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$mcpElements&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xsl:when&gt;</span>
+
+<span class="w">      </span><span class="cm">&lt;!-- otherwise process in base iso19139 mode --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsl:otherwise&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xsl:apply-templates</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="w">   </span><span class="na">select=</span><span class="s">&quot;$edit&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:with-param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;embedded&quot;</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;$embedded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/xsl:apply-templates&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xsl:otherwise&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsl:choose&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Аналіз гэтага шаблону:</p>
+<ol class="arabic simple">
+<li><p>Назва = &amp;quot;metadata-iso19139.mcp&amp;quot; выкарыстоўваецца ў шаблоне апрацоўкі асноўнага элемента ў metadata.xsl: elementEP. Асноўныя сэрвісы метададзеных, show і edit, у канчатковым выніку выклікаюць metadata-show.xsl і metadata-edit.xsl адпаведна з запісам метададзеных, перададзеным ад службы Java. Абодва гэтыя XSLT апрацоўваюць запіс метададзеных, ужываючы шаблон elementEP з metadata.xsl да каранёвага элемента. elementEP выклікае адпаведны асноўны шаблон схемы, выкарыстоўваючы назву схемы.</p></li>
+<li><p>Праца гэтага асноўнага шаблону настроена на апрацоўку ўсіх элементаў профілю метададзеных. Апрацоўка адбываецца ў адным з двух рэжымаў. Спачатку элемент апрацоўваецца ў рэжыме профілю (iso19139.mcp). Калі супадзенне знойдзена, элементы HTML будуць вернуты і скапіраваны ў выходны дакумент. Калі элементы HTML не вяртаюцца, то элемент апрацоўваецца ў рэжыме базавай схемы, iso19139.</p></li>
+</ol>
+<ul class="simple">
+<li><p>шаблоны, якія супадаюць па элементах, характэрных для профілю, маюць рэжым iso19139.mcp:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139.mcp&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;mcp:taxonomicElement&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span>.....
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>шаблоны, якія перавызначаюць элементы ў базавай схеме, апрацоўваюцца ў рэжыме профілю iso19139.mcp</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139.mcp&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;gmd:keyword&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;schema&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edit&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">  </span>.....
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Заўважылі, што загаловак шаблону профілю мае больш просты дызайн, чым той, які выкарыстоўваўся для арыгінальнага дызайну? Ні атрыбут прыярытэту, ні ўмова XPath схемы не патрабуюцца, таму што мы выкарыстоўваем рэжым, які адрозніваецца ад базавай схемы.</p>
+<ul class="simple">
+<li><p>Для падтрымкі апрацоўкі ў двух рэжымах нам трэба дадаць нулявы шаблон у рэжым профілю iso19139.mcp наступным чынам:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;iso19139.mcp&quot;</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;*|@*&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Гэты шаблон будзе адпавядаць усім элементам, для якіх у нас няма спецыяльнага шаблону ў рэжыме профілю iso19139.mcp. Замест гэтага гэтыя элементы будуць апрацоўвацца ў рэжыме базавай схемы iso19139, таму што нулявы шаблон нічога не вяртае (гл. абмеркаванне асноўнага шаблона вышэй).</p>
+<p>Астатняя частка абмеркавання ў арыгінальным дызайне, звязаная з укладкамі і г.д., адносіцца да альтэрнатыўнага дызайну і тут не паўтараецца.</p>
+</section>
+<section id="csw-presentation-xslts">
+<h4>Прэзентацыя CSW XSLT<a class="headerlink" href="#csw-presentation-xslts" title="Permalink to this heading">¶</a></h4>
+<p>Сервер CSW можна папрасіць прадаставіць запісы ў шэрагу схем вываду. GeoNetwork падтрымлівае два:</p>
+<ul class="simple">
+<li><p><strong>ogc</strong> - <a class="reference external" href="http://www.opengis.net/cat/csw/2.0.2">http://www.opengis.net/cat/csw/2.0.2</a> - вытворная дублінскага ядра</p></li>
+<li><p><strong>iso</strong> - <a class="reference external" href="http://www.isotc211.org/2005/gmd">http://www.isotc211.org/2005/gmd</a> - ISO19115/19139</p></li>
+</ul>
+<p>З кожнай з гэтых схем вываду можна запытаць <strong>кароткі</strong>, <strong>рэзюмэ</strong> або <strong>поўны</strong> набор элементаў.</p>
+<p>Гэтыя схемы вываду і наборы элементаў рэалізаваны ў GeoNetwork як XSLT і захоўваюцца ў падкаталогу «csw» каталога «present». XSLT схемы вываду ogc рэалізаваны як ogc-brief.xsl, ogc-summary і ogc-full.xsl. XSLT схемы вываду iso рэалізаваны як iso-brief.xsl, iso-summary.xsl і iso-full.xsl.</p>
+<p>Каб стварыць гэтыя XSLT для MCP, лепшым варыянтам з&amp;#39;яўляецца капіраванне і змяненне XSLT прэзентацыі csw з базавай схемы iso19139.</p>
+<p>Пасля стварэння прэзентацыйных XSLT наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extract</span><span class="o">-</span><span class="n">date</span><span class="o">-</span><span class="n">modified</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">extract</span><span class="o">-</span><span class="n">gml</span><span class="o">.</span><span class="n">xsd</span>  <span class="n">extract</span><span class="o">-</span><span class="n">uuid</span><span class="o">.</span><span class="n">xsl</span>
+<span class="n">loc</span>  <span class="n">present</span>  <span class="n">schema</span><span class="o">-</span><span class="n">conversions</span><span class="o">.</span><span class="n">xml</span>  <span class="n">schema</span><span class="o">-</span><span class="n">ident</span><span class="o">.</span><span class="n">xml</span>  <span class="n">schema</span><span class="o">.</span><span class="n">xsd</span>
+<span class="n">schema</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-the-index-fields-xsl-to-index-content-from-the-metadata-record">
+<h4>Стварэнне index-fields.xsl для індэксацыі кантэнту з запісу метададзеных<a class="headerlink" href="#creating-the-index-fields-xsl-to-index-content-from-the-metadata-record" title="Permalink to this heading">¶</a></h4>
+<p>Гэты XSLT індэксуе змест элементаў у запісе метададзеных. Сутнасць гэтага XSLT заключаецца ў выбары элементаў з запісу метададзеных і супастаўленні іх з назвамі палёў індэкса lucene. Імёны палёў індэкса lucene, якія выкарыстоўваюцца ў GeoNetwork, наступныя:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Імя поля індэкса Lucene</p></th>
+<th class="head"><p>Апісанне</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>анатацыя</p></td>
+<td><p>Анатацыя аб метададзеных</p></td>
+</tr>
+<tr class="row-odd"><td><p>любы</p></td>
+<td><p>Змесціва ўсіх элементаў метададзеных (для вольнага тэксту)</p></td>
+</tr>
+<tr class="row-even"><td><p>дата змены</p></td>
+<td><p>Дата змены запісу метададзеных</p></td>
+</tr>
+<tr class="row-odd"><td><p>createDate</p></td>
+<td><p>Дата стварэння запісу метададзеных</p></td>
+</tr>
+<tr class="row-even"><td><p>назоўнік</p></td>
+<td><p>Назоўнік маштабу ў дазволе даных</p></td>
+</tr>
+<tr class="row-odd"><td><p>спампаваць</p></td>
+<td><p>Ці далучаны да запісу метададзеных рэсурс для спампоўвання? (0 ці 1)</p></td>
+</tr>
+<tr class="row-even"><td><p>лічбавы</p></td>
+<td><p>Ці распаўсюджваецца/даступны запіс метададзеных у лічбавым фармаце? (0 ці 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>усходБЛ</p></td>
+<td><p>Усходняя абмежавальная даўгата</p></td>
+</tr>
+<tr class="row-even"><td><p>ключавое слова</p></td>
+<td><p>Ключавыя словы метаданых</p></td>
+</tr>
+<tr class="row-odd"><td><p>метаданыя StandardName</p></td>
+<td><p>Стандартнае імя метаданых</p></td>
+</tr>
+<tr class="row-even"><td><p>поўначБЛ</p></td>
+<td><p>Шырата паўночнай абмежавальнай рамкі</p></td>
+</tr>
+<tr class="row-odd"><td><p>дзейнічае</p></td>
+<td><p>Uuid запісу метаданых, які апісвае набор даных, з якімі працуе служба</p></td>
+</tr>
+<tr class="row-even"><td><p>orgName</p></td>
+<td><p>Назва арганізацыі, указаная ў кантактнай інфармацыі</p></td>
+</tr>
+<tr class="row-odd"><td><p>parentUuid</p></td>
+<td><p>Uuid бацькоўскага запісу метаданых</p></td>
+</tr>
+<tr class="row-even"><td><p>папера</p></td>
+<td><p>Ці распаўсюджваецца/даступны запіс метададзеных у папяровым фармаце? (0 ці 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>пратакол</p></td>
+<td><p>Інтэрнэт-пратакол доступу да рэсурсаў</p></td>
+</tr>
+<tr class="row-even"><td><p>Дата публікацыі</p></td>
+<td><p>Дата публікацыі рэсурсу</p></td>
+</tr>
+<tr class="row-odd"><td><p>поўдзеньБЛ</p></td>
+<td><p>Шырата паўднёвай абмежавальнай рамкі</p></td>
+</tr>
+<tr class="row-even"><td><p>spatialRepresentationType</p></td>
+<td><p>вектарныя, растравыя і інш</p></td>
+</tr>
+<tr class="row-odd"><td><p>tempExtentBegin</p></td>
+<td><p>Пачатак часовага дыяпазону</p></td>
+</tr>
+<tr class="row-even"><td><p>tempExtentEnd</p></td>
+<td><p>Канец часовага дыяпазону</p></td>
+</tr>
+<tr class="row-odd"><td><p>назва</p></td>
+<td><p>Назва метаданых</p></td>
+</tr>
+<tr class="row-even"><td><p>тэмаКот</p></td>
+<td><p>Катэгорыя тэмы метаданых</p></td>
+</tr>
+<tr class="row-odd"><td><p>тыпу</p></td>
+<td><p>Узровень іерархіі метаданых (павінен быць набор даных, калі невядомы)</p></td>
+</tr>
+<tr class="row-even"><td><p>захадБЛ</p></td>
+<td><p>Заходняя абмежавальная даўгата</p></td>
+</tr>
+</tbody>
+</table>
+<p>Напрыклад, вось супастаўленне, створанае паміж элементам метададзеных mcp:revisionDate і полем індэкса lucene changeDate:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:for-each</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;mcp:revisionDate/*&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;changeDate&quot;</span><span class="w"> </span><span class="na">string=</span><span class="s">&quot;{string(.)}&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">index=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsl:for-each&gt;</span>
+</pre></div>
+</div>
+<p>Звярніце ўвагу, што мы ствараем новы дакумент XML. Элементы поля ў гэтым дакуменце счытваюцца GeoNetwork для стварэння аб&amp;#39;екта дакумента Lucene для індэксацыі (гл. клас SearchManager у крыніцы GeoNetwork).</p>
+<p>Яшчэ раз, таму што MCP з&amp;#39;яўляецца профілем ISO19115/19139, верагодна, лепш за ўсё змяніць <code class="docutils literal notranslate"><span class="pre">index-fields.xsl</span></code> са схемы iso19139 для апрацоўкі прастор імёнаў і дадатковых элементаў MCP.</p>
+<p>На гэтым этапе наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extract</span><span class="o">-</span><span class="n">date</span><span class="o">-</span><span class="n">modified</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">extract</span><span class="o">-</span><span class="n">gml</span><span class="o">.</span><span class="n">xsd</span>  <span class="n">extract</span><span class="o">-</span><span class="n">uuid</span><span class="o">.</span><span class="n">xsl</span>
+<span class="n">index</span><span class="o">-</span><span class="n">fields</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">loc</span>  <span class="n">present</span>  <span class="n">schema</span><span class="o">-</span><span class="n">conversions</span><span class="o">.</span><span class="n">xml</span>  <span class="n">schema</span><span class="o">-</span><span class="n">ident</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">schema</span><span class="o">.</span><span class="n">xsd</span>  <span class="n">schema</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-the-sample-data-directory">
+<h4>Стварэнне каталога выбарачных дадзеных<a class="headerlink" href="#creating-the-sample-data-directory" title="Permalink to this heading">¶</a></h4>
+<p>Гэта просты каталог. Змесціце файлы MEF з узорамі метададзеных у гэты каталог. Пераканайцеся, што яны маюць суфікс <code class="docutils literal notranslate"><span class="pre">.mef</span></code>.</p>
+<p>Файл MEF - гэта zip-архіў з метададзенымі, мініяцюрамі, файлавымі інтэрнэт-рэсурсамі і інфармацыйным файлам з апісаннем змесціва. Больш падрабязна змесціва файла MEF разглядаецца ў наступным раздзеле гэтага кіраўніцтва.</p>
+<p>Узоры дадзеных у гэтым каталогу можна дадаць у каталог з дапамогай меню «Адміністраванне».</p>
+<p>На гэтым этапе наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extract</span><span class="o">-</span><span class="n">date</span><span class="o">-</span><span class="n">modified</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">extract</span><span class="o">-</span><span class="n">gml</span><span class="o">.</span><span class="n">xsd</span>  <span class="n">extract</span><span class="o">-</span><span class="n">uuid</span><span class="o">.</span><span class="n">xsl</span>
+<span class="n">index</span><span class="o">-</span><span class="n">fields</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">loc</span>  <span class="n">present</span>  <span class="n">sample</span><span class="o">-</span><span class="n">data</span> <span class="n">schema</span><span class="o">-</span><span class="n">ident</span><span class="o">.</span><span class="n">xml</span>  <span class="n">schema</span><span class="o">.</span><span class="n">xsd</span>
+<span class="n">schema</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-schematrons-to-describe-mcp-conditions">
+<h4>Стварэнне схематронаў для апісання ўмоў MCP<a class="headerlink" href="#creating-schematrons-to-describe-mcp-conditions" title="Permalink to this heading">¶</a></h4>
+<p>Схематроны - гэта правілы, якія выкарыстоўваюцца для праверкі ўмоў і змесціва ў запісе метададзеных у рамках двухэтапнага працэсу праверкі, які выкарыстоўваецца GeoNetwork.</p>
+<p>Правілы Schematron ствараюцца ў каталогу schematrons, які вы праверылі раней - гл. <a class="reference internal" href="#preparation"><span class="std std-ref">Падрыхтоўка</span></a> вышэй.</p>
+<p>Прыклад правіла:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- anzlic/trunk/gml/3.2.0/gmd/spatialRepresentation.xsd--&gt;</span>
+<span class="cm">&lt;!-- TEST 12 --&gt;</span>
+<span class="nt">&lt;sch:pattern&gt;</span>
+<span class="w">  </span><span class="nt">&lt;sch:title&gt;</span>$loc/strings/M30<span class="nt">&lt;/sch:title&gt;</span>
+<span class="w">  </span><span class="nt">&lt;sch:rule</span><span class="w"> </span><span class="na">context=</span><span class="s">&quot;//gmd:MD_Georectified&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;sch:let</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;cpd&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;(gmd:checkPointAvailability/gco:Boolean=&#39;1&#39; or gmd:checkPointAvailability/gco:Boolean=&#39;true&#39;) and</span>
+<span class="s">      (not(gmd:checkPointDescription) or count(gmd:checkPointDescription[@gco:nilReason=&#39;missing&#39;])&gt;0)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;sch:assert</span>
+<span class="w">      </span><span class="na">test=</span><span class="s">&quot;$cpd = false()&quot;</span>
+<span class="w">      </span><span class="nt">&gt;</span>$loc/strings/alert.M30<span class="nt">&lt;/sch:assert&gt;</span>
+<span class="w">    </span><span class="nt">&lt;sch:report</span>
+<span class="w">      </span><span class="na">test=</span><span class="s">&quot;$cpd = false()&quot;</span>
+<span class="w">      </span><span class="nt">&gt;</span>$loc/strings/report.M30<span class="nt">&lt;/sch:report&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/sch:rule&gt;</span>
+<span class="nt">&lt;/sch:pattern&gt;</span>
+</pre></div>
+</div>
+<p>Як і для большасці GeoNetwork, вывад гэтага правіла можа быць лакалізаваны на розныя мовы. Адпаведныя лакалізаваныя радкі:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;strings&gt;</span>
+
+<span class="w">  </span>.....
+
+<span class="w">  </span><span class="nt">&lt;M30&gt;</span>[ISOFTDS19139:2005-TableA1-Row15]<span class="w"> </span>-<span class="w"> </span>Check<span class="w"> </span>point<span class="w"> </span>description<span class="w"> </span>required<span class="w"> </span>if<span class="w"> </span>available<span class="nt">&lt;/M30&gt;</span>
+
+<span class="w">  </span>.....
+
+<span class="w">  </span><span class="nt">&lt;alert.M30&gt;&lt;div&gt;</span>&#39;checkPointDescription&#39;<span class="w"> </span>is<span class="w"> </span>mandatory<span class="w"> </span>if<span class="w"> </span>&#39;checkPointAvailability&#39;<span class="w"> </span>=<span class="w"> </span>1<span class="w"> </span>or<span class="w"> </span>true.<span class="nt">&lt;/div&gt;&lt;/alert.M30&gt;</span>
+
+<span class="w">  </span>.....
+
+<span class="w">  </span><span class="nt">&lt;report.M30&gt;</span>Check<span class="w"> </span>point<span class="w"> </span>description<span class="w"> </span>documented.<span class="nt">&lt;/report.M30&gt;</span>
+
+<span class="w">  </span>.....
+
+<span class="nt">&lt;/strings&gt;</span>
+</pre></div>
+</div>
+<p>Працэдура дадання правілаў schematron, працуючы ў каталогу schematrons:</p>
+<ol class="arabic simple">
+<li><p>Place your schematron rules in 'rules'. Naming convention is
+'schematron-rules-&lt;suffix&gt;.sch' eg. <code class="docutils literal notranslate"><span class="pre">schematron-rules-iso-mcp.sch</span></code>.
+Place localized strings for the rule assertions into 'rules/loc/&lt;language_prefix&gt;'.</p></li>
+</ol>
+<p>Правілы Schematron складаюцца пры загрузцы схемы.</p>
+<p>На гэтым этапе наша новая схема плагіна GeoNetwork для MCP змяшчае:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extract</span><span class="o">-</span><span class="n">date</span><span class="o">-</span><span class="n">modified</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">extract</span><span class="o">-</span><span class="n">gml</span><span class="o">.</span><span class="n">xsd</span>  <span class="n">extract</span><span class="o">-</span><span class="n">uuid</span><span class="o">.</span><span class="n">xsl</span>
+<span class="n">index</span><span class="o">-</span><span class="n">fields</span><span class="o">.</span><span class="n">xsl</span>  <span class="n">loc</span>  <span class="n">present</span>  <span class="n">sample</span><span class="o">-</span><span class="n">data</span>  <span class="n">schema</span><span class="o">-</span><span class="n">conversions</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">schema</span><span class="o">-</span><span class="n">ident</span><span class="o">.</span><span class="n">xml</span>  <span class="n">schema</span><span class="o">.</span><span class="n">xsd</span>  <span class="n">schema</span>  <span class="n">schematron</span><span class="o">/</span><span class="n">schematron</span><span class="o">-</span><span class="n">rules</span><span class="o">-</span><span class="n">iso</span><span class="o">-</span><span class="n">mcp</span><span class="o">.</span><span class="n">sch</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-the-components-necessary-to-create-and-edit-mcp-metadata">
+<h4>Даданне кампанентаў, неабходных для стварэння і рэдагавання метададзеных MCP<a class="headerlink" href="#adding-the-components-necessary-to-create-and-edit-mcp-metadata" title="Permalink to this heading">¶</a></h4>
+<p>Да гэтага часу мы дадалі ўсе кампаненты, неабходныя GeoNetwork для ідэнтыфікацыі, прагляду і праверкі запісаў метададзеных MCP. Зараз мы дадамо астатнія кампаненты, неабходныя для стварэння і рэдагавання запісаў метададзеных MCP.</p>
+<p>Мы пачнем з XSLT, якія задаюць змест розных элементаў у запісах метададзеных MCP.</p>
+</section>
+<section id="creating-set-uuid-xsl">
+<h4>Стварэнне set-uuid.xsl<a class="headerlink" href="#creating-set-uuid-xsl" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>set-uuid.xsl</strong> - гэты XSLT прымае ў якасці параметра UUID запісу метададзеных і запісвае яго ў адпаведны элемент запісу метададзеных. Для MCP гэты элемент такі ж, як базавая схема ISO (у GeoNetwork называецца iso19139), а менавіта gmd:fileIdentifier. Аднак, паколькі MCP выкарыстоўвае іншую прастору імёнаў для каранёвага элемента, гэты XSLT неабходна змяніць.</p></li>
+</ul>
+</section>
+<section id="creating-the-extract-set-and-unset-thumbnail-xslts">
+<h4>Стварэнне экстракта, усталяванне і адключэнне эскізаў XSLT<a class="headerlink" href="#creating-the-extract-set-and-unset-thumbnail-xslts" title="Permalink to this heading">¶</a></h4>
+<p>Калі ваш запіс метададзеных можа мець мініяцюру або спасылку для прагляду малюнкаў, тады вы захочаце дадаць XSLT, якія здабываюць, усталёўваюць і адмяняюць гэтую інфармацыю, каб вы маглі выкарыстоўваць інтэрфейс рэдагавання мініяцюр GeoNetwork.</p>
+<p>Тры XSLT, якія падтрымліваюць гэты інтэрфейс:</p>
+<ul class="simple">
+<li><p><strong>extract-thumbnails.xsl</strong> - гэты XSLT здабывае мініяцюры/графіку прагляду з запісу метададзеных, ператвараючы іх у агульны XML, аднолькавы для ўсіх схем метададзеных. Элементы павінны мець кантэнт, які разумее GeoNetwork. Ніжэй прыведзены прыклад таго, чаго чакае інтэрфейс мініяцюр для iso19139 (мы прадублюем гэтае патрабаванне для MCP):</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:graphicOverview&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:MD_BrowseGraphic&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:fileName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>bluenet_s.png<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:fileName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:fileDescription&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>thumbnail<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:fileDescription&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:fileType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>png<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:fileType&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:MD_BrowseGraphic&gt;</span>
+<span class="nt">&lt;/gmd:graphicOverview&gt;</span>
+<span class="nt">&lt;gmd:graphicOverview&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:MD_BrowseGraphic&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:fileName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>bluenet.png<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:fileName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:fileDescription&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>large_thumbnail<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:fileDescription&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:fileType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>png<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:fileType&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:MD_BrowseGraphic&gt;</span>
+<span class="nt">&lt;/gmd:graphicOverview&gt;</span>
+</pre></div>
+</div>
+<p>Пры запуску <code class="docutils literal notranslate"><span class="pre">extract-thumbnails.xsl</span></code> з гэтай інфармацыі ствараецца невялікая іерархія XML, якая выглядае прыкладна так:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;thumbnail&gt;</span>
+<span class="w">  </span><span class="nt">&lt;large&gt;</span>
+<span class="w">    </span>bluenet.png
+<span class="w">  </span><span class="nt">&lt;/large&gt;</span>
+<span class="w">  </span><span class="nt">&lt;small&gt;</span>
+<span class="w">    </span>bluenet_s.png
+<span class="w">  </span><span class="nt">&lt;/small&gt;</span>
+<span class="nt">&lt;/thumbnail&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>set-thumbnail.xsl</strong> - гэты XSLT робіць супрацьлегласць extract-thumbnails.xsl. Для апісання вялікіх і малых эскізаў выкарыстоўваецца спрошчаная агульная структура XML, якая выкарыстоўваецца GeoNetwork, і ствараюцца элементы запісу метададзеных, неабходныя для іх прадстаўлення. Гэта крыху больш складаны XSLT, чым extract-thumbnails.xsl, таму што існуючыя элементы ў запісе метададзеных неабходна захаваць, а новыя элементы трэба стварыць у іх правільных месцах.</p></li>
+<li><p><strong>unset-thumbnail.xsl</strong> - гэты XSLT нацэльвае і выдаляе элементы запісу метададзеных, якія апісваюць пэўную мініяцюру. Астатнія элементы запісу метададзеных захоўваюцца.</p></li>
+</ul>
+<p>Паколькі MCP з&amp;#39;яўляецца профілем ISO19115/19139, самы просты шлях да стварэння гэтых XSLT - скапіяваць іх са схемы iso19139 і змяніць іх для змяненняў у прасторы імёнаў, неабходных для MCP.</p>
+</section>
+<section id="creating-the-update-xslts">
+<h4>Стварэнне абнаўлення-... XSLT<a class="headerlink" href="#creating-the-update-xslts" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>update-child-from-parent-info.xsl</strong> - гэты XSLT запускаецца, калі для даччынага запісу трэба скапіяваць змесціва з бацькоўскага запісу. Гэта XSLT, які змяняе змест некалькіх элементаў і пакідае астатнія элементы некранутымі. Паводзіны гэтага XSLT будуць залежаць ад таго, якія элементы бацькоўскага запісу будуць выкарыстоўвацца для абнаўлення элементаў даччынага запісу.</p></li>
+<li><p><strong>update-fixed-info.xsl</strong> - гэты XSLT запускаецца пасля рэдагавання, каб выправіць некаторыя элементы і змест у запісе метададзеных. Для MCP ёсць шэраг дзеянняў, якія мы хацелі б выканаць, каб падключыць пэўныя элементы і кантэнт. Для гэтага XSLT выкарыстоўвае наступную логіку апрацоўкі:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">the</span> <span class="n">element</span> <span class="ow">is</span> <span class="n">one</span> <span class="n">that</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="n">process</span> <span class="n">then</span>
+  <span class="n">add</span> <span class="n">a</span> <span class="n">template</span> <span class="k">with</span> <span class="n">a</span> <span class="n">match</span> <span class="n">condition</span> <span class="k">for</span> <span class="n">that</span> <span class="n">element</span> <span class="ow">and</span> <span class="n">process</span> <span class="n">it</span>
+<span class="k">else</span> <span class="n">copy</span> <span class="n">the</span> <span class="n">element</span> <span class="n">to</span> <span class="n">output</span>
+</pre></div>
+</div>
+<p>Паколькі MCP з&amp;#39;яўляецца профілем ISO19115/19139, самы просты шлях да стварэння гэтага XSLT - скапіяваць update-fixed-info.xsl са схемы iso19139 і змяніць яго для змяненняў у прасторы імёнаў, неабходных MCP, а затым уключыць апрацоўку мы хочам.</p>
+<p>Просты прыклад апрацоўкі MCP - пераканацца, што элементы gmd:metadataStandardName і gmd:metadataStandardVersion маюць змесціва, неабходнае для таго, каб гарантаваць, што запіс распазнаецца як MCP. Для гэтага мы можам дадаць два шаблоны наступным чынам:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;gmd:metadataStandardName&quot;</span><span class="w"> </span><span class="na">priority=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:copy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>Australian<span class="w"> </span>Marine<span class="w"> </span>Community<span class="w"> </span>Profile<span class="w"> </span>of<span class="w"> </span>ISO<span class="w"> </span>19115:2005/19139<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:copy&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+
+<span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;gmd:metadataStandardVersion&quot;</span><span class="w"> </span><span class="na">priority=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:copy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>MCP:BlueNet<span class="w"> </span>V1.5<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:copy&gt;</span>
+<span class="nt">&lt;/xsl:template&gt;</span>
+</pre></div>
+</div>
+<p>Апрацоўку <code class="docutils literal notranslate"><span class="pre">update-fixed-info.xsl</span></code> можна ўключыць/выключыць з дапамогай сцяжка <em>Аўтаматычныя выпраўленні</em> ў меню канфігурацыі сістэмы. Па змаўчанні ён уключаны.</p>
+<p>Некаторыя важныя задачы, якія выконваюцца ў <code class="docutils literal notranslate"><span class="pre">upgrade-fixed-info.xsl</span></code>:</p>
+<ul class="simple">
+<li><p>стварэнне URL-адрасоў для метададзеных з далучанымі файламі (напрыклад, onlineResources з «Файлам для загрузкі» ў iso19139)</p></li>
+<li><p>пазнака даты / дата перагляду</p></li>
+<li><p>усталяванне URL-адрасоў спісаў кодаў, якія паказваюць на онлайн-каталогі спісаў кодаў ISO</p></li>
+<li><p>даданне атрыбутаў сістэмы прасторавай адліку па змаўчанні да прасторавых экстэнтаў</p></li>
+</ul>
+<p>Канкрэтная задача, неабходная для MCP <code class="docutils literal notranslate"><span class="pre">update-fixed-info.xsl</span></code>, заключалася ў тым, каб аўтаматычна стварыць інтэрнэт-рэсурс з URL, які паказвае на службу metadata.show з параметрам, усталяваным у метададзеных uuid. Для гэтага спатрэбіліся некаторыя змены ў update-fixed-info.xsl, які пастаўляецца разам з iso19139. У прыватнасці:</p>
+<ul class="simple">
+<li><p>бацькоўскія элементы могуць не прысутнічаць у запісе метададзеных</p></li>
+<li><p>апрацоўка элементаў інтэрнэт-рэсурсу для пункту праўдзівасці метададзеных URL не павінен перашкаджаць іншай апрацоўцы элементаў інтэрнэт-рэсурсу</p></li>
+</ul>
+<p>Замест таго, каб апісваць асобныя крокі, неабходныя для рэалізацыі гэтага, і рашэнні, неабходныя ў мове XSLT, паглядзіце на <code class="docutils literal notranslate"><span class="pre">update-fixed-info.xsl</span></code>, які ўжо ёсць для схемы MCP у каталогу iso19139.mcp, і звярніцеся да кропка паказвае вышэй.</p>
+</section>
+<section id="creating-the-templates-directory">
+<h4>Стварэнне каталога шаблонаў<a class="headerlink" href="#creating-the-templates-directory" title="Permalink to this heading">¶</a></h4>
+<p>Гэта просты каталог. Змясціце ў гэты каталог файлы метаданых XML, якія будуць выкарыстоўвацца ў якасці шаблонаў. Пераканайцеся, што яны маюць суфікс <code class="docutils literal notranslate"><span class="pre">.xml</span></code>. Шаблоны ў гэтым каталогу можна дадаць у каталог з дапамогай меню «Адміністраванне».</p>
+</section>
+<section id="editor-behaviour-adding-schema-suggestions-xml-and-schema-substitutes-xml">
+<h4>Паводзіны рэдактара: даданне schema-suggestions.xml і schema-substitutes.xml<a class="headerlink" href="#editor-behaviour-adding-schema-suggestions-xml-and-schema-substitutes-xml" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>schema-suggestions.xml</strong> - паводзіны пашыранага рэдактара GeoNetwork па змаўчанні пры стварэнні форм рэдактара - паказваць элементы, якіх няма ў запісе метададзеных, як неразгорнутыя элементы. Каб дадаць гэтыя элементы ў запіс, карыстальнік павінен будзе націснуць на значок «+» побач з назвай элемента. Гэта можа быць стомным, асабліва таму, што некаторыя стандарты метададзеных маюць элементы, укладзеныя ў іншыя (напрыклад, складаныя элементы). Файл schema-suggestions.xml дазваляе ўказваць элементы, якія павінны аўтаматычна пашырацца рэдактарам. Прыкладам гэтага з&amp;#39;яўляецца інфармацыя аб інтэрнэт-рэсурсах у стандарце ISO19115/19139. Калі наступны XML быў дададзены ў файл <code class="docutils literal notranslate"><span class="pre">schema-suggestions.xml</span></code>:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:CI_OnlineResource&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;suggest</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:protocol&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;suggest</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:name&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;suggest</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:description&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/field&gt;</span>
+</pre></div>
+</div>
+<p>У выніку гэтага пры пашырэнні элемента інтэрнэт-рэсурсу ў рэдактары аўтаматычна з&amp;#39;яўляюцца палі ўводу для пратаколу (выпадальны спіс/спіс выбару), імя і апісанне.</p>
+<p>Зноў жа, добрым месцам для пачатку стварэння файла <code class="docutils literal notranslate"><span class="pre">schema-suggestions.xml</span></code> для MCP з&amp;#39;яўляецца файл <code class="docutils literal notranslate"><span class="pre">schema-suggestions.xml</span></code> для схемы iso19139.</p>
+<ul class="simple">
+<li><p><strong>schema-substitutes.xml</strong> - Нагадаем з папярэдняга раздзела <a class="reference internal" href="#schema-and-schema-xsd"><span class="std std-ref">Стварэнне каталога схем і файла schema.xsd</span></a>, што метад, які мы выкарыстоўвалі для пашырэння базавых схем ISO19115/19139, заключаецца ў пашырэнні базавага тыпу, вызначэнні новага элемента з пашыранай базай тыпу і дазволіць новаму элементу замяніць базавы элемент. Так, напрыклад, у MCP мы хочам дадаць новы элемент абмежавання рэсурсаў, які змяшчае інфармацыю аб ліцэнзаванні Creative Commons і іншых тыпаў Commons. Гэта патрабуе пашырэння тыпу MD_Constraints і вызначэння новага элемента mcp:MD_Commons, які можа замяніць gmd:MD_Constraints. Гэта паказана ў наступным фрагменце XSD:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MD_CommonsConstraints_Type&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xs:annotation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xs:documentation&gt;</span>
+<span class="w">      </span>Add<span class="w"> </span>MD_Commons<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>extension<span class="w"> </span>of<span class="w"> </span>gmd:MD_Constraints_Type
+<span class="w">    </span><span class="nt">&lt;/xs:documentation&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xs:annotation&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;gmd:MD_Constraints_Type&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;jurisdictionLink&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gmd:URL_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;licenseLink&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gmd:URL_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;imageLink&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gmd:URL_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;licenseName&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;attributionConstraints&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;derivativeConstraints&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;commercialUseConstraints&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;collectiveWorksConstraints&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;otherConstraints&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;mcp:commonsType&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;gco:isoType&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="w"> </span><span class="na">fixed=</span><span class="s">&quot;gmd:MD_Constraints&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+
+<span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MD_Commons&quot;</span><span class="w"> </span><span class="na">substitutionGroup=</span><span class="s">&quot;gmd:MD_Constraints&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;mcp:MD_CommonsConstraints_Type&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Для запісаў MCP рэдактар GeoNetwork пакажа выбар элементаў з групы замены для gmd:MD_Constraints пры даданні «Абмежаванняў рэсурсаў» у дакумент метададзеных. Цяпер гэта будзе ўключаць mcp:MD_Commons.</p>
+<figure class="align-default">
+<img alt="../_images/Editor-Constraints-Choices.png" src="../_images/Editor-Constraints-Choices.png" />
+</figure>
+<p>Звярніце ўвагу, што з дапамогай аналагічнага працэсу два іншыя элементы, цяпер састарэлыя на карысць MD_Commons, таксама былі дададзены ў якасці замены для MD_Constraints. Калі было неабходна абмежаваць выбар, паказаны ў гэтым меню, скажам, выдаліць састарэлыя элементы і абмежаваць выбар толькі прававымі, бяспечнымі і агульнымі, то гэта можна зрабіць з дапамогай наступнага фрагмента XML у файле schema-substitutes.xml :</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:MD_Constraints&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;substitute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:MD_LegalConstraints&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;substitute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmd:MD_SecurityConstraints&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;substitute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mcp:MD_Commons&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/field&gt;</span>
+</pre></div>
+</div>
+<p>Вынік гэтай змены паказаны ніжэй.</p>
+<figure class="align-default">
+<img alt="../_images/Editor-Constraints-Choices-Modified.png" src="../_images/Editor-Constraints-Choices-Modified.png" />
+</figure>
+<p>Зноў жа, добрым месцам для пачатку стварэння файла schema-substitutes.xml для MCP з&amp;#39;яўляецца файл schema-substitutes.xml для схемы iso19139.</p>
+</section>
+<section id="adding-components-to-support-conversion-of-metadata-records-to-other-schemas">
+<h4>Даданне кампанентаў для падтрымкі пераўтварэння запісаў метададзеных у іншыя схемы<a class="headerlink" href="#adding-components-to-support-conversion-of-metadata-records-to-other-schemas" title="Permalink to this heading">¶</a></h4>
+</section>
+<section id="creating-the-convert-directory">
+<h4>Стварэнне каталога канвертавання<a class="headerlink" href="#creating-the-convert-directory" title="Permalink to this heading">¶</a></h4>
+<p>Калі новая схема плагіна GeoNetwork павінна падтрымліваць трансляцыю запісаў метададзеных у іншыя схемы на хаду, тады трэба стварыць каталог пераўтварэння і запоўніць яго адпаведнымі XSLT.</p>
+</section>
+<section id="supporting-oaipmh-conversions">
+<h4>Падтрымка пераўтварэнняў OAIPMH<a class="headerlink" href="#supporting-oaipmh-conversions" title="Permalink to this heading">¶</a></h4>
+<p>Сервер OAIPMH у GeoNetwork можа дастаўляць запісы метададзеных з любой са схем, вядомых GeoNetwork. Яго таксама можна наладзіць для дастаўкі схем, невядомых GeoNetwork, калі існуе XSLT для пераўтварэння запісу метададзеных у гэтую схему. Файл <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/WEB-INF/config-oai-prefixes.xml</span></code> апісвае схемы (вядомыя як прэфіксы ў OAI), якія могуць стварацца з дапамогай XSLT. Просты прыклад змесціва гэтага файла паказаны ніжэй:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;schemas&gt;</span>
+<span class="w">  </span><span class="nt">&lt;schema</span><span class="w"> </span><span class="na">prefix=</span><span class="s">&quot;oai_dc&quot;</span><span class="w"> </span><span class="na">nsUrl=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/&quot;</span>
+<span class="w">          </span><span class="na">schemaLocation=</span><span class="s">&quot;http://www.openarchives.org/OAI/2.0/oai_dc.xsd&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/schemas&gt;</span>
+</pre></div>
+</div>
+<p>У выпадку з прэфіксам oai_dc, паказаным вышэй, калі канвэртар схемы з прэфіксам <em>oai_dc</em> існуе ў файле <code class="docutils literal notranslate"><span class="pre">schema-conversions.xml</span></code> схемы GeoNetwork, то запісы, якія належаць да гэтай схемы, будуць ператвораны і ўключаны ў OAIPMH запытвае прэфікс <em>oai_dc</em>. Глядзіце <a class="reference internal" href="#schema-conversions"><span class="std std-ref">Стварэнне файла schema-conversions.xml</span></a> для атрымання дадатковай інфармацыі.</p>
+<p>Каб дадаць падтрымку oai_dc для MCP, самым простым спосабам з&amp;#39;яўляецца скапіяваць oai_dc.xsl з каталога канвертавання схемы iso19139, змяніць яго, каб ён працаваў з рознымі прасторамі імёнаў і дадатковымі элементамі MCP, і дадаць у <a href="#id1"><span class="problematic" id="id2">``</span></a>schema-conversions Файл .xml для MCP.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="adding-static-pages.html" class="btn btn-neutral float-left" title="Adding static pages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="characterset.html" class="btn btn-neutral float-right" title="Набор знакаў" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
