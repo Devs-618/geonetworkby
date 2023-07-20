@@ -891,6 +891,9 @@
               <directory>${project.basedir}/../web-ui/src/main/resources</directory>
             </resource>
             <resource>
+              <directory>${project.basedir}/../web/src/main/resources</directory>
+            </resource>
+            <resource>
               <directory>${build.webapp.resources}</directory>
             </resource>
           </webResources>
