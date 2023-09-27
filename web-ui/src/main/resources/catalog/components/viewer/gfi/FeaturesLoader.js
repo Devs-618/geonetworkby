@@ -108,6 +108,7 @@
               return el.toLowerCase().localeCompare('application/json') == 0
               || el.toLowerCase().localeCompare('application/geojson') == 0
               || el.toLowerCase().localeCompare('application/vnd.ogc.gml') == 0
+              || el.toLowerCase().localeCompare('text/html') == 0
               || el.toLowerCase().localeCompare('text/xml') == 0;
             });
 
@@ -163,6 +164,9 @@
         this.features = format.readFeatures(response.data, {
           featureProjection: map.getView().getProjection()
         });
+      } else if(infoFormat &&
+        (infoFormat.toLowerCase().localeCompare('text/html') == 0)) {
+        document.getElementById('someStuff').innerHTML = response.data;
       } else {
         //Ooops, unknown format.
         console.warn("Unknown format for GetFeatureInfo " + infoFormat);
