@@ -1,10 +1,10 @@
 {
-  "realm": "${env.KEYCLOAK_REALM}",
-  "auth-server-url": "${env.KEYCLOAK_AUTH_SERVER_URL}",
+  "realm": "${env.KEYCLOAK_REALM:gn}",
+  "auth-server-url": "${env.KEYCLOAK_AUTH_SERVER_URL:http://172.31.6.145:8083}",
   "ssl-required": "${env.KEYCLOAK_SSL_REQUIRED:external}",
-  "resource": "${env.KEYCLOAK_RESOURCE}",
+  "resource": "${env.KEYCLOAK_RESOURCE:geonetwork}",
   "credentials": {
-    "secret": "${env.KEYCLOAK_SECRET}"
+    "secret": "${env.KEYCLOAK_SECRET:jD6mp5E0bJWNoJfLH01gxmqjH5p0y59z}"
   },
   "confidential-port": "${env.KEYCLOAK_CONFIDENTIAL_PORT:8443}",
   "disable-trust-manager": "${env.KEYCLOAK_DISABLE_TRUST_MANAGER:false}",
