@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<dl>
+  <h3>{{parent}}</h3>
+  <div fmt-repeat="el in elements" fmt-repeat-only-children="true">
+    <dt>{{el.name}}</dt>
+    <dd>{{el.text}}</dd>
+  </div>
+</dl>
+</html>
