@@ -422,7 +422,7 @@
     "mdvalid": "Метададзеныя сапраўдныя",
     "mdinvalid": "Метададзеныя несапраўдныя",
     "mdinvalidcantpublish": "Няправільныя метаданыя не могуць быць апублікаваны",
-    "mdnonapprovedcantpublish": "Non approved metadata can't be published",
+    "mdnonapprovedcantpublish": "Неўхваленыя метаданыя нельга апублікаваць",
     "mdnovalidation": "Метададзеныя не маюць інфармацыі аб праверцы",
     "setall": "Усталюйце ўсе прывілеі",
     "print_legend": "Легенда",

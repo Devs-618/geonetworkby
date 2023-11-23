@@ -44,13 +44,13 @@
     "removeField": "Удалить это поле",
     "addXpath-help": "Обновление записей с использованием XPath требует тщательного определения изменений. Изменение определяется:",
     "addXpathTitle": "необязательное название",
-    "addXpathXpath": "обязательный <a href='http://xmlfr.org/w3c/TR/xpath/'>XPath</a> для указания на элемент(ы) для обновления. XPath может содержать выражение фильтра.",
+    "addXpathXpath": "обязательный <a href='https://www.w3.org/TR/1999/REC-xpath-19991116/'>XPath</a> , указывающий на обновляемые элементы. XPath может содержать выражение фильтра.",
     "addXpathInsertMode": "тип обновления",
     "xpath": "XPath",
     "xpathValue": "Текстовое или XML-значение",
     "gn_create": "Создайте элемент",
-    "gn_add": "Add the element or value (in all matching parents) or create it",
-    "gn_replace": "Replace the element or value (in all matching parents)",
+    "gn_add": "Добавить элемент или значение (во всех родителях соответствие ) или создайте его.",
+    "gn_replace": "Заменить элемент или значение (во всех соответствие родителям)",
     "gn_delete": "Удалить все соответствующие элементы",
     "addXpathValue": "значение, которое может быть фрагментом XML, если режим не &quot;удалить&quot;",
     "chooseASet": "1. Выберите набор записей",
@@ -428,5 +428,6 @@
     "confirmCancelEdit": "Вы хотите отменить все изменения и закрыть редактор?",
     "allowEditGroupMembers": "Разрешить редакторам группы редактировать",
     "wmsSelectedLayers": "Выбранные слои",
-    "wmsSelectedLayersNone": "Слои не выбраны"
+    "wmsSelectedLayersNone": "Слои не выбраны",
+    "remoteAssociatedMetadataTitlePlaceholder": "Удаленно связанное метаданные название"
 }

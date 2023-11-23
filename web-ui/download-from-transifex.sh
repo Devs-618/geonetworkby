@@ -7,7 +7,7 @@
 mkdir transifex-src
 cd transifex-src
 tx init --host=www.transifex.com
-tx set --auto-remote https://www.transifex.com/projects/p/core-geonetwork/
+tx set --auto-remote https://app.transifex.com/projects/p/core-geonetwork/
 tx pull -a -r 'core-geonetwork.editor'
 tx pull -a -r 'core-geonetwork.admin'
 tx pull -a -r 'core-geonetwork.core'
@@ -18,21 +18,8 @@ TRANSLATION_DIR=transifex-src/translations/core-geonetwork.
 SRC_DIR=src/main/resources/catalog/locales
 
 l=(
-    'es::es'
-    'fr::fr'
-    'de::de'
-    'it::it'
-    'ko::ko'
-    'nl::nl'
-    'cs::cs_CZ'
-    'ca::ca'
-    'pt::pt_BR'
-    'fi::fi'
-    'is::is'
-    'ru::ru'
-    'zh::zh'
-    'sk::sk_SK'
-    'sv::sv_SE'
+    'be_BY::be_BY'
+    'ru::ru_RU'
 )
 
 for index in "${l[@]}" ; do

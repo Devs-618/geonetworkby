@@ -44,13 +44,13 @@
     "removeField": "Выдаліце гэта поле",
     "addXpath-help": "Абнаўленне запісаў з дапамогай XPath патрабуе ўважлівага вызначэння змяненняў. Змена вызначаецца:",
     "addXpathTitle": "неабавязковая назва",
-    "addXpathXpath": "абавязковы <a href='http://xmlfr.org/w3c/TR/xpath/'>XPath</a> для ўказання на элемент(ы) для абнаўлення. XPath можа ўтрымліваць выраз фільтра.",
+    "addXpathXpath": "абавязковы <a href='https://www.w3.org/TR/1999/REC-xpath-19991116/'>XPath</a> для ўказання на элемент(ы) для абнаўлення. XPath можа ўтрымліваць выраз фільтра.",
     "addXpathInsertMode": "тып абнаўлення",
     "xpath": "XPath",
     "xpathValue": "Тэкставае або XML-значэнне",
     "gn_create": "Стварыце элемент",
-    "gn_add": "Add the element or value (in all matching parents) or create it",
-    "gn_replace": "Replace the element or value (in all matching parents)",
+    "gn_add": "Дадайце элемент або значэнне (ва ўсіх адпаведных бацькоў) або стварыце яго",
+    "gn_replace": "Замяніць элемент або значэнне (ва ўсіх адпаведных бацькоўскіх элементах)",
     "gn_delete": "Выдаліце ўсе адпаведныя элементы",
     "addXpathValue": "значэнне, якое можа быць фрагментам XML, калі рэжым не &quot;выдаліць&quot;",
     "chooseASet": "1. Выберыце набор запісаў",
@@ -428,5 +428,6 @@
     "confirmCancelEdit": "Вы хочаце адмяніць усе змены і закрыць рэдактар?",
     "allowEditGroupMembers": "Дазволіць рэдактарам групы рэдагаваць",
     "wmsSelectedLayers": "Выдзеленыя пласты",
-    "wmsSelectedLayersNone": "Слоі не выбраны"
+    "wmsSelectedLayersNone": "Слоі не выбраны",
+    "remoteAssociatedMetadataTitlePlaceholder": "Загаловак аддаленых звязаных метададзеных"
 }
