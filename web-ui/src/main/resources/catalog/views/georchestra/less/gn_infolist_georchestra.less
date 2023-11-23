@@ -1,0 +1,119 @@
+@import "../../../style/gn_bootstrap.less";
+@import "gn_variables_georchestra.less";
+
+// row for the info lists
+.gn-row-info {
+    padding: 30px 20px 40px 20px;
+    background-color: @gn-info-background-color;
+    .nav-pills {
+      text-align: left !important;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+  }
+
+  .gn-info-list-slide {
+    .gn-info-list {
+      li {
+        width: 33%;
+        height: 250px;
+        transition: all 200ms ease-in;
+        transform: scale(1);
+        .resultcard {
+          .title {
+            background: @gray-dark;
+            border: @gray-dark;
+            box-shadow: 0 0 5px #a7a7a7;
+            border-radius: 10px 10px 0 0;
+            h4 {
+              color: #fff;
+              font-size: 15px;
+              font-weight: 300;
+              margin: 0;
+              max-width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              line-height: 22px;
+            }
+          }
+          .abstract {
+            border: 1px solid #ccc;
+            height: 150px;
+            padding-bottom: 5px;
+          }
+          .introduction {
+            display: none;
+          }
+          .gn-md-thumbnail {
+            display: block;
+            width: 100%;
+            border: none;
+            box-shadow: 0 0 5px #c1c1c1;
+            border-radius: 0 0 10px 10px;
+          }
+        }
+        .abstract {
+          display: none;
+        }
+        &:hover {
+          transition: all 200ms ease-in;
+          transform: scale(1.03);
+          .resultcard {
+            .title {
+              background: @gray-darker;
+            }
+          }
+          .resultcard.hasThumbnail {
+            .gn-img-thumbnail {
+              filter: none;
+            }
+          }
+          &:before {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+
+  .gn-row-info-test {
+    display: flex;
+    overflow: auto;
+    ::-webkit-scrollbar{
+      height: 12px;
+      width: 12px;
+      background: rgb(196, 196, 196);
+    }
+    ::-webkit-scrollbar-thumb:horizontal{
+        background: #424242;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track:horizontal{
+      border-radius: 10px;
+    }
+  }
+  
+  // custom colors for the blocks in the info list
+  .gn-info-list-blocks {
+    .gn-info-list {
+      li {
+        .resultcard {
+          .title {
+            background: @gn-resultcard-title-background-color;
+            border: @gn-resultcard-title-border;
+            h4 {
+              color: @gn-resultcard-title-color;
+            }
+          }
+        }
+        .resultcard.hasThumbnail {
+          &:hover {
+            .title {
+              background: @gn-resultcard-title-background-color-hover;
+            }
+          }
+        }
+      }
+    }
+  }

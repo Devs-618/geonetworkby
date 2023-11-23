@@ -1,0 +1,21 @@
+<div data-ng-controller="gnsGeorchestra">
+    <h1>Страница для тестовой разработки</h1>
+    <h2>Все новости</h2>
+    <div ng-controller="TodoListController as todoList">
+      <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+      <a href="" ng-if="user.isUserAdminOrMore()" ng-click="todoList.archive()">archive</a>
+      <ul class="unstyled">
+        <li ng-repeat="todo in todoList.todos">
+          <label class="checkbox">
+            <input type="checkbox" ng-if="user.isUserAdminOrMore()" ng-model="todo.done">
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+          </label>
+        </li>
+      </ul>
+      <form ng-submit="todoList.addTodo()">
+        <input type="text" ng-model="todoList.todoText"  size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+    </div>
+  </div>

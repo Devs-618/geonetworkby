@@ -1,0 +1,135 @@
+<div data-ng-class="fluidLayout ? 'container-fluid' : 'container'">
+    <div class="header-geo">
+        <div data-ng-controller="gnsGeorchestra"
+             class="header-geo-links">
+          <ul data-ng-if="!authenticated">
+            <!-- <li class="clearfix hidden-xs" data-ng-if="activeTab == '/home' && gnCfg.mods.home.enabled">
+                <a class="pull-left gn-logo-link"
+                   data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+                  <img class="gn-logo"
+                       data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}"
+                       alt="{{'siteLogo' | translate}}"
+                       data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
+                  <span class="gn-name hidden-sm hidden-md gn-margin-left"
+                        data-ng-if="gnCfg.mods.header.showGNName"
+                        data-ng-class="authenticated && user.isEditorOrMore() ? 'gn-truncate' : ''"
+                        title="{{info['node/name'] || info['system/site/name']}}">
+                    {{info['node/name'].split('|')[0] || info['system/site/name']}}
+                  </span>
+                </a>
+              </li> -->
+              <!-- <li class="gn-menuitem-xs" data-ng-if="activeTab !== '/home' && gnCfg.mods.search.enabled">
+                <a data-gn-active-tb-item="{{gnCfg.mods.search.appUrl}}"
+                  title="{{'search' | translate}}">
+                  <i class="fa fa-fw fa-search"></i>
+                  <span translate class="hidden-sm">search</span>
+                </a>
+              </li>
+              <li class="gn-menuitem-xs" data-ng-if="activeTab !== '/home' && gnCfg.mods.map.enabled">
+                <a data-gn-active-tb-item="{{isExternalViewerEnabled ? externalViewerUrl : gnCfg.mods.map.appUrl}}"
+                  title="{{'map' | translate}}">
+                  <i class="fa fa-fw fa-globe"></i>
+                  <span translate class="hidden-sm">makeYourMap</span>
+                  <span data-gnv-layer-indicator=""/>
+                </a>
+              </li>  -->
+            <li><span data-ng-click="scrollviewgeorchestra('AboutRes-geo')">{{'AboutRes' | translate}}</span></li>
+            <li><span data-ng-click="scrollviewgeorchestra('links-geo')">{{'News' | translate}}</span></li>
+            <li><span data-ng-click="scrollviewgeorchestra('links-geo')">{{'Contacts' | translate}}</span></li>
+            <li><span data-ng-click="scrollviewgeorchestra('links-geo')">{{'IPDmin' | translate}}</span></li>
+            <li><span data-ng-click="scrollviewgeorchestra('links-geo')">{{'Services' | translate}}</span></li>
+            <li><span data-ng-click="scrollviewgeorchestra('links-geo')">{{'HowConnect' | translate}}</span></li>
+          </ul>
+        </div>
+
+        <div class="navbar">
+            <ul data-ng-if="!authenticated && gnCfg.mods.signin.enabled"
+                class="nav navbar-nav navbar-right username-dropdown">
+                <!-- <li class="open signin-dropdown"
+                    data-ng-if="!authenticated && service !== 'catalog.signin' && service !== 'new.account' && isShowLoginAsLink">
+                    <a href="{{signInFormAction}}?_csrf={{csrf}}&redirectUrl={{redirectUrlAfterSign | encodeURIComponent}}"
+                    title="{{'signIn'|translate}}"
+                    class="gn-menuheader-xs"
+                    data-ng-keypress="$event"
+                    id="signinLink">
+                    <i class="fa fa-fw fa-sign-in hidden-sm"></i>
+                    {{'signIn' | translate}}
+                    </a>
+                </li> -->
+                <li class="dropdown dropdown-hover open signin-dropdown">
+                    <!-- data-ng-if="!authenticated && service !== 'catalog.signin' && service !== 'new.account' && !isShowLoginAsLink && !isDisableLoginForm"> -->
+                    <a href="{{gnCfg.mods.signin.appUrl | signInLink}}"
+                    title="{{'signIn'|translate}}"
+                    class="dropdown-toggle gn-menuheader-xs"
+                    data-ng-keypress="$event"
+                    data-ng-mouseover="focusLoginPopup()">
+                    <i class="fa fa-fw fa-sign-in hidden-sm"></i>
+                    {{'signIn' | translate}}
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="menuitem">
+                            <form name="gnSigninForm" class="navbar-form flex-row"
+                            action="{{signInFormAction}}" method="post" role="form">
+                            <input type="hidden" name="_csrf" value="{{csrf}}"/>
+                            <div class="form-group form-group-sm">
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-fw fa-user"></i>
+                                </span>
+                                <input type="text"
+                                        class="form-control"
+                                        id="inputUsername"
+                                        name="username"
+                                        autofocus=""
+                                        aria-label="{{'username' | translate}}"
+                                        placeholder="{{'username' | translate}}"
+                                        data-ng-model="signinUsername"
+                                        required=""/>
+                                </div>
+                            </div>
+                            <div class="flex-spacer hidden-xs"></div>
+                            <div class="form-group form-group-sm">
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-fw fa-lock"></i>
+                                </span>
+                                <input type="password"
+                                        class="form-control"
+                                        id="inputPassword"
+                                        name="password"
+                                        autocomplete="off"
+                                        data-ng-model="signinPassword"
+                                        aria-label="{{'password' | translate}}"
+                                        placeholder="{{'password' | translate}}"
+                                        required=""/>
+                                </div>
+                            </div>
+                            <div class="flex-spacer hidden-xs"></div>
+
+                            <input type="hidden" name="redirectUrl" value="{{redirectUrlAfterSign}}"/>
+
+                            <button type="submit" class="btn btn-primary btn-sm pull-right"
+                                    aria-label="{{'signIn' | translate}}"
+                                    data-ng-disabled="!gnSigninForm.$valid">
+                                <i class="fa fa-sign-in"></i>
+                            </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navbar-form navbar-right language-switcher"
+            data-ng-if="!authenticated">
+            <span class="gn-menuheader-xs visible-xs"
+                data-ng-if="!authenticated && service !== 'catalog.signin' && service !== 'new.account' && !isShowLoginAsLink && !isDisableLoginForm"
+                data-translate="">language</span>
+            <div data-gn-language-switcher="lang"
+                data-langs="langs"
+                data-lang-labels="langLabels">
+            </div>
+        </div>
+
+    </div>
+</div>
