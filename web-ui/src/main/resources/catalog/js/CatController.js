@@ -93,7 +93,8 @@ goog.require('gn_alert');
             'rus': 'ru',
             'chi': 'zh',
             'slo': 'sk',
-            'swe': 'sv'
+            'swe': 'sv',
+            'bel': 'be_BY'
           },
           'isLogoInHeader': false,
           'logoInHeaderPosition': 'left',
@@ -333,8 +334,8 @@ goog.require('gn_alert');
       requireProxy: [],
       gnCfg: angular.copy(defaultConfig),
       gnUrl: '',
-      docUrl: 'https://docs.geonetwork-opensource.org/3.12/',
-      //docUrl: '../../doc/',
+      // docUrl: 'https://geonetwork-opensource.org/manuals/3.12.x/',
+      docUrl: '../../doc/',
       modelOptions: {
         updateOn: 'default blur',
         debounce: {
@@ -635,7 +636,7 @@ goog.require('gn_alert');
         'fre': 'Français', 'ger': 'Deutsch', 'kor': '한국의',
         'spa': 'Español', 'por': 'Portuguesa', 'cat': 'Català', 'cze': 'Czech',
         'ita': 'Italiano', 'fin': 'Suomeksi', 'ice': 'Íslenska',
-        'rus': 'русский', 'chi': '中文', 'slo': 'Slovenčina', 'swe': 'Svenska'};
+        'rus': 'русский', 'chi': '中文', 'slo': 'Slovenčina', 'swe': 'Svenska', 'bel': 'Беларускі'};
       $scope.url = '';
       $scope.gnUrl = gnGlobalSettings.gnUrl;
       $scope.gnCfg = gnGlobalSettings.gnCfg;

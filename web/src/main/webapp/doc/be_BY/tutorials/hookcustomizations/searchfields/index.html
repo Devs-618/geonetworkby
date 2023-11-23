@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Палі пошуку &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Падручнікі" href="../../inspire/index.html" />
+    <link rel="prev" title="Убудовы схемы" href="../schemaplugins/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Падручнікі</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">Уводзіны ў GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../customui/index.html">Наладзьце карыстацкі інтэрфейс GeoNetwork</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Падключыце свой уласны код</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../newproject/index.html">Аддзяліце свой код</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../events/index.html">Выкарыстанне падзей</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ui/index.html">Даданне новага карыстальніцкага інтэрфейсу</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../schemaplugins/index.html">Убудовы схемы</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Палі пошуку</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-new-field">Даданне новага поля</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summaries">Рэзюмэ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boost-fields">Павысіць палі</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Падручнікі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Падручнікі</a> &raquo;</li>
+          <li><a href="../index.html">Падключыце свой уласны код</a> &raquo;</li>
+      <li>Палі пошуку</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/hookcustomizations/searchfields/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="search-fields">
+<span id="tuto-hookcustomizations-searchfields"></span><h1>Палі пошуку<a class="headerlink" href="#search-fields" title="Permalink to this heading">¶</a></h1>
+<p>Lucene - гэта пошукавая сістэма, якая выкарыстоўваецца GeoNetwork. Уся канфігурацыя Lucene вызначана ў WEB-INF/config-lucene.xml.</p>
+<p>У некаторых выпадках мэтазгодна змяніць або пашырыць палі пошуку індэкса метададзеных. Напрыклад, каб дадаць поле (якое потым можна шукаць або выкарыстоўваць у праглядзе па змаўчанні) або змяніць змест поля, якое ствараецца з метададзеных (індэксацыя).</p>
+<section id="adding-a-new-field">
+<h2>Даданне новага поля<a class="headerlink" href="#adding-a-new-field" title="Permalink to this heading">¶</a></h2>
+<p>Кожная схема змяшчае файл index-fields/default.xsl, дзе вызначаны палі, якія захоўваюцца ў індэксе. Гэта xslt, які працуе над xml метададзеных і стварае розныя тэгі палёў, якія Lucene будзе распазнаваць і апрацоўваць.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="k">for</span><span class="o">-</span><span class="n">each</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;gmd:pointOfContact[1]/*/gmd:role/*/@codeListValue&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;responsiblePartyRole&quot;</span> <span class="n">string</span><span class="o">=</span><span class="s2">&quot;{string(.)}&quot;</span> <span class="n">store</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="k">for</span><span class="o">-</span><span class="n">each</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Затым гэтыя палі можна выкарыстоўваць як параметры ў службе Q для пошуку па гэтым полі.</p>
+<p>Памятайце, што пасля кожнай змены ў канфігурацыі індэкса новы індэкс павінен быць перабудаваны.</p>
+</section>
+<section id="summaries">
+<h2>Рэзюмэ<a class="headerlink" href="#summaries" title="Permalink to this heading">¶</a></h2>
+<p>Служба Q вяртае спіс вынікаў пошуку, але таксама можа вяртаць зводку вынікаў, вернутых з параметрамі &amp;quot;buildSummary=true&amp;quot; і &amp;quot;summaryType=$summary&amp;quot;.</p>
+<p>Гэта зводка ўяўляе сабой спіс найбольш распаўсюджаных значэнняў для пэўных палёў. Гэтыя зводкі вызначаны ў web/src/main/webapp/WEB-INF/config-summary.xml:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">summaryType</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;results&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">item</span> <span class="n">facet</span><span class="o">=</span><span class="s2">&quot;keyword&quot;</span> <span class="nb">max</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">summaryType</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Элементы, якія выкарыстоўваюцца ў гэтых зводках, павінны быць вызначаны ў верхнім тэгу пад назвай &amp;quot;грані&amp;quot;.</p>
+</section>
+<section id="boost-fields">
+<h2>Павысіць палі<a class="headerlink" href="#boost-fields" title="Permalink to this heading">¶</a></h2>
+<p>Часам мы хочам, каб нейкае поле было больш актуальным для пошуку, чым іншыя. Мы можам узмацніць гэтыя палі ўнутры тэга fieldBoosting. Узмацненне - гэта станоўчае або адмоўнае значэнне з плаваючай кропкай.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fieldBoosting</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op0&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op1&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op2&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_dummy&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_isTemplate&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;2.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_owner&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;5.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">fieldBoosting</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Глядзіце больш на <a class="reference internal" href="../../../customizing-application/configuring-search-fields.html#configuring-search-fields"><span class="std std-ref">Настройка палёў пошуку</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../schemaplugins/index.html" class="btn btn-neutral float-left" title="Убудовы схемы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../inspire/index.html" class="btn btn-neutral float-right" title="Падручнікі" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

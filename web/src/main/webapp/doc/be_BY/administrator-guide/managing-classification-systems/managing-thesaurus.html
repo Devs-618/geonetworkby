@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кіраванне тэзаўрусам &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Managing metadata &amp; template" href="../managing-metadata-standards/index.html" />
+    <link rel="prev" title="Кіраванне каталогамі" href="managing-directories.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва адміністратара</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Канфігурацыя каталога</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-users-and-groups/index.html">Кіраванне карыстальнікамі і групамі</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Кіруючая сістэма класіфікацыі</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="managing-categories.html">Кіраванне катэгорыямі</a></li>
+<li class="toctree-l3"><a class="reference internal" href="managing-directories.html">Кіраванне каталогамі</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Кіраванне тэзаўрусам</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Уводзіны</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-local-and-register-thesauri">Знешні, лакальны і рэестры тэзаўрусаў</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iso19115-19139-thesaurus-categories">Катэгорыі тэзаўруса ISO19115/19139</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#skos-format">Фармат SKOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iso19135-register-format">Фармат рэгістра ISO19135</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-or-importing-a-thesaurus">Стварэнне або імпарт тэзаўруса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-browsing-a-local-or-external-thesaurus-add-remove-browse-keywords">Рэдагаванне/прагляд лакальнага ці вонкавага тэзаўруса: дадаванне/выдаленне/прагляд ключавых слоў</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-register-thesaurus">Рэдагаванне рэестравага тэзаўруса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-editing-adding-keywords">Рэдагаванне метададзеных: даданне ключавых слоў</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-criteria-keywords">Крытэрыі пошуку: ключавыя словы</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва адміністратара</a> &raquo;</li>
+          <li><a href="index.html">Кіруючая сістэма класіфікацыі</a> &raquo;</li>
+      <li>Кіраванне тэзаўрусам</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-classification-systems/managing-thesaurus.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-thesaurus">
+<span id="id1"></span><h1>Кіраванне тэзаўрусам<a class="headerlink" href="#managing-thesaurus" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Уводзіны<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>A thesaurus is a list of concepts from a specialized field of knowledge. In a metadata catalog, concepts from a thesaurus can be assigned to a metadata record (as keywords) as a way of associating it with one or more concepts from a field of knowledge. For example, a record may be assigned a keyword 'AGRICULTURE - Crops' meaning that the record describes a resource or activity relating to crops in the field of Agriculture. It's a good practice to look for existing thesauri before creating your own thesaurus.</p>
+<p>У GeoNetwork працэс прызначэння ключавых слоў для запісу метададзеных адбываецца ў рэдактары метададзеных. Карыстальнік можа выбраць паняцці з аднаго або некалькіх тэзаўрусаў, каб звязаць запіс з паняццямі, апісанымі гэтымі паняццямі. Гэты працэс падтрымліваецца як для ISO19115/19139, так і для запісаў метаданых Dublin core з выкарыстаннем інструмента выбару тэзаўруса.</p>
+<p>Паняцці ў галіне ведаў або ў розных галінах ведаў могуць быць звязаныя або нават эквівалентныя. Напрыклад, у тэзаўрусе, які апісвае геаграфічныя рэгіёны, аўстралійскі штат «Тасманія» з&amp;#39;яўляецца спецыялізацыяй краіны Аўстраліі. У якасці прыкладу перакрываючыхся паняццяў у розных галінах тэзаўрус, які апісвае навуковую дзейнасць у галіне глабальных змен, можа мець паняцці, звязаныя з сельскагаспадарчай дзейнасцю, якія будуць эквівалентныя тэрмінам з тэзаўруса, які апісвае тэмы, якія выкарыстоўваюцца ў серыі карт.</p>
+<p>У GeoNetwork тэзаўрусы прадстаўлены як SKOS (<a class="reference external" href="http://www.w3.org/TR/skos-reference">http://www.w3.org/TR/skos-reference</a>) і захоўваюцца ў кадоўцы application/xml+rdf. SKOS фіксуе паняцці і адносіны паміж паняццямі. Тэзаўрусы SKOS можна імпартаваць з асобных файлаў або яны могуць быць створаны з запісаў рэгістра ISO19135 у каталогу GeoNetwork. ISO19135 (падрабязней пра гэта ніжэй) не толькі ахоплівае канцэпцыі і ўзаемасувязі паміж канцэпцыямі, але (сярод іншага) тое, як канцэпцыі развіваліся і, самае галоўнае, хто ўнёс свой уклад і кіраваў эвалюцыяй канцэпцый і саміх тэзаўрусаў.</p>
+</section>
+<section id="external-local-and-register-thesauri">
+<h2>Знешні, лакальны і рэестры тэзаўрусаў<a class="headerlink" href="#external-local-and-register-thesauri" title="Permalink to this heading">¶</a></h2>
+<p>У GeoNetwork ёсць тры тыпу тэзаўруса. Розныя тыпы заснаваны на тым, адкуль паходзіць тэзаўрус:</p>
+<ul class="simple">
+<li><p><em>Знешні</em>: тэзаўрус, які кіруецца знешняй арганізацыяй і імпартаваны як файл SKOS. Ён пазначаны як <code class="docutils literal notranslate"><span class="pre">знешні</span></code>, што азначае, што карыстальнікам не дазволена рэдагаваць тэзаўрус.</p></li>
+<li><p><em>Лакальны</em>: Тэзаўрус, створаны ў рэдактары тэзаўрусаў GeoNetwork і захоўваецца ў выглядзе файла SKOS. Ён пазначаны як <code class="docutils literal notranslate"><span class="pre">лакальны</span></code>, што азначае, што карыстальнікам дазволена рэдагаваць тэзаўрус.</p></li>
+<li><p><em>Рэгістр</em>: тэзаўрус SKOS, створаны з запісу рэестра ISO19135. Карыстальнікі могуць рэдагаваць тэзаўрус, змяніўшы змест запісу рэестра ISO19135 у рэдактары метададзеных GeoNetwork, а затым аднавіўшы тэзаўрус. Карыстальнікі не могуць рэдагаваць тэзаўрус у дыспетчары тэзаўрусаў.</p></li>
+</ul>
+</section>
+<section id="iso19115-19139-thesaurus-categories">
+<h2>Катэгорыі тэзаўруса ISO19115/19139<a class="headerlink" href="#iso19115-19139-thesaurus-categories" title="Permalink to this heading">¶</a></h2>
+<p>All thesauri in GeoNetwork are categorized using the code list values for the gmd:MD_KeywordTypeCode element from ISO19115/19139. The categories and their meanings are given below but can also be found in http://www.isotc211.org/2005/resources/gmxCodelist.xml:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Катэгорыя тэзаўруса ISO</p></th>
+<th class="head"><p>Апісанне</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>месца</p></td>
+<td><p>Тэзаўрус змяшчае паняцці, якія вызначаюць месцазнаходжанне</p></td>
+</tr>
+<tr class="row-odd"><td><p>пласт</p></td>
+<td><p>У тэзаўрусе ёсць паняцці, якія ідэнтыфікуюць слаі любога дэпанаванага рэчыва</p></td>
+</tr>
+<tr class="row-even"><td><p>скроневай</p></td>
+<td><p>Тэзаўрус змяшчае паняцці, якія вызначаюць перыяд часу</p></td>
+</tr>
+<tr class="row-odd"><td><p>тэма</p></td>
+<td><p>У тэзаўрусе ёсць паняцці, якія вызначаюць пэўны прадмет або тэму</p></td>
+</tr>
+<tr class="row-even"><td><p>дысцыплінаванасць</p></td>
+<td><p>Тэзаўрус змяшчае паняцці, якія ідэнтыфікуюць галіну навучання або спецыяльнае навучанне</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="skos-format">
+<h2>Фармат SKOS<a class="headerlink" href="#skos-format" title="Permalink to this heading">¶</a></h2>
+<p>Простыя сістэмы арганізацыі ведаў (SKOS) <a class="reference external" href="http://www.w3.org/2004/02/skos/">http://www.w3.org/2004/02/skos/</a> - гэта вобласць працы па распрацоўцы спецыфікацый і стандартаў для падтрымкі выкарыстання сістэм арганізацыі ведаў (KOS), такіх як тэзаўрусы, схемы класіфікацыі . Гэты фармат выкарыстоўваецца GeoNetwork для захоўвання тэзаўруснай інфармацыі.</p>
+<p>Паняцце вызначаецца ідэнтыфікатарам, пераважнай пазнакай, азначэннем і сувязямі з іншымі паняццямі. Пазнакі і азначэнні могуць захоўвацца на некалькіх мовах (з дапамогай атрыбутаў xml:lang). У фармаце SKOS вызначаны тры тыпы сувязей паміж паняццямі:</p>
+<ul class="simple">
+<li><p>звязаныя тэрміны</p></li>
+<li><p>больш шырокія тэрміны</p></li>
+<li><p>больш вузкія тэрміны</p></li>
+</ul>
+<p>Напрыклад, паняцце <code class="docutils literal notranslate"><span class="pre">ABLETTE</span></code> можа быць вызначана як наступнае з цэтлікам на французскай і англійскай мовах, звязаным з больш шырокім паняццем:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">skos</span><span class="p">:</span><span class="n">Concept</span> <span class="n">rdf</span><span class="p">:</span><span class="n">about</span><span class="o">=</span><span class="s2">&quot;http://www.oieau.org/concept#c4fc54576dc00227b82a709287ac3681&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">skos</span><span class="p">:</span><span class="n">prefLabel</span> <span class="n">xml</span><span class="p">:</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;fr&quot;</span><span class="o">&gt;</span><span class="n">ABLETTE</span><span class="o">&lt;/</span><span class="n">skos</span><span class="p">:</span><span class="n">prefLabel</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">skos</span><span class="p">:</span><span class="n">prefLabel</span> <span class="n">xml</span><span class="p">:</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="o">&gt;</span><span class="n">BLEAK</span><span class="o">&lt;/</span><span class="n">skos</span><span class="p">:</span><span class="n">prefLabel</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">skos</span><span class="p">:</span><span class="n">broader</span> <span class="n">rdf</span><span class="p">:</span><span class="n">resource</span><span class="o">=</span><span class="s2">&quot;http://www.oieau.org/concept#9f25ece36d04776e09492c66627cccb9&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">skos</span><span class="p">:</span><span class="n">Concept</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>GeoNetwork падтрымлівае шматмоўныя тэзаўрусы (напрыклад, Agrovoc). Пошук і рэдагаванне адбываюцца на бягучай мове карыстальніцкага інтэрфейсу (г.зн., калі інтэрфейс на англійскай мове, пры рэдагаванні метададзеных GeoNetwork будзе шукаць канцэпцыю толькі на англійскай мове).</p>
+<p>Мы выкарыстоўваем SKOS для прадстаўлення тэзаўрусаў у GeoNetwork, таму што:</p>
+<ul class="simple">
+<li><p>ён забяспечвае просты і кампактны метад апісання паняццяў і адносін паміж паняццямі з вобласці ведаў</p></li>
+<li><p>Канцэпцыі SKOS могуць быць запытаны і кіраваны праграмным забеспячэннем sesame/openRDF, якое выкарыстоўваецца GeoNetwork</p></li>
+</ul>
+</section>
+<section id="iso19135-register-format">
+<h2>Фармат рэгістра ISO19135<a class="headerlink" href="#iso19135-register-format" title="Permalink to this heading">¶</a></h2>
+<p>ISO19135 - гэта стандарт ISO, які апісвае працэдуры для рэгістрацыі элемента і схему для апісання спісу (або рэестра) элементаў і працэсаў, з дапамогай якіх элементы могуць стварацца і развівацца. Гэтая схема даступная як убудова для выкарыстання ў GeoNetwork. Каб выкарыстоўваць яго, вы павінны спампаваць і загрузіць схему плагіна iso19135 у GeoNetwork. FIXME: Нам патрэбны стандартны спосаб спасылкі на схемы плагінаў і стандартнае месца, адкуль іх можна спампоўваць.</p>
+<p>Тыповы запіс рэестра ISO19135 апісвае:</p>
+<ul class="simple">
+<li><p>назва і апісанне рэестра</p></li>
+<li><p>інфармацыя пра версію і мову</p></li>
+<li><p>кантактная інфармацыя тых, хто мае ролю ў рэестры (напрыклад, менеджэр, удзельнік, захавальнік, выдавец і г.д.)</p></li>
+<li><p>элементы, якія выкарыстоўваюцца для апісання прадмета ў рэестры</p></li>
+<li><p>прадметы</p></li>
+</ul>
+<p>Стандартная інфармацыя, якая выкарыстоўваецца для апісання рэестра, уключае:</p>
+<ul class="simple">
+<li><p>ідэнтыфікатар</p></li>
+<li><p>назва і апісанне прадмета</p></li>
+<li><p>вобласць прымянення</p></li>
+<li><p>радавод і спасылкі на адпаведныя элементы рэестра</p></li>
+</ul>
+<p>Прыклад элемента рэестра з рэестра навуковых ключавых слоў NASA GCMD (Global Change Master Directory) паказаны ніжэй.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">RE_RegisterItem</span> <span class="n">uuid</span><span class="o">=</span><span class="s2">&quot;d1e7&quot;</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">itemIdentifier</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">gco</span><span class="p">:</span><span class="n">Integer</span><span class="o">&gt;</span><span class="mi">7</span><span class="o">&lt;/</span><span class="n">gco</span><span class="p">:</span><span class="n">Integer</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">itemIdentifier</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">name</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span><span class="n">Aquaculture</span><span class="o">&lt;/</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">name</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">status</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">RE_ItemStatus</span><span class="o">&gt;</span><span class="n">valid</span><span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">RE_ItemStatus</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">status</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">dateAccepted</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">gco</span><span class="p">:</span><span class="n">Date</span><span class="o">&gt;</span><span class="mi">2006</span><span class="o">&lt;/</span><span class="n">gco</span><span class="p">:</span><span class="n">Date</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">dateAccepted</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">definition</span> <span class="n">gco</span><span class="p">:</span><span class="n">nilReason</span><span class="o">=</span><span class="s2">&quot;missing&quot;</span><span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">itemClass</span> <span class="n">xlink</span><span class="p">:</span><span class="n">href</span><span class="o">=</span><span class="s2">&quot;#Item_Class&quot;</span><span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">specificationLineage</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">RE_Reference</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">itemIdentifierAtSource</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span>
+         <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">itemIdentifierAtSource</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">similarity</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">grg</span><span class="p">:</span><span class="n">RE_SimilarityToSource</span> <span class="n">codeListValue</span><span class="o">=</span><span class="s2">&quot;generalization&quot;</span>
+               <span class="n">codeList</span><span class="o">=</span><span class="s2">&quot;http://ww.../lists.xml#RE_SimilarityToSource&quot;</span><span class="o">/&gt;</span>
+         <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">similarity</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">RE_Reference</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">specificationLineage</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">grg</span><span class="p">:</span><span class="n">RE_RegisterItem</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Як згадвалася раней, для выкарыстання тэзаўруса, апісанага запісам рэестра ISO19135, GeoNetwork выкарыстоўвае XSLT пад назвай xml_iso19135ToSKOS.xsl (з падкаталога convert у схеме плагіна iso19135), каб атрымаць наступнае з запісу рэестра ISO19135:</p>
+<ul class="simple">
+<li><p>дапушчальныя паняцці (grg:itemIdentifier, grg:імя, grg:статус)</p></li>
+<li><p>адносіны да іншых паняццяў (grg:specificationLineage)</p></li>
+<li><p>назва, версія і іншая інфармацыя кіравання</p></li>
+</ul>
+<p>Гэтая інфармацыя выкарыстоўваецца для зборкі файла SKOS. Затым файл SKOS даступны для запыту і кіравання з дапамогай праграмнага забеспячэння Sesame/openRDF, якое выкарыстоўваецца ў GeoNetwork.</p>
+</section>
+<section id="creating-or-importing-a-thesaurus">
+<h2>Стварэнне або імпарт тэзаўруса<a class="headerlink" href="#creating-or-importing-a-thesaurus" title="Permalink to this heading">¶</a></h2>
+<p>Знешнія і лакальныя тэзаўрусы ствараюцца або імпартуюцца з дапамогай дыспетчара тэзаўрусаў. Вы можаце выкарыстоўваць менеджэр тэзаўруса:</p>
+<ul class="simple">
+<li><p>увайшоўшы ў сістэму як адміністратар</p></li>
+<li><p>перайшоўшы на старонку «Адміністраванне» і націснуўшы на спасылку <code class="docutils literal notranslate"><span class="pre">Кіраванне</span> <span class="pre">тэзаўрусам</span></code></p></li>
+</ul>
+<p>На старонцы дыспетчара тэзаўрусаў будзе паказаны спіс тэзаўрусаў, якія былі створаны або імпартаваны. Верхняя частка старонкі дае карыстальніку функцыі рэдагавання, дадання, змены або пошуку тэзаўруса. У ніжняй частцы прадугледжана функцыя загрузкі вонкавага тэзаўруса ў фармаце SKOS.</p>
+<section id="creating-a-local-thesaurus">
+<h3>Стварэнне лакальнага тэзаўруса<a class="headerlink" href="#creating-a-local-thesaurus" title="Permalink to this heading">¶</a></h3>
+<p>Каб стварыць лакальны тэзаўрус, пстрыкніце знак <code class="docutils literal notranslate"><span class="pre">+</span></code> у катэгорыі, у якую вы хочаце ўключыць ваш тэзаўрус. Пасля стварэння тэзаўрус можна абнавіць праз інтэрфейс рэдагавання. Значэнне кожнага слупка наступнае:</p>
+<ul class="simple">
+<li><p><strong>Тып</strong> - гэта ідэнтыфікатар, прысвоены тэзаўрусу ў GeoNetwork. Ён складаецца з катэгорыі ISO, да якой быў аднесены тэзаўрус (гл. спіс кодаў для элемента gmd:MD_KeywordTypeCode у http://www.isotc211.org/2005/resources/gmxCodelist.xml), ці з&amp;#39;яўляецца тэзаўрус лакальным , знешні або зарэгістраваны тэзаўрус і імя файла SKOS, які змяшчае тэзаўрус. (Заўвага: імя файла, які выкарыстоўваецца для захавання тэзаўруса рэгістра, з&amp;#39;яўляецца uuid запісу рэгістра ISO19135, які апісвае тэзаўрус).</p></li>
+<li><p><strong>Імя</strong> - гэта назва тэзаўруса, які з&amp;#39;яўляецца адміністратарам пры стварэнні, або імя файла, калі тэзаўрус з&amp;#39;яўляецца тэзаўрусам, імем тэзаўруса будзе назва файла тэзаўруса.</p></li>
+</ul>
+<p>Для кожнага тэзаўруса даступныя наступныя кнопкі:</p>
+<ul class="simple">
+<li><p><strong>Спампаваць</strong> - Спасылка на файл SKOS RDF.</p></li>
+<li><p><strong>Выдаліць</strong> - выдаліць тэзаўрус з бягучага вузла.</p></li>
+<li><p><strong>Прагляд</strong> - Калі тып знешні, кнопка прагляду дазваляе шукаць і праглядаць паняцці.</p></li>
+<li><p><strong>Праўка</strong> - Калі тып лакальны, кнопка рэдагавання дазваляе шукаць, дадаваць, выдаляць і праглядаць канцэпцыі.</p></li>
+</ul>
+</section>
+<section id="import-an-external-thesaurus">
+<h3>Імпартаваць знешні тэзаўрус<a class="headerlink" href="#import-an-external-thesaurus" title="Permalink to this heading">¶</a></h3>
+<p>GeoNetwork дазваляе імпарт тэзаўруса ў фармаце SKOS. Пасля загрузкі знешні тэзаўрус немагчыма абнавіць. Выберыце катэгорыю, знайдзіце файл тэзаўруса і націсніце «Загрузіць». Файл SKOS будзе знаходзіцца ў <a href="#id1"><span class="problematic" id="id2">``</span></a>GEONETWORK_DATA_DIR/config/codelist/external/thesauri/&lt;category&gt; <a href="#id3"><span class="problematic" id="id4">``</span></a>.</p>
+<p>Унізе старонкі ёсць наступныя кнопкі:</p>
+<ol class="arabic simple">
+<li><p><em>Назад</em>: Вярнуцца на галоўную старонку адміністравання.</p></li>
+<li><p><em>Загрузіць</em>: загрузіць абраны файл RDF у вузел. Затым ён пералічыць усе тэзаўрусы, даступныя на вузле.</p></li>
+</ol>
+</section>
+<section id="creating-a-register-thesaurus">
+<h3>Стварэнне рэестравага тэзаўруса<a class="headerlink" href="#creating-a-register-thesaurus" title="Permalink to this heading">¶</a></h3>
+<p>Запіс ISO19135 у лакальным каталогу GeoNetwork можна ператварыць у файл SKOS і выкарыстоўваць у якасці тэзаўруса ў GeoNetwork. Запісы ISO19135, якіх няма ў лакальным каталогу, можна сабраць з іншых каталогаў (напрыклад, каталога арганізацыі, якая кіруе рэестрам). Калі запіс рэестра ISO19135 знаходзіцца ў мясцовым каталогу, працэс ператварэння яго ў тэзаўрус для выкарыстання ў селектары ключавых слоў пачынае пошук запісу. Знайшоўшы запіс у выніках пошуку, адным з дзеянняў над запісам з&amp;#39;яўляецца «Стварыць/Абнавіць тэзаўрус».</p>
+<blockquote>
+<div><p><em>Вынікі пошуку паказваюць запіс ISO19135 з дзеяннем стварэння тэзаўруса</em></p>
+</div></blockquote>
+<p>Пасля выбару гэтага дзеяння вы можаце выбраць катэгорыю тэзаўруса ISO, якая адпавядае гэтаму тэзаўрусу:</p>
+<blockquote>
+<div><p><em>Выбар катэгорыі тэзаўруса ISO пры стварэнні тэзаўруса</em></p>
+</div></blockquote>
+<p>Пасля выбару катэгорыі тэзаўруса ISO запіс рэестра ISO19135 пераўтворыцца ў файл SKOS і ўсталяваны як тэзаўрус, гатовы да выкарыстання ў рэдактары метададзеных. Як апісана вышэй у раздзеле па ISO19135, у тэзаўрус уключаны толькі сапраўдныя элементы рэестра. Такія паводзіны і любыя супастаўленні паміж элементамі рэестра ISO19135 і файлам тэзаўруса SKOS можна змяніць або праверыць, прагледзеўшы XSLT xml_iso19135TOSKOS.xsl у падкаталогу канвертавання плагіна схемы iso19135.</p>
+</section>
+</section>
+<section id="editing-browsing-a-local-or-external-thesaurus-add-remove-browse-keywords">
+<h2>Рэдагаванне/прагляд лакальнага ці вонкавага тэзаўруса: дадаванне/выдаленне/прагляд ключавых слоў<a class="headerlink" href="#editing-browsing-a-local-or-external-thesaurus-add-remove-browse-keywords" title="Permalink to this heading">¶</a></h2>
+<p>У інтэрфейсе адміністравання тэзаўруса націсніце кнопку рэдагавання для лакальнага тэзаўруса або кнопку прагляду для знешняга тэзаўруса. Гэты інтэрфейс дазваляе:</p>
+<ul class="simple">
+<li><p>пошук па ключавых словах</p></li>
+<li><p>дадаць/выдаліць ключавыя словы для лакальнага тэзаўруса.</p></li>
+</ul>
+<p>Выкарыстоўвайце тэкставае поле і тып пошуку для пошуку па ключавых словах.</p>
+</section>
+<section id="editing-a-register-thesaurus">
+<h2>Рэдагаванне рэестравага тэзаўруса<a class="headerlink" href="#editing-a-register-thesaurus" title="Permalink to this heading">¶</a></h2>
+<p>Тэзаўрус рэестра ствараецца з запісу метададзеных ISO19135, як апісана вышэй, таму тэзаўрус рэестра абнаўляецца шляхам рэдагавання запісу метададзеных ISO19135, а затым рэгенерацыі тэзаўруса рэестра. Запіс метададзеных ISO19135 можна ствараць і рэдагаваць у рэдактары GeoNetwork.</p>
+<section id="preparing-to-edit-an-iso19135-register-record">
+<span id="xlinks-thesaurus"></span><h3>Падрыхтоўка да рэдагавання запісу рэестра ISO19135<a class="headerlink" href="#preparing-to-edit-an-iso19135-register-record" title="Permalink to this heading">¶</a></h3>
+<p>Register records can be very large. For example, a register record describing the ANZLIC Geographic Extent Names register has approx 1800 register items. Each register item holds not only the name of the geographic extent, but also its geographic extent and details of the lineage, relationships to other terms and potentially, the evolution of the extent (changes to name, geographic extent) including the details of changes and why those changes occurred. Editing such a large record in the GeoNetwork editor can cause performance problems for both the browser and the server because the editor constructs an HTML form describing the entire record. Fortunately, a much more scalable approach exists which is based on extracting the register items from the ISO19135 register record, storing them as subtemplates (essentially small metadata records with just the content of the register item). The process for extracting register items from an ISO19135 register record is as follows:</p>
+<ul class="simple">
+<li><p>пошук і выбар запісу рэестра</p></li>
+<li><p>выберыце «Выняць элементы рэестра» з меню «Дзеянні над выбраным наборам».</p></li>
+<li><p>Пасля таго, як элементы рэестра былі вынятыя, вы павінны ўбачыць зводку вынікаў, як паказана ніжэй.</p></li>
+<li><p>Лічба для «Вынятых падшаблонаў» - гэта колькасць элементаў рэестра, вынятых з запісу рэестра ISO19135.</p></li>
+</ul>
+</section>
+<section id="editing-a-register-item">
+<h3>Рэдагаванне элемента рэестра<a class="headerlink" href="#editing-a-register-item" title="Permalink to this heading">¶</a></h3>
+<p>Каб адрэдагаваць/змяніць любы з элементаў рэестра, якія былі выняты ў якасці падшаблонаў, вы можаце выкарыстоўваць інтэрфейс кіравання каталогам. Доступ да гэтага інтэрфейсу ажыццяўляецца з меню «Адміністраванне» ў раздзеле «Кіраванне каталогамі». У гэтым інтэрфейсе:</p>
+<ul class="simple">
+<li><p>абярыце &amp;quot;Зарэгістраваць элемент (геасетка)&amp;quot; у якасці тыпу падшаблона для рэдагавання наступным чынам.</p></li>
+<li><p>увядзіце пошукавы тэрмін або проста выберыце опцыю пошуку, каб вярнуць першыя 50 элементаў рэестра.</p></li>
+<li><p>элементы рэгістра з&amp;#39;явяцца на панэлі злева, выбар аднаго адкрые інтэрфейс рэдагавання на панэлі справа.</p></li>
+</ul>
+</section>
+<section id="editing-global-register-information">
+<h3>Рэдагаванне інфармацыі глабальнага рэестра<a class="headerlink" href="#editing-global-register-information" title="Permalink to this heading">¶</a></h3>
+<p>Каб адрэдагаваць/змяніць любую інфармацыю глабальнага рэестра (напрыклад, уладальніка рэестра, кіраўніка, версію, мовы), адрэдагуйце запіс рэестра ў звычайным інтэрфейсе рэдагавання метададзеных GeoNetwork.</p>
+</section>
+</section>
+<section id="metadata-editing-adding-keywords">
+<h2>Рэдагаванне метададзеных: даданне ключавых слоў<a class="headerlink" href="#metadata-editing-adding-keywords" title="Permalink to this heading">¶</a></h2>
+<p>Пры рэдагаванні запісу метададзеных ISO можна выкарыстоўваць сродак выбару ключавога слова (або канцэпцыі), які дазваляе рэдактару:</p>
+<ul class="simple">
+<li><p>рабіць пошук па ключавых словах у адным або некалькіх тэзаўрусах у каталогу (вынікі пошуку адлюстроўваюцца злева).</p></li>
+<li><p>выберыце адно або некалькі ключавых слоў і дадайце іх у спіс выбраных элементаў (з дапамогай стрэлак або перацягвання) справа.</p></li>
+<li><p>дадаць выбраныя ключавыя словы непасрэдна ў метададзеныя, групуючы ключавыя словы па тэзаўрусу.</p></li>
+</ul>
+<p>Рэдактар таксама можа кантраляваць, колькі ключавых слоў з пошуку адлюстроўваецца ў сродку выбару ключавых слоў (па змаўчанні 50).</p>
+<p>Звярніце ўвагу, што URL, які паказвае на зыходны тэзаўрус, уключаны ў цытату на імя тэзаўруса (фактычны элемент, які выкарыстоўваецца для гэтага, - gmd:otherCitationDetails/gmx:FileName). Тэзаўрус можна загрузіць як файл SKOS, калі гэта лакальны або знешні тэзаўрус. Для тэзаўрусаў рэестра URL спасылаецца на запіс рэестра ISO19135, з якога быў створаны тэзаўрус.</p>
+</section>
+<section id="search-criteria-keywords">
+<h2>Крытэрыі пошуку: ключавыя словы<a class="headerlink" href="#search-criteria-keywords" title="Permalink to this heading">¶</a></h2>
+<p>Вы можаце шукаць па ключавых словах у пашыраным інтэрфейсе пошуку. Каб дапамагчы выбраць ключавое слова, вы можаце пстрыкнуць поле пошуку па ключавым слове, каб адкрыць спіс усіх ключавых слоў, якія выкарыстоўваліся ў запісах метададзеных у гэтым каталогу. Гэтыя ключавыя словы індэксуюцца Lucene пры стварэнні/абнаўленні метададзеных. Кожнае ключавое слова ў спісе мае колькасць запісаў, якія выкарыстоўваюць ключавое слова, якое адлюстроўваецца побач.</p>
+<p>Калі XML-элемент пад назвай keyword-select-panel прысутнічае ў якасці даччынага элемента search у файле <em>config-gui.xml</em> (у каталогу WEB-INF), то пошук па ключавым слове з дапамогай панэлі выбару ключавых слоў даступны як у рэдактары метададзеных:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;search&gt;
+ &lt;!-- Display or not keyword selection panel in advanced search panel
+  &lt;keyword-selection-panel/&gt;
+ --&gt;
+&lt;/search&gt;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="managing-directories.html" class="btn btn-neutral float-left" title="Кіраванне каталогамі" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../managing-metadata-standards/index.html" class="btn btn-neutral float-right" title="Managing metadata &amp; template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

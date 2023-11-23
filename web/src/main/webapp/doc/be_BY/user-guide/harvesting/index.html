@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Уборка ўраджаю &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Камбайн GeoNetwork 2.0" href="harvesting-geonetwork.html" />
+    <link rel="prev" title="Абнаўленне набору запісаў з дапамогай XSLT" href="../workflow/batchupdate-xsl.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва карыстальніка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Хуткі старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Апісанне інфармацыі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Аб&amp;#39;яднанне рэсурсаў</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Класіфікаваць інфармацыю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Выдавецкая справа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Аналіз дадзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочы працэс</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Уборка ўраджаю</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geonetwork.html">Камбайн GeoNetwork 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-csw.html">Паслугі ЦСВ па ўборцы ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-ogcwxs.html">Паслугі OGC па ўборцы ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-filesystem.html">Збор лакальнай файлавай сістэмы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-sde.html">Збор вузла ARCSDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Уборка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-thredds.html">ТРАЦІ Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-wfs-features.html">Збор WFS GetFeature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-z3950.html">Z3950 Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mechanism-overview">Агляд механізму</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-life-cycle">Жыццёвы цыкл збору ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-harvesting-and-hierarchies">Некалькі ўраджаю і іерархіі</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-fragments-of-metadata-to-support-re-use">Збор фрагментаў метададзеных для падтрымкі паўторнага выкарыстання</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#https-support">Падтрымка HTTPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-main-page">Галоўная старонка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-status-and-error-icons">Значкі стану ўборкі і памылак</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-result-tips">Парады па выніках збору ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-harvesters">Дабаўленне новых камбайнаў</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvest-history">Гісторыя ўраджаю</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспарт запісаў</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва карыстальніка</a> &raquo;</li>
+      <li>Уборка ўраджаю</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/harvesting/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="harvesting">
+<span id="id1"></span><h1>Уборка ўраджаю<a class="headerlink" href="#harvesting" title="Permalink to this heading">¶</a></h1>
+<p>Data discovery gets more interesting once multiple catalogs and services
+share their resources.</p>
+<p>Збор - гэта працэс атрымання метададзеных з аддаленых крыніц і захавання іх лакальна ў каталогу для хуткага пошуку. Гэта запланаваны працэс, таму лакальная копія і аддаленыя метаданыя захоўваюцца ў адпаведнасці.</p>
+<p>Можна сабраць наступныя крыніцы:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-geonetwork.html">Камбайн GeoNetwork 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-csw.html">Паслугі ЦСВ па ўборцы ўраджаю</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-csw.html#adding-a-csw-harvester">Даданне камбайна CSW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-csw.html#notes">Заўвагі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-ogcwxs.html">Паслугі OGC па ўборцы ўраджаю</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-ogcwxs.html#adding-an-ogc-service-harvester">Даданне OGC Service Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-ogcwxs.html#notes">Заўвагі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-filesystem.html">Збор лакальнай файлавай сістэмы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-filesystem.html#adding-a-local-file-system-harvester">Даданне харвестара лакальнай файлавай сістэмы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-filesystem.html#notes">Заўвагі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Уборка ўраджаю</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-webdav.html#adding-a-webdav-harvester">Даданне камбайна WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-webdav.html#notes">Заўвагі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Уборка ўраджаю</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-oaipmh.html#adding-an-oai-pmh-harvester">Даданне камбайна OAI-PMH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-oaipmh.html#notes">Заўвагі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-sde.html">Збор вузла ARCSDE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-sde.html#adding-an-arcsde-harvester">Даданне камбайна ArcSDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Уборка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-geoportal.html#adding-a-geoportal-rest-harvester">Даданне камбайна REST GeoPortal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-geoportal.html#notes">Заўвагі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-thredds.html">ТРАЦІ Уборка ўраджаю</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#adding-a-thredds-catalog-harvester">Даданне каталожнага камбайна THREDDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester">Больш падрабязна аб зборы элементаў метададзеных THREDDS DIF з дапамогай THREDDS Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester">Дадатковая інфармацыя аб зборы метаданых выяўлення набору даных Unidata з дапамогай THREDDS Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#example">Прыклад</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-wfs-features.html">Збор WFS GetFeature</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#adding-an-ogc-wfs-getfeature-harvester">Даданне OGC WFS GetFeature Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#more-about-turning-the-getfeature-response-into-metadata-fragments">Больш падрабязна пра пераўтварэнне адказу GetFeature Response у фрагменты метададзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#bundled-geoserver-boundaries-harvest-example">У камплекце GeoServer Boundaries Harvest прыклад</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#deegree-version-2-x-philosopher-database-example">Прыклад базы дадзеных філосафа Degree Version 2.x</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-z3950.html">Z3950 Уборка ўраджаю</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-z3950.html#adding-a-z3950-harvester">Даданне камбайна Z3950</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-z3950.html#more-about-pqf-z3950-queries">Больш падрабязна пра запыты PQF Z3950</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-z3950.html#notes">Заўвагі</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="mechanism-overview">
+<h2>Агляд механізму<a class="headerlink" href="#mechanism-overview" title="Permalink to this heading">¶</a></h2>
+<p>Механізм збору абапіраецца на канцэпцыю <code class="docutils literal notranslate"><span class="pre">універсальна</span> <span class="pre">ўнікальнага</span> <span class="pre">ідэнтыфікатара</span> <span class="pre">(UUID)</span></code>. Гэта асаблівы ідэнтыфікатар, таму што ён унікальны не толькі лакальна для вузла, які яго згенераваў, але і глабальна. Гэта спалучэнне:</p>
+<ul class="simple">
+<li><p>MAC-адрас сеткавага інтэрфейсу,</p></li>
+<li><p>бягучая дата/час</p></li>
+<li><p>і выпадковы лік.</p></li>
+</ul>
+<p>Для кожнага новага запісу генеруецца і прысвойваецца UUID.</p>
+<p>Яшчэ адна важная канцэпцыя збору ўраджаю - гэта <code class="docutils literal notranslate"><span class="pre">дата</span> <span class="pre">апошняй</span> <span class="pre">змены</span></code>. Кожны раз, калі вы змяняеце запіс метададзеных, дата апошняга змянення абнаўляецца. Проста захаванне гэтага параметра і параўнанне яго з новым дазваляе любой сістэме даведацца, ці быў зменены запіс метададзеных пасля апошняга абнаўлення.</p>
+<p>Гэтыя дзве канцэпцыі дазваляюць каталогам атрымліваць аддаленыя метаданыя, правяраць, ці былі яны абноўлены, і выдаляць іх лакальна, калі яны былі выдалены выдалена. Ідэнтыфікатары UUID таксама дазвалялі збор ураджаяў з перакрыжаванага каталога ў выпадку, калі B збірае ўраджай з C, а A - з B.</p>
+</section>
+<section id="harvesting-life-cycle">
+<h2>Жыццёвы цыкл збору ўраджаю<a class="headerlink" href="#harvesting-life-cycle" title="Permalink to this heading">¶</a></h2>
+<p>Пры стварэнні камбайна метаданыя аб сабраным ураджаі адсутнічаюць. Падчас першага запуску ўсе метаданыя аддаленага супадзення здабываюцца і захоўваюцца лакальна. Для некаторых камбайнаў пасля першага запуску будуць атрыманы толькі змененыя метаданыя.</p>
+<p>Сабраныя метаданыя (па змаўчанні) нельга рэдагаваць па наступных прычынах:</p>
+<ol class="arabic simple">
+<li><p>Збор перыядычны, таму любыя лакальныя змены ў сабраных метаданых будуць страчаны падчас наступнага запуску.</p></li>
+<li><p>Дата змены можа быць выкарыстана для адсочвання змяненняў, таму, калі метаданыя будуць зменены, механізм збору можа быць парушаны.</p></li>
+</ol>
+<p>Уласцівасці метададзеных (напрыклад, катэгорыі, прывілеі і г.д.) у сабраных запісах метададзеных можна абнаўляць, але яны будуць абноўлены пры наступным запуску.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>калі вы сапраўды жадаеце рэдагаваць сабраныя запісы метададзеных і не турбуецеся аб магчымых праблемах, апісаных вышэй, зараз ёсць параметр канфігурацыі, які дазволіць гэта. Для больш падрабязнай інфармацыі глядзіце <a class="reference internal" href="../../administrator-guide/configuring-the-catalog/system-configuration.html#editing-harvested-records"><span class="std std-ref">Уборка ўраджаю</span></a>.</p>
+<p>Іншым варыянтам было б прызначыць сабраныя запісы ў мясцовы каталог, а затым змяніць іх. На дадзены момант ніякі інтэрфейс не дазваляе змяніць зыходны каталог запісу.</p>
+</div>
+<p>Працэс збору ўраджаю працягваецца, пакуль не ўзнікне адна з наступных сітуацый:</p>
+<ol class="arabic simple">
+<li><p>Адміністратар спыняе (дэактывуе) камбайн.</p></li>
+<li><p>Узнікае выключэнне. У гэтым выпадку камбайн аўтаматычна спыняецца.</p></li>
+</ol>
+<p>Пры выдаленні камбайна выдаляюцца ўсе запісы метададзеных, звязаныя з гэтым камбайнам.</p>
+</section>
+<section id="multiple-harvesting-and-hierarchies">
+<h2>Некалькі ўраджаю і іерархіі<a class="headerlink" href="#multiple-harvesting-and-hierarchies" title="Permalink to this heading">¶</a></h2>
+<p>Каталогі, якія выкарыстоўваюць UUID для ідэнтыфікацыі запісаў метададзеных (напрыклад, GeoNetwork), могуць быць сабраны некалькі разоў без неабходнасці клапаціцца аб перакрыцці метададзеных.</p>
+<p>У якасці прыкладу разгледзім тып збору GeoNetwork, які дазваляе аднаму вузлу GeoNetwork збіраць запісы метададзеных з іншага вузла GeoNetwork і наступны сцэнар:</p>
+<ol class="arabic simple">
+<li><p>Вузел (A) стварыў метаданыя (a)</p></li>
+<li><p>Вузел (B) здабывае (a) з (A)</p></li>
+<li><p>Вузел (C) бярэ ўраджай (a) з (B)</p></li>
+<li><p>Вузел (D) збірае з абодвух (A), (B) і (C)</p></li>
+</ol>
+<p>У гэтым выпадку вузел (D) атрымае аднолькавыя метаданыя (a) з усіх 3 вузлоў (A), (B), (C). Метададзеныя будуць пераходзіць у (D) па 3 розных шляхах, але дзякуючы UUID будзе захавана толькі адна копія. Калі (a) змяняецца ў (A), новая версія пераходзіць у (D), але, дзякуючы даце змены, копія ў (D) будзе абноўлена самай апошняй версіяй.</p>
+</section>
+<section id="harvesting-fragments-of-metadata-to-support-re-use">
+<span id="harvesting-fragments"></span><h2>Збор фрагментаў метададзеных для падтрымкі паўторнага выкарыстання<a class="headerlink" href="#harvesting-fragments-of-metadata-to-support-re-use" title="Permalink to this heading">¶</a></h2>
+<p>Усе зборшчыкі, за выключэннем зборшчыкаў THREDDS і OGC WFS GetFeature, ствараюць поўны запіс метададзеных, які ўстаўляецца ў існуючы запіс у каталогу або замяняе яго. Аднак часта бывае, што:</p>
+<ul class="simple">
+<li><p>метададзеныя, атрыманыя з вонкавай крыніцы, на самай справе ўяўляюць сабой толькі адзін або некалькі фрагментаў метададзеных, неабходных для апісання рэсурсу, напрыклад, набору даных</p></li>
+<li><p>вы можаце аб&amp;#39;яднаць сабраныя фрагменты метададзеных з уведзенымі ўручную або статычнымі метададзенымі ў адным запісе</p></li>
+<li><p>фрагмент метададзеных, сабраных з вонкавай крыніцы, можа спатрэбіцца ў больш чым адным запісе метададзеных</p></li>
+</ul>
+<p>Напрыклад, вы можаце быць зацікаўлены толькі ў зборы геаграфічнага аб&amp;#39;ёму і/або кантактнай інфармацыі з вонкавай крыніцы і ручным уводзе або захаванні астатняга змесціва ў запісе метададзеных. Вы таксама можаце быць зацікаўлены ў паўторным выкарыстанні кантактнай інфармацыі асобы або арганізацыі ў больш чым адным запісе метададзеных.</p>
+<p>Для падтрымкі гэтай магчымасці як WFS GetFeature Harvester, так і THREDDS Harvester дазваляюць збіраць фрагменты метададзеных і звязваць іх або капіяваць у запіс шаблону для стварэння запісаў метададзеных. Фрагменты, якія захоўваюцца ў базе дадзеных GeoNetwork, называюцца падшаблонамі і могуць выкарыстоўвацца ў некалькіх запісах метададзеных.</p>
+<p>Як паказана вышэй, прыкладам фрагмента метададзеных з&amp;#39;яўляецца элемент gmd:contactInfo дакумента ISO19139. Гэты элемент змяшчае кантактныя дадзеныя для асобы або арганізацыі. Калі фрагмент захоўваецца ў базе дадзеных GeoNetwork як падшаблон для дадзенай асобы або арганізацыі, то на гэты фрагмент можна спасылацца ў запісах метададзеных, дзе гэтая арганізацыя або асоба ўказваецца з дапамогай механізму звязвання XML, які называецца XLink.</p>
+</section>
+<section id="https-support">
+<h2>Падтрымка HTTPS<a class="headerlink" href="#https-support" title="Permalink to this heading">¶</a></h2>
+<p>Для збору ўраджаю паміж вузламі GeoNetwork можа спатрэбіцца пратакол HTTPS. Пры зборы з https GeoNetwork URL, сервер павінен будзе мець давераны сертыфікат, даступны ў сховішчы ключоў JVM, даступным для вузла GeoNetwork, які запускае збор.</p>
+<p>Калі ў вас няма даверанага сертыфіката ў сховішчы ключоў JVM, якое выкарыстоўваецца GeoNetwork, харвестар можа выдаць падобнае выключэнне, калі вы паспрабуеце сабраць ураджай з https GeoNetwork:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">javax</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">ssl</span><span class="o">.</span><span class="n">SSLHandshakeException</span><span class="p">:</span>
+   <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">validator</span><span class="o">.</span><span class="n">ValidatorException</span><span class="p">:</span> <span class="n">PKIX</span> <span class="n">path</span> <span class="n">building</span> <span class="n">failed</span><span class="p">:</span>
+   <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">certpath</span><span class="o">.</span><span class="n">SunCertPathBuilderException</span><span class="p">:</span>
+   <span class="n">unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">valid</span> <span class="n">certification</span> <span class="n">path</span> <span class="n">to</span> <span class="n">requested</span> <span class="n">target</span>
+
+<span class="n">Caused</span> <span class="n">by</span><span class="p">:</span> <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">validator</span><span class="o">.</span><span class="n">ValidatorException</span><span class="p">:</span>
+   <span class="n">PKIX</span> <span class="n">path</span> <span class="n">building</span> <span class="n">failed</span><span class="p">:</span> <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">certpath</span><span class="o">.</span><span class="n">SunCertPathBuilderException</span><span class="p">:</span>
+   <span class="n">unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">valid</span> <span class="n">certification</span> <span class="n">path</span> <span class="n">to</span> <span class="n">requested</span> <span class="n">target</span>
+
+<span class="n">Caused</span> <span class="n">by</span><span class="p">:</span> <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">certpath</span><span class="o">.</span><span class="n">SunCertPathBuilderException</span><span class="p">:</span>
+   <span class="n">unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">valid</span> <span class="n">certification</span> <span class="n">path</span> <span class="n">to</span> <span class="n">requested</span> <span class="n">target</span>
+</pre></div>
+</div>
+<p>Сертыфікат сервера для сервера GeoNetwork, які збіраецца, трэба дадаць у сховішча ключоў JVM з дапамогай <a href="#id1"><span class="problematic" id="id2">`</span></a>keytool&lt;<a class="reference external" href="http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html">http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_ каб давяраць.</p>
+<p>Альтэрнатыўны спосаб дадаць сертыфікат - выкарыстоўваць скрыпт накшталт:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## JAVA SSL Certificate import script
+## Based on original MacOs script by LouiSe@louise.hu : http://louise.hu
+##
+## Usage: ./ssl_key_import.sh &lt;sitename&gt; &lt;port&gt;
+##
+## Example: ./ssl_key_import.sh mail.google.com 443 (to read certificate from https://mail.google.com)
+
+## Compile and start
+javac InstallCert.java
+java InstallCert $1:$2
+
+## Copy new cert into local JAVA keystore
+echo &quot;Please, enter administrator password:&quot;
+sudo cp jssecacerts $JAVA_HOME/jre/lib/security/jssecacerts
+# Comment previous line and uncomment next one for MacOs
+#sudo cp jssecacerts /Library/Java/Home/lib/security/
+</pre></div>
+</div>
+<p>Каб выкарыстоўваць скрыпт, кампілятар Java павінен быць усталяваны і файл <a href="#id3"><span class="problematic" id="id4">`InstallCert.java&lt;http://code.google.com/p/java-use-examples/source/browse/trunk/src/com/aw/ad/util/InstallCert.java&gt;`_</span></a>, неабходна загрузіць і змясціць у той жа каталог, што і скрыпт.</p>
+<p>Сцэнар дадасць сертыфікат у сховішча ключоў JVM, калі вы запусціце яго наступным чынам::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./ssl_key_import.sh https_server_name 443
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Выкарыстоўвайце гэты скрыпт на свой страх і рызыку! Перш чым усталёўваць сертыфікат у сховішча ключоў JVM як давераны, пераканайцеся, што вы разумееце наступствы для бяспекі.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Пасля дадання сертыфіката вам трэба будзе перазапусціць GeoNetwork.</p>
+</div>
+</section>
+<section id="the-main-page">
+<h2>Галоўная старонка<a class="headerlink" href="#the-main-page" title="Permalink to this heading">¶</a></h2>
+<p>To access the harvesting main page you have to be logged in as an administrator.
+From the administration page, select the harvest shortcut.
+The harvesting main page will then be displayed.</p>
+<p>На старонцы паказаны спіс вызначаных у цяперашні час камбайнаў і набор кнопак для функцый кіравання. Значэнне кожнага слупка ў спісе камбайнаў наступнае:</p>
+<ol class="arabic simple">
+<li><p><em>Выберыце</em>, каб выбраць адзін або некалькі камбайнаў. На выбраныя камбайны будзе ўплываць першы шэраг кнопак (актываваць, дэактываваць, запусціць, выдаліць). Напрыклад, калі вы вылучыце тры камбайны і націснеце кнопку «Выдаліць», усе яны будуць выдалены.</p></li>
+<li><p><em>Імя</em> Гэта імя камбайна, дадзенае адміністратарам.</p></li>
+<li><p><em>Тып</em> Тып камбайна (напрыклад, GeoNetwork, WebDAV і г.д...).</p></li>
+<li><p><em>Статус</em> Значок, які паказвае бягучы стан. Глядзіце <a class="reference internal" href="#admin-harvesting-status"><span class="std std-ref">Значкі стану ўборкі і памылак</span></a> для розных значкоў і апісанняў стану.</p></li>
+<li><p><em>Памылкі</em> Значок, які паказвае вынік апошняга ўборкі ўраджаю, які мог быць паспяховым ці не. Глядзіце <a class="reference internal" href="#admin-harvesting-status"><span class="std std-ref">Значкі стану ўборкі і памылак</span></a> для розных значкоў і апісанняў памылак. Пры навядзенні курсора на значок вы ўбачыце падрабязную інфармацыю аб апошнім прагоне ўборкі.</p></li>
+<li><p><em>Запуск у</em> і <em>Кожны</em>: планаванне прабегаў камбайна. Па сутнасці час сутак + колькі гадзін паміж паўторамі і ў якія дні будзе працаваць камбайн.</p></li>
+<li><p><em>Апошні запуск</em> Дата апошняй уборкі ўраджаю ў фармаце ISO 8601.</p></li>
+<li><p><em>Аперацыя</em> Спіс кнопак/спасылак на аперацыі на камбайне.</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Выбар <em>Праўка</em> дазволіць вам змяніць параметры для камбайна.</p></li>
+<li><p>Выбар <em>Клон</em> дазволіць вам стварыць клон гэтага камбайна і пачаць рэдагаванне дэталяў клона.</p></li>
+<li><p>Выбар <em>Гісторыя</em> дазволіць вам праглядаць/змяняць гісторыю збору ўраджаю для камбайна - гл. <a class="reference internal" href="#harvest-history"><span class="std std-ref">Гісторыя ўраджаю</span></a>.</p></li>
+</ul>
+</div></blockquote>
+<p>У ніжняй частцы спісу камбайнаў размешчаны два рады кнопак. Першы радок змяшчае кнопкі, якія могуць працаваць на абраным наборы камбайнаў. Вы можаце выбраць камбайны, на якіх хочаце працаваць, усталяваўшы сцяжок у слупку &amp;quot;Выбраць&amp;quot;, а затым націснуць адну з гэтых кнопак. Калі кнопка заканчвае сваё дзеянне, сцяжкі здымаюцца. Вось значэнне кожнай кнопкі:</p>
+<ol class="arabic simple">
+<li><p><em>Актываваць</em> Калі новы камбайн ствараецца, статус <em>неактыўны</em>. Скарыстайцеся гэтай кнопкай, каб зрабіць яе <em>актыўнай</em> і запусціць камбайн(-ы) у адпаведнасці з раскладам, на які ён/яны настроены.</p></li>
+<li><p><em>Адключыць</em> Спыняе камбайн(ы). Заўвага: гэта не азначае, што ўборка ўраджаю, якая зараз ідзе, будзе спынена. Замест гэтага гэта азначае, што камбайн(-ы) не будзе запланаваны на паўторны запуск.</p></li>
+<li><p><em>Запуск</em> Неадкладна запусціце выбраныя камбайны. Гэта карысна для тэставання налад камбайна.</p></li>
+<li><p><em>Выдаліць</em> Выдаліць усе выбраныя камбайны. У дыялогавым акне карыстальніка будзе прапанавана пацвердзіць дзеянне.</p></li>
+</ol>
+<p>Другі радок змяшчае кнопкі агульнага прызначэння. Вось значэнне кожнай кнопкі:</p>
+<ol class="arabic simple">
+<li><p><em>Назад</em> Проста вяртае на галоўную старонку адміністравання.</p></li>
+<li><p><em>Дадаць</em> Гэтая кнопка стварае новы камбайн.</p></li>
+<li><p><em>Абнавіць</em> Абнаўляе бягучы спіс камбайнаў з сервера. Гэта можа быць карысна, каб убачыць, ці не быў зменены спіс уборкі кімсьці іншым, або каб атрымаць статус запушчаных камбайнаў.</p></li>
+<li><p><em>Гісторыя</em> Паказаць гісторыю ўборкі ўсіх камбайнаў. Для больш падрабязнай інфармацыі глядзіце <a class="reference internal" href="#harvest-history"><span class="std std-ref">Гісторыя ўраджаю</span></a>.</p></li>
+</ol>
+</section>
+<section id="harvesting-status-and-error-icons">
+<span id="admin-harvesting-status"></span><h2>Значкі стану ўборкі і памылак<a class="headerlink" href="#harvesting-status-and-error-icons" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="harvesting-result-tips">
+<h2>Парады па выніках збору ўраджаю<a class="headerlink" href="#harvesting-result-tips" title="Permalink to this heading">¶</a></h2>
+<p>Калі камбайн працуе і завяршае працу, у слупку <strong>Памылкі</strong> для камбайна адлюстроўваецца падказка з падрабязнай інфармацыяй аб працэсе збору ўраджаю. Калі камбайн атрымаўся, то пры навядзенні курсора на падказку інструмента з&amp;#39;явіцца табліца з некаторымі радкамі, пазначанымі наступным чынам:</p>
+<ul class="simple">
+<li><p><strong>Усяго</strong> - гэта агульная колькасць метаданых, знойдзеных выдалена. Метададзеныя з аднолькавым ідэнтыфікатарам лічацца адным.</p></li>
+<li><p><strong>Дададзена</strong> - Колькасць метаданых, дададзеных у сістэму, таму што яны адсутнічалі лакальна.</p></li>
+<li><p><strong>Выдалена</strong> - Колькасць метаданых, якія былі выдалены лакальна, таму што яны больш не прысутнічаюць на аддаленым серверы.</p></li>
+<li><p><strong>Абноўлена</strong> - Колькасць метаданых, якія прысутнічаюць лакальна, але якія неабходна абнавіць, таму што дата іх апошняй змены адрознівалася ад аддаленай.</p></li>
+<li><p><strong>Без зменаў</strong> - лакальныя метаданыя засталіся без зменаў. Дата іх аддаленай апошняй змены не змянілася.</p></li>
+<li><p><strong>Невядомая схема</strong> - колькасць прапушчаных метаданых, таму што іх фармат не быў распазнаны GeoNetwork.</p></li>
+<li><p><strong>Недаступна</strong> - Колькасць метададзеных, якія былі гатовыя да атрымання з аддаленага сервера, але па нейкай прычыне ў працэсе перадачы даных адбылося выключэнне.</p></li>
+<li><p><strong>Дрэнны фармат</strong> - колькасць прапушчаных метададзеных, таму што яны не мелі сапраўднага прадстаўлення XML.</p></li>
+<li><p><strong>Не правяраецца</strong> - Колькасць метададзеных, якія не прайшлі праверку па сваёй схеме. Гэтыя метаданыя былі паспяхова сабраны, але прапушчаны з-за працэсу праверкі. Звычайна існуе магчымасць прымусовай праверкі: калі вы ўсё роўна хочаце сабраць гэтыя метададзеныя, проста выключыце/адключыце яе.</p></li>
+<li><p><strong>Эскізы/Збой эскізаў</strong> - Колькасць мініяцюр метададзеных, дададзеных/якія не ўдалося дадаць з-за нейкай памылкі.</p></li>
+<li><p><strong>Атрыбут URL метададзеных, які выкарыстоўваецца</strong> - Колькасць слаёў/тыпаў функцый/пакрыццяў, якія мелі URL метададзеных, якія можна было выкарыстоўваць для спасылкі на запіс метададзеных (толькі для OGC Service Harvester).</p></li>
+<li><p><strong>Дададзеныя паслугі</strong> - колькасць створаных і дададзеных у каталог службовых запісаў ISO19119 (толькі для збору каталога THREDDS).</p></li>
+<li><p><strong>Дададзеныя калекцыі</strong> - Колькасць запісаў набораў даных калекцыі, дададзеных у каталог (толькі для збору каталога THREDDS).</p></li>
+<li><p><strong>Atomics added</strong> - Колькасць запісаў атамнага набору даных, дададзеных у каталог (толькі для збору каталога THREDDS).</p></li>
+<li><p><strong>Дададзены падшаблоны</strong> - колькасць падшаблонаў (= фрагмент, бачны ў каталогу), дададзеных у каталог метададзеных.</p></li>
+<li><p><strong>Выдаленыя падшаблоны</strong> - Колькасць падшаблонаў (= фрагмент, бачны ў каталогу), выдаленых з каталога метададзеных.</p></li>
+<li><p><strong>Фрагменты з невядомай схемай</strong> - колькасць фрагментаў, якія маюць невядомую схему метададзеных.</p></li>
+<li><p><strong>Вернутыя фрагменты</strong> - Колькасць фрагментаў, вернутых камбайнам.</p></li>
+<li><p><strong>Фрагменты, якія супадаюць</strong> - Колькасць фрагментаў, якія мелі ідэнтыфікатары ў шаблоне, які выкарыстоўваецца камбайнам.</p></li>
+<li><p><strong>Існуючыя наборы даных</strong> - Колькасць запісаў метададзеных для набораў даных, якія існавалі, калі быў запушчаны камбайн THREDDS.</p></li>
+<li><p><strong>Пабудаваныя запісы</strong> - Колькасць запісаў, створаных камбайнам з шаблону і фрагментаў.</p></li>
+<li><p><strong>Немагчыма ўставіць</strong> - Колькасць запісаў, якія камбайн не змог уставіць у каталог (звычайна таму, што запіс ужо быў, напрыклад, у камбайне Z3950, гэта можа адбыцца, калі адзін і той жа запіс сабраны з розных сервераў).</p></li>
+</ul>
+</section>
+<section id="adding-new-harvesters">
+<h2>Дабаўленне новых камбайнаў<a class="headerlink" href="#adding-new-harvesters" title="Permalink to this heading">¶</a></h2>
+<p>Кнопка «Дадаць» на галоўнай старонцы дазваляе дадаваць новыя камбайны. Затым паказваецца выпадальны спіс з усімі даступнымі пратаколамі камбайна.</p>
+<p>Вы можаце выбраць тып збору ўраджаю, які збіраецеся выконваць, і націснуць <em>Дадаць</em>, каб пачаць працэс дадання камбайна. Камбайны, якія падтрымліваюцца, і падрабязная інфармацыя аб тым, што рабіць далей, знаходзяцца ў наступных раздзелах:</p>
+</section>
+<section id="harvest-history">
+<span id="id2"></span><h2>Гісторыя ўраджаю<a class="headerlink" href="#harvest-history" title="Permalink to this heading">¶</a></h2>
+<p>Кожны раз, калі камбайн запускаецца, ён стварае справаздачу аб стане таго, што было сабрана і/або што пайшло не так (напрыклад, справаздачу аб выключэнні). Гэтыя справаздачы захоўваюцца ў табліцы ў базе дадзеных, якая выкарыстоўваецца GeoNetwork. Усю гісторыю ўборкі для ўсіх камбайнаў можна выклікаць з дапамогай кнопкі &amp;quot;Гісторыя&amp;quot; на старонцы &amp;quot;Кіраванне ўборкай&amp;quot;. Гісторыю збору ўраджаю для асобнага камбайна таксама можна выклікаць, выкарыстоўваючы спасылку &amp;quot;Гісторыя&amp;quot; ў раздзеле &amp;quot;Аперацыі&amp;quot; гэтага камбайна.</p>
+<p>Пасля адлюстравання гісторыі ўраджаю можна:</p>
+<ul class="simple">
+<li><p>пашырыць дэталі любых выключэнняў</p></li>
+<li><p>сартаваць гісторыю па даце збору ўраджаю (або ў выпадку гісторыі ўсіх зборшчыкаў, па назве зборшчыка)</p></li>
+<li><p>выдаліць любы запіс гісторыі або ўсю гісторыю</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../workflow/batchupdate-xsl.html" class="btn btn-neutral float-left" title="Абнаўленне набору запісаў з дапамогай XSLT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harvesting-geonetwork.html" class="btn btn-neutral float-right" title="Камбайн GeoNetwork 2.0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

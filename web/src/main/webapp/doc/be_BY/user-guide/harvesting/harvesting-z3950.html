@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z3950 Уборка ўраджаю &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Экспарт запісаў" href="../export/index.html" />
+    <link rel="prev" title="Збор WFS GetFeature" href="harvesting-wfs-features.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва карыстальніка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Хуткі старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Апісанне інфармацыі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Аб&amp;#39;яднанне рэсурсаў</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Класіфікаваць інфармацыю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Выдавецкая справа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Аналіз дадзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочы працэс</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Уборка ўраджаю</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geonetwork.html">Камбайн GeoNetwork 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-csw.html">Паслугі ЦСВ па ўборцы ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-ogcwxs.html">Паслугі OGC па ўборцы ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-filesystem.html">Збор лакальнай файлавай сістэмы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-sde.html">Збор вузла ARCSDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Уборка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-thredds.html">ТРАЦІ Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-wfs-features.html">Збор WFS GetFeature</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Z3950 Уборка ўраджаю</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-z3950-harvester">Даданне камбайна Z3950</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-about-pqf-z3950-queries">Больш падрабязна пра запыты PQF Z3950</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notes">Заўвагі</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#mechanism-overview">Агляд механізму</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-life-cycle">Жыццёвы цыкл збору ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#multiple-harvesting-and-hierarchies">Некалькі ўраджаю і іерархіі</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-fragments-of-metadata-to-support-re-use">Збор фрагментаў метададзеных для падтрымкі паўторнага выкарыстання</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#https-support">Падтрымка HTTPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-main-page">Галоўная старонка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-status-and-error-icons">Значкі стану ўборкі і памылак</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-result-tips">Парады па выніках збору ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#adding-new-harvesters">Дабаўленне новых камбайнаў</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvest-history">Гісторыя ўраджаю</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспарт запісаў</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва карыстальніка</a> &raquo;</li>
+          <li><a href="index.html">Уборка ўраджаю</a> &raquo;</li>
+      <li>Z3950 Уборка ўраджаю</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/harvesting/harvesting-z3950.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="z3950-harvesting">
+<span id="z3950-harvester"></span><h1>Z3950 Уборка ўраджаю<a class="headerlink" href="#z3950-harvesting" title="Permalink to this heading">¶</a></h1>
+<p>Z3950 - гэта пратакол аддаленага пошуку і збору, які звычайна выкарыстоўваецца для пошуку і збору метададзеных. Нягледзячы на тое, што пратакол часта выкарыстоўваецца для бібліятэчных каталогаў, у значных каталогах геапрасторавых метададзеных таксама можна шукаць з дапамогай Z3950 (напрыклад, калекцыі метададзеных аўстралійскіх урадавых устаноў, якія ўдзельнічаюць у Аўстралійскім каталогу прасторавых даных - ASDD). Гэты камбайн дазваляе карыстальніку ўказваць запыт Z3950 і атрымліваць запісы метададзеных з аднаго або некалькіх сервераў Z3950.</p>
+<section id="adding-a-z3950-harvester">
+<h2>Даданне камбайна Z3950<a class="headerlink" href="#adding-a-z3950-harvester" title="Permalink to this heading">¶</a></h2>
+<p>Даступныя варыянты:</p>
+<ul>
+<li><p><strong>Сайт</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Назва</em> - Кароткае апісанне гэтага камбайна Z3950. Ён будзе паказаны на галоўнай старонцы збору ўраджаю пад гэтай назвай.</p></li>
+<li><p><em>Сервер(ы) Z3950</em> - гэта серверы Z3950, на якіх будзе праводзіцца пошук. Вы можаце выбраць адзін або некалькі з гэтых сервераў.</p></li>
+<li><p><em>Запыт Z3950</em> - укажыце запыт Z3950, які будзе выкарыстоўвацца пры пошуку на выбраных серверах Z3950. У цяперашні час вядома, што гэтае поле падтрымлівае фармат прэфікснага запыту (таксама вядомы як натацыя прэфікснага запыту), які апісаны па гэтым URL: <a class="reference external" href="http://www.indexdata.com/yaz/doc/tools.html#PQF">http://www.indexdata.com/yaz/doc/tools.html#PQF</a>. Больш інфармацыі і некалькі простых прыкладаў глядзіце ніжэй.</p></li>
+<li><p><em>Значок</em> - значок для прызначэння сабраных метададзеных. Значок будзе выкарыстоўвацца пры паказе вынікаў пошуку.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Параметры</strong> - параметры раскладу.</p></li>
+<li><p><strong>Сабранае змесціва</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Ужыць гэты XSLT да сабраных запісаў</em> - Выберыце тут XSLT, які пераўтворыць сабраныя запісы ў іншы фармат.</p></li>
+<li><p><em>Праверыць</em> - калі пазначана, запісы, якія не праходзяць/не могуць быць правераны, будуць адхілены.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Прывілеі</strong></p></li>
+<li><p><strong>Катэгорыі</strong></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>гэты камбайн аўтаматычна стварае новую катэгорыю, названую ў гонар кожнага з сервераў Z3950, якія вяртаюць запісы. Запісы, якія вяртае сервер, прысвойваюцца катэгорыі, названай у гонар гэтага сервера.</p>
+</div>
+</section>
+<section id="more-about-pqf-z3950-queries">
+<h2>Больш падрабязна пра запыты PQF Z3950<a class="headerlink" href="#more-about-pqf-z3950-queries" title="Permalink to this heading">¶</a></h2>
+<p>PQF - даволі загадкавая мова запытаў. Ён заснаваны на ідэі атрыбутаў і набораў атрыбутаў. Найбольш распаўсюджаны набор атрыбутаў, які выкарыстоўваецца для геапрасторавых метададзеных на серверах Z3950, - гэта набор атрыбутаў GEO (які з&amp;#39;яўляецца пашырэннем набораў атрыбутаў BIB-1 і GILS - гл. <a class="reference external" href="http://www.fgdc.gov/standards/projects/GeoProfile">http://www.fgdc.gov/standards/projects/GeoProfile</a>). Такім чынам, усе запыты PQF да сервераў геапрасторавых метададзеных Z3950 павінны пачынацца з &#64;attrset geo.</p>
+<p>Найбольш карысныя тыпы атрыбутаў у наборы атрыбутаў GEO наступныя:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>нумар &#64;attr</p></th>
+<th class="head"><p>Сэнс</p></th>
+<th class="head"><p>Апісанне</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Выкарыстоўвайце</p></td>
+<td><p>У якім полі шукаць</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Адносіны</p></td>
+<td><p>Як параўнаць указаны тэрмін</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Структура</p></td>
+<td><p>Да якога тыпу адносіцца тэрмін? напр. дата, лік, фраза</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Усечэнне</p></td>
+<td><p>Як абрэзаць, напрыклад. справа</p></td>
+</tr>
+</tbody>
+</table>
+<p>У GeoNetwork лікавыя значэнні, якія можна ўказаць для <code class="docutils literal notranslate"><span class="pre">&#64;attr</span> <span class="pre">1</span></code>, супастаўляюцца з імёнамі палёў індэкса lucene наступным чынам:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>&#64;attr 1=</p></th>
+<th class="head"><p>Поле індэкса Lucene</p></th>
+<th class="head"><p>Элемент ISO19139</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1016</p></td>
+<td><p>любы</p></td>
+<td><p>Увесь тэкст з усіх элементаў метададзеных</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>назва, altTitle</p></td>
+<td><p>gmd:identificationInfo//gmd:citation//gmd:title/gco:CharacterString</p></td>
+</tr>
+<tr class="row-even"><td><p>62</p></td>
+<td><p>анатацыя</p></td>
+<td><p>gmd:identificationInfo//gmd:abstract/gco:CharacterString</p></td>
+</tr>
+<tr class="row-odd"><td><p>1012</p></td>
+<td><p>_changeDate</p></td>
+<td><p>Не з&amp;#39;яўляецца элементам метаданых (падтрымліваецца GeoNetwork)</p></td>
+</tr>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>createDate</p></td>
+<td><p>gmd:MD_Metadata/gmd:dateStamp/gco:Дата</p></td>
+</tr>
+<tr class="row-odd"><td><p>31</p></td>
+<td><p>Дата публікацыі</p></td>
+<td><p>gmd:identificationInfo//gmd:citation//gmd:date/gmd:CI_DateCode/&#64;codeListValue=&amp;#39;публікацыя&amp;#39;</p></td>
+</tr>
+<tr class="row-even"><td><p>2072 год</p></td>
+<td><p>tempExtentBegin</p></td>
+<td><p>gmd:identificationInfo//gmd:extent//gmd:temporalElement//gml:begin(Пазіцыя)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2073 год</p></td>
+<td><p>tempExtentEnd</p></td>
+<td><p>gmd:identificationInfo//gmd:extent//gmd:temporalElement//gml:end(Пазіцыя)</p></td>
+</tr>
+<tr class="row-even"><td><p>2012 год</p></td>
+<td><p>fileId</p></td>
+<td><p>gmd:MD_Metadata/gmd:fileIdentifier/*</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>ідэнтыфікатар</p></td>
+<td><p>gmd:identificationInfo//gmd:citation//gmd:ідэнтыфікатар//gmd:код/*</p></td>
+</tr>
+<tr class="row-even"><td><p>21,29,2002,3121,3122</p></td>
+<td><p>ключавое слова</p></td>
+<td><p>gmd:ідэнтыфікацыйная інфармацыя//gmd:ключавое слова/*</p></td>
+</tr>
+<tr class="row-odd"><td><p>2060 год</p></td>
+<td><p>поўначBL, усходBL, поўдзеньBL, захадBL</p></td>
+<td><p>gmd:identificationInfo//gmd:extent//gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude*/gco:Decimal (і г.д.)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Звярніце ўвагу, што гэта не поўны набор супастаўленняў паміж наборам атрыбутаў Z3950 GEO і назвамі палёў індэкса lucene GeoNetwork для ISO19139. Праверце INSTALL_DIR/web/geonetwork/xml/search/z3950Server.xsl і INSTALL_DIR/web/geonetwork/xml/schemas/iso19139/index-fields.xsl для атрымання больш падрабязнай інфармацыі, а таксама дадатак A набору атрыбутаў GEO для Z3950 на <a class="reference external" href="http:/">http:/</a> /www.fgdc.gov/standards/projects/GeoProfile/annex_a.html для больш падрабязнай інфармацыі.</p>
+<p>Агульныя значэнні для атрыбута адносіны (<code class="docutils literal notranslate"><span class="pre">&#64;attr=2</span></code>):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>&#64;attr 2=</p></th>
+<th class="head"><p>Апісанне</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Менш чым</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Менш або роўна</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Роўнае</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Большы або роўны</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Больш, чым</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Не роўны</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Перакрыцці</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Цалкам закрыты ўнутры</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Замыкае</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Цалкам звонку</p></td>
+</tr>
+</tbody>
+</table>
+<p>Такім чынам, просты запыт для атрымання ўсіх запісаў метададзеных, якія маюць слова &amp;quot;the&amp;quot; у любым полі, будзе:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;attrset</span> <span class="pre">geo</span> <span class="pre">&#64;attr</span> <span class="pre">1=1016</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;attr</span> <span class="pre">1=1016</span></code> азначае, што мы робім пошук у любым полі ў запісе метададзеных</p></li>
+</ul>
+<p>Больш складаны пошук па абмежавальнай рамцы можна сфармуляваць так:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;attrset</span> <span class="pre">geo</span> <span class="pre">&#64;attr</span> <span class="pre">1=2060</span> <span class="pre">&#64;attr</span> <span class="pre">4=201</span> <span class="pre">&#64;attr</span> <span class="pre">2=7</span> <span class="pre">&amp;quot;-36,8262</span> <span class="pre">142,6465</span> <span class="pre">-44,3848</span> <span class="pre">151,2598</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;attr</span> <span class="pre">1=2060</span></code> азначае, што мы выконваем пошук па абмежавальнай рамцы</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;attr</span> <span class="pre">4=201</span></code> азначае, што запыт змяшчае каардынатныя радкі</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;attr</span> <span class="pre">2=7</span></code> азначае, што мы шукаем запісы, абмежавальная рамка якіх перакрывае поле запыту, указанае ў канцы запыту</p></li>
+</ul>
+</section>
+<section id="notes">
+<h2>Заўвагі<a class="headerlink" href="#notes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Серверы Z3950 павінны быць настроены для GeoNetwork у <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/WEB-INF/classes/JZKitConfig.xml.tem</span></code></p></li>
+<li><p>кожны раз, калі камбайн працуе, ён будзе выдаляць раней сабраныя запісы і ствараць новыя.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="harvesting-wfs-features.html" class="btn btn-neutral float-left" title="Збор WFS GetFeature" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../export/index.html" class="btn btn-neutral float-right" title="Экспарт запісаў" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

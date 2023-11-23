@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>(Неабавязкова) Будаваць &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Разгортванне з дапамогай ваеннага файла" href="deploy.html" />
+    <link rel="prev" title="Разгортванне" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Падручнікі</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Уводзіны ў GeoNetwork</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Разгортванне</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">(Неабавязкова) Будаваць</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy.html">Разгортванне з дапамогай ваеннага файла</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/index.html">Усталяваць</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../edit/index.html">Рэдагаванне метаданых</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../harvesting/index.html">Уборка ўраджаю</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../customui/index.html">Наладзьце карыстацкі інтэрфейс GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hookcustomizations/index.html">Падключыце свой уласны код</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Падручнікі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Падручнікі</a> &raquo;</li>
+          <li><a href="../index.html">Уводзіны ў GeoNetwork</a> &raquo;</li>
+          <li><a href="index.html">Разгортванне</a> &raquo;</li>
+      <li>(Неабавязкова) Будаваць</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/introduction/deployment/build.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="optional-build">
+<span id="tuto-introduction-deployment-build"></span><h1>(Неабавязкова) Будаваць<a class="headerlink" href="#optional-build" title="Permalink to this heading">¶</a></h1>
+<p>Зыходны код GeoNetwork даступны ў публічным сховішчы на <a href="#id1"><span class="problematic" id="id2">`</span></a>Github&lt;<a class="reference external" href="https://github.com/geonetwork/core-geonetwork">https://github.com/geonetwork/core-geonetwork</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_. Гэта азначае, што вы можаце кланаваць, разгалужваць і прапаноўваць штуршкі вашых карыстальніцкіх змяненняў. Калі вы не знаёмыя са сховішчамі кода або git, вам варта азнаёміцца з гэтым кароткім кіраўніцтвам&lt;<a class="reference external" href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a>&gt; <a href="#id5"><span class="problematic" id="id6">`</span></a>_.</p>
+<p>GeoNetwork is built using <a class="reference external" href="https://Maven.apache.org/">Maven version 3+</a>. It is written on <strong>Java 7+</strong>. It works both with OpenJDK or the Oracle version. There are several ways to install this on your local machine; for example if you have a Debian based OS (like Ubuntu), you can install them with just this command:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install maven git
+</pre></div>
+</div>
+</div></blockquote>
+<p>Пераканайцеся, што вы ўсталявалі Maven версіі 3!!</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn --version
+  Apache Maven 3.2.1 (ea8b2b07643dbb1b84b6d16e1f08391b666bc1e9; 2014-02-14T18:37:52+01:00)
+  Maven home: ....
+</pre></div>
+</div>
+</div></blockquote>
+<p>Remember that this will also install Java on your system. You can check that the version is the right one with the following command:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ java -version
+</pre></div>
+</div>
+</div></blockquote>
+<p>Такім чынам, самы першы крок пасля наладжвання асяроддзя - кланаванне рэпазітара GeoNetwork на вашай лакальнай машыне. Гэта можна зрабіць у камандным радку з дапамогай наступнай каманды ўнутры пустой папкі, куды будзе запаўняцца зыходны код:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd yourEmptyFolder
+$ git clone https://github.com/geonetwork/core-geonetwork.git
+$ cd core-geonetwork
+$ git submodule init
+$ git submodule update
+</pre></div>
+</div>
+</div></blockquote>
+<p>Як бачыце, увесь зыходны код, паказаны на github, цяпер таксама даступны на вашай лакальнай машыне.</p>
+<p>The source code of GeoNetwork is split on several smaller Maven projects. To run GeoNetwork, you have to build all of them and run the project named <strong>&quot;web&quot;</strong>.</p>
+<p>If you are familiar to Maven, you will probably have guessed that you have to run a package install command on the root folder of GeoNetwork source code. But if you try that, Maven will warn you that for building GeoNetwork you need more memory than the default memory provided to Maven. This means, you will have to export the Maven options to increase the memory like this:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export MAVEN_OPTS=&quot;-Xmx512M -XX:MaxPermSize=256M&quot;
+</pre></div>
+</div>
+</div></blockquote>
+<p>На дадзены момант мы не зацікаўлены ў запуску тэстаў, таму вы можаце прапусціць іх, выкарыстоўваючы параметр <em>-DskipTests</em>:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mvn package install -DskipTests
+</pre></div>
+</div>
+</div></blockquote>
+<p>У канцы гэтай зборкі (якая можа заняць шмат часу, у залежнасці ад вашага сеткавага злучэння, паколькі яна мае шмат старонніх бібліятэк), вы ўбачыце нешта накшталт гэтага:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Reactor</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">opensource</span> <span class="o">.............................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">3.111</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">common</span> <span class="n">utils</span> <span class="o">......................................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">13.678</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Caching</span> <span class="n">xslt</span> <span class="n">module</span> <span class="o">...............................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">7.607</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">ArcSDE</span> <span class="n">module</span> <span class="p">(</span><span class="n">dummy</span><span class="o">-</span><span class="n">api</span><span class="p">)</span> <span class="o">.........................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">7.860</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">domain</span> <span class="o">.................................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">33.785</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Oaipmh</span> <span class="n">modules</span> <span class="o">....................................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">0.833</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">Events</span> <span class="o">.................................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">0.654</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">schema</span> <span class="n">plugins</span> <span class="o">.........................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">4.646</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">schema</span> <span class="n">plugins</span> <span class="n">core</span> <span class="o">....................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">5.338</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">schema</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">ISO19139</span><span class="o">/</span><span class="mi">119</span> <span class="n">standards</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">8.432</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">core</span> <span class="o">...................................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">16.304</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">schema</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">Dublin</span> <span class="n">Core</span> <span class="n">records</span> <span class="n">retrieved</span> <span class="n">by</span> <span class="n">CSW</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">5.031</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">schema</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">Dublin</span> <span class="n">Core</span> <span class="n">standard</span> <span class="o">.</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">8.419</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">schema</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">ISO19110</span> <span class="n">standard</span> <span class="o">....</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">3.627</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">CSW</span> <span class="n">server</span> <span class="o">.............................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">5.546</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">harvesters</span> <span class="o">.............................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">3.888</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">health</span> <span class="n">monitor</span> <span class="o">.........................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">2.489</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">services</span> <span class="o">...............................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">8.597</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Geonetwork</span> <span class="n">Web</span> <span class="n">Resources</span> <span class="mi">4</span> <span class="n">Java</span> <span class="o">...................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">5.261</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Cobweb</span> <span class="n">Customizations</span> <span class="o">.............................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">4.226</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">INSPIRE</span> <span class="n">Atom</span> <span class="o">...........................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">3.990</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Tests</span> <span class="k">for</span> <span class="n">schema</span> <span class="n">plugins</span> <span class="o">..........................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">2.334</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">user</span> <span class="n">interface</span> <span class="n">module</span> <span class="o">..................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">35.356</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">JS</span> <span class="n">API</span> <span class="ow">and</span> <span class="n">Service</span> <span class="n">documentation</span> <span class="o">..................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">21.203</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">web</span> <span class="n">client</span> <span class="n">module</span> <span class="o">......................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">47.484</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">Web</span> <span class="n">module</span> <span class="o">.............................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">48.490</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">GeoNetwork</span> <span class="n">E2E</span> <span class="n">Javascript</span> <span class="n">Tests</span> <span class="o">...................</span> <span class="n">SUCCESS</span> <span class="p">[</span> <span class="mf">1.645</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="mi">02</span><span class="p">:</span><span class="mi">19</span> <span class="nb">min</span> <span class="p">(</span><span class="n">Wall</span> <span class="n">Clock</span><span class="p">)</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Finished</span> <span class="n">at</span><span class="p">:</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">17</span><span class="n">T10</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">43</span><span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="n">Final</span> <span class="n">Memory</span><span class="p">:</span> <span class="mi">232</span><span class="n">M</span><span class="o">/</span><span class="mi">441</span><span class="n">M</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="o">------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Гэта створыць файл вайны, які вы можаце выкарыстоўваць у любым кантэйнеры прыкладанняў Java (серверы), напрыклад Tomcat, на web/target/geonetwork.war</p>
+<p>Congratulations! You are ready to run GeoNetwork. To do this, just go to the web folder and run Jetty in there:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd web; mvn jetty:run
+</pre></div>
+</div>
+</div></blockquote>
+<p>After Jetty starts, you can see your running GeoNetwork by opening a browser and enter to <a class="reference external" href="http://localhost:8080/geonetwork">http://localhost:8080/geonetwork</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Разгортванне" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deploy.html" class="btn btn-neutral float-right" title="Разгортванне з дапамогай ваеннага файла" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

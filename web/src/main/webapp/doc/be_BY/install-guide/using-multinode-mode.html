@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using multinode mode &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring printing of the map" href="map-print-setup.html" />
+    <link rel="prev" title="Logging" href="logging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Агляд</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installing-from-zip.html">Installing using a ZIP file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-war-file.html">Installing using a WAR file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-source-code.html">Building from Source Code</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://geonetwork-opensource.org/downloads.html#third-party-distributions">Installing a third-party distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html">Installing remote index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html">Configuring the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html">Customizing the data directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using multinode mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trusted-hosts">Trusted hosts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registering-new-node-manually">Registering new node manually</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#styling-the-node">Styling the node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-node-using-utility-script">Creating a node using utility script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="map-print-setup.html">Configuring printing of the map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading-samples.html">Loading templates and sample data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Installation guide</a> &raquo;</li>
+      <li>Using multinode mode</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/install-guide/using-multinode-mode.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-multinode-mode">
+<span id="id1"></span><h1>Using multinode mode<a class="headerlink" href="#using-multinode-mode" title="Permalink to this heading">¶</a></h1>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.8.0: </span>Use <a class="reference internal" href="../administrator-guide/configuring-the-catalog/portal-configuration.html#portal-configuration"><span class="std std-ref">Portal configuration</span></a> instead.</p>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>The multinodes mode add the capability to setup more than one catalog using
+the same web application. By default, only one node is available.
+The node named is &quot;srv&quot;. Each nodes have their own:</p>
+<ul class="simple">
+<li><p>data directory (index, files)</p></li>
+<li><p>database</p></li>
+</ul>
+<p>The main data directory contains one data folder per node.</p>
+<p>This simplifies catalog updates for users maintaining a set of catalogs. It
+also saves resources by sharing some part of the application eg. all catalogs
+share the same schemas and thesaurus
+(to save memory).</p>
+<p>User can only login in one node at a time in the same browser (only one
+session is allowed). When identified, if user tries to switch to another
+node, the catalog proposes:</p>
+<ul class="simple">
+<li><p>to log out and continue to the requested node</p></li>
+<li><p>to return to previous node</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/node-change-warning.png" src="../_images/node-change-warning.png" />
+</figure>
+<p>Installations running 200 nodes / servers have been setup. Such configuration
+require to increase JVM memory configuration (~4Gb for Xmx parameter).</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
+<section id="trusted-hosts">
+<span id="id2"></span><h3>Trusted hosts<a class="headerlink" href="#trusted-hosts" title="Permalink to this heading">¶</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">WEB-INF/web.xml</span></code>, add the list of hosts name or IP used to access the catalog in the <code class="docutils literal notranslate"><span class="pre">trustedHost</span></code> parameter for the following filter:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;filter&gt;</span>
+<span class="w">  </span><span class="nt">&lt;filter-name&gt;</span>springSecurityFilterChain<span class="nt">&lt;/filter-name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;filter-class&gt;</span>jeeves.config.springutil.JeevesDelegatingFilterProxy<span class="nt">&lt;/filter-class&gt;</span>
+<span class="w">  </span><span class="nt">&lt;init-param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param-name&gt;</span>loginService<span class="nt">&lt;/param-name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param-value&gt;</span>signin<span class="nt">&lt;/param-value&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/init-param&gt;</span>
+<span class="w">  </span><span class="nt">&lt;init-param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param-name&gt;</span>trustedHost<span class="nt">&lt;/param-name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param-value&gt;</span>localhost<span class="nt">&lt;/param-value&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/init-param&gt;</span>
+<span class="nt">&lt;/filter&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you change the hosts name or IP used to access a catalog node in the Web Server or the Java Container, you must update the value in the <code class="docutils literal notranslate"><span class="pre">trustedHost</span></code> parameter also.</p>
+</div>
+</section>
+<section id="registering-new-node-manually">
+<h3>Registering new node manually<a class="headerlink" href="#registering-new-node-manually" title="Permalink to this heading">¶</a></h3>
+<p>Registering a new node is a 2 steps process. First declare the new node
+in <code class="docutils literal notranslate"><span class="pre">WEB-INF/web.xml</span></code> in order to declare the URL mapping:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;servlet-mapping&gt;</span>
+<span class="w">  </span><span class="nt">&lt;servlet-name&gt;</span>spring<span class="nt">&lt;/servlet-name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;url-pattern&gt;</span>/geosource-8/*<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+</pre></div>
+</div>
+<p>Then define the node configuration in <code class="docutils literal notranslate"><span class="pre">WEB-INF/config-node/{{node_id}}.xml</span></code>.
+The configuration defines:</p>
+<ul class="simple">
+<li><p>the node identifier (and if the node is the default one)</p></li>
+<li><p>the db connection to use</p></li>
+</ul>
+<p>Only one default node is allowed.</p>
+<p>For example, to configure a node named <code class="docutils literal notranslate"><span class="pre">geosource-8</span></code> using a <code class="docutils literal notranslate"><span class="pre">postgres</span></code>
+database use the following:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;beans</span><span class="w"> </span><span class="na">default-lazy-init=</span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span>
+<span class="w">  </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">  </span><span class="na">xmlns:context=</span><span class="s">&quot;http://www.springframework.org/schema/context&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;import</span><span class="w"> </span><span class="na">resource=</span><span class="s">&quot;classpath*:/config-spring-geonetwork.xml&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;import</span><span class="w"> </span><span class="na">resource=</span><span class="s">&quot;../config-db/database_migration.xml&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;context:property-override</span><span class="w"> </span><span class="na">properties-ref=</span><span class="s">&quot;geosource-8-configuration-overrides&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;nodeInfo&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;org.fao.geonet.NodeInfo&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;geosource-8&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;defaultNode&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/bean&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;bean</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;geosource-8-configuration-overrides&quot;</span>
+<span class="w">        </span><span class="na">class=</span><span class="s">&quot;org.springframework.beans.factory.config.PropertiesFactoryBean&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;properties&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;props&gt;</span>
+<span class="w">                </span><span class="nt">&lt;prop</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;jdbcDataSource.username&quot;</span><span class="nt">&gt;</span>www-data<span class="nt">&lt;/prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;prop</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;jdbcDataSource.password&quot;</span><span class="nt">&gt;</span>www-data<span class="nt">&lt;/prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;prop</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;jdbcDataSource.maxActive&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;prop</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;jdbcDataSource.maxIdle&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;prop</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;jdbcDataSource.initialSize&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;prop</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;jdbcDataSource.Url&quot;</span><span class="nt">&gt;</span>jdbc:postgresql://localhost:5432/db_8<span class="nt">&lt;/prop&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/props&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/property&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/bean&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;import</span><span class="w"> </span><span class="na">resource=</span><span class="s">&quot;../config-db/postgres.xml&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="styling-the-node">
+<h3>Styling the node<a class="headerlink" href="#styling-the-node" title="Permalink to this heading">¶</a></h3>
+<p>A custom styling could be defined for each node. Add a new css file
+in <code class="docutils literal notranslate"><span class="pre">catalog/style</span></code> folder. The file name should be like this (replace NODENAME with the proper value): <code class="docutils literal notranslate"><span class="pre">NODENAME_custom_style.css</span></code></p>
+</section>
+<section id="creating-a-node-using-utility-script">
+<h3>Creating a node using utility script<a class="headerlink" href="#creating-a-node-using-utility-script" title="Permalink to this heading">¶</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">WEB-INF/node-utils</span></code>, the <code class="docutils literal notranslate"><span class="pre">node-mgr.sh</span></code> script helps adding new node eg. to
+add a node with id <code class="docutils literal notranslate"><span class="pre">geosource-1044</span></code>, in the host <code class="docutils literal notranslate"><span class="pre">www.geosource.com</span></code> connecting to <code class="docutils literal notranslate"><span class="pre">postgres</span></code> database
+<code class="docutils literal notranslate"><span class="pre">db_1044</span></code> with a pool size of <code class="docutils literal notranslate"><span class="pre">2</span></code> connections, use:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./node-mgr.sh<span class="w"> </span>www-data<span class="w"> </span>www-data<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>geosource-1044<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>www.geosource.com<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>jdbc:postgresql://localhost:5432/db_1044<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>postgres<span class="w"> </span><span class="m">2</span>
+</pre></div>
+</div>
+<p>The script does the following tasks:</p>
+<ul class="simple">
+<li><p>Adds to <code class="docutils literal notranslate"><span class="pre">WEB-INF/web.xml</span></code> the <code class="docutils literal notranslate"><span class="pre">servlet-mapping</span></code> and updates the <code class="docutils literal notranslate"><span class="pre">trustedHost</span></code> element for the new node.</p></li>
+<li><p>Creates the node configuration in <code class="docutils literal notranslate"><span class="pre">WEB-INF/config-node/{{node_id}}.xml</span></code>.</p></li>
+<li><p>Creates the CSS style file for the node in the <code class="docutils literal notranslate"><span class="pre">catalog/style</span></code> folder.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="logging.html" class="btn btn-neutral float-left" title="Logging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="map-print-setup.html" class="btn btn-neutral float-right" title="Configuring printing of the map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

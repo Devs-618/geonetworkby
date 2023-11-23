@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuring the database &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Customizing the data directory" href="customizing-data-directory.html" />
+    <link rel="prev" title="Installing remote index" href="installing-index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Агляд</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installing-from-zip.html">Installing using a ZIP file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-war-file.html">Installing using a WAR file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-source-code.html">Building from Source Code</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://geonetwork-opensource.org/downloads.html#third-party-distributions">Installing a third-party distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html">Installing remote index</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring the database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#h2-database">H2 database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-a-database-via-config-files">Configuring a database via config files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-a-database-via-jndi">Configuring a database via JNDI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-a-database-via-environment">Configuring a database via environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html">Customizing the data directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-multinode-mode.html">Using multinode mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map-print-setup.html">Configuring printing of the map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading-samples.html">Loading templates and sample data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Installation guide</a> &raquo;</li>
+      <li>Configuring the database</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/install-guide/configuring-database.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuring-the-database">
+<span id="configuring-database"></span><h1>Configuring the database<a class="headerlink" href="#configuring-the-database" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>GeoNetwork uses a database to persist aspects such as metadata records, privileges and configurations.
+The database default structure is created by the application on initial startup. Subsequent releases of GeoNetwork
+will update the database structure automatically. For this reason the database user initially needs create privileges on the database.
+A number of database dialects are supported; <strong class="command">H2</strong>, <strong class="command">PostgreSQL</strong>, <strong class="command">PostGIS</strong>, <strong class="command">Oracle</strong>, <strong class="command">SQL Server</strong>.
+This section describes various options to configure the database connection.</p>
+</section>
+<section id="h2-database">
+<h2>H2 database<a class="headerlink" href="#h2-database" title="Permalink to this heading">¶</a></h2>
+<p>By default, a <a class="reference external" href="http://www.h2database.com/html/main.html">H2</a> database is configured
+and created when the application first starts. The H2 database named <code class="docutils literal notranslate"><span class="pre">gn.h2.db</span></code>
+is created:</p>
+<ul class="simple">
+<li><p>In the <code class="file docutils literal notranslate"><span class="pre">jetty</span></code> folder of the GeoNetwork application folder when using the <a class="reference internal" href="installing-from-zip.html#installing-from-zip"><span class="std std-ref">ZIP distribution</span></a>.</p></li>
+<li><p>In the <code class="file docutils literal notranslate"><span class="pre">bin</span></code> folder of Tomcat when deploying the <a class="reference internal" href="installing-from-war-file.html#installing-from-war-file"><span class="std std-ref">WAR</span></a> on Tomcat (started using <code class="docutils literal notranslate"><span class="pre">startup.sh</span></code>).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You don't <strong>need</strong> to configure the database if you are happy with the local H2 database.
+Only change the configuration if you wish to store the data on a remote database.</p>
+</div>
+</section>
+<section id="configuring-a-database-via-config-files">
+<h2>Configuring a database via config files<a class="headerlink" href="#configuring-a-database-via-config-files" title="Permalink to this heading">¶</a></h2>
+<p>The database dialect is configured in <code class="file docutils literal notranslate"><span class="pre">/WEB-INF/config-node/srv.xml</span></code>. Uncomment the dialect to use.</p>
+<p>A jdbc driver is included for PostgreSQL, Oracle and H2. Other dialects require a jdbc driver to be installed.
+Download the jdbc library for the dialect and place it in <code class="docutils literal notranslate"><span class="pre">/WEB-INF/lib</span></code> or in the tomcat or GeoNetwork lib folder.</p>
+<p>To update the connection details, update the <code class="docutils literal notranslate"><span class="pre">WEB-INF/config-db/jdbc.properties</span></code> file with relevant connection information.</p>
+<p>GeoNetwork assumes data is stored in the default schema for a user. If this is not the case, you need to activate a setting <code class="docutils literal notranslate"><span class="pre">hibernate.default_schema</span></code> in <code class="file docutils literal notranslate"><span class="pre">/WEB-INF/config-spring-geonetwork.xml</span></code>.
+There are some scripts that run directly on the database at initialisation and can't use the <code class="docutils literal notranslate"><span class="pre">hibernate.default-schema</span></code> parameter. For these scripts you need to set the default-schema manually.
+In PostgreSQL this is possible by appending <code class="docutils literal notranslate"><span class="pre">?currentSchema=example</span></code> to the database connection.</p>
+</section>
+<section id="configuring-a-database-via-jndi">
+<h2>Configuring a database via JNDI<a class="headerlink" href="#configuring-a-database-via-jndi" title="Permalink to this heading">¶</a></h2>
+<p>The Java Naming and Directory Interface (JNDI) is a technology which allows to configure the database in tomcat and reference the JNDI connection by name.</p>
+<ol class="arabic">
+<li><p>To activate JNDI, you need to activate the JNDI database type in <code class="file docutils literal notranslate"><span class="pre">/WEB-INF/config-node/srv.xml</span></code>.</p></li>
+<li><p>Configure the JNDI connection in Tomcat by adding a new resource to <code class="file docutils literal notranslate"><span class="pre">TOMCAT/conf/context.xml</span></code>. For jetty in <code class="file docutils literal notranslate"><span class="pre">WEB-INF/jetty-env.xml</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Resource</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;geonetwork&quot;</span>
+<span class="w">    </span><span class="na">type=</span><span class="s">&quot;javax.sql.DataSource&quot;</span>
+<span class="w">    </span><span class="na">driverClassName=</span><span class="s">&quot;org.postgresql.Driver&quot;</span>
+<span class="w">    </span><span class="na">url=</span><span class="s">&quot;jdbc:postgresql://localhost:5432/geonetwork&quot;</span>
+<span class="w">    </span><span class="na">username=</span><span class="s">&quot;xxxxx&quot;</span><span class="w"> </span><span class="na">password=</span><span class="s">&quot;xxxxxx&quot;</span>
+<span class="w">    </span><span class="na">maxActive=</span><span class="s">&quot;20&quot;</span>
+<span class="w">    </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="configuring-a-database-via-environment">
+<h2>Configuring a database via environment<a class="headerlink" href="#configuring-a-database-via-environment" title="Permalink to this heading">¶</a></h2>
+<p>Setting configuration properties via environment variables is common in container environments such as Docker.
+2 options exist:</p>
+<ol class="arabic">
+<li><p>Add the parameters directly to the Java environment by substituting JAVA_OPTS.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docker run --rm --name gn -p 8080:8080 -e JAVA_OPTS=&quot;
+    -Dgeonetwork.db.type=postgres
+    -Djdbc.database=example
+    -Djdbc.username=example
+    -Djdbc.password=xxx
+    -Djdbc.host=localhost
+    -Djdbc.port=5432&quot; geonetwork:latest
+</pre></div>
+</div>
+</li>
+<li><p>Set an exact environment variable including '.'.
+Many of the GeoNetwork configuration parameters contain a dot, which is a challenge for substitution via environment variables.
+Docker is an exception here, it provides a mechanism to allow dots in environment variables.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docker run --rm --name gn -p 8080:8080
+    -e geonetwork.db.type=postgres
+    -e jdbc.database=example
+    -e jdbc.username=example
+    -e jdbc.password=xxx
+    -e jdbc.host=localhost
+    -e jdbc.port=5432 geonetwork:latest
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Within PostgreSQL it is possible to configure <cite>postgres</cite> or <cite>postgis</cite>. In the latter case GeoNetwork will use spatial capabilities of PostGIS to filter metadata.
+In the first case (and for other database dialects) a Shapefile is created for storage of metadata coverage.</p>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading">¶</a></h2>
+<p>To see more details about the database connection and queries, the log can be switched to DEBUG level
+in <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/web/src/main/webapp/WEB-INF/classes/log4j.xml">source file web/src/main/webapp/WEB-INF/classes/log4j.xml</a> (or see <a class="reference internal" href="../administrator-guide/configuring-the-catalog/system-configuration.html#system-config-server"><span class="std std-ref">Сервер каталогаў</span></a> &gt; Log level).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;logger</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;org.hibernate.SQL&quot;</span><span class="w"> </span><span class="na">additivity=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;level</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;DEBUG&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;appender-ref</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;consoleAppender&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;appender-ref</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;fileAppender&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/logger&gt;</span>
+<span class="nt">&lt;logger</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;org.hibernate.type&quot;</span><span class="w"> </span><span class="na">additivity=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;level</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;DEBUG&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;appender-ref</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;consoleAppender&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;appender-ref</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;fileAppender&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/logger&gt;</span>
+<span class="nt">&lt;logger</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;org.hibernate.tool.hbm2ddl&quot;</span><span class="w"> </span><span class="na">additivity=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;level</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;DEBUG&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;appender-ref</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;consoleAppender&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;appender-ref</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;fileAppender&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/logger&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
+<p>There are various ways to configure a database in GeoNetwork. JNDI and environment are favourable,
+because when updating to a new version, or changing a database, you don't need to touch any application files.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installing-index.html" class="btn btn-neutral float-left" title="Installing remote index" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="customizing-data-directory.html" class="btn btn-neutral float-right" title="Customizing the data directory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

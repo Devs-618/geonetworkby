@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Абнаўленне набору запісаў з кансолі адміністратара &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Абнаўленне набору запісаў з дапамогай XSLT" href="batchupdate-xsl.html" />
+    <link rel="prev" title="Updating a set of records" href="batchediting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва карыстальніка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Хуткі старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Апісанне інфармацыі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Аб&amp;#39;яднанне рэсурсаў</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Класіфікаваць інфармацыю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Выдавецкая справа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Аналіз дадзеных</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Рабочы працэс</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Validating records</a></li>
+<li class="toctree-l3"><a class="reference internal" href="suggestion.html">Suggestions for improving metadata content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="life-cycle.html">Жыццёвы цыкл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geopublication.html">Публікацыя ГІС-даных на картаграфічным серверы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versioning.html">Стварэнне версій</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="batchupdate.html">Абнаўленне набору запісаў</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="batchediting.html">Updating a set of records</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Абнаўленне набору запісаў з кансолі адміністратара</a></li>
+<li class="toctree-l4"><a class="reference internal" href="batchupdate-xsl.html">Абнаўленне набору запісаў з дапамогай XSLT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Уборка ўраджаю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспарт запісаў</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва карыстальніка</a> &raquo;</li>
+          <li><a href="index.html">Рабочы працэс</a> &raquo;</li>
+          <li><a href="batchupdate.html">Абнаўленне набору запісаў</a> &raquo;</li>
+      <li>Абнаўленне набору запісаў з кансолі адміністратара</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/workflow/batchupdate-from-admin.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="updating-a-set-of-records-from-the-admin-console">
+<span id="batchupdate-from-admin"></span><h1>Абнаўленне набору запісаў з кансолі адміністратара<a class="headerlink" href="#updating-a-set-of-records-from-the-admin-console" title="Permalink to this heading">¶</a></h1>
+<p>У некаторых выпадках карыстальнікі могуць захацець абнавіць набор запісаў. Карыстальнікі адміністратара могуць з <code class="docutils literal notranslate"><span class="pre">кансолі</span> <span class="pre">адміністратара</span></code> адкрыць <code class="docutils literal notranslate"><span class="pre">інструменты</span></code>, старонку <code class="docutils literal notranslate"><span class="pre">Пакетны</span> <span class="pre">працэс</span></code>.</p>
+<p>На гэтай старонцы карыстальнік можа:</p>
+<ul class="simple">
+<li><p>Выберыце набор запісаў, запусціўшы пошук і выбраўшы запісы для змены</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/batch-search-and-select.png" src="../../_images/batch-search-and-select.png" />
+</figure>
+<ul class="simple">
+<li><p>Выберыце працэс са спісу</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/batch-choose-a-process.png" src="../../_images/batch-choose-a-process.png" />
+</figure>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Можна дадаць новы працэс. Глядзіце <a class="reference internal" href="batchupdate-xsl.html#batch-process-add"><span class="std std-ref">Даданне пакетнага працэсу</span></a>.</p>
+</div>
+<ul class="simple">
+<li><p>Вызначце параметры працэсу (калі ёсць)</p></li>
+<li><p>Запусціце працэс і сачыце за прагрэсам.</p></li>
+</ul>
+<p>Працэс можа прымяняцца толькі да запісаў, якія бягучы карыстальнік можа рэдагаваць. Калі няма, то нерэдагуемы запіс ігнаруецца і працэс працягваецца. Справаздача змяшчае наступную інфармацыю:</p>
+<ul class="simple">
+<li><p>Колькасць запісаў для апрацоўкі</p></li>
+<li><p>Колькасць запісаў, на якія ўплывае працэс</p></li>
+<li><p>Колькасць запісаў без змен (для працэсу пошуку і замены)</p></li>
+<li><p>Колькасць запісаў, для якіх працэс не знойдзены (працэс залежыць ад стандарту і можа не існаваць у залежнасці ад стандарту).</p></li>
+<li><p>Колькасць запісаў, якія бягучы карыстальнік не можа рэдагаваць</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/batch-report.png" src="../../_images/batch-report.png" />
+</figure>
+<p>Перад запускам працэсу рэкамендуецца зрабіць рэзервовую копію ўсіх запісаў метададзеных для абнаўлення на выпадак, калі з працэсам нешта пойдзе не так.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Рабіць</p>
+<p>Дакументуйце іншыя працэсы</p>
+</div>
+<section id="search-and-replace">
+<h2>Пошук і замена<a class="headerlink" href="#search-and-replace" title="Permalink to this heading">¶</a></h2>
+<p>Гэты працэс шукае значэнні ў элементах і замяняе іх іншымі значэннямі. Ён падтрымлівае запісы ISO19139 і Dublin Core. Канфігурацыя наступная:</p>
+<figure class="align-default">
+<img alt="../../_images/batch-search-and-replace-configuration.png" src="../../_images/batch-search-and-replace-configuration.png" />
+</figure>
+<ul class="simple">
+<li><p>Выберыце пакет (ISO19139 або Dublin Core)</p></li>
+<li><p>Выберыце элемент з гэтага пакета для замены (папярэдне сканфігураваны датычыцца кантакту, але можа быць пашыраны - гл. ніжэй)</p></li>
+<li><p>Вызначце пошукавае значэнне</p></li>
+<li><p>Вызначце замену</p></li>
+<li><p>Націсніце <code class="docutils literal notranslate"><span class="pre">Дадаць</span> <span class="pre">замену</span></code></p></li>
+</ul>
+<p>Можна наладзіць і дадаць некалькі замен. Пасля завяршэння канфігурацыі карыстальнік можа захаваць канфігурацыю, націснуўшы <code class="docutils literal notranslate"><span class="pre">Спампаваць</span> <span class="pre">канфігурацыю</span></code>. Канфігурацыя спампоўваецца ў фармаце JSON і можа быць абноўлена і перазагружана пазней, скапіраваўшы/уставіўшы ў тэкставае поле канфігурацыі замены і націснуўшы <code class="docutils literal notranslate"><span class="pre">Загрузіць</span> <span class="pre">канфігурацыю</span></code>.</p>
+<p>Прыклад канфігурацыі:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span>
+<span class="w">  </span><span class="nt">&quot;package&quot;</span><span class="p">:</span><span class="s2">&quot;iso19139&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;element&quot;</span><span class="p">:</span><span class="s2">&quot;iso19139\\..*\\.individualName&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;searchval&quot;</span><span class="p">:</span><span class="s2">&quot;John&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;replaceval&quot;</span><span class="p">:</span><span class="s2">&quot;Pierre&quot;</span>
+<span class="w">  </span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>У канфігурацыі <code class="docutils literal notranslate"><span class="pre">элемент</span></code> вызначае мэтавы элемент у запісе метададзеных. Ён пачынаецца з ідэнтыфікатара схемы, а затым вызначае шлях да элемента. Гэта рэгулярны выраз і можа выкарыстоўваць <code class="docutils literal notranslate"><span class="pre">.*</span></code> для супастаўлення ўсіх элементаў у любым месцы дакумента. Каб адпавядаць больш канкрэтнаму элементу, карыстальнік можа вызначыць поўны шлях, напрыклад <code class="docutils literal notranslate"><span class="pre">iso19139\\.contact\\.individualName</span></code>, каб адпавядаць толькі індывідуальнаму імені кантакту ў метададзеных.</p>
+<p>&amp;quot;Searchval&amp;quot; таксама з&amp;#39;яўляецца &amp;quot;рэгулярным выразам&amp;quot;.&lt;<a class="reference external" href="http://www.regular-expressions.info/tutorial.html">http://www.regular-expressions.info/tutorial.html</a>&gt; <cite>_. Гэта можа быць просты тэкст або больш складаны выраз. Напрыклад, пры пошуку груп ``(.*)`</cite> і замене на <code class="docutils literal notranslate"><span class="pre">Mr</span> <span class="pre">$1</span></code> прывядзе да замены <code class="docutils literal notranslate"><span class="pre">John</span></code> на <code class="docutils literal notranslate"><span class="pre">Mr</span> <span class="pre">John</span></code>.</p>
+<p>Апошні параметр - рэжым вакууму, які вызначае, што рабіць з пустымі элементамі:</p>
+<figure class="align-default">
+<img alt="../../_images/batch-search-and-replace-vacuum.png" src="../../_images/batch-search-and-replace-vacuum.png" />
+</figure>
+<p>Пасля завяршэння канфігурацыі карыстальнік можа папярэдне прагледзець змены, націснуўшы кнопку &amp;quot;Праверыць&amp;quot;, а затым прымяніць змены, націснуўшы &amp;quot;Выканаць&amp;quot;.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="batchediting.html" class="btn btn-neutral float-left" title="Updating a set of records" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batchupdate-xsl.html" class="btn btn-neutral float-right" title="Абнаўленне набору запісаў з дапамогай XSLT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

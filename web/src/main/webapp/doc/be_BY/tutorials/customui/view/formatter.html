@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стварыце новы фарматавальнік &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Падключыце свой уласны код" href="../../hookcustomizations/index.html" />
+    <link rel="prev" title="Фарматавальнік" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">Кіраўніцтва карыстальніка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Падручнікі</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">Уводзіны ў GeoNetwork</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Наладзьце карыстацкі інтэрфейс GeoNetwork</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../search/index.html">Старонка пошуку</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Фарматавальнік</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Стварыце новы фарматавальнік</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hookcustomizations/index.html">Падключыце свой уласны код</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Падручнікі</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Падручнікі</a> &raquo;</li>
+          <li><a href="../index.html">Наладзьце карыстацкі інтэрфейс GeoNetwork</a> &raquo;</li>
+          <li><a href="index.html">Фарматавальнік</a> &raquo;</li>
+      <li>Стварыце новы фарматавальнік</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/customui/view/formatter.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="create-a-new-formatter">
+<span id="tuto-formatter"></span><h1>Стварыце новы фарматавальнік<a class="headerlink" href="#create-a-new-formatter" title="Permalink to this heading">¶</a></h1>
+<section id="objectives">
+<h2>Мэты<a class="headerlink" href="#objectives" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>назіраць за механізмам фарматавання Groovy</p></li>
+<li><p>разумець канцэпцыі апрацоўшчыкаў, супастаўленняў</p></li>
+<li><p>стварыць невялікі фарматаўшчык</p></li>
+</ul>
+</section>
+<section id="exercices">
+<h2>Практыкаванні<a class="headerlink" href="#exercices" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Дадайце новы фарматавальнік, які адлюстроўвае ўсю тэкставую інфармацыю метададзеных у базавым макеце.</p></li>
+<li><p>Абнавіце папярэдні фарматавальнік для адлюстравання цэтлікаў тэкставых палёў.</p></li>
+<li><p>Выкарыстоўвайце сістэму шаблонаў фарматаўца для візуалізацыі выгляду апрацоўшчыка</p></li>
+<li><p>Дадайце стыль да выгляду фарматаўкі.</p></li>
+<li><p>Стварыце дрэва для візуалізацыі элементаў</p></li>
+<li><p>Выкарыстоўвайце пераклад элементаў iso</p></li>
+<li><p>Выкарыстоўвайце стыль дрэва па змаўчанні</p></li>
+<li><p>Выкарыстоўваць усе элементы фарматавання прагляду па змаўчанні</p></li>
+<li><p>Наладзьце выгляд фарматавальніка па змаўчанні</p></li>
+<li><p>Метады апрацоўшчыкаў перагрузкі</p></li>
+</ol>
+</section>
+<section id="corrections">
+<h2>Выпраўленні<a class="headerlink" href="#corrections" title="Permalink to this heading">¶</a></h2>
+<p>Перайдзіце на <a class="reference external" href="https://github.com/fgravin/core-geonetwork/commits/foss4g">https://github.com/fgravin/core-geonetwork/commits/foss4g</a></p>
+<p>1. Create a new formatter
+- create a new folder named 'foss4g&quot; in /schemas/iso19139/src/main/plugin/iso19139/formatter
+- create a new groovy file in this new folder
+- text information are stored in <code class="docutils literal notranslate"><span class="pre">gco:CharacterString</span></code></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">handlers</span><span class="o">.</span><span class="n">add</span> <span class="s1">&#39;gco:CharacterString&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">el</span> <span class="o">-&gt;</span> <span class="s2">&quot;&lt;div&gt;${el.text()}&lt;/div&gt;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Дадайце супадзенне і пагуляйце са ўласцівасцямі <code class="docutils literal notranslate"><span class="pre">name</span></code> і <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>handlers.add select: {el -&gt; !el.&#39;gco:CharacterString&#39;.text().isEmpty()}, {el -&gt;
+    &quot;&lt;div&gt;&lt;b&gt;${el.name()}&lt;/b&gt; - ${el.text()}&lt;/div&gt;&quot;
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Выкарыстоўвайце функцыю <code class="docutils literal notranslate"><span class="pre">handlers.fileResult</span></code></p></li>
+</ol>
+<ul>
+<li><p>view.groovy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>handlers.add select: {el -&gt; !el.&#39;gco:CharacterString&#39;.text().isEmpty()}, {el -&gt;
+    handlers.fileResult(&#39;foss4g/elem.html&#39;, [name: el.name(), text: el.text()])
+}
+</pre></div>
+</div>
+</li>
+<li><p>elem.html</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dl</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dt</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">name</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">dt</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">dd</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">text</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">dd</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dl</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Дадайце карыстальніцкі меншы файл у папкі, правераныя wro4j, і звяжыце яго з фарматавальнікам</p></li>
+</ol>
+<ul>
+<li><p>formatter.less</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="p">{</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">230</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="p">:</span> <span class="n">normal</span><span class="p">;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">style</span><span class="p">:</span> <span class="n">italic</span><span class="p">;</span>
+    <span class="n">color</span><span class="p">:</span> <span class="c1">#555555;</span>
+    <span class="n">clear</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="p">:</span> <span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="n">overflow</span><span class="p">:</span> <span class="n">hidden</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span>
+    <span class="n">white</span><span class="o">-</span><span class="n">space</span><span class="p">:</span> <span class="n">nowrap</span><span class="p">;</span>
+    <span class="nb">float</span><span class="p">:</span> <span class="n">left</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">dd</span> <span class="p">{</span>
+    <span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="p">:</span> <span class="mi">250</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">left</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="c1">#999999;</span>
+    <span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="p">:</span> <span class="mi">1</span><span class="n">em</span><span class="p">;</span>
+    <span class="n">background</span><span class="p">:</span> <span class="c1">#eeeeee;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>view.groovy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>handlers.start {
+    &#39;&#39;&#39;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/formatter.css&quot;/&gt;
+      &lt;div class=&quot;container&quot;&gt;&#39;&#39;&#39;
+}
+handlers.end {
+    &#39;&lt;/div&gt;&#39;
+}
+
+handlers.add select: {el -&gt; !el.&#39;gco:CharacterString&#39;.text().isEmpty()}, {el -&gt;
+    handlers.fileResult(&#39;foss4g/elem.html&#39;, [name: el.name(), text: el.text()])
+}
+</pre></div>
+</div>
+</li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Выкарыстоўвайце <code class="docutils literal notranslate"><span class="pre">fmt-repeat-only-children</span></code> у шаблоне і <code class="docutils literal notranslate"><span class="pre">prent()</span></code> функцыю.</p></li>
+</ol>
+<ul>
+<li><p>view.groovy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
+handlers.add select: {el -&gt; !el.&#39;gco:CharacterString&#39;.text().isEmpty()},
+          group: true, {els -&gt;
+      def elements = els.collect {el -&gt;
+          [name: el.name(), text: el.text()]
+      }
+      handlers.fileResult(&#39;foss4g/elem.html&#39;,
+              [elements: elements, parent: els[0].parent().name()])
+}
+</pre></div>
+</div>
+</li>
+<li><p>elem.html</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dl</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">parent</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">fmt</span><span class="o">-</span><span class="n">repeat</span><span class="o">=</span><span class="s2">&quot;el in elements&quot;</span> <span class="n">fmt</span><span class="o">-</span><span class="n">repeat</span><span class="o">-</span><span class="n">only</span><span class="o">-</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">dt</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">el</span><span class="o">.</span><span class="n">name</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">dt</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">dd</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">el</span><span class="o">.</span><span class="n">text</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">dd</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dl</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Глядзіце функцыю <code class="docutils literal notranslate"><span class="pre">nodeLabel</span></code></p></li>
+</ol>
+<ul class="simple">
+<li><p>view.groovy</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
+handlers.add select: {el -&gt; !el.&#39;gco:CharacterString&#39;.text().isEmpty()},
+         group: true, {els -&gt;
+     def elements = els.collect {el -&gt;
+         [name: f.nodeLabel(el), text: el.text()]
+     }
+     handlers.fileResult(&#39;foss4g/elem.html&#39;,
+             [elements: elements, parent: f.nodeLabel(els[0].parent())])
+ }
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li><p>Дадайце клас <code class="docutils literal notranslate"><span class="pre">gn-metadata-view</span></code> у свой кантэйнер, абнавіце апрацоўшчык.</p></li>
+</ol>
+<ul class="simple">
+<li><p>view.groovy</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">handlers</span><span class="o">.</span><span class="n">start</span> <span class="p">{</span>
+<span class="w">   </span><span class="sd">&#39;&#39;&#39;&lt;div class=&quot;gn-metadata-view container&quot;&gt;&#39;&#39;&#39;</span>
+<span class="p">}</span>
+<span class="n">handlers</span><span class="o">.</span><span class="n">end</span> <span class="p">{</span>
+   <span class="s1">&#39;&lt;/div&gt;&#39;</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">isoHandlers</span> <span class="o">=</span> <span class="n">new</span> <span class="n">iso19139</span><span class="o">.</span><span class="n">Handlers</span><span class="p">(</span><span class="n">handlers</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+
+<span class="n">handlers</span><span class="o">.</span><span class="n">add</span> <span class="n">select</span><span class="p">:</span> <span class="n">isoHandlers</span><span class="o">.</span><span class="n">matchers</span><span class="o">.</span><span class="n">isTextEl</span><span class="p">,</span> <span class="n">isoHandlers</span><span class="o">.</span><span class="n">isoTextEl</span>
+<span class="n">handlers</span><span class="o">.</span><span class="n">add</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Container Elements&#39;</span><span class="p">,</span>
+       <span class="n">select</span><span class="p">:</span> <span class="n">isoHandlers</span><span class="o">.</span><span class="n">matchers</span><span class="o">.</span><span class="n">isContainerEl</span><span class="p">,</span>
+       <span class="n">priority</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">isoHandlers</span><span class="o">.</span><span class="n">commonHandlers</span><span class="o">.</span><span class="n">entryEl</span><span class="p">(</span><span class="n">f</span><span class="o">.&amp;</span><span class="n">nodeLabel</span><span class="p">,</span>
+                                          <span class="n">isoHandlers</span><span class="o">.</span><span class="n">addPackageViewClass</span><span class="p">)</span>
+<span class="n">isoHandlers</span><span class="o">.</span><span class="n">addExtentHandlers</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li><p>Глядзіце клас <code class="docutils literal notranslate"><span class="pre">SummaryFactory</span></code>.</p></li>
+</ol>
+<ul class="simple">
+<li><p>view.groovy</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iso19139.SummaryFactory</span>
+
+<span class="k">def</span> <span class="nf">isoHandlers</span> <span class="o">=</span> <span class="n">new</span> <span class="n">iso19139</span><span class="o">.</span><span class="n">Handlers</span><span class="p">(</span><span class="n">handlers</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+
+<span class="n">SummaryFactory</span><span class="o">.</span><span class="n">summaryHandler</span><span class="p">({</span><span class="n">it</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span> <span class="ow">is</span> <span class="n">it</span><span class="o">.</span><span class="n">parent</span><span class="p">()},</span> <span class="n">isoHandlers</span><span class="p">)</span>
+
+<span class="n">isoHandlers</span><span class="o">.</span><span class="n">addDefaultHandlers</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li><p>Дадайце карыстальніцкую опцыю ў <code class="docutils literal notranslate"><span class="pre">SummaryFactory</span></code></p></li>
+</ol>
+<ul class="simple">
+<li><p>view.groovy</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iso19139.SummaryFactory</span>
+
+<span class="k">def</span> <span class="nf">isoHandlers</span> <span class="o">=</span> <span class="n">new</span> <span class="n">iso19139</span><span class="o">.</span><span class="n">Handlers</span><span class="p">(</span><span class="n">handlers</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">factory</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SummaryFactory</span><span class="p">(</span><span class="n">isoHandlers</span><span class="p">,</span> <span class="p">{</span><span class="n">summary</span> <span class="o">-&gt;</span>
+   <span class="n">summary</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;My Title&quot;</span>
+   <span class="n">summary</span><span class="o">.</span><span class="n">addCompleteNavItem</span> <span class="o">=</span> <span class="n">false</span>
+   <span class="n">summary</span><span class="o">.</span><span class="n">addOverviewNavItem</span> <span class="o">=</span> <span class="n">false</span>
+   <span class="n">summary</span><span class="o">.</span><span class="n">associated</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="p">})</span>
+
+
+<span class="n">handlers</span><span class="o">.</span><span class="n">add</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Summary Handler&quot;</span><span class="p">,</span>
+       <span class="n">select</span><span class="p">:</span> <span class="p">{</span><span class="n">it</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span> <span class="ow">is</span> <span class="n">it</span><span class="o">.</span><span class="n">parent</span><span class="p">()},</span>
+       <span class="p">{</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">it</span><span class="p">)</span><span class="o">.</span><span class="n">getResult</span><span class="p">()}</span>
+<span class="n">isoHandlers</span><span class="o">.</span><span class="n">addDefaultHandlers</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="10">
+<li><p>Дадайце карыстальніцкія паводзіны ў канструктар <code class="docutils literal notranslate"><span class="pre">iso19139.Handlers</span></code></p></li>
+</ol>
+<ul class="simple">
+<li><p>view.groovy</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isoHandlers</span> <span class="o">=</span> <span class="n">new</span> <span class="n">iso19139</span><span class="o">.</span><span class="n">Handlers</span><span class="p">(</span><span class="n">handlers</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">{</span>
+        <span class="k">def</span> <span class="nf">oldImpl</span> <span class="o">=</span> <span class="nb">super</span><span class="o">.</span><span class="n">isoTextEl</span>
+        <span class="n">isoTextEl</span> <span class="o">=</span> <span class="p">{</span> <span class="n">el</span> <span class="o">-&gt;</span>
+            <span class="s2">&quot;----------- ${oldImpl(el)}&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Фарматавальнік" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../hookcustomizations/index.html" class="btn btn-neutral float-right" title="Падключыце свой уласны код" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

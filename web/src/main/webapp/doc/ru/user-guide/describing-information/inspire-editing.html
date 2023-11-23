@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Describing resources for the INSPIRE directive &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Связывание ресурсов" href="../associating-resources/index.html" />
+    <link rel="prev" title="Многоязычное редактирование" href="multilingual-editing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Гид пользователя</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Быстрый старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Описание информации</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="managing-templates.html">Managing templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-metadata.html">Создание новой записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="importing-metadata.html">Импорт новой записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="editing-metadata.html">Редактирование метаданных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleting-metadata.html">Удаление записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multilingual-editing.html">Многоязычное редактирование</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Describing resources for the INSPIRE directive</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-information">Metadata information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#languages">Languages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-information">Contact information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#categorizing-with-keywords">Categorizing with keywords</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#temporal-references">Temporal references</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-constraints">Resource constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-extent">Resource extent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-system">Coordinate system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-quality">Data quality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-on-data-sets-and-series">Metadata on data sets and series</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validating">Validating</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-with-a-valid-template">Testing with a valid template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#migrating-from-technical-guidance-version-1-3-to-version-2-0">Migrating from Technical guidance version 1.3 to version 2.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Связывание ресурсов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Классифицировать информацию</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Издательский</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Анализ данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочий процесс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Сбор урожая</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспорт записей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Гид пользователя</a> &raquo;</li>
+          <li><a href="index.html">Описание информации</a> &raquo;</li>
+      <li>Describing resources for the INSPIRE directive</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/describing-information/inspire-editing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="describing-resources-for-the-inspire-directive">
+<span id="inspire-editing"></span><h1>Describing resources for the INSPIRE directive<a class="headerlink" href="#describing-resources-for-the-inspire-directive" title="Permalink to this heading">¶</a></h1>
+<p>When describing information in the scope of the INSPIRE Directive, editors must follows the <a class="reference external" href="https://inspire.ec.europa.eu/id/document/tg/metadata-iso19139">Technical Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007 (INSPIRE TG2)</a>.</p>
+<p>To follow the technical guideline, the catalogue administrator has to setup INSPIRE configuration for the catalogue (see <a class="reference internal" href="../../administrator-guide/configuring-the-catalog/inspire-configuration.html#inspire-configuration"><span class="std std-ref">Настройка директивы INSPIRE</span></a>)</p>
+<section id="metadata-information">
+<h2>Metadata information<a class="headerlink" href="#metadata-information" title="Permalink to this heading">¶</a></h2>
+<p>File identifier is automatically set by the catalogue.
+The metadata last update date is also set every time editor save the record.</p>
+</section>
+<section id="languages">
+<h2>Languages<a class="headerlink" href="#languages" title="Permalink to this heading">¶</a></h2>
+<p>The metadata language is mandatory. This information usually does not change in records part of the same catalogue. So it is recommended to properly set the value in the template used. The language code is a 3 letter code from the list of <a class="reference external" href="http://ec.europa.eu/languages/policy/linguistic-diversity/official-languages-eu_en.htm">official languages of the European Union</a>. A record can be multilingual (see <a class="reference internal" href="multilingual-editing.html#multilingual-editing"><span class="std std-ref">Многоязычное редактирование</span></a>).</p>
+<p>The resource language is also mandatory and follow the same rule. The catalogue provides a list of languages to easily choose the language code.</p>
+<img alt="../../_images/inspire-language.png" src="../../_images/inspire-language.png" />
+<p>In your template, set the character encoding to simplify editing. The value is in general similar in most of the records. <code class="docutils literal notranslate"><span class="pre">utf8</span></code> can be a good default value.</p>
+</section>
+<section id="contact-information">
+<h2>Contact information<a class="headerlink" href="#contact-information" title="Permalink to this heading">¶</a></h2>
+<p>The minimum information to set for contact are an organisation name and an email. At least one point of contact for the resource and one for the metadata is required.</p>
+<img alt="../../_images/inspire-contact.png" src="../../_images/inspire-contact.png" />
+</section>
+<section id="categorizing-with-keywords">
+<h2>Categorizing with keywords<a class="headerlink" href="#categorizing-with-keywords" title="Permalink to this heading">¶</a></h2>
+<p>Once the configuration done, editors will be able to add keywords for:</p>
+<ul class="simple">
+<li><p>INSPIRE themes (mandatory)</p></li>
+<li><p>Spatial scope (optional)</p></li>
+<li><p>Priority datasets (optional)</p></li>
+<li><p>GEMET keywords (optional)</p></li>
+</ul>
+<img alt="../../_images/inspire-thesaurus-selection.png" src="../../_images/inspire-thesaurus-selection.png" />
+<p>When adding keyword, the catalogue propose to configure how to encode the value in the XML document.
+By default, text encoding is used:</p>
+<img alt="../../_images/inspire-keyword-encoding.png" src="../../_images/inspire-keyword-encoding.png" />
+<p>This means that a <code class="docutils literal notranslate"><span class="pre">gco:CharacterString</span></code> is used to encode the value:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:descriptiveKeywords&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_Keywords&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:keyword&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gco:CharacterString&gt;</span>Installations<span class="w"> </span>agricoles<span class="w"> </span>et<span class="w"> </span>aquacoles<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:keyword&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:type&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                  </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:type&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:thesaurusName&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">             </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>GEMET<span class="w"> </span>-<span class="w"> </span>INSPIRE<span class="w"> </span>themes,<span class="w"> </span>version<span class="w"> </span>1.0<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/gmd:title&gt;</span>
+</pre></div>
+</div>
+<p>The INSPIRE TG2 recommend to use an anchor. To use this, editor can choose the <code class="docutils literal notranslate"><span class="pre">anchor</span></code> type:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:descriptiveKeywords&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_Keywords&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:keyword&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/theme/af&quot;</span><span class="nt">&gt;</span>Installations<span class="w"> </span>agricoles<span class="w"> </span>et<span class="w"> </span>aquacoles<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:keyword&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:type&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                  </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:type&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:thesaurusName&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">             </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/theme#&quot;</span><span class="nt">&gt;</span>GEMET<span class="w"> </span>-<span class="w"> </span>INSPIRE<span class="w"> </span>themes,<span class="w"> </span>version<span class="w"> </span>1.0<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/gmd:title&gt;</span>
+</pre></div>
+</div>
+<p>The encoding is preserved once set and it can be different from one record to another.
+It can be forced globally in the editor by setting the <code class="docutils literal notranslate"><span class="pre">transformations</span></code> parameter for this thesaurus:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;thesaurusList&gt;</span>
+<span class="w">  </span><span class="nt">&lt;thesaurus</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;external.theme.httpinspireeceuropaeutheme-theme&quot;</span>
+<span class="w">             </span><span class="na">fieldset=</span><span class="s">&quot;false&quot;</span>
+<span class="w">             </span><span class="na">transformations=</span><span class="s">&quot;to-iso19139-keyword-with-anchor&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/thesaurusList&gt;</span>
+</pre></div>
+</div>
+<p>Keywords can also be encoded in multilingual mode:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:descriptiveKeywords&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_Keywords&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:keyword</span><span class="w"> </span><span class="na">xsi:type=</span><span class="s">&quot;gmd:PT_FreeText_PropertyType&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/national&quot;</span><span class="nt">&gt;</span>Nationales<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:PT_FreeText&gt;</span>
+<span class="w">             </span><span class="nt">&lt;gmd:textGroup&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:LocalisedCharacterString</span><span class="w"> </span><span class="na">locale=</span><span class="s">&quot;#FR&quot;</span><span class="nt">&gt;</span>Nationales<span class="nt">&lt;/gmd:LocalisedCharacterString&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/gmd:textGroup&gt;</span>
+<span class="w">             </span><span class="nt">&lt;gmd:textGroup&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:LocalisedCharacterString</span><span class="w"> </span><span class="na">locale=</span><span class="s">&quot;#EN&quot;</span><span class="nt">&gt;</span>National<span class="nt">&lt;/gmd:LocalisedCharacterString&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/gmd:textGroup&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:PT_FreeText&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:keyword&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:type&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                  </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:type&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:thesaurusName&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">             </span><span class="nt">&lt;gmd:title</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="w"> </span><span class="na">xsi:type=</span><span class="s">&quot;gmd:PT_FreeText_PropertyType&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/SpatialScope#&quot;</span><span class="nt">&gt;</span>Spatial<span class="w"> </span>scope<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:PT_FreeText&gt;</span>
+<span class="w">                   </span><span class="nt">&lt;gmd:textGroup&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;gmd:LocalisedCharacterString</span><span class="w"> </span><span class="na">locale=</span><span class="s">&quot;#FR&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                   </span><span class="nt">&lt;/gmd:textGroup&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:PT_FreeText&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/gmd:title&gt;</span>
+</pre></div>
+</div>
+<p>Therefore multilingual support for the thesaurus title is not available for now.</p>
+</section>
+<section id="temporal-references">
+<h2>Temporal references<a class="headerlink" href="#temporal-references" title="Permalink to this heading">¶</a></h2>
+<p>At least one date is required. It can be a creation, publication or revision date:</p>
+<img alt="../../_images/inspire-temporal-ref.png" src="../../_images/inspire-temporal-ref.png" />
+<p>and can also be a more detailed description of the temporal coverage of the data eg. for a period from 1st January 2019 to now:</p>
+<img alt="../../_images/inspire-temporal-period.png" src="../../_images/inspire-temporal-period.png" />
+</section>
+<section id="resource-constraints">
+<h2>Resource constraints<a class="headerlink" href="#resource-constraints" title="Permalink to this heading">¶</a></h2>
+<p>Resource constraints should be set from the <a class="reference external" href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess">Limitation on public access</a> codelist:</p>
+<img alt="../../_images/inspire-resource-constraint.png" src="../../_images/inspire-resource-constraint.png" />
+<p>XML encoding is the following:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:resourceConstraints&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:MD_LegalConstraints&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:accessConstraints&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:MD_RestrictionCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode&quot;</span>
+<span class="w">                                 </span><span class="na">codeListValue=</span><span class="s">&quot;otherRestrictions&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:accessConstraints&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:otherConstraints&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&quot;</span><span class="nt">&gt;</span>No<span class="w"> </span>limitations<span class="w"> </span>to<span class="w"> </span>public<span class="w"> </span>access<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:otherConstraints&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:MD_LegalConstraints&gt;</span>
+<span class="nt">&lt;/gmd:resourceConstraints&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="resource-extent">
+<h2>Resource extent<a class="headerlink" href="#resource-extent" title="Permalink to this heading">¶</a></h2>
+<p>A minimal containing geographic bounding box of the data set or data set series shall be described. The map component allows to easily define the bounding box of the dataset. Multiple bounding box can be defined if needed.</p>
+<p>On the coordinate of the bounding box, the INSPIRE validator may report errors due to missing decimals. Open the affected record with the editor and saving it should solve the issue. Even if the north coordinate is 50.8°, it will be encoded as 50.80° to comply with the validation rule.</p>
+<img alt="../../_images/inspire-bbox-2-decimals.png" src="../../_images/inspire-bbox-2-decimals.png" />
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:EX_GeographicBoundingBox&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:northBoundLatitude&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:Decimal&gt;</span>50.80<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:northBoundLatitude&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="coordinate-system">
+<h2>Coordinate system<a class="headerlink" href="#coordinate-system" title="Permalink to this heading">¶</a></h2>
+<p>Coordinate system using URI like <a class="reference external" href="http://www.opengis.net/def/crs/EPSG/0/3035">http://www.opengis.net/def/crs/EPSG/0/3035</a>. For example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nt">&lt;gmd:referenceSystemInfo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_ReferenceSystem&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:referenceSystemIdentifier&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:RS_Identifier&gt;</span>
+<span class="w">             </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>http://www.opengis.net/def/crs/EPSG/0/3035<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:RS_Identifier&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:referenceSystemIdentifier&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:MD_ReferenceSystem&gt;</span>
+<span class="nt">&lt;/gmd:referenceSystemInfo&gt;</span>
+<span class="w"> </span><span class="nt">&lt;gmd:referenceSystemInfo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_ReferenceSystem&gt;</span>
+<span class="w">       </span><span class="nt">&lt;gmd:referenceSystemIdentifier&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:RS_Identifier&gt;</span>
+<span class="w">             </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:title=</span><span class="s">&quot;WGS 84 (EPSG:4326)&quot;</span>
+<span class="w">                            </span><span class="na">xlink:href=</span><span class="s">&quot;http://www.opengis.net/def/crs/EPSG/0/4326&quot;</span><span class="nt">&gt;</span>EPSG:4326<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">             </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:RS_Identifier&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/gmd:referenceSystemIdentifier&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:MD_ReferenceSystem&gt;</span>
+<span class="nt">&lt;/gmd:referenceSystemInfo&gt;</span>
+</pre></div>
+</div>
+<p>Editor can choose a CRS from the suggestion list:</p>
+<img alt="../../_images/inspire-crs.png" src="../../_images/inspire-crs.png" />
+<p>If this value is similar to most of the catalogue’s records, it is recommended to set it in the base template.</p>
+</section>
+<section id="data-quality">
+<h2>Data quality<a class="headerlink" href="#data-quality" title="Permalink to this heading">¶</a></h2>
+<p>The degree of conformity of the described resource with an INSPIRE Implementing Rule, specification
+document or Conformance Class, shall be given.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:dataQualityInfo&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:DQ_DataQuality&gt;</span>
+<span class="w">     </span><span class="nt">&lt;gmd:scope&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:DQ_Scope&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:level&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:MD_ScopeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode&quot;</span>
+<span class="w">                                </span><span class="na">codeListValue=</span><span class="s">&quot;dataset&quot;</span><span class="nt">/&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:level&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:DQ_Scope&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/gmd:scope&gt;</span>
+<span class="w">     </span><span class="nt">&lt;gmd:report&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:DQ_DomainConsistency&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:result&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:DQ_ConformanceResult&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:specification&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://data.europa.eu/eli/reg/2010/1089/2014-12-31&quot;</span><span class="nt">&gt;</span>COMMISSION<span class="w"> </span>REGULATION<span class="w"> </span>(EU)<span class="w"> </span>No<span class="w"> </span>1089/2010<span class="w"> </span>of<span class="w"> </span>23<span class="w"> </span>November<span class="w"> </span>2010<span class="w"> </span>implementing<span class="w"> </span>Directive<span class="w"> </span>2007/2/EC<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>European<span class="w"> </span>Parliament<span class="w"> </span>and<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>Council<span class="w"> </span>as<span class="w"> </span>regards<span class="w"> </span>interoperability<span class="w"> </span>of<span class="w"> </span>spatial<span class="w"> </span>data<span class="w"> </span>sets<span class="w"> </span>and<span class="w"> </span>services<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:title&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmd:CI_Date&gt;</span>
+<span class="w">                             </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;gco:Date&gt;</span>2010-12-08<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                             </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                             </span><span class="nt">&lt;gmd:dateType&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;gmd:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                                     </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                             </span><span class="nt">&lt;/gmd:dateType&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;/gmd:CI_Date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:CI_Citation&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:specification&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:explanation&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gco:CharacterString&gt;</span>Voir<span class="w"> </span>la<span class="w"> </span>spécification<span class="w"> </span>référencée<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:explanation&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:pass</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:DQ_ConformanceResult&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:result&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:DQ_DomainConsistency&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/gmd:report&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="metadata-on-data-sets-and-series">
+<h2>Metadata on data sets and series<a class="headerlink" href="#metadata-on-data-sets-and-series" title="Permalink to this heading">¶</a></h2>
+<p>Editors must set:</p>
+<ul class="simple">
+<li><p>the resource type in the hierarchy level</p></li>
+<li><p>a unique resource identifier in the citation section</p></li>
+<li><p>a spatial representation type</p></li>
+<li><p>a spatial resolution</p></li>
+<li><p>a topic category</p></li>
+<li><p>at least one URL to download or to get more information about the resource in the distribution section and a distribution format</p></li>
+<li><p>a lineage in the data quality section</p></li>
+</ul>
+</section>
+<section id="validating">
+<h2>Validating<a class="headerlink" href="#validating" title="Permalink to this heading">¶</a></h2>
+<p>During editing, user can trigger validation using the <a class="reference external" href="http://inspire.ec.europa.eu/validator/">commonly agreed validator</a>. The catalogue will send the record the validator and display a link to the report once done:</p>
+<img alt="../../_images/inspire-validation-pass.png" src="../../_images/inspire-validation-pass.png" />
+</section>
+<section id="testing-with-a-valid-template">
+<h2>Testing with a valid template<a class="headerlink" href="#testing-with-a-valid-template" title="Permalink to this heading">¶</a></h2>
+<p>Below is a valid template that can be used to start with:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;gmd:MD_Metadata</span><span class="w"> </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+<span class="w">                 </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span>
+<span class="w">                 </span><span class="na">xmlns:gmx=</span><span class="s">&quot;http://www.isotc211.org/2005/gmx&quot;</span>
+<span class="w">                 </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:fileIdentifier&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>48c6f2bb-4828-46eb-a2cc-d5bcb94340dc<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:fileIdentifier&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:language&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:LanguageCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://www.loc.gov/standards/iso639-2/&quot;</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;eng&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:language&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:characterSet&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_CharacterSetCode</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;utf8&quot;</span>
+<span class="w">                             </span><span class="na">codeList=</span><span class="s">&quot;http://www.isotc211.org/namespace/resources/codeList.xml#MD_CharacterSetCode&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:characterSet&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:hierarchyLevel&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_ScopeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode&quot;</span>
+<span class="w">                      </span><span class="na">codeListValue=</span><span class="s">&quot;dataset&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:hierarchyLevel&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:contact&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Organisation<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:contactInfo&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:CI_Contact&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:address&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Address&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:electronicMailAddress&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>mail@organisation.org<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:electronicMailAddress&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Address&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:address&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:CI_Contact&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:contactInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode&quot;</span>
+<span class="w">                         </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:CI_RoleCode&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:contact&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:dateStamp&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:DateTime&gt;</span>2019-09-20T15:52:19<span class="nt">&lt;/gco:DateTime&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:dateStamp&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:metadataStandardName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>ISO<span class="w"> </span>19115<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:metadataStandardName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:metadataStandardVersion&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>2003/Cor<span class="w"> </span>1:2006<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:metadataStandardVersion&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:referenceSystemInfo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_ReferenceSystem&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:referenceSystemIdentifier&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:RS_Identifier&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>http://www.opengis.net/def/crs/EPSG/0/3035<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:RS_Identifier&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:referenceSystemIdentifier&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:MD_ReferenceSystem&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:referenceSystemInfo&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:identificationInfo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_DataIdentification&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:citation&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>INSPIRE<span class="w"> </span>-<span class="w"> </span>TG2<span class="w"> </span>-<span class="w"> </span>Template<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:title&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Date&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:Date&gt;</span>2019-10-01<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:dateType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:CI_DateTypeCode</span>
+<span class="w">                  </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                  </span><span class="na">codeListValue=</span><span class="s">&quot;creation&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:CI_DateTypeCode&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:dateType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Date&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:identifier&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:RS_Identifier&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>48c6f2bb-4828-46eb-a2cc-d5bcb94340dc<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:codeSpace&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>https://registry.organisation.fr/datasets<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:codeSpace&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:RS_Identifier&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:identifier&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:CI_Citation&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:citation&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:abstract&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Abstract<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:abstract&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_ProgressCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ProgressCode&quot;</span>
+<span class="w">                             </span><span class="na">codeListValue=</span><span class="s">&quot;onGoing&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_ProgressCode&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:status&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:pointOfContact&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Organisation<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:contactInfo&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Contact&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:address&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:CI_Address&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:electronicMailAddress&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gco:CharacterString&gt;</span>mail@organisation.org<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:electronicMailAddress&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:CI_Address&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:address&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Contact&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:contactInfo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode&quot;</span>
+<span class="w">                             </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_RoleCode&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:pointOfContact&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:resourceMaintenance&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_MaintenanceInformation&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:maintenanceAndUpdateFrequency&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:MD_MaintenanceFrequencyCode</span>
+<span class="w">              </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_MaintenanceFrequencyCode&quot;</span>
+<span class="w">              </span><span class="na">codeListValue=</span><span class="s">&quot;asNeeded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:maintenanceAndUpdateFrequency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_MaintenanceInformation&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:resourceMaintenance&gt;</span>
+<span class="w">     </span><span class="nt">&lt;gmd:descriptiveKeywords&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_Keywords&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:keyword&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gco:CharacterString&gt;</span>Protected<span class="w"> </span>sites<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:keyword&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:type&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                      </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:type&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:thesaurusName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gco:CharacterString&gt;</span>GEMET<span class="w"> </span>-<span class="w"> </span>INSPIRE<span class="w"> </span>themes,<span class="w"> </span>version<span class="w"> </span>1.0<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:title&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:CI_Date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gco:Date&gt;</span>2008-06-01<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:dateType&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmd:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                               </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:dateType&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:CI_Date&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:identifier&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:MD_Identifier&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeutheme-theme&quot;</span><span class="nt">&gt;</span>geonetwork.thesaurus.external.theme.httpinspireeceuropaeutheme-theme<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:MD_Identifier&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:identifier&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:CI_Citation&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:thesaurusName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_Keywords&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/gmd:descriptiveKeywords&gt;</span>
+<span class="w">     </span><span class="nt">&lt;gmd:descriptiveKeywords&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_Keywords&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:keyword&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/Agglomerations-IndustrialNoiseExposureDelineationNight-dir-2002-49&quot;</span><span class="nt">&gt;</span>Agglomerations<span class="w"> </span>–<span class="w"> </span>industrial<span class="w"> </span>noise<span class="w"> </span>exposure<span class="w"> </span>delineation<span class="w"> </span>-<span class="w"> </span>night<span class="w"> </span>(Noise<span class="w"> </span>Directive)<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:keyword&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:keyword&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/Agglomerations-IndustrialNoiseExposureDelineationDEN-dir-2002-49&quot;</span><span class="nt">&gt;</span>Agglomerations<span class="w"> </span>-<span class="w"> </span>industrial<span class="w"> </span>noise<span class="w"> </span>exposure<span class="w"> </span>delineation<span class="w"> </span>day-evening-night<span class="w"> </span>(Noise<span class="w"> </span>Directive)<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:keyword&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:type&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                      </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:type&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:thesaurusName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset&quot;</span><span class="nt">&gt;</span>INSPIRE<span class="w"> </span>priority<span class="w"> </span>data<span class="w"> </span>set<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:title&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:CI_Date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gco:Date&gt;</span>2018-04-04<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:dateType&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmd:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                               </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:dateType&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:CI_Date&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:identifier&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:MD_Identifier&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset&quot;</span><span class="nt">&gt;</span>geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:MD_Identifier&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:identifier&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:CI_Citation&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:thesaurusName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_Keywords&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/gmd:descriptiveKeywords&gt;</span>
+<span class="w">     </span><span class="nt">&lt;gmd:descriptiveKeywords&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_Keywords&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:keyword&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gco:CharacterString&gt;</span>Regional<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:keyword&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:type&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                      </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:type&gt;</span>
+<span class="w">           </span><span class="nt">&lt;gmd:thesaurusName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gco:CharacterString&gt;</span>Spatial<span class="w"> </span>scope<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:title&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:CI_Date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gco:Date&gt;</span>2019-05-22<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:dateType&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmd:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                               </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:dateType&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:CI_Date&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;gmd:identifier&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:MD_Identifier&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;gmd:code&gt;</span>
+<span class="w">                          </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope&quot;</span><span class="nt">&gt;</span>geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">                       </span><span class="nt">&lt;/gmd:code&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:MD_Identifier&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;/gmd:identifier&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:CI_Citation&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/gmd:thesaurusName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_Keywords&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/gmd:descriptiveKeywords&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:resourceConstraints&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_LegalConstraints&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:accessConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:MD_RestrictionCode</span>
+<span class="w">              </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode&quot;</span>
+<span class="w">              </span><span class="na">codeListValue=</span><span class="s">&quot;otherRestrictions&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:accessConstraints&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:otherConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmx:Anchor</span>
+<span class="w">              </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&quot;</span><span class="nt">&gt;</span>No
+<span class="w">              </span>limitations<span class="w"> </span>to<span class="w"> </span>public<span class="w"> </span>access
+<span class="w">            </span><span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:otherConstraints&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_LegalConstraints&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:resourceConstraints&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:resourceConstraints&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_LegalConstraints&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:useLimitation&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Conditions<span class="w"> </span>d&#39;accès<span class="w"> </span>et<span class="w"> </span>d&#39;utilisation<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:useLimitation&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:useConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:MD_RestrictionCode</span>
+<span class="w">              </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode&quot;</span>
+<span class="w">              </span><span class="na">codeListValue=</span><span class="s">&quot;otherRestrictions&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:useConstraints&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:otherConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Description<span class="w"> </span>des<span class="w"> </span>autres<span class="w"> </span>contraintes<span class="w"> </span>(eg.<span class="w"> </span>CGI,<span class="w"> </span>Licence)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:otherConstraints&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_LegalConstraints&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:resourceConstraints&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:spatialRepresentationType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_SpatialRepresentationTypeCode</span>
+<span class="w">          </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_SpatialRepresentationTypeCode&quot;</span>
+<span class="w">          </span><span class="na">codeListValue=</span><span class="s">&quot;vector&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_SpatialRepresentationTypeCode&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:spatialRepresentationType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:spatialResolution&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_Resolution&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:equivalentScale&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:MD_RepresentativeFraction&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:denominator&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:Integer&gt;</span>25000<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:denominator&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:MD_RepresentativeFraction&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:equivalentScale&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_Resolution&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:spatialResolution&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:language&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:LanguageCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://www.loc.gov/standards/iso639-2/&quot;</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;eng&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:language&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:characterSet&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_CharacterSetCode</span>
+<span class="w">          </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode&quot;</span>
+<span class="w">          </span><span class="na">codeListValue=</span><span class="s">&quot;utf8&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_CharacterSetCode&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:characterSet&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:topicCategory&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_TopicCategoryCode&gt;</span>biota<span class="nt">&lt;/gmd:MD_TopicCategoryCode&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:topicCategory&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:topicCategory&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_TopicCategoryCode&gt;</span>environment<span class="nt">&lt;/gmd:MD_TopicCategoryCode&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:topicCategory&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:extent&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:EX_Extent&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:geographicElement&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:EX_GeographicBoundingBox&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:westBoundLongitude&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:Decimal&gt;</span>2.78<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:westBoundLongitude&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:eastBoundLongitude&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:Decimal&gt;</span>6.41<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:eastBoundLongitude&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:southBoundLatitude&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:Decimal&gt;</span>49.46<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:southBoundLatitude&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:northBoundLatitude&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:Decimal&gt;</span>50.85<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:northBoundLatitude&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:EX_GeographicBoundingBox&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:geographicElement&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:EX_Extent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:extent&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:MD_DataIdentification&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:identificationInfo&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:distributionInfo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:MD_Distribution&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:distributionFormat&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_Format&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:name&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>ESRI<span class="w"> </span>Shapefile<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:version&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>1.0<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:version&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_Format&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:distributionFormat&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:transferOptions&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:MD_DigitalTransferOptions&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:onLine&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_OnlineResource&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:linkage&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:URL&gt;</span>https://geoservices.wallonie.be/inspire/atom/PS_Service.xml<span class="nt">&lt;/gmd:URL&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:linkage&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:protocol&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>atom:feed<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:protocol&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:name&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>Service<span class="w"> </span>de<span class="w"> </span>téléchargement<span class="w"> </span>ATOM<span class="w"> </span>Feed<span class="w"> </span>-<span class="w"> </span>Inspire<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:name&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:description&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>Ce<span class="w"> </span>service<span class="w"> </span>de<span class="w"> </span>téléchargement<span class="w"> </span>ATOM<span class="w"> </span>Feed<span class="w"> </span>permet<span class="w"> </span>de<span class="w"> </span>télécharger<span class="w"> </span>la<span class="w"> </span>série<span class="w"> </span>de<span class="w"> </span>couches<span class="w"> </span>de
+<span class="w">                  </span>données<span class="w"> </span>conforme<span class="w"> </span>au<span class="w"> </span>thème<span class="w"> </span>INSPIRE<span class="w"> </span>&quot;Sites<span class="w"> </span>protégés&quot;.<span class="w"> </span>Cliquez<span class="w"> </span>sur<span class="w"> </span>le<span class="w"> </span>lien<span class="w"> </span>correspondant<span class="w"> </span>aux<span class="w"> </span>couches<span class="w"> </span>de
+<span class="w">                  </span>données<span class="w"> </span>Natura<span class="w"> </span>2000<span class="w"> </span>pour<span class="w"> </span>télécharger<span class="w"> </span>les<span class="w"> </span>informations<span class="w"> </span>relatives<span class="w"> </span>à<span class="w"> </span>ce<span class="w"> </span>mécanisme<span class="w"> </span>de<span class="w"> </span>désignation.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:description&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:function&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:CI_OnLineFunctionCode</span>
+<span class="w">                  </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_OnLineFunctionCode&quot;</span>
+<span class="w">                  </span><span class="na">codeListValue=</span><span class="s">&quot;information&quot;</span><span class="nt">/&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:function&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_OnlineResource&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:onLine&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:MD_DigitalTransferOptions&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:transferOptions&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:MD_Distribution&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:distributionInfo&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:dataQualityInfo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:DQ_DataQuality&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:scope&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:DQ_Scope&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:level&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:MD_ScopeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode&quot;</span>
+<span class="w">                              </span><span class="na">codeListValue=</span><span class="s">&quot;dataset&quot;</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:level&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:DQ_Scope&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:scope&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:report&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:DQ_DomainConsistency&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:result&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:DQ_ConformanceResult&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:specification&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gmd:CI_Citation&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:title&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://data.europa.eu/eli/reg/2010/1089/2014-12-31&quot;</span><span class="nt">&gt;</span>COMMISSION<span class="w"> </span>REGULATION<span class="w"> </span>(EU)<span class="w"> </span>No<span class="w"> </span>1089/2010<span class="w"> </span>of<span class="w"> </span>23<span class="w"> </span>November<span class="w"> </span>2010<span class="w"> </span>implementing<span class="w"> </span>Directive<span class="w"> </span>2007/2/EC<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>European<span class="w"> </span>Parliament<span class="w"> </span>and<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>Council<span class="w"> </span>as<span class="w"> </span>regards<span class="w"> </span>interoperability<span class="w"> </span>of<span class="w"> </span>spatial<span class="w"> </span>data<span class="w"> </span>sets<span class="w"> </span>and<span class="w"> </span>services<span class="nt">&lt;/gmx:Anchor&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:title&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;gmd:CI_Date&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;gmd:date&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Date&gt;</span>2010-12-08<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;gmd:dateType&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gmd:CI_DateTypeCode</span>
+<span class="w">                          </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                          </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">&gt;</span>publication
+<span class="w">                        </span><span class="nt">&lt;/gmd:CI_DateTypeCode&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;/gmd:dateType&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/gmd:CI_Date&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:date&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/gmd:CI_Citation&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:specification&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:explanation&gt;</span>
+<span class="w">                </span><span class="nt">&lt;gco:CharacterString&gt;</span>Voir<span class="w"> </span>la<span class="w"> </span>spécification<span class="w"> </span>référencée<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:explanation&gt;</span>
+<span class="w">              </span><span class="nt">&lt;gmd:pass</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;unknown&quot;</span><span class="nt">&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/gmd:pass&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:DQ_ConformanceResult&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:result&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:DQ_DomainConsistency&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:report&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:lineage&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gmd:LI_Lineage&gt;</span>
+<span class="w">          </span><span class="nt">&lt;gmd:statement&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Généalogie<span class="w"> </span>du<span class="w"> </span>jeu<span class="w"> </span>de<span class="w"> </span>données<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/gmd:statement&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gmd:LI_Lineage&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:lineage&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gmd:DQ_DataQuality&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:dataQualityInfo&gt;</span>
+<span class="nt">&lt;/gmd:MD_Metadata&gt;</span>
+</pre></div>
+</div>
+<p>It is also possible to use the <a class="reference external" href="https://github.com/metadata101/iso19115-3.2018">latest ISO standard ISO19115-3:2018</a> to encode INSPIRE dataset. In such case, the record is converted back to ISO19139 before validation. This approach allows to benefit from the improvements provided by the standard and keep conformity to INSPIRE requirements.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;mdb:MD_Metadata</span><span class="w"> </span><span class="na">xmlns:mac=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mac/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mrc=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mrc/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mdq=</span><span class="s">&quot;http://standards.iso.org/iso/19157/-2/mdq/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:srv=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/srv/2.1&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mrd=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mrd/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mrl=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mrl/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mri=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mri/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://standards.iso.org/iso/19110/gfc/1.1&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mrs=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mrs/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:cit=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/cit/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mcc=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mcc/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mas=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mas/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:gex=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/gex/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">               </span><span class="na">xmlns:lan=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/lan/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mda=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mda/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mco=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mco/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/gco/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mds=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mds/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mdb=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mdb/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:cat=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/cat/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mex=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mex/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:msr=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/msr/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mdt=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mdt/2.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mmi=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mmi/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:gcx=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/gcx/1.0&quot;</span>
+<span class="w">               </span><span class="na">xmlns:mpc=</span><span class="s">&quot;http://standards.iso.org/iso/19115/-3/mpc/1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:metadataIdentifier&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>6d50311c-3ffd-4c09-aa0b-fe9ab1bb93fa<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mcc:codeSpace&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>urn:uuid<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mcc:codeSpace&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:metadataIdentifier&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:defaultLocale&gt;</span>
+<span class="w">      </span><span class="nt">&lt;lan:PT_Locale</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;EN&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;lan:language&gt;</span>
+<span class="w">            </span><span class="nt">&lt;lan:LanguageCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://www.loc.gov/standards/iso639-2/&quot;</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;eng&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/lan:language&gt;</span>
+<span class="w">         </span><span class="nt">&lt;lan:characterEncoding&gt;</span>
+<span class="w">            </span><span class="nt">&lt;lan:MD_CharacterSetCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode&quot;</span>
+<span class="w">                                     </span><span class="na">codeListValue=</span><span class="s">&quot;utf8&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/lan:characterEncoding&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/lan:PT_Locale&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/mdb:defaultLocale&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:metadataScope&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mdb:MD_MetadataScope&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mdb:resourceScope&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mcc:MD_ScopeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode&quot;</span>
+<span class="w">                              </span><span class="na">codeListValue=</span><span class="s">&quot;dataset&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mdb:resourceScope&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/mdb:MD_MetadataScope&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:metadataScope&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:contact&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cit:CI_Responsibility&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:role&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cit:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode&quot;</span>
+<span class="w">                             </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:role&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:party&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cit:CI_Organisation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;cit:name&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Organisation<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/cit:name&gt;</span>
+<span class="w">               </span><span class="nt">&lt;cit:contactInfo&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_Contact&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:address&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_Address&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:electronicMailAddress&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gco:CharacterString&gt;</span>mail@organisation.org<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:electronicMailAddress&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/cit:CI_Address&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:address&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_Contact&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/cit:contactInfo&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cit:CI_Organisation&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:party&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/cit:CI_Responsibility&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:contact&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:dateInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cit:CI_Date&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:DateTime&gt;</span>2019-10-07T13:35:35<span class="nt">&lt;/gco:DateTime&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:dateType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cit:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                 </span><span class="na">codeListValue=</span><span class="s">&quot;revision&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:dateType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/cit:CI_Date&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:dateInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:dateInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cit:CI_Date&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:DateTime&gt;</span>2019-09-20T15:52:19<span class="nt">&lt;/gco:DateTime&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:dateType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cit:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;https://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                 </span><span class="na">codeListValue=</span><span class="s">&quot;creation&quot;</span><span class="nt">&gt;</span>creation<span class="nt">&lt;/cit:CI_DateTypeCode&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:dateType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/cit:CI_Date&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:dateInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:metadataStandard&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cit:CI_Citation&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:title&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>ISO<span class="w"> </span>19115<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:title&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:edition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>2003/Cor<span class="w"> </span>1:2006<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:edition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/cit:CI_Citation&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:metadataStandard&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:metadataLinkage&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cit:CI_OnlineResource&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:linkage&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>http://localhost:8080/geonetwork/srv/eng//metadata/6d50311c-3ffd-4c09-aa0b-fe9ab1bb93fa<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:linkage&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cit:function&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cit:CI_OnLineFunctionCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_OnLineFunctionCode&quot;</span>
+<span class="w">                                       </span><span class="na">codeListValue=</span><span class="s">&quot;completeMetadata&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/cit:function&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/cit:CI_OnlineResource&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:metadataLinkage&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:referenceSystemInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>http://www.opengis.net/def/crs/EPSG/0/3035<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrs:referenceSystemIdentifier&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/mrs:MD_ReferenceSystem&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:referenceSystemInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:identificationInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mri:MD_DataIdentification&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:citation&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cit:CI_Citation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;cit:title&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>INSPIRE<span class="w"> </span>-<span class="w"> </span>TG2<span class="w"> </span>-<span class="w"> </span>Template<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/cit:title&gt;</span>
+<span class="w">               </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_Date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Date&gt;</span>2019-10-01<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:dateType&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                             </span><span class="na">codeListValue=</span><span class="s">&quot;creation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:dateType&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_Date&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">               </span><span class="nt">&lt;cit:identifier&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>48c6f2bb-4828-46eb-a2cc-d5bcb94340dc<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;mcc:codeSpace&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>https://registry.organisation.fr/datasets<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/mcc:codeSpace&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/cit:identifier&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cit:CI_Citation&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:citation&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:abstract&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Description<span class="w"> </span>du<span class="w"> </span>jeu<span class="w"> </span>de<span class="w"> </span>données<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:abstract&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:status&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mcc:MD_ProgressCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ProgressCode&quot;</span>
+<span class="w">                                 </span><span class="na">codeListValue=</span><span class="s">&quot;onGoing&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:status&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:pointOfContact&gt;</span>
+<span class="w">            </span><span class="nt">&lt;cit:CI_Responsibility&gt;</span>
+<span class="w">               </span><span class="nt">&lt;cit:role&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode&quot;</span>
+<span class="w">                                   </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/cit:role&gt;</span>
+<span class="w">               </span><span class="nt">&lt;cit:party&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_Organisation&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:name&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Organisation<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:name&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:contactInfo&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_Contact&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:address&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;cit:CI_Address&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;cit:electronicMailAddress&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;gco:CharacterString&gt;</span>mail@organisation.org<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;/cit:electronicMailAddress&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;/cit:CI_Address&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:address&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/cit:CI_Contact&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:contactInfo&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_Organisation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/cit:party&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/cit:CI_Responsibility&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:pointOfContact&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:spatialRepresentationType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mcc:MD_SpatialRepresentationTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_SpatialRepresentationTypeCode&quot;</span>
+<span class="w">                                                  </span><span class="na">codeListValue=</span><span class="s">&quot;vector&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:spatialRepresentationType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:spatialResolution&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mri:MD_Resolution&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:equivalentScale&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mri:MD_RepresentativeFraction&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;mri:denominator&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Integer&gt;</span>25000<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/mri:denominator&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/mri:MD_RepresentativeFraction&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:equivalentScale&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mri:MD_Resolution&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:spatialResolution&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:topicCategory&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mri:MD_TopicCategoryCode&gt;</span>biota<span class="nt">&lt;/mri:MD_TopicCategoryCode&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:topicCategory&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:topicCategory&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mri:MD_TopicCategoryCode&gt;</span>environment<span class="nt">&lt;/mri:MD_TopicCategoryCode&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:topicCategory&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:extent&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gex:EX_Extent&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gex:geographicElement&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gex:EX_GeographicBoundingBox&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gex:westBoundLongitude&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Decimal&gt;</span>2.78<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gex:westBoundLongitude&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gex:eastBoundLongitude&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Decimal&gt;</span>6.41<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gex:eastBoundLongitude&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gex:southBoundLatitude&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Decimal&gt;</span>49.46<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gex:southBoundLatitude&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gex:northBoundLatitude&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Decimal&gt;</span>50.85<span class="nt">&lt;/gco:Decimal&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gex:northBoundLatitude&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gex:EX_GeographicBoundingBox&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gex:geographicElement&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gex:EX_Extent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:extent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:resourceMaintenance&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mmi:MD_MaintenanceInformation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mmi:maintenanceAndUpdateFrequency&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mmi:MD_MaintenanceFrequencyCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_MaintenanceFrequencyCode&quot;</span>
+<span class="w">                                                   </span><span class="na">codeListValue=</span><span class="s">&quot;asNeeded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mmi:maintenanceAndUpdateFrequency&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mmi:MD_MaintenanceInformation&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:resourceMaintenance&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:descriptiveKeywords&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mri:MD_Keywords&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:keyword&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Protected<span class="w"> </span>site<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:keyword&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:type&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mri:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                          </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:type&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:thesaurusName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_Citation&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:title&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>GEMET<span class="w"> </span>-<span class="w"> </span>INSPIRE<span class="w"> </span>themes,<span class="w"> </span>version<span class="w"> </span>1.0<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:title&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_Date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gco:Date&gt;</span>2008-06-01<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:dateType&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;cit:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                                   </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:dateType&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/cit:CI_Date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:identifier&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gcx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://metawal.wallonie.be/geonetwork/srv/eng/thesaurus.download?ref=external.theme.httpinspireeceuropaeutheme-theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:identifier&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_Citation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:thesaurusName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mri:MD_Keywords&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:descriptiveKeywords&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:descriptiveKeywords&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mri:MD_Keywords&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:keyword</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:keyword&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:type&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mri:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                          </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:type&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:thesaurusName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_Citation&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:title&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>GEMET<span class="w"> </span>themes<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:title&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_Date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gco:Date&gt;</span>2009-09-22<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:dateType&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;cit:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                                   </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:dateType&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/cit:CI_Date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:identifier&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gcx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://metawal.wallonie.be/geonetwork/srv/eng/thesaurus.download?ref=external.theme.gemet-theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:identifier&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_Citation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:thesaurusName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mri:MD_Keywords&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:descriptiveKeywords&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:descriptiveKeywords&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mri:MD_Keywords&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:keyword&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gcx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/Natura2000Sites-dir-2009-147&quot;</span><span class="nt">&gt;</span>Natura<span class="w"> </span>2000<span class="w"> </span>sites<span class="w"> </span>(Birds<span class="w"> </span>Directive)<span class="nt">&lt;/gcx:Anchor&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:keyword&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:type&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mri:MD_KeywordTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode&quot;</span>
+<span class="w">                                          </span><span class="na">codeListValue=</span><span class="s">&quot;theme&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:type&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mri:thesaurusName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_Citation&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:title&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>INSPIRE<span class="w"> </span>priority<span class="w"> </span>data<span class="w"> </span>set<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:title&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_Date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gco:Date&gt;</span>2018-04-24<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:dateType&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;cit:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                                   </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:dateType&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/cit:CI_Date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:identifier&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;mcc:MD_Identifier&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;mcc:code&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gcx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://metawal.wallonie.be/geonetwork/srv/eng/thesaurus.download?ref=external.theme.PriorityDataset.fr.iso19135_v2_trf&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/mcc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/mcc:MD_Identifier&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:identifier&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_Citation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mri:thesaurusName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mri:MD_Keywords&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:descriptiveKeywords&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:resourceConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mco:MD_LegalConstraints&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mco:accessConstraints&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mco:MD_RestrictionCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode&quot;</span>
+<span class="w">                                          </span><span class="na">codeListValue=</span><span class="s">&quot;otherRestrictions&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mco:accessConstraints&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mco:otherConstraints&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gcx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&quot;</span><span class="nt">&gt;</span>No
+<span class="w">                  </span>limitations<span class="w"> </span>to<span class="w"> </span>public<span class="w"> </span>access<span class="nt">&lt;/gcx:Anchor&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mco:otherConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mco:MD_LegalConstraints&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:resourceConstraints&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:resourceConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mco:MD_LegalConstraints&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mco:useLimitation&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Conditions<span class="w"> </span>d&#39;accès<span class="w"> </span>et<span class="w"> </span>d&#39;utilisation<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mco:useLimitation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mco:useConstraints&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mco:MD_RestrictionCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode&quot;</span>
+<span class="w">                                          </span><span class="na">codeListValue=</span><span class="s">&quot;otherRestrictions&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mco:useConstraints&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mco:otherConstraints&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Description<span class="w"> </span>des<span class="w"> </span>autres<span class="w"> </span>contraintes<span class="w"> </span>(eg.<span class="w"> </span>CGI,<span class="w"> </span>Licence)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mco:otherConstraints&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mco:MD_LegalConstraints&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:resourceConstraints&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mri:defaultLocale&gt;</span>
+<span class="w">            </span><span class="nt">&lt;lan:PT_Locale&gt;</span>
+<span class="w">               </span><span class="nt">&lt;lan:language&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;lan:LanguageCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://www.loc.gov/standards/iso639-2/&quot;</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;fre&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/lan:language&gt;</span>
+<span class="w">               </span><span class="nt">&lt;lan:characterEncoding&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;lan:MD_CharacterSetCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode&quot;</span>
+<span class="w">                                           </span><span class="na">codeListValue=</span><span class="s">&quot;utf8&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/lan:characterEncoding&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/lan:PT_Locale&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mri:defaultLocale&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/mri:MD_DataIdentification&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/mdb:identificationInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:distributionInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mrd:MD_Distribution&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrd:distributionFormat&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mrd:MD_Format&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mrd:formatSpecificationCitation&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_Citation&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:title&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>ESRI<span class="w"> </span>Shapefile<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:title&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:date</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:edition&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>1.0<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:edition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_Citation&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mrd:formatSpecificationCitation&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mrd:MD_Format&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrd:distributionFormat&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrd:transferOptions&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mrd:MD_DigitalTransferOptions&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mrd:onLine&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;cit:CI_OnlineResource&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:linkage&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>https://geoservices.wallonie.be/inspire/atom/PS_Service.xml<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:linkage&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:protocol&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>atom:feed<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:protocol&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:name&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Service<span class="w"> </span>de<span class="w"> </span>téléchargement<span class="w"> </span>ATOM<span class="w"> </span>Feed<span class="w"> </span>-<span class="w"> </span>Inspire<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:name&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:description&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Ce<span class="w"> </span>service<span class="w"> </span>de<span class="w"> </span>téléchargement<span class="w"> </span>ATOM<span class="w"> </span>Feed<span class="w"> </span>permet<span class="w"> </span>de<span class="w"> </span>télécharger<span class="w"> </span>la<span class="w"> </span>série<span class="w"> </span>de<span class="w"> </span>couches<span class="w"> </span>de
+<span class="w">                      </span>données<span class="w"> </span>conforme<span class="w"> </span>au<span class="w"> </span>thème<span class="w"> </span>INSPIRE<span class="w"> </span>&quot;Sites<span class="w"> </span>protégés&quot;.<span class="w"> </span>Cliquez<span class="w"> </span>sur<span class="w"> </span>le<span class="w"> </span>lien<span class="w"> </span>correspondant<span class="w"> </span>aux<span class="w"> </span>couches<span class="w"> </span>de
+<span class="w">                      </span>données<span class="w"> </span>Natura<span class="w"> </span>2000<span class="w"> </span>pour<span class="w"> </span>télécharger<span class="w"> </span>les<span class="w"> </span>informations<span class="w"> </span>relatives<span class="w"> </span>à<span class="w"> </span>ce<span class="w"> </span>mécanisme<span class="w"> </span>de<span class="w"> </span>désignation.<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:description&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;cit:function&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_OnLineFunctionCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_OnLineFunctionCode&quot;</span>
+<span class="w">                                                   </span><span class="na">codeListValue=</span><span class="s">&quot;information&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/cit:function&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/cit:CI_OnlineResource&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mrd:onLine&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mrd:MD_DigitalTransferOptions&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrd:transferOptions&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/mrd:MD_Distribution&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:distributionInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:dataQualityInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mdq:DQ_DataQuality&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mdq:scope&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mcc:MD_Scope&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:level&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mcc:MD_ScopeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode&quot;</span>
+<span class="w">                                    </span><span class="na">codeListValue=</span><span class="s">&quot;dataset&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:level&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mcc:MD_Scope&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mdq:scope&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mdq:report&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mdq:DQ_DomainConsistency&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mdq:result&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mdq:DQ_ConformanceResult&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;mdq:specification&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;cit:CI_Citation&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:title&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gcx:Anchor</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;http://data.europa.eu/eli/reg/2010/1089/2014-12-31&quot;</span><span class="nt">&gt;</span>COMMISSION<span class="w"> </span>REGULATION<span class="w"> </span>(EU)<span class="w"> </span>No<span class="w"> </span>1089/2010<span class="w"> </span>of<span class="w"> </span>23<span class="w"> </span>November<span class="w"> </span>2010<span class="w"> </span>implementing<span class="w"> </span>Directive<span class="w"> </span>2007/2/EC<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>European<span class="w"> </span>Parliament<span class="w"> </span>and<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>Council<span class="w"> </span>as<span class="w"> </span>regards<span class="w"> </span>interoperability<span class="w"> </span>of<span class="w"> </span>spatial<span class="w"> </span>data<span class="w"> </span>sets<span class="w"> </span>and<span class="w"> </span>services<span class="nt">&lt;/gcx:Anchor&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:title&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;cit:CI_Date&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;cit:date&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;gco:Date&gt;</span>2010-12-08<span class="nt">&lt;/gco:Date&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;cit:dateType&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;cit:CI_DateTypeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode&quot;</span>
+<span class="w">                                                         </span><span class="na">codeListValue=</span><span class="s">&quot;publication&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;/cit:dateType&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;/cit:CI_Date&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/cit:date&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/cit:CI_Citation&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/mdq:specification&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;mdq:explanation&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Voir<span class="w"> </span>la<span class="w"> </span>spécification<span class="w"> </span>référencée<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/mdq:explanation&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;mdq:pass</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/mdq:DQ_ConformanceResult&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mdq:result&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mdq:DQ_DomainConsistency&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mdq:report&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/mdq:DQ_DataQuality&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:dataQualityInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;mdb:resourceLineage&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mrl:LI_Lineage&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrl:statement&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Généalogie<span class="w"> </span>du<span class="w"> </span>jeu<span class="w"> </span>de<span class="w"> </span>données<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrl:statement&gt;</span>
+<span class="w">         </span><span class="nt">&lt;mrl:scope&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mcc:MD_Scope&gt;</span>
+<span class="w">               </span><span class="nt">&lt;mcc:level&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;mcc:MD_ScopeCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode&quot;</span>
+<span class="w">                                    </span><span class="na">codeListValue=</span><span class="s">&quot;dataset&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/mcc:level&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/mcc:MD_Scope&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/mrl:scope&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/mrl:LI_Lineage&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/mdb:resourceLineage&gt;</span>
+<span class="nt">&lt;/mdb:MD_Metadata&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="migrating-from-technical-guidance-version-1-3-to-version-2-0">
+<h1>Migrating from Technical guidance version 1.3 to version 2.0<a class="headerlink" href="#migrating-from-technical-guidance-version-1-3-to-version-2-0" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://inspire.ec.europa.eu/id/document/tg/metadata-iso19139">Technical Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007 (INSPIRE TG2)</a> is the latest version that Member States should follow for all resources in the scope of the INSPIRE directive.</p>
+<p>To facilitate migration from previous technical guideline version 1.3, an XSLT conversion process can be applied to metadata records (see <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/master/schemas/iso19139/src/main/plugin/iso19139/process/inspire-tg13-to-tg20.xsl">https://github.com/geonetwork/core-geonetwork/blob/master/schemas/iso19139/src/main/plugin/iso19139/process/inspire-tg13-to-tg20.xsl</a>). The process is provided as an example and can be adapted based on your encoding rules.</p>
+<p>Below is a list of examples for ISO19139, ISO19115-3 or ISO19139 national profiles conversion, that can also be used as examples:</p>
+<ul class="simple">
+<li><p>EEA <a class="reference external" href="https://github.com/eea/geonetwork-eea/blob/eea-3.10.x/schemas/iso19139/src/main/plugin/iso19139/process/eea-migrate-201908.xsl">https://github.com/eea/geonetwork-eea/blob/eea-3.10.x/schemas/iso19139/src/main/plugin/iso19139/process/eea-migrate-201908.xsl</a></p></li>
+<li><p>BRGM <a class="reference external" href="https://github.com/BRGM/core-geonetwork/blob/mongeosource-3.10.x/schemas/iso19139/src/main/plugin/iso19139/process/inspire-tg2-improve-conformity.xsl">https://github.com/BRGM/core-geonetwork/blob/mongeosource-3.10.x/schemas/iso19139/src/main/plugin/iso19139/process/inspire-tg2-improve-conformity.xsl</a></p></li>
+<li><p>Metawal <a class="reference external" href="https://github.com/SPW-DIG/iso19115-3.2018/blob/5db7c2e4d597c53ac25e5bf20331a70653fc44d2/src/main/plugin/iso19115-3.2018/process/inspire-tg2.xsl">https://github.com/SPW-DIG/iso19115-3.2018/blob/5db7c2e4d597c53ac25e5bf20331a70653fc44d2/src/main/plugin/iso19115-3.2018/process/inspire-tg2.xsl</a></p></li>
+<li><p>Netherland <a class="reference external" href="https://github.com/metadata101/iso19139.nl.geografie.1.3.1/blob/3.6/src/main/plugin/iso19139.nl.geografie.1.3.1/process/upgrade200-schemaupgrade.xsl">https://github.com/metadata101/iso19139.nl.geografie.1.3.1/blob/3.6/src/main/plugin/iso19139.nl.geografie.1.3.1/process/upgrade200-schemaupgrade.xsl</a></p></li>
+<li><p>Sweden <a class="reference external" href="https://github.com/sdi-sweden/se-core-geonetwork/blob/develop/schemas/iso19139/src/main/plugin/iso19139/present/csw/gmd-csw-postprocessing.xsl">https://github.com/sdi-sweden/se-core-geonetwork/blob/develop/schemas/iso19139/src/main/plugin/iso19139/present/csw/gmd-csw-postprocessing.xsl</a></p></li>
+</ul>
+<p>See <a class="reference internal" href="../workflow/batchupdate-xsl.html#batchupdate-xsl"><span class="std std-ref">Обновление набора записей с помощью XSLT</span></a> to preview or apply the process.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="multilingual-editing.html" class="btn btn-neutral float-left" title="Многоязычное редактирование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../associating-resources/index.html" class="btn btn-neutral float-right" title="Связывание ресурсов" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Звязванне вэб-сайтаў, вэб-сэрвісаў, ... з выкарыстаннем URL &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Звязванне іншага запісу" href="linking-records.html" />
+    <link rel="prev" title="Ілюстрацыя з аглядам" href="linking-thumbnail.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва карыстальніка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Хуткі старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Апісанне інфармацыі</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Аб&amp;#39;яднанне рэсурсаў</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="linking-documents.html">Спалучаючыя дакументы</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="using-filestore.html">Загрузка ўкладанняў</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linking-thumbnail.html">Ілюстрацыя з аглядам</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Звязванне вэб-сайтаў, вэб-сэрвісаў, ... з выкарыстаннем URL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="linking-records.html">Звязванне іншага запісу</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doi.html">Digital Object Identifier (DOI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Класіфікаваць інфармацыю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Выдавецкая справа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Аналіз дадзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочы працэс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Уборка ўраджаю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспарт запісаў</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва карыстальніка</a> &raquo;</li>
+          <li><a href="index.html">Аб&amp;#39;яднанне рэсурсаў</a> &raquo;</li>
+          <li><a href="linking-documents.html">Спалучаючыя дакументы</a> &raquo;</li>
+      <li>Звязванне вэб-сайтаў, вэб-сэрвісаў, ... з выкарыстаннем URL</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/associating-resources/linking-online-resources.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="linking-website-web-services-using-url">
+<span id="linking-online-resources"></span><h1>Звязванне вэб-сайтаў, вэб-сэрвісаў, ... з выкарыстаннем URL<a class="headerlink" href="#linking-website-web-services-using-url" title="Permalink to this heading">¶</a></h1>
+<p>Гэты раздзел адносіцца ў асноўным да запісаў ISO19139 і часткова да стандартаў Dublin Core (г. зн. толькі дакументы могуць быць звязаны ў Dublin Core).</p>
+<section id="linking-a-document">
+<span id="linking-online-resources-doc"></span><h2>Звязванне дакумента<a class="headerlink" href="#linking-a-document" title="Permalink to this heading">¶</a></h2>
+<p>Для звязвання дакументаў можна выкарыстоўваць 2 спосабу:</p>
+<ul class="simple">
+<li><p>шляхам прадастаўлення URL</p></li>
+<li><p>загрузіўшы дакумент</p></li>
+</ul>
+<p>To add a new one, click on the + caret button then <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">an</span> <span class="pre">online</span> <span class="pre">resource</span></code>
+button or, if already one exists, just click on the title of the <code class="docutils literal notranslate"><span class="pre">Online</span> <span class="pre">resources</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/addonlinesrc.png" src="../../_images/addonlinesrc.png" />
+</figure>
+<p>Каб звязаць URL, задайце наступныя ўласцівасці:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Пратакол</span></code> для апісання тыпу далучанага дакумента (<code class="docutils literal notranslate"><span class="pre">Вэб-адрас</span> <span class="pre">(URL)</span></code> з&amp;#39;яўляецца стандартным)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Спасылка</span></code>, каб паказаць на мэтавы дакумент. Гэта могуць быць любыя спасылкі, такія як <a class="reference external" href="http://">http://</a>, <a class="reference external" href="ftp://">ftp://</a>, <a class="reference external" href="file:///">file:///</a>, ...</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Імя</span></code> не з&amp;#39;яўляецца абавязковым і дае метку для стварэння гіперспасылкі</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Апісанне</span></code> не з&amp;#39;яўляецца абавязковым і змяшчае больш падрабязную інфармацыю аб спасылцы</p></li>
+</ul>
+<p>Каб загрузіць дакумент, пераключыцеся на ўкладку <code class="docutils literal notranslate"><span class="pre">Загрузіць</span></code> і абярыце дакумент або перацягніце яго ва ўсплываючым акне. У такім выпадку пратакол схаваны і ўсталяваны ў <code class="docutils literal notranslate"><span class="pre">WWW:DOWNLOAD</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/addonlinesrcup.png" src="../../_images/addonlinesrcup.png" />
+</figure>
+<p>У залежнасці ад вашых патрэб можна дадаць больш канкрэтныя спасылкі, якія будуць звязаны з рознымі дзеяннямі і будуць адлюстроўвацца ў праграмах.</p>
+</section>
+<section id="linking-a-wms-layer">
+<span id="linking-wms-layer"></span><h2>Звязванне ўзроўню WMS<a class="headerlink" href="#linking-a-wms-layer" title="Permalink to this heading">¶</a></h2>
+<p>Каб мець магчымасць праглядаць запіс у праграме прагляду карт, можа спатрэбіцца дадаць спасылку на адзін або некалькі сэрвісаў WMS, якія публікуюць набор даных. Інтэрнет-рэсурс закадаваны з дапамогай наступнага ў ISO19139:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:onLine</span><span class="w"> </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+<span class="w">            </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:CI_OnlineResource&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:linkage&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:URL&gt;</span>https://download.data.grandlyon.com/wms/grandlyon<span class="nt">&lt;/gmd:URL&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:linkage&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:protocol&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString&gt;</span>OGC:WMS<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:protocol&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:name&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString&gt;</span>cad_cadastre.cadsubdivisionsection<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString&gt;</span>Subdivision<span class="w"> </span>de<span class="w"> </span>section<span class="w"> </span>cadastrale<span class="w"> </span>(Plan<span class="w"> </span>cadastral<span class="w"> </span>informatisé<span class="w"> </span>du<span class="w"> </span>Grand<span class="w"> </span>Lyon)(OGC:WMS)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:description&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:CI_OnlineResource&gt;</span>
+<span class="nt">&lt;/gmd:onLine&gt;</span>
+</pre></div>
+</div>
+<p>Каб дадаць пласт WMS:</p>
+<ul class="simple">
+<li><p>абярыце пратакол <code class="docutils literal notranslate"><span class="pre">OGC:WMS</span> <span class="pre">Web</span> <span class="pre">Map</span> <span class="pre">Service</span></code>,</p></li>
+<li><p>ўсталяваць URL службы,</p></li>
+<li><p>then the wizard query the service to retrieve the list of layers</p></li>
+<li><p>абярыце адзін або некалькі слаёў у спісе або задайце іх уручную.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/addonlinesrcwms.png" src="../../_images/addonlinesrcwms.png" />
+</figure>
+</section>
+<section id="linking-a-database-table-or-a-gis-file-on-the-network">
+<span id="linking-online-resources-georesource"></span><h2>Звязванне табліцы базы дадзеных або файла ГІС у сетцы<a class="headerlink" href="#linking-a-database-table-or-a-gis-file-on-the-network" title="Permalink to this heading">¶</a></h2>
+<p>Каб спасылацца на файл ГІС або табліцу базы дадзеных, карыстальнік можа загрузіць гэты рэсурс або зрабіць спасылку на гэты рэсурс (гл. <a class="reference internal" href="#linking-online-resources-doc"><span class="std std-ref">Звязванне дакумента</span></a>). Тып пратаколу залежыць ад тыпу звязанага рэсурсу:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Тып рэсурсу</p></th>
+<th class="head"><p>Запампаваны вектарны файл (напрыклад, сціснуты Shapefile)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>URL</p></td>
+<td><p>URL файла, створаны пасля загрузкі ў каталог. напр. <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/resources.get?id=1631&amp;amp;fname=CCM.zip&amp;amp;access=private">http://localhost:8080/geonetwork/srv/eng/resources.get?id=1631&amp;amp;fname=CCM.zip&amp;amp;access=private</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Пратакол</p></td>
+<td><p>WWW: СПАМПАВАЦЬ</p></td>
+</tr>
+<tr class="row-even"><td><p>Імя</p></td>
+<td><p>Імя файла (толькі для чытання)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Тып рэсурсу</p></th>
+<th class="head"><p>Вектарны файл у сетцы</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>URL</p></td>
+<td><p>Шлях да файла. напр. <a class="reference external" href="file:///shared/geodata/world/hydrology/rivers.shp">file:///shared/geodata/world/hydrology/rivers.shp</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Пратакол</p></td>
+<td><p>ФАЙЛ:GEO або ФАЙЛ:РАСТРАВЫ</p></td>
+</tr>
+<tr class="row-even"><td><p>Імя</p></td>
+<td><p>Апісанне файла</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Тып рэсурсу</p></th>
+<th class="head"><p>Вектар (табліца PostGIS)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>URL</p></td>
+<td><p><a class="reference external" href="jdbc:postgresql:/">jdbc:postgresql:/</a>/лакальны хост:5432/лагін:пароль&#64;db</p></td>
+</tr>
+<tr class="row-odd"><td><p>Пратакол</p></td>
+<td><p>БД: POSTGIS</p></td>
+</tr>
+<tr class="row-even"><td><p>Імя</p></td>
+<td><p>Назва табліцы</p></td>
+</tr>
+</tbody>
+</table>
+<p>Калі ёсць інфармацыя пра базу дадзеных або файл у лакальнай сетцы, можа спатрэбіцца схаваць гэтую інфармацыю для агульнадаступных карыстальнікаў (гл. <a class="reference internal" href="../publishing/restricting-information-to-metadata-sections.html#restricting-information-to-metadata-sections"><span class="std std-ref">Абмежаванне інфармацыі раздзеламі метададзеных</span></a>).</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Рабіць</p>
+<p>Дадайце дакумент і спасылку на geopublisher</p>
+</div>
+</section>
+<section id="linking-data-using-atom-feeds">
+<span id="linking-data-using-atom-feed"></span><h2>Linking data using ATOM feeds<a class="headerlink" href="#linking-data-using-atom-feeds" title="Permalink to this heading">¶</a></h2>
+<p>If your organisation provides ATOM feeds to facilitate access to the data, metadata records can link to these feeds. Users can link to a service feed in a service record and to a dataset feed in a dataset record.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:MD_DigitalTransferOptions&gt;</span>
+<span class="w"> </span><span class="nt">&lt;gmd:onLine&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:CI_OnlineResource&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:linkage&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:URL&gt;</span>http://www.broinspireservices.nl/atom/awp.atom<span class="nt">&lt;/gmd:URL&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:linkage&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:protocol&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>INSPIRE<span class="w"> </span>Atom<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:protocol&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>gdn.Aardwarmtepotentie<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:CI_OnlineResource&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/gmd:onLine&gt;</span>
+<span class="nt">&lt;/gmd:MD_DigitalTransferOptions&gt;</span>
+</pre></div>
+</div>
+<p>Once registered in the metadata, the ATOM feed will be displayed on the record view:</p>
+<figure class="align-default">
+<img alt="../../_images/atom-choose-feed.png" src="../../_images/atom-choose-feed.png" />
+</figure>
+<p>Users can choose a service, the list of datasets available are retrieved and the download links displayed to the user. A dataset feed can have one or more downloads:</p>
+<figure class="align-default">
+<img alt="../../_images/atom-choose-dataset.png" src="../../_images/atom-choose-dataset.png" />
+</figure>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/search?any=atom&amp;fast=index">NGR National Georegister</a>, <a class="reference external" href="https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/a657f732-e1b3-4638-9933-67cab10d9081">Statistics Netherlands Land Use 2015 ATOM</a></p></li>
+</ul>
+<p>The catalog also provides the capability to produce ATOM feeds for services and datasets from metadata records.
+To enable this, check the ATOM API (see <a class="reference internal" href="../../api/opensearch.html#opensearch-and-atom"><span class="std std-ref">OpenSearch and INSPIRE ATOM</span></a>). A GML dataset can be exposed using the following encoding in order to be published in a dataset ATOM feed:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:transferOptions&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:MD_DigitalTransferOptions&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:unitsOfDistribution&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString&gt;</span>B<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:unitsOfDistribution&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:transferSize&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:Real&gt;</span>428973180<span class="nt">&lt;/gco:Real&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:transferSize&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:onLine&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:CI_OnlineResource&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:linkage&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:URL&gt;</span>https://download.data.public.lu/resources/inspire-annex-i-theme-addresses-addresses/20191118-115245/ad.address.gml<span class="nt">&lt;/gmd:URL&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:linkage&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:protocol&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>WWW:DOWNLOAD-1.0-http--download<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:protocol&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:applicationProfile&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>INSPIRE-Download-Atom<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:applicationProfile&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:name&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmx:MimeFileType</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;application/octet-stream&quot;</span><span class="nt">&gt;</span>AD.Address.gml<span class="nt">&lt;/gmx:MimeFileType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:name&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:description&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:description&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:function&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:CI_OnLineFunctionCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode&quot;</span>
+<span class="w">                                          </span><span class="na">codeListValue=</span><span class="s">&quot;download&quot;</span><span class="nt">&gt;</span>download<span class="nt">&lt;/gmd:CI_OnLineFunctionCode&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:function&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:CI_OnlineResource&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:onLine&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:MD_DigitalTransferOptions&gt;</span>
+<span class="nt">&lt;/gmd:transferOptions&gt;</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>INSPIRE Portal of the Grand-Duchy of Luxembourg / <a class="reference external" href="https://catalog.inspire.geoportail.lu/geonetwork/srv/fre/catalog.search#/metadata/F22B07FC-E961-4985-BB75-6A1548319C8A">INSPIRE - Annex I Theme Addresses - Addresses</a></p></li>
+</ul>
+<p>Reference documents:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services">INSPIRE technical guidelines for download services</a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="linking-thumbnail.html" class="btn btn-neutral float-left" title="Ілюстрацыя з аглядам" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linking-records.html" class="btn btn-neutral float-right" title="Звязванне іншага запісу" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

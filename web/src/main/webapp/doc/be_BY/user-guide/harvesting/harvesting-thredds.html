@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="be-BY" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ТРАЦІ Уборка ўраджаю &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Збор WFS GetFeature" href="harvesting-wfs-features.html" />
+    <link rel="prev" title="GeoPortal REST Уборка" href="harvesting-geoportal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Агляд</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Кіраўніцтва карыстальніка</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Хуткі старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Апісанне інфармацыі</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Аб&amp;#39;яднанне рэсурсаў</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Класіфікаваць інфармацыю</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Выдавецкая справа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Аналіз дадзеных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочы працэс</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Уборка ўраджаю</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geonetwork.html">Камбайн GeoNetwork 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-csw.html">Паслугі ЦСВ па ўборцы ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-ogcwxs.html">Паслугі OGC па ўборцы ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-filesystem.html">Збор лакальнай файлавай сістэмы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-sde.html">Збор вузла ARCSDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Уборка</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ТРАЦІ Уборка ўраджаю</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-thredds-catalog-harvester">Даданне каталожнага камбайна THREDDS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester">Больш падрабязна аб зборы элементаў метададзеных THREDDS DIF з дапамогай THREDDS Harvester</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester">Дадатковая інфармацыя аб зборы метаданых выяўлення набору даных Unidata з дапамогай THREDDS Harvester</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Прыклад</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-wfs-features.html">Збор WFS GetFeature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-z3950.html">Z3950 Уборка ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#mechanism-overview">Агляд механізму</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-life-cycle">Жыццёвы цыкл збору ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#multiple-harvesting-and-hierarchies">Некалькі ўраджаю і іерархіі</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-fragments-of-metadata-to-support-re-use">Збор фрагментаў метададзеных для падтрымкі паўторнага выкарыстання</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#https-support">Падтрымка HTTPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-main-page">Галоўная старонка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-status-and-error-icons">Значкі стану ўборкі і памылак</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-result-tips">Парады па выніках збору ўраджаю</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#adding-new-harvesters">Дабаўленне новых камбайнаў</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvest-history">Гісторыя ўраджаю</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспарт запісаў</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Кіраўніцтва адміністратара</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Кіраўніцтва па эксплуатацыі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Кіраўніцтва па API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Кіраўніцтва па ўкладзе</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Iнсткукцыя па наладцы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Падручнікі</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Дадаткі</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Кіраўніцтва карыстальніка</a> &raquo;</li>
+          <li><a href="index.html">Уборка ўраджаю</a> &raquo;</li>
+      <li>ТРАЦІ Уборка ўраджаю</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/harvesting/harvesting-thredds.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="thredds-harvesting">
+<span id="thredds-harvester"></span><h1>ТРАЦІ Уборка ўраджаю<a class="headerlink" href="#thredds-harvesting" title="Permalink to this heading">¶</a></h1>
+<p>Каталогі THREDDS апісваюць спісы набораў даных. Яны арганізаваны ў іерархічнай форме з пералікам апісальнай інфармацыі і метадаў доступу для кожнага набору даных. Звычайна яны каталогізуюць наборы даных netCDF, але не абмяжоўваюцца гэтымі тыпамі файлаў. Гэты тып збору скануе метаданыя збору каталога THREDDS для набораў даных і сэрвісаў, апісаных у ім або ў спасылачных наборах даных netCDF. Гэты тып збору можа здабываць фрагменты метададзеных з каталога THREDDS, што дазваляе карыстальніку звязваць або капіяваць гэтыя фрагменты ў шаблон для стварэння запісаў метададзеных.</p>
+<section id="adding-a-thredds-catalog-harvester">
+<h2>Даданне каталожнага камбайна THREDDS<a class="headerlink" href="#adding-a-thredds-catalog-harvester" title="Permalink to this heading">¶</a></h2>
+<p>Даступныя варыянты:</p>
+<ul>
+<li><p><strong>Сайт</strong></p>
+<blockquote>
+<div><ul>
+<li><p><em>Назва</em> - гэта кароткае апісанне каталога THREDDS. Ён будзе паказаны на галоўнай старонцы збору ўраджаю як назва гэтага асобніка камбайна THREDDS.</p></li>
+<li><p><em>URL-адрас каталога</em> - аддалены URL-адрас каталога THREDDS, з якога будуць збірацца метаданыя. Гэта павінна быць xml-версія каталога (г.зн. заканчвацца на .xml). Камбайн будзе праглядаць усе наборы даных і сэрвісы, вызначаныя ў гэтым каталогу, ствараючы для іх метаданыя ў адпаведнасці з параметрамі, апісанымі ніжэй.</p></li>
+<li><p><em>Мова метададзеных</em> - выкарыстоўвайце гэты параметр, каб вызначыць мову метаданых, якія будуць сабраны.</p></li>
+<li><p><em>Катэгорыя тэмы ISO</em> - выкарыстоўвайце гэты параметр, каб вызначыць катэгорыю тэмы ISO метаданых службы.</p></li>
+<li><p><em>Стварыць метададзеныя ISO19119 для ўсіх сэрвісаў у каталогу</em> - Выберыце гэты параметр, каб стварыць метададзеныя ISO19119 для сэрвісаў, вызначаных у каталогу THREDDS (напрыклад, OpenDAP, OGC WCS, ftp), а таксама для самога каталога THREDDS.</p></li>
+<li><p><em>Стварыць метаданыя для калекцыйных набораў даных</em> - Выберыце гэты параметр, каб стварыць метададзеныя для кожнага калекцыйнага набору даных (набор даных THREDDS, які змяшчае іншыя наборы даных). Стварэнне метададзеных можна наладзіць з дапамогай параметраў, якія адлюстроўваюцца пры выбары гэтага параметра, як апісана ніжэй.</p></li>
+<li><p><em>Стварыць метададзеныя для атамарных набораў даных</em> - Выберыце гэты параметр, каб стварыць метададзеныя для кожнага атамарнага набору даных (набор даных THREDDS, які не змяшчае іншых набораў даных – напрыклад, каталагізаваць набор даных netCDF). Стварэнне метададзеных можна наладзіць з дапамогай параметраў, якія адлюстроўваюцца пры выбары гэтага параметра, як апісана ніжэй.</p>
+<blockquote>
+<div><ul>
+<li><p><em>Ігнараваць атрыбут збору</em> - Выберыце гэты параметр для збору метададзеных для выбраных набораў даных незалежна ад атрыбуту збору для набору даных у каталогу THREDDS. Калі гэты параметр не выбраны, метаданыя будуць стварацца толькі для набораў даных, у якіх для атрыбута збору ўстаноўлена значэнне true.</p></li>
+<li><p><em>Выманне элементаў метададзеных DIF і стварэнне метаданых ISO</em> - Выберыце гэты параметр, каб стварыць метаданыя ISO для набораў даных у каталогу THREDDS, якія маюць элементы метададзеных DIF. Калі выбрана гэтая опцыя, паказваецца спіс схем, якія маюць табліцу стыляў DIFToISO.xsl (гл., напрыклад, <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/DIFToISO.xsl</span></code>). Метададзеныя ствараюцца шляхам счытвання элементаў метададзеных DIF у THREDDS у запіс метададзеных фармату DIF і затым пераўтварэння гэтага запісу DIF у ISO з дапамогай табліцы стыляў DIFToISO.</p></li>
+<li><p><em>Выманне метаданых выяўлення набору даных Unidata з выкарыстаннем фрагментаў</em> - выберыце гэты параметр, калі метаданыя ў вашых наборах даных THREDDS або netCDF/ncml адпавядаюць канвенцыям выяўлення набору даных Unidata (гл. <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf-java/formats">http://www.unidata.ucar.edu/software/netcdf-java/formats</a> /DataDiscoveryAttConvention.html). Вам трэба будзе напісаць свае ўласныя табліцы стыляў, каб атрымаць гэтыя метададзеныя ў выглядзе фрагментаў і вызначыць шаблон для аб&amp;#39;яднання з фрагментамі. Калі гэты параметр выбраны, будуць паказаны наступныя дадатковыя параметры:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Выберыце схему для выходных запісаў метададзеных</em> - выберыце схему метададзеных ISO або профіль для сабраных запісаў метададзеных. Заўвага: у спісе будуць паказаны толькі схемы, якія маюць табліцы стыляў фрагментаў THREDDS (размяшчэнне гэтых табліц стыляў глядзіце ў наступнай опцыі).</p></li>
+<li><p><em>Табліца стыляў для стварэння фрагментаў метададзеных</em> - Выберыце табліцу стыляў для выкарыстання для пераўтварэння метададзеных для набору даных (метададзеных THREDDS і netCDF ncml, калі дастасавальна) у фрагменты метададзеных. Гэтыя табліцы стыляў можна знайсці ў каталогу convert/ThreddsToFragments у каталогу схем, напрыклад. для iso19139 гэта будзе <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/ThreddsToFragments</span></code>.</p></li>
+<li><p><em>Стварыць падшаблоны для фрагментаў і XLink іх у шаблон</em> - Выберыце гэты параметр, каб стварыць падшаблон (=фрагмент метададзеных, які захоўваецца ў каталогу GeoNetwork) для кожнага створанага фрагмента метададзеных.</p></li>
+<li><p><em>Шаблон для спалучэння з фрагментамі</em> - Выберыце шаблон, які будзе запоўнены фрагментамі метададзеных, створанымі для кожнага набору даных. Згенераваныя фрагменты метададзеных выкарыстоўваюцца для замены элементаў у шаблонах, на якія спасылаюцца, на спасылку x на падшаблон, калі пазначана опцыя <em>Стварыць падшаблоны</em>. Калі <em>Стварыць падшаблоны</em> не адзначана, то фрагменты проста капіююцца ў запіс метададзеных шаблону.</p></li>
+<li><p>Для Atomic Datasets прадастаўляецца адна дадатковая опцыя <em>Збірайце толькі новыя або змененыя наборы даных</em>. Калі гэты параметр адзначаны, будуць збірацца толькі наборы даных, якія былі зменены або не існавалі на момант апошняга запуску камбайна.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>Стварыць мініяцюры</em> - Выберыце гэты параметр, каб стварыць мініяцюры для слаёў WMS у спасылачных службах WMS</p></li>
+<li><p><em>Значок</em> - значок для прызначэння сабраных метададзеных. Значок будзе выкарыстоўвацца пры паказе вынікаў пошуку.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Параметры</strong> - Параметры раскладу.</p></li>
+<li><p><strong>Прывілеі</strong></p></li>
+<li><p><strong>Катэгорыя паслугі</strong> - Выберыце катэгорыю для прызначэння запісаў паслуг ISO19119 для паслуг THREDDS.</p></li>
+<li><p><strong>Катэгорыя для набораў даных</strong> - Выберыце катэгорыю для прызначэння згенераваных запісаў метададзеных (і любых падшаблонаў).</p></li>
+</ul>
+<p>Унізе старонкі ёсць наступныя кнопкі:</p>
+<ul class="simple">
+<li><p><strong>Назад</strong> - Вярнуцца да галоўнай старонкі збору ўраджаю. Вызначэнне нарыхтоўкі не дадаецца.</p></li>
+<li><p><strong>Захаваць</strong> - Захоўвае гэтае вызначэнне камбайна, ствараючы новы асобнік збору ўраджаю. Пасля завяршэння аперацыі захавання будзе адлюстравана галоўная старонка збору ўраджаю.</p></li>
+</ul>
+</section>
+<section id="more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester">
+<h2>Больш падрабязна аб зборы элементаў метададзеных THREDDS DIF з дапамогай THREDDS Harvester<a class="headerlink" href="#more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester" title="Permalink to this heading">¶</a></h2>
+<p>Каталогі THREDDS могуць уключаць элементы са стандарту метададзеных DIF. Бібліятэка Unidata netcdf-java забяспечвае працэс DIFWriter, які можа ствараць запіс метададзеных DIF з гэтых элементаў. GeoNetwork мае табліцу стыляў DIFToISO для пераўтварэння гэтых запісаў DIF у ISO.</p>
+</section>
+<section id="more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester">
+<h2>Дадатковая інфармацыя аб зборы метаданых выяўлення набору даных Unidata з дапамогай THREDDS Harvester<a class="headerlink" href="#more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester" title="Permalink to this heading">¶</a></h2>
+<p>Параметры, апісаныя вышэй для <em>Выняць метаданыя выяўлення набору даных Unidata з выкарыстаннем фрагментаў</em> (гл. <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html">http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html</a> для больш падрабязнай інфармацыі аб гэтых пагадненнях) выклікаюць наступнае працэс для кожнага набору даных збору або атамнага набору даных у каталогу THREDDS:</p>
+<ol class="arabic simple">
+<li><p>Камбайн аб&amp;#39;ядноўвае URI каталога, згенераваны uuid, метададзеныя THREDDS для набору даных (створаныя з выкарыстаннем вэб-службы паднабору каталогаў) і ncml для набораў даных netCDF у адзін дакумент xml. Прыклад паказаны ніжэй.</p></li>
+<li><p>Затым гэты дакумент трансфармуецца з выкарыстаннем названай табліцы стыляў (гл. параметр <em>Табліца стыляў</em> вышэй), каб атрымаць дакумент з фрагментамі метададзеных.</p></li>
+<li><p>Затым выклікаецца зборнік фрагментаў метададзеных для стварэння падшаблонаў і/або метададзеных для кожнага набору даных па запыце</p></li>
+</ol>
+</section>
+<section id="example">
+<h2>Прыклад<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<p>Элементы метададзеных DIF у наборах даных у каталогах THREDDS не так шырока выкарыстоўваюцца, як элементы метададзеных, якія прытрымліваюцца пагадненняў аб метададзеных адкрыцця набору даных Unidata. У гэтым прыкладзе будзе паказана, як сабраць элементы метададзеных, якія адпавядаюць правілам выяўлення дадзеных Unidata (гл. <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html">http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html</a>).</p>
+<p>Дзве эталонныя табліцы стыляў прадстаўлены ў якасці прыкладаў таго, як сабраць фрагменты метададзеных з каталога THREDDS. Адна з гэтых табліц стыляў, thredds-metadata.xsl, прызначана для генерацыі фрагментаў метададзеных iso19139 з метададзеных THREDDS у адпаведнасці з правіламі выяўлення набору даных Unidata. Іншая табліца стыляў, netcdf-attributes.xsl, прызначана для генерацыі фрагментаў iso19139 з набораў даных netCDF у адпаведнасці з пагадненнямі аб выяўленні набораў даных Unidata. Гэтыя табліцы стыляў прызначаныя для выкарыстання з шаблонам «ШАБЛОН ЗБОРУ — ТРАТЫ — ВЫЯЎЛЕННЕ ДАННЫХ» і могуць быць знойдзены ў каталогу «пераўтварэнне» схемы, напрыклад. для ISO19139 гэта <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/ThreddsToFragments</span></code>.</p>
+<p>Узор шаблона «ШАБЛОН НАБОРКІ – ТРЭДЫ – ВЫЯЎЛЕННЕ ДАДЗЕНЫХ» быў прадстаўлены для выкарыстання з табліцамі стыляў, апісанымі вышэй для схемы метададзеных iso19139. Гэты шаблон знаходзіцца ў каталогу «шаблоны» схемы, напрыклад. для ISO19139 гэта <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/templates/thredds-harvester-unidata-data-discovery.xml</span></code>. <em>Перад</em> спробай запусціць гэты прыклад, вы павінны пераканацца, што гэты шаблон і іншыя са схемы iso19139 былі загружаны ў GeoNetwork з дапамогай функцыі «Дадаць шаблоны» ў меню адміністравання.</p>
+<p>Зараз мы прывядзем прыклад таго, як наладзіць камбайн і збіраць метаданыя THREDDS з аднаго з агульнадаступных каталогаў unidata motherlode на <a class="reference external" href="http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km">http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km</a> /каталог.xml. Калі вы ўставіце гэты URL у свой браўзер, вы ўбачыце XML-прадстаўленне гэтага каталога THREDDS. Гэта дакумент, які чытаецца і пераўтвараецца ў метададзеныя камбайнам THREDDS.</p>
+<p>У GeoNetwork перайдзіце ў меню «Адміністраванне», абярыце «Кіраванне ўборкай», як апісана раней. Дадайце камбайн у каталог THREDDS. Запоўніце форму кіравання ўборкай ураджаю.</p>
+<p>Першае, на што варта звярнуць увагу, гэта тое, што <em>URL-адрас службы</em> павінен быць <a class="reference external" href="http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km/catalog.xml">http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km/catalog.xml</a>. Пераканайцеся, што вы выкарыстоўваеце xml-версію каталога. Калі вы выкарыстоўваеце HTML-версію, вы не зможаце сабраць метададзеныя.</p>
+<p>Цяпер, паколькі гэты каталог THREDDS з унідатай мае шмат набораў даных на ўзроўні файлаў (на самай справе шмат тысяч), мы будзем збіраць толькі метаданыя калекцыі. Каб зрабіць гэта, вы павінны адзначыць <em>Стварыць метададзеныя для збору набораў даных</em> і ігнараваць атамарныя наборы даных.</p>
+<p>Далей, таму што метаданыя ў гэтым каталогу адпавядаюць канвенцыям выяўлення даных Unidata, таму мы абярэм <em>Выняць метаданыя выяўлення набору даных Unidata з дапамогай фрагментаў</em>.</p>
+<p>Далей мы праверым <em>Ігнараваць атрыбут збору ўраджаю</em>. Мы робім гэта таму, што наборы даных у каталогу THREDDS могуць мець атрыбут, які паказвае, трэба збіраць набор даных ці не. Паколькі ні адзін з набораў даных у гэтым каталогу не мае атрыбута збору ўраджаю, мы будзем яго ігнараваць. Калі б мы не адзначылі гэты сцяжок, усе наборы даных былі б прапушчаны.</p>
+<p>Далей мы абярэм схему метададзеных, у якую будуць запісаны сабраныя метададзеныя. Тут мы абярэм <em>iso19139</em>, таму што гэта схема, для якой у нас ёсць табліцы стыляў, якія будуць пераўтвараць метададзеныя THREDDS у фрагменты метададзеных iso19139 і шаблон, у які гэтыя фрагменты метададзеных можна скапіяваць або звязаць. Пасля выбару <em>iso19139</em> з&amp;#39;явяцца варыянты, якія паказваюць гэтыя табліцы стыляў і шаблоны.</p>
+<p>Першы выбар - гэта табліца стыляў, якая будзе ствараць фрагменты метададзеных iso19139. Паколькі нас цікавяць элементы метададзеных thredds у каталогу THREDDS, мы абярэм <em>(iso19139) thredds-metadata</em> (размешчаны ў <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/ThreddsToFragments</span></code>), каб пераўтварыць гэтыя элементы ў фрагменты метададзеных iso19139.</p>
+<p>Для мэт гэтай дэманстрацыі мы <em>не</em> будзем правяраць <em>Ствараць падшаблоны для фрагментаў (xlinks...)</em>. Гэта азначае, што фрагменты метададзеных, створаных табліцай стыляў, будуць скапіяваны непасрэдна ў шаблон метададзеных. Яны не змогуць быць выкарыстаны паўторна (напрыклад, сумесна паміж рознымі запісамі метададзеных). Глядзіце папярэдні раздзел аб фрагментах метададзеных, калі вы не ўпэўненыя, што гэта значыць.</p>
+<p>Нарэшце, мы абярэм <em>ШАБЛОН НАБОРКІ - ТРЭДЫ - ВЫЯЎЛЕННЕ UNIDATA</em> у якасці запісу метаданых шаблону, які будзе аб&amp;#39;яднаны з фрагментамі метададзеных для стварэння выходных запісаў. Гэты шаблон будзе загружаны ў GeoNetwork з <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/templates/thredds-harvester-unidata-data-discovery.xml</span></code> праз функцыю «Дадаць шаблоны» ў інтэрфейсе адміністравання. Гэты шаблон можа быць запоўнены метададзенымі, агульнымі для ўсіх запісаў, перш чым запусціць камбайн. Працэс, з дапамогай якога шаблон выкарыстоўваецца для стварэння запісаў метададзеных, выглядае наступным чынам:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Для кожнага набору даных у каталогу THREDDS шаблон будзе скапіраваны для стварэння новага запісу метададзеных iso19139</p></li>
+<li><p>Кожны фрагмент метададзеных, сабраны з набору даных THREDDS, будзе скапіяваны ў новы запіс метададзеных iso19139 шляхам супастаўлення ідэнтыфікатара ў шаблоне з ідэнтыфікатарам у фрагменце (гэта адпаведнасць ствараецца распрацоўшчыкам шаблону і табліцы стыляў).</p></li>
+<li><p>Затым новы запіс устаўляецца ў каталог метададзеных GeoNetwork, а змест запісу індэксуецца ў Lucene для пошуку.</p></li>
+</ol>
+</div></blockquote>
+<p>Затым вы можаце запоўніць астатнюю частку формы ў адпаведнасці з тым, як часта вы хочаце абнаўляць сабраныя метаданыя, якія катэгорыі будуць прысвоены створанаму запісу метададзеных, які значок будзе адлюстроўвацца разам з запісамі метададзеных у выніках пошуку і што будуць прывілеі на створаныя запісы метададзеных.</p>
+<p>Захавайце экран камбайна. Затым на экране кіравання зборам ураджаю пастаўце галачку побач з толькі што створаным камбайнам, <em>Актывуйце</em> яго, а затым <em>Запусціце</em>. Праз некалькі імгненняў (у залежнасці ад падключэння да Інтэрнэту і прылады) вы павінны націснуць <em>Абнавіць</em>. Калі ваш ураджай быў паспяховым, вы павінны ўбачыць панэль вынікаў прыкладна накшталт той, што паказана на наступным скрыншоце.</p>
+<p>Звярніце ўвагу, што ў гэтым каталогу THREDDS было створана 48 запісаў метададзеных для 48 набораў даных на ўзроўні збору. Кожны запіс метададзеных быў сфарміраваны шляхам дублявання шаблону метададзеных і наступнага капіравання ў яго 13 фрагментаў метададзеных - такім чынам, у агульнай складанасці сабрана 624 фрагменты.</p>
+<p>Прыклад аднаго з запісаў метададзеных узроўню калекцыі, створаных камбайнам у гэтым прыкладзе і візуалізаваных GeoNetwork, паказаны ніжэй.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="harvesting-geoportal.html" class="btn btn-neutral float-left" title="GeoPortal REST Уборка" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harvesting-wfs-features.html" class="btn btn-neutral float-right" title="Збор WFS GetFeature" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

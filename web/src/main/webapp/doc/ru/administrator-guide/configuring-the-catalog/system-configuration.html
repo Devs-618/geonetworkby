@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Конфигурация системы &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Конфигурация пользовательского интерфейса" href="user-interface-configuration.html" />
+    <link rel="prev" title="Настройка каталога" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Руководство администратора</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Настройка каталога</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Конфигурация системы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#catalog-description">Описание каталога</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#catalog">Каталог</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#catalog-server">Сервер каталогов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intranet-parameters">Интранет-параметры</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#z39-50">Z39.50</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#proxy-server">Прокси сервер</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#feedback">Обратная связь</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-search-results">Результаты поиска метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#catalog-service-for-the-web-csw">Служба каталогов для Интернета (CSW)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shibboleth">Шибболет</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-self-registration">Самостоятельная регистрация пользователя</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#system-userfeedback">система/пользовательОтзывы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#link-in-metadata-records">Ссылка в записях метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-rating">Рейтинг метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-service">Служба загрузки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-xlink">Метаданные XLink</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-update">Обновление метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-statistics">Статистика поиска</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-optimization">Оптимизация индекса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-archive-initiative-oai-pmh-provider">Поставщик Инициативы открытого архива (OAI-PMH)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inspire-directive-configuration">INSPIRE Конфигурация директивы</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inspire-atom-feed">ВДОХНОВЕНИЕ Атомная подача</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-threaded-indexing">Многопоточное индексирование</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multilingual-settings">Многоязычные настройки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-views">Представления метаданных</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-privileges">Права доступа к метаданным</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#harvesting">Сбор урожая</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="user-interface-configuration.html">Конфигурация пользовательского интерфейса</a></li>
+<li class="toctree-l3"><a class="reference internal" href="css-configuration.html">Configuring CSS &amp; Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csw-configuration.html">Настройка CSW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="portal-configuration.html">Portal configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virtual-csw-configuration.html">Настройка виртуальной CSW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-configuration.html">Настройка директивы INSPIRE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map-server-configuration.html">Конфигурация картографических серверов для геопубликации</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-users-and-groups/index.html">Управление пользователями и группами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-classification-systems/index.html">Управление системой классификации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Руководство администратора</a> &raquo;</li>
+          <li><a href="index.html">Настройка каталога</a> &raquo;</li>
+      <li>Конфигурация системы</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/configuring-the-catalog/system-configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-configuration">
+<span id="id1"></span><h1>Конфигурация системы<a class="headerlink" href="#system-configuration" title="Permalink to this heading">¶</a></h1>
+<p>Большинство параметров конфигурации системы могут быть изменены пользователями-администраторами с помощью веб-интерфейса в <code class="docutils literal notranslate"><span class="pre">Консоль</span> <span class="pre">администратора</span></code> &amp;gt; <code class="docutils literal notranslate"><span class="pre">Настройки</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>Настройка этих параметров критически важна для каталога в рабочем контексте. Неправильное понимание некоторых настроек может привести к тому, что система не будет работать должным образом. Например, загрузки могут быть неправильно обработаны или сбор метаданных с других серверов может не работать.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/settings.png" src="../../_images/settings.png" />
+</figure>
+<p>Поскольку форма настроек длинная, кнопка «сохранить» повторяется между разделами и сохраняет все настройки.</p>
+<section id="catalog-description">
+<h2>Описание каталога<a class="headerlink" href="#catalog-description" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Имя каталога</strong> Имя узла. Информация, которая помогает идентифицировать каталог пользователю-человеку. Имя отображается на баннере, в CSW GetCapabilities.</p></li>
+<li><p><strong>Идентификатор каталога</strong> Универсальный уникальный идентификатор (uuid), отличающий ваш каталог от любого другого каталога. Это уникальный идентификатор вашего каталога, и лучше оставить его как uuid. Он будет использоваться харвестером по протоколу GeoNetwork для идентификации исходного каталога.</p></li>
+<li><p><strong>Организация</strong> Организация, которой принадлежит узел. Опять же, это информация, которая помогает пользователю идентифицировать каталог.</p></li>
+<li><p><strong>SVN UUID</strong> Subversion repository attached to the node. This identifier is
+created and/or checked on startup to verify that the database match the SVN repository.
+The repository is used for metadata versioning.</p></li>
+</ul>
+</section>
+<section id="catalog">
+<h2>Каталог<a class="headerlink" href="#catalog" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Версия</strong> Версия каталога (только для чтения, версия базы данных)</p></li>
+<li><p><strong>Дополнительная версия</strong> Дополнительная версия каталога (только для чтения, версия базы данных)</p></li>
+</ul>
+</section>
+<section id="catalog-server">
+<span id="system-config-server"></span><h2>Сервер каталогов<a class="headerlink" href="#catalog-server" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Host</strong> Имя или IP-адрес узла (без <a class="reference external" href="http://">http://</a>). Например, они используются при редактировании метаданных для создания ссылок на ресурсы и при возврате возможностей сервера во время запроса CSW.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Если ваш узел общедоступен из Интернета, вы должны использовать доменное имя.</p></li>
+<li><p>Если ваш узел скрыт внутри вашей частной сети и у вас есть брандмауэр или веб-сервер, который перенаправляет входящие запросы на узел, вам необходимо ввести публичный адрес брандмауэра или веб-сервера. Типичной конфигурацией является наличие веб-сервера Apache на общедоступном адресе A, который перенаправляет запросы на сервер Tomcat на частный адрес B. В этом случае вы должны ввести A в параметре host.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Порт</strong> Номер порта сервера (обычно 80 или 8080). Если вы используете HTTP, установите его на 80.</p></li>
+<li><p><strong>Предпочитаемый протокол</strong> Определяет протокол для доступа к каталогу. Протокол HTTP, используемый для доступа к серверу. Выбор http означает, что вся связь с каталогом будет видна всем, кто слушает протокол. Поскольку это включает в себя имена пользователей и пароли, это небезопасно. Выбор https означает, что вся связь с каталогом будет зашифрована, и поэтому слушателю будет намного сложнее ее расшифровать.</p></li>
+<li><p><strong>Безопасный порт</strong> Номер защищенного порта.</p></li>
+<li><p><strong>Уровень ведения журнала</strong> Определите уровень ведения журнала приложения. После модификации журнал можно проверить в разделе «Статистика и статус» в разделе «Активность».</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/log-view.png" src="../../_images/log-view.png" />
+</figure>
+</section>
+<section id="intranet-parameters">
+<h2>Интранет-параметры<a class="headerlink" href="#intranet-parameters" title="Permalink to this heading">¶</a></h2>
+<p>Общей потребностью организации является автоматическое различение анонимных внутренних пользователей, которые получают доступ к узлу внутри организации (интранет), и анонимных внешних пользователей из Интернета. Каталог определяет анонимных пользователей внутри организации как принадлежащих к группе <em>Интранет</em>, а анонимных пользователей извне организации определяют как группу <em>Все</em>. Чтобы автоматически различать пользователей, принадлежащих к группе интрасети, необходимо сообщить каталогу IP-адрес интрасети и сетевую маску.</p>
+<ul class="simple">
+<li><p><strong>Маска сети</strong> Маска сети интрасети (например, 255.255.255.0).</p></li>
+<li><p><strong>Сеть*</strong> Адрес интрасети в форме IP (например, 147.109.100.0).</p></li>
+</ul>
+</section>
+<section id="z39-50">
+<h2>Z39.50<a class="headerlink" href="#z39-50" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Включить сервер Z39.50</strong> Включить сервер Z39.50. Перезапустите каталог, чтобы это изменение стало активным.</p></li>
+<li><p><strong>Порт</strong> Измените порт прослушивания Z39.50. Перезапустите каталог, чтобы это изменение стало активным.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="proxy-server">
+<h2>Прокси сервер<a class="headerlink" href="#proxy-server" title="Permalink to this heading">¶</a></h2>
+<p>The settings page offers to set the configuration of a proxy server. This configuration is used by the application to access the internet to get online resources, for example as part of a harvest process.</p>
+<ul class="simple">
+<li><p><strong>Использовать прокси</strong> Включите прокси-сервер, если каталог находится за прокси-сервером и его необходимо использовать для доступа к удаленным ресурсам.</p></li>
+<li><p><strong>Прокси-хост</strong> IP-адрес или имя прокси-сервера.</p></li>
+<li><p><strong>Порт</strong> Порт прокси</p></li>
+<li><p><strong>Имя пользователя-прокси</strong> Имя пользователя</p></li>
+<li><p><strong>Пароль пользователя прокси</strong> Пароль имени пользователя</p></li>
+<li><p><strong>*Игнорировать список хостов</strong> Чтобы пропустить определенные хосты, введите определенный IP-адрес или имя хоста, например www.mydomain.com, или диапазон адресов с использованием подстановочных знаков, например 192.168.2.*. Использование | для разделения различных значений хоста.</p></li>
+</ul>
+<p>Параметры прокси-сервера JVM также могут потребоваться для правильной настройки прокси-сервера для всего удаленного доступа.</p>
+</section>
+<section id="feedback">
+<span id="system-config-feedback"></span><h2>Обратная связь<a class="headerlink" href="#feedback" title="Permalink to this heading">¶</a></h2>
+<p>Электронная почта может быть отправлена каталогом.</p>
+<ul class="simple">
+<li><p>вы используете систему саморегистрации пользователей</p></li>
+<li><p>вы используете рабочий процесс статуса метаданных (см. <span class="xref std std-ref">жизненный цикл</span>)</p></li>
+<li><p>загружается файл, загруженный с записью метаданных, и выбирается привилегия уведомления</p></li>
+</ul>
+<p>В этом разделе настраивается используемый почтовый сервер.</p>
+<ul class="simple">
+<li><p><strong>Электронная почта</strong> Это адрес электронной почты администратора, используемый для отправки отзывов.</p></li>
+<li><p><strong>Хост SMTP</strong> Имя или IP-адрес почтового сервера для отправки электронной почты.</p></li>
+<li><p><strong>Порт SMTP</strong> Порт SMTP.</p></li>
+<li><p><strong>Использовать SSL</strong> Включить режим SSL</p></li>
+<li><p><strong>Имя пользователя</strong> Имя пользователя, если требуется подключение на SMTP-сервере</p></li>
+<li><p><strong>Пароль</strong> Имя пользователя пароль, если требуется подключение на SMTP-сервере</p></li>
+</ul>
+</section>
+<section id="metadata-search-results">
+<h2>Результаты поиска метаданных<a class="headerlink" href="#metadata-search-results" title="Permalink to this heading">¶</a></h2>
+<p>Параметры конфигурации в этой группе определяют ограничения на взаимодействие пользователя с результатами поиска.</p>
+<ul class="simple">
+<li><p><strong>Максимум выбранных записей</strong> Максимальное количество результатов поиска, которые пользователь может выбрать и обработать с помощью пакетных операций, например. Установите привилегии, категории и т. д. Этот параметр позволяет избежать длительного действия, которое может привести к ошибке нехватки памяти.</p></li>
+</ul>
+</section>
+<section id="catalog-service-for-the-web-csw">
+<h2>Служба каталогов для Интернета (CSW)<a class="headerlink" href="#catalog-service-for-the-web-csw" title="Permalink to this heading">¶</a></h2>
+<p>См. <a class="reference internal" href="csw-configuration.html#csw-configuration"><span class="std std-ref">Настройка CSW</span></a>.</p>
+</section>
+<section id="shibboleth">
+<h2>Шибболет<a class="headerlink" href="#shibboleth" title="Permalink to this heading">¶</a></h2>
+<p>См. <a class="reference internal" href="../managing-users-and-groups/authentication-mode.html#authentication-shibboleth"><span class="std std-ref">Настройка шибболета</span></a>.</p>
+</section>
+<section id="user-self-registration">
+<h2>Самостоятельная регистрация пользователя<a class="headerlink" href="#user-self-registration" title="Permalink to this heading">¶</a></h2>
+<p>Активируйте форму самостоятельной регистрации. См. <a class="reference internal" href="../managing-users-and-groups/user-self-registration.html#user-self-registration"><span class="std std-ref">Самостоятельная регистрация пользователя</span></a>.</p>
+</section>
+<section id="system-userfeedback">
+<h2>система/пользовательОтзывы<a class="headerlink" href="#system-userfeedback" title="Permalink to this heading">¶</a></h2>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Не рекомендуется, начиная с версии 3.0.0.</span></p>
+</div>
+</section>
+<section id="link-in-metadata-records">
+<h2>Ссылка в записях метаданных<a class="headerlink" href="#link-in-metadata-records" title="Permalink to this heading">¶</a></h2>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Не рекомендуется, начиная с версии 3.0.0: </span>Определяется форматером.</p>
+</div>
+</section>
+<section id="metadata-rating">
+<h2>Рейтинг метаданных<a class="headerlink" href="#metadata-rating" title="Permalink to this heading">¶</a></h2>
+<p>Если включено, каталог будет рассчитывать пользовательские рейтинги для метаданных только из этого узла (не распространяться среди других узлов GeoNetwork). Это относится только к записям, собранным с использованием протокола GeoNetwork.</p>
+</section>
+<section id="download-service">
+<h2>Служба загрузки<a class="headerlink" href="#download-service" title="Permalink to this heading">¶</a></h2>
+<p>Редактор метаданных поддерживает загрузку одного или нескольких файлов, которые можно сохранить вместе с записью метаданных. Когда такая запись отображается в результатах поиска, предоставляется кнопка «Загрузить», которая позволяет пользователю выбрать, какой файл он хочет загрузить. Эта группа опций определяет, как будет происходить эта загрузка.</p>
+<ul class="simple">
+<li><p><strong>Используйте простую службу загрузки файлов GeoNetwork</strong> При нажатии на любой файл, сохраненный с записью метаданных, этот файл будет доставлен непосредственно пользователю через браузер.</p></li>
+<li><p><strong>Использовать службу заявлений об отказе от ответственности и ограничений GeoNetwork</strong> При нажатии на любой файл, хранящийся с записью метаданных, пользователю будет предоставлен zip-архив (через браузер), который содержит файл данных, саму запись метаданных и сводку метаданных ограничения ресурсов. в виде html-документа. Кроме того, пользователю необходимо будет предоставить некоторые сведения (имя, организацию, адрес электронной почты и необязательный комментарий) и просмотреть ограничения ресурсов, прежде чем он сможет загрузить zip-архив.</p></li>
+</ul>
+</section>
+<section id="metadata-xlink">
+<span id="xlink-config"></span><h2>Метаданные XLink<a class="headerlink" href="#metadata-xlink" title="Permalink to this heading">¶</a></h2>
+<p>Преобразователь XLink заменяет содержимое элементов с атрибутом &#64;xlink:href (за исключением некоторых элементов, таких как srv:operatesOn) содержимым, полученным из содержимого URL-адреса &#64;xlink:href. Преобразователь XLink должен быть включен, если вы хотите собирать фрагменты метаданных или повторно использовать фрагменты метаданных в своих записях метаданных (например, при использовании каталога контактов).</p>
+<ul class="simple">
+<li><p><strong>Включить разрешение XLink</strong>: включает/отключает преобразователь XLink.</p></li>
+<li><p><strong>Включить локальный XLink</strong> Локальные XLink используют local://&lt;lang&gt; /&lt;service&gt; URL-адрес для ссылок на связанные разделы вместо URL-адреса HTTP. Локальные XLinks обычно быстрее, чем HTTP XLinks.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">См.также</p>
+<p>Для повышения производительности каталог будет кэшировать содержимое, которого нет в локальном каталоге. Очистите кеш XLink из <code class="docutils literal notranslate"><span class="pre">Консоли</span> <span class="pre">администратора</span></code> &amp;gt; <code class="docutils literal notranslate"><span class="pre">Инструменты</span></code>, если фрагменты были обновлены.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/xlink-cache-clear.png" src="../../_images/xlink-cache-clear.png" />
+</figure>
+</section>
+<section id="metadata-update">
+<h2>Обновление метаданных<a class="headerlink" href="#metadata-update" title="Permalink to this heading">¶</a></h2>
+<p>Для каждой схемы метаданных каталог имеет преобразование XSL (<code class="docutils literal notranslate"><span class="pre">update-fixed-info.xsl</span></code>), которое можно применить к записи метаданных, принадлежащей этой схеме. Целью этого преобразования является разрешение применения фиксированной схемы, сведений о сайте и каталоге к записи метаданных каждый раз, когда запись метаданных сохраняется в редакторе. Например, это преобразование используется для создания и хранения URL-адресов любых файлов, загруженных и сохраненных с записью метаданных в редакторе.</p>
+<ul class="simple">
+<li><p><strong>Автоматические исправления</strong>: включено по умолчанию. Не рекомендуется использовать редактор метаданных, если автоматическое исправление отключено. См. <a class="reference external" href="http://trac.osgeo.org/geonetwork/ticket/368">http://trac.osgeo.org/geonetwork/ticket/368</a> для более подробной информации.</p></li>
+</ul>
+</section>
+<section id="search-statistics">
+<span id="search-stats-config"></span><h2>Статистика поиска<a class="headerlink" href="#search-statistics" title="Permalink to this heading">¶</a></h2>
+<p>Включает/отключает сбор статистики поиска. Статистика поиска хранится в базе данных и может быть запрошена с помощью страницы «Статистика поиска».</p>
+<p>Хранение статистики поиска требует очень мало вычислительных ресурсов, поскольку она записывается в базу данных в фоновом потоке. Однако хранение базы данных для очень загруженного сайта должно быть тщательно спланировано.</p>
+</section>
+<section id="index-optimization">
+<h2>Оптимизация индекса<a class="headerlink" href="#index-optimization" title="Permalink to this heading">¶</a></h2>
+<p>Параметры конфигурации в этой группе определяют, когда запускается Lucene Index Optimizer. По умолчанию это происходит каждый день в полночь. С недавними обновлениями Lucene, особенно Lucene 3.6.1, оптимизатор становится менее полезным, поэтому эта группа конфигурации, скорее всего, будет удалена в будущих версиях.</p>
+</section>
+<section id="open-archive-initiative-oai-pmh-provider">
+<h2>Поставщик Инициативы открытого архива (OAI-PMH)<a class="headerlink" href="#open-archive-initiative-oai-pmh-provider" title="Permalink to this heading">¶</a></h2>
+<p>Параметры в этой группе управляют тем, как сервер OAI отвечает на запросы сбора данных OAIPMH с удаленных сайтов.</p>
+<ul class="simple">
+<li><p><strong>Поиск по дате</strong>: OAI Harvesters могут запрашивать записи из GeoNetwork в диапазоне дат. GeoNetwork может использовать одно из двух полей даты из метаданных для проверки совпадения с этим диапазоном дат. По умолчанию выбран <em>Временный экстент</em>, который представляет собой временной экстент из записи метаданных. Другая опция, <em>Дата модификации</em>, использует дату модификации записи метаданных в базе данных GeoNetwork. Дата модификации — это последний раз, когда запись метаданных обновлялась или собиралась GeoNetwork.</p></li>
+<li><p><strong>Тайм-аут маркера возобновления</strong>: записи метаданных, соответствующие запросу на поиск урожая OAI, обычно возвращаются в сборщик группами фиксированного размера (например, группами по 10 записей). В каждую группу включен токен возобновления, чтобы сборщик мог запросить следующую группу записей. Время ожидания токена возобновления — это время (в секундах), в течение которого сервер GeoNetwork OAI будет ожидать использования токена возобновления. Если время ожидания превышено, сервер GeoNetwork OAI удалит результаты поиска и откажется распознавать токен возобновления. Цель этой функции — обеспечить высвобождение ресурсов на сервере GeoNetwork OAI.</p></li>
+<li><p><strong>Размер кэша</strong>: максимальное количество одновременных сборов OAI, которое может поддерживать сервер GeoNetwork OAI.</p></li>
+</ul>
+<p>Перезапустите каталог, чтобы принять во внимание все настройки OAI.</p>
+</section>
+<section id="inspire-directive-configuration">
+<h2>INSPIRE Конфигурация директивы<a class="headerlink" href="#inspire-directive-configuration" title="Permalink to this heading">¶</a></h2>
+<p>См. <a class="reference internal" href="inspire-configuration.html#inspire-configuration"><span class="std std-ref">Настройка директивы INSPIRE</span></a>.</p>
+</section>
+<section id="inspire-atom-feed">
+<h2>ВДОХНОВЕНИЕ Атомная подача<a class="headerlink" href="#inspire-atom-feed" title="Permalink to this heading">¶</a></h2>
+<p>Позволяет определить конфигурацию каналов Atom, на которые ссылаются метаданные, для предоставления услуг, связанных с техническим руководством INSPIRE для служб загрузки. &lt;<a class="reference external" href="http://inspire.ec.europa.eu/documents/Network_Services/Technical_Guidance_Download_Services_3.0.pdf">http://inspire.ec.europa.eu/documents/Network_Services/Technical_Guidance_Download_Services_3.0.pdf</a>&gt; <a href="#id1"><span class="problematic" id="id2">`</span></a>_:</p>
+<ul>
+<li><p>Выберите тип подачи атомов:</p>
+<ul class="simple">
+<li><p>Удаленный: получение каналов атомов, на которые ссылаются метаданные в онлайн-ресурсах.</p></li>
+<li><p>Локальный (для реализации в будущих версиях): создайте поток атомов, используя содержимое метаданных.</p></li>
+</ul>
+</li>
+<li><p>Расписание получения каналов: можно запланировать периодическое извлечение каналов атомов.</p></li>
+<li><p>Значение протокола Atom: значение протокола в онлайн-ресурсах метаданных для идентификации ресурсов канала Atom (значение по умолчанию — INSPIRE Atom). GeoNetwork идентифицирует файл Atom из других ресурсов, просматривая значение протокола онлайн-ресурса. Поскольку для этого протокола не существует общепринятого значения, GeoNetwork позволяет администратору установить значение, которое будет использоваться в качестве протокола, идентифицирующего ресурсы Atom:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">transferOptions</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">MD_DigitalTransferOptions</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">onLine</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">CI_OnlineResource</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">linkage</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">URL</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">geodata</span><span class="o">.</span><span class="n">nationaalgeoregister</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">atom</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">xml</span><span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">URL</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">linkage</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">protocol</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span><span class="n">INSPIRE</span> <span class="n">Atom</span><span class="o">&lt;/</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">protocol</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">CI_OnlineResource</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">onLine</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">MD_DigitalTransferOptions</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">transferOptions</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Доступны следующие услуги:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/UUID/OpenSearchDescription.xml">http://SERVER/geonetwork/opensearch/eng/UUID/OpenSearchDescription.xml</a></p></li>
+<li><p><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/UUID/search?queryParams">http://SERVER/geonetwork/opensearch/eng/UUID/search?queryParams</a></p></li>
+<li><p><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/search?queryParams">http://SERVER/geonetwork/opensearch/eng/search?queryParams</a></p></li>
+<li><p><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/UUID/describe?queryParams">http://SERVER/geonetwork/opensearch/eng/UUID/describe?queryParams</a></p></li>
+<li><p><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/describe?queryParams">http://SERVER/geonetwork/opensearch/eng/describe?queryParams</a></p></li>
+</ul>
+<p>In above URLs {UUID} is the fileidentifier of the download service metadata.</p>
+<p>В ленте службы вашей службы загрузки обязательно добавьте конечную точку GeoNetwork OpenSearch в качестве OpenSearchDescription для службы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;search&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://SERVER/geonetwork/opensearch/eng/</span><span class="si">{uuid}</span><span class="s2">/OpenSearchDescription.xml&quot;</span>
+<span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/opensearchdescription+xml&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Open Search document for INSPIRE Download service&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>Реализация INSPIRE Atom/OpenSearch может быть проверена с помощью тестов Atom в Esdin Test Framework (<a class="reference external" href="http://elfproject.eu/documentation/geotool/etf">http://elfproject.eu/documentation/geotool/etf</a>) или средстве проверки метаданных INSPIRE (<a class="reference external" href="http://inspire-geoportal.ec.europa.eu">http://inspire-geoportal.ec.europa.eu</a>). /валидатор2).</p>
+</section>
+<section id="multi-threaded-indexing">
+<h2>Многопоточное индексирование<a class="headerlink" href="#multi-threaded-indexing" title="Permalink to this heading">¶</a></h2>
+<p>Параметры конфигурации в этой группе определяют, сколько потоков процессора выделяется для задач индексирования в GeoNetwork. Если на вашем компьютере много процессорных ядер, теперь вы можете определить, сколько из них выделить для задач индексирования GeoNetwork. Это может привести к значительному увеличению скорости больших задач индексирования (например, изменение привилегий для 20 000 записей), поскольку GeoNetwork может разделить задачу индексирования на несколько частей и назначить их разным процессорным ядрам.</p>
+<p><em>Количество потоков обработки</em> Максимальное количество потоков обработки, которое может быть выделено для задачи индексирования.</p>
+<p>Примечание: этот параметр доступен только для проверенных баз данных. Этими базами данных являются PostGIS и Oracle. Вы также должны тщательно продумать, сколько соединений с базой данных вы выделяете в конфигурации базы данных, поскольку каждый поток может связать одно соединение с базой данных на время длительного сеанса индексирования (например). Дополнительные сведения о том, как настроить количество соединений в пуле соединений с базой данных, см. в расширенной конфигурации.</p>
+</section>
+<section id="multilingual-settings">
+<h2>Многоязычные настройки<a class="headerlink" href="#multilingual-settings" title="Permalink to this heading">¶</a></h2>
+<p>Параметры в этой группе определяют, как GeoNetwork будет искать метаданные на нескольких языках.</p>
+<p><em>Enable auto-detecting search request language:</em> If this option is selected, GeoNetwork will analyse the search query and attempt to detect the language that is used before defaulting to the GUI language.</p>
+<p><em>Результаты поиска на запрошенном языке сортируются сверху:</em> Если выбран этот параметр, к каждому запросу будет добавлено условие сортировки, чтобы гарантировать, что результаты на текущем языке всегда сортируются сверху. Это отличается от повышения приоритета языка тем, что переопределяет релевантность результата. Например, если результат на немецком языке имеет очень высокую релевантность, но язык поиска французский, то все результаты на французском языке будут предшествовать результатам на немецком языке.</p>
+<p><em>Поиск только на запрошенном языке</em> Параметры в этом разделе определяют порядок сортировки/приоритета документов относительно языка в документе по сравнению с языком поиска.</p>
+<ul class="simple">
+<li><p><em>Все документы на всех языках (без настроек)</em> - Язык поиска игнорируется и не влияет на порядок результатов.</p></li>
+<li><p><em>Предпочитать документы с переводом на запрашиваемый язык</em> — документы с переводом на языке поиска (в любом месте документа) будут иметь приоритет над документами без каких-либо элементов на языке поиска.</p></li>
+<li><p><em>Предпочитать документы, язык которых соответствует запрошенному языку</em>. Документы на том же языке, что и язык поиска (т. е. документы, указанные как написанные на том же языке, что и язык поиска), имеют приоритет над документами, язык которых не соответствует языку.</p></li>
+<li><p><em>Переводы на запрошенный язык</em> - Результаты поиска будут содержать только те документы, которые имеют некоторые переводы на язык поиска.</p></li>
+<li><p><em>Document language is the requested language</em> - The search results will contain documents whose metadata language is specified as being the in search language</p></li>
+</ul>
+</section>
+<section id="metadata-views">
+<h2>Представления метаданных<a class="headerlink" href="#metadata-views" title="Permalink to this heading">¶</a></h2>
+<p>Параметры в этом разделе включают/отключают группы элементов метаданных в редакторе/просмотрщике метаданных.</p>
+<p><em>Включить простой вид</em>: Простой вид в редакторе/средстве просмотра метаданных: - удаляет большую часть иерархии из вложенных записей метаданных (например, ISO19115/19139) - не позволяет пользователю добавлять элементы метаданных, которых еще нет в записи метаданных Он предназначен для обеспечения плоского, простого представления записи метаданных. Недостатком простого представления является то, что часть контекстной информации, предоставляемой вложением в запись метаданных, теряется. <em>Включить представление ISO</em>: Стандарт метаданных ISO19115/19139 определяет три группы элементов: - Минимум: те элементы, которые являются обязательными - Основные: элементы, которые должны присутствовать в любой записи метаданных, описывающей набор географических данных - Все: все элементы * Включить представление INSPIRE*: включает группы элементов метаданных, определенные в директиве EU INSPIRE. <em>Включить представление XML</em>: это представление редактирования необработанного текста записи XML. Вы можете отключить это, если (например) не хотите, чтобы неопытные пользователи были сбиты с толку представлением XML, предоставляемым этим представлением.</p>
+</section>
+<section id="metadata-privileges">
+<h2>Права доступа к метаданным<a class="headerlink" href="#metadata-privileges" title="Permalink to this heading">¶</a></h2>
+<p><em>Задавать привилегии только группам пользователей</em>: если этот параметр включен, на странице привилегий метаданных будут отображаться только группы, к которым принадлежит пользователь (если только пользователь не является администратором). На данный момент эту опцию нельзя отключить, и, вероятно, она будет объявлена устаревшей в следующей версии GeoNetwork.</p>
+</section>
+<section id="harvesting">
+<span id="editing-harvested-records"></span><h2>Сбор урожая<a class="headerlink" href="#harvesting" title="Permalink to this heading">¶</a></h2>
+<p><em>Разрешить редактирование собранных записей</em>: Включает/отключает редактирование собранных записей в каталоге. По умолчанию собранные записи нельзя редактировать.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Настройка каталога" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user-interface-configuration.html" class="btn btn-neutral float-right" title="Конфигурация пользовательского интерфейса" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
