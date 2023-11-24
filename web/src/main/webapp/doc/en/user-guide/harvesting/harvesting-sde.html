@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harvesting an ARCSDE Node &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GeoPortal REST Harvesting" href="harvesting-geoportal.html" />
+    <link rel="prev" title="OAIPMH Harvesting" href="harvesting-oaipmh.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Describing information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Associating resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Classify information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Analyzing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Workflow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Harvesting</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geonetwork.html">GeoNetwork 2.0 Harvester</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-csw.html">Harvesting CSW services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-ogcwxs.html">Harvesting OGC Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-filesystem.html">Local File System Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Harvesting</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Harvesting an ARCSDE Node</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-arcsde-harvester">Adding an ArcSDE harvester</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-thredds.html">THREDDS Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-wfs-features.html">WFS GetFeature Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-z3950.html">Z3950 Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#mechanism-overview">Mechanism overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-life-cycle">Harvesting life cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#multiple-harvesting-and-hierarchies">Multiple harvesting and hierarchies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-fragments-of-metadata-to-support-re-use">Harvesting Fragments of Metadata to support re-use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#https-support">HTTPS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-main-page">The main page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-status-and-error-icons">Harvesting Status and Error Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-result-tips">Harvesting result tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#adding-new-harvesters">Adding new harvesters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvest-history">Harvest History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Exporting records</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">User guide</a> &raquo;</li>
+          <li><a href="index.html">Harvesting</a> &raquo;</li>
+      <li>Harvesting an ARCSDE Node</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/harvesting/harvesting-sde.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="harvesting-an-arcsde-node">
+<span id="sde-harvester"></span><h1>Harvesting an ARCSDE Node<a class="headerlink" href="#harvesting-an-arcsde-node" title="Permalink to this heading">¶</a></h1>
+<p>This is a harvesting protocol for metadata stored in an ArcSDE installation.</p>
+<section id="adding-an-arcsde-harvester">
+<h2>Adding an ArcSDE harvester<a class="headerlink" href="#adding-an-arcsde-harvester" title="Permalink to this heading">¶</a></h2>
+<p>The harvester identifies the ESRI metadata format: ESRI ISO, ESRI FGDC to apply the required xslts to transform metadata to ISO19139. Configuration options:</p>
+<ul>
+<li><p><strong>Identification</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Name</em> - This is a short description of the node. It will be shown in the harvesting main page.</p></li>
+<li><p><em>Group</em> - User admin of this group and catalog administrator can manage this node.</p></li>
+<li><p><em>Harvester user</em> - User that owns the harvested metadata.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Schedule</strong> - Schedule configuration to execute the harvester.</p></li>
+<li><p><strong>Configuration for protocol ArcSDE</strong></p>
+<blockquote>
+<div><ul>
+<li><p><em>Server</em> - ArcSde server IP address or name.</p></li>
+<li><p><em>Port</em> - ArcSde service port (typically 5151) or ArcSde database port, depending on the connection type selected, see below the <em>Connection type</em> section.</p></li>
+<li><p><em>Database name</em> - ArcSDE instance name (typically esri_sde).</p></li>
+<li><p><em>ArcSde version</em> - ArcSde version to harvest. The data model used by ArcSde is different depending on the ArcSde version.</p></li>
+<li><dl>
+<dt><em>Connection type</em>.</dt><dd><ul class="simple">
+<li><p><em>ArcSde service</em> - Uses the ArcSde service to retrieve the metadata.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Additional installation steps are required to use the ArcSDE harvester because it needs proprietary ESRI Java api jars to be installed.</p>
+<p>ArcSDE Java API libraries need to be installed by the user in GeoNetwork (folder INSTALL_DIR_GEONETWORK/WEB-INF/lib), as these are proprietary libraries
+not distributed with GeoNetwork.</p>
+<p>The following jars are required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>jpe_sdk.jar</p></li>
+<li><p>jsde_sdk.jar</p></li>
+</ul>
+</div></blockquote>
+<p>dummy-api-XXX.jar must be removed from INSTALL_DIR/web/geonetwork/WEB-INF/lib</p>
+</div>
+<ul class="simple">
+<li><p><em>Database direct connection</em> - Uses a database connection (JDBC) to retrieve the metadata. With</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Database direct connection requires to copy JDBC drivers in INSTALL_DIR_GEONETWORK/WEB-INF/lib.</p>
+<p>Postgres JDBC drivers are distributed with GeoNetwork, but not for Oracle or SqlServer.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><p><em>Database type</em> - ArcSde database type: Oracle, Postgres, SqlServer. Only available if connection type is configured to <em>Database direct connection</em>.</p></li>
+<li><p><em>Username</em> - Username to connect to ArcSDE server.</p></li>
+<li><p><em>Password</em> - Password of the ArcSDE user.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Advanced options for protocol arcsde</strong></p>
+<blockquote>
+<div><ul>
+<li><p><em>Validate records before import</em> - Defines the criteria to reject metadata that is invalid according to XSD and schematron rules.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Accept all metadata without validation.</p></li>
+<li><p>Accept metadata that are XSD valid.</p></li>
+<li><p>Accept metadata that are XSD and schematron valid.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Privileges</strong> - Assign privileges to harvested metadata.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="harvesting-oaipmh.html" class="btn btn-neutral float-left" title="OAIPMH Harvesting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harvesting-geoportal.html" class="btn btn-neutral float-right" title="GeoPortal REST Harvesting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

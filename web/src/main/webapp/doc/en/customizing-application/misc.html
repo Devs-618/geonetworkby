@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miscellaneous &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorials" href="../tutorials/index.html" />
+    <link rel="prev" title="Characterset" href="characterset.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Customizing guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="search-ui/index.html">Search application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-custom-view.html">Customizing metadata views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor-ui/creating-custom-editor.html">Customizing editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changing-layout.html">Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-search-fields.html">Configuring search fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-faceted-search.html">Configuring faceted search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-configuration.html">Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-static-pages.html">Adding static pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementing-a-schema-plugin.html">Implementing schema plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="characterset.html">Characterset</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Miscellaneous</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#invalid-csrf-token">Invalid CSRF Token</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-of-csrf-call-using-curl">Example of CSRF call using curl</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-h2-database">Using the H2 database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#find-the-geonetwork-database">Find the Geonetwork database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-h2-tool">Using the H2 tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Customizing guide</a> &raquo;</li>
+      <li>Miscellaneous</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/customizing-application/misc.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="miscellaneous">
+<span id="customizing-misc"></span><h1>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">¶</a></h1>
+<section id="invalid-csrf-token">
+<h2>Invalid CSRF Token<a class="headerlink" href="#invalid-csrf-token" title="Permalink to this heading">¶</a></h2>
+<p>GeoNetwork has a security filter that prevents CSRF attacks. See more info about this type of attack on <a class="reference external" href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF">https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF</a>) . All calls to POST, DELETE and PUT endpoints without the proper token will return an error.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../_images/csrf2.png" src="../_images/csrf2.png" />
+</figure>
+</div></blockquote>
+<p>By default, all AngularJS requests will take care of this token, but all third party APIs and custom user interface calls will have to manually add this token to the request. The token is stored on a cookie called XSRF-TOKEN. This cookie contains a string that has to be added to all requests either by a parameter called “_csrf” or by a header called X-XSRF-TOKEN.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../_images/csrf1.png" src="../_images/csrf1.png" />
+</figure>
+</div></blockquote>
+<section id="example-of-csrf-call-using-curl">
+<span id="example-csrf-curl"></span><h3>Example of CSRF call using curl<a class="headerlink" href="#example-of-csrf-call-using-curl" title="Permalink to this heading">¶</a></h3>
+<p>First, do a call to a POST endpoint to get the session and the csrf</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$rm</span><span class="w"> </span>-f<span class="w"> </span>/tmp/cookie<span class="p">;</span><span class="w"> </span>curl<span class="w"> </span>-c<span class="w"> </span>/tmp/cookie<span class="w"> </span>http://localhost:8080/geonetwork/srv/eng/info?type<span class="o">=</span>me<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="p">;</span><span class="w"> </span>cat<span class="w"> </span>/tmp/cookie
+
+<span class="w">   </span>&lt;html&gt;
+<span class="w">   </span>&lt;head&gt;
+<span class="w">   </span>&lt;meta<span class="w"> </span>http-equiv<span class="o">=</span><span class="s2">&quot;Content-Type&quot;</span><span class="w"> </span><span class="nv">content</span><span class="o">=</span><span class="s2">&quot;text/html;charset=utf-8&quot;</span>/&gt;
+<span class="w">   </span>&lt;title&gt;Error<span class="w"> </span><span class="m">403</span><span class="w"> </span>Expected<span class="w"> </span>CSRF<span class="w"> </span>token<span class="w"> </span>not<span class="w"> </span>found.<span class="w"> </span>Has<span class="w"> </span>your<span class="w"> </span>session<span class="w"> </span>expired?&lt;/title&gt;
+<span class="w">   </span>&lt;/head&gt;
+<span class="w">   </span>&lt;body&gt;&lt;h2&gt;HTTP<span class="w"> </span>ERROR<span class="w"> </span><span class="m">403</span>&lt;/h2&gt;
+<span class="w">   </span>&lt;p&gt;Problem<span class="w"> </span>accessing<span class="w"> </span>/geonetwork/srv/eng/info.<span class="w"> </span>Reason:
+<span class="w">   </span>&lt;pre&gt;<span class="w">    </span>Expected<span class="w"> </span>CSRF<span class="w"> </span>token<span class="w"> </span>not<span class="w"> </span>found.<span class="w"> </span>Has<span class="w"> </span>your<span class="w"> </span>session<span class="w"> </span>expired?&lt;/pre&gt;&lt;/p&gt;&lt;hr&gt;&lt;a<span class="w"> </span><span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://eclipse.org/jetty&quot;</span>&gt;Powered<span class="w"> </span>by<span class="w"> </span>Jetty://<span class="w"> </span><span class="m">9</span>.3.9.v20160517&lt;/a&gt;&lt;hr/&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+<span class="c1"># Netscape HTTP Cookie File</span>
+<span class="c1"># https://curl.haxx.se/docs/http-cookies.html</span>
+<span class="c1"># This file was generated by libcurl! Edit at your own risk.</span>
+
+localhost<span class="w">       </span>FALSE<span class="w">   </span>/geonetwork<span class="w">     </span>FALSE<span class="w">   </span><span class="m">0</span><span class="w">       </span>XSRF-TOKEN<span class="w">      </span>3825c5f1-49b3-4c62-bc3a-1916d5872d02
+</pre></div>
+</div>
+<p>Then, using the cookie and the token, you can do whatever you want:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nv">$curl</span><span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://localhost:8080/geonetwork/srv/eng/info?type=me&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-XSRF-TOKEN: 3825c5f1-49b3-4c62-bc3a-1916d5872d02&quot;</span><span class="w"> </span>--user<span class="w"> </span>admin:admin<span class="w"> </span>-b<span class="w"> </span>/tmp/cookie
+*<span class="w">   </span>Trying<span class="w"> </span>::1...
+<span class="w">  </span>*<span class="w"> </span>TCP_NODELAY<span class="w"> </span><span class="nb">set</span>
+<span class="w">    </span>*<span class="w"> </span>Connected<span class="w"> </span>to<span class="w"> </span>localhost<span class="w"> </span><span class="o">(</span>::1<span class="o">)</span><span class="w"> </span>port<span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="o">(</span><span class="c1">#0)</span>
+<span class="w">      </span>*<span class="w"> </span>Server<span class="w"> </span>auth<span class="w"> </span>using<span class="w"> </span>Basic<span class="w"> </span>with<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;admin&#39;</span>
+<span class="w">        </span>&gt;<span class="w"> </span>POST<span class="w"> </span>/geonetwork/srv/eng/info?type<span class="o">=</span>me<span class="w"> </span>HTTP/1.1
+<span class="w">        </span>&gt;<span class="w"> </span>Host:<span class="w"> </span>localhost:8080
+<span class="w">        </span>&gt;<span class="w"> </span>Authorization:<span class="w"> </span>Basic<span class="w"> </span><span class="nv">YWRtaW46YWRtaW4</span><span class="o">=</span>
+<span class="w">        </span>&gt;<span class="w"> </span>User-Agent:<span class="w"> </span>curl/7.52.1
+<span class="w">        </span>&gt;<span class="w"> </span>Accept:<span class="w"> </span>*/*
+<span class="w">        </span>&gt;<span class="w"> </span>Cookie:<span class="w"> </span>XSRF-TOKEN<span class="o">=</span>3825c5f1-49b3-4c62-bc3a-1916d5872d02
+<span class="w">        </span>&gt;<span class="w"> </span>X-XSRF-TOKEN:<span class="w"> </span>3825c5f1-49b3-4c62-bc3a-1916d5872d02
+<span class="w">        </span>&gt;
+<span class="w">        </span>&lt;<span class="w"> </span>HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK
+<span class="w">        </span>&lt;<span class="w"> </span>Date:<span class="w"> </span>Wed,<span class="w"> </span><span class="m">17</span><span class="w"> </span>May<span class="w"> </span><span class="m">2017</span><span class="w"> </span><span class="m">08</span>:52:05<span class="w"> </span>GMT
+<span class="w">        </span>*<span class="w"> </span>Added<span class="w"> </span>cookie<span class="w"> </span><span class="nv">JSESSIONID</span><span class="o">=</span><span class="s2">&quot;1na1v7dpu7d7bcsnelvh0vnvn&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>domain<span class="w"> </span>localhost,<span class="w"> </span>path<span class="w"> </span>/geonetwork,<span class="w"> </span>expire<span class="w"> </span><span class="m">0</span>
+<span class="w">          </span>&lt;<span class="w"> </span>Set-Cookie:<span class="w"> </span><span class="nv">JSESSIONID</span><span class="o">=</span>1na1v7dpu7d7bcsnelvh0vnvn<span class="p">;</span><span class="nv">Path</span><span class="o">=</span>/geonetwork
+<span class="w">          </span>&lt;<span class="w"> </span>Expires:<span class="w"> </span>Thu,<span class="w"> </span><span class="m">01</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">1970</span><span class="w"> </span><span class="m">00</span>:00:00<span class="w"> </span>GMT
+<span class="w">          </span>*<span class="w"> </span>Added<span class="w"> </span>cookie<span class="w"> </span><span class="nv">serverTime</span><span class="o">=</span><span class="s2">&quot;1495011125647&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>domain<span class="w"> </span>localhost,<span class="w"> </span>path<span class="w"> </span>/,<span class="w"> </span>expire<span class="w"> </span><span class="m">0</span>
+<span class="w">            </span>&lt;<span class="w"> </span>Set-Cookie:<span class="w"> </span><span class="nv">serverTime</span><span class="o">=</span><span class="m">1495011125647</span><span class="p">;</span><span class="nv">Path</span><span class="o">=</span>/
+<span class="w">            </span>*<span class="w"> </span>Added<span class="w"> </span>cookie<span class="w"> </span><span class="nv">sessionExpiry</span><span class="o">=</span><span class="s2">&quot;1495011125647&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>domain<span class="w"> </span>localhost,<span class="w"> </span>path<span class="w"> </span>/,<span class="w"> </span>expire<span class="w"> </span><span class="m">0</span>
+<span class="w">              </span>&lt;<span class="w"> </span>Set-Cookie:<span class="w"> </span><span class="nv">sessionExpiry</span><span class="o">=</span><span class="m">1495011125647</span><span class="p">;</span><span class="nv">Path</span><span class="o">=</span>/
+<span class="w">              </span>&lt;<span class="w"> </span>Content-Type:<span class="w"> </span>application/xml<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
+<span class="w">              </span>&lt;<span class="w"> </span>Pragma:<span class="w"> </span>no-cache
+<span class="w">              </span>&lt;<span class="w"> </span>Cache-Control:<span class="w"> </span>no-cache
+<span class="w">              </span>&lt;<span class="w"> </span>Expires:<span class="w"> </span>-1
+<span class="w">              </span>&lt;<span class="w"> </span>Transfer-Encoding:<span class="w"> </span>chunked
+<span class="w">              </span>&lt;<span class="w"> </span>Server:<span class="w"> </span>Jetty<span class="o">(</span><span class="m">9</span>.3.9.v20160517<span class="o">)</span>
+<span class="w">              </span>&lt;
+<span class="w">              </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span>?&gt;
+<span class="w">              </span>&lt;info&gt;
+<span class="w">                </span>&lt;me<span class="w"> </span><span class="nv">authenticated</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>&gt;
+<span class="w">                  </span>&lt;profile&gt;Administrator&lt;/profile&gt;
+<span class="w">                  </span>&lt;username&gt;admin&lt;/username&gt;
+<span class="w">                  </span>&lt;id&gt;1&lt;/id&gt;
+<span class="w">                  </span>&lt;name&gt;admin&lt;/name&gt;
+<span class="w">                  </span>&lt;surname&gt;admin&lt;/surname&gt;
+<span class="w">                  </span>&lt;email<span class="w"> </span>/&gt;
+<span class="w">                  </span>&lt;organisation<span class="w"> </span>/&gt;
+<span class="w">                  </span>&lt;<span class="nb">hash</span><span class="w"> </span>/&gt;
+<span class="w">                </span>&lt;/me&gt;
+<span class="w">              </span>&lt;env&gt;
+<span class="w">              </span>&lt;baseURL&gt;/geonetwork&lt;/baseURL&gt;
+<span class="w">              </span>&lt;node&gt;srv&lt;/node&gt;
+<span class="w">            </span>&lt;/env&gt;
+<span class="w">          </span>&lt;/info&gt;
+
+*<span class="w"> </span>Curl_http_done:<span class="w"> </span>called<span class="w"> </span><span class="nv">premature</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span>*<span class="w"> </span>Connection<span class="w"> </span><span class="c1">#0 to host localhost left intact</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-the-h2-database">
+<span id="using-h2-database"></span><h2>Using the H2 database<a class="headerlink" href="#using-the-h2-database" title="Permalink to this heading">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The instructions below should only be used to examine the database for trouble-shooting purposes as it is possible to corrupt it using this method. Always take a backup first before making any changes!</p>
+</div>
+<p>If you are using the default embedded H2 database and you need to examine the tables, you can do so using a Graphical UI. Two that have been tested are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>dbeaver (<a class="reference external" href="http://dbeaver.io">http://dbeaver.io</a>)</p></li>
+<li><p>h2’s own tool (<a class="reference external" href="http://www.h2database.com/html/download.html">http://www.h2database.com/html/download.html</a>)</p></li>
+</ul>
+</div></blockquote>
+<p>The following approach uses the h2 tool.</p>
+<section id="find-the-geonetwork-database">
+<h3>Find the Geonetwork database<a class="headerlink" href="#find-the-geonetwork-database" title="Permalink to this heading">¶</a></h3>
+<p>This is called <code class="docutils literal notranslate"><span class="pre">gn.h2.db</span></code>. The location is dependent on which web server you are using, and where your data directory is. See <a class="reference internal" href="../install-guide/configuring-database.html#configuring-database"><span class="std std-ref">Configuring the database</span></a> for more information. Note that on windows you will need to use a path of the form <code class="docutils literal notranslate"><span class="pre">driveletter/path/to/gn.h2.db</span></code>.</p>
+</section>
+<section id="using-the-h2-tool">
+<h3>Using the H2 tool<a class="headerlink" href="#using-the-h2-tool" title="Permalink to this heading">¶</a></h3>
+<p>Download the platform independent zip file from <a class="reference external" href="http://www.h2database.com/html/download.html">http://www.h2database.com/html/download.html</a> and unblock/extract it. At a command prompt change to the following directory:</p>
+<p><code class="docutils literal notranslate"><span class="pre">h2/bin</span></code></p>
+<p>Note that using the included bat or shell scripts to access the database seem to show errors, so the command prompt approach is recommended.</p>
+<p>Make a note of the URL to your database. This will be of the form:</p>
+<p><code class="docutils literal notranslate"><span class="pre">jdbc:h2:path/to/gn</span></code></p>
+<p>Note do not include <code class="docutils literal notranslate"><span class="pre">.h2.db</span></code> at the end of the path.</p>
+<p>Type the following command to access the tool:</p>
+<p><code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-cp</span> <span class="pre">h2*.jar</span> <span class="pre">org.h2.tools.shell</span></code></p>
+<p>You will be asked for the URL, which you made a note of above. The default credentials are:</p>
+<ul class="simple">
+<li><p>username: www-data</p></li>
+<li><p>password: www-data</p></li>
+</ul>
+<p>You may need to do one or other of the following:</p>
+<ul class="simple">
+<li><p>Shut down GeoNetwork</p></li>
+<li><p>Remove the lock file <code class="docutils literal notranslate"><span class="pre">gn.lock.db</span></code></p></li>
+<li><p>Give write permissions on <code class="docutils literal notranslate"><span class="pre">gn.h2.db</span></code></p></li>
+</ul>
+<p>When you have successfully connected you will see a prompt as below, where you can enter SQL commands. These should end with a semicolon.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sql&gt;</span></code></p>
+<p>A useful command reference can be found at <a class="reference external" href="http://www.h2database.com/html/commands.html">http://www.h2database.com/html/commands.html</a></p>
+<p>To leave the tool, type <code class="docutils literal notranslate"><span class="pre">quit</span></code> and press enter.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="characterset.html" class="btn btn-neutral float-left" title="Characterset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tutorials/index.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

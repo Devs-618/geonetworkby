@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harvesting &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GeoNetwork 2.0 Harvester" href="harvesting-geonetwork.html" />
+    <link rel="prev" title="Updating a set of records using XSLT" href="../workflow/batchupdate-xsl.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Describing information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Associating resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Classify information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Analyzing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Workflow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Harvesting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geonetwork.html">GeoNetwork 2.0 Harvester</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-csw.html">Harvesting CSW services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-ogcwxs.html">Harvesting OGC Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-filesystem.html">Local File System Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-sde.html">Harvesting an ARCSDE Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-thredds.html">THREDDS Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-wfs-features.html">WFS GetFeature Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-z3950.html">Z3950 Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mechanism-overview">Mechanism overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-life-cycle">Harvesting life cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-harvesting-and-hierarchies">Multiple harvesting and hierarchies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-fragments-of-metadata-to-support-re-use">Harvesting Fragments of Metadata to support re-use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#https-support">HTTPS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-main-page">The main page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-status-and-error-icons">Harvesting Status and Error Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvesting-result-tips">Harvesting result tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-harvesters">Adding new harvesters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harvest-history">Harvest History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Exporting records</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">User guide</a> &raquo;</li>
+      <li>Harvesting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/harvesting/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="harvesting">
+<span id="id1"></span><h1>Harvesting<a class="headerlink" href="#harvesting" title="Permalink to this heading">¶</a></h1>
+<p>Data discovery gets more interesting once multiple catalogs and services
+share their resources.</p>
+<p>Harvesting is the process of ingesting metadata from remote sources and
+storing it locally in the catalog for fast searching. It is a scheduled
+process, so local copy and remote metadata are kept aligned.</p>
+<p>The following sources can be harvested:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-geonetwork.html">GeoNetwork 2.0 Harvester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-csw.html">Harvesting CSW services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-csw.html#adding-a-csw-harvester">Adding a CSW harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-csw.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-ogcwxs.html">Harvesting OGC Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-ogcwxs.html#adding-an-ogc-service-harvester">Adding an OGC Service Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-ogcwxs.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-filesystem.html">Local File System Harvesting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-filesystem.html#adding-a-local-file-system-harvester">Adding a Local File System harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-filesystem.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Harvesting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-webdav.html#adding-a-webdav-harvester">Adding a WebDAV harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-webdav.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Harvesting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-oaipmh.html#adding-an-oai-pmh-harvester">Adding an OAI-PMH harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-oaipmh.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-sde.html">Harvesting an ARCSDE Node</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-sde.html#adding-an-arcsde-harvester">Adding an ArcSDE harvester</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Harvesting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-geoportal.html#adding-a-geoportal-rest-harvester">Adding a GeoPortal REST harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-geoportal.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-thredds.html">THREDDS Harvesting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#adding-a-thredds-catalog-harvester">Adding a THREDDS Catalog Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester">More about harvesting THREDDS DIF metadata elements with the THREDDS Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester">More about harvesting Unidata dataset discovery metadata with the THREDDS Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-thredds.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-wfs-features.html">WFS GetFeature Harvesting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#adding-an-ogc-wfs-getfeature-harvester">Adding an OGC WFS GetFeature Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#more-about-turning-the-getfeature-response-into-metadata-fragments">More about turning the GetFeature Response into metadata fragments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#bundled-geoserver-boundaries-harvest-example">Bundled GeoServer Boundaries Harvest example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-wfs-features.html#deegree-version-2-x-philosopher-database-example">Deegree Version 2.x Philosopher Database example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="harvesting-z3950.html">Z3950 Harvesting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-z3950.html#adding-a-z3950-harvester">Adding a Z3950 Harvester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-z3950.html#more-about-pqf-z3950-queries">More about PQF Z3950 Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvesting-z3950.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="mechanism-overview">
+<h2>Mechanism overview<a class="headerlink" href="#mechanism-overview" title="Permalink to this heading">¶</a></h2>
+<p>The harvesting mechanism relies on the concept of a <code class="docutils literal notranslate"><span class="pre">universally</span> <span class="pre">unique</span> <span class="pre">identifier</span> <span class="pre">(UUID)</span></code>.
+This is a special id because it is not only unique locally to the node that generated it
+but it is globally unique.  It is a combination of :</p>
+<ul class="simple">
+<li><p>the network interface MAC address,</p></li>
+<li><p>the current date/time</p></li>
+<li><p>and a random number.</p></li>
+</ul>
+<p>For every new record, a UUID is generated and assigned to it.</p>
+<p>Another important concept behind the harvesting is the <code class="docutils literal notranslate"><span class="pre">last</span> <span class="pre">change</span> <span class="pre">date</span></code>.
+Every time you change a metadata record, the last change date is
+updated. Just storing this parameter and comparing it with a new one allows any
+system to find out if the metadata record has been modified since last update.</p>
+<p>These two concepts allow catalogs to fetch remote metadata, check if it has
+been updated and remove it locally if it has been removed remotely. UUIDs also
+allowed cross catalog harvesting in case B harvests from C and A harvests from B.</p>
+</section>
+<section id="harvesting-life-cycle">
+<h2>Harvesting life cycle<a class="headerlink" href="#harvesting-life-cycle" title="Permalink to this heading">¶</a></h2>
+<p>When a harvester is created, there is no harvested metadata.
+During the first run, all remote matching metadata are retrieved and
+stored locally. For some harvesters, after the first run, only metadata
+that has changed will be retrieved.</p>
+<p>Harvested metadata are (by default) not editable for the following reasons:</p>
+<ol class="arabic simple">
+<li><p>The harvesting is periodic so any local change to harvested metadata
+will be lost during the next run.</p></li>
+<li><p>The change date may be used to keep track of changes so if the
+metadata gets changed, the harvesting mechanism may be compromised.</p></li>
+</ol>
+<p>Metadata properties (like categories, privileges etc…) on harvested metadata
+records can be updated but will be updated on next run.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if you really want to edit harvested metadata records and
+aren’t worried by the possible issues described above, there is now a
+configuration setting which will permit this. See <a class="reference internal" href="../../administrator-guide/configuring-the-catalog/system-configuration.html#editing-harvested-records"><span class="std std-ref">Harvesting</span></a>
+for more details.</p>
+<p>Another option would be to assign the harvested records to the local
+catalog and then modify them. For the time being, no interface allows
+to change record’s source catalog.</p>
+</div>
+<p>The harvesting process goes on until one of the following situations arises:</p>
+<ol class="arabic simple">
+<li><p>An administrator stops (deactivates) the harvester.</p></li>
+<li><p>An exception arises. In this case the harvester is automatically stopped.</p></li>
+</ol>
+<p>When a harvester is removed, all metadata records associated with that harvester are removed.</p>
+</section>
+<section id="multiple-harvesting-and-hierarchies">
+<h2>Multiple harvesting and hierarchies<a class="headerlink" href="#multiple-harvesting-and-hierarchies" title="Permalink to this heading">¶</a></h2>
+<p>Catalogues that use UUIDs to identify metadata records (eg. GeoNetwork) can be harvested several times without having to take care about metadata overlap.</p>
+<p>As an example, consider the GeoNetwork harvesting type which allows one GeoNetwork node to harvest metadata records from another GeoNetwork node and the following scenario:</p>
+<ol class="arabic simple">
+<li><p>Node (A) has created metadata (a)</p></li>
+<li><p>Node (B) harvests (a) from (A)</p></li>
+<li><p>Node (C) harvests (a) from (B)</p></li>
+<li><p>Node (D) harvests from both (A), (B) and (C)</p></li>
+</ol>
+<p>In this scenario, Node (D) will get the same metadata (a) from all 3 nodes (A), (B), (C). The metadata will flow to (D) following 3 different paths but thanks to its UUID only one copy will be stored. When (a) is changed in (A), a new
+version will flow to (D) but, thanks to the change date, the copy in (D) will be
+updated with the most recent version.</p>
+</section>
+<section id="harvesting-fragments-of-metadata-to-support-re-use">
+<span id="harvesting-fragments"></span><h2>Harvesting Fragments of Metadata to support re-use<a class="headerlink" href="#harvesting-fragments-of-metadata-to-support-re-use" title="Permalink to this heading">¶</a></h2>
+<p>All the harvesters except for the THREDDS and OGC WFS GetFeature harvester create a complete metadata record that is inserted into or replaces an existing record in the catalog. However, it’s often the case that:</p>
+<ul class="simple">
+<li><p>the metadata harvested from an external source is really only one or more fragments of the metadata required to describe a resource such as a dataset</p></li>
+<li><p>you might want to combine harvested fragments of metadata with manually entered or static metadata in a single record</p></li>
+<li><p>a fragment of metadata harvested from an external source may be required in more than one metadata record</p></li>
+</ul>
+<p>For example, you may only be interested in harvesting the geographic extent and/or contact information from an external source and manually entering or maintaining the remainder of the content in the metadata record. You may also be interested in re-using the contact information for a person or organisation in more than one metadata record.</p>
+<p>To support this capability, both the WFS GetFeature Harvester and the THREDDS harvester, allow fragments of metadata to be harvested and linked or copied into a template record to create metadata records. Fragments that are saved into the GeoNetwork database are called subtemplates and can be used in more than one metadata record.</p>
+<p>As shown above, an example of a metadata fragment is the gmd:contactInfo element of an iso19139 document.  This element contains contact details for an individual or an organisation.  If a fragment is stored in the GeoNetwork database as a subtemplate for a given person or organisation, then this fragment can be referenced in metadata records where this organisation or individual is specified using an XML linking mechanism called XLink.</p>
+</section>
+<section id="https-support">
+<h2>HTTPS support<a class="headerlink" href="#https-support" title="Permalink to this heading">¶</a></h2>
+<p>Harvesting between GeoNetwork nodes may require the HTTPS protocol. If harvesting from an https GeoNetwork URL, the server will need to have a trusted certificate available in a JVM keystore accessible to the GeoNetwork node running the harvest.</p>
+<p>If you don’t have a trusted certificate in the JVM keystore being used by GeoNetwork, the harvester may issue an exception like this when you try to harvest from the https GeoNetwork:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">javax</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">ssl</span><span class="o">.</span><span class="n">SSLHandshakeException</span><span class="p">:</span>
+   <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">validator</span><span class="o">.</span><span class="n">ValidatorException</span><span class="p">:</span> <span class="n">PKIX</span> <span class="n">path</span> <span class="n">building</span> <span class="n">failed</span><span class="p">:</span>
+   <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">certpath</span><span class="o">.</span><span class="n">SunCertPathBuilderException</span><span class="p">:</span>
+   <span class="n">unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">valid</span> <span class="n">certification</span> <span class="n">path</span> <span class="n">to</span> <span class="n">requested</span> <span class="n">target</span>
+
+<span class="n">Caused</span> <span class="n">by</span><span class="p">:</span> <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">validator</span><span class="o">.</span><span class="n">ValidatorException</span><span class="p">:</span>
+   <span class="n">PKIX</span> <span class="n">path</span> <span class="n">building</span> <span class="n">failed</span><span class="p">:</span> <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">certpath</span><span class="o">.</span><span class="n">SunCertPathBuilderException</span><span class="p">:</span>
+   <span class="n">unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">valid</span> <span class="n">certification</span> <span class="n">path</span> <span class="n">to</span> <span class="n">requested</span> <span class="n">target</span>
+
+<span class="n">Caused</span> <span class="n">by</span><span class="p">:</span> <span class="n">sun</span><span class="o">.</span><span class="n">security</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">certpath</span><span class="o">.</span><span class="n">SunCertPathBuilderException</span><span class="p">:</span>
+   <span class="n">unable</span> <span class="n">to</span> <span class="n">find</span> <span class="n">valid</span> <span class="n">certification</span> <span class="n">path</span> <span class="n">to</span> <span class="n">requested</span> <span class="n">target</span>
+</pre></div>
+</div>
+<p>The server certificate for the GeoNetwork server being harvested needs to be added to the JVM keystore with <a class="reference external" href="http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html">keytool</a> in order to be trusted.</p>
+<p>An alternative way to add the certificate is to use a script like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## JAVA SSL Certificate import script
+## Based on original MacOs script by LouiSe@louise.hu : http://louise.hu
+##
+## Usage: ./ssl_key_import.sh &lt;sitename&gt; &lt;port&gt;
+##
+## Example: ./ssl_key_import.sh mail.google.com 443 (to read certificate from https://mail.google.com)
+
+## Compile and start
+javac InstallCert.java
+java InstallCert $1:$2
+
+## Copy new cert into local JAVA keystore
+echo &quot;Please, enter administrator password:&quot;
+sudo cp jssecacerts $JAVA_HOME/jre/lib/security/jssecacerts
+# Comment previous line and uncomment next one for MacOs
+#sudo cp jssecacerts /Library/Java/Home/lib/security/
+</pre></div>
+</div>
+<p>To use the script, the Java compiler must be installed and the file <a class="reference external" href="http://code.google.com/p/java-use-examples/source/browse/trunk/src/com/aw/ad/util/InstallCert.java">InstallCert.java</a>, must be downloaded and placed in the same directory as the script.</p>
+<p>The script will add the certificate to the JVM keystore, if you run it as follows::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./ssl_key_import.sh https_server_name 443
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use this script at your own risk! Before installing a certificate in the JVM keystore as trusted, make sure you understand the security implications.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After adding the certificate you will need to restart GeoNetwork.</p>
+</div>
+</section>
+<section id="the-main-page">
+<h2>The main page<a class="headerlink" href="#the-main-page" title="Permalink to this heading">¶</a></h2>
+<p>To access the harvesting main page you have to be logged in as an administrator.
+From the administration page, select the harvest shortcut.
+The harvesting main page will then be displayed.</p>
+<p>The page shows a list of the currently defined harvesters and a set of buttons for management functions. The meaning of each column in the list of harvesters is as follows:</p>
+<ol class="arabic simple">
+<li><p><em>Select</em> Check box to select one or more harvesters. The selected harvesters will be affected by the first row of buttons (activate, deactivate, run, remove). For example, if you select three harvesters and press the Remove button, they will all be removed.</p></li>
+<li><p><em>Name</em> This is the harvester name provided by the administrator.</p></li>
+<li><p><em>Type</em> The harvester type (eg. GeoNetwork, WebDAV etc…).</p></li>
+<li><p><em>Status</em> An icon showing current status. See <a class="reference internal" href="#admin-harvesting-status"><span class="std std-ref">Harvesting Status and Error Icons</span></a> for the different icons and status descriptions.</p></li>
+<li><p><em>Errors</em> An icon showing the result of the last harvesting run, which could have succeeded or not. See <a class="reference internal" href="#admin-harvesting-status"><span class="std std-ref">Harvesting Status and Error Icons</span></a> for the different icons and error descriptions. Hovering the cursor over the icon will show detailed information about the last harvesting run.</p></li>
+<li><p><em>Run at</em> and <em>Every</em>: Scheduling of harvester runs. Essentially the time of the day + how many hours between repeats and on which days the harvester will run.</p></li>
+<li><p><em>Last run</em> The date, in ISO 8601 format, of the most recent harvesting run.</p></li>
+<li><p><em>Operation</em> A list of buttons/links to operations on a harvester.</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Selecting <em>Edit</em> will allow you to change the parameters for a harvester.</p></li>
+<li><p>Selecting <em>Clone</em> will allow you to create a clone of this harvester and start editing the details of the clone.</p></li>
+<li><p>Selecting <em>History</em> will allow you to view/change the harvesting history for a harvester - see <a class="reference internal" href="#harvest-history"><span class="std std-ref">Harvest History</span></a>.</p></li>
+</ul>
+</div></blockquote>
+<p>At the bottom of the list of harvesters are two rows of buttons. The first row contains buttons that can operate on a selected set of harvesters. You can select the harvesters you want to operate on using the check box in the Select
+column and then press one of these buttons. When the button finishes its action, the check boxes
+are cleared. Here is the meaning of each button:</p>
+<ol class="arabic simple">
+<li><p><em>Activate</em> When a new harvester is created, the status is
+<em>inactive</em>. Use this button to make it
+<em>active</em> and start the harvester(s) according to the schedule it has/they
+have been configured to use.</p></li>
+<li><p><em>Deactivate</em> Stops the harvester(s). Note: this does not mean that
+currently running harvest(s) will be stopped. Instead, it means that the
+harvester(s) will not be scheduled to run again.</p></li>
+<li><p><em>Run</em> Start the selected harvesters immediately.  This is useful for testing harvester setups.</p></li>
+<li><p><em>Remove</em> Remove all currently selected harvesters. A dialogue will ask the
+user to confirm the action.</p></li>
+</ol>
+<p>The second row contains general purpose buttons. Here is the meaning of each button:</p>
+<ol class="arabic simple">
+<li><p><em>Back</em> Simply returns to the main administration page.</p></li>
+<li><p><em>Add</em> This button creates a new harvester.</p></li>
+<li><p><em>Refresh</em> Refreshes the current list of harvesters from the server. This
+can be useful to see if the harvesting list has been altered by someone else or to get the status of any running harvesters.</p></li>
+<li><p><em>History</em> Show the harvesting history of all harvesters. See <a class="reference internal" href="#harvest-history"><span class="std std-ref">Harvest History</span></a> for more details.</p></li>
+</ol>
+</section>
+<section id="harvesting-status-and-error-icons">
+<span id="admin-harvesting-status"></span><h2>Harvesting Status and Error Icons<a class="headerlink" href="#harvesting-status-and-error-icons" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="harvesting-result-tips">
+<h2>Harvesting result tips<a class="headerlink" href="#harvesting-result-tips" title="Permalink to this heading">¶</a></h2>
+<p>When a harvester runs and completes, a tool tip showing detailed information about the harvesting process is shown in the <strong>Errors</strong> column for the harvester. If the harvester succeeded then hovering the cursor over the tool tip will show
+a table, with some rows labelled as follows:</p>
+<ul class="simple">
+<li><p><strong>Total</strong> - This is the total number of metadata found remotely. Metadata with the same id are considered as one.</p></li>
+<li><p><strong>Added</strong> -  Number of metadata added to the system because they were not present locally.</p></li>
+<li><p><strong>Removed</strong> - Number of metadata that have been removed locally because they are not present in the remote server anymore.</p></li>
+<li><p><strong>Updated</strong> - Number of metadata that are present locally but that needed to be updated because their last change date was different from the remote one.</p></li>
+<li><p><strong>Unchanged</strong> - Local metadata left unchanged. Their remote last change date did not change.</p></li>
+<li><p><strong>Unknown schema</strong> - Number of skipped metadata because their format was not recognised by GeoNetwork.</p></li>
+<li><p><strong>Unretrievable</strong> - Number of metadata that were ready to be retrieved from the remote server but for some reason there was an exception during the data transfer process.</p></li>
+<li><p><strong>Bad Format</strong> - Number of skipped metadata because they did not have a valid XML representation.</p></li>
+<li><p><strong>Does not validate</strong> - Number of metadata which did not validate against their schema. These metadata were harvested with success but skipped due to the validation process. Usually, there is an option to force validation: if you want to harvest these metadata anyway, simply turn/leave it off.</p></li>
+<li><p><strong>Thumbnails/Thumbnails failed</strong> - Number of metadata thumbnail images added/that could not be added due to some failure.</p></li>
+<li><p><strong>Metadata URL attribute used</strong> - Number of layers/featuretypes/coverages that had a metadata URL that could be used to link to a metadata record (OGC Service Harvester only).</p></li>
+<li><p><strong>Services added</strong> - Number of ISO19119 service records created and added to the catalogue (for THREDDS catalog harvesting only).</p></li>
+<li><p><strong>Collections added</strong> - Number of collection dataset records added to the catalogue (for THREDDS catalog harvesting only).</p></li>
+<li><p><strong>Atomics added</strong> - Number of atomic dataset records added to the catalogue (for THREDDS catalog harvesting only).</p></li>
+<li><p><strong>Subtemplates added</strong> - Number of subtemplates (= fragment visible in the catalog) added to the metadata catalog.</p></li>
+<li><p><strong>Subtemplates removed</strong> - Number of subtemplates (= fragment visible in the catalog) removed from the metadata catalog.</p></li>
+<li><p><strong>Fragments w/Unknown schema</strong> - Number of fragments which have an unknown metadata schema.</p></li>
+<li><p><strong>Fragments returned</strong> - Number of fragments returned by the harvester.</p></li>
+<li><p><strong>Fragments matched</strong> - Number of fragments that had identifiers that in the template used by the harvester.</p></li>
+<li><p><strong>Existing datasets</strong> - Number of metadata records for datasets that existed when the THREDDS harvester was run.</p></li>
+<li><p><strong>Records built</strong> - Number of records built by the harvester from the template and fragments.</p></li>
+<li><p><strong>Could not insert</strong> - Number of records that the harvester could not insert into the catalog (usually because the record was already present eg. in the Z3950 harvester this can occur if the same record is harvested from different servers).</p></li>
+</ul>
+</section>
+<section id="adding-new-harvesters">
+<h2>Adding new harvesters<a class="headerlink" href="#adding-new-harvesters" title="Permalink to this heading">¶</a></h2>
+<p>The Add button in the main page allows you to add new harvesters. A drop down list is then shown with all the available harvester protocols.</p>
+<p>You can choose the type of harvest you intend to perform and press <em>Add</em> to begin the process of adding the harvester. The supported harvesters and details of what to do next are in the following sections:</p>
+</section>
+<section id="harvest-history">
+<span id="id2"></span><h2>Harvest History<a class="headerlink" href="#harvest-history" title="Permalink to this heading">¶</a></h2>
+<p>Each time a harvester is run, it generates a status report of what was harvested and/or what went wrong (eg. exception report). These reports are stored in a table in the database used by GeoNetwork. The entire harvesting history for all harvesters can be recalled using the History button on the Harvesting Management page. The harvest history for an individual harvester can also be recalled using the History link in the Operations for that harvester.</p>
+<p>Once the harvest history has been displayed it is possible to:</p>
+<ul class="simple">
+<li><p>expand the detail of any exceptions</p></li>
+<li><p>sort the history by harvest date (or in the case of the history of all harvesters, by harvester name)</p></li>
+<li><p>delete any history entry or the entire history</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../workflow/batchupdate-xsl.html" class="btn btn-neutral float-left" title="Updating a set of records using XSLT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harvesting-geonetwork.html" class="btn btn-neutral float-right" title="GeoNetwork 2.0 Harvester" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

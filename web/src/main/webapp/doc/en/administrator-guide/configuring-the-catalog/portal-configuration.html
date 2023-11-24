@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal configuration &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuring virtual CSW" href="virtual-csw-configuration.html" />
+    <link rel="prev" title="Configuring CSW" href="csw-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Administrator guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Configuring the catalog</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="system-configuration.html">System configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user-interface-configuration.html">User Interface Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="css-configuration.html">Configuring CSS &amp; Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csw-configuration.html">Configuring CSW</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Portal configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-a-sub-portal">Configuring a sub-portal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-of-usage">Example of usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="virtual-csw-configuration.html">Configuring virtual CSW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-configuration.html">Configuring for the INSPIRE Directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map-server-configuration.html">Map servers configuration for geopublication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-users-and-groups/index.html">Managing users and groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-classification-systems/index.html">Managing classification system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Administrator guide</a> &raquo;</li>
+          <li><a href="index.html">Configuring the catalog</a> &raquo;</li>
+      <li>Portal configuration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/configuring-the-catalog/portal-configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="portal-configuration">
+<span id="id1"></span><h1>Portal configuration<a class="headerlink" href="#portal-configuration" title="Permalink to this heading">¶</a></h1>
+<p>Portals can be configured under the  <code class="docutils literal notranslate"><span class="pre">sources</span></code> section in <code class="docutils literal notranslate"><span class="pre">admin</span> <span class="pre">console</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">settings</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/portal-access.png" src="../../_images/portal-access.png" />
+</figure>
+<p>There are 3 types of sources:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>the main catalogue,</p></li>
+<li><p>sub-portal, which can be a subset of the main catalogue</p></li>
+<li><p>harvesters.</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-default">
+<img alt="../../_images/portal-types.png" src="../../_images/portal-types.png" />
+</figure>
+<p>The main catalogue corresponds to the current installation.</p>
+<p>When harvesting, at least one source is created to represent the harvester. When harvesting from another GeoNetwork node,
+sources from the target catalogue are also harvested to keep track of the true origin of records. This only applies
+to the GeoNetwork protocols which use MEF (:<a class="reference internal" href="../../annexes/mef-format.html#mef-format"><span class="std std-ref">Metadata Exchange Format (MEF)</span></a>) which contain the source catalogue information.</p>
+<p>The last type is sub-portal, which is described in details below.</p>
+<section id="configuring-a-sub-portal">
+<h2>Configuring a sub-portal<a class="headerlink" href="#configuring-a-sub-portal" title="Permalink to this heading">¶</a></h2>
+<p>Sub-portals can be used to create a space in the main catalogue only focusing on a subset of records.</p>
+<p>A sub-portal is defined by:</p>
+<figure class="align-default">
+<img alt="../../_images/portal-subportal.png" src="../../_images/portal-subportal.png" />
+</figure>
+<p>When creating a sub-portal with an identifier <code class="docutils literal notranslate"><span class="pre">ìnspire</span></code> for example, a new entry point on your catalogue will be available:
+<a class="reference external" href="http://localhost:8080/geonetwork/inspire/">http://localhost:8080/geonetwork/inspire/</a>. Accessing the catalogue through it will only provide access to records
+matching the filter defined for this sub-portal. The <code class="docutils literal notranslate"><span class="pre">search</span> <span class="pre">filter</span></code> parameter value uses the Lucene query parser syntax
+(see <a class="reference external" href="http://lucene.apache.org/java/2_9_1/queryparsersyntax.html">http://lucene.apache.org/java/2_9_1/queryparsersyntax.html</a>) and is applied to all searches.</p>
+<p>User privileges apply as in the main instance.</p>
+<p>The logo and name of the sub-portal will be displayed instead of the main instance information:</p>
+<figure class="align-default">
+<img alt="../../_images/portal-header.png" src="../../_images/portal-header.png" />
+</figure>
+<p>A CSW service is also available for this sub-portal <a class="reference external" href="http://localhost:8080/geonetwork/inspire/eng/csw">http://localhost:8080/geonetwork/inspire/eng/csw</a> (and replacing the virtual CSW feature).</p>
+<p>A sub-portal can also use a specific user interface configuration.</p>
+<p>The list of sub-portal available is at <a class="reference external" href="http://localhost:8080/geonetwork/srv/api/sources">http://localhost:8080/geonetwork/srv/api/sources</a></p>
+<figure class="align-default">
+<img alt="../../_images/portal-list.png" src="../../_images/portal-list.png" />
+</figure>
+</section>
+<section id="example-of-usage">
+<h2>Example of usage<a class="headerlink" href="#example-of-usage" title="Permalink to this heading">¶</a></h2>
+<section id="creating-an-inspire-directive-sub-portal">
+<h3>Creating an INSPIRE directive sub-portal<a class="headerlink" href="#creating-an-inspire-directive-sub-portal" title="Permalink to this heading">¶</a></h3>
+<p>For the INSPIRE directive, a catalogue administrator needs to publish an entry point providing access only to INSPIRE related records. An INSPIRE sub-portal can be created with a filter on keywords <code class="docutils literal notranslate"><span class="pre">+thesaurusName:&quot;GEMET</span> <span class="pre">-</span> <span class="pre">INSPIRE</span> <span class="pre">themes,</span> <span class="pre">version</span> <span class="pre">1.0&quot;</span></code>.</p>
+</section>
+<section id="creating-a-sub-portal-for-partners">
+<h3>Creating a sub-portal for partners<a class="headerlink" href="#creating-a-sub-portal-for-partners" title="Permalink to this heading">¶</a></h3>
+<p>Some organizations need to open the catalogue to a set of partners. In such cases, each partner generally accesses the catalogue and creates their records in dedicated groups. A good example is <a class="reference external" href="https://www.geocat.ch/">https://www.geocat.ch/</a>
+providing a main search filter <code class="docutils literal notranslate"><span class="pre">catalogue</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/portal-geocatch.png" src="../../_images/portal-geocatch.png" />
+</figure>
+<p>The concept of a sub-portal allows the possibility of creating a dedicated URL for each partner. The header can contain the partner identification with name and logo. Optionally the user interface can also be customized (see <a class="reference internal" href="user-interface-configuration.html#user-interface-configuration"><span class="std std-ref">User Interface Configuration</span></a>).</p>
+<p>To setup this kind of configuration, the basic principle is to have:</p>
+<ul class="simple">
+<li><p>One group for each partner with one or more users</p></li>
+<li><p>One sub-portal for each partner with a filter matching records in that group</p></li>
+</ul>
+<p>To configure this, apply the following steps:</p>
+<ul class="simple">
+<li><p>Create a group for the partner eg. <code class="docutils literal notranslate"><span class="pre">oca</span></code> (see <a class="reference internal" href="../managing-users-and-groups/creating-group.html#creating-group"><span class="std std-ref">Creating group</span></a>).</p></li>
+<li><p>Create at least one user for the partner (see <a class="reference internal" href="../managing-users-and-groups/creating-user.html#creating-user"><span class="std std-ref">Creating user</span></a>). The user must be member of the group <code class="docutils literal notranslate"><span class="pre">oca</span></code>. If you want the user to be able to configure the sub-portal (eg. change the name, choose a logo), the user must have at least the <code class="docutils literal notranslate"><span class="pre">UserAdmin</span></code> profile for the group <code class="docutils literal notranslate"><span class="pre">oca</span></code>.</p></li>
+<li><p>Create a sub-portal. This can have the same name as the group, eg. <code class="docutils literal notranslate"><span class="pre">oca</span></code> but this is not essential. The filter can be created using the fact that a record published in the group <code class="docutils literal notranslate"><span class="pre">oca</span></code> should be in this sub-portal, using the syntax <code class="docutils literal notranslate"><span class="pre">+_groupPublished:oca</span></code>. Once created the sub-portal is accessible at <a class="reference external" href="http://localhost:8080/geonetwork/oca">http://localhost:8080/geonetwork/oca</a>.</p></li>
+<li><p>(Optional) Link the sub-portal to a user admin group to allow <code class="docutils literal notranslate"><span class="pre">UserAdmin</span></code> to configure their sub-portal.</p></li>
+</ul>
+<p>With this type configuration, ie. one partner = one group = one sub-portal and users are only member of one group, then when connecting to a partner sub-portal:</p>
+<ul class="simple">
+<li><p>user will only see records published in that group in the entire application</p></li>
+<li><p>when creating new records, no group selection is provided because user is member of one group only</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/portal-oca-newrecord.png" src="../../_images/portal-oca-newrecord.png" />
+</figure>
+<p>Remember that a record is visible in the <code class="docutils literal notranslate"><span class="pre">oca</span></code> sub-portal because it is published in the group <code class="docutils literal notranslate"><span class="pre">oca</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/portal-oca-privileges.png" src="../../_images/portal-oca-privileges.png" />
+</figure>
+<p>If the <code class="docutils literal notranslate"><span class="pre">publish</span></code> operation is removed from <code class="docutils literal notranslate"><span class="pre">oca</span></code> group, then records will not longer be visible in that sub-portal.</p>
+<p>In some situations, you also want to share templates among partners. There are 2 options for this:</p>
+<ul class="simple">
+<li><p>Publish the template in all partner’s groups. The main drawback in this case is that if a new group is added, the templates need to be published to that new group.</p></li>
+<li><p>Create a dedicated group for shared records eg. <code class="docutils literal notranslate"><span class="pre">sharedGroup</span></code>. Publish templates in that shared space. Alter the sub-portal filter to match either the partner group or the shared one. <code class="docutils literal notranslate"><span class="pre">+_groupPublished:(oca</span> <span class="pre">OR</span> <span class="pre">sharedGroup)</span></code>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="csw-configuration.html" class="btn btn-neutral float-left" title="Configuring CSW" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="virtual-csw-configuration.html" class="btn btn-neutral float-right" title="Configuring virtual CSW" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
