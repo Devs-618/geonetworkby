@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing documentation &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Style Guide" href="style-guide.html" />
+    <link rel="prev" title="Contributing guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-docs">Building the docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-standards-docs">Building the standards docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-the-restructuredtext-files">Editing the reStructuredText files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Sphinx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dont-introduce-any-new-warnings">Don’t introduce any new warnings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#links">Links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#substitutions">Substitutions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#versionadded-versionchanged-and-deprecated">versionadded, versionchanged and deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#seealso">seealso</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#translating-the-doc">Translating the doc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html">Translating the application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html#translating-a-standard">Translating a standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="making-a-pull-request.html">Making a pull request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doing-a-release.html">Doing a GeoNetwork release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Contributing guide</a> &raquo;</li>
+      <li>Writing documentation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/contributing/writing-documentation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-documentation">
+<span id="id1"></span><h1>Writing documentation<a class="headerlink" href="#writing-documentation" title="Permalink to this heading">¶</a></h1>
+<p>This section provides some guidelines for writing consistent documentation
+for GeoNetwork.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The quickest and easiest way to contribute to the documentation is to sign up
+for a <a class="reference external" href="https://github.com/">GitHub account</a> and edit the documentation pages by clicking the
+“Edit on GitHub” link at the top of the page. (See <a class="reference external" href="https://github.com/geonetwork/doc">code repository doc</a>).</p>
+</div>
+<section id="building-the-docs">
+<h2>Building the docs<a class="headerlink" href="#building-the-docs" title="Permalink to this heading">¶</a></h2>
+<p>The following tools are required to build the documentation from source:</p>
+<ul class="simple">
+<li><p><strong>Java JDK 1.8</strong>, <strong>Python</strong></p></li>
+<li><p><strong>Maven 3.1.0+</strong>: Once installed <a class="reference external" href="https://maven.apache.org">Maven</a> should be available in your command shell as <code class="docutils literal notranslate"><span class="pre">mvn</span></code>.</p></li>
+<li><p><strong>make</strong>: Once installed <a class="reference external" href="https://www.gnu.org/software/make/">make</a> should be available in your command shell as <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p></li>
+<li><p><strong>Sphinx</strong>: See <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/installation.html">Sphinx</a>  for details. Once installed confirm it’s available by running <code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">--version</span></code>.</p></li>
+<li><p><strong>sphinx-bootstrap-theme</strong>.</p></li>
+</ul>
+<p>To install the build tools:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>make
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-pip
+sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>sphinx
+sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-bootstrap-theme
+sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>sphinx_rtd_theme
+</pre></div>
+</div>
+<p>Then build the documentation in English using the following commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/geonetwork/doc
+<span class="nb">cd</span><span class="w"> </span>doc
+mvn<span class="w"> </span>clean<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Once the documentation has built without errors, access the html files from <code class="docutils literal notranslate"><span class="pre">doc\target\en\index.html</span></code>.</p>
+<p>To build all documentation in several languages (right now: es,fr,ge,it,ko,nl,cz,ca,fi,is), based on Transifex translations:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-Pall
+</pre></div>
+</div>
+<p>If you want to get the latest translations for your build, run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-Platest,all
+</pre></div>
+</div>
+</section>
+<section id="building-the-standards-docs">
+<h2>Building the standards docs<a class="headerlink" href="#building-the-standards-docs" title="Permalink to this heading">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Documentation about the standards and the editor configuration is built from the GeoNetwork source code using the <code class="docutils literal notranslate"><span class="pre">schema-doc</span></code> plugin. So do not manually edit the following files:</p>
+</div>
+<ul class="simple">
+<li><p>docs/manuals/source/annexes/standards/*</p></li>
+<li><p>docs/manuals/source/customizing-application/editor-ui/creating-custom-editor.rst</p></li>
+</ul>
+<p>Do not translate those files in Transifex. Translation must be done in the plugin itself.
+To update those files, clone the GeoNetwork repository and use the following commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs/schema-doc
+mvn<span class="w"> </span>clean<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Check the updated files and commit to the doc repository.</p>
+</section>
+<section id="editing-the-restructuredtext-files">
+<h2>Editing the reStructuredText files<a class="headerlink" href="#editing-the-restructuredtext-files" title="Permalink to this heading">¶</a></h2>
+<p>To update the documentation, use a text editor to edit <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files. Ensure you are using the correct terminology by
+checking <a class="reference internal" href="style-guide.html#style-guide"><span class="std std-ref">Style Guide</span></a>. Save
+your changes, build the documentation and open the HTML files to preview
+the changes. When your changes are ready to be submitted to the project, follow
+the steps in <a class="reference internal" href="making-a-pull-request.html#making-a-pull-request"><span class="std std-ref">Making a pull request</span></a>.</p>
+</section>
+<section id="id2">
+<h2>Sphinx<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<p>This section gives some useful tips about using Sphinx.</p>
+<section id="dont-introduce-any-new-warnings">
+<h3>Don’t introduce any new warnings<a class="headerlink" href="#dont-introduce-any-new-warnings" title="Permalink to this heading">¶</a></h3>
+<p>When building the docs, Sphinx prints out warnings about broken links,
+syntax errors and so on. Don’t introduce new ones.</p>
+<p>It’s best to delete the build directory and completely rebuild the docs,
+to check for any warnings:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>clean<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="links">
+<h3>Links<a class="headerlink" href="#links" title="Permalink to this heading">¶</a></h3>
+<section id="images">
+<h4>Images<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h4>
+<p>Place images in an <code class="docutils literal notranslate"><span class="pre">img</span></code> folder in the directory where the rst file is
+located. Use images with:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> img/thumbprint.png
+</pre></div>
+</div>
+</section>
+<section id="code-block">
+<h4>Code block<a class="headerlink" href="#code-block" title="Permalink to this heading">¶</a></h4>
+<p>Use the following directive to highlight code block:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> xml
+</pre></div>
+</div>
+</section>
+<section id="reference-to-a-section-within-a-file">
+<h4>Reference to a section within a file<a class="headerlink" href="#reference-to-a-section-within-a-file" title="Permalink to this heading">¶</a></h4>
+<p>When creating a new page, add a reference on top of the file:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_writing-documentation:</span>
+</pre></div>
+</div>
+<p>This reference could then be used to link to that page or section:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:ref:</span><span class="nv">`writing_documentation`</span>
+</pre></div>
+</div>
+</section>
+<section id="link-to-github-resources">
+<h4>Link to GitHub resources<a class="headerlink" href="#link-to-github-resources" title="Permalink to this heading">¶</a></h4>
+<p>The conf.py contains a set of <a class="reference external" href="http://sphinx-doc.org/latest/ext/extlinks.html">external links definition</a>.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="m">*</span> <span class="na">:issue:</span><span class="nv">`123`</span> to link to an issue
+<span class="m">*</span> <span class="na">:pr:</span><span class="nv">`123`</span> to link to a pull request
+<span class="m">*</span> <span class="na">:code:</span><span class="nv">`web/pom.xml`</span> to link to a file in the source code
+<span class="m">*</span> <span class="na">:repo:</span><span class="nv">`schema_plugins`</span> to link to a repository
+<span class="m">*</span> <span class="na">:wiki:</span><span class="nv">`Meeting2015Bern`</span> to link to a wiki page
+</pre></div>
+</div>
+<p>Example, link to the Bern User Meeting (See <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/wiki/Meeting2015Bern">wiki page Meeting2015Bern</a>).</p>
+</section>
+</section>
+<section id="substitutions">
+<h3>Substitutions<a class="headerlink" href="#substitutions" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="http://sphinx-doc.org/rest.html#substitutions">Substitutions</a> are useful
+to define a value that’s needed in many places (eg. the location
+of a file, etc.).</p>
+<p>The values are defined in <code class="docutils literal notranslate"><span class="pre">rst_epilog</span></code> in conf.py:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">|jdbc.properties|</span> <span class="ow">replace</span><span class="p">::</span> WEB-INF/config-db/jdbc.properties
+</pre></div>
+</div>
+<p>Use them when appropriate:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Configure the database in |jdbc.properties| ...
+
+
+After installation look to |install.homepage|_ on your web browser.
+</pre></div>
+</div>
+</section>
+<section id="versionadded-versionchanged-and-deprecated">
+<h3>versionadded, versionchanged and deprecated<a class="headerlink" href="#versionadded-versionchanged-and-deprecated" title="Permalink to this heading">¶</a></h3>
+<p>Use Sphinx’s <code class="docutils literal notranslate"><span class="pre">versionadded</span></code> and <code class="docutils literal notranslate"><span class="pre">versionchanged</span></code> directives to mark new or
+changed features. For example:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Creating overview from WMS</span>
+<span class="gh">==========================</span>
+
+<span class="p">..</span> <span class="ow">versionadded</span><span class="p">::</span> 3.0
+
+In the <span class="ge">*add overview panel*</span>, select the <span class="ge">*add from WMS*</span> link to create
+an image from the WMS referenced in the metadata record to illustrate
+the dataset in a specific area.
+
+<span class="cp">...</span>
+</pre></div>
+</div>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">versionchanged</span></code> directive, a sentence explaining what
+changed is usually relevant:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Configuring LDAP</span>
+<span class="gh">================</span>
+
+<span class="p">..</span> <span class="ow">versionchanged</span><span class="p">::</span> 2.10.0
+   Previous versions was setting LDAP parameters from the administration
+   panel.
+
+<span class="cp">...</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">deprecated</span></code> directive when a feature is no longer available.</p>
+</section>
+<section id="seealso">
+<h3>seealso<a class="headerlink" href="#seealso" title="Permalink to this heading">¶</a></h3>
+<p>Many sections include a list of references to module documentation or external
+documents. These lists are created using the <code class="docutils literal notranslate"><span class="pre">seealso</span></code> directive
+typically placed in a section just before any subsections.</p>
+</section>
+</section>
+<section id="translating-the-doc">
+<h2>Translating the doc<a class="headerlink" href="#translating-the-doc" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://github.com/geonetwork/doc">Github doc repository</a> contains the English version of the documentation. All translations should be done on Transifex web interface. No properties files should be committed to this repository.</p>
+<p>If you add some new section or update the text on an existing section, you have to update the Transifex fields to make sure this change is spread to all languages. To achieve this, execute:</p>
+<p>To download the translations from Transifex, you will need the Transifex command line client:
+<a class="reference external" href="https://docs.transifex.com/client/installing-the-client">https://docs.transifex.com/client/installing-the-client</a>. The Transifex Client is written in Python, so it runs on most systems. The easiest way to install it is with pip.</p>
+<p>To install the build tools:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-intl
+sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>transifex-client
+</pre></div>
+</div>
+<p>Once installed, you need to configure your Transifex user: <a class="reference external" href="https://docs.transifex.com/client/client-configuration">https://docs.transifex.com/client/client-configuration</a> in <cite>~/.transifexrc</cite>. This config file is unique per user, and it is stored in your home directory.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[https://www.transifex.com]
+username = your_username/api
+token =
+password = p@ssw0rd/api_token
+hostname = https://www.transifex.com
+</pre></div>
+</div>
+<p>Update translations on Transifex:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>update_translations
+</pre></div>
+</div>
+<p>If you want to add a new language to the build, you will have to edit the file <a class="reference external" href="https://github.com/geonetwork/doc/blob/develop/Makefile#L65">https://github.com/geonetwork/doc/blob/develop/Makefile#L65</a> and add the languages you want to build the documentation for.</p>
+<p>If you want it to be publicly available on <a class="reference external" href="https://geonetwork-opensource.org">https://geonetwork-opensource.org</a> webpage, make sure you make a PR with the change and ask for advice on the <a class="reference external" href="https://github.com/geonetwork/website">https://github.com/geonetwork/website</a> project.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Contributing guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="style-guide.html" class="btn btn-neutral float-right" title="Style Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

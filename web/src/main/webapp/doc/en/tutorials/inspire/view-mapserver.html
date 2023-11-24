@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial setting up INSPIRE view service with GeoNetwork and Mapserver &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial setting up an Atom/OpenSearch based INSPIRE download service" href="download-atom.html" />
+    <link rel="prev" title="Tutorial setting up INSPIRE view service with GeoNetwork and GeoServer" href="view-geoserver.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Introduction to GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customui/index.html">Customize your GeoNetwork UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hookcustomizations/index.html">Hook your own code</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="view-geoserver.html">Tutorial setting up INSPIRE view service with GeoNetwork and GeoServer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tutorial setting up INSPIRE view service with GeoNetwork and Mapserver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">MapServer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geonetwork">GeoNetwork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#return-to-mapserver-mapfile">Return to MapServer Mapfile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validate-the-implementation">Validate the implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download-atom.html">Tutorial setting up an Atom/OpenSearch based INSPIRE download service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="download-geoserver.html">Tutorial setting up a WFS based INSPIRE download service with GeoServer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      <li>Tutorial setting up INSPIRE view service with GeoNetwork and Mapserver</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/inspire/view-mapserver.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-setting-up-inspire-view-service-with-geonetwork-and-mapserver">
+<span id="tuto-view-mapserver"></span><h1>Tutorial setting up INSPIRE view service with GeoNetwork and Mapserver<a class="headerlink" href="#tutorial-setting-up-inspire-view-service-with-geonetwork-and-mapserver" title="Permalink to this heading">¶</a></h1>
+<p>This tutorial shows how one can set up a combination of <a class="reference external" href="http://mapserver.org">MapServer</a> and GeoNetwork to provide view services following <a class="reference external" href="http://inspire.ec.europa.eu/documents/Network_Services/TechnicalGuidance_ViewServices_v3.1.pdf">technical guidelines for view services</a>.</p>
+<section id="id1">
+<h2>MapServer<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<p>How to set up an INSPIRE view service in Mapserver is documented in <a class="reference external" href="http://www.mapserver.org/ogc/inspire.html">mapserver documentation</a>. In this tutorial we use the reference service metadata approach:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>WEB
+ METADATA
+  &quot;wms_inspire_capabilities&quot; &quot;url&quot;
+ END
+END
+</pre></div>
+</div>
+</section>
+<section id="geonetwork">
+<h2>GeoNetwork<a class="headerlink" href="#geonetwork" title="Permalink to this heading">¶</a></h2>
+<p>When deploying Geonetwork, make sure the GEMET thesauri are loaded and activate the INSPIRE editor as described in <a class="reference internal" href="../../administrator-guide/configuring-the-catalog/inspire-configuration.html#inspire-configuration"><span class="std std-ref">Geonetwork documentation</span></a>.</p>
+<p>In Admin &gt; Settings activate the INSPIRE extension.</p>
+<img alt="../../_images/image_3.png" src="../../_images/image_3.png" />
+<p>For each dataset that you are going to publish create an iso19115 record using the INSPIRE template. Link each record to the view service as created in mapserver: eg <cite>https://{url}/cgi-bin/mapserv?map={mapfile}&amp;request=getcapabilities&amp;service=wms&amp;version=1.3.0</cite></p>
+<img alt="../../_images/image_5.png" src="../../_images/image_5.png" />
+<p>Make sure the metadata contains the same gmd:code (and authority) as available in WMS getcapabilities.</p>
+<p>Create an OGC harvester that is able to extract a metadata for service (iso19119) record from the WMS. Run the harvester and note down the identifier of the created service metadata.</p>
+</section>
+<section id="return-to-mapserver-mapfile">
+<h2>Return to MapServer Mapfile<a class="headerlink" href="#return-to-mapserver-mapfile" title="Permalink to this heading">¶</a></h2>
+<p>For each layer configuration add a metadata url of type text/xml. Other relevant parameters are the authority element and the dataset identifier.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>LAYER
+ NAME &quot;mylayer&quot;
+ METADATA
+  wms_dataurl_format &quot;application/vnd.ogc.csw.GetRecordByIdResponse_xml&quot;
+  wms_dataurl_href &quot;http://geonetwork/srv/api/records/f4f137aa-a2bf-4033-91ef-2cfdbe500690&quot;
+  wms_authorityurl_name &quot;inspire&quot;
+  wms_authorityurl_href &quot;http://inspire.ec.europa.eu/&quot;
+  wms_identifier_authority &quot;inspire&quot;
+  wms_identifier_value &quot;0a636f43-016c-474a-ab28-1f3d75e9fcae&quot;
+ END
+END
+</pre></div>
+</div>
+<p>For the service definition add a link to the service metadata</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>WEB
+ METADATA
+  &quot;wms_inspire_capabilities&quot; &quot;url&quot;
+  &quot;wms_languages&quot; &quot;eng&quot;
+  &quot;wms_inspire_metadataurl_href&quot; &quot;http://geonetwork/srv/api/records/d461302e-5ec8-415d-9a6d-05de37184b03&quot;
+  &quot;wms_inspire_metadataurl_format&quot; &quot;application/vnd.ogc.csw.GetRecordByIdResponse_xml&quot;
+  &quot;wms_keywordlist_ISO_items&quot; &quot;infoMapAccessService&quot;
+ END
+END
+</pre></div>
+</div>
+</section>
+<section id="validate-the-implementation">
+<h2>Validate the implementation<a class="headerlink" href="#validate-the-implementation" title="Permalink to this heading">¶</a></h2>
+<p>If you are running the above setup online, you can use the <a class="reference external" href="http://inspire-geoportal.ec.europa.eu/validator2/">pilot JRC INSPIRE validator</a>. If the above setup is running locally, you can use <a class="reference external" href="https://github.com/Geonovum/etf-test-projects-inspire">Esdin Test Framework</a> to validate the INSPIRE setup.</p>
+<img alt="../../_images/image_6.png" src="../../_images/image_6.png" />
+<p>Running the test frequently during development helps to identify issues in an early stage.</p>
+</section>
+<section id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this heading">¶</a></h2>
+<p>There is a known issue in the capabilities to metadata linkage. The JRC validator requires a gmd:RS_Identifier inside gmd:code having the authority and dataset identifier modeled separately. However the technical guidelines suggest a gmd:MD_Identifier inside gmd:code, the authority can then be included as a prefix, eg <cite>&lt;gmd:MD_Identifier&gt;{authority}#{uuid}&lt;gmd:MD_Identifier&gt;</cite></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="view-geoserver.html" class="btn btn-neutral float-left" title="Tutorial setting up INSPIRE view service with GeoNetwork and GeoServer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="download-atom.html" class="btn btn-neutral float-right" title="Tutorial setting up an Atom/OpenSearch based INSPIRE download service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

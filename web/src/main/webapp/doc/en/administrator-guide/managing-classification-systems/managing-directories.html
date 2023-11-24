@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing directories &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Managing thesaurus" href="managing-thesaurus.html" />
+    <link rel="prev" title="Managing categories" href="managing-categories.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Administrator guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Configuring the catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-users-and-groups/index.html">Managing users and groups</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Managing classification system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="managing-categories.html">Managing categories</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Managing directories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-directories-of-subtemplates">Managing Directories of subtemplates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insert-a-directory-entry-in-a-metadata-record">Insert a directory entry in a metadata record</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extracting-subtemplates-from-metadata-records">Extracting subtemplates from metadata records</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synchronizing-subtemplates-with-metadata-records">Synchronizing subtemplates with metadata records</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-the-fragment-cache">Managing the fragment cache</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="managing-thesaurus.html">Managing thesaurus</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Administrator guide</a> &raquo;</li>
+          <li><a href="index.html">Managing classification system</a> &raquo;</li>
+      <li>Managing directories</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-classification-systems/managing-directories.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-directories">
+<span id="id1"></span><h1>Managing directories<a class="headerlink" href="#managing-directories" title="Permalink to this heading">¶</a></h1>
+<p>The catalog supports metadata records that are composed from fragments of metadata. The idea is that the fragments of metadata can be used in more than one metadata record.</p>
+<p>Here is a typical example of a fragment. This is a responsible party and it could be used in the same metadata record more than once or in more than one metadata record if applicable.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:CI_ResponsibleParty</span><span class="w"> </span><span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span><span class="w"> </span><span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:individualName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>John<span class="w"> </span>D&#39;Ath<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:individualName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>Mulligan<span class="w"> </span><span class="ni">&amp;amp;</span><span class="w"> </span>Sons,<span class="w"> </span>Funeral<span class="w"> </span>Directors<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:positionName&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>Undertaker<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:positionName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;./resources/codeList.xml#CI_RoleCode&quot;</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+</pre></div>
+</div>
+<p>Metadata fragments that are saved in the catalogue database are called subtemplates.
+This is mainly for historical reasons as a subtemplate is like a template metadata record
+in that it can be used as a ‘template’ for constructing a new metadata record.</p>
+<p>Fragments can be inserted in metadata record in 2 modes:</p>
+<ul class="simple">
+<li><p>by copy/paste</p></li>
+<li><p>by link (if xlink support is enabled. See <a class="reference internal" href="../configuring-the-catalog/system-configuration.html#xlink-config"><span class="std std-ref">Metadata XLink</span></a>)</p></li>
+</ul>
+<p>When using XLinks, if the fragment is updated, then the related fragment in all metadata records will also be updated (check the XLink cache).</p>
+<p>Fragments may be created by harvesting (see <a class="reference internal" href="../../user-guide/harvesting/index.html#harvesting-fragments"><span class="std std-ref">Harvesting Fragments of Metadata to support re-use</span></a>) or imported using the metadata import page.</p>
+<p>This section of the manual describes:</p>
+<ul class="simple">
+<li><p>how to manage directories of subtemplates</p></li>
+<li><p>how to extract fragments from an existing set of metadata records and store them as subtemplates</p></li>
+<li><p>how to manage the fragment cache used to speed up access to fragments that are not in the local catalogue</p></li>
+</ul>
+<section id="managing-directories-of-subtemplates">
+<h2>Managing Directories of subtemplates<a class="headerlink" href="#managing-directories-of-subtemplates" title="Permalink to this heading">¶</a></h2>
+<p>There are some differences between the handling of subtemplates and metadata records.
+Unlike metadata records, subtemplates do not have a consistent root element,
+the metadata schema they use may not be recognizable, they do not appear
+in the main search results (unless they are part of a metadata record). Therefore, the
+editor board allows you to search and manage privileges for directory entries.</p>
+<figure class="align-default">
+<img alt="../../_images/directories-search.png" src="../../_images/directories-search.png" />
+</figure>
+<p>From the editor board, choose <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">directory</span></code> to access the editor for directory entries:</p>
+<figure class="align-default">
+<img alt="../../_images/directories-manager.png" src="../../_images/directories-manager.png" />
+</figure>
+<p>If you do not see the <code class="docutils literal notranslate"><span class="pre">Organizations</span> <span class="pre">and</span> <span class="pre">Contacts</span></code> tab then ensure that you have created subtemplates for contacts for your metadata profile, and that you have loaded them using the <code class="docutils literal notranslate"><span class="pre">Metadata</span> <span class="pre">and</span> <span class="pre">Templates</span></code> section.</p>
+<p>From this page, editors can choose a type of directory using the top tabs, edit/remove/import new subtemplates.</p>
+<p>To import new entries, use the metadata import page and choose the appropriate type of record:</p>
+<figure class="align-default">
+<img alt="../../_images/directories-import.png" src="../../_images/directories-import.png" />
+</figure>
+<p>Like metadata records, they are allocated an integer id and are stored in the catalog metadata table (with template field set to “y”).</p>
+</section>
+<section id="insert-a-directory-entry-in-a-metadata-record">
+<h2>Insert a directory entry in a metadata record<a class="headerlink" href="#insert-a-directory-entry-in-a-metadata-record" title="Permalink to this heading">¶</a></h2>
+<p>From the metadata editor, the directory can be used to populate contacts for example.</p>
+<figure class="align-default">
+<img alt="../../_images/directories-editor-popup.png" src="../../_images/directories-editor-popup.png" />
+</figure>
+<p>Open the directory selector, choose a contact and then choose the contact role.</p>
+<figure class="align-default">
+<img alt="../../_images/directories-editor-popupopen.png" src="../../_images/directories-editor-popupopen.png" />
+</figure>
+</section>
+<section id="extracting-subtemplates-from-metadata-records">
+<h2>Extracting subtemplates from metadata records<a class="headerlink" href="#extracting-subtemplates-from-metadata-records" title="Permalink to this heading">¶</a></h2>
+<p>Many sites have existing metadata records with common information eg. contact
+information in an ISO CI_Contact element. Directory entries such as these can
+be extracted from a selected set of metadata records using the “Extract subtemplates” API.</p>
+<p>To use this function the following set of steps should be followed:</p>
+<ul class="simple">
+<li><p>Make sure you understand what an XPath is - see <a class="reference external" href="http://www.w3schools.com/xpath/default.asp">http://www.w3schools.com/xpath/default.asp</a> for example.</p></li>
+<li><p>Identify fragments of metadata that they would like to manage as reusable subtemplates in the metadata record. This can be done using an XPath. eg. the XPath <code class="docutils literal notranslate"><span class="pre">.//gmd:CI_ResponsibleParty</span></code> identifies all responsible party in a records. An example of such a fragment (taken from one of the sample records) is shown in the following example:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:individualName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>Jippe<span class="w"> </span>Hoogeveen<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:individualName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>FAO<span class="w"> </span>-<span class="w"> </span>NRCW<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:positionName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>Technical<span class="w"> </span>Officer<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:positionName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:contactInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:CI_Contact&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:phone&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Telephone&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:voice</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:voice&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:facsimile</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:facsimile&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Telephone&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:phone&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:address&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Address&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:deliveryPoint&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Viale<span class="w"> </span>delle<span class="w"> </span>Terme<span class="w"> </span>di<span class="w"> </span>Caracalla<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:deliveryPoint&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:city&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Rome<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:city&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:administrativeArea</span><span class="w"> </span><span class="na">gco:nilReason=</span><span class="s">&quot;missing&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:administrativeArea&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:postalCode&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>00153<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:postalCode&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:country&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Italy<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:country&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:electronicMailAddress&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>jippe.hoogeveen@fao.org<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:electronicMailAddress&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Address&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:address&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:CI_Contact&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:contactInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode&quot;</span>
+<span class="w">                       </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Identify and record the XPath of a field or fields within the fragment which text content will be used as the id of the subtemplate. This XPath should be relative to the root element of the fragment identified in the previous step. So for example, in the fragment above we could choose <code class="docutils literal notranslate"><span class="pre">.//gmd:electronicMailAddress/gco:CharacterString/text()</span></code> as the id for the fragments to be created.</p></li>
+<li><p>On the API page, choose the registries / collect operation:</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/directories-api-collect.png" src="../../_images/directories-api-collect.png" />
+</figure>
+<ul class="simple">
+<li><p>Fill in the form with the information collected in the previous steps.</p></li>
+<li><p>Extracted subtemplates can be previewed using the GET mode and once validated, use the PUT method to save results in the catalog.</p></li>
+</ul>
+<p>Finally, go to the subtemplate directory management interface and you should be able to select the root element of your subtemplates to examine the extracted subtemplates.</p>
+<p>Subtemplate indexing is based on the schema (see index-fields folder for details). Currently ISO19139 index subtemplates using as root element:</p>
+<ul class="simple">
+<li><p>gmd:CI_ResponsibleParty</p></li>
+<li><p>gmd:MD_Distribution</p></li>
+<li><p>gmd:CI_OnlineResource</p></li>
+<li><p>gmd:EX_Extent</p></li>
+</ul>
+</section>
+<section id="synchronizing-subtemplates-with-metadata-records">
+<h2>Synchronizing subtemplates with metadata records<a class="headerlink" href="#synchronizing-subtemplates-with-metadata-records" title="Permalink to this heading">¶</a></h2>
+<p>Once created, the catalog provides the capability to synchronize metadata records
+with directory entries. For this, use the API testing page.</p>
+<p>The synchronize process use the same parameters as the collecting process with 2 optionals arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">propertiesToCopy</span></code> to preserve some element which may be defined in the fragment in the metadata (eg. contact role)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">substituteAsXLink</span></code> to indicate if copy/paste mode or XLink mode should be used.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/directories-api-synch.png" src="../../_images/directories-api-synch.png" />
+</figure>
+</section>
+<section id="managing-the-fragment-cache">
+<h2>Managing the fragment cache<a class="headerlink" href="#managing-the-fragment-cache" title="Permalink to this heading">¶</a></h2>
+<p>If metadata records in your catalog link in fragments from external sites,
+the catalog caches these fragments after the first look up so as to reduce
+the amount of network traffic and speed up the display of metadata records in search results.</p>
+<p>The cache is handled automatically using the Java Cache System (JCS).
+JCS handles large caches intelligently by:</p>
+<ul class="simple">
+<li><p>defining a maximum number of cached objects</p></li>
+<li><p>using as much main memory as possible before moving to secondary storage (disk)</p></li>
+<li><p>providing cache persistence: the cache is saved to disk when the web application is shutdown and restores the cache from disk when restarting</p></li>
+</ul>
+<p>You can configure JCS parameters in GeoNetwork using the JCS configuration file in <strong>INSTALL_DIR/web/geonetwork/WEB-INF/classes/cache.ccf</strong>.</p>
+<p>Some operations in the catalog (such as harvesting) that generate metadata fragments,
+will automatically refresh the XLink cache when a new fragment is generated.
+However, if you are linking fragments from an external site, then depending
+on how often the change, you will need to manually refresh the XLink cache.
+To do this you should navigate to the Administration page and select the
+“Clear XLink Cache and Rebuild Index of Records with XLinks” function as
+highlighted in the following screenshot of the “Administration” page.</p>
+<figure class="align-default">
+<img alt="../../_images/directories-cache.png" src="../../_images/directories-cache.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="managing-categories.html" class="btn btn-neutral float-left" title="Managing categories" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="managing-thesaurus.html" class="btn btn-neutral float-right" title="Managing thesaurus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THREDDS Harvesting &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="WFS GetFeature Harvesting" href="harvesting-wfs-features.html" />
+    <link rel="prev" title="GeoPortal REST Harvesting" href="harvesting-geoportal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Describing information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Associating resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Classify information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Analyzing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Workflow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Harvesting</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geonetwork.html">GeoNetwork 2.0 Harvester</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-csw.html">Harvesting CSW services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-ogcwxs.html">Harvesting OGC Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-filesystem.html">Local File System Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-oaipmh.html">OAIPMH Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-sde.html">Harvesting an ARCSDE Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geoportal.html">GeoPortal REST Harvesting</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">THREDDS Harvesting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-thredds-catalog-harvester">Adding a THREDDS Catalog Harvester</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester">More about harvesting THREDDS DIF metadata elements with the THREDDS Harvester</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester">More about harvesting Unidata dataset discovery metadata with the THREDDS Harvester</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-wfs-features.html">WFS GetFeature Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-z3950.html">Z3950 Harvesting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#mechanism-overview">Mechanism overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-life-cycle">Harvesting life cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#multiple-harvesting-and-hierarchies">Multiple harvesting and hierarchies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-fragments-of-metadata-to-support-re-use">Harvesting Fragments of Metadata to support re-use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#https-support">HTTPS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-main-page">The main page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-status-and-error-icons">Harvesting Status and Error Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-result-tips">Harvesting result tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#adding-new-harvesters">Adding new harvesters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvest-history">Harvest History</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Exporting records</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">User guide</a> &raquo;</li>
+          <li><a href="index.html">Harvesting</a> &raquo;</li>
+      <li>THREDDS Harvesting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/harvesting/harvesting-thredds.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="thredds-harvesting">
+<span id="thredds-harvester"></span><h1>THREDDS Harvesting<a class="headerlink" href="#thredds-harvesting" title="Permalink to this heading">¶</a></h1>
+<p>THREDDS catalogs describe inventories of datasets. They are organised in a hierarchical manner, listing descriptive information and access methods for each dataset. They typically catalog netCDF datasets but are not restricted to these types of files.  This harvesting type crawls through a THREDDS catalog harvesting metadata for datasets and services described in it or in referenced netCDF datasets. This harvesting type can extract fragments of metadata from the THREDDS catalog, allowing the user to link or copy these fragments into a template to create metadata records.</p>
+<section id="adding-a-thredds-catalog-harvester">
+<h2>Adding a THREDDS Catalog Harvester<a class="headerlink" href="#adding-a-thredds-catalog-harvester" title="Permalink to this heading">¶</a></h2>
+<p>The available options are:</p>
+<ul>
+<li><p><strong>Site</strong></p>
+<blockquote>
+<div><ul>
+<li><p><em>Name</em> - This is a short description of the THREDDS catalog. It will be shown in the harvesting main page as the name of this THREDDS harvester instance.</p></li>
+<li><p><em>Catalog URL</em> - The remote URL of the THREDDS Catalog from which metadata will be harvested. This must be the xml version of the catalog (i.e. ending with .xml).  The harvester will crawl through all datasets and services defined in this catalog creating metadata for them as specified by the options described further below.</p></li>
+<li><p><em>Metadata language</em> - Use this option to specify the language of the metadata to be harvested.</p></li>
+<li><p><em>ISO topic category</em> - Use this option to specify the ISO topic category of service metadata.</p></li>
+<li><p><em>Create ISO19119 metadata for all services in catalog</em> - Select this option to generate iso19119 metadata for services defined in the THREDDS catalog (eg. OpenDAP, OGC WCS, ftp) and for the THREDDS catalog itself.</p></li>
+<li><p><em>Create metadata for Collection datasets</em> -  Select this option to generate metadata for each collection dataset (THREDDS dataset containing other datasets).  Creation of metadata can be customised using options that are displayed when this option is selected as described further below.</p></li>
+<li><p><em>Create metadata for Atomic datasets</em> - Select this option to generate metadata for each atomic dataset (THREDDS dataset not containing other datasets – for example cataloguing a netCDF dataset).  Creation of metadata can be customised using options that are displayed when this option is selected as described further below.</p>
+<blockquote>
+<div><ul>
+<li><p><em>Ignore harvesting attribute</em> - Select this option to harvest metadata for selected datasets regardless of the harvest attribute for the dataset in the THREDDS catalog.  If this option is not selected, metadata will only be created for datasets that have a harvest attribute set to true.</p></li>
+<li><p><em>Extract DIF metadata elements and create ISO metadata</em> - Select this option to generate ISO metadata for datasets in the THREDDS catalog that have DIF metadata elements.  When this option is selected a list of schemas is shown that have a DIFToISO.xsl stylesheet available (see for example <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/DIFToISO.xsl</span></code>). Metadata is generated by reading the DIF metadata items in the THREDDS into a DIF format metadata record and then converting that DIF record to ISO using the DIFToISO stylesheet.</p></li>
+<li><p><em>Extract Unidata dataset discovery metadata using fragments</em> - Select this option when the metadata in your THREDDS or netCDF/ncml datasets follows Unidata dataset discovery conventions (see <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html">http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html</a>). You will need to write your own stylesheets to extract this metadata as fragments and define a template to combine with the fragments. When this option is selected the following additional options will be shown:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Select schema for output metadata records</em> - choose the ISO metadata schema or profile for the harvested metadata records.  Note: only the schemas that have THREDDS fragment stylesheets will be displayed in the list (see the next option for the location of these stylesheets).</p></li>
+<li><p><em>Stylesheet to create metadata fragments</em> - Select a stylesheet to use to convert metadata for the dataset (THREDDS metadata and netCDF ncml where applicable) into metadata fragments. These stylesheets can be found in the directory convert/ThreddsToFragments in the schema directory eg. for iso19139 this would be <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/ThreddsToFragments</span></code>.</p></li>
+<li><p><em>Create subtemplates for fragments and XLink them into template</em> - Select this option to create a subtemplate (=metadata fragment stored in GeoNetwork catalog) for each metadata fragment generated.</p></li>
+<li><p><em>Template to combine with fragments</em> - Select a template that will be filled in with the metadata fragments generated for each dataset.  The generated metadata fragments are used to replace referenced elements in the templates with an xlink to a subtemplate if the <em>Create subtemplates</em> option is checked. If <em>Create subtemplates</em> is not checked, then the fragments are simply copied into the template metadata record.</p></li>
+<li><p>For Atomic Datasets , one additional option is provided <em>Harvest new or modified datasets only</em>. If this option is checked only datasets that have been modified or didn’t exist when the harvester was last run will be harvested.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>Create Thumbnails</em> - Select this option to create thumbnails for WMS layers in referenced WMS services</p></li>
+<li><p><em>Icon</em> - An icon to assign to harvested metadata. The icon will be used when showing search results.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Options</strong> - Scheduling Options.</p></li>
+<li><p><strong>Privileges</strong></p></li>
+<li><p><strong>Category for Service</strong> - Select the category to assign to the ISO19119 service records for the THREDDS services.</p></li>
+<li><p><strong>Category for Datasets</strong> - Select the category to assign the generated metadata records (and any subtemplates) to.</p></li>
+</ul>
+<p>At the bottom of the page there are the following buttons:</p>
+<ul class="simple">
+<li><p><strong>Back</strong> - Go back to the main harvesting page. The harvesting definition is not added.</p></li>
+<li><p><strong>Save</strong> - Saves this harvester definition creating a new harvesting instance. After the save operation has completed, the main harvesting page will be displayed.</p></li>
+</ul>
+</section>
+<section id="more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester">
+<h2>More about harvesting THREDDS DIF metadata elements with the THREDDS Harvester<a class="headerlink" href="#more-about-harvesting-thredds-dif-metadata-elements-with-the-thredds-harvester" title="Permalink to this heading">¶</a></h2>
+<p>THREDDS catalogs can include elements from the DIF metadata standard. The Unidata netcdf-java library provides a DIFWriter process that can create a DIF metadata record from these elements. GeoNetwork has a DIFToISO stylesheet to transform these DIF records to ISO.</p>
+</section>
+<section id="more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester">
+<h2>More about harvesting Unidata dataset discovery metadata with the THREDDS Harvester<a class="headerlink" href="#more-about-harvesting-unidata-dataset-discovery-metadata-with-the-thredds-harvester" title="Permalink to this heading">¶</a></h2>
+<p>The options described above for the <em>Extract Unidata dataset discovery metadata using fragments</em> (see <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html">http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html</a> for more details of these conventions) invoke the following process for each collection dataset or atomic dataset in the THREDDS catalog:</p>
+<ol class="arabic simple">
+<li><p>The harvester bundles up the catalog URI, a generated uuid, the THREDDS metadata for the dataset (generated using the catalog subset web service) and the ncml for netCDF datasets into a single xml document. An example is shown below.</p></li>
+<li><p>This document is then transformed using the specified stylesheet (see <em>Stylesheet</em> option above) to obtain a metadata fragments document.</p></li>
+<li><p>The metadata fragment harvester is then called to create subtemplates and/or metadata for the each dataset as requested</p></li>
+</ol>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<p>DIF Metadata elements on datasets in THREDDS catalogs are not as widely used as metadata elements that follow the Unidata dataset discovery metadata conventions. This example will show how to harvest metadata elements that follow the Unidata data discovery conventions (see <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html">http://www.unidata.ucar.edu/software/netcdf-java/formats/DataDiscoveryAttConvention.html</a>).</p>
+<p>Two reference stylesheets are provided as examples of how to harvest metadata fragments from a THREDDS catalog. One of these stylesheets, thredds-metadata.xsl, is for generating iso19139 metadata fragments from THREDDS metadata following Unidata dataset discovery conventions. The other stylesheet, netcdf-attributes.xsl, is for generating iso19139 fragments from netCDF datasets following Unidata dataset discovery conventions. These stylesheets are designed for use with the ‘HARVESTING TEMPLATE – THREDDS – DATA DISCOVERY’ template and can be found in the schema ‘convert’ directory eg. for ISO19139 this is <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/ThreddsToFragments</span></code>.</p>
+<p>A sample template ‘HARVESTING TEMPLATE – THREDDS – DATA DISCOVERY’ has been provided for use with the stylesheets described above for the iso19139 metadata schema. This template is in the schema ‘templates’ directory eg. for ISO19139, this is <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/templates/thredds-harvester-unidata-data-discovery.xml</span></code>. <em>Before</em> attempting to run this example, you should make sure that this template and others from the iso19139 schema have been loaded into GeoNetwork using the ‘Add templates’ function in the Administration menu.</p>
+<p>We’ll now give an example of how to set up a harvester and harvest THREDDS metadata from one of the public unidata motherlode catalogs at <a class="reference external" href="http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km/catalog.xml">http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km/catalog.xml</a>. If you were to paste this URL into your browser, you would see the XML representation of this THREDDS catalog. This is the document that is read and converted into metadata by the THREDDS harvester.</p>
+<p>In GeoNetwork, go into the Administration menu, choose Harvesting Management as described earlier. Add a THREDDS Catalog harvester. Fill out the harvesting management form.</p>
+<p>The first thing to notice is that the <em>Service URL</em> should be <a class="reference external" href="http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km/catalog.xml">http://motherlode.ucar.edu:8080/thredds/catalog/satellite/3.9/WEST-CONUS_4km/catalog.xml</a>. Make sure that you use the xml version of the catalog. If you use an html version, you will not be able to harvest any metadata.</p>
+<p>Now because this unidata motherload THREDDS catalog has lots of file level datasets (many thousands in fact), we will only harvest collection metadata. To do this you should check <em>Create metadata for Collection Datasets</em> and ignore the atomic datasets.</p>
+<p>Next, because the metadata in this catalog follows Unidata data discovery conventions, so we will choose <em>Extract Unidata dataset discovery metadata using fragments</em>.</p>
+<p>Next, we will check <em>Ignore harvesting attribute</em>. We do this because datasets in the THREDDS catalog can have an attribute indicating whether the dataset should be harvested or not. Since none of the datasets in this catalog have the harvesting attribute, we will ignore it. If we didn’t check this box, all the datasets would be skipped.</p>
+<p>Next we will select the metadata schema that the harvested metadata will be written out in. We will choose <em>iso19139</em> here because this is the schema for which we have stylesheets that will convert THREDDS metadata to fragments of iso19139 metadata and a template into which these fragments of metadata can be copied or linked. After choosing <em>iso19139</em>, choices will appear that show these stylesheets and templates.</p>
+<p>The first choice is the stylesheet that will create iso19139 metadata fragments. Because we are interested in the thredds metadata elements in the THREDDS catalog, we will choose the <em>(iso19139) thredds-metadata</em> (located in <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/convert/ThreddsToFragments</span></code>) to convert these elements to iso19139 metadata fragments.</p>
+<p>For the purposes of this demonstration, we will <em>not</em> check <em>Create subtemplates for fragments (xlinks…)</em>. This means that the fragments of metadata created by the stylesheet will be copied directly into the metadata template. They will not be able to be reused (eg. shared between different metadata records). See the earlier section on metadata fragments if you are not sure what this means.</p>
+<p>Finally, we will choose <em>HARVESTING TEMPLATE - THREDDS - UNIDATA DISCOVERY</em> as the template metadata record that will be combined with the metadata fragments to create the output records. This template will have been loaded into GeoNetwork from <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19139/templates/thredds-harvester-unidata-data-discovery.xml</span></code> through the Add Templates function in the Administration interface. This template could be filled out with metadata common to all records before the harvester is run. The process by which the template is used to create metadata records is as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>For each dataset in the THREDDS catalog, the template will be copied to create a new iso19139 metadata record</p></li>
+<li><p>Each fragment of metadata harvested from a THREDDS dataset will be copied into the new iso19139 metadata record by matching an identifier in the template with an identifier in the fragment (this match is created by the developer of the template and the stylesheet).</p></li>
+<li><p>The new record is then inserted into the GeoNetwork metadata catalog and the record content is indexed in Lucene for searching.</p></li>
+</ol>
+</div></blockquote>
+<p>You can then fill out the remainder of the form according to how often you want the harvested metadata to be updated, what categories will be assigned to the created metadata record, which icon will be displayed with the metadata records in the search results and what the privileges on the created metadata records will be.</p>
+<p>Save the harvester screen. Then from the harvesting management screen, check the box beside the newly created harvester, <em>Activate</em> it and then <em>Run</em> it. After a few moments (depending on your internet connection and machine) you should click on <em>Refresh</em>. If your harvest has been successful you should see a results panel appear something like the one shown in the following screenshot.</p>
+<p>Notice that there were 48 metadata records created for the 48 collection level datasets in this THREDDS catalog. Each metadata record was formed by duplicating the metadata template and then copying 13 fragments of metadata into it - hence the total of 624 fragments harvested.</p>
+<p>An example of one of the collection level metadata records created by the harvester in this example and rendered by GeoNetwork is shown below.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="harvesting-geoportal.html" class="btn btn-neutral float-left" title="GeoPortal REST Harvesting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harvesting-wfs-features.html" class="btn btn-neutral float-right" title="WFS GetFeature Harvesting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

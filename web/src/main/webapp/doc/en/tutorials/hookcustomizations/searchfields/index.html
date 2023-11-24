@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Fields &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorials" href="../../inspire/index.html" />
+    <link rel="prev" title="Schema Plugins" href="../schemaplugins/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">Introduction to GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../customui/index.html">Customize your GeoNetwork UI</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Hook your own code</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../newproject/index.html">Separate your code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../events/index.html">Using Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ui/index.html">Adding new User Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../schemaplugins/index.html">Schema Plugins</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Search Fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-new-field">Adding a new field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summaries">Summaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boost-fields">Boost fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="../index.html">Hook your own code</a> &raquo;</li>
+      <li>Search Fields</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/hookcustomizations/searchfields/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="search-fields">
+<span id="tuto-hookcustomizations-searchfields"></span><h1>Search Fields<a class="headerlink" href="#search-fields" title="Permalink to this heading">¶</a></h1>
+<p>Lucene is the search engine used by GeoNetwork. All Lucene configuration is defined in WEB-INF/config-lucene.xml.</p>
+<p>In some cases it’s relevant to modify or extend the search fields of the metadata index. For example to add a field (which is then searchable or can be used in a default view) or change the content of the field is created from the metadata (indexation).</p>
+<section id="adding-a-new-field">
+<h2>Adding a new field<a class="headerlink" href="#adding-a-new-field" title="Permalink to this heading">¶</a></h2>
+<p>Each schema contains a file index-fields/default.xsl where the fields stored on the index are defined. This is an xslt that runs over the xml of the metadata and creates the different field tags that Lucene will recognize and process.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="k">for</span><span class="o">-</span><span class="n">each</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;gmd:pointOfContact[1]/*/gmd:role/*/@codeListValue&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;responsiblePartyRole&quot;</span> <span class="n">string</span><span class="o">=</span><span class="s2">&quot;{string(.)}&quot;</span> <span class="n">store</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="k">for</span><span class="o">-</span><span class="n">each</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This fields can then be used as parameters on the Q service, to search by that field.</p>
+<p>Remember that after every change on the index configuration, a new index should be rebuilt.</p>
+</section>
+<section id="summaries">
+<h2>Summaries<a class="headerlink" href="#summaries" title="Permalink to this heading">¶</a></h2>
+<p>The Q service returns the list of search results, but also can return a summary of the results returned with the parameters “buildSummary=true” and “summaryType=$summary”.</p>
+<p>This summary is a list of the most common values for certain fields. This summaries are defined on web/src/main/webapp/WEB-INF/config-summary.xml:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">summaryType</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;results&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">item</span> <span class="n">facet</span><span class="o">=</span><span class="s2">&quot;keyword&quot;</span> <span class="nb">max</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">summaryType</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The items used on this summaries have to be defined on the upper tag called “facets”.</p>
+</section>
+<section id="boost-fields">
+<h2>Boost fields<a class="headerlink" href="#boost-fields" title="Permalink to this heading">¶</a></h2>
+<p>Sometimes we want some field to be more relevant on the search than others. We can boost those fields inside the tag fieldBoosting .The boost is a positive or negative float value.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fieldBoosting</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op0&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op1&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op2&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_dummy&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_isTemplate&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;2.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_owner&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;5.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">fieldBoosting</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>See more on <a class="reference internal" href="../../../customizing-application/configuring-search-fields.html#configuring-search-fields"><span class="std std-ref">Configuring search fields</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../schemaplugins/index.html" class="btn btn-neutral float-left" title="Schema Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../inspire/index.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

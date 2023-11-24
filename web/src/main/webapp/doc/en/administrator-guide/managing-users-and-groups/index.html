@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing users and groups &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Creating group" href="creating-group.html" />
+    <link rel="prev" title="Map servers configuration for geopublication" href="../configuring-the-catalog/map-server-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Administrator guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Configuring the catalog</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Managing users and groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="creating-group.html">Creating group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-user.html">Creating user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user-self-registration.html">User Self-Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentication-mode.html">Authentication mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-user">Default user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-session">User session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#users-groups-and-roles">Users, Groups and Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-classification-systems/index.html">Managing classification system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Administrator guide</a> &raquo;</li>
+      <li>Managing users and groups</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-users-and-groups/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-users-and-groups">
+<span id="id1"></span><h1>Managing users and groups<a class="headerlink" href="#managing-users-and-groups" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="creating-group.html">Creating group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating-user.html">Creating user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-self-registration.html">User Self-Registration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-self-registration.html#what-happens-when-a-user-self-registers">What happens when a user self-registers?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-self-registration.html#the-forgot-your-password-function">The ‘Forgot your password?’ function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-mode.html">Authentication mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-ldap">Configuring LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-ldap-hierarchy">Configuring LDAP - Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-cas">Configuring CAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-keycloak">Configuring Keycloak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-mode.html#configuring-shibboleth">Configuring Shibboleth</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="default-user">
+<span id="user-defaults"></span><h2>Default user<a class="headerlink" href="#default-user" title="Permalink to this heading">¶</a></h2>
+<p>Upon installation a default user with name <code class="docutils literal notranslate"><span class="pre">admin</span></code> and password <code class="docutils literal notranslate"><span class="pre">admin</span></code>
+is created. It is recommended to log in with these credentials directly after the installation has completed and to change the default password.</p>
+</section>
+<section id="user-session">
+<span id="id2"></span><h2>User session<a class="headerlink" href="#user-session" title="Permalink to this heading">¶</a></h2>
+<p>After the authentication process, a user session is created. This session will be closed
+automatically at some point by the server for security reasons. The default session
+timeout is set to 35 min (see <a class="reference internal" href="../../customizing-application/advanced-configuration.html#session-timeout-configuration"><span class="std std-ref">User session timeout configuration</span></a> for details).</p>
+<p>When there is no activity in the browser and the session is about
+to expire, a warning is displayed next to the user details 3 minutes before the timeout takes place:</p>
+<figure class="align-default">
+<img alt="../../_images/session-will-expire-soon.png" src="../../_images/session-will-expire-soon.png" />
+</figure>
+<p>One (1) minute before the timeout, another message is displayed:</p>
+<figure class="align-default">
+<img alt="../../_images/session-about-to-be-cancelled.png" src="../../_images/session-about-to-be-cancelled.png" />
+</figure>
+<p>When the session seems to have been destroyed by the catalog, a message recommends
+to refresh the page and sign in again if needed:</p>
+<figure class="align-default">
+<img alt="../../_images/session-has-expired.png" src="../../_images/session-has-expired.png" />
+</figure>
+</section>
+<section id="users-groups-and-roles">
+<span id="user-profiles"></span><h2>Users, Groups and Roles<a class="headerlink" href="#users-groups-and-roles" title="Permalink to this heading">¶</a></h2>
+<p>The catalog uses the concept of Users, Groups and User Profiles.</p>
+<ul class="simple">
+<li><p>A User can be part of one or more Groups.</p></li>
+<li><p>A User has a Role in a Group.</p></li>
+<li><p>The Administrator Role is not related to a Group.</p></li>
+</ul>
+<p>The combination of Role and Group defines what tasks the User can perform on the system or on specific metadata records.</p>
+<p>Users can have different roles in different groups.
+A role defines what tasks the user can perform.</p>
+<p>Roles are hierarchical and based on inheritance. This means that a user with an Editor profile can create and modify new metadata records, but can also use all functions a Registered user can use.</p>
+<p>Rights associated with the roles are illustrated in detail in the list below:</p>
+<ol class="arabic">
+<li><p><strong>Administrator Profile</strong></p>
+<p>The Administrator has special privileges that give access to all available functions.</p>
+<p>These include:</p>
+<ul class="simple">
+<li><p>Full rights for creating new groups and new users.</p></li>
+<li><p>Rights to change users/groups profiles.</p></li>
+<li><p>Full rights for creating/editing/deleting new/old metadata.</p></li>
+<li><p>Perform system administration and configuration tasks.</p></li>
+</ul>
+</li>
+<li><p><strong>User Administrator Profile</strong></p>
+<p>The user administrator is the administrator of his/her own group(s) with the
+following privileges:</p>
+<ul class="simple">
+<li><p>Full rights on creating new users within their own groups.</p></li>
+<li><p>Rights to change users profiles within their own groups.</p></li>
+</ul>
+</li>
+<li><p><strong>Content Reviewer Profile</strong></p>
+<p>The content reviewer is the only person allowed to give final clearance on the metadata publication on the Intranet and/or on the Internet:</p>
+<ul class="simple">
+<li><p>Rights on reviewing metadata content within their own groups and authorising its approval and publication.</p></li>
+</ul>
+</li>
+<li><p><strong>Editor Profile</strong></p>
+<p>The editor works on metadata with following privileges:</p>
+<ul class="simple">
+<li><p>Full rights on creating/editing/ deleting new/old data within their own groups.</p></li>
+</ul>
+</li>
+<li><p><strong>Registered User Profile</strong></p>
+<p>The Registered User has more access privileges than non-authenticated Guest users:</p>
+<ul class="simple">
+<li><p>Right to download protected data.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../configuring-the-catalog/map-server-configuration.html" class="btn btn-neutral float-left" title="Map servers configuration for geopublication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="creating-group.html" class="btn btn-neutral float-right" title="Creating group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

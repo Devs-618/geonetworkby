@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyze and visualize data &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Workflow" href="../workflow/index.html" />
+    <link rel="prev" title="Statistics on catalog content" href="metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Describing information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Associating resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Classify information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Publishing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Analyzing data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="metadata.html">Statistics on catalog content</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Analyze and visualize data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-accessible-using-download-services-wfs">Data accessible using download services (WFS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-type-customization">Feature type customization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Harvesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Exporting records</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">User guide</a> &raquo;</li>
+          <li><a href="index.html">Analyzing data</a> &raquo;</li>
+      <li>Analyze and visualize data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/analyzing/data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="analyze-and-visualize-data">
+<span id="analyzing-data"></span><h1>Analyze and visualize data<a class="headerlink" href="#analyze-and-visualize-data" title="Permalink to this heading">¶</a></h1>
+<section id="data-accessible-using-download-services-wfs">
+<h2>Data accessible using download services (WFS)<a class="headerlink" href="#data-accessible-using-download-services-wfs" title="Permalink to this heading">¶</a></h2>
+<p>All datasets described in metadata records and accessible through a
+download services (ie WFS) can be analyzed to improve search and data visualization.
+The catalog collect WFS features and index them.</p>
+<figure class="align-default">
+<img alt="../../_images/mechanism.png" src="../../_images/mechanism.png" />
+</figure>
+<p>Elasticsearch needs to be installed and configured (See <a class="reference internal" href="../../install-guide/installing-index.html#installing-index"><span class="std std-ref">Installing remote index</span></a>).</p>
+<p>Once collected, filtering is available in the map viewer for this layer. The filter
+interface provides faceting and export capabilities. The map viewer tries to connect
+to a WFS service by substituting WMS by WFS in the service URL. If a WFS service
+is responding with a feature type having the same name as the WMS, the filter panel
+provides the option to index the features. User needs to be identified to run the indexing task.</p>
+<figure class="align-default">
+<img alt="../../_images/layernotindexed.png" src="../../_images/layernotindexed.png" />
+</figure>
+<p>Once indexed, all users can access the filtering menu providing:</p>
+<ul class="simple">
+<li><p>a full text search on all fields</p></li>
+<li><p>a control to display or not the heatmap</p></li>
+<li><p>facets on all fields (computing automatically range facet for numbers)</p></li>
+<li><p>table action display all values</p></li>
+<li><p>filter action apply the filters to the WMS layers using SLD</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../../_images/filtering.png" src="../../_images/filtering.png" />
+</figure>
+<p>Click on the table menu to display the attributes. Double click a row in the table to zoom to
+a feature.</p>
+<figure class="align-default">
+<img alt="../../_images/tableview.png" src="../../_images/tableview.png" />
+</figure>
+<p>Spatial filters can also be applied.</p>
+<figure class="align-default">
+<img alt="../../_images/filteringlayer.png" src="../../_images/filteringlayer.png" />
+</figure>
+</section>
+<section id="feature-type-customization">
+<h2>Feature type customization<a class="headerlink" href="#feature-type-customization" title="Permalink to this heading">¶</a></h2>
+<p>By default, the filter panel is generated from Elasticsearch index. But you customise it for a specific WFS Feature Type.</p>
+<p>The customisation is done by a JSON config inserted in the gmd:applicationProfile section of the online resource in the metadata.</p>
+<p>Here the options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PNT_PROF&quot;</span><span class="p">,</span>
+  <span class="o">//</span> <span class="n">non</span> <span class="n">disponible</span> <span class="n">actuellement</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;fq&quot;</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;facet.interval&quot;</span><span class="p">:</span> <span class="s2">&quot;PNT_PROF_d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;facet.interval.set&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;[0,10]&quot;</span><span class="p">,</span> <span class="s2">&quot;(10,10000]&quot;</span><span class="p">],</span>
+   <span class="ow">or</span>
+    <span class="s2">&quot;facet.range&quot;</span><span class="p">:</span> <span class="s2">&quot;PNT_PROF_d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;facet.range.start&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;facet.range.end&quot;</span><span class="p">:</span> <span class="s2">&quot;10000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;facet.range.gap&quot;</span><span class="p">:</span> <span class="s2">&quot;300&quot;</span>
+   <span class="ow">or</span>
+    <span class="s2">&quot;facet.range&quot;</span><span class="p">:</span> <span class="s2">&quot;PNT_PROF_d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;facet.range.classes&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span> <span class="o">//</span> <span class="n">Get</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span> <span class="ow">and</span> <span class="n">compute</span> <span class="n">gap</span> <span class="n">on</span> <span class="mi">5</span> <span class="n">classes</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GRIDCODE&quot;</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;LABEL&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;label&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="s2">&quot;monLabel&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;myLabel&quot;</span><span class="p">}</span>
+<span class="p">}],</span>
+<span class="s2">&quot;tokenize&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;GRIDCODE&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;PARCELLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/&quot;</span><span class="p">},</span>
+<span class="s2">&quot;heatmap&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can</p>
+<ul class="simple">
+<li><p>restrict the fields used for filter</p></li>
+<li><p>specify your own ranges for numeric values</p></li>
+<li><p>set your label</p></li>
+<li><p>manage tokenized fields</p></li>
+<li><p>enable heatmap</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="metadata.html" class="btn btn-neutral float-left" title="Statistics on catalog content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../workflow/index.html" class="btn btn-neutral float-right" title="Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

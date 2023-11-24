@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exporting records &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Administrator guide" href="../../administrator-guide/index.html" />
+    <link rel="prev" title="Z3950 Harvesting" href="../harvesting/harvesting-z3950.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Describing information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Associating resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Classify information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Analyzing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Harvesting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Exporting records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#export-as-a-zip-archive">Export as a ZIP archive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-as-a-csv-file">Export as a CSV file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">User guide</a> &raquo;</li>
+      <li>Exporting records</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/export/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exporting-records">
+<span id="export"></span><h1>Exporting records<a class="headerlink" href="#exporting-records" title="Permalink to this heading">¶</a></h1>
+<p>GeoNetwork has three different export options to export metadata. They operate on selected sets of metadata from the search results. As such they are accessible from the “actions on selection” menu as shown in the following example:</p>
+<figure class="align-default">
+<img alt="../../_images/export.png" src="../../_images/export.png" />
+</figure>
+<section id="export-as-a-zip-archive">
+<h2>Export as a ZIP archive<a class="headerlink" href="#export-as-a-zip-archive" title="Permalink to this heading">¶</a></h2>
+<p>When a selected set of metadata records is exported as a ZIP archive, each metadata record is inserted in the ZIP archive as a directory containing the metadata, any data uploaded with the metadata record and the thumbnails. This type of ZIP archive is the MEF (Metadata Exchange Format) Version 2.0. You can find more details of MEF V2 in the GeoNetwork Developers Manual.</p>
+</section>
+<section id="export-as-a-csv-file">
+<h2>Export as a CSV file<a class="headerlink" href="#export-as-a-csv-file" title="Permalink to this heading">¶</a></h2>
+<p>When a selected set of metadata records is exported as a CSV/TXT file, the following process takes place for each metadata record:</p>
+<ul class="simple">
+<li><p>a brief summary of some of the elements from each selected metadata record is generated by applying the brief template from the metadata schema. The main folder of the different available schema is  <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/</span></code>.
+In particular,  for an iso19115-3.2018 it is located here:  <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/config/schema_plugins/iso19115-3.2018/layout/tpl-csv.xsl</span></code></p></li>
+<li><p>the elements common to the brief summary elements for all metadata records are extracted (as they may differ according to the metadata schema)</p></li>
+<li><p>a title record with comma separated element names is created</p></li>
+<li><p>the content of each element is laid out in comma separated form. Where there is more than one child element in the brief element (eg. for geoBox), the content from each child element is separated using ‘###’.</p></li>
+</ul>
+<p>An example of an ISO metadata record in CSV format is shown as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;schema&quot;</span><span class="p">,</span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;metadatacreationdate&quot;</span><span class="p">,</span><span class="s2">&quot;geoBox&quot;</span>
+
+<span class="s2">&quot;iso19115-3.2018&quot;</span><span class="p">,</span><span class="s2">&quot;27b5f8b8-053a-11ea-aa46-02000a08f492&quot;</span><span class="p">,</span><span class="s2">&quot;1312&quot;</span><span class="p">,</span><span class="s2">&quot;S2A_MSIL1C_20161218T102432_N0204_R065_T32TMS_20161218T102606&quot;</span><span class="p">,</span><span class="s2">&quot;2019-11-12T10:49:52,&quot;</span><span class="mf">7.691141905380134</span><span class="c1">###9.128266945124432###45.958258688896564###46.95363733424615&quot;</span>
+</pre></div>
+</div>
+<p>It is possible to override the brief summary of metadata elements by creating a special template in the presentation XSLT of the metadata schema. As an example of how to do this, we will override the brief summary for the iso19115-3.2018 schema and replace it with other possible useful information.</p>
+<p>In the case of iso19115-3.2018 there are the two files to be modified:</p>
+<ol class="arabic simple">
+<li><p>geonetwork/WEB-INF/data/config/schema_plugins/iso19115-3.2018/layout/tpl-csv.xsl</p></li>
+<li><p>geonetwork/xslt/services/csv/csv-search.xsl</p></li>
+</ol>
+<p>For example, to export the following elements:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;uuid&quot;,&quot;title&quot;,&quot;cloud_coverage_percentage&quot;,&quot;category&quot;,&quot;date-creation&quot;</span></code></p>
+<p>in the first file, it is necessary to proceed as in the following:</p>
+<ul class="simple">
+<li><p>to comment the elements <code class="docutils literal notranslate"><span class="pre">id,</span> <span class="pre">title,</span> <span class="pre">abstract</span></code> except</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">uuid</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">value</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;gn:info/uuid&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">uuid</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>to add a similar line in between the abstract and category elements:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">myfield</span><span class="o">&gt;</span><span class="n">myfieldvalue</span><span class="o">&lt;/</span><span class="n">myfield</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">copy</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;mdb:identificationInfo/*/mri:citation/*/cit:title&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">cloud_coverage_percentage</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">copy</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;mdb:contentInfo/mrc:MD_ImageDescription/mrc:cloudCoverPercentage/gco:Real&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">cloud_coverage_percentage</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">category</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">value</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;mdb:metadataScope/*/mdb:resourceScope/*/@codeListValue&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">category</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>About cloud coverage percentage, in particular, please remember to add the namespace if missing:</p>
+<p><code class="docutils literal notranslate"><span class="pre">xmlns:mrc=&quot;http://standards.iso.org/iso/19115/-3/mrc/2.0&quot;</span></code></p>
+<p>If not interested in other information, please comment all other lines except:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">copy</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;gn:info&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>because it is used to sort results by schema.</p>
+<p>About the second file, <em>csv-search.xsl</em>, to avoid printing automatically the 3 columns:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;schema&quot;,&quot;uuid&quot;,&quot;id&quot;,</span></code></p>
+<p>you have to comment  the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">text</span><span class="o">&gt;</span><span class="s2">&quot;schema&quot;</span><span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">value</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;$sep&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">text</span><span class="o">&gt;</span><span class="s2">&quot;uuid&quot;</span><span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">value</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;$sep&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">text</span><span class="o">&gt;</span><span class="s2">&quot;id&quot;</span><span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="n">text</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="n">value</span><span class="o">-</span><span class="n">of</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;$sep&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;xsl:value-of select=&quot;concat(&#39;&amp;quot;&#39;, $metadata/geonet:info/schema, &#39;&amp;quot;&#39;, $sep,
+&#39;&amp;quot;&#39;, $metadata/geonet:info/uuid, &#39;&amp;quot;&#39;, $sep,
+&#39;&amp;quot;&#39;, $metadata/geonet:info/id, &#39;&amp;quot;&#39;, $sep)&quot;/&gt;
+</pre></div>
+</div>
+<p>These changes will create the desired output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;cloud_coverage_percentage&quot;</span><span class="p">,</span><span class="s2">&quot;category&quot;</span><span class="p">,</span><span class="s2">&quot;date-creation&quot;</span>
+<span class="s2">&quot;c94da70e-066e-11ea-aa22-02000a08f492&quot;</span><span class="p">,</span><span class="s2">&quot;S2A_MSIL1C_20180320T101021_N0206_R022_T33TUM_20180320T122057&quot;</span><span class="p">,</span><span class="s2">&quot;36.0368&quot;</span><span class="p">,</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span><span class="s2">&quot;2018-03-20T12:20:57&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../harvesting/harvesting-z3950.html" class="btn btn-neutral float-left" title="Z3950 Harvesting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../administrator-guide/index.html" class="btn btn-neutral float-right" title="Administrator guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
