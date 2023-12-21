@@ -1471,7 +1471,7 @@
     <db.type>${geonetwork.db.type:h2}</db.type>
     <!-- Instead of using db_type a specific config file can be specified -->
     <db.config.file>../config-db/${db.type}.xml</db.config.file>
-    <db.host>#{systemEnvironment['GEONETWORK_DB_HOST']?:''}</db.host>
+    <db.host>#{systemEnvironment['GEONETWORK_DB_HOST']?:'localhost'}</db.host>
     <db.port>#{systemEnvironment['GEONETWORK_DB_PORT']?:5432}</db.port>
     <db.name>#{systemEnvironment['GEONETWORK_DB_NAME']?:'gndb'}</db.name>
     <db.username>#{systemEnvironment['GEONETWORK_DB_USERNAME']?:'postgre'}</db.username>
