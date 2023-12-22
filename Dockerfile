@@ -6,12 +6,14 @@ ENV JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true 
 
 #Environment variables
 ENV GN_VERSION 3.12.11
-ENV GN_DOWNLOAD_MD5 2ece7076f05068e7a5270af03e32d632
 
 WORKDIR $CATALINA_HOME/webapps
 COPY web/target/geonetwork.war $CATALINA_HOME/webapps
 
 #Set geonetwork data dir
+
+COPY --chmod=777 ./docker-entrypoint.sh /entrypoint.sh
+
 COPY ./docker-entrypoint.sh /entrypoint.sh
 
 # Needed to make GN to create logs, jcs_caching and gn H2 database in the tomcat directory.
