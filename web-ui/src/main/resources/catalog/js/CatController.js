@@ -113,6 +113,9 @@ goog.require('gn_alert');
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/home',
           'fluidLayout': true
         },
+        'NG': {
+          'appUrl': 'http://172.31.6.145:3000/'
+        },
         'search': {
           'enabled': true,
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/search',

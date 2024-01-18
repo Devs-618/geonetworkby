@@ -1,9 +1,14 @@
 <div data-ng-class="fluidHeaderLayout ? 'container-fluid' : 'container'">
   <div class="navbar-header">
-    <a class="hidden-sm hidden-md hidden-lg pull-left gn-logo-link" data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}" data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}">
+    <a class="hidden-sm hidden-md hidden-lg pull-left gn-logo-link" data-gn-active-tb-item="{{gnCfg.mods.NG.appUrl}}" data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}">
       <img class="gn-logo"
            alt="{{'siteLogo' | translate}}"
            data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
+    </a>
+    <a class="hidden-sm hidden-md hidden-lg btn btn-link pull-left"
+       data-gn-active-tb-item="{{gnCfg.mods.NG.appUrl}}">
+      <span class="gn-name"
+            data-ng-class="authenticated && user.isEditorOrMore() ? 'gn-truncate' : ''" data-translate>nationalGeoportal</span>
     </a>
     <a class="hidden-sm hidden-md hidden-lg btn btn-link pull-left"
        data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
@@ -26,14 +31,26 @@
   </div>
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav gn-menu-xs" role="menu">
-      <li class="clearfix hidden-xs" data-ng-if="gnCfg.mods.home.enabled">
+      <li class="clearfix hidden-xs" >
         <a class="pull-left gn-logo-link"
-           data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+           data-gn-active-tb-item="{{gnCfg.mods.NG.appUrl}}">
           <img class="gn-logo"
                data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}"
                alt="{{'siteLogo' | translate}}"
                data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
           <span class="gn-name hidden-sm hidden-md gn-margin-left"
+                data-ng-if="gnCfg.mods.header.showGNName"
+                data-ng-class="authenticated && user.isEditorOrMore() ? 'gn-truncate' : ''"
+                title="{{info['node/name'] || info['system/site/name']}}"
+                data-translate>
+                nationalGeoportal
+          </span>
+        </a>
+      </li>
+      <li class="clearfix hidden-xs" data-ng-if="gnCfg.mods.home.enabled">
+        <a class="p-10" data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+           <i class="fa fa-fw fa-home"></i>
+          <span class="gn-name hidden-sm gn-margin-left"
                 data-ng-if="gnCfg.mods.header.showGNName"
                 data-ng-class="authenticated && user.isEditorOrMore() ? 'gn-truncate' : ''"
                 title="{{info['node/name'] || info['system/site/name']}}">
@@ -42,14 +59,14 @@
         </a>
       </li>
       <li class="gn-menuitem-xs" data-ng-if="gnCfg.mods.search.enabled">
-        <a data-gn-active-tb-item="{{gnCfg.mods.search.appUrl}}"
+        <a class="p-10" data-gn-active-tb-item="{{gnCfg.mods.search.appUrl}}"
           title="{{'search' | translate}}">
           <i class="fa fa-fw fa-search"></i>
           <span translate class="hidden-sm">search</span>
         </a>
       </li>
       <li class="gn-menuitem-xs" data-ng-if="gnCfg.mods.map.enabled">
-        <a data-gn-active-tb-item="{{isExternalViewerEnabled ? externalViewerUrl : gnCfg.mods.map.appUrl}}"
+        <a class="p-10" data-gn-active-tb-item="{{isExternalViewerEnabled ? externalViewerUrl : gnCfg.mods.map.appUrl}}"
           title="{{'map' | translate}}">
           <i class="fa fa-fw fa-globe"></i>
           <span translate class="hidden-sm">makeYourMap</span>
@@ -61,7 +78,7 @@
           id="gn-login-dropdown">
         <a data-gn-active-tb-item="{{gnCfg.mods.editor.appUrl}}"
            title="{{'editorBoard' | translate}}"
-           class="dropdown-toggle gn-menuheader-xs"
+           class="p-10 dropdown-toggle gn-menuheader-xs"
            role="button" aria-expanded="false">
           <i class="fa fa-fw fa-pencil"></i>
           <span translate class="hidden-sm">contribute</span>
@@ -103,7 +120,7 @@
       <li class="dropdown dropdown-hover open" data-ng-show="user.isUserAdminOrMore()">
         <a data-gn-active-tb-item="admin.console"
            title="{{'adminConsole' | translate}}"
-           class="dropdown-toggle gn-menuheader-xs"
+           class="p-10 dropdown-toggle gn-menuheader-xs"
            role="button" aria-expanded="false">
           <i class="fa fa-fw fa-wrench"></i>
           <span translate class="hidden-sm">adminConsole</span>
