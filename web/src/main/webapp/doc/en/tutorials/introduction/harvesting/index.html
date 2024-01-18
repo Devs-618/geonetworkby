@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harvesting &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Customize your GeoNetwork UI" href="../../customui/index.html" />
+    <link rel="prev" title="Customize Editor (Optional)" href="../edit/editor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Introduction to GeoNetwork</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../deployment/index.html">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup/index.html">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../edit/index.html">Editing Metadata</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Harvesting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#geonetwork">GeoNetwork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csw">CSW</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../customui/index.html">Customize your GeoNetwork UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hookcustomizations/index.html">Hook your own code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="../index.html">Introduction to GeoNetwork</a> &raquo;</li>
+      <li>Harvesting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/introduction/harvesting/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="harvesting">
+<span id="tuto-introduction-harvesting"></span><h1>Harvesting<a class="headerlink" href="#harvesting" title="Permalink to this heading">¶</a></h1>
+<p>The quickest way to add relevant data to your catalog is by harvesting. This means, copying data from other catalos in your own catalog. There are many protocols that can be used for harvesting.</p>
+<section id="geonetwork">
+<h2>GeoNetwork<a class="headerlink" href="#geonetwork" title="Permalink to this heading">¶</a></h2>
+<p>GeoNetwork can harvest from other GeoNetwork catalogs. For this tutorial, we are going to use this catalog: <a class="reference external" href="http://ide.siia.gov.ar/geonetwork">http://ide.siia.gov.ar/geonetwork</a></p>
+<p>To add a new harvester, we have to enter the administration console: <a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/admin.console#/harvest">http://localhost:8080/geonetwork/srv/eng/admin.console#/harvest</a></p>
+<img alt="../../../_images/harvest1.png" src="../../../_images/harvest1.png" />
+<p>We select the <strong>GeoNetwork</strong> option on the <em>Harvest from</em> dropdown. This will open a harvester editor at the right. We enter a <em>Node name</em> and the <em>Catalog URL</em> and we can already save it.</p>
+<p>All harvesters can be run manually at will with the <em>Harvest</em> button. This means, it will run just once every time an authorized user runs it.</p>
+<p>But the most interesting feature of harvesters is the scheduler. You can define a frequency of running.</p>
+<img alt="../../../_images/harvester2.png" src="../../../_images/harvester2.png" />
+</section>
+<section id="csw">
+<h2>CSW<a class="headerlink" href="#csw" title="Permalink to this heading">¶</a></h2>
+<p>GeoNetwork can also harvest from CSW catalogs. The process is quite similar, but instead of choosing the GeoNetwork type of harvester, we chose the <strong>OGC CSW 2.0.2</strong> harvester type.</p>
+<p>For this tutorial, we are going to use the following catalog: <a class="reference external" href="http://nationaalgeoregister.nl/geonetwork/srv/eng/csw">http://nationaalgeoregister.nl/geonetwork/srv/eng/csw</a></p>
+<p>While the harvester is running, there will be an animated circle. Once the harvester has finished, the number of records harvested will be shown.</p>
+<img alt="../../../_images/harvester1.png" src="../../../_images/harvester1.png" />
+<p>See more on <a class="reference internal" href="../../../user-guide/harvesting/index.html#harvesting"><span class="std std-ref">Harvesting</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../edit/editor.html" class="btn btn-neutral float-left" title="Customize Editor (Optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../customui/index.html" class="btn btn-neutral float-right" title="Customize your GeoNetwork UI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

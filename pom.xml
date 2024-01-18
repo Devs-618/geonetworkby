@@ -1471,7 +1471,7 @@
     <db.type>${geonetwork.db.type:h2}</db.type>
     <!-- Instead of using db_type a specific config file can be specified -->
     <db.config.file>../config-db/${db.type}.xml</db.config.file>
-    <db.host>#{systemEnvironment['GEONETWORK_DB_HOST']?:''}</db.host>
+    <db.host>#{systemEnvironment['GEONETWORK_DB_HOST']?:'localhost'}</db.host>
     <db.port>#{systemEnvironment['GEONETWORK_DB_PORT']?:5432}</db.port>
     <db.name>#{systemEnvironment['GEONETWORK_DB_NAME']?:'gndb'}</db.name>
     <db.username>#{systemEnvironment['GEONETWORK_DB_USERNAME']?:'postgre'}</db.username>
@@ -1510,9 +1510,9 @@
     <es.version.sha512>64cc3e77f4271a5477c8c979fa48728d96890cad68b0daac6566f4dda25b4d4a80784eaafeaa874a6b434c034fcacb8a5751fdb445919191bae4aa4958c793b7</es.version.sha512>
     <es.platform>linux-x86_64</es.platform>
     <es.installer.extension>tar.gz</es.installer.extension>
-    <es.port>9200</es.port>
-    <es.host>localhost</es.host>
-    <es.url>http://localhost:9200</es.url>
+    <es.port>{systemEnvironment['ELASTIC_SEARCH_PORT']?:9200}</es.port>
+    <es.host>{systemEnvironment['ELASTIC_SEARCH_HOST']?:'localhost'}</es.host>
+    <es.url>{systemEnvironment['ELASTIC_SEARCH_URL']?:'http://localhost:9200'}</es.url>
     <es.index.features>gn-features</es.index.features>
     <es.index.features.type>features</es.index.features.type>
     <es.index.records>gn-records</es.index.records>
@@ -1534,7 +1534,7 @@
     <kb.platform>linux-x86_64</kb.platform>
     <kb.installer.extension>tar.gz</kb.installer.extension>
     <kb.port></kb.port>
-    <kb.url>http://localhost:5601</kb.url>
+    <kb.url>{systemEnvironment['KIBANA_URL']?:'http://localhost:5601'}</kb.url>
 
     <jms.url>tcp://localhost:61616</jms.url>
     <activemq.version>5.6.0</activemq.version>

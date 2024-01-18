@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understand loading page mechanisms &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Customizing default view" href="defaultview.html" />
+    <link rel="prev" title="Search page" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">Introduction to GeoNetwork</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Customize your GeoNetwork UI</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Search page</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Understand loading page mechanisms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="defaultview.html">Customizing default view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="customview.html">Customizing default view</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../view/index.html">Formatter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hookcustomizations/index.html">Hook your own code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="../index.html">Customize your GeoNetwork UI</a> &raquo;</li>
+          <li><a href="index.html">Search page</a> &raquo;</li>
+      <li>Understand loading page mechanisms</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/customui/search/loadpage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="understand-loading-page-mechanisms">
+<span id="tuto-search-loadpage"></span><h1>Understand loading page mechanisms<a class="headerlink" href="#understand-loading-page-mechanisms" title="Permalink to this heading">¶</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">¶</a></h2>
+<p>Read instructions in <a class="reference internal" href="../../../customizing-application/search-ui/loadview.html#loadsearchpage"><span class="std std-ref">customization section</span></a>.</p>
+<ul class="simple">
+<li><p>understand the XSL service output</p></li>
+<li><p>look at the <code class="docutils literal notranslate"><span class="pre">view</span></code> parameter</p></li>
+<li><p>understand main template loading</p></li>
+<li><p>understand javascript modules bootstrap</p></li>
+</ul>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>XSLT files</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/main/web/src/main/webapp/xslt/base-layout.xsl">base layout</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/main/web/src/main/webapp/xslt/base-layout-cssjs-loader.xsl">js and css loader</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/main/web/src/main/webapp/xslt/common/base-variables.xsl">variables</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/main/web/src/main/webapp/xslt/ui-search/search.xsl">search page</a>.</p></li>
+</ul>
+</li>
+<li><p>Template files</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/main/web-ui/src/main/resources/catalog/views/default/templates/index.html">https://github.com/geonetwork/core-geonetwork/blob/main/web-ui/src/main/resources/catalog/views/default/templates/index.html</a></p>
+<ul class="simple">
+<li><p>AngularJS module</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/main/web-ui/src/main/resources/catalog/views/default/module.js">https://github.com/geonetwork/core-geonetwork/blob/main/web-ui/src/main/resources/catalog/views/default/module.js</a></p>
+<ul class="simple">
+<li><p>Less file</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/geonetwork/core-geonetwork/blob/main/web-ui/src/main/resources/catalog/views/default/module.js">https://github.com/geonetwork/core-geonetwork/blob/main/web-ui/src/main/resources/catalog/views/default/module.js</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Search page" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="defaultview.html" class="btn btn-neutral float-right" title="Customizing default view" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

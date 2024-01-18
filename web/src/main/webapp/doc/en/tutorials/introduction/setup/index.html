@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Editing Metadata" href="../edit/index.html" />
+    <link rel="prev" title="Deployment using a war file" href="../deployment/deploy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Introduction to GeoNetwork</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../deployment/index.html">Deployment</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-administrator-password">Change Administrator Password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-settings">Basic Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-schemas">Loading Schemas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-users">Creating Users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-groups">Creating Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../edit/index.html">Editing Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../harvesting/index.html">Harvesting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../customui/index.html">Customize your GeoNetwork UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hookcustomizations/index.html">Hook your own code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inspire/index.html">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="../index.html">Introduction to GeoNetwork</a> &raquo;</li>
+      <li>Setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/introduction/setup/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup">
+<span id="tuto-introduction-setup"></span><h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h1>
+<section id="change-administrator-password">
+<h2>Change Administrator Password<a class="headerlink" href="#change-administrator-password" title="Permalink to this heading">¶</a></h2>
+<p>The first step you should do after deploying GeoNetwork is login with the administrator user and change the administrator password. The default administrator user is called <em>admin</em> and the password is <em>admin</em>. Once you have logged in, you have to enter the administration console to configure the basics.</p>
+<p>Change your admin password here:</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/admin.console#/organization/users">http://localhost:8080/geonetwork/srv/eng/admin.console#/organization/users</a>?userOrGroup=admin</p>
+<img alt="../../../_images/password.png" src="../../../_images/password.png" />
+</section>
+<section id="basic-settings">
+<h2>Basic Settings<a class="headerlink" href="#basic-settings" title="Permalink to this heading">¶</a></h2>
+<p>Then, go to the settings page:</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/admin.console#/settings">http://localhost:8080/geonetwork/srv/eng/admin.console#/settings</a></p>
+<p>There are a few configuration values here that should be changed like the url domain for your catalog, if it is going to use https or the title for your catalog.</p>
+<img alt="../../../_images/catalogServer.png" src="../../../_images/catalogServer.png" />
+<p>Make sure you use the hostname, port and protocol that your users will use to access the geoportal as this settings will be used to generate default urls like the ones shown on the sitemap.</p>
+<p>Preferred protocol should be https as that will mean a secure navigation for your users but http is the default one for easy deployment and development. <strong>No login should be made outside the https protocol</strong> for security reasons. Using https protocol on a strict browser policy like on Firefox may mean that some http map services will be blocked and display an error if trying to be loaded on the map. This can be solved by using only https map services. As http is a deprecated protocol, this problem will be solved in time. Check with your map service provider to use https with a valid certificate for the map services.</p>
+<img alt="../../../_images/hostandname.png" src="../../../_images/hostandname.png" />
+<p>The Catalogue Identifier should be a unique name on the whole internet. The default identifier is generated automatically by GeoNetwork and should be safe to use. Unless you have a better identifier, you can leave the one generated by default.</p>
+</section>
+<section id="loading-schemas">
+<h2>Loading Schemas<a class="headerlink" href="#loading-schemas" title="Permalink to this heading">¶</a></h2>
+<p>The last important thing to configure is what schemas are we going to use in our catalog. By default, GeoNetwork has already installed some of the most used schemas. These schemas have usually samples and templates you can easily add to your catalog on the administration console:</p>
+<p><a class="reference external" href="http://localhost:8080/geonetwork/srv/eng/admin.console#/metadata">http://localhost:8080/geonetwork/srv/eng/admin.console#/metadata</a></p>
+<img alt="../../../_images/schemas.png" src="../../../_images/schemas.png" />
+<p>Sample data has no use on real world catalogues, it is just used to show how the metadata should be filled in and how it will look like once the data is inserted on the catalog.</p>
+<p>Templates, on the other hand, are needed if you want to edit metadata. Instead of using empty xml files for the metadata creation, a template is used when creating a new record. You can always import or harvest already created metadata instead of using the editor to create manually records if that fits your usecase.</p>
+<p>One you add some templates, your catalog is ready to be used.</p>
+</section>
+<section id="creating-users">
+<h2>Creating Users<a class="headerlink" href="#creating-users" title="Permalink to this heading">¶</a></h2>
+<p>Although you can enable user self-registration, it is more usual to create the users manually, so you control exactly who have access to what. The catalog uses the concept of Users, Groups and User Profiles.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A User can be part of one or more Groups.</p></li>
+<li><p>A User has a Role in a Group.</p></li>
+<li><p>The Administrator Role is not related to a Group as it relates to the whole platform.</p></li>
+</ul>
+</div></blockquote>
+<p>Users can have different roles in different groups. A role defines what tasks the user can perform:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Guest is a user that can see records on the group, but cannot modify them.</p></li>
+<li><p>Editor is a user that can create or edit records on the group.</p></li>
+<li><p>Reviewer is a user that can edit and publish records on the group.</p></li>
+<li><p>UserAdmin is a user that has administrative privileges over the records and users on the group.</p></li>
+</ul>
+</div></blockquote>
+<p>To add a new user to the GeoNetwork system you do the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Select the Administration button in the menu</p></li>
+<li><p>On the Administration page, select User management</p></li>
+<li><p>Click the button Add a new user</p></li>
+<li><p>Provide the information required for the new user</p></li>
+<li><p>Assign the correct profile</p></li>
+<li><p>Assign the user to a group</p></li>
+<li><p>Click on Save</p></li>
+</ul>
+</div></blockquote>
+<img alt="../../../_images/createuser.png" src="../../../_images/createuser.png" />
+<p>For each possible role, there is a list of groups. This way, a user can have different roles for different groups, allowing a user being a readonly guest on some group while being able to edit and review records on another group.</p>
+<img alt="../../../_images/roles.png" src="../../../_images/roles.png" />
+</section>
+<section id="creating-groups">
+<h2>Creating Groups<a class="headerlink" href="#creating-groups" title="Permalink to this heading">¶</a></h2>
+<p>To create new groups you should be logged on with an account that has Administrative privileges.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Select the Administration button in the menu. On the Administration page,  select Group management.</p></li>
+<li><p>Select Add a new group. You may want to remove the Sample group;</p></li>
+<li><p>Fill out the details. The email address will be used to send feedback on data downloads when they occur for resources that are part of the Group.</p></li>
+<li><p>Click on Save</p></li>
+</ul>
+</div></blockquote>
+<p>Access privileges can be set per metadata record. You can define privileges on a per Group basis.</p>
+<p>See more on <a class="reference internal" href="../../../administrator-guide/configuring-the-catalog/index.html#configuring-the-catalog"><span class="std std-ref">Configuring the catalog</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../deployment/deploy.html" class="btn btn-neutral float-left" title="Deployment using a war file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../edit/index.html" class="btn btn-neutral float-right" title="Editing Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

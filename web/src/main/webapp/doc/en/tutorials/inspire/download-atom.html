@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial setting up an Atom/OpenSearch based INSPIRE download service &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial setting up a WFS based INSPIRE download service with GeoServer" href="download-geoserver.html" />
+    <link rel="prev" title="Tutorial setting up INSPIRE view service with GeoNetwork and Mapserver" href="view-mapserver.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Introduction to GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customui/index.html">Customize your GeoNetwork UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hookcustomizations/index.html">Hook your own code</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="view-geoserver.html">Tutorial setting up INSPIRE view service with GeoNetwork and GeoServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="view-mapserver.html">Tutorial setting up INSPIRE view service with GeoNetwork and Mapserver</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tutorial setting up an Atom/OpenSearch based INSPIRE download service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#external-mode-implementation">External mode implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validate-the-implementation">Validate the implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="download-geoserver.html">Tutorial setting up a WFS based INSPIRE download service with GeoServer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      <li>Tutorial setting up an Atom/OpenSearch based INSPIRE download service</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/tutorials/inspire/download-atom.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-setting-up-an-atom-opensearch-based-inspire-download-service">
+<span id="tuto-download-atom"></span><h1>Tutorial setting up an Atom/OpenSearch based INSPIRE download service<a class="headerlink" href="#tutorial-setting-up-an-atom-opensearch-based-inspire-download-service" title="Permalink to this heading">¶</a></h1>
+<p>This tutorial shows how one can set up GeoNetwork to provide download services following <a class="reference external" href="http://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services">technical guidelines for download services</a>.</p>
+<p>Note that the technical guidelines allow both Atom/OpenSearch as well as <a class="reference external" href="http://www.opengeospatial.org/standards/wfs">WFS</a>. This tutorial describes how to set up a download service using Atom/Opensearch.</p>
+<p>The basics of Atom/OpenSearch is that for each dataset a number of file-downloads in various flavours (language/projection/format) is available. These flavours are advertised in a “Dataset Atom Feed” document. A set of “Dataset Atom Feed” documents is grouped into a “Service Atom Feed” document. For each “Service Atom Feed” document an OpenSearchDescription document is available. A website can refer to this OpenSearchDescription document, which enables searching through the download service using the browser search bar (OpenSearch).</p>
+<p>See:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../user-guide/associating-resources/linking-online-resources.html#linking-data-using-atom-feed"><span class="std std-ref">Linking data using ATOM feeds</span></a></p></li>
+<li><p><a class="reference internal" href="../../api/opensearch.html#opensearch-and-atom"><span class="std std-ref">OpenSearch and INSPIRE ATOM</span></a></p></li>
+</ul>
+<section id="external-mode-implementation">
+<h2>External mode implementation<a class="headerlink" href="#external-mode-implementation" title="Permalink to this heading">¶</a></h2>
+<p>GeoNetwork implements OpenSearch on a set of Dataset- and Service Atom feeds. An OpenSearch Description document is generated for each Service Atom Feed.</p>
+<p>GeoNetwork will soon support an internal- and external mode.</p>
+<ul class="simple">
+<li><p>in internal mode GeoNetwork will generate Atom files dynamically from metadata content.</p></li>
+<li><p>in external mode GeoNetwork will ingest Atom files that are linked to metadata records.</p></li>
+</ul>
+<p>Currently only the external mode is fully supported. Atom files can be generated in any text or xml editor following the technical guidelines. To optimise the Atom support GeoNetwork uses a convention, which is currently not mandated by the technical guidelines.
+The convention is that any gmd:MD_Distribution having a link to an Atom file requires the protocol field to contain a defined value to indicate the distribution as being an Atom document. Default value for this protocol is INSPIRE-ATOM, but you can change it using Admin &gt; Settings. The benefit of this approach is that GeoNetwork doesn’t need to open any file-link to determine if it is an Atom File. We’ve seen various member states mandate this convention in localised INSPIRE Technical Guidelines.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:MD_DigitalTransferOptions&gt;</span>
+<span class="w"> </span><span class="nt">&lt;gmd:onLine&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gmd:CI_OnlineResource&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:linkage&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gmd:URL&gt;</span>http://www.broinspireservices.nl/atom/awp.atom<span class="nt">&lt;/gmd:URL&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:linkage&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:protocol&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>INSPIRE-ATOM<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:protocol&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gco:CharacterString&gt;</span>gdn.Aardwarmtepotentie<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/gmd:CI_OnlineResource&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/gmd:onLine&gt;</span>
+<span class="nt">&lt;/gmd:MD_DigitalTransferOptions&gt;</span>
+</pre></div>
+</div>
+<p>When deploying Geonetwork, make sure the GEMET thesauri are loaded and activate the INSPIRE editor as described in <a class="reference external" href="http://geonetwork-opensource.org/manuals/trunk/eng/users/administrator-guide/configuring-the-catalog/inspire-configuration.html">inspire configuration</a>. In this file “schemas/iso19139/src/main/plugin/iso19139/loc/eng/labels.xml “ (and the same file in other languages in use in the catalogue) in the gmd:protocol helper (around line 2000) add the “INSPIRE-ATOM” protocol which is used to indicate links that link to an Atom file (only links having that protocol value will be ingested).</p>
+<p>In Admin &gt; Settings activate the INSPIRE extension and activate Atom harvesting (at certain interval). The settings page facilitates to set a protocol which is used in metadata to indicate an Atom link.</p>
+<img alt="../../_images/image_4.png" src="../../_images/image_4.png" />
+<p>For each dataset that you are going to publish create an iso19115 record using the INSPIRE template. Link each record to the related atom file (or upload an atom file)</p>
+<img alt="../../_images/image_7.png" src="../../_images/image_7.png" />
+<p>Make sure the metadata contains the same gmd:code as used in the Atom file.</p>
+<p>Now create a service metadata using the INSPIRE template and link it to the service Atom and the individual datasets (using srv:operatesOn).</p>
+<p>Before you validate the implementation, run the Atom harvester in admin &gt; settings manually. A panel will display the number of processed Atom feeds and any errors that may have occurred while processing (more details in log file).</p>
+</section>
+<section id="validate-the-implementation">
+<h2>Validate the implementation<a class="headerlink" href="#validate-the-implementation" title="Permalink to this heading">¶</a></h2>
+<p>If you are running the above setup online, you can use the <a class="reference external" href="http://inspire.ec.europa.eu/validator/">INSPIRE validator</a>. If the above setup is running locally, you can use <a class="reference external" href="https://github.com/Geonovum/etf-test-projects-inspire">Esdin Test Framework</a> to validate the INSPIRE setup.</p>
+<img alt="../../_images/image_6.png" src="../../_images/image_6.png" />
+<p>Running the test frequently during development helps to identify issues in an early stage.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="view-mapserver.html" class="btn btn-neutral float-left" title="Tutorial setting up INSPIRE view service with GeoNetwork and Mapserver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="download-geoserver.html" class="btn btn-neutral float-right" title="Tutorial setting up a WFS based INSPIRE download service with GeoServer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

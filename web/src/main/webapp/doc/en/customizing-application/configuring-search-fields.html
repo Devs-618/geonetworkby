@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuring search fields &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring faceted search" href="configuring-faceted-search.html" />
+    <link rel="prev" title="Theming" href="changing-layout.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Customizing guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="search-ui/index.html">Search application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-custom-view.html">Customizing metadata views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor-ui/creating-custom-editor.html">Customizing editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changing-layout.html">Theming</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring search fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-search-field">Add a search field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boosting-documents-and-fields">Boosting documents and fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boosting-search-results">Boosting search results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-faceted-search.html">Configuring faceted search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-configuration.html">Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-static-pages.html">Adding static pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementing-a-schema-plugin.html">Implementing schema plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="characterset.html">Characterset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Customizing guide</a> &raquo;</li>
+      <li>Configuring search fields</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/customizing-application/configuring-search-fields.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuring-search-fields">
+<span id="id1"></span><h1>Configuring search fields<a class="headerlink" href="#configuring-search-fields" title="Permalink to this heading">¶</a></h1>
+<p>In some cases it’s relevant to modify or extend the search fields of the metadata index. For example to add a field (which is then searchable or can be used in a default view) or change the content of the field is created from the metadata (indexation).</p>
+<p>The amount and type of fields for the whole index is managed in:</p>
+<p>Next in each schema-plugin you can define how the new field is filled from the metadata content in the file:</p>
+<p><a class="reference external" href="http://lucene.apache.org/java/docs/index.html">Lucene</a> is the search engine used by GeoNetwork. All Lucene configuration
+is defined in WEB-INF/config-lucene.xml.</p>
+<section id="add-a-search-field">
+<h2>Add a search field<a class="headerlink" href="#add-a-search-field" title="Permalink to this heading">¶</a></h2>
+<p>Indexed fields are defined on a per schema basis on the schema folder (eg. WEB-INF/data/config/schema_plugins/iso19139/index-fields) in default.xsl file.
+This file define for each search criteria the corresponding element in a metadata record. For example, indexing the title
+of an ISO19139 record:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">xsl</span><span class="p">:</span><span class="k">for</span><span class="o">-</span><span class="n">each</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;gmd:identificationInfo/gmd:MD_DataIdentification/</span>
+                       <span class="n">gmd</span><span class="p">:</span><span class="n">citation</span><span class="o">/</span><span class="n">gmd</span><span class="p">:</span><span class="n">CI_Citation</span><span class="o">/</span>
+                       <span class="n">gmd</span><span class="p">:</span><span class="n">title</span><span class="o">/</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="s2">&quot;&gt;</span>
+    <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mytitle&quot;</span> <span class="n">string</span><span class="o">=</span><span class="s2">&quot;{string(.)}&quot;</span> <span class="n">store</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">xsl</span><span class="p">:</span><span class="k">for</span><span class="o">-</span><span class="n">each</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Usually, if the field is only for searching and should not be displayed in search results the store attribute could
+be set to false.</p>
+<p>Once the field added to the index, user could query using it as a search criteria in the different kind
+of search services. For example using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8080/geonetwork/srv/en/q?mytitle=africa
+</pre></div>
+</div>
+<p>If user wants this field to be tokenized, it should be added to the tokenized section of config-lucene.xml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">tokenized</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mytitle&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>If user wants this field to be returned in search results for the search service, then the field should be added to
+the Lucene configuration in the dumpFields section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dumpFields</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mytitle&quot;</span> <span class="n">tagName</span><span class="o">=</span><span class="s2">&quot;mytitle&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="boosting-documents-and-fields">
+<h2>Boosting documents and fields<a class="headerlink" href="#boosting-documents-and-fields" title="Permalink to this heading">¶</a></h2>
+<p>Document and field boosting allows catalogue administrator to be able to customize default Lucene scoring
+in order to promote certain types of records.</p>
+<p>A common use case is when the catalogue contains lot of series for aggregating datasets.
+Not promoting the series could make the series “useless” even if those records contains important content.
+Boosting this type of document allows to promote series and guide the end-user from series to related records (through
+the relation navigation).</p>
+<p>In that case, the following configuration allows boosting series and minor importance of records part of a series:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">boostDocument</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;org.fao.geonet.kernel.search.function.ImportantDocument&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">Param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fields&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;java.lang.String&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;type,parentUuid&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;values&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;java.lang.String&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;series,NOTNULL&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;boosts&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;java.lang.String&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;.2F,-.3F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">boostDocument</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The boost is a positive or negative float value.</p>
+<p>This feature has to be used by expert users to alter default search behavior scoring according
+to catalogue content. It needs tuning and experimentation to not promote too much some records.
+During testing, if search results looks different while being logged or not, it could be relevant
+to ignore some internal fields in boost computation which may alter scoring according to current user.
+Example configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">fieldBoosting</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op0&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op1&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_op2&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_dummy&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_isTemplate&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;_owner&quot;</span> <span class="n">boost</span><span class="o">=</span><span class="s2">&quot;0.0F&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">fieldBoosting</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="boosting-search-results">
+<h2>Boosting search results<a class="headerlink" href="#boosting-search-results" title="Permalink to this heading">¶</a></h2>
+<p>By default Lucene compute score according to search criteria
+and the corresponding result set and the index content.
+In case of search with no criteria, Lucene will return top docs
+in index order (because none are more relevant than others).</p>
+<p>In order to change the score computation, a boost function could
+be define. Boosting query needs to be loaded in classpath.
+A sample boosting class is available. RecencyBoostingQuery will promote recently modified documents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">boostQuery</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;org.fao.geonet.kernel.search.function.RecencyBoostingQuery&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">Param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;multiplier&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;double&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;2.0&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;maxDaysAgo&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;365&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">Param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dayField&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;java.lang.String&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;_changeDate&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">boostQuery</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="changing-layout.html" class="btn btn-neutral float-left" title="Theming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuring-faceted-search.html" class="btn btn-neutral float-right" title="Configuring faceted search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

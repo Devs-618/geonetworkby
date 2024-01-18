@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Importing a new record &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Editing metadata" href="editing-metadata.html" />
+    <link rel="prev" title="Creating a new record" href="creating-metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Describing information</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="managing-templates.html">Managing templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-metadata.html">Creating a new record</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Importing a new record</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#before-you-begin">Before you begin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="editing-metadata.html">Editing metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleting-metadata.html">Deleting a record</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multilingual-editing.html">Multilingual editing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-editing.html">Describing resources for the INSPIRE directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-editing.html#migrating-from-technical-guidance-version-1-3-to-version-2-0">Migrating from Technical guidance version 1.3 to version 2.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Associating resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Classify information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Analyzing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Harvesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Exporting records</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Administrator guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Maintainer guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Customizing guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Annexes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">User guide</a> &raquo;</li>
+          <li><a href="index.html">Describing information</a> &raquo;</li>
+      <li>Importing a new record</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/describing-information/importing-metadata.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="importing-a-new-record">
+<span id="import1"></span><h1>Importing a new record<a class="headerlink" href="#importing-a-new-record" title="Permalink to this heading">¶</a></h1>
+<p>An editor can import metadata in the catalog file in different formats: XML, MEF or ZIP (see <a class="reference internal" href="../../annexes/mef-format.html#mef-format"><span class="std std-ref">Metadata Exchange Format (MEF)</span></a>).</p>
+<span class="target" id="index-0"></span><section id="before-you-begin">
+<span id="index-1"></span><h2>Before you begin<a class="headerlink" href="#before-you-begin" title="Permalink to this heading">¶</a></h2>
+<p>The user should have an <code class="docutils literal notranslate"><span class="pre">editor</span></code> profile to access metadata.</p>
+<ol class="arabic simple">
+<li><p>Go to the contribute page and select <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">new</span> <span class="pre">records</span></code>.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/import-record-button.png" src="../../_images/import-record-button.png" />
+</figure>
+<p>Using the import new records page, you can:</p>
+<ul class="simple">
+<li><p>choose <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">a</span> <span class="pre">file</span> <span class="pre">from</span> <span class="pre">your</span> <span class="pre">computer</span></code> and choose one XML or MEF file to load</p></li>
+<li><p>choose <code class="docutils literal notranslate"><span class="pre">Copy/Paste</span></code> and copy the XML document in the textarea</p></li>
+<li><p>choose <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">a</span> <span class="pre">set</span> <span class="pre">of</span> <span class="pre">files</span> <span class="pre">from</span> <span class="pre">a</span> <span class="pre">folder</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">server</span></code> and set the path of
+the folder in the server</p></li>
+</ul>
+<p>To import multiple file at a time, use the MEF format or the import from server options.</p>
+<ol class="arabic simple" start="2">
+<li><p>After you have defined the type of import, configure the other import settings:</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/import-form.png" src="../../_images/import-form.png" />
+</figure>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">of</span> <span class="pre">file</span></code>: when uploading or loading file from the server, define the type
+of file to load. It could be XML for importing XML document or MEF (equivalent to ZIP)
+for importing MEF format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">of</span> <span class="pre">record</span></code>:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Metadata</span></code> when loading a normal metadata record</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Template</span></code> when the loaded metadata record will be used as a template.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Record</span> <span class="pre">identifier</span> <span class="pre">processing</span></code> determines how to handle potential clashes
+between the UUID of the record loaded and UUIDs of metadata records
+already present in the catalog. 3 strategies are available:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: the UUID of the record loaded is left unchanged. If a metadata
+record with the same UUID is already present in the catalog, an error message
+is returned.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Overwrite</span> <span class="pre">metadata</span> <span class="pre">with</span> <span class="pre">same</span> <span class="pre">UUID</span></code>: any existing metadata record in the
+catalog having the same UUID as the loaded record will be updated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">UUID</span> <span class="pre">for</span> <span class="pre">inserted</span> <span class="pre">metadata</span></code>: a new UUID is affected to the loaded record.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Apply</span> <span class="pre">XSLT</span> <span class="pre">conversion</span></code> allows to transform the record loaded using an
+XSLT stylesheet. A list of predefined transformations is provided. The selected
+transformation should be compatible with the standard of the loaded record (see <a class="reference internal" href="../workflow/batchupdate-xsl.html#customizing-xslt-conversion"><span class="std std-ref">Adding XSLT conversion for import</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Validate</span></code> trigger the validation of the record before loading it. In case of
+error the record is rejected and an error reported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assign</span> <span class="pre">to</span> <span class="pre">current</span> <span class="pre">catalog</span></code> assign the current catalog as origin for the record,
+in case the MEF file indicate another source.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assign</span> <span class="pre">to</span> <span class="pre">Group</span></code> define the group of the loaded record.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assign</span> <span class="pre">to</span> <span class="pre">Category</span></code> define a local category to assign to the loaded record.</p></li>
+</ul>
+<p>3. Click <code class="docutils literal notranslate"><span class="pre">import</span></code> to trigger the import. After processing, a summary is provided with
+the following details:</p>
+<ul class="simple">
+<li><p>the total count of imported metadata</p></li>
+<li><p>errors messages</p></li>
+<li><p>if only one record is imported, a link to that record is provided.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="creating-metadata.html" class="btn btn-neutral float-left" title="Creating a new record" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="editing-metadata.html" class="btn btn-neutral float-right" title="Editing metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
