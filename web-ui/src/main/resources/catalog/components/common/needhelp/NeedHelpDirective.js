@@ -74,16 +74,18 @@
 
           scope.showHelp = function() {
             var page = attrs.gnNeedHelp;
-            var helpPageUrl = helpBaseUrl + gnGlobalSettings.lang + '/' + page;
+            var newPage = page.slice(0,-1);
+            console.log(newPage);
+            var helpPageUrl = helpBaseUrl + gnGlobalSettings.lang + '/' + newPage + '.html';
 
-            if (gnGlobalSettings.lang !== "en") {
-              helpPageUrl = helpBaseUrl + gnGlobalSettings.lang + '/' + page;
+            if (gnGlobalSettings.lang !== "eng") {
+              helpPageUrl = helpBaseUrl + gnGlobalSettings.lang + '/' + newPage + '.html';
             } else {
-              helpPageUrl = helpBaseUrl + page;
+              helpPageUrl = helpBaseUrl + newPage + '.html';
             }
 
             testAndOpen(helpPageUrl).then(function() {}, function() {
-              testAndOpen( helpBaseUrl + page)
+              testAndOpen( helpBaseUrl + newPage + '.html')
             });
             return true;
           };
