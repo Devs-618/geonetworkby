@@ -903,6 +903,7 @@ public class BaseMetadataManager implements IMetadataManager {
         // add owner name
         User user = userRepository.findOne(owner);
         if (user != null) {
+            addElement(info, Edit.Info.Elem.OWNERID, user.getId());
             String ownerName = user.getName();
             addElement(info, Edit.Info.Elem.OWNERNAME, ownerName);
         }
@@ -1004,7 +1005,7 @@ public class BaseMetadataManager implements IMetadataManager {
                 env.addContent(new Element("parentUuid").setText(parentUuid));
             }
             if (metadataId.isPresent()) {
-                final Path resourceDir = Lib.resource.getDir(context, Params.Access.PRIVATE, metadataId.get());
+                final Path resourceDir = Lib.resource.getDir(Params.Access.PRIVATE, metadataId.get());
                 env.addContent(new Element("datadir").setText(resourceDir.toString()));
             }
 
