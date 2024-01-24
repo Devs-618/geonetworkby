@@ -1,9 +1,14 @@
 <div data-ng-class="fluidHeaderLayout ? 'container-fluid' : 'container'">
   <div class="navbar-header">
-    <a class="hidden-sm hidden-md hidden-lg pull-left gn-logo-link" data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}" data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}">
+    <a class="hidden-sm hidden-md hidden-lg pull-left gn-logo-link" data-gn-active-tb-item="{{gnCfg.mods.ng.appUrl}}" data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}">
       <img class="gn-logo"
            alt="{{'siteLogo' | translate}}"
            data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
+    </a>
+    <a class="hidden-sm hidden-md hidden-lg btn btn-link pull-left"
+       data-gn-active-tb-item="{{gnCfg.mods.ng.appUrl}}">
+      <span class="gn-name"
+            data-translate>nationalGeoportal</span>
     </a>
     <a class="hidden-sm hidden-md hidden-lg btn btn-link pull-left"
        data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
@@ -26,33 +31,40 @@
   </div>
   <div id="navbar" class="navbar-accessible navbar-collapse collapse">
     <ul class="nav navbar-nav gn-menu-xs" role="menu">
-      <li class="clearfix hidden-xs" data-ng-if="gnCfg.mods.home.enabled">
-        <a class="pull-left gn-logo-link"
-           data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+      <li class="clearfix hidden-xs">
+        <a class="gn-menuitem-xs"
+          data-gn-active-tb-item="{{gnCfg.mods.ng.appUrl}}"
+          title="{{'nationalGeoportal' | translate}}">
           <img class="gn-logo"
                data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}"
                alt="{{'siteLogo' | translate}}"
                data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
-          <span class="gn-name gn-margin-left hidden-sm"
+          <span class="hidden-sm" data-ng-if="fluidHeaderLayout" translate>nationalGeoportal</span>
+        </a>
+      </li>
+      <li class="clearfix hidden-xs" data-ng-if="gnCfg.mods.home.enabled">
+        <a class="gn-menuitem-xs"
+           data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+          <span class="fa fa-fw fa-home"></span>         
+          <span class="hidden-sm gn-name gn-margin-left"
                 data-ng-if="gnCfg.mods.header.showGNName"
-                data-ng-class="authenticated && user.isEditorOrMore() ? 'gn-truncate' : ''"
                 title="{{info['node/name'] || info['system/site/name']}}">
             {{info['node/name'].split('|')[0] || info['system/site/name']}}
           </span>
         </a>
-      </li>
+      </li>      
       <li class="gn-menuitem-xs" data-ng-if="gnCfg.mods.search.enabled">
         <a data-gn-active-tb-item="{{gnCfg.mods.search.appUrl}}"
           title="{{'search' | translate}}">
-          <span class="fa fa-fw fa-search hidden-sm"></span>
-          <span translate>search</span>
+          <span class="fa fa-fw fa-search"></span>
+          <span class="hidden-sm" translate>search</span>
         </a>
       </li>
       <li class="gn-menuitem-xs" data-ng-if="gnCfg.mods.map.enabled">
         <a data-gn-active-tb-item="{{isExternalViewerEnabled ? externalViewerUrl : gnCfg.mods.map.appUrl}}"
           title="{{'map' | translate}}">
-          <span class="fa fa-fw fa-globe hidden-sm"></span>
-          <span translate>makeYourMap</span>
+          <span class="fa fa-fw fa-globe"></span>
+          <span class="hidden-sm" translate>makeYourMap</span>
           <span data-gnv-layer-indicator=""/>
         </a>
       </li>
@@ -67,7 +79,7 @@
            aria-haspopup="true"
            aria-expanded="false">
           <span class="fa fa-fw fa-pencil hidden-xs"></span>
-          <span translate>contribute</span>
+          <span class="hidden-sm" translate>contribute</span>
           <span class="caret hidden-xs"></span>
         </a>
         <ul class="dropdown-menu gn-menu-xs clearfix" role="menu">
@@ -113,7 +125,7 @@
            aria-haspopup="true"
            aria-expanded="false">
           <span class="fa fa-fw fa-wrench hidden-xs"></span>
-          <span translate>adminConsole</span>
+          <span class="hidden-sm" translate>adminConsole</span>
           <span class="caret hidden-xs"></span>
         </a>
         <ul data-ng-if="user.isUserAdmin()" class="dropdown-menu gn-menu-xs" role="menu">
