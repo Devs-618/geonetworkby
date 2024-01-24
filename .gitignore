@@ -26,6 +26,7 @@ datadir_*
 datadir_node1/
 docs/*/users/build
 docs/schema-loc-*.rst
+docs/manuals
 eclipse/
 es/elasticsearch-*
 es/es-dashboards/kibana-*
