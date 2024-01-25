@@ -38,14 +38,14 @@
                data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}"
                alt="{{'siteLogo' | translate}}"
                data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
-          <span data-ng-if="fluidHeaderLayout" translate>nationalGeoportal</span>
+          <span class="gn-margin-left" data-ng-if="fluidHeaderLayout" translate>nationalGeoportal</span>
         </a>
       </li>
       <li class="clearfix hidden-xs" data-ng-if="gnCfg.mods.home.enabled">
         <a class="gn-menuitem-xs"
            data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
           <span class="fa fa-fw fa-home"></span>
-          <span class="gn-name hidden-sm gn-margin-left"
+          <span class="gn-name hidden-sm"
                 data-ng-if="gnCfg.mods.header.showGNName"
                 data-ng-class="authenticated && user.isEditorOrMore() ? 'gn-truncate' : ''"
                 title="{{info['node/name'] || info['system/site/name']}}">
