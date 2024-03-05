@@ -63,5 +63,5 @@
      shibboleth      - Shibboleth security (see config-security-shibboleth.xml for more details)
   -->
 
-  <import resource="config-security-${geonetwork.security.type:default}.xml"/>
+  <import resource="config-security-${geonetwork.security.type:keycloak}.xml"/>
 </beans>
