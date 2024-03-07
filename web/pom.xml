@@ -931,9 +931,26 @@
               </resources>
             </configuration>
           </execution>
+          <!-- Добавленное выполнение для папки font -->
+          <execution>
+            <id>copy-font-resources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/geonetwork/font</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/src/main/resources/font</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+              <overwrite>true</overwrite>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
-
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
