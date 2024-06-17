@@ -227,7 +227,7 @@
       $scope.showGNName = gnGlobalSettings.gnCfg.mods.header.showGNName;
 
       $scope.toggleMaxSizeMap = false; //Big map bottom
-      $scope.fixedMiniMapFullSreen = true; 
+      $scope.fixedMiniMapFullSreen = true;
 
       $scope.facetSorter = gnFacetSorter.sortByTranslation;
 
@@ -278,17 +278,17 @@
 
       gnMdView.initMdView();
 
-      var updateSizeSearchMap = function() {
-        setTimeout(function() {
+      var updateSizeSearchMap = function () {
+        setTimeout(function () {
           searchMap.updateSize();
-        }, 300)
+        }, 300);
       };
 
-      $scope.maxSizeMap = function() {         
-        $('button.max-size-map-toggle > i').toggleClass('fa-expand fa-compress');
+      $scope.maxSizeMap = function () {
+        $("button.max-size-map-toggle > i").toggleClass("fa-expand fa-compress");
         updateSizeSearchMap();
-          $scope.fixedMiniMapFullSreen = !$scope.fixedMiniMapFullSreen
-      }		
+        $scope.fixedMiniMapFullSreen = !$scope.fixedMiniMapFullSreen;
+      };
       $scope.goToSearch = function (any) {
         $location.path("/search").search({ any: any });
       };

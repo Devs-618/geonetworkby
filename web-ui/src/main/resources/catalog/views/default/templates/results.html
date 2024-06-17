@@ -144,7 +144,11 @@
       </div>
     </div>
 
-    <div ng-if="searchMapPlacement === 'results'" class="hidden-print" data-ng-class="fixedMiniMapFullSreen ? 'gn-fixed-map' : 'gn-fixed-map-full-screen'">
+    <div
+      ng-if="searchMapPlacement === 'results'"
+      class="hidden-print"
+      data-ng-class="fixedMiniMapFullSreen ? 'gn-fixed-map' : 'gn-fixed-map-full-screen'"
+    >
       <div
         data-gn-map-field="searchObj.searchMap"
         data-gn-map-field-geom="searchObj.params.geometry"
