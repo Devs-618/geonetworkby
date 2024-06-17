@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <i18n>
-  <viewInGE>View in Google Earth</viewInGE>
-  <warning>Warning!</warning>
-  <addA>Add</addA>
-  <nojs>Javascript is not enabled. Enable it or click
+  <viewInGE>Вид в Google Earth</viewInGE>
+  <warning>Внимание!</warning>
+  <addA>Добавить</addA>
+  <nojs>Javascript не активирован. Запустите его или нажмите
     <a
-      href="../search">here to search
+      href="../search">здесь для поиска
     </a>
-    in a degraded mode.
+    в ухудшенном режиме
   </nojs>
-  <selectView>Choose view</selectView>
-  <moreTabs>More information</moreTabs>
-  <nodeChangeWarning>Node Change Warning</nodeChangeWarning>
-  <nodeChangeInfo>Warning: You are no longer in the same node that you logged into.</nodeChangeInfo>
-  <nodeChangeBack>If you would like to return to the node you logged into click:</nodeChangeBack>
-  <nodeChangeForward>If you would like to logout and return to the previous url click:
-  </nodeChangeForward>
-  <serviceNotAllowedTitle>Service not available</serviceNotAllowedTitle>
-  <serviceNotAllowed>The service {1} does not exist or you don't have privileges to access it.
-  </serviceNotAllowed>
+  <selectView>Выберите вид</selectView>
+  <moreTabs>Больше информации</moreTabs>
+  <nodeChangeWarning>Сообщение об изменении узла</nodeChangeWarning>
+  <nodeChangeInfo>Внимание: Вы уже не на том узле, в котором зарегистрировались.</nodeChangeInfo>
+  <nodeChangeBack>Если желаете вернуться на узел регистрации нажмите:</nodeChangeBack>
+  <nodeChangeForward>Если хотите выйти из системы и вернуться к предыдущему URL-адресу нажмите:</nodeChangeForward>
+  <serviceNotAllowedTitle>Сервис не доступен</serviceNotAllowedTitle>
+  <serviceNotAllowed>Этот сервис {1} не существует или у Вас нет прав доступа к нему.</serviceNotAllowed>
   <linkToHome>
-    <span>Return to the <a href="../..">search page</a>.
+    <span>Назад к <a href="../..">странице поиска</a>.
     </span>
   </linkToHome>
 </i18n>

@@ -85,6 +85,8 @@
 
           scope.switchLanguage = function (newLanguage) {
             scope.lang = newLanguage;
+            // console.log(newLanguage);
+            localStorage.setItem("i18nextLng", newLanguage);
           };
         }
       };

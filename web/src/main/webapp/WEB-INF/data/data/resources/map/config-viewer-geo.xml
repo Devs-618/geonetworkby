@@ -1,0 +1,205 @@
+<ows-context:OWSContext xmlns:ows-context="http://www.opengis.net/ows-context"
+                        xmlns:ows="http://www.opengis.net/ows"
+                        version="0.3.1" id="ows-context-ex-1-v3">
+  <ows-context:General>
+    <ows:BoundingBox crs="EPSG:3857">
+      <ows:LowerCorner>2550000 6550000</ows:LowerCorner>
+      <ows:UpperCorner>3740000 7700000</ows:UpperCorner>
+    </ows:BoundingBox>
+  </ows-context:General>
+  <ows-context:ResourceList>
+    <!--ows-context:Layer name="{type=osm}"
+                       group="Background layers"
+                       hidden="false"
+                       opacity="1">
+      <ows:Title>OpenTopoMap
+      </ows:Title>
+    </ows-context:Layer-->
+
+    <!--ows-context:Layer queryable="false"
+                       name="{type=wmts,name=BelGeoMap_WMS2}"
+                       hidden="false" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">Navigation Map</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="https://gis.maps.by/arcgis/rest/services/BelGeoMap_WMS2/MapServer/WMTS/1.0.0/WMTSCapabilities.xml"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer>
+
+    <ows-context:Layer queryable="false"
+                       name="{type=wmts,name=GKGC_topo_RB_1000k}"
+                       hidden="true" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">TopoMap 1000k</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="https://img.maps.by/arcgis/rest/services/GKGC/Topo_RB_1000k/ImageServer/WMTS/1.0.0/WMTSCapabilities.xml"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer-->
+
+    <ows-context:Layer queryable="false"
+                       name="{type=wmts,name=World_Topo_Map}"
+                       hidden="false" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">World_Topo_Map</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="https://server.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer/WMTS/1.0.0/WMTSCapabilities.xml"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer>
+
+    <ows-context:Layer queryable="false"
+                       name="{type=wmts,name=World_Imagery}"
+                       hidden="true" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">World_Imagery</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/WMTS/1.0.0/WMTSCapabilities.xml"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer>
+
+    <ows-context:Layer name="{type=bing_aerial}"
+                       group="Background layers"
+                       hidden="true"
+                       opacity="1">
+      <ows:Title>Bing Aerial</ows:Title>
+    </ows-context:Layer>
+	
+    <ows-context:Layer name="{type=tms,name=opentopomap}"
+                       group="Background layers"
+                       hidden="true"
+                       opacity="1">
+      <ows:Title>OpenTopoMap</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://a.tile.opentopomap.org/{z}/{x}/{y}.png"/>
+      </ows-context:Server>
+    </ows-context:Layer>
+	
+	<ows-context:Layer name="{type=tms, name=light_all}"
+					  group="Background layers"
+					  hidden="true"
+					  opacity="1">
+		<ows:Title>Cartocdn light_all</ows:Title>
+		<ows-context:Server service="urn:ogc:serviceType:WMTS">
+		<ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
+		</ows-context:Server>
+	</ows-context:Layer>
+
+
+	<ows-context:Layer	queryable="true" 
+						name="georesursDDZ_Belarus_Web_Mercator_new"
+						hidden="true" opacity="1"	group="Background layers">
+		<ows:Title xmlns:ows="http://www.opengis.net/ows">georesursDDZ_Belarus_WMS</ows:Title>
+		<ows-context:Server service="urn:ogc:serviceType:WMS">
+			<ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                            			xlink:href="http://localhost/qgis/qgis_mapserv.fcgi.exe?map=d:\temp\dzz.qgs"/>
+		</ows-context:Server>
+		<ows-context:StyleList/>
+	</ows-context:Layer>
+
+    <ows-context:Layer queryable="false"
+                       name="{type=wmts,name=georesursDDZ_Belarus_Web_Mercator_new}"
+                       hidden="true" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">georesursDDZ_Belarus_WMTS</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="http://localhost/qgis/qgis_mapserv.fcgi.exe?map=d:\temp\dzz.qgs"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer>
+	
+	
+    <!--ows-context:Layer queryable="false"
+                       name="{type=wmts,name=georesursDDZ_Belarus_Web_Mercator_new}"
+                       hidden="true" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">georesursDDZ_Belarus_Web_Mercator_new</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="http://localhost/dzz123"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer-->
+	
+	
+
+    <!--ows-context:Layer name="{type=tms,name=georesursDDZ_Belarus_Web_Mercator_new}"
+                       group="Background layers"
+                       hidden="true"
+                       opacity="1">
+      <ows:Title>Resource DZZ</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xlink:href="https://belgeodesy:53np21gB@www.dzz.by/arcgis/rest/services/georesursDDZ/Belarus_Web_Mercator_new/ImageServer/tile/{z}/{y}/{x}"
+									xmlns:xlink="http://www.w3.org/1999/xlink"/>
+      </ows-context:Server>
+    </ows-context:Layer-->
+
+    <!--ows-context:Layer queryable="false"
+                       name="{type=wmts,name=georesursDDZ_Belarus_Web_Mercator_new}"
+                       hidden="true" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">georesursDDZ_Belarus_Web_Mercator_new</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="http://www.dzz.by/arcgis/rest/services/georesursDDZ/Belarus_Web_Mercator_new/ImageServer/WMTS/1.0.0/WMTSCapabilities.xml"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer-->
+	
+	
+	
+	
+
+    <!--Uncomment the code bellow to add support to MS bing maps; don't forget to add a valid bingKey on the
+    settings!-->
+
+    <!--
+    Example for TMS:
+    Also contains sample attributions
+
+    <ows-context:Layer name="type=tms,name=capabaseargenmap"
+                       group="Background layers"
+                       hidden="false"
+                       opacity="1">
+      <ows:Title>IGN</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMTS">
+        <ows-context:OnlineResource xlink:href="http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG:3857@png/{z}/{x}/{-y}.png" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+      </ows-context:Server>
+      <ows-context:VendorExtension>
+        <ows-context:Attribution>
+          <ows-context:Title><![CDATA[<a href="https://www.example.com">Example</a> Attribution]]></ows-context:Title>
+        </ows-context:Attribution>
+        <ows-context:Attribution>
+          <ows-context:Title>Example2 Attribution</ows-context:Title>
+          <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.example.com"/>
+        </ows-context:Attribution>
+      </ows-context:VendorExtension>
+    </ows-context:Layer>
+
+
+    Example for WMTS:
+
+    <ows-context:Layer queryable="false"
+                       name="{type=wmts,name=web_mercator_etopo1_hillshade}"
+                       hidden="true" opacity="1" group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">Etopo1</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMS">
+        <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="http://maps.ngdc.noaa.gov/arcgis/rest/services/web_mercator/etopo1_hillshade/MapServer/WMTS/1.0.0/WMTSCapabilities.xml"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
+    </ows-context:Layer>
+
+    Example for WMS:
+     <ows-context:Layer queryable="false" name="TEMP"
+                        hidden="true" opacity="1"
+                        group="Background layers">
+            <ows:Title xmlns:ows="http://www.opengis.net/ows">Coriolis ncWMS</ows:Title>
+            <ows-context:Server service="urn:ogc:serviceType:WMS">
+                <ows-context:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://tds0.ifremer.fr/thredds/wms/CORIOLIS-GLOBAL-CORA04.0-OBS_FULL_TIME_SERIE?"/>
+            </ows-context:Server>
+            <ows-context:StyleList/>
+        </ows-context:Layer>
+    -->
+  </ows-context:ResourceList>
+</ows-context:OWSContext>

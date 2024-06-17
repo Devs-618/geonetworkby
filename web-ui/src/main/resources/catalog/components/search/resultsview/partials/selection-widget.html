@@ -66,6 +66,11 @@
           <i class="fa fa-fw fa-file-excel-o"></i>&nbsp;<span translate>exportCSV</span>
         </a>
       </li>
+      <li data-ng-show="!excludePattern.test('openSelectionApplication')">
+        <a href="" data-ng-click="openSelectionApplication()">
+          <i class="fa fa-fw fa-share-square-o"></i>&nbsp;<span translate>openSelectionApplication</span>
+        </a>
+      </li>
       <li data-ng-show="!excludePattern.test('viewSelectionOnly')">
         <a href="" data-ng-click="viewSelectionOnly()">
           <i class="fa fa-fw fa-check"></i>&nbsp;<span translate>viewSelectionOnly</span>

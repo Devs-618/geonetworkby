@@ -226,6 +226,9 @@
       $scope.fluidHeaderLayout = gnGlobalSettings.gnCfg.mods.header.fluidHeaderLayout;
       $scope.showGNName = gnGlobalSettings.gnCfg.mods.header.showGNName;
 
+      $scope.toggleMaxSizeMap = false; //Big map bottom
+      $scope.fixedMiniMapFullSreen = true; 
+
       $scope.facetSorter = gnFacetSorter.sortByTranslation;
 
       $scope.addToMapLayerNameUrlParam =
@@ -272,8 +275,20 @@
 
       // TODO: Previous record should be stored on the client side
       $scope.mdView = mdView;
+
       gnMdView.initMdView();
 
+      var updateSizeSearchMap = function() {
+        setTimeout(function() {
+          searchMap.updateSize();
+        }, 300)
+      };
+
+      $scope.maxSizeMap = function() {         
+        $('button.max-size-map-toggle > i').toggleClass('fa-expand fa-compress');
+        updateSizeSearchMap();
+          $scope.fixedMiniMapFullSreen = !$scope.fixedMiniMapFullSreen
+      }		
       $scope.goToSearch = function (any) {
         $location.path("/search").search({ any: any });
       };

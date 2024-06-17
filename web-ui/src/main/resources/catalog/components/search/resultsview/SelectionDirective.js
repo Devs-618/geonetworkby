@@ -180,6 +180,18 @@
               });
           };
 
+          // custom function for application from web site
+          scope.openSelectionApplication = function () {
+            return gnSearchManagerService
+              .selected(scope.searchResults.selectionBucket)
+              .then(function (res) {
+                if (angular.isArray(res.data)) {
+                  var idsUrlApl = res.data.join(",");
+                  location.href = "http://localhost:3000/applications?id="+idsUrlApl;
+                }
+              });
+          };
+
           scope.getIcon = function () {
             if (scope.searchResults.selectedCount === 0) {
               return "fa-square-o";
