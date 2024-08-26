@@ -60,6 +60,8 @@
           "dateStamp",
           "documentStandard",
           "standardNameObject.default",
+          "resolutionScaleDenominator",
+          "coordinateSystem",
           "cl_status*",
           "mdStatus*"
         ]

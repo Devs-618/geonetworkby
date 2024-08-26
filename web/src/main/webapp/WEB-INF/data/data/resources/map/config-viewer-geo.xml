@@ -88,7 +88,7 @@
 	</ows-context:Layer>
 
 
-	<ows-context:Layer	queryable="true" 
+	<!-- <ows-context:Layer	queryable="true" 
 						name="georesursDDZ_Belarus_Web_Mercator_new"
 						hidden="true" opacity="1"	group="Background layers">
 		<ows:Title xmlns:ows="http://www.opengis.net/ows">georesursDDZ_Belarus_WMS</ows:Title>
@@ -108,7 +108,7 @@
                                     xlink:href="http://localhost/qgis/qgis_mapserv.fcgi.exe?map=d:\temp\dzz.qgs"/>
       </ows-context:Server>
       <ows-context:StyleList/>
-    </ows-context:Layer>
+    </ows-context:Layer> -->
 	
 	
     <!--ows-context:Layer queryable="false"

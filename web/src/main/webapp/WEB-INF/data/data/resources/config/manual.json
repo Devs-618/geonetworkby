@@ -33,6 +33,5 @@
   "maintainer-guide-home": "maintainer-guide/index/",
   "installing-datadirectory": "install-guide/customizing-data-directory/",
   "installing-db": "install-guide/configuring-database/",
-  "installing-index": "install-guide/installing-index/",
   "standards-home": "annexes/standards/index/"
 }

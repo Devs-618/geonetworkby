@@ -665,6 +665,13 @@
               {
                 tplUrl:
                   "../../catalog/components/" +
+                  "search/resultsview/partials/viewtemplates/compare.html",
+                tooltip: "Compare",
+                icon: "fa-braille"
+              },
+              {
+                tplUrl:
+                  "../../catalog/components/" +
                   "search/resultsview/partials/viewtemplates/table.html",
                 tooltip: "Table",
                 icon: "fa-table"

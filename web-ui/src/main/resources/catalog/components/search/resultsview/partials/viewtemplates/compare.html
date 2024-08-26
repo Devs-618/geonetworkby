@@ -1,0 +1,153 @@
+<div class="gn-compare-view">
+  <table class="gn-resultview table table-bordered table-hover gn-card-table">
+    <tr>
+      <td data-translate="">title</td>
+
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-grid panel panel-default gn-card"
+      >
+        <div
+          class="panel-heading gn-card-heading"
+          data-ng-class="{'gn-record-selected': md.selected}"
+        >
+          <div class="gn-md-title">
+            <div class="gn-md-select" data-ng-if="showBatchDropdown">
+              <input
+                data-gn-selection-md="md"
+                data-bucket="searchResults.selectionBucket"
+                data-results="searchResults"
+                type="checkbox"
+                data-ng-model="md.selected"
+                aria-label="{{'clickToSelect' | translate}}"
+              />
+            </div>
+            <span
+              class="fa gn-icon-{{md.resourceType[0]}}"
+              title="{{md.resourceType[0] | translate}}"
+            ></span>
+            <h1>
+              <a
+                href=""
+                gn-metadata-open="md"
+                gn-records="searchResults.records"
+                gn-formatter="formatter.defaultUrl"
+                title="{{md.resourceTitle}}"
+                class="gn-break"
+              >
+                <i
+                  data-ng-show="md.resourceTitle.trim()=='' || md.resourceTitle===undefined"
+                  >{{'missingTitle' | translate}}</i
+                >
+                {{(md.resourceTitle) | characters:80}}
+              </a>
+            </h1>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td data-translate="">_schema</td>
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-md-title"
+      >
+        <div>{{md.documentStandard}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td data-translate="">credit</td>
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-md-title"
+      >
+        <div>
+          <p data-ng-if="md.contact[0].role == 'author'">
+            {{md.contact[0].organisationObject.default}}
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td data-translate="">publicationDate</td>
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-md-title"
+      >
+        <div data-gn-humanize-time="{{md.dateStamp}}">{{md.dateStamp}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td data-translate="">denominators</td>
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-md-title"
+      >
+        <div>
+          <p data-ng-if="md.resolutionScaleDenominator[0].length > 0">
+            1/{{md.resolutionScaleDenominator[0]}}
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td data-translate="">crs</td>
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-md-title"
+      >
+        <div>{{md.coordinateSystem[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td data-translate="">cl_spatialRepresentationType</td>
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-md-title"
+      >
+        <div>{{md.geom[0].type | translate}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td data-translate="">resourceContact</td>
+      <td
+        data-ng-repeat="md in searchResults.records"
+        gn-displayextent-onhover=""
+        gn-zoomto-onclick=""
+        data-ng-class="{'gn-record-selected': md.selected}"
+        class="gn-md-title"
+      >
+        <div data-ng-repeat="contact in md.contactForResource">
+          <div data-ng-if="contact.role == 'custodian'">
+            <p>{{contact.organisationObject.default}}</p>
+            <p>{{contact.address}}</p>
+            <p>{{contact.phone}}</p>
+            <p>{{contact.email}}</p>
+            <p>{{contact.website}}</p>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

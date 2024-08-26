@@ -4,6 +4,21 @@
 // variables for manipulating the theme
 @import "gn_variables_default.less"; // must be last
 
+.gn-compare-view{
+  overflow-x: scroll;
+  width: 100%;
+  table{
+    tr{
+      td:first-child{
+        min-width: 150px;
+      }
+      td{
+        min-width: 320px;
+      }
+    }
+  }
+}
+
 .gn-row-results {
   padding-top: 15px;
   background-color: @gn-results-background-color;
