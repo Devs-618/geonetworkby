@@ -47,6 +47,7 @@
           "resourceTitle*",
           "resourceAbstract*",
           "draft",
+          "draftId",
           "owner",
           "link",
           "status*",
@@ -144,6 +145,7 @@
               "valid",
               "isHarvested",
               "dateStamp",
+              "changeDate",
               "documentStandard",
               "mdStatus*",
               "*inspire*"
@@ -216,12 +218,12 @@
                 filters: {
                   errors: {
                     query_string: {
-                      query: "-indexingErrorMsg:/Warning.*/"
+                      query: "-indexingErrorMsg.type:warning"
                     }
                   },
                   warning: {
                     query_string: {
-                      query: "+indexingErrorMsg:/Warning.*/"
+                      query: "+indexingErrorMsg.type:warning"
                     }
                   }
                 }
@@ -234,20 +236,8 @@
             },
             indexingErrorMsg: {
               terms: {
-                field: "indexingErrorMsg",
-                size: 10,
-                exclude: "Warning.*"
-              }
-            },
-            indexingWarningMsg: {
-              terms: {
-                field: "indexingErrorMsg",
-                size: 10,
-                include: "Warning.*"
-              },
-              meta: {
-                displayFilter: false,
-                field: "indexingErrorMsg"
+                field: "indexingErrorMsg.string",
+                size: 10
               }
             }
           },
@@ -319,11 +309,19 @@
         };
       };
 
-      this.addSourceConfiguration = function (esParams, type) {
+      this.addSourceConfiguration = function (esParams, type, templateSource) {
         if (type === undefined) {
           type = "simplelist";
         }
-        var source = typeof type === "string" ? this.configs[type].source : type;
+        var source =
+          typeof type === "string" ? angular.copy(this.configs[type].source, {}) : type;
+        if (templateSource) {
+          if (templateSource.exclude) {
+            source.includes = source.includes.filter(function (field) {
+              return templateSource.exclude.indexOf(field) === -1;
+            });
+          }
+        }
         esParams._source = source;
         if (this.configs[type].script_fields) {
           esParams.script_fields = this.configs[type].script_fields;

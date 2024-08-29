@@ -23,12 +23,12 @@
 
 package org.fao.geonet.kernel.harvest.harvester.csw;
 
+import co.elastic.clients.elasticsearch.core.SearchResponse;
+import co.elastic.clients.elasticsearch.core.search.Hit;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jeeves.server.context.ServiceContext;
 import org.apache.commons.lang.StringUtils;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.search.SearchHit;
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.Logger;
 import org.fao.geonet.constants.Geonet;
@@ -326,6 +326,11 @@ public class Aligner extends BaseAligner<CswParams> {
 
         }
 
+        // Translate metadata
+        if (params.isTranslateContent()) {
+            md = translateMetadataContent(context, md, schema);
+        }
+
         //
         // insert metadata
         //
@@ -529,12 +534,12 @@ public class Aligner extends BaseAligner<CswParams> {
             try {
                 Integer groupIdVal = null;
                 if (StringUtils.isNotEmpty(params.getOwnerIdGroup())) {
-                    groupIdVal = Integer.parseInt(params.getOwnerIdGroup());
+                    groupIdVal = getGroupOwner();
                 }
 
                 params.getValidate().validate(dataMan, context, response, groupIdVal);
             } catch (Exception e) {
-                log.debug("Ignoring invalid metadata with uuid " + uuid);
+                log.info("Ignoring invalid metadata with uuid " + uuid);
                 result.doesNotValidate++;
                 return null;
             }
@@ -672,8 +677,8 @@ public class Aligner extends BaseAligner<CswParams> {
                 FIELDLIST_UUID,
                 0, 1000);
 
-            for (SearchHit hit : queryResult.getHits()) {
-                String uuid = hit.getSourceAsMap().get(Geonet.IndexFieldNames.UUID).toString();
+            for (Hit hit : (List<Hit>) queryResult.hits().hits()) {
+                String uuid = objectMapper.convertValue(hit.source(), Map.class).get(Geonet.IndexFieldNames.UUID).toString();
                 metadataUuids.add(uuid);
             }
 
