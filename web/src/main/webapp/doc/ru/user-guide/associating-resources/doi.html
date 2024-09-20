@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Object Identifier (DOI) &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Классифицировать информацию" href="../tag-information/index.html" />
+    <link rel="prev" title="Другие типы ресурсов (например, датчик, публикация)" href="linking-others.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Гид пользователя</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Быстрый старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Описание информации</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Связывание ресурсов</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="linking-documents.html">Связывание документов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linking-records.html">Связывание другой записи</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Digital Object Identifier (DOI)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-doi">Creating the DOI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#doi-api">DOI API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Классифицировать информацию</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Издательский</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Анализ данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочий процесс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Сбор урожая</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспорт записей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Гид пользователя</a> &raquo;</li>
+          <li><a href="index.html">Связывание ресурсов</a> &raquo;</li>
+      <li>Digital Object Identifier (DOI)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/associating-resources/doi.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="digital-object-identifier-doi">
+<span id="doi"></span><h1>Digital Object Identifier (DOI)<a class="headerlink" href="#digital-object-identifier-doi" title="Permalink to this heading">¶</a></h1>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://support.datacite.org/docs/mds-api-guide">DataCite API</a> is used to create DOI.
+Configure the API access point in the <code class="docutils literal notranslate"><span class="pre">admin</span> <span class="pre">console</span> <span class="pre">&gt;</span> <span class="pre">settings</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/doi-admin-console.png" src="../../_images/doi-admin-console.png" />
+</figure>
+<p>A record can be downloaded using the DataCite format from the API using: <a class="reference external" href="http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/formatters/datacite?output=xml">http://localhost:8080/geonetwork/srv/api/records/da165110-88fd-11da-a88f-000d939bc5d8/formatters/datacite?output=xml</a></p>
+</section>
+<section id="creating-the-doi">
+<h2>Creating the DOI<a class="headerlink" href="#creating-the-doi" title="Permalink to this heading">¶</a></h2>
+<p>Once configured, DOI can be created using the interface. DOI is created on demand. It means
+that a user must ask for creation of a DOI. When created, the task is notified by email to the
+reviewer of the group (by default, can be configured for administrator only).</p>
+<figure class="align-default">
+<img alt="../../_images/doi-request-menu.png" src="../../_images/doi-request-menu.png" />
+</figure>
+<p>The task is assigned to a specific user. An optional due date and comment can be defined:</p>
+<figure class="align-default">
+<img alt="../../_images/doi-request-popup.png" src="../../_images/doi-request-popup.png" />
+</figure>
+<p>After submission of the task, the task owner is notified by email (if the mail server is configured, see admin console &gt; settings). The task can then be resolved in the admin console &gt; information &gt; versioning section.</p>
+<p>For DOI creation, the task is a 2 steps actions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>First check if all prerequisite are covered (below the record is not valid in DataCite format)</p></li>
+</ul>
+</div></blockquote>
+<p>The DataCite format requires some mandatory fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Identifier (with mandatory type sub-property)</p></li>
+<li><p>Creator (with optional given name, family name, name identifier and affiliation sub-properties)</p></li>
+<li><p>Title (with optional type sub-properties)</p></li>
+<li><p>Publisher</p></li>
+<li><p>PublicationYear</p></li>
+<li><p>ResourceType (with mandatory general type description subproperty)</p></li>
+</ul>
+</div></blockquote>
+<p>The mapping with ISO standards is the following:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 44.4%" />
+<col style="width: 44.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>ISO 19139</p></th>
+<th class="head"><p>ISO 19115-3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identifier</p></td>
+<td><p>gmd:MD_Metadata/gmd:fileIdentifier/*/text()</p></td>
+<td><p>mdb:MD_Metadata/mdb:metadataIdentifier/*/mcc:code/*/text()</p></td>
+</tr>
+<tr class="row-odd"><td><p>Creator</p></td>
+<td><p>gmd:identificationInfo/*/gmd:pointOfContact with role „pointOfContact“ or „custodian“</p></td>
+<td><p>mdb:identificationInfo/*/mri:pointOfContact with role „pointOfContact“ or „custodian“</p></td>
+</tr>
+<tr class="row-even"><td><p>Title</p></td>
+<td><p>gmd:identificationInfo/*/gmd:citation/*/gmd:title</p></td>
+<td><p>mdb:identificationInfo/*/mri:citation/*/cit:title</p></td>
+</tr>
+<tr class="row-odd"><td><p>Publisher</p></td>
+<td><p>gmd:distributorContact[1]/*/gmd:organisationName/gco:CharacterString</p></td>
+<td><p>mrd:distributorContact[1]/*/cit:party/*/cit:organisationName/gco:CharacterString</p></td>
+</tr>
+<tr class="row-even"><td><p>PublicationYear</p></td>
+<td><p>gmd:identificationInfo/*/gmd:citation/*/gmd:date/*[gmd:dateType/*/&#64;codeListValue = „publication“]</p></td>
+<td><p>mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/&#64;codeListValue = „publication“]</p></td>
+</tr>
+<tr class="row-odd"><td><p>ResourceType</p></td>
+<td><p>gmd:hierarchyLevel/*/&#64;codeListValue</p></td>
+<td><p>mdb:metadataScope/*/mdb:resourceScope/*/&#64;codeListValue</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mapping can be customized in:</p>
+<ul class="simple">
+<li><p>ISO19139 <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/iso19139/src/main/plugin/iso19139/formatter/datacite/view.xsl">source file schemas/iso19139/src/main/plugin/iso19139/formatter/datacite/view.xsl</a></p></li>
+<li><p>ISO19115-3.2018 <a class="reference external" href="https://github.com/geonetwork/core-geonetwork/tree/master/schemas/iso19139/src/main/plugin/iso19139/formatter/datacite/view.xsl">source file schemas/iso19139/src/main/plugin/iso19139/formatter/datacite/view.xsl</a></p></li>
+</ul>
+<p>See <a class="reference external" href="http://schema.datacite.org/meta/kernel-4.1/doc/DataCite-MetadataKernel_v4.1.pdf">http://schema.datacite.org/meta/kernel-4.1/doc/DataCite-MetadataKernel_v4.1.pdf</a> for more details on the format.</p>
+<figure class="align-default">
+<img alt="../../_images/doi-request-check.png" src="../../_images/doi-request-check.png" />
+</figure>
+<p>A DOI may already be assigned for a record:</p>
+<figure class="align-default">
+<img alt="../../_images/doi-api-check-already-exist.png" src="../../_images/doi-api-check-already-exist.png" />
+</figure>
+<p>In such case the DOI needs to be removed first.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>After validation, create the DOI</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-default">
+<img alt="../../_images/doi-request-check-ok.png" src="../../_images/doi-request-check-ok.png" />
+</figure>
+<p>The DOI is then added to the metadata record:</p>
+<figure class="align-default">
+<img alt="../../_images/doi-in-xml.png" src="../../_images/doi-in-xml.png" />
+</figure>
+</section>
+<section id="doi-api">
+<h2>DOI API<a class="headerlink" href="#doi-api" title="Permalink to this heading">¶</a></h2>
+<p>The REST API allows to access the DOI related operations:</p>
+<figure class="align-default">
+<img alt="../../_images/doi-api.png" src="../../_images/doi-api.png" />
+</figure>
+<p>The check preconditions API returns exception if one of the pre requisite is not met:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>DataCite API is not configured</p></li>
+<li><p>Record is not public</p></li>
+<li><p>Record already has a DOI</p></li>
+<li><p>Record is not valid for DataCite (ie. XSD errors returned by DataCite XSD validation)</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-default">
+<img alt="../../_images/doi-api-check.png" src="../../_images/doi-api-check.png" />
+</figure>
+<p>When a DOI is created, the response return the following details:</p>
+<figure class="align-default">
+<img alt="../../_images/doi-api-done.png" src="../../_images/doi-api-done.png" />
+</figure>
+<p>The DOI is added to the metadata record using the following encoding:</p>
+<figure class="align-default">
+<img alt="../../_images/doi-in-xml.png" src="../../_images/doi-in-xml.png" />
+</figure>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sist19.sciencesconf.org/data/pages/SIST19_A_BATTAIS.pdf">Comment créer un DOI à partir de l’outil de catalogage Geonetwork, Annick Battais</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="linking-others.html" class="btn btn-neutral float-left" title="Другие типы ресурсов (например, датчик, публикация)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tag-information/index.html" class="btn btn-neutral float-right" title="Классифицировать информацию" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geographic information – Methodology for feature cataloguing (iso19110) &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Dublin core (dublin-core)" href="dublin-core.html" />
+    <link rel="prev" title="Geographic information – Metadata (iso19139:2007) (iso19139)" href="iso19139.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Приложения</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../mef-format.html">Формат обмена метаданными (MEF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gallery/gallery.html">Some GeoNetwork nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary/index.html">Глоссарий</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Стандарты</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="iso19115-3.2018.html">Geographic information – Metadata (iso19115-3.2018)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iso19139.html">Geographic information – Metadata (iso19139:2007) (iso19139)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Geographic information – Methodology for feature cataloguing (iso19110)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-editor">Metadata editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schema-technical-details">Schema technical details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-elements">Standard elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-codelists">Standard codelists</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dublin-core.html">Dublin core (dublin-core)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Приложения</a> &raquo;</li>
+          <li><a href="index.html">Стандарты</a> &raquo;</li>
+      <li>Geographic information – Methodology for feature cataloguing (iso19110)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/annexes/standards/iso19110.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geographic-information-methodology-for-feature-cataloguing-iso19110">
+<span id="iso19110"></span><h1>Geographic information – Methodology for feature cataloguing (iso19110)<a class="headerlink" href="#geographic-information-methodology-for-feature-cataloguing-iso19110" title="Permalink to this heading">¶</a></h1>
+<p>More details: <a class="reference external" href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=39965">http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=39965</a></p>
+<section id="metadata-editor">
+<h2>Metadata editor<a class="headerlink" href="#metadata-editor" title="Permalink to this heading">¶</a></h2>
+<p>This standard can be encoded using 3 view(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#iso19110-view-default"><span class="std std-ref">View: Simple (default)</span></a></p></li>
+<li><p><a class="reference internal" href="#iso19110-view-advanced"><span class="std std-ref">View: Full (advanced)</span></a></p></li>
+<li><p><a class="reference internal" href="#iso19110-view-xml"><span class="std std-ref">View: XML (xml)</span></a></p></li>
+</ul>
+<section id="view-simple-default">
+<span id="iso19110-view-default"></span><h3>View: Simple (default)<a class="headerlink" href="#view-simple-default" title="Permalink to this heading">¶</a></h3>
+<p>This view is composed of1tab(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#iso19110-tab-default"><span class="std std-ref">Tab: Simple (default)</span></a></p></li>
+</ul>
+<p>This view also allows to add the following element even if not in the current record:</p>
+<ul class="simple">
+<li><p>Code (gfc:code)</p></li>
+<li><p>Codelist (gfc:listedValue)</p></li>
+</ul>
+<section id="tab-simple-default">
+<span id="iso19110-tab-default"></span><h4>Tab: Simple (default)<a class="headerlink" href="#tab-simple-default" title="Permalink to this heading">¶</a></h4>
+<figure class="align-default">
+<img alt="../../_images/iso19110-tab-default.png" src="../../_images/iso19110-tab-default.png" />
+</figure>
+<p>This tab display elements from the XML metadata record.</p>
+<section id="section-feature-catalogue-description">
+<h5>Section: Feature Catalogue description<a class="headerlink" href="#section-feature-catalogue-description" title="Permalink to this heading">¶</a></h5>
+<p>See:ref:<cite>iso19110-elem-gfc-FC_FeatureCatalogue-a4de444fdd9a6e86e8ba63bb96be363c</cite></p>
+</section>
+<section id="name">
+<h5>Name<a class="headerlink" href="#name" title="Permalink to this heading">¶</a></h5>
+Feature catalogue name<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gmx:name</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gmx-name-5ec0c4442ad2b94944636103e556d401</cite></p>
+</section>
+<section id="id1">
+<h5>Name<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h5>
+Feature catalogue name<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gfc:name</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gfc-name-134285dc9b9a3268556039e2fe3f370e</cite></p>
+</section>
+<section id="scope">
+<h5>Scope<a class="headerlink" href="#scope" title="Permalink to this heading">¶</a></h5>
+Scope definition<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gmx:scope</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gmx-scope-14efac6982297b09ba1324e80138092f</cite></p>
+</section>
+<section id="id2">
+<h5>Scope<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h5>
+Scope definition<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gfc:scope</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gfc-scope-4f044fce55b8e0b6dd0d77516ad9e66d</cite></p>
+</section>
+<section id="field-of-application">
+<h5>Field of application<a class="headerlink" href="#field-of-application" title="Permalink to this heading">¶</a></h5>
+Field of application<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gmx:fieldOfApplication</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gmx-fieldOfApplication-66508d1f139317e01e1decd095915428</cite></p>
+</section>
+<section id="id3">
+<h5>Field of application<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h5>
+Field of application<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gfc:fieldOfApplication</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gfc-fieldOfApplication-548e0631e3ea92f7dd05ac533b6c14d2</cite></p>
+</section>
+<section id="version">
+<h5>Version<a class="headerlink" href="#version" title="Permalink to this heading">¶</a></h5>
+Catalogue version<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gmx:versionNumber</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gmx-versionNumber-075201f18225aec432b46c75a93589a2</cite></p>
+</section>
+<section id="id4">
+<h5>Version<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h5>
+Catalogue version<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gfc:versionNumber</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gfc-versionNumber-d66ec9fd5c22c70a69dd2b759d66cc4f</cite></p>
+</section>
+<section id="date">
+<h5>Date<a class="headerlink" href="#date" title="Permalink to this heading">¶</a></h5>
+Catalogue date<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gmx:versionDate</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gmx-versionDate-6c27e2ee0b2daa4ab1aea9ef374bc08f</cite></p>
+</section>
+<section id="catalogue-producer">
+<h5>Catalogue producer<a class="headerlink" href="#catalogue-producer" title="Permalink to this heading">¶</a></h5>
+Catalogue responsible<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gfc:producer</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gfc-producer-5a13bfab8b07441bc9f9f71dcfdf7f6c</cite></p>
+</section>
+<section id="functional-language">
+<h5>Functional language<a class="headerlink" href="#functional-language" title="Permalink to this heading">¶</a></h5>
+<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gfc:functionalLanguage</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gfc-functionalLanguage-7a21d9c35ed9c400c40959ede97b8d76</cite></p>
+</section>
+<section id="property-description">
+<h5>Property description<a class="headerlink" href="#property-description" title="Permalink to this heading">¶</a></h5>
+Property description<dl class="field-list simple">
+<dt class="field-odd">XPath<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/gfc:FC_FeatureCatalogue/gfc:featureType</p>
+</dd>
+</dl>
+<p>See:ref:<cite>iso19110-elem-gfc-featureType-d6099a684b15337451388dd46048c48f</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>suggest</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+<section id="view-full-advanced">
+<span id="iso19110-view-advanced"></span><h3>View: Full (advanced)<a class="headerlink" href="#view-full-advanced" title="Permalink to this heading">¶</a></h3>
+<p>This view is composed of1tab(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#iso19110-tab-advanced"><span class="std std-ref">Tab: Full (advanced)</span></a></p></li>
+</ul>
+<section id="tab-full-advanced">
+<span id="iso19110-tab-advanced"></span><h4>Tab: Full (advanced)<a class="headerlink" href="#tab-full-advanced" title="Permalink to this heading">¶</a></h4>
+<p>This tab display elements from the XML metadata record and also provide controls to add all elements defined in the schema (XSD).</p>
+<section id="section-attribute-table-description">
+<h5>Section: Attribute table description<a class="headerlink" href="#section-attribute-table-description" title="Permalink to this heading">¶</a></h5>
+Attribute table description<p>See:ref:<cite>iso19110-elem-gfc-FC_FeatureType-38ad06d5e87d9bf33d5f111e7bca0eb4</cite></p>
+</section>
+<section id="id5">
+<h5>Section: Feature Catalogue description<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h5>
+<p>See:ref:<cite>iso19110-elem-gfc-FC_FeatureCatalogue-a4de444fdd9a6e86e8ba63bb96be363c</cite></p>
+</section>
+</section>
+</section>
+<section id="view-xml-xml">
+<span id="iso19110-view-xml"></span><h3>View: XML (xml)<a class="headerlink" href="#view-xml-xml" title="Permalink to this heading">¶</a></h3>
+<p>This view is composed of1tab(s).</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#iso19110-tab-xml"><span class="std std-ref">Tab: XML (xml)</span></a></p></li>
+</ul>
+<section id="tab-xml-xml">
+<span id="iso19110-tab-xml"></span><h4>Tab: XML (xml)<a class="headerlink" href="#tab-xml-xml" title="Permalink to this heading">¶</a></h4>
+<p>This tab display elements from the XML metadata record and also provide controls to add all elements defined in the schema (XSD).</p>
+</section>
+</section>
+</section>
+<section id="schema-technical-details">
+<h2>Schema technical details<a class="headerlink" href="#schema-technical-details" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Standard identifier<span class="colon">:</span></dt>
+<dd class="field-odd"><p>iso19110</p>
+</dd>
+<dt class="field-even">Version<span class="colon">:</span></dt>
+<dd class="field-even"><p>1.0</p>
+</dd>
+<dt class="field-odd">Schema location<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="http://www.isotc211.org/2005/gfc">http://www.isotc211.org/2005/gfc</a> <a class="reference external" href="http://www.isotc211.org/2005/gfc/gfc.xsd">http://www.isotc211.org/2005/gfc/gfc.xsd</a></p>
+</dd>
+<dt class="field-even">Schema namespaces<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><a class="reference external" href="http://geonetwork-opensource.org/schemas/schema-ident">http://geonetwork-opensource.org/schemas/schema-ident</a></p></li>
+<li><p><a class="reference external" href="http://www.isotc211.org/2005/gfc">http://www.isotc211.org/2005/gfc</a></p></li>
+<li><p><a class="reference external" href="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a></p></li>
+<li><p><a class="reference external" href="http://www.w3.org/XML/1998/namespace">http://www.w3.org/XML/1998/namespace</a></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Schema detection mode<span class="colon">:</span></dt>
+<dd class="field-odd"><p>elements (root)</p>
+</dd>
+<dt class="field-even">Schema detection elements<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p>gfc:FC_FeatureCatalogue</p></li>
+<li><p>gfc:FC_FeatureType</p></li>
+</ul>
+</section>
+<section id="standard-elements">
+<h2>Standard elements<a class="headerlink" href="#standard-elements" title="Permalink to this heading">¶</a></h2>
+<p>List of all elements available in the standard.</p>
+<section id="text">
+<span id="iso19110-elem-gco-characterstring-44f4a753bad9d1df04d0611f28f05110"></span><h3>Text<a class="headerlink" href="#text" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gco:CharacterString</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="lower-cardinality">
+<span id="iso19110-elem-gco-lower-52bfcbb528e9aaefc2e33f4fdc55aa5f"></span><h3>Lower cardinality<a class="headerlink" href="#lower-cardinality" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gco:lower</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Lower cardinality<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gco:lower</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">           </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:Integer&gt;</span>1<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="nt">&lt;/gco:lower&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="nil-reason">
+<span id="iso19110-elem-gco-nilreason-59d9c7937eb12ff82e61921ee335d062"></span><h3>Nil reason<a class="headerlink" href="#nil-reason" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gco:nilReason</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="range">
+<span id="iso19110-elem-gco-range-6709132eada2bd317e3ad342849df5ef"></span><h3>Range<a class="headerlink" href="#range" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gco:range</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gco:range</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">           </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:MultiplicityRange&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:lower&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:Integer&gt;</span>1<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gco:lower&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:upper&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:UnlimitedInteger</span><span class="w"> </span><span class="na">isInfinite=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">xsi:nil=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>1
+<span class="w">                    </span><span class="nt">&lt;/gco:UnlimitedInteger&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gco:upper&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gco:MultiplicityRange&gt;</span>
+<span class="nt">&lt;/gco:range&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="upper-cardinality">
+<span id="iso19110-elem-gco-upper-a58d7645455b8f20c0d2608c5bc1b6ab"></span><h3>Upper cardinality<a class="headerlink" href="#upper-cardinality" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gco:upper</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Upper cardinality<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gco:upper</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">           </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:UnlimitedInteger</span><span class="w"> </span><span class="na">isInfinite=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">xsi:nil=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>1
+<span class="w">                    </span><span class="nt">&lt;/gco:UnlimitedInteger&gt;</span>
+<span class="nt">&lt;/gco:upper&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="affects-value-of">
+<span id="iso19110-elem-gfc-affectsvalueof-3cc26e7cd38219c7bb06fbe8e5438598"></span><h3>Affects value of<a class="headerlink" href="#affects-value-of" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:affectsValueOf</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="aliases">
+<span id="iso19110-elem-gfc-aliases-7ec87797f5b619c461f2acf995b56b2e"></span><h3>Aliases<a class="headerlink" href="#aliases" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:aliases</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="cardinalities">
+<span id="iso19110-elem-gfc-cardinality-36c218fd045f824ca4f9d1ceb6ffbcc2"></span><h3>Cardinalities<a class="headerlink" href="#cardinalities" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:cardinality</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Cardinalities<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:cardinality</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                 </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:Multiplicity&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:range&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:MultiplicityRange&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:lower&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:Integer&gt;</span>1<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gco:lower&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:upper&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:UnlimitedInteger</span><span class="w"> </span><span class="na">isInfinite=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">xsi:nil=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>1
+<span class="w">                    </span><span class="nt">&lt;/gco:UnlimitedInteger&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gco:upper&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gco:MultiplicityRange&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gco:range&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gco:Multiplicity&gt;</span>
+<span class="nt">&lt;/gfc:cardinality&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="elements">
+<span id="iso19110-elem-gfc-carrierofcharacteristics-c804ac9130fc47e8753b8d2e3776840b"></span><h3>Elements<a class="headerlink" href="#elements" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:carrierOfCharacteristics</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Association, attribute, operation, ...<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:carrierOfCharacteristics</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                              </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:FC_FeatureAttribute&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:memberName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:LocalName&gt;</span>VALUE<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:memberName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:cardinality&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:Multiplicity&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:range&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:MultiplicityRange&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:lower&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:Integer&gt;</span>1<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gco:lower&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:upper&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:UnlimitedInteger</span><span class="w"> </span><span class="na">isInfinite=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">xsi:nil=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>1
+<span class="w">                    </span><span class="nt">&lt;/gco:UnlimitedInteger&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gco:upper&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gco:MultiplicityRange&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gco:range&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gco:Multiplicity&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:cardinality&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:featureType/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:valueMeasurementUnit&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gml:UnitDefinition</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="w"> </span><span class="na">gml:id=</span><span class="s">&quot;unknown&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gml:description/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gml:identifier</span><span class="w"> </span><span class="na">codeSpace=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gml:UnitDefinition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:valueMeasurementUnit&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Low<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>1<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>below<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>High<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>2<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>above<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Inlands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>3<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>between<span class="w"> </span>0<span class="w"> </span>and<span class="w"> </span>200<span class="w"> </span>m<span class="w"> </span>outside<span class="w"> </span>the<span class="w"> </span>coastal<span class="w"> </span>strip.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Uplands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>4<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Zones<span class="w"> </span>between<span class="w"> </span>200<span class="w"> </span>and<span class="w"> </span>500<span class="w"> </span>m<span class="w"> </span>plus<span class="w"> </span>the<span class="w"> </span>flat<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Mountains<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>5<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>Slopy<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and<span class="w"> </span>1000m<span class="w"> </span>and<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>areas<span class="w"> </span>over
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:valueType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:TypeName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:aName&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:CharacterString&gt;</span>INTEGER<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gco:aName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gco:TypeName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:valueType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:FC_FeatureAttribute&gt;</span>
+<span class="nt">&lt;/gfc:carrierOfCharacteristics&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="code">
+<span id="iso19110-elem-gfc-code-c62e74de82d004d4ec09d403e4b59c3b"></span><h3>Code<a class="headerlink" href="#code" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:code</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="constrained-by">
+<span id="iso19110-elem-gfc-constrainedby-5e5ace57efe55c1890bec294427a780a"></span><h3>Constrained by<a class="headerlink" href="#constrained-by" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:constrainedBy</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="definition">
+<span id="iso19110-elem-gfc-definition-4bc2a8f5046951fa9e77311ef6d927f2"></span><h3>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:definition</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Property definition</section>
+<section id="definition-reference">
+<span id="iso19110-elem-gfc-definitionreference-30806ed7d5bf82b19c877082a919216e"></span><h3>Definition reference<a class="headerlink" href="#definition-reference" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:definitionReference</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="definition-source">
+<span id="iso19110-elem-gfc-definitionsource-7f9ab04b040daf81d7d761ea83101e88"></span><h3>Definition source<a class="headerlink" href="#definition-source" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:definitionSource</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="description">
+<span id="iso19110-elem-gfc-description-87db9aea10cf7281b199782a15b17015"></span><h3>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:description</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="association-role">
+<span id="iso19110-elem-gfc-fc-associationrole-48c91ffbc9251a3377010490882da453"></span><h3>Association role<a class="headerlink" href="#association-role" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_AssociationRole</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="constraint">
+<span id="iso19110-elem-gfc-fc-constraint-8b0503c998a5c3cfd079077286bcc18c"></span><h3>Constraint<a class="headerlink" href="#constraint" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_Constraint</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="feature-association">
+<span id="iso19110-elem-gfc-fc-featureassociation-7bfc562c6ffccb3dd540692bd8c0fda7"></span><h3>Feature association<a class="headerlink" href="#feature-association" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_FeatureAssociation</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="attribute">
+<span id="iso19110-elem-gfc-fc-featureattribute-f3f350a00639f88ab53dd23d5ad5724e"></span><h3>Attribute<a class="headerlink" href="#attribute" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_FeatureAttribute</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:FC_FeatureAttribute</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                         </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:memberName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:LocalName&gt;</span>VALUE<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:memberName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:cardinality&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:Multiplicity&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:range&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:MultiplicityRange&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:lower&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:Integer&gt;</span>1<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gco:lower&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:upper&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:UnlimitedInteger</span><span class="w"> </span><span class="na">isInfinite=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">xsi:nil=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>1
+<span class="w">                    </span><span class="nt">&lt;/gco:UnlimitedInteger&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gco:upper&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gco:MultiplicityRange&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gco:range&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gco:Multiplicity&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:cardinality&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:featureType/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:valueMeasurementUnit&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gml:UnitDefinition</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="w"> </span><span class="na">gml:id=</span><span class="s">&quot;unknown&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gml:description/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gml:identifier</span><span class="w"> </span><span class="na">codeSpace=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gml:UnitDefinition&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:valueMeasurementUnit&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Low<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>1<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>below<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>High<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>2<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>above<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Inlands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>3<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>between<span class="w"> </span>0<span class="w"> </span>and<span class="w"> </span>200<span class="w"> </span>m<span class="w"> </span>outside<span class="w"> </span>the<span class="w"> </span>coastal<span class="w"> </span>strip.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Uplands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>4<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Zones<span class="w"> </span>between<span class="w"> </span>200<span class="w"> </span>and<span class="w"> </span>500<span class="w"> </span>m<span class="w"> </span>plus<span class="w"> </span>the<span class="w"> </span>flat<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Mountains<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>5<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>Slopy<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and<span class="w"> </span>1000m<span class="w"> </span>and<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>areas<span class="w"> </span>over
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:valueType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:TypeName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:aName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>INTEGER<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gco:aName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gco:TypeName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:valueType&gt;</span>
+<span class="nt">&lt;/gfc:FC_FeatureAttribute&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="feature-catalogue-description">
+<span id="iso19110-elem-gfc-fc-featurecatalogue-a4de444fdd9a6e86e8ba63bb96be363c"></span><h3>Feature Catalogue description<a class="headerlink" href="#feature-catalogue-description" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_FeatureCatalogue</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:FC_FeatureCatalogue</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                         </span><span class="na">uuid=</span><span class="s">&quot;411cd05b-9a79-45f2-b39f-0b344a9f35af&quot;</span>
+<span class="w">                         </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc http://www.isotc211.org/2005/gfc/gfc.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>Elevation<span class="w"> </span>breakdown<span class="w"> </span>feature<span class="w"> </span>catalogue<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:name&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:scope&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>Dataset<span class="w"> </span>elevation<span class="w"> </span>breakdown<span class="w"> </span>(raster<span class="w"> </span>1<span class="w"> </span>km)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:scope&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:versionNumber&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>1.0<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:versionNumber&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:versionDate&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:DateTime&gt;</span>2012-11-05T10:56:11<span class="nt">&lt;/gco:DateTime&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:versionDate&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:producer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:individualName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>European<span class="w"> </span>Environment<span class="w"> </span>Agency<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:individualName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:positionName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:positionName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:contactInfo&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Contact&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:address&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:CI_Address&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gmd:deliveryPoint&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Kongens<span class="w"> </span>Nytorv<span class="w"> </span>6<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gmd:deliveryPoint&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gmd:city&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Copenhagen<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gmd:city&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gmd:administrativeArea&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>K<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gmd:administrativeArea&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gmd:postalCode&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>1050<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gmd:postalCode&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gmd:country&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Denmark<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gmd:country&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gmd:electronicMailAddress&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>mauro.michielon@eea.europa.eu<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gmd:electronicMailAddress&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:CI_Address&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:address&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Contact&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:contactInfo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;CI_RoleCode&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:producer&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:featureType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:FC_FeatureType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:typeName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:LocalName&gt;</span>Elevation<span class="w"> </span>breakdown<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:typeName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString&gt;</span>The<span class="w"> </span>Elevation<span class="w"> </span>breakdown<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>Land<span class="w"> </span>cover<span class="w"> </span>changes<span class="w"> </span>into
+<span class="w">          </span>homogeneous<span class="w"> </span>areas<span class="w"> </span>as<span class="w"> </span>function<span class="w"> </span>of<span class="w"> </span>height,<span class="w"> </span>slope<span class="w"> </span>and<span class="w"> </span>distance<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>sea.
+<span class="w">        </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:isAbstract&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:Boolean&gt;</span>false<span class="nt">&lt;/gco:Boolean&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:isAbstract&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:featureCatalogue/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:carrierOfCharacteristics&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:FC_FeatureAttribute&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:memberName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:LocalName&gt;</span>VALUE<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:memberName&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:cardinality&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:Multiplicity&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:range&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:MultiplicityRange&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;gco:lower&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gco:Integer&gt;</span>1<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/gco:lower&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;gco:upper&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;gco:UnlimitedInteger</span><span class="w"> </span><span class="na">isInfinite=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">xsi:nil=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>1
+<span class="w">                    </span><span class="nt">&lt;/gco:UnlimitedInteger&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/gco:upper&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/gco:MultiplicityRange&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gco:range&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gco:Multiplicity&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:cardinality&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:featureType/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:valueMeasurementUnit&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gml:UnitDefinition</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="w"> </span><span class="na">gml:id=</span><span class="s">&quot;unknown&quot;</span><span class="nt">&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gml:description/&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gml:identifier</span><span class="w"> </span><span class="na">codeSpace=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gml:UnitDefinition&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:valueMeasurementUnit&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Low<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>1<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>below<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>High<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>2<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>above<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Inlands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>3<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>between<span class="w"> </span>0<span class="w"> </span>and<span class="w"> </span>200<span class="w"> </span>m<span class="w"> </span>outside<span class="w"> </span>the<span class="w"> </span>coastal<span class="w"> </span>strip.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Uplands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>4<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Zones<span class="w"> </span>between<span class="w"> </span>200<span class="w"> </span>and<span class="w"> </span>500<span class="w"> </span>m<span class="w"> </span>plus<span class="w"> </span>the<span class="w"> </span>flat<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Mountains<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>5<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>Slopy<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and<span class="w"> </span>1000m<span class="w"> </span>and<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>areas<span class="w"> </span>over
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:valueType&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:TypeName&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:aName&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:CharacterString&gt;</span>INTEGER<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gco:aName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gco:TypeName&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:valueType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:FC_FeatureAttribute&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:carrierOfCharacteristics&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:FC_FeatureType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:featureType&gt;</span>
+<span class="nt">&lt;/gfc:FC_FeatureCatalogue&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="feature-operation">
+<span id="iso19110-elem-gfc-fc-featureoperation-637b82bc0e9951563005e479a9e1d152"></span><h3>Feature operation<a class="headerlink" href="#feature-operation" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_FeatureOperation</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="attribute-table-description">
+<span id="iso19110-elem-gfc-fc-featuretype-38ad06d5e87d9bf33d5f111e7bca0eb4"></span><h3>Attribute table description<a class="headerlink" href="#attribute-table-description" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_FeatureType</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Attribute table description<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:FC_FeatureType</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                    </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:typeName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:LocalName&gt;</span>Elevation<span class="w"> </span>breakdown<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:typeName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>The<span class="w"> </span>Elevation<span class="w"> </span>breakdown<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>Land<span class="w"> </span>cover<span class="w"> </span>changes<span class="w"> </span>into
+<span class="w">          </span>homogeneous<span class="w"> </span>areas<span class="w"> </span>as<span class="w"> </span>function<span class="w"> </span>of<span class="w"> </span>height,<span class="w"> </span>slope<span class="w"> </span>and<span class="w"> </span>distance<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>sea.
+<span class="w">        </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:isAbstract&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:Boolean&gt;</span>false<span class="nt">&lt;/gco:Boolean&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:isAbstract&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:featureCatalogue/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gfc:carrierOfCharacteristics&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gfc:FC_FeatureAttribute&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:memberName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:LocalName&gt;</span>VALUE<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:memberName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:cardinality&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:Multiplicity&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:range&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:MultiplicityRange&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:lower&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:Integer&gt;</span>1<span class="nt">&lt;/gco:Integer&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gco:lower&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:upper&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;gco:UnlimitedInteger</span><span class="w"> </span><span class="na">isInfinite=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">xsi:nil=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>1
+<span class="w">                    </span><span class="nt">&lt;/gco:UnlimitedInteger&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/gco:upper&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gco:MultiplicityRange&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gco:range&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gco:Multiplicity&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:cardinality&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:featureType/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:valueMeasurementUnit&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gml:UnitDefinition</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="w"> </span><span class="na">gml:id=</span><span class="s">&quot;unknown&quot;</span><span class="nt">&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gml:description/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gml:identifier</span><span class="w"> </span><span class="na">codeSpace=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gml:UnitDefinition&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:valueMeasurementUnit&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Low<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>1<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>below<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>High<span class="w"> </span>coasts<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>2<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>within<span class="w"> </span>10km<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>coastline<span class="w"> </span>and<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>elevation
+<span class="w">                  </span>above<span class="w"> </span>50m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Inlands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>3<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Areas<span class="w"> </span>between<span class="w"> </span>0<span class="w"> </span>and<span class="w"> </span>200<span class="w"> </span>m<span class="w"> </span>outside<span class="w"> </span>the<span class="w"> </span>coastal<span class="w"> </span>strip.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Uplands<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>4<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Zones<span class="w"> </span>between<span class="w"> </span>200<span class="w"> </span>and<span class="w"> </span>500<span class="w"> </span>m<span class="w"> </span>plus<span class="w"> </span>the<span class="w"> </span>flat<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:listedValue&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gfc:FC_ListedValue&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:label&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Mountains<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:label&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:code&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>5<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:code&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gfc:definition&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Slopy<span class="w"> </span>areas<span class="w"> </span>between<span class="w"> </span>500<span class="w"> </span>and<span class="w"> </span>1000m<span class="w"> </span>and<span class="w"> </span>all<span class="w"> </span>the<span class="w"> </span>areas<span class="w"> </span>over
+<span class="w">                  </span>1000m.
+<span class="w">                </span><span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gfc:definition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gfc:FC_ListedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:listedValue&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gfc:valueType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gco:TypeName&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gco:aName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>INTEGER<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gco:aName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gco:TypeName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gfc:valueType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gfc:FC_FeatureAttribute&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gfc:carrierOfCharacteristics&gt;</span>
+<span class="nt">&lt;/gfc:FC_FeatureType&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="heritance-relation">
+<span id="iso19110-elem-gfc-fc-inheritancerelation-fe8bfb4f25b16151bf7dc241c0bb800c"></span><h3>Heritance relation<a class="headerlink" href="#heritance-relation" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_InheritanceRelation</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="codelist">
+<span id="iso19110-elem-gfc-fc-listedvalue-281cee06b2347acc7c485783eb4cf22f"></span><h3>Codelist<a class="headerlink" href="#codelist" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_ListedValue</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="role-type">
+<span id="iso19110-elem-gfc-fc-roletype-8f835d500036f8c773643298ee9a1287"></span><h3>Role type<a class="headerlink" href="#role-type" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:FC_RoleType</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="feature-catalogue">
+<span id="iso19110-elem-gfc-featurecatalogue-747a0827bf295f6d27168cd2b274929b"></span><h3>Feature catalogue<a class="headerlink" href="#feature-catalogue" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:featureCatalogue</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:featureCatalogue</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                      </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="iso19110-elem-gfc-featuretype-d6099a684b15337451388dd46048c48f">
+<span id="id6"></span><h3>Property description<a class="headerlink" href="#iso19110-elem-gfc-featuretype-d6099a684b15337451388dd46048c48f" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:featureType</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Property description</section>
+<section id="iso19110-elem-gfc-fieldofapplication-548e0631e3ea92f7dd05ac533b6c14d2">
+<span id="id7"></span><h3>Field of application<a class="headerlink" href="#iso19110-elem-gfc-fieldofapplication-548e0631e3ea92f7dd05ac533b6c14d2" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:fieldOfApplication</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Field of application</section>
+<section id="formal-definition">
+<span id="iso19110-elem-gfc-formaldefinition-61fbbceaf2b0eca25754ba29528ac201"></span><h3>Formal definition<a class="headerlink" href="#formal-definition" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:formalDefinition</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="iso19110-elem-gfc-functionallanguage-7a21d9c35ed9c400c40959ede97b8d76">
+<span id="id8"></span><h3>Functional language<a class="headerlink" href="#iso19110-elem-gfc-functionallanguage-7a21d9c35ed9c400c40959ede97b8d76" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:functionalLanguage</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="inherits-from">
+<span id="iso19110-elem-gfc-inheritsfrom-d48c2429ef37a9f7001c4c78b3185ad8"></span><h3>Inherits from<a class="headerlink" href="#inherits-from" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:inheritsFrom</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="inherits-to">
+<span id="iso19110-elem-gfc-inheritsto-21e907a9a6f03374cf39958e940d6c04"></span><h3>Inherits to<a class="headerlink" href="#inherits-to" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:inheritsTo</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="abstract">
+<span id="iso19110-elem-gfc-isabstract-108adb5fd93bc80097796cf3e185145e"></span><h3>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:isAbstract</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Is this element an abstract element ?<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:isAbstract</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:Boolean&gt;</span>false<span class="nt">&lt;/gco:Boolean&gt;</span>
+<span class="nt">&lt;/gfc:isAbstract&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="is-navigable">
+<span id="iso19110-elem-gfc-isnavigable-ee77efa13eb047461f3d1b10eb057ad2"></span><h3>Is navigable<a class="headerlink" href="#is-navigable" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:isNavigable</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="is-ordered">
+<span id="iso19110-elem-gfc-isordered-99dd774d6527b2e2a6714029b3d85562"></span><h3>Is ordered<a class="headerlink" href="#is-ordered" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:isOrdered</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="label">
+<span id="iso19110-elem-gfc-label-f039ffb9cb376d0473d7be6326b20fd7"></span><h3>Label<a class="headerlink" href="#label" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:label</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="iso19110-elem-gfc-listedvalue-10921452105d681cb7bcb8c2851416f9">
+<span id="id9"></span><h3>Codelist<a class="headerlink" href="#iso19110-elem-gfc-listedvalue-10921452105d681cb7bcb8c2851416f9" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:listedValue</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+List of values for this element.</section>
+<section id="member-name">
+<span id="iso19110-elem-gfc-membername-3bd14590c8d90557f5d48e886a3ebef7"></span><h3>Member name<a class="headerlink" href="#member-name" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:memberName</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:memberName</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:LocalName&gt;</span>VALUE<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="nt">&lt;/gfc:memberName&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="iso19110-elem-gfc-name-134285dc9b9a3268556039e2fe3f370e">
+<span id="id10"></span><h3>Name<a class="headerlink" href="#iso19110-elem-gfc-name-134285dc9b9a3268556039e2fe3f370e" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:name</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Feature catalogue name<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:name</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">          </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:CharacterString&gt;</span>Elevation<span class="w"> </span>breakdown<span class="w"> </span>feature<span class="w"> </span>catalogue<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="nt">&lt;/gfc:name&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="observes-value-of">
+<span id="iso19110-elem-gfc-observesvalueof-b236ed68892a516373f72b89b397cde4"></span><h3>Observes value of<a class="headerlink" href="#observes-value-of" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:observesValueOf</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="iso19110-elem-gfc-producer-5a13bfab8b07441bc9f9f71dcfdf7f6c">
+<span id="id11"></span><h3>Catalogue producer<a class="headerlink" href="#iso19110-elem-gfc-producer-5a13bfab8b07441bc9f9f71dcfdf7f6c" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:producer</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Catalogue responsible<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:producer</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">              </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:CI_ResponsibleParty&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:individualName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString&gt;</span>European<span class="w"> </span>Environment<span class="w"> </span>Agency<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:individualName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:positionName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:positionName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:contactInfo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:CI_Contact&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:address&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:CI_Address&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:deliveryPoint&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:CharacterString&gt;</span>Kongens<span class="w"> </span>Nytorv<span class="w"> </span>6<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:deliveryPoint&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:city&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:CharacterString&gt;</span>Copenhagen<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:city&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:administrativeArea&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:CharacterString&gt;</span>K<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:administrativeArea&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:postalCode&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:CharacterString&gt;</span>1050<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:postalCode&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:country&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:CharacterString&gt;</span>Denmark<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:country&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gmd:electronicMailAddress&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;gco:CharacterString&gt;</span>mauro.michielon@eea.europa.eu<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/gmd:electronicMailAddress&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:CI_Address&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:address&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:CI_Contact&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:contactInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;CI_RoleCode&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+<span class="nt">&lt;/gfc:producer&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="relation">
+<span id="iso19110-elem-gfc-relation-aacba568eb3b35bd7b8432488f11bf69"></span><h3>Relation<a class="headerlink" href="#relation" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:relation</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="role-name">
+<span id="iso19110-elem-gfc-rolename-75ef0d862fac206908f78b9ecd526c65"></span><h3>Role name<a class="headerlink" href="#role-name" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:roleName</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="iso19110-elem-gfc-roletype-e11e8dd83ce112d38151e4c5d41f5e57">
+<span id="id12"></span><h3>Role type<a class="headerlink" href="#iso19110-elem-gfc-roletype-e11e8dd83ce112d38151e4c5d41f5e57" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:roleType</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="iso19110-elem-gfc-scope-4f044fce55b8e0b6dd0d77516ad9e66d">
+<span id="id13"></span><h3>Scope<a class="headerlink" href="#iso19110-elem-gfc-scope-4f044fce55b8e0b6dd0d77516ad9e66d" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:scope</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Scope definition<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:scope</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">           </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:CharacterString&gt;</span>Dataset<span class="w"> </span>elevation<span class="w"> </span>breakdown<span class="w"> </span>(raster<span class="w"> </span>1<span class="w"> </span>km)<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="nt">&lt;/gfc:scope&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="signature">
+<span id="iso19110-elem-gfc-signature-a322fc9fc498999771ea25d75eeadb92"></span><h3>Signature<a class="headerlink" href="#signature" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:signature</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="triggered-by-value-of">
+<span id="iso19110-elem-gfc-triggeredbyvalueof-f9c78e57b38ecbf17a07eae27ddceb25"></span><h3>Triggered by value of<a class="headerlink" href="#triggered-by-value-of" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:triggeredByValueOf</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="type">
+<span id="iso19110-elem-gfc-type-8d417215d65176688a81728103dee9d4"></span><h3>Type<a class="headerlink" href="#type" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:type</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="property-name">
+<span id="iso19110-elem-gfc-typename-5eb6a83793b5f1865c0a10bc6d3cb399"></span><h3>Property name<a class="headerlink" href="#property-name" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:typeName</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:typeName</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">              </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:LocalName&gt;</span>Elevation<span class="w"> </span>breakdown<span class="nt">&lt;/gco:LocalName&gt;</span>
+<span class="nt">&lt;/gfc:typeName&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="unique-instance">
+<span id="iso19110-elem-gfc-uniqueinstance-b0b6a49f0189dc2499564de5cdfd25a0"></span><h3>Unique instance<a class="headerlink" href="#unique-instance" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:uniqueInstance</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="value-measurement-unit">
+<span id="iso19110-elem-gfc-valuemeasurementunit-3722d826b1a00b71bfae6cd7eefff3cd"></span><h3>Value measurement unit<a class="headerlink" href="#value-measurement-unit" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:valueMeasurementUnit</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:valueMeasurementUnit</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                          </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gml:UnitDefinition</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="w"> </span><span class="na">gml:id=</span><span class="s">&quot;unknown&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gml:description/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gml:identifier</span><span class="w"> </span><span class="na">codeSpace=</span><span class="s">&quot;unknown&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gml:UnitDefinition&gt;</span>
+<span class="nt">&lt;/gfc:valueMeasurementUnit&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="value-type">
+<span id="iso19110-elem-gfc-valuetype-faeb30b744a5e7aa19f43cb83bf2a9ab"></span><h3>Value type<a class="headerlink" href="#value-type" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:valueType</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:valueType</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">               </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:TypeName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:aName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gco:CharacterString&gt;</span>INTEGER<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gco:aName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gco:TypeName&gt;</span>
+<span class="nt">&lt;/gfc:valueType&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="iso19110-elem-gfc-versiondate-536720beffcbb11d9da8bd041ad7a762">
+<span id="id14"></span><h3>Date<a class="headerlink" href="#iso19110-elem-gfc-versiondate-536720beffcbb11d9da8bd041ad7a762" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:versionDate</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Catalogue date<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:versionDate</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                 </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:DateTime&gt;</span>2012-11-05T10:56:11<span class="nt">&lt;/gco:DateTime&gt;</span>
+<span class="nt">&lt;/gfc:versionDate&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="iso19110-elem-gfc-versionnumber-d66ec9fd5c22c70a69dd2b759d66cc4f">
+<span id="id15"></span><h3>Version<a class="headerlink" href="#iso19110-elem-gfc-versionnumber-d66ec9fd5c22c70a69dd2b759d66cc4f" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gfc:versionNumber</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Catalogue version<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gfc:versionNumber</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                   </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gco:CharacterString&gt;</span>1.0<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="nt">&lt;/gfc:versionNumber&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="responsible-party">
+<span id="iso19110-elem-gmd-ci-responsibleparty-f8269ab6464cabb0bc5d4b5d8e2d410c"></span><h3>Responsible party<a class="headerlink" href="#responsible-party" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmd:CI_ResponsibleParty</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Responsible party<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;gmd:CI_ResponsibleParty</span><span class="w"> </span><span class="na">xmlns:gfc=</span><span class="s">&quot;http://www.isotc211.org/2005/gfc&quot;</span>
+<span class="w">                         </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:individualName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString&gt;</span>European<span class="w"> </span>Environment<span class="w"> </span>Agency<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:individualName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:organisationName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:organisationName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:positionName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gco:CharacterString/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:positionName&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:contactInfo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:CI_Contact&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gmd:address&gt;</span>
+<span class="w">            </span><span class="nt">&lt;gmd:CI_Address&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:deliveryPoint&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Kongens<span class="w"> </span>Nytorv<span class="w"> </span>6<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:deliveryPoint&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:city&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Copenhagen<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:city&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:administrativeArea&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>K<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:administrativeArea&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:postalCode&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>1050<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:postalCode&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:country&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>Denmark<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:country&gt;</span>
+<span class="w">               </span><span class="nt">&lt;gmd:electronicMailAddress&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;gco:CharacterString&gt;</span>mauro.michielon@eea.europa.eu<span class="nt">&lt;/gco:CharacterString&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/gmd:electronicMailAddress&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/gmd:CI_Address&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/gmd:address&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/gmd:CI_Contact&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:contactInfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;gmd:role&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gmd:CI_RoleCode</span><span class="w"> </span><span class="na">codeListValue=</span><span class="s">&quot;pointOfContact&quot;</span><span class="w"> </span><span class="na">codeList=</span><span class="s">&quot;CI_RoleCode&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/gmd:role&gt;</span>
+<span class="nt">&lt;/gmd:CI_ResponsibleParty&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="iso19110-elem-gmd-responsibleparty-7352aaa3187b52425f19d3f567e8b88a">
+<span id="id16"></span><h3>Responsible party<a class="headerlink" href="#iso19110-elem-gmd-responsibleparty-7352aaa3187b52425f19d3f567e8b88a" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmd:responsibleParty</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Responsible party</section>
+<section id="anchor">
+<span id="iso19110-elem-gmx-anchor-4e506485badff59411e1cb2c1f5031e3"></span><h3>Anchor<a class="headerlink" href="#anchor" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmx:Anchor</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="iso19110-elem-gmx-fieldofapplication-66508d1f139317e01e1decd095915428">
+<span id="id17"></span><h3>Field of application<a class="headerlink" href="#iso19110-elem-gmx-fieldofapplication-66508d1f139317e01e1decd095915428" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmx:fieldOfApplication</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Field of application</section>
+<section id="file-name">
+<span id="iso19110-elem-gmx-filename-2a19fe714b24f0a417598321882eef7f"></span><h3>File name<a class="headerlink" href="#file-name" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmx:FileName</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</section>
+<section id="iso19110-elem-gmx-name-5ec0c4442ad2b94944636103e556d401">
+<span id="id18"></span><h3>Name<a class="headerlink" href="#iso19110-elem-gmx-name-5ec0c4442ad2b94944636103e556d401" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmx:name</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Feature catalogue name</section>
+<section id="iso19110-elem-gmx-scope-14efac6982297b09ba1324e80138092f">
+<span id="id19"></span><h3>Scope<a class="headerlink" href="#iso19110-elem-gmx-scope-14efac6982297b09ba1324e80138092f" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmx:scope</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Scope definition</section>
+<section id="iso19110-elem-gmx-versiondate-6c27e2ee0b2daa4ab1aea9ef374bc08f">
+<span id="id20"></span><h3>Date<a class="headerlink" href="#iso19110-elem-gmx-versiondate-6c27e2ee0b2daa4ab1aea9ef374bc08f" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmx:versionDate</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Catalogue date</section>
+<section id="iso19110-elem-gmx-versionnumber-075201f18225aec432b46c75a93589a2">
+<span id="id21"></span><h3>Version<a class="headerlink" href="#iso19110-elem-gmx-versionnumber-075201f18225aec432b46c75a93589a2" title="Permalink to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gmx:versionNumber</p>
+</dd>
+<dt class="field-even">Description<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+Catalogue version</section>
+</section>
+<section id="standard-codelists">
+<h2>Standard codelists<a class="headerlink" href="#standard-codelists" title="Permalink to this heading">¶</a></h2>
+<p>List of all codelists available in the standard.</p>
+<p>No codelist defined.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="iso19139.html" class="btn btn-neutral float-left" title="Geographic information – Metadata (iso19139:2007) (iso19139)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dublin-core.html" class="btn btn-neutral float-right" title="Dublin core (dublin-core)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

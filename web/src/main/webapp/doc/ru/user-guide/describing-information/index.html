@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Описание информации &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Managing templates" href="managing-templates.html" />
+    <link rel="prev" title="Maps and dataset visualisation" href="../map/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Гид пользователя</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Быстрый старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Описание информации</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="managing-templates.html">Managing templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-metadata.html">Создание новой записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="importing-metadata.html">Импорт новой записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="editing-metadata.html">Редактирование метаданных</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleting-metadata.html">Удаление записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multilingual-editing.html">Многоязычное редактирование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-editing.html">Describing resources for the INSPIRE directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspire-editing.html#migrating-from-technical-guidance-version-1-3-to-version-2-0">Migrating from Technical guidance version 1.3 to version 2.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Связывание ресурсов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Классифицировать информацию</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Издательский</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Анализ данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочий процесс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../harvesting/index.html">Сбор урожая</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспорт записей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Гид пользователя</a> &raquo;</li>
+      <li>Описание информации</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/describing-information/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="describing-information">
+<span id="id1"></span><h1>Описание информации<a class="headerlink" href="#describing-information" title="Permalink to this heading">¶</a></h1>
+<p>В этом разделе описывается, как каталогизировать ресурсы. Во-первых, пользователю необходимо выбрать стандарт для использования. В целом применяются следующие правила:</p>
+<ul class="simple">
+<li><p>Дублинское ядро&lt;<a class="reference external" href="http://dublincore.org/">http://dublincore.org/</a>&gt; <a href="#id1"><span class="problematic" id="id2">`</span></a>_ обычно используется для портала открытых данных, ссылки на публикацию, отчет, …</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">`</span></a>ИСО 19115/119/139&lt;<a class="reference external" href="http://www.iso.org/iso/en/home/store/catalogue_tc/catalogue_detail.htm?csnumber=32557">http://www.iso.org/iso/en/home/store/catalogue_tc/catalogue_detail.htm?csnumber=32557</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_ используется для пространственных ресурсов (например, наборов данных, сервисов, карт)</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">`</span></a>ИСО 19110&lt;<a class="reference external" href="http://www.iso.org/iso/en/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39965">http://www.iso.org/iso/en/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39965</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_ используется для таблицы атрибутов объекта</p></li>
+</ul>
+<p>Форма редактора обеспечивает загрузку данных, графики, документов, pdf-файлов и любого другого типа контента. Он поддерживает среди прочего:</p>
+<ul class="simple">
+<li><p>полная стандартная поддержка</p></li>
+<li><p>многоязычное редактирование метаданных,</p></li>
+<li><p>система проверки,</p></li>
+<li><p>система предложений для улучшения качества метаданных</p></li>
+<li><p>геопубликация слоев для публикации слоев геоданных в сервисах OGC (например, GeoServer)</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">План</p>
+<p>Добавьте ссылки на соответствующий раздел</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="managing-templates.html">Managing templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="managing-templates.html#creating-and-managing-templates">Создание шаблонов и управление ими</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-templates.html#loading-default-templates">Загрузка шаблонов по умолчанию</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-templates.html#importing-templates">Импорт шаблонов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-templates.html#creating-your-own-templates">Создание собственных шаблонов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="creating-metadata.html">Создание новой записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="creating-metadata.html#before-you-begin">Before you begin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="importing-metadata.html">Импорт новой записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="importing-metadata.html#before-you-begin">Before you begin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="editing-metadata.html">Редактирование метаданных</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="editing-metadata.html#using-the-editor-toolbar">Использование панели инструментов редактора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editing-metadata.html#navigating-the-form">Навигация по форме</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editing-metadata.html#populating-fields">Заполнение полей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deleting-metadata.html">Удаление записи</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilingual-editing.html">Многоязычное редактирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multilingual-editing.html#switching-layout-modes">Switching layout modes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inspire-editing.html">Describing resources for the INSPIRE directive</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#metadata-information">Metadata information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#languages">Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#contact-information">Contact information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#categorizing-with-keywords">Categorizing with keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#temporal-references">Temporal references</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#resource-constraints">Resource constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#resource-extent">Resource extent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#coordinate-system">Coordinate system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#data-quality">Data quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#metadata-on-data-sets-and-series">Metadata on data sets and series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#validating">Validating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire-editing.html#testing-with-a-valid-template">Testing with a valid template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inspire-editing.html#migrating-from-technical-guidance-version-1-3-to-version-2-0">Migrating from Technical guidance version 1.3 to version 2.0</a></li>
+</ul>
+</div>
+<p>На основе профилей пользователей (см. <a class="reference internal" href="../../administrator-guide/managing-users-and-groups/creating-user.html#creating-user"><span class="std std-ref">Создание пользователя</span></a>) панель инструментов обеспечивает легкий доступ к их информации и задачам.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../map/index.html" class="btn btn-neutral float-left" title="Maps and dataset visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="managing-templates.html" class="btn btn-neutral float-right" title="Managing templates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

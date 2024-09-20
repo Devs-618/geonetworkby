@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Управление системой классификации &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Управление категориями" href="managing-categories.html" />
+    <link rel="prev" title="Режим аутентификации" href="../managing-users-and-groups/authentication-mode.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Руководство администратора</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuring-the-catalog/index.html">Настройка каталога</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-users-and-groups/index.html">Управление пользователями и группами</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Управление системой классификации</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="managing-categories.html">Управление категориями</a></li>
+<li class="toctree-l3"><a class="reference internal" href="managing-directories.html">Управление каталогами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="managing-thesaurus.html">Управление тезаурусом</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-metadata-standards/index.html">Managing metadata &amp; template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Руководство администратора</a> &raquo;</li>
+      <li>Управление системой классификации</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/administrator-guide/managing-classification-systems/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-classification-system">
+<span id="id1"></span><h1>Управление системой классификации<a class="headerlink" href="#managing-classification-system" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="managing-categories.html">Управление категориями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing-directories.html">Управление каталогами</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="managing-directories.html#managing-directories-of-subtemplates">Управление каталогами подшаблонов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-directories.html#insert-a-directory-entry-in-a-metadata-record">Вставьте запись каталога в запись метаданных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-directories.html#extracting-subtemplates-from-metadata-records">Извлечение подшаблонов из записей метаданных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-directories.html#synchronizing-subtemplates-with-metadata-records">Синхронизация подшаблонов с записями метаданных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-directories.html#managing-the-fragment-cache">Управление кэшем фрагментов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="managing-thesaurus.html">Управление тезаурусом</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#introduction">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#external-local-and-register-thesauri">Внешний, локальный и регистровый тезаурусы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#iso19115-19139-thesaurus-categories">Категории тезауруса ISO19115/19139</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#skos-format">формат СКОС</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#iso19135-register-format">Формат регистра ISO19135</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#creating-or-importing-a-thesaurus">Создание или импорт тезауруса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#editing-browsing-a-local-or-external-thesaurus-add-remove-browse-keywords">Редактирование/просмотр локального или внешнего тезауруса: добавление/удаление/просмотр ключевых слов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#editing-a-register-thesaurus">Редактирование тезауруса регистров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#metadata-editing-adding-keywords">Редактирование метаданных: добавление ключевых слов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing-thesaurus.html#search-criteria-keywords">Критерии поиска: ключевые слова</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../managing-users-and-groups/authentication-mode.html" class="btn btn-neutral float-left" title="Режим аутентификации" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="managing-categories.html" class="btn btn-neutral float-right" title="Управление категориями" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

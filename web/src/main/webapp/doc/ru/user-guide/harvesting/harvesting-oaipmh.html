@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сбор урожая OAIPMH &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Сбор узла ARCSDE" href="harvesting-sde.html" />
+    <link rel="prev" title="WEBDAV Сбор урожая" href="harvesting-webdav.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Обзор</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install-guide/index.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Гид пользователя</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick-start/index.html">Быстрый старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map/index.html">Maps and dataset visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../describing-information/index.html">Описание информации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../associating-resources/index.html">Связывание ресурсов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tag-information/index.html">Классифицировать информацию</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing/index.html">Издательский</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyzing/index.html">Анализ данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workflow/index.html">Рабочий процесс</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Сбор урожая</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geonetwork.html">Сборщик GeoNetwork 2.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-csw.html">Сбор услуг CSW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-ogcwxs.html">Сбор услуг OGC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-filesystem.html">Сбор данных в локальной файловой системе</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-webdav.html">WEBDAV Сбор урожая</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Сбор урожая OAIPMH</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-oai-pmh-harvester">Добавление харвестера OAI-PMH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notes">Примечания</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-sde.html">Сбор узла ARCSDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-geoportal.html">Сбор данных GeoPortal REST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-thredds.html">РЕЗЬБЫ Сбор урожая</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-wfs-features.html">Сбор данных WFS GetFeature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harvesting-z3950.html">Z3950 Сбор урожая</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#mechanism-overview">Обзор механизма</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-life-cycle">Жизненный цикл сбора урожая</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#multiple-harvesting-and-hierarchies">Множественный сбор урожая и иерархии</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-fragments-of-metadata-to-support-re-use">Сбор фрагментов метаданных для поддержки повторного использования</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#https-support">поддержка HTTPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-main-page">Главная страница</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-status-and-error-icons">Значки состояния и ошибок сбора урожая</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvesting-result-tips">Советы по сбору урожая</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#adding-new-harvesters">Добавление новых комбайнов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#harvest-history">История урожая</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../export/index.html">Экспорт записей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Гид пользователя</a> &raquo;</li>
+          <li><a href="index.html">Сбор урожая</a> &raquo;</li>
+      <li>Сбор урожая OAIPMH</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/user-guide/harvesting/harvesting-oaipmh.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="oaipmh-harvesting">
+<span id="oaipmh-harvester"></span><h1>Сбор урожая OAIPMH<a class="headerlink" href="#oaipmh-harvesting" title="Permalink to this heading">¶</a></h1>
+<p>Это протокол сбора данных, который широко используется в библиотеках. GeoNetwork реализует версию 2.0 протокола.</p>
+<section id="adding-an-oai-pmh-harvester">
+<h2>Добавление харвестера OAI-PMH<a class="headerlink" href="#adding-an-oai-pmh-harvester" title="Permalink to this heading">¶</a></h2>
+<p>Сервер OAI-PMH реализует протокол сбора данных, который GeoNetwork, выступая в роли клиента, может использовать для сбора метаданных.</p>
+<p>Варианты конфигурации:</p>
+<ul class="simple">
+<li><p><strong>Сайт</strong> — параметры, описывающие удаленный сайт.</p>
+<ul>
+<li><p><em>Имя</em> — это краткое описание удаленного сайта. Оно будет отображаться на главной странице сбора урожая как имя этого экземпляра харвестера OAIPMH.</p></li>
+<li><p><em>URL</em> — URL-адрес сервера OAI-PMH, с которого будут собираться метаданные.</p></li>
+<li><p><em>Значок</em> — значок, назначаемый собранным метаданным. Значок будет использоваться при отображении результатов поиска.</p></li>
+<li><p><em>Использовать учетную запись</em> — учетные данные для базовой HTTP-аутентификации на сервере OAIPMH.</p></li>
+</ul>
+</li>
+<li><p><strong>Критерии поиска</strong> — позволяет выбирать записи метаданных для сбора урожая на основе определенных критериев:</p>
+<ul>
+<li><p><em>От</em> — здесь можно указать дату начала. Будут собраны любые метаданные, дата последнего изменения которых равна или превышает эту дату. Чтобы добавить или изменить значение для этого поля, вам нужно использовать значок рядом с текстовым полем. Это поле является необязательным, поэтому, если вы не укажете дату начала, ограничение будет снято. Используйте значок, чтобы очистить поле.</p></li>
+<li><p><em>Until</em> — работает так же, как параметр <em>From</em>, но добавляет конечное ограничение к поиску по дате последнего изменения. Будут собраны любые метаданные, данные последних изменений которых меньше или равны этим данным.</p></li>
+<li><p><em>Set</em> — сервер OAI-PMH классифицирует метаданные по наборам (как категории в GeoNetwork). Вы можете запросить все записи метаданных, принадлежащие набору (и любому из его подмножеств), указав здесь имя этого набора.</p></li>
+<li><p><em>Префикс</em> — «Префикс» означает формат метаданных. Префикс oai_dc должен поддерживаться всеми серверами, совместимыми с OAI-PMH.</p></li>
+<li><p>Вы можете использовать кнопку «Добавить», чтобы добавить несколько наборов критериев поиска. Наборы критериев поиска можно удалить, щелкнув крестик в левом верхнем углу набора.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>раскрывающийся список «Наборы поставщиков OAI» рядом с текстовым полем <em>Набор</em> и раскрывающийся список «Префиксы поставщиков OAI» рядом с текстовым полем <em>Префикс</em> изначально пусты. После указания URL-адреса подключения вы можете нажать кнопку <strong>Получить информацию</strong>, которая подключится к удаленному серверу OAI-PMH, извлечет все поддерживаемые наборы и префиксы и заполнит раскрывающиеся списки этими значениями. Выбор значения из любого из этих раскрывающихся списков заполнит соответствующее текстовое поле выбранным значением.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Опции</strong> — параметры расписания.</p></li>
+<li><p><strong>Привилегии</strong></p></li>
+<li><p><strong>Категории</strong></p></li>
+</ul>
+</section>
+<section id="notes">
+<h2>Примечания<a class="headerlink" href="#notes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>если вы запросите выходной формат oai_dc, GeoNetwork преобразует его в формат Dublin Core.</p></li>
+<li><p>когда вы редактируете ранее созданный экземпляр комбайна OAIPMH, выпадающие списки <em>set</em> и <em>prefix</em> будут пустыми. Вы должны снова нажать кнопку получения информации, чтобы подключиться к удаленному серверу и получить информацию о наборе и префиксе.</p></li>
+<li><p>идентификатор удаленного сервера должен быть UUID. В противном случае метаданные могут быть собраны, но во время иерархического распространения конфликты идентификаторов могут повредить собранные метаданные.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="harvesting-webdav.html" class="btn btn-neutral float-left" title="WEBDAV Сбор урожая" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harvesting-sde.html" class="btn btn-neutral float-right" title="Сбор узла ARCSDE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru-RU" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building from Source Code &mdash; GeoNetwork opensource v3.12 GeoNetwork Documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Installing remote index" href="installing-index.html" />
+    <link rel="prev" title="Installing using a WAR file" href="installing-from-war-file.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> GeoNetwork opensource
+          </a>
+              <div class="version">
+                3.12
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Обзор</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installing-from-zip.html">Installing using a ZIP file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-from-war-file.html">Installing using a WAR file</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building from Source Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirements">System Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#java-8">Java 8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-server">Application Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#environment">Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tools">Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-running">Building &amp; Running</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-out-the-source-code">Check out the source code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-geonetwork">Build GeoNetwork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compilation-options">Compilation options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#maven-profiles">Maven Profiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-embedded-jetty-server">Run embedded Jetty server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://geonetwork-opensource.org/downloads.html#third-party-distributions">Installing a third-party distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-index.html">Installing remote index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring-database.html">Configuring the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customizing-data-directory.html">Customizing the data directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-multinode-mode.html">Using multinode mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map-print-setup.html">Configuring printing of the map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading-samples.html">Loading templates and sample data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">Гид пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../administrator-guide/index.html">Руководство администратора</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer-guide/index.html">Руководство сопровождающего</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">Руководство по API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Руководство по содействию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-application/index.html">Руководство по настройке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Учебники</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annexes/index.html">Приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GeoNetwork opensource</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Installation guide</a> &raquo;</li>
+      <li>Building from Source Code</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/geonetwork/doc/blob/develop/source/install-guide/installing-from-source-code.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-from-source-code">
+<span id="installing-from-source-code"></span><h1>Building from Source Code<a class="headerlink" href="#building-from-source-code" title="Permalink to this heading">¶</a></h1>
+<section id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this heading">¶</a></h2>
+<section id="java-8">
+<h3>Java 8<a class="headerlink" href="#java-8" title="Permalink to this heading">¶</a></h3>
+<p>GeoNetwork is a Java 8 application that runs as a servlet, which means that a Java Development Kit
+(JDK) must be installed in order to build and run it.
+You can get a Java 8 JDK from your Linux distribution, <a class="reference external" href="http://openjdk.java.net/">Oracle OpenJDK</a> or <a class="reference external" href="https://adoptopenjdk.net">AdoptOpenJDK</a>. Please note that the Java 8 <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads">Oracle JDK</a> is currently only being distributed for testing purposes.</p>
+<p>Because GeoNetwork is developed with Java 8 (LTS), this has the following implications:</p>
+<ul class="simple">
+<li><p>GeoNetwork should not be developed with newer versions of Java.</p></li>
+<li><p>Java 11 (LTS) is <strong>not supported</strong> at this time.</p></li>
+<li><p>GeoNetwork won’t run at all with Java 7 (1.6) or earlier releases.</p></li>
+</ul>
+</section>
+<section id="application-server">
+<h3>Application Server<a class="headerlink" href="#application-server" title="Permalink to this heading">¶</a></h3>
+<p>Next, you need a servlet container. GeoNetwork ships with an embedded container, <a class="reference external" href="https://www.eclipse.org/jetty/">Eclipse Jetty</a>, which is fast and well-suited for most applications.</p>
+<p>If you need a more powerful container, we recommend <a class="reference external" href="http://tomcat.apache.org">Apache Tomcat</a>.
+Tomcat provides load balancing, fault tolerance and other production features. Apache Tomcat
+is widely used with many organizations standardizing on Tomcat for all their Java Web Applications.</p>
+<p>We recommend the following stable releases of Tomcat:</p>
+<ul class="simple">
+<li><p>Apache Tomcat 8.5</p></li>
+<li><p>Apache Tomcat 9.0</p></li>
+</ul>
+</section>
+<section id="database">
+<h3>Database<a class="headerlink" href="#database" title="Permalink to this heading">¶</a></h3>
+<p>Regarding storage, you need a Database Management System (DBMS) like Oracle,
+MySQL, Postgresql etc. GeoNetwork comes with an embedded DBMS (H2) which is
+used by default during installation. This DBMS can be used for small or desktop
+installations of no more than a few thousand metadata records with one or
+two users. If you have heavier demands then you should use a professional, stand
+alone DBMS.</p>
+</section>
+<section id="environment">
+<h3>Environment<a class="headerlink" href="#environment" title="Permalink to this heading">¶</a></h3>
+<p>Being written in Java, GeoNetwork can run on any platform that supports Java: primarily Linux, Windows and macOS.</p>
+<p>GeoNetwork is not resource intensive and will not require a powerful machine. Good performance can be
+obtained with 1GB of RAM. However, the suggested amount is 2GB of RAM.</p>
+<p>For hard disk space, you have to consider the space required for the application itself
+(about 350 MB) and the space required for data, which could grow up to 50 GB or
+more. A simple (SSD) disk of 250 GB should be sufficient in most cases. You also need some disk space
+for the search index which is located in <code class="docutils literal notranslate"><span class="pre">GEONETWORK_DATA_DIR/index</span></code>
+(by default GEONETWORK_DATA_DIR is <code class="docutils literal notranslate"><span class="pre">INSTALL_DIR/web/geonetwork/WEB_INF/data</span></code>).
+However, even with a few thousand metadata records, the index is small so usually
+500 MB of space is more than enough.</p>
+<p>The software runs in different ways depending on the servlet container you are using:</p>
+<ul class="simple">
+<li><p><em>Tomcat</em> - GeoNetwork is available as a WAR file which you can put into the Tomcat webapps directory. Tomcat will deploy the WAR file when it is started. You can then use the Tomcat manager web application to stop/start GeoNetwork. You can also use the startup.* and shutdown.* scripts located in the Tomcat bin directory (.* means .sh or .bat depending on your OS) but if you have other web applications in the Tomcat container, then they will also be affected.</p></li>
+<li><p><em>Jetty</em> - If you use the provided container you can use the scripts in GeoNetwork’s bin directory. The scripts are startup.* and shutdown.* and you must be inside the bin directory to run them. You can use these scripts just after installation.</p></li>
+</ul>
+</section>
+</section>
+<section id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this heading">¶</a></h2>
+<p>The following tools are required to be installed to setup a development environment for GeoNetwork:</p>
+<ul class="simple">
+<li><p><strong>Java 8</strong> - Developing with GeoNetwork requires Java Development Kit (JDK) 1.8.</p></li>
+<li><p><strong>Maven</strong> 3.1.0+ - GeoNetwork uses <a class="reference external" href="http://maven.apache.org/">Maven</a> to manage the build process and the dependencies. Once is installed, you should have the mvn command in your path (on Windows systems, you have to open a shell to check).</p></li>
+<li><p><strong>Git</strong> - GeoNetwork source code is stored and versioned in <a class="reference external" href="https://github.com/geonetwork/core-geonetwork">a Git repository on Github</a>. Depending on your operating system a variety of Git clients are available. Please check the Git website for some <a class="reference external" href="http://git-scm.com/downloads/guis">alternatives</a> and good <a class="reference external" href="http://git-scm.com/documentation">documentation</a>. More documentation can be found on the <a class="reference external" href="https://help.github.com/">Github website</a>.</p></li>
+<li><p><strong>Ant</strong> - GeoNetwork uses <a class="reference external" href="http://ant.apache.org/">Ant</a> to build the installer.  Version 1.6.5 works but any other recent version should be OK. Once installed, you should have the Ant command in your path (on Windows systems, you have to open a shell to check).</p></li>
+<li><p><strong>Sphinx</strong> - To build the GeoNetwork documentation in a nice format, <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> is used. Please note that if you don’t have a Python interpreter on your system, Sphinx will not work, so you need to install <a class="reference external" href="https://www.python.org/downloads/">Python</a>.</p></li>
+</ul>
+</section>
+<section id="building-running">
+<h2>Building &amp; Running<a class="headerlink" href="#building-running" title="Permalink to this heading">¶</a></h2>
+<p>If you only wish to quickly build and run GeoNetwork, execute the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">3</span><span class="w"> </span>--recursive<span class="w"> </span>https://github.com/geonetwork/core-geonetwork.git
+<span class="nb">cd</span><span class="w"> </span>core-geonetwork
+mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-DskipTests
+<span class="nb">cd</span><span class="w"> </span>web
+mvn<span class="w"> </span>jetty:run
+</pre></div>
+</div>
+<p>Now open your browser and navigate to <a class="reference external" href="http://localhost:8080/geonetwork">http://localhost:8080/geonetwork</a>.</p>
+<p>For a more detailed explanation, please read on.</p>
+<section id="check-out-the-source-code">
+<h3>Check out the source code<a class="headerlink" href="#check-out-the-source-code" title="Permalink to this heading">¶</a></h3>
+<p>Clone the repository and build:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/geonetwork/core-geonetwork.git
+<span class="nb">cd</span><span class="w"> </span>core-geonetwork
+mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-DskipTests
+</pre></div>
+</div>
+</section>
+<section id="submodules">
+<h3>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h3>
+<p>GeoNetwork use submodules, these were initialized by the <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> option when cloning the repository.</p>
+<p>If you missed using <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> run the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>core-geonetwork
+git<span class="w"> </span>submodule<span class="w"> </span>init
+git<span class="w"> </span>submodule<span class="w"> </span>update
+</pre></div>
+</div>
+<p>Submodules are used to keep track of externals dependencies. It is necessary to init and update them after a branch change:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init
+</pre></div>
+</div>
+<p>Remember to rebuild the application after updating external dependencies.</p>
+</section>
+<section id="build-geonetwork">
+<h3>Build GeoNetwork<a class="headerlink" href="#build-geonetwork" title="Permalink to this heading">¶</a></h3>
+<p>Once you checked out the code from Github repository, go inside the GeoNetwork’s root folder and execute the Maven build command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>clean<span class="w"> </span>install
+</pre></div>
+</div>
+<p>If the build is successful you’ll get an output like:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>INFO<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Reactor<span class="w"> </span>Summary:
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>opensource<span class="w"> </span>.................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">1</span>.345s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Caching<span class="w"> </span>xslt<span class="w"> </span>module<span class="w"> </span>...................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">1</span>.126s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Jeeves<span class="w"> </span>modules<span class="w"> </span>........................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">3</span>.970s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>ArcSDE<span class="w"> </span>module<span class="w"> </span><span class="o">(</span>dummy-api<span class="o">)</span><span class="w"> </span>.............................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">0</span>.566s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>web<span class="w"> </span>client<span class="w"> </span>module<span class="w"> </span>..........................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">23</span>.084s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>user<span class="w"> </span>interface<span class="w"> </span>module<span class="w"> </span>......................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">15</span>.940s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Oaipmh<span class="w"> </span>modules<span class="w"> </span>........................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">1</span>.029s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>domain<span class="w"> </span>.....................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">0</span>.808s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>core<span class="w"> </span>.......................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">6</span>.426s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>CSW<span class="w"> </span>server<span class="w"> </span>.................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">2</span>.050s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>health<span class="w"> </span>monitor<span class="w"> </span>.............................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">1</span>.014s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>harvesters<span class="w"> </span>.................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">2</span>.583s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>services<span class="w"> </span>...................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">3</span>.178s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>GeoNetwork<span class="w"> </span>Web<span class="w"> </span>module<span class="w"> </span>.................................<span class="w"> </span>SUCCESS<span class="w"> </span><span class="o">[</span><span class="m">2</span>:31.387s<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>BUILD<span class="w"> </span>SUCCESSFUL
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Total<span class="w"> </span>time:<span class="w"> </span><span class="m">3</span><span class="w"> </span>minutes<span class="w"> </span><span class="m">35</span><span class="w"> </span>seconds
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>at:<span class="w"> </span>Sun<span class="w"> </span>Oct<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">16</span>:21:46<span class="w"> </span>CET<span class="w"> </span><span class="m">2013</span>
+</pre></div>
+</div>
+<p>Your local Maven repository now contain the GeoNetwork artifacts created (<code class="docutils literal notranslate"><span class="pre">$HOME/.m2/repository/org/geonetwork-opensource</span></code>).</p>
+</section>
+<section id="compilation-options">
+<h3>Compilation options<a class="headerlink" href="#compilation-options" title="Permalink to this heading">¶</a></h3>
+<p>Many Maven build options are available, for instance, you might like to use following options :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--<span class="w"> </span>Skip<span class="w"> </span><span class="nb">test</span>
+$<span class="w"> </span>mvn<span class="w"> </span>install<span class="w"> </span>-DskipTests
+
+--<span class="w"> </span>Offline<span class="w"> </span>use
+$<span class="w"> </span>mvn<span class="w"> </span>install<span class="w"> </span>-o
+
+--<span class="w"> </span>Build<span class="w"> </span>really<span class="w"> </span>fast<span class="w"> </span>with<span class="w"> </span><span class="m">2</span><span class="w"> </span>threads<span class="w"> </span>per<span class="w"> </span>cpu<span class="w"> </span>core
+$<span class="w"> </span>mvn<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>-DskipTests<span class="w"> </span>-T<span class="w"> </span>2C
+</pre></div>
+</div>
+<p>Please refer to the <a class="reference external" href="http://www.sonatype.com/books/mvnref-book/reference/public-book.html">Maven documentation</a> for any other options.</p>
+</section>
+<section id="maven-profiles">
+<h3>Maven Profiles<a class="headerlink" href="#maven-profiles" title="Permalink to this heading">¶</a></h3>
+<p>Maven profiles are used to enable additional build configuration.</p>
+<p>Some components (eg. WFS feature indexing) of the application rely on an Elasticsearch instance. To enable those options, build the application with the <code class="docutils literal notranslate"><span class="pre">`es`</span></code> profile.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w"> </span>-Pes
+</pre></div>
+</div>
+</section>
+<section id="run-embedded-jetty-server">
+<h3>Run embedded Jetty server<a class="headerlink" href="#run-embedded-jetty-server" title="Permalink to this heading">¶</a></h3>
+<p>Maven comes with built-in support for Jetty via a <a class="reference external" href="http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin">plug-in</a>.</p>
+<p>To run GeoNetwork with the embedded Jetty server you have to change directory to the root of the <strong>web</strong> module,
+and then execute the following Maven command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>jetty:run<span class="w"> </span>-Penv-dev
+</pre></div>
+</div>
+<p>After a while, GeoNetwork should be accessible at: <a class="reference external" href="http://localhost:8080/geonetwork">http://localhost:8080/geonetwork</a></p>
+<p>For changes related to the user interface in the <cite>web-ui</cite> module or the metadata schemas in the <cite>schemas</cite> module, these can be deployed in Jetty executing the following Maven command in the <strong>web</strong> module:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>process-resources
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installing-from-war-file.html" class="btn btn-neutral float-left" title="Installing using a WAR file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installing-index.html" class="btn btn-neutral float-right" title="Installing remote index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2001-2023, GeoNetwork opensource. Licensed under Creative Commons Attribution ShareAlike (Unported) v3.0 License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
