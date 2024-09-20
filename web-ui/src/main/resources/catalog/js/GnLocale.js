@@ -47,6 +47,7 @@
       dut: "nl",
       ice: "is",
       ita: "it",
+      rus: "ru",
       slo: "sk"
     };
     var lang = specialCases[threeCharLang];
