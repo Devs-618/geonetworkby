@@ -1,6 +1,6 @@
 {
   "realm": "${env.KEYCLOAK_REALM:gn}",
-  "auth-server-url": "${env.KEYCLOAK_AUTH_SERVER_URL:http://localhost:8080/}",
+  "auth-server-url": "${env.KEYCLOAK_AUTH_SERVER_URL:http://localhost:8083/}",
   "ssl-required": "${env.KEYCLOAK_SSL_REQUIRED:external}",
   "resource": "${env.KEYCLOAK_RESOURCE:geonetwork}",
   "credentials": {

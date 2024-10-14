@@ -81,6 +81,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -108,6 +112,8 @@ import static org.fao.geonet.kernel.setting.Settings.SYSTEM_FEEDBACK_EMAIL;
  *
  */
 
+@EnableScheduling
+@EnableAsync
 @RequestMapping(value = {
     "/{portal}/api/site"
 })
@@ -143,6 +149,12 @@ public class SiteApi {
 
     @Autowired
     private SystemInfo info;
+
+    @Autowired
+    private GroupRepository groupRepository;
+
+    @Autowired
+    private OperationAllowedRepository operationAllowedRepository;
 
     public static void reloadServices(ServiceContext context) throws Exception {
         GeonetContext gc = (GeonetContext) context.getHandlerContext(Geonet.CONTEXT_NAME);
@@ -963,5 +975,14 @@ public class SiteApi {
                 name, email, org, comments),
             settingManager);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @Scheduled(cron = "0 0 0 * * SUN") // Каждое воскресенье в 00:00
+    @Async
+    protected void removeDownloadingOperationsAllowing(){
+        List<Group> downloadGroups = groupRepository.findByNameEndingWith("_download");
+        if (downloadGroups != null){
+        downloadGroups.forEach(d -> operationAllowedRepository.deleteAllByGroupId(d.getId()));
+        }
     }
 }

@@ -1562,7 +1562,7 @@
     <!--<proxy.allowPorts>8443|8080</proxy.allowPorts>-->
 
     <!-- Jetty plugin port configuration -->
-    <jetty.port>8081</jetty.port>
+    <jetty.port>8080</jetty.port>
     <jetty.stop.port>8090</jetty.stop.port>
 
     <es.version>8.11.3</es.version>
