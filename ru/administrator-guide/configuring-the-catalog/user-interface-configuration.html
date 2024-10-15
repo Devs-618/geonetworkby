@@ -1,0 +1,1984 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Добро пожаловать на GeoNetwork. Данная документация разделена на отдельные гайды по различным темам.">
+      
+      
+      
+        <link rel="canonical" href="https://devs-618.github.io/geonetworkby/ru/administrator-guide/configuring-the-catalog/user-interface-configuration.html">
+      
+      
+        <link rel="prev" href="system-configuration.html">
+      
+      
+        <link rel="next" href="css-configuration.html">
+      
+      
+      <link rel="icon" href="../../../assets/images/geonetwork-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Настройка пользовательского интерфейса - GeoNetwork (RU)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="https://geonetwork-opensource.org/" title="GeoNetwork (RU)" class="md-header__button md-logo" aria-label="GeoNetwork (RU)" data-md-component="logo">
+      
+  <img src="../../../assets/images/geonetwork-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GeoNetwork (RU)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Настройка пользовательского интерфейса
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Выберите язык">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../administrator-guide/configuring-the-catalog/user-interface-configuration.html" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="user-interface-configuration.html" hreflang="ru" class="md-select__link">
+              Русский
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/geonetwork/core-geonetwork" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    core-geonetwork
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  GeoNetwork
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../help/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  Помощь
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  Пользователям
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+    
+  
+  Администрирование
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://geonetwork-opensource.org/" title="GeoNetwork (RU)" class="md-nav__button md-logo" aria-label="GeoNetwork (RU)" data-md-component="logo">
+      
+  <img src="../../../assets/images/geonetwork-logo.svg" alt="logo">
+
+    </a>
+    GeoNetwork (RU)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/geonetwork/core-geonetwork" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    core-geonetwork
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GeoNetwork
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../help/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Помощь
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../user-guide/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Пользователям
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Администрирование
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Администрирование
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Каталог
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Каталог
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system-configuration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Настройка системы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Настройка пользовательского интерфейса
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="user-interface-configuration.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Настройка пользовательского интерфейса
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общие параметры
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Футер (нижний колонтитул)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Хедер (верхний колонтитул)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Домашняя страница
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Поисковое приложение
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Поисковое приложение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройка результатов поиска
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Список типов ссылок
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользовательский поиск
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Сохраненные выборки
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Картографическое приложение
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Картографическое приложение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Внешний вьюер
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ogc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Список предпочитаемых служб OGC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Параметры вьювера карт
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Параметры карты поиска
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройка карты редактора
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Газеттер (географический справочник)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр записей
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Приложение-редактор
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Консоль администратора
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Аутентификация
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="css-configuration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Настройка CSS и стилей
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="csw-configuration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Настройка CSW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="portal-configuration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Настройка порталов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inspire-configuration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Настройка для директивы INSPIRE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="map-server-configuration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Настройка картографических серверов для публикации
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../managing-users-and-groups/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Типы пользователей и Группы
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../managing-classification-systems/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Системы классификации метаданных
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../managing-metadata-standards/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Стандарты метаданных
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общие параметры
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Футер (нижний колонтитул)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Хедер (верхний колонтитул)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Домашняя страница
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Поисковое приложение
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Поисковое приложение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройка результатов поиска
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Список типов ссылок
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользовательский поиск
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Сохраненные выборки
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Картографическое приложение
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Картографическое приложение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Внешний вьюер
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ogc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Список предпочитаемых служб OGC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Параметры вьювера карт
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Параметры карты поиска
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройка карты редактора
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Газеттер (географический справочник)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Просмотр записей
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Приложение-редактор
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Консоль администратора
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Аутентификация
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/geonetwork/core-geonetwork/edit/main/docs/manual/docs/ru/administrator-guide/configuring-the-catalog/user-interface-configuration.md" title="Редактировать страницу" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/geonetwork/core-geonetwork/raw/main/docs/manual/docs/ru/administrator-guide/configuring-the-catalog/user-interface-configuration.md" title="Посмотреть исходный код страницы" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">Настройка пользовательского интерфейса</h1>
+<p>Большинство параметров конфигурации пользовательского интерфейса могут быть изменены администратором 
+с помощью веб-интерфейса в <code>Панели админа</code> &rarr; <code>Настройки</code> &rarr; <code>Пользовательский интерфейс</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Примечание</p>
+<p>Настройка этих параметров критически важна для работы каталога. 
+Неправильное использование некоторых настроек может привести к тому, что система будет работать не так, как ожидалось.</p>
+</div>
+<p><img alt="" src="img/ui-settings.png" /></p>
+<p>По умолчанию в каталоге будет использоваться конфигурация пользовательского интерфейса с именем "srv". 
+Чтобы просмотреть и отредактировать настройки для этой конфигурации, выберите <code>Задать параметры пользовательского интерфейса по умолчанию</code>.</p>
+<p>Чтобы добавить новую конфигурацию, например, для портала (см. <a href="portal-configuration.html">Конфигурация портала</a>), 
+в форме <code>Добавить новую конфигурацию интерфейса</code> нужно либо создать новую конфигурацию (ввести имя и нажать <code>+</code>), 
+либо выбрать уже существующую конфигурацию из выпадающего списка.</p>
+<p><img alt="" src="img/ui-new-config.ru.png" /></p>
+<p>Параметров пользовательского интерфейса довольно много. В выпадающем списке <code>Выберите параметры для редактирования</code> администратор может:</p>
+<ul>
+<li>Открыть все параметры сразу (пункт <code>Все параметры</code>)</li>
+</ul>
+<p><img alt="" src="img/ui-full-configuration.ru.png" /></p>
+<ul>
+<li>Открыть нужный параметр отдельно от всех</li>
+</ul>
+<p><img alt="" src="img/ui-part-configuration.ru.png" /></p>
+<p>Дополнительные конфигурации также могут быть использованы для создания внешнего приложения на JS, которое может загружать определенную конфигурацию.</p>
+<ul>
+<li><strong>Настройки фильтра</strong>: Это поле поиска можно использовать для фильтрации настроек в форме, 
+  например, при поиске "социальные сети" будут отображаться только настройки, относящиеся к социальной панели.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-filter.ru.png" /></p>
+<h2 id="_2">Общие параметры</h2>
+<ul>
+<li><strong>Ярлыки ключевых слов</strong>: если выбрано, у ключевых слов будут созданы ярлыки.</li>
+<li><strong>Удобочитаемое время</strong>: если выбрано, даты будут отображены в удобном для пользователя формате. Если он не установлен, будет отображаться полная дата.</li>
+<li><strong>Формат даты</strong>: поле, где можно задать формат даты.</li>
+<li><strong>Часовой пояс пользовательского интерфейса</strong>: Часовой пояс, который будет использоваться для отображения даты.
+  Если нет необходимости обрабатывать несколько часовых поясов в каталоге, установите для этого значения часовой пояс сервера. 
+  Значение <code>Browser</code> (по умолчанию) указывает на использование часового пояса браузера.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-humanizedate.ru.png" /></p>
+<h2 id="_3">Футер (нижний колонтитул)</h2>
+<ul>
+<li><strong>Нижний колонтитул</strong>: Установите этот флажок, чтобы определить, отображается ли нижний колонтитул GeoNetwork. 
+   Если он не установлен, нижний колонтитул отображаться не будет.</li>
+<li><strong>Панель социальных сетей</strong>: Установите этот флажок, чтобы отображать панель социальных сетей (ссылки на twitter, facebook, linkedin и т.д.) в нижнем колонтитуле.</li>
+<li><strong>Показать версию GeoNetwork и ссылки</strong>: Показывать версию приложения и ссылки в нижнем колонтитуле страницы каталога.</li>
+<li><strong>Пункты пользовательского меню в нижнем колонтитуле</strong></li>
+<li><strong>Список RSS-каналов</strong></li>
+</ul>
+<p><img alt="" src="img/ui-settings-footer.ru.png" /></p>
+<h2 id="_4">Хедер (верхний колонтитул)</h2>
+<ul>
+<li><strong>Верхний колонтитул</strong>: Установите этот флажок, чтобы определить, будет ли отображаться верхняя панель инструментов GeoNetwork. 
+  Если этот параметр не задан, панель инструментов отображаться не будет.</li>
+<li><strong>Список языков</strong>: Выберите языки из списка, которые должны быть доступны для перевода строк интерфейса. 
+  Если останется только один язык, то выпадающий список отображаться не будет. 
+  Обратите внимание, что при наличии перевода можно добавить дополнительные языки, нажав кнопку "+" под списком и добавив соответствующие ISO-коды.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-toptoolbar.ru.png" /></p>
+<ul>
+<li><strong>Показать логотип в заголовке</strong>: Этот параметр определяет, где должен располагаться логотип каталога. 
+  Если выбран этот параметр, логотип будет размещен в верхнем колонтитуле над верхней панелью инструментов, 
+  а логотип панели инструментов (по умолчанию) будет удален. Если этот параметр не установлен, логотип будет отображаться на верхней панели инструментов.</li>
+<li><strong>Расположение логотипа</strong>: Эти параметры определяют, в каком месте заголовка будет размещен логотип.</li>
+<li><strong>Контейнер раздела Головного меню</strong>: Если включено, шаблон страницы распространяется на всю ширину экрана, в противном случае, имеет фиксированную ширину.</li>
+<li><strong>Показать название каталога в Головном меню</strong>: Если включено, имя GeoNetwork будет отображаться в Головном меню, когда отключено, имя будет скрыто.</li>
+<li><strong>Фиксировать заголовок</strong>: Заголовок фиксирован и остается вверху страницы. </li>
+<li><strong>Отображать меню портала вверху</strong>: по умолчанию true.</li>
+</ul>
+<h2 id="_5">Домашняя страница</h2>
+<ul>
+<li><strong>Домашняя страница</strong>: Установите этот флажок, чтобы определить, отображаются ли логотип и ссылка на домашнюю страницу на верхней панели инструментов. 
+  Если флажок не установлен, логотип и ссылка не отображаются.</li>
+<li><strong>URL приложения</strong>: Укажите URL для домашней страницы. В большинстве случаев это можно оставить по умолчанию.</li>
+<li><strong>Контейнер главной страницы</strong>: Установите этот флажок, чтобы определить, будет ли поле поиска на странице браузера иметь полную ширину или фиксированную ширину и центрироваться.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-homepage.ru.png" /></p>
+<h2 id="_6">Поисковое приложение</h2>
+<ul>
+<li><strong>Приложение для поиска</strong>: Установите этот флажок, чтобы определить, отображается ли приложение для поиска на верхней панели инструментов. 
+  Если он не установлен, ссылка не отображается.</li>
+<li><strong>URL приложения</strong>: Укажите URL для приложения для поиска. В большинстве случаев это значение можно оставить по умолчанию.</li>
+<li><strong>Количество записей на странице</strong>: Укажите параметры для определения количества записей, отображаемых на странице результатов, и значения по умолчанию.</li>
+<li><strong>Базовый запрос</strong>: Задайте фильтр по умолчанию для поиска.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-searchpage.ru.png" /></p>
+<ul>
+<li>
+<p><strong>Фасетный фильтр для отображения с помощью вкладок</strong>: Эта опция создает вкладку для каждого настроенного фасета над результатами поиска. 
+  Это может быть использовано для дальнейшего сужения результатов поиска. 
+  Список названий фасетов можно найти по адресу <a href="https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L82">https://github.com/geonetwork/core-geonetwork/blob/master/web/src/main/webapp/WEB-INF/config-summary.xml#L82</a>. 
+  Например, чтобы включить фильтр тематических категорий над результатами поиска, администратор должен добавить "topicCat" в качестве поля для отображения аспекта.</p>
+</li>
+<li>
+<p><strong>Конфигурация фасетов</strong>: Определяет набор фасетов поиска, которые должны быть видны на странице поиска. 
+  По умолчанию используется "подробности", но можно использовать "менеджер" для отображения фасетов, которые чаще всего используются на странице редактора.</p>
+</li>
+<li>
+<p><strong>Фильтры</strong>: Определяют дополнительные критерии поиска, которые добавляются ко всем поисковым запросам 
+  и снова используются в основном для внешних приложений и подпорталов.</p>
+</li>
+</ul>
+<p><img alt="" src="img/ui-settings-searchpage2.ru.png" /></p>
+<ul>
+<li>
+<p><strong>Варианты сортировки</strong>: Определяет различные способы, с помощью которых пользователь может сортировать набор результатов поиска. 
+  Ниже приведен параметр сортировки по умолчанию. Обратите внимание, что для поиска, например, по "названию" в алфавитном порядке 
+  необходимо установить порядок "в обратном порядке".</p>
+</li>
+<li>
+<p><strong>Шаблоны результатов поиска</strong>: Эта настройка позволяет администратору настраивать шаблоны для оформления результатов поиска. 
+  По умолчанию используется "Grid", в то время как для панели редактирования используется "List".</p>
+</li>
+</ul>
+<p><img alt="" src="img/ui-settings-searchpage3.ru.png" /></p>
+<ul>
+<li><strong>Шаблон результата поиска по умолчанию</strong>: Определяет страницу шаблона для поиска. Как правило, это можно оставить по умолчанию.</li>
+<li><strong>Список formatter'ов для экспорта записей</strong>: Определяет форматирование, используемое для отображения результатов поиска. 
+  Смотрите <a href="../../customizing-application/creating-custom-view.html">Настройка представлений метаданных</a> для получения информации 
+  о создании нового средства форматирования. Чтобы добавить дополнительное представление, нажмите синюю кнопку "+" под списком и укажите имя и URL-адрес.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-searchpage4.ru.png" /></p>
+<h3 id="_7">Настройка результатов поиска</h3>
+<ul>
+<li><strong>Соответствующие типы метаданных запроса</strong>: Используйте этот раздел для определения типов метаданных, отображаемых при отображении результатов поиска в таблице. 
+  Формат для добавления дополнительных типов нажмите синюю кнопку <code>+</code>. Возможные типы указаны под формой.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-searchresults.ru.png" /></p>
+<h3 id="_8">Список типов ссылок</h3>
+<ul>
+<li><strong>Ссылки</strong>: В этом разделе определяются типы ссылок, отображаемых при отображении результатов поиска в формате таблицы. 
+  Они разделены на "ссылки" (links), "загрузки" (downloads), "слои" (layers) и "карты" (maps), и для каждого типа можно добавить новую запись, 
+  нажав синюю кнопку "+" под списком.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-searchresults2.ru.png" /></p>
+<ul>
+<li><strong>Отображать теги фильтров в результатах поиска</strong>: Если флажок установлен, теги фильтров отображаются над результатами поиска. По умолчанию они не отображаются.</li>
+</ul>
+<h3 id="_9">Пользовательский поиск</h3>
+<ul>
+<li>
+<p><strong>Включено</strong>: Если этот флажок установлен, пользователь сможет создавать и сохранять пользовательские поисковые запросы на вкладке "Поиск". 
+  Эта функция будет отображаться над списком аспектов слева.</p>
+</li>
+<li>
+<p><strong>Отображение панели популярных поисков на главной странице</strong>: 
+  Если эта функция также включена, на домашней странице будет отображаться дополнительная вкладка рядом с "Последними новостями" и "Наиболее популярными".</p>
+</li>
+</ul>
+<h3 id="_10">Сохраненные выборки</h3>
+<ul>
+<li><strong>Включено</strong>: Если флажок установлен, у пользователя будет возможность сохранять выбранные записи на вкладке поиска.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-searchresults3.ru.png" /></p>
+<h2 id="_11">Картографическое приложение</h2>
+<p>В этом разделе описывается, как администратор может настроить различные карты в пользовательском интерфейсе: 
+основную карту, мини-карту, отображаемую на странице результатов поиска, и карту, используемую в редакторе для построения экстента.</p>
+<ul>
+<li><strong>Картографическое приложение</strong>: Начальный флажок позволяет отключить основную вкладку "Карта". 
+  В этом случае вкладка "карта" не будет отображаться на верхней панели инструментов, но мини-карта и карта-экстент, описанные выше, по-прежнему будут видны.</li>
+<li><strong>URL приложения</strong>: Определяет URL-адрес для вкладки "Карта". В большинстве случаев это значение можно оставить по умолчанию.</li>
+</ul>
+<h3 id="_12">Внешний вьюер</h3>
+<ul>
+<li>
+<p><strong>Использовать внешний вьюер</strong>: Этот параметр позволяет использовать стороннее картографическое приложение вместо карты Геосети по умолчанию. 
+  В этом случае большинство приведенных ниже настроек больше использоваться не будут.</p>
+</li>
+<li>
+<p><strong>Разрешить 3D-режим</strong>: Если он включен, у пользователя есть возможность переключиться в 3D-режим на главной карте 
+  (см. [Быстрый запуск] (../../user-guide/quick-start/index.md)).</p>
+</li>
+<li>
+<p><strong>Разрешить пользователям сохранять карты как запись метаданных</strong>: Эта опция позволяет пользователям сохранять слои 
+  и конфигурацию базовых карт в виде записей в каталоге. При желании пользователи могут добавить название и аннотацию.</p>
+</li>
+<li>
+<p><strong>Экспорт карты как изображения</strong>: Если эта опция включена, пользователи могут экспортировать карту в виде изображения, 
+  но для любых внешних сервисов WMS, отображаемых на карте, требуется включить CORS. По умолчанию эта опция отключена, чтобы избежать проблем со слоями WMS.</p>
+</li>
+</ul>
+<p><img alt="" src="img/ui-settings-mappage.ru.png" /></p>
+<ul>
+<li><strong>Хранение предпочтений пользователя</strong>: Этот параметр определяет поведение файлов cookie, связанных с картой. Ниже перечислены различные параметры.</li>
+<li><strong>Ключ Bing Map</strong>: Если этот параметр задан, то можно использовать карты Bing в качестве базовых слоев в картографическом приложении. 
+  Чтобы это сработало, вы должны получить свой собственный ключ.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-mappage2.ru.png" /></p>
+<h3 id="ogc">Список предпочитаемых служб OGC</h3>
+<p>Здесь можно определить службы по умолчанию <strong>wms</strong> и <strong>wmts</strong>, которые будут доступны конечному пользователю по умолчанию. 
+Новые службы можно добавить, нажав синюю кнопку <code>+</code> под списком протоколов.</p>
+<p>Вы можете настроить для каждой карты разные слои и проекции.</p>
+<ul>
+<li>
+<p><strong>Проекция карты</strong> Это проекция карты по умолчанию. Убедитесь, что проекция определена в <strong>Проекции для отображения карт</strong>, приведенном ниже.</p>
+</li>
+<li>
+<p><strong>Список проекций карты для отображения ограничивающих рамок</strong>: Используется на карте при редактировании записи 
+  и определении экстента ограничивающего прямоугольника. Обратите внимание, что координаты будут сохранены в WGS84 независимо от того, 
+  какая проекция использовалась для их отображения.</p>
+</li>
+</ul>
+<p><img alt="" src="img/ui-settings-mapprojection.ru.png" /></p>
+<ul>
+<li><strong>Проекции для отображения карт</strong>: Здесь определяются различные проекции, доступные для карты. 
+  Все проекции будут отображаться в инструменте <code>Переключатель проекций</code> карты.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-mapprojection2.ru.png" /></p>
+<p>Чтобы включить новую проекцию, ее необходимо определить здесь, используя синтаксис <strong>proj4js</strong>, 
+который можно найти по адресу <a href="https://proj4js.io">https://proj4js.io</a>. Дополнительно можно определить размер ограничивающего прямоугольника по умолчанию, 
+максимальный размер ограничивающего прямоугольника и допустимые разрешения (если требуется).</p>
+<p>Убедитесь, что введенные координаты указаны в правильных единицах измерения и являются локальными для проекции. 
+Список разрешений актуален только в том случае, если основной слой карты имеет источник XYZ, который не соответствует общепринятому шаблону листов.</p>
+<p>Проверьте правильность этой конфигурации, открыв карту.</p>
+<div class="admonition info">
+<p class="admonition-title">Примечание</p>
+<p>Если конфигурация проекции является неполной или неверной, карта может не загрузиться.</p>
+</div>
+<p>Если определена проекция, которая не поддерживается источником картографического слоя, 
+картографическое приложение перепроектирует изображения карты на стороне клиента. 
+Это может привести к неожиданному поведению, например, к повороту или искажению надписей.</p>
+<ul>
+<li>
+<p><strong>Дополнительные инструменты вьювера карт</strong>: Флажки в этом разделе определяют инструменты, доступные пользователю на правой панели инструментов главной карты. 
+  Элементы, которые не отмечены, не отображаются.</p>
+</li>
+<li>
+<p><strong>Сервис OGC для использования в качестве сетки</strong>: Это необязательно и позволяет использовать внешнюю службу для отображения сетки на карте.</p>
+</li>
+</ul>
+<h3 id="_13">Параметры вьювера карт</h3>
+<p>Этот раздел предназначен для настройки карты, отображаемой при просмотре записи.</p>
+<ul>
+<li>
+<p><strong>Путь к XML-файлу контекста</strong>: Необязательный путь к XML-файлу, определяющему базовые слои и другие параметры конфигурации. 
+  Пример смотрите в разделе <code>web/src/main/webapp/WEB-INF/data/data/resources/map/config-viewer.xml</code>.</p>
+</li>
+<li>
+<p><strong>Экстент в текущей проекции</strong>: Используйте эту опцию, чтобы переопределить экстент, определенный в контекстном файле.</p>
+</li>
+</ul>
+<p><img alt="" src="img/ui-settings-mapviewer.ru.png" /></p>
+<ul>
+<li><strong>Объекты слоев в JSON</strong>: Определяют дополнительные слои, которые будут отображаться на карте, используя синтаксис JSON. Поддерживаемые типы:<ul>
+<li><strong>wms</strong>: общий слой WMS, обязательные свойства: <code>имя, URL</code>.</li>
+<li><strong>wmts</strong>: общий слой WMTS, обязательные свойства: "имя, url".</li>
+<li><strong>tms</strong>: общий слой TMS, обязательное свойство: <code>url</code>.</li>
+<li><strong>osm</strong>: слой OpenStreetMap по умолчанию, никаких других свойств не требуется.</li>
+<li><strong>stamen</strong>: Слои с тычинками, обязательное свойство: "название".</li>
+<li><strong>bing_aerial</strong>: фон с воздушными изображениями Bing, обязательное свойство: "ключ", содержащий лицензионный ключ.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="img/ui-settings-mapviewerlayers.png" /></p>
+<p>Все слои также могут иметь некоторые необязательные дополнительные свойства:</p>
+<ul>
+<li><strong>заголовок</strong> Заголовок/метка слоя.</li>
+<li><strong>ProjectionList</strong> Массив проекций, позволяющий ограничить этот слой определенными проекциями на карте.</li>
+</ul>
+<p>Примеры слоев:</p>
+<p>В этом слое будет использоваться стиль OpenStreetMap Stamen, но только если карта находится в формате <code>EPSG:3857</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;stamen&quot;</span><span class="p">,</span><span class="nt">&quot;projectionList&quot;</span><span class="p">:[</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">]}</span>
+</span></code></pre></div>
+<p>Этот WMS-слой будет показан, но только если на карте указан <code>EPSG:4326</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;wms&quot;</span><span class="p">,</span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;OI.OrthoimageCoverage&quot;</span><span class="p">,</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;OI.OrthoimageCoverage&quot;</span><span class="p">,</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://www.ign.es/wms-inspire/pnoa-ma?request=GetCapabilities&amp;service=WMS&quot;</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">&quot;projectionList&quot;</span><span class="p">:[</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">]}</span>
+</span></code></pre></div>
+<h3 id="_14">Параметры карты поиска</h3>
+<p>В этом разделе определяется конфигурация мини-карты, отображаемой на странице поиска. 
+В ней используются те же параметры, что и в <a href="user-interface-configuration.html">Настройка карты просмотра</a>.</p>
+<h3 id="_15">Настройка карты редактора</h3>
+<p>В этом разделе определяется конфигурация карты, отображаемой при редактировании записи. 
+В нем используются те же параметры, что и в <a href="user-interface-configuration.html">Настройка карты для просмотра</a>.</p>
+<h2 id="_16">Газеттер (географический справочник)</h2>
+<ul>
+<li><strong>Газеттер</strong>: Если он включен, географический справочник будет отображаться в левом верхнем углу главной карты.</li>
+<li><strong>URL приложения</strong>: Укажите URL приложения, используемый для справочника. 
+  В общем случае, это следует оставить по умолчанию, но можно применить дополнительную фильтрацию, 
+  используя синтаксис, описанный в <a href="https://www.geonames.org/export/geonames-search.html">https://www.geonames.org/export/geonames-search.html</a>, 
+  например, для ограничения результатов по конкретной стране (<code>country=FR</code>).</li>
+</ul>
+<p><img alt="" src="img/ui-settings-gazzetteer.ru.png" /></p>
+<h2 id="_17">Просмотр записей</h2>
+<ul>
+<li><strong>Показывать панель социальных сетей</strong>: Если включена функция, 
+  в режиме просмотра записей отображается панель социальных сетей (ссылки на facebook, Twitter и т.д.).</li>
+</ul>
+<h2 id="-">Приложение-редактор</h2>
+<ul>
+<li>
+<p><strong>Приложение редактора</strong>: Если оно включено, страница "Редактор" или вкладка "Участие" доступны пользователям с соответствующими привилегиями. 
+  Если не включено, вкладка "Участие" не отображается на верхней панели инструментов.</p>
+</li>
+<li>
+<p><strong>URL приложения</strong>: Это URL-адрес приложения editor, который обычно можно оставить по умолчанию.</p>
+</li>
+<li>
+<p><strong>Только мои записи</strong>: Если этот флажок установлен, то флажок "Только мои записи" на панели инструментов редактора будет установлен по умолчанию.</p>
+</li>
+<li>
+<p><strong>Отображать теги фильтров в панели</strong>: Если включено, выбранные в данный момент фасеты будут отображаться над результатами поиска 
+  как на панели инструментов редактора, так и на странице пакетного редактора.</p>
+</li>
+<li>
+<p><strong>Контейнер страницы Редактор</strong>: Если включено, приложение editor будет иметь полноразмерный контейнер. 
+  Если этот параметр отключен, он будет иметь фиксированную ширину и центрированный контейнер.</p>
+</li>
+<li>
+<p><strong>Ориентация страницы</strong>: Выберите один из вариантов макета страницы <code>добавить новые метаданные</code>. 
+  По умолчанию используется "Горизонтальный", но можно выбрать вертикальный макет или пользовательский макет на основе предоставленного шаблона.</p>
+</li>
+<li>
+<p><strong>Абзац страницы редактора</strong>: Выберите один из вариантов стиля отступа при редактировании записи. 
+  По умолчанию используются минимальные отступы.</p>
+</li>
+</ul>
+<p><img alt="" src="img/ui-settings-indent.ru.png" /></p>
+<h2 id="_18">Консоль администратора</h2>
+<ul>
+<li><strong>Консоль администратора</strong>:</li>
+<li><strong>URL приложения</strong>: Задайте URL приложения для консоли администратора. В общем, это следует оставить по умолчанию.</li>
+<li><strong>Конфигурация фасетов</strong>: Эта конфигурация используется для отображения сгруппированных фасетов метаданных. </li>
+</ul>
+<h2 id="_19">Аутентификация</h2>
+<ul>
+<li><strong>Аутентификация</strong>:</li>
+<li><strong>URL-адрес приложения для входа в каталог</strong>: Укажите URL приложения для страницы входа. В целом, это значение следует оставить по умолчанию.</li>
+<li><strong>URL-адрес приложения для выхода из каталога</strong>: Укажите URL приложения для выхода из системы. Как правило, это значение следует оставить по умолчанию.</li>
+</ul>
+<p><img alt="" src="img/ui-settings-auth.ru.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="system-configuration.html" class="md-footer__link md-footer__link--prev" aria-label="Назад: Настройка системы">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Настройка системы
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="css-configuration.html" class="md-footer__link md-footer__link--next" aria-label="Вперед: Настройка CSS и стилей">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Настройка CSS и стилей
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <span class="md-copyright__highlight">
+    Copyright &copy; 2001 - 2023 FAO-UN and others
+  </span>
+  
+  
+  &mdash; Made by the
+  <a
+          href="https://geonetwork-opensource.org/"
+          target="_blank" rel="noopener"
+  >GeoNetwork Community</a>,
+  built with
+  <a
+          href="https://squidfunk.github.io/mkdocs-material/"
+          target="_blank" rel="noopener"
+  >
+    Material for MkDocs
+  </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/geonetwork" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/_/geonetwork" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://geonetwork-opensource.org/" target="_blank" rel="noopener" title="GeoNetwork Website" class="md-social__link">
+      <?xml version="1.0" encoding="UTF-8"?>
+<svg width="300px" height="301px" viewBox="0 0 300 301" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>gn_logo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="GNlogo" transform="translate(-157.000000, -1.000000)" fill-rule="nonzero">
+            <g id="Group" transform="translate(157.000000, 0.105590)">
+                <g id="Logo" transform="translate(0.000000, 3.000000)">
+                    <path d="M212.641304,294.371739 L212.648758,294.371739 C211.621118,289.141304 184.624845,288.163043 152.745652,288.163043 C107.719565,288.163043 69.957764,281.73354 59.7475155,273.835714 L59.7624224,273.811491 C43.4925466,261.290683 29.876087,245.535093 19.7431677,227.549068 C27.2031056,240.93913 83.907764,251.501553 152.746584,251.501553 C177.136025,251.501553 199.39472,253.253106 216.299068,256.084472 C236.027329,259.390062 248.462422,264.279503 248.462422,269.645963 C248.462422,270.981056 247.693789,272.418634 246.235714,273.668012 L246.233851,274.000621 C235.996584,281.941304 224.719565,287.895652 212.641304,294.371739 Z M274.503727,242.340373 C274.503727,243.565528 274.131056,244.685404 273.408075,245.707453 C284.601242,231.096894 293.863043,214.198137 299.207143,196.107764 C299.464286,195.332609 299.591925,194.480124 299.591925,193.693789 C299.591925,176.150311 233.848137,161.931056 152.745652,161.931056 C69.4229814,161.931056 1.80838509,147.961491 1.80838509,130.421739 L1.79720497,130.077019 C0.69689441,137.475466 0.126708075,145.048137 0.126708075,152.751242 C0.126708075,163.990062 1.34161491,174.948447 3.64658385,185.495031 C6.00745342,196.595031 35.2006211,206.095342 77.6534161,211.368634 C99.7108696,214.112422 125.36646,215.536025 152.745652,215.536025 C219.988509,215.536025 274.503727,227.537888 274.503727,242.340373 Z M183.136025,88.9462733 C184.804658,105.557143 185.843478,123.795652 186.11646,143.003106 C251.136335,139.733851 299.564907,127.125466 299.564907,112.063043 C299.564907,111.274845 299.465217,110.480124 299.207143,109.709627 C293.730745,91.05 284.782919,73.8791925 273.115528,58.9350932 C274.025776,60.2552795 274.502795,61.6080745 274.502795,62.9822981 C274.503727,75.4770186 235.679814,85.9742236 183.136025,88.9462733 Z M152.67205,54.1462733 C144.200311,54.1462733 136.35559,53.9515528 128.525776,53.5779503 C126.538509,64.202795 124.82795,76.1189441 123.537578,89.0086957 C70.4180124,86.1270186 31.0071429,75.5673913 31.0071429,62.9804348 C31.0071429,61.6015528 31.4785714,60.2431677 32.3916149,58.9164596 C20.6487578,73.9555901 11.5462733,91.2186335 6.07919255,110.013354 C5.88074534,110.692547 5.86118012,111.374534 5.86118012,112.06118 C5.86118012,129.601863 72.6959627,143.82205 152.67205,143.82205 L152.67205,54.1462733 Z M209.906832,14.6962733 C209.906832,11.9813665 205.993789,9.46397516 199.340683,7.40590062 L199.348137,7.38167702 C184.654658,2.67950311 168.998758,0.136024845 152.745652,0.136024845 C136.015528,0.136024845 119.920807,2.8257764 104.851863,7.8 L104.859317,7.82049689 C98.9953416,9.7984472 95.5863354,12.1611801 95.5863354,14.6962733 C95.5863354,21.6447205 121.174845,27.2822981 152.746584,27.2822981 C184.311801,27.2822981 209.906832,21.6437888 209.906832,14.6962733 Z" id="Shape"  fill="#BABABA"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.view", "content.action.edit", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tracking", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": {"default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
