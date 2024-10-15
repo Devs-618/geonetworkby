@@ -1,6 +1,0 @@
-.. _configuring-layout:
-
-
-Theming
-#######
-

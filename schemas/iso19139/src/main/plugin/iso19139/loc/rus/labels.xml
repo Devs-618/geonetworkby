@@ -2855,6 +2855,13 @@
     <description>Formatted as 2007-09-12 (YYYY-MM-DD)</description>
   </element>
 
+<!-- ==================================================== -->
+
+  <element name="gco:nilReason">
+    <label>Причина незаполнения</label>
+    <description>Указать причину почему поле не заполняется</description>
+  </element>
+
   <!-- ==================================================== -->
 
   <element name="gco:DateTime">

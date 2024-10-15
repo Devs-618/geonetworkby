@@ -2056,6 +2056,28 @@
       <label>loose</label>
     </entry>
   </codelist>
+  <codelist name="gco:nilReason">
+    <entry>
+      <code>missing</code>
+      <label>отсутствует</label>
+    </entry>
+    <entry>
+      <code>inapplicable</code>
+      <label>неприменимо</label>
+    </entry>
+    <entry>
+      <code>template</code>
+      <label>шаблон</label>
+    </entry>
+    <entry>
+      <code>unknown</code>
+      <label>неизветное</label>
+    </entry>
+    <entry>
+      <code>withheld</code>
+      <label>отложено</label>
+    </entry>
+  </codelist>
   <codelist name="srv:SV_ParameterDirection">
     <entry>
       <code>in</code>

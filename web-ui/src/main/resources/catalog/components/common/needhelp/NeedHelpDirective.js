@@ -146,7 +146,8 @@
            */
           scope.showHelp = function () {
             var pageId = attrs.gnNeedHelp;
-            var page = scope.documentationLinks[pageId];
+            var pageHelp = scope.documentationLinks[pageId];
+            var page= pageHelp.slice(0, -1);
             var baseUrl;
 
             if (gnGlobalSettings.lang !== "en") {
@@ -165,7 +166,7 @@
                 var baseUrl = scope.helpBaseUrl
                   .replace("/{{lang}}", "")
                   .replace("{{version}}", scope.applicationVersion);
-                var helpPageUrl = baseUrl + "/" + page;
+                var helpPageUrl = baseUrl + "/" + page + ".html";
 
                 testAndOpen(helpPageUrl);
               }
