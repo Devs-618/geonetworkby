@@ -147,7 +147,7 @@
           scope.showHelp = function () {
             var pageId = attrs.gnNeedHelp;
             var pageHelp = scope.documentationLinks[pageId];
-            var page= pageHelp.slice(0, -1);
+            var page = pageHelp.slice(0, -1);
             var baseUrl;
 
             if (gnGlobalSettings.lang !== "en") {

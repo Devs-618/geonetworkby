@@ -370,6 +370,8 @@
               size: 20
             },
             moreLikeThisSameType: true,
+            moreLikeThisFilter:
+              "-cl_status.key:(obsolete OR historicalArchive OR superseded)",
             moreLikeThisConfig: {
               more_like_this: {
                 fields: [
@@ -831,7 +833,7 @@
             is3DModeAllowed: false,
             singleTileWMS: true,
             isSaveMapInCatalogAllowed: true,
-            isExportMapAsImageEnabled: false,
+            isExportMapAsImageEnabled: true,
             isAccessible: false,
             storage: "sessionStorage",
             bingKey: "",
@@ -944,6 +946,7 @@
                     "protocol:OGC:WFS|OGC:WCS|.*DOWNLOAD.*|DB:.*|FILE:.*|OGC API Features|OGC API Coverages",
                   title: "download"
                 },
+                { filter: "protocol:OGC:OWS-C", title: "map" },
                 { filter: "function:legend", title: "mapLegend" },
                 {
                   filter: "function:featureCatalogue",
@@ -1328,6 +1331,7 @@
           "geocoder",
           "disabledTools",
           "filters",
+          "info",
           "scoreConfig",
           "autocompleteConfig",
           "moreLikeThisConfig",

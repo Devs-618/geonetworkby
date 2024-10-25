@@ -189,7 +189,7 @@
               .then(function (res) {
                 if (angular.isArray(res.data)) {
                   var idsUrlApl = res.data.join(",");
-                  location.href = "http://localhost:3000/applications?id=" + idsUrlApl;
+                  location.href = "https://nipd.by/zayavka/?text-393=" + idsUrlApl;
                 }
               });
           };
