@@ -1,5 +1,6 @@
 package org.fao.geonet.api.records.formatters;
 
+import com.lowagie.text.pdf.BaseFont;
 import jeeves.server.context.ServiceContext;
 import org.fao.geonet.Constants;
 import org.fao.geonet.api.records.extent.MapRenderer;
@@ -37,6 +38,7 @@ class PdfOrHtmlResponseWriter {
         try {
             XslUtil.setNoScript();
             ITextRenderer renderer = new ITextRenderer();
+            renderer.getFontResolver().addFont("font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             String siteUrl = context.getBean(SettingManager.class).getSiteURL(lang);
             MapRenderer mapRenderer = new MapRenderer(context);
             renderer.getSharedContext().setReplacedElementFactory(new ImageReplacedElementFactory(siteUrl.replace("/" + lang + "/", "/eng/"), renderer.getSharedContext()
