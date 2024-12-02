@@ -604,6 +604,7 @@ public class CatalogApi {
                 .asElement();
             String text = r.getText();
             httpResponse.setContentLength(text.length());
+            httpResponse.setCharacterEncoding("UTF-8");
             httpResponse.getWriter().write(text);
         }
 
