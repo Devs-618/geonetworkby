@@ -1529,7 +1529,7 @@
     <db.host>#{systemEnvironment['GEONETWORK_DB_HOST']?:'localhost'}</db.host>
     <db.port>#{systemEnvironment['GEONETWORK_DB_PORT']?:5432}</db.port>
     <db.name>#{systemEnvironment['GEONETWORK_DB_NAME']?:'catalog'}</db.name>
-    <db.username>#{systemEnvironment['GEONETWORK_DB_USERNAME']?:'postgre'}</db.username>
+    <db.username>#{systemEnvironment['GEONETWORK_DBF_USERNAME']?:'postgres'}</db.username>
     <db.password>#{systemEnvironment['GEONETWORK_DB_PASSWORD']?:'rootadmin'}</db.password>
     <db.connectionProperties>#{systemEnvironment['GEONETWORK_DB_CONNECTION_PROPERTIES']}</db.connectionProperties>
 

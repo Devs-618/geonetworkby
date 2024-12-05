@@ -380,7 +380,6 @@ public class CatalogApi {
         HttpServletRequest httpRequest)
         throws Exception {
 
-
         final UserSession session = ApiUtils.getUserSession(httpSession);
         Set<String> uuidList = ApiUtils.getUuidsParameterOrSelection(
             uuids, bucket, session);
