@@ -974,7 +974,7 @@ public class SiteApi {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @Scheduled(cron = "${download.delay}") // Каждое воскресенье в 00:00
+    @Scheduled(cron = "0 0 0 * * SUN") // Каждое воскресенье в 00:00
     @Async
     protected void removeDownloadingOperationsAllowing(){
         List<Group> downloadGroups = groupRepository.findByNameEndingWith("_download");
