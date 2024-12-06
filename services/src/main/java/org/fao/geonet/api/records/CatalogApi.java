@@ -83,6 +83,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Size;
+import java.nio.charset.StandardCharsets;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -380,7 +382,6 @@ public class CatalogApi {
         HttpServletRequest httpRequest)
         throws Exception {
 
-
         final UserSession session = ApiUtils.getUserSession(httpSession);
         Set<String> uuidList = ApiUtils.getUuidsParameterOrSelection(
             uuids, bucket, session);
@@ -516,7 +517,7 @@ public class CatalogApi {
         String bucket,
         @RequestParam(
             required = false,
-            defaultValue = "eng"
+            defaultValue = "rus"
         )
         String language,
         @Parameter(description = "XPath pointing to the XML element to loop on.",
@@ -551,6 +552,7 @@ public class CatalogApi {
         @Parameter(hidden = true)
         HttpServletRequest httpRequest)
         throws Exception {
+
         final UserSession session = ApiUtils.getUserSession(httpSession);
         Set<String> uuidList = ApiUtils.getUuidsParameterOrSelection(
             uuids, bucket, session);
@@ -568,11 +570,16 @@ public class CatalogApi {
             .map(h -> (String) objectMapper.convertValue(((Hit) h).source(), Map.class).get("id"))
             .collect(Collectors.toList());
 
-        // Determine filename to use
         String fileName = replaceFilenamePlaceholder(settingManager.getValue("metadata/csvReport/csvName"), "csv");
 
-        httpResponse.setContentType("text/csv");
+        httpResponse.setContentType("text/csv; charset=UTF-8");
         httpResponse.addHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+        byte[] bom = new byte[]{(byte) 0xEF, (byte) 0xBB, (byte) 0xBF};
+        httpResponse.getOutputStream().write(bom);
+
+        OutputStreamWriter writer = new OutputStreamWriter(httpResponse.getOutputStream(), StandardCharsets.UTF_8);
+        BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
         if (StringUtils.isNotEmpty(loopElementXpath)) {
             buildCsvResponseFromXml(loopElementXpath, propertiesXpath, httpResponse, idsToExport,
@@ -603,12 +610,14 @@ public class CatalogApi {
                 .withXsl("xslt/services/csv/csv-search.xsl")
                 .asElement();
             String text = r.getText();
-            httpResponse.setContentLength(text.length());
-            httpResponse.setCharacterEncoding("UTF-8");
-            httpResponse.getWriter().write(text);
+
+            bufferedWriter.write(text);
+            bufferedWriter.flush();
         }
 
+        bufferedWriter.close();
     }
+
 
     private void buildCsvResponseFromXml(String loopElementXpath, List<String> propertiesXpath, HttpServletResponse httpResponse, List<String> idsToExport, String sep, String internalSep, ServiceContext context) {
         try (CSVPrinter csvPrinter = new CSVPrinter(
