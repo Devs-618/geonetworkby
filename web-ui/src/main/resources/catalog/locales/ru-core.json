@@ -267,7 +267,7 @@
     "spatialRepresentationType": "Тип графики",
     "cl_spatialRepresentationType": "Типы графики",
     "state": "Область, Район",
-    "staticMap": "Статическая карта",
+    "map-static": "Статическая карта",
     "surname": "Фамилия",
     "title": "Звание",
     "to": "До",

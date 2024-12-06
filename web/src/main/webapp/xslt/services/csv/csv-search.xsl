@@ -65,7 +65,7 @@
     To use tab instead of semicolon, use "&#009;".
     Default is comma.
   -->
-  <xsl:param name="sep" select="','"/>
+  <xsl:param name="sep" select="'&#009;'"/>
 
   <!-- Intra field separator -->
   <xsl:param name="internalSep" select="'###'"/>
