@@ -105,39 +105,37 @@
     <xsl:variable name="schemaLabelWithContextCollection"
                   select="$labels/element[@name=$escapedName and (@context=$xpath or @context=$parent or @context=$parentIsoType)]"/>
     <xsl:variable name="schemaLabelWithContext" select="$schemaLabelWithContextCollection[1]"/>
+
     <xsl:if test="count($schemaLabelWithContextCollection) > 1">
-      <xsl:message>WARNING: gn-fn-metadata:getLabel | multiple labels found for element '<xsl:value-of select="$escapedName"/>' with context=('<xsl:value-of select="$xpath"/>' or '<xsl:value-of select="$parent"/>' or '<xsl:value-of select="$parentIsoType"/>') in schema <xsl:value-of select="$schema"/></xsl:message>
+      <xsl:message terminate="yes">
+        ERROR: Multiple labels found for element '<xsl:value-of select="$escapedName"/>' with contexts.
+      </xsl:message>
     </xsl:if>
 
-    <!-- Name in current schema -->
     <xsl:variable name="schemaLabel"
-                  select="$labels/element[@name=$escapedName and not(@context)]"/>
+                  select="($labels/element[@name=$escapedName and not(@context)])[1]"/>
+
+    <xsl:if test="count($labels/element[@name=$escapedName]) > 1">
+      <xsl:message terminate="no">
+        WARNING: Multiple labels found for '<xsl:value-of select="$escapedName"/>'. Using the first one.
+      </xsl:message>
+    </xsl:if>
 
     <xsl:choose>
-      <xsl:when test="$schemaLabelWithContext">
-        <xsl:copy-of select="$schemaLabelWithContext" copy-namespaces="no"/>
-      </xsl:when>
       <xsl:when test="$schemaLabel">
         <xsl:copy-of select="$schemaLabel" copy-namespaces="no"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:choose>
-          <xsl:when test="starts-with($schema, 'iso19139.')">
-            <xsl:copy-of select="gn-fn-metadata:getLabel('iso19139', $name, $iso19139labels,
-              $parent, $parentIsoType, $xpath)"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <element>
-              <label>
-                <xsl:value-of select="$escapedName"/>
-              </label>
-            </element>
-            <xsl:message>gn-fn-metadata:getLabel | missing translation in schema <xsl:value-of select="$schema"/> for <xsl:value-of select="$name"/>.</xsl:message>
-          </xsl:otherwise>
-        </xsl:choose>
+        <element>
+          <label>
+            <xsl:value-of select="$escapedName"/>
+          </label>
+        </element>
+        <xsl:message terminate="no">
+          WARNING: Missing translation for '<xsl:value-of select="$escapedName"/>'.
+        </xsl:message>
       </xsl:otherwise>
     </xsl:choose>
-
   </xsl:function>
 
 
