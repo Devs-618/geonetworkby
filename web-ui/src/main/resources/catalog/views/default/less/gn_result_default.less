@@ -27,6 +27,14 @@
   }
 }
 
+.gn-tab-content {
+	padding: 15px;
+	.gn-code>dt{
+		font-size: 24px;
+		font-weight: 300;
+	}
+}
+
 .gn-md-view {
   padding: 15px 20px;
   background-color: @gn-md-view-background-color;
@@ -258,20 +266,14 @@
       display: inline;
       line-break: auto;
       word-break: break-word;
-      letter-spacing: -1em;
-      * {
-        letter-spacing: normal;
-      }
       a {
         line-break: normal;
       }
       &:after {
         content: ", ";
-        letter-spacing: normal;
       }
       &:last-child:after {
         content: "";
-        letter-spacing: normal;
       }
     }
   }
@@ -331,9 +333,6 @@
       }
     }
     // keywords
-    .gn-thesaurus:not(:has(button)) {
-      display: none !important;
-    }
     [data-gn-keyword-badges] {
       .btn {
         word-break: break-word;

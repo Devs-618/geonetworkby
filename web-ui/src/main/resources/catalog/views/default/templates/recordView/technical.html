@@ -15,7 +15,10 @@
           ></i>
         </div>
         <span>
+          <h3 data-translate="">dateValueForStatus</h3>
+          &nbsp;
           <h3>{{date.type | translate}}</h3>
+          &nbsp;
           <span data-gn-humanize-time="{{date.date}}"></span>
         </span>
       </li>
@@ -62,7 +65,7 @@
                  && viewConfig.internalThesaurus
                  && viewConfig.internalThesaurus.indexOf(key) !== -1)
                 || highlightedThesaurus.indexOf(key) === -1"
-    class="gn-margin-bottom flex-row gn-thesaurus"
+    class="gn-margin-bottom flex-row"
   >
     <span class="badge badge-rounded">
       <i class="fa fa-fw fa-tags"></i>
@@ -122,8 +125,11 @@
     <div>
       <h3 data-translate="">language</h3>
       <ul class="gn-comma-list">
-        <li data-ng-repeat="l in mdView.current.record.resourceLanguage">
-          <span data-translate=""> {{l}} </span>
+        <li
+          data-ng-repeat="l in mdView.current.record.resourceLanguage"
+          data-translate=""
+        >
+          {{l}}
         </li>
       </ul>
     </div>

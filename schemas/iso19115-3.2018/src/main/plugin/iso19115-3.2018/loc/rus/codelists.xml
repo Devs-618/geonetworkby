@@ -1,0 +1,2608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ * Скрыть в режиме редактирования: если часть параметров должна быть скрыта
+ в режиме редактирования, к любым параметрам может быть добавлен атбитут 
+ hideInEditMode. Например, <entry hideInEditMode="true">
+
+ Это ограничивает число доступных для пользователей-редакторов параметров,
+ обеспечивая ISO совместимость защищенных таким образом параметров
+ (например, собранные записи могут иметь параметры, скрытые в режиме
+ редактирования и отображаемые в режиме просмотра).
+ По умолчанию этот атрибут отключен.
+
+ * атрибут editorMode позволяет изменять поля формы редактирования:
+   - not set -: простое поле со списком;
+   radio: радио-кнопка в одной строке;
+   radio_linebreak: радио-кнопка с переходом на новую строку;
+   radio_withdesc: радио-кнопка с переходом на новую строку и списком значений;
+   select: поле выбора с размером соответствующим количеству пунктов выбора, но не более 7-и.
+
+-->
+<codelists xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
+           xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
+           xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
+           xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
+           xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
+           xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
+           xmlns:mas="http://standards.iso.org/iso/19115/-3/mas/1.0"
+           xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
+           xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
+           xmlns:mda="http://standards.iso.org/iso/19115/-3/mda/1.0"
+           xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
+           xmlns:mds="http://standards.iso.org/iso/19115/-3/mds/2.0"
+           xmlns:reg="http://standards.iso.org/iso/19135/-2/reg/1.0"
+           xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt/2.0"
+           xmlns:mex="http://standards.iso.org/iso/19115/-3/mex/1.0"
+           xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi/1.0"
+           xmlns:mpc="http://standards.iso.org/iso/19115/-3/mpc/1.0"
+           xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc/2.0"
+           xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
+           xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+           xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/2.0"
+           xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0"
+           xmlns:msr="http://standards.iso.org/iso/19115/-3/msr/2.0"
+           xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0"
+           xmlns:mac="http://standards.iso.org/iso/19115/-3/mac/2.0"
+           xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+           xmlns:gml="http://www.opengis.net/gml/3.2"
+           xmlns:xlink="http://www.w3.org/1999/xlink"
+           xsi:noNamespaceSchemaLocation="../../../../../../../schema-labels.xsd">
+
+
+  <codelist name="cit:CI_TelephoneTypeCode">
+    <entry>
+      <code>voice</code>
+      <label>Телефон</label>
+      <description>Телефон обеспечивает голосовой сервис</description>
+    </entry>
+    <entry>
+      <code>facsimile</code>
+      <label>Факс</label>
+      <description>Телефон предоставляет услуги факсимильной связи</description>
+    </entry>
+    <entry>
+      <code>sms</code>
+      <label>SMS</label>
+      <description>Телефон предоставляет SMS-сервис</description>
+    </entry>
+  </codelist>
+  <codelist name="cit:CI_DateTypeCode">
+    <entry>
+      <code>creation</code>
+      <label>создания</label>
+      <description>Дата создания ресурса</description>
+    </entry>
+    <entry>
+      <code>publication</code>
+      <label>публикации</label>
+      <description>Дата издания ресурса</description>
+    </entry>
+    <entry>
+      <code>revision</code>
+      <label>редакции</label>
+      <description>Дата новой редакции (улучшенной или исправленной) ресурса</description>
+    </entry>
+    <entry>
+      <code>expiry</code>
+      <label>закрытия</label>
+      <description>Дата закрытия ресурса</description>
+    </entry>
+    <entry>
+      <code>lastUpdate</code>
+      <label>последнего обновления</label>
+      <description>Дата последнего обновления ресурса</description>
+    </entry>
+    <entry>
+      <code>lastRevision</code>
+      <label>последней редакции</label>
+      <description>Дата последней редакции ресурса</description>
+    </entry>
+    <entry>
+      <code>nextUpdate</code>
+      <label>следующего обновления</label>
+      <description>Дата следующего планового обновления ресурса</description>
+    </entry>
+    <entry>
+      <code>unavailable</code>
+      <label>окончания публичной доступности</label>
+      <description>Дата, когда ресурс будет недоступен</description>
+    </entry>
+    <entry>
+      <code>inForce</code>
+      <label>ввода в действие</label>
+      <description>Дата вступления ресурса в силу</description>
+    </entry>
+    <entry>
+      <code>adopted</code>
+      <label>приемки</label>
+      <description>Дата приёмки ресурса</description>
+    </entry>
+    <entry>
+      <code>deprecated</code>
+      <label>устаревания</label>
+      <description>Дата признания ресурса устаревшим</description>
+    </entry>
+    <entry>
+      <code>superseded</code>
+      <label>замены</label>
+      <description>Дата замены ресурса другим</description>
+    </entry>
+    <entry>
+      <code>validityBegins</code>
+      <label>признания соответствия требованиям</label>
+      <description>Дата признания ресурса соответствующим требованиям</description>
+    </entry>
+    <entry>
+      <code>validityExpires</code>
+      <label>признания несоответствия требованиям</label>
+      <description>Дата признания ресурса несоответствующим требованиям</description>
+    </entry>
+    <entry>
+      <code>released</code>
+      <label>начала публичной доступности</label>
+      <description>Дата открытия ресурса для публичного доступа</description>
+    </entry>
+    <entry>
+      <code>distribution</code>
+      <label>начала распространения</label>
+      <description>Дата, когда ресурс начал распространяться</description>
+    </entry>
+  </codelist>
+  <codelist name="cit:CI_OnLineFunctionCode" alias="function">
+    <entry>
+      <code>download</code>
+      <label>Скачивание</label>
+      <description>Online-инструкция по скачиванию данных</description>
+    </entry>
+    <entry>
+      <code>information</code>
+      <label>Информация</label>
+      <description>Online-информация об ресурсе</description>
+    </entry>
+    <entry>
+      <code>offlineAccess</code>
+      <label>Offline-доступ</label>
+      <description>Online-инструкция о порядке запроса ресурса от поставщика</description>
+    </entry>
+    <entry>
+      <code>order</code>
+      <label>Заказ</label>
+      <description>Online-заказ на получение ресурса</description>
+    </entry>
+    <entry>
+      <code>search</code>
+      <label>Поиск</label>
+      <description>Online-интерфейс поиска информации по ресурсу</description>
+    </entry>
+    <entry>
+      <code>completeMetadata</code>
+      <label>Метаданные</label>
+      <description>Предоставление полных метаданных</description>
+    </entry>
+    <entry>
+      <code>doi</code>
+      <label>Цифровой идентификатор объекта (DOI)</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>browseGraphic</code>
+      <label>Просмотр графики</label>
+      <description>Просмотр графических изображений</description>
+    </entry>
+    <entry>
+      <code>upload</code>
+      <label>Загрузка</label>
+      <description>Загрузка данных</description>
+    </entry>
+    <entry>
+      <code>emailService</code>
+      <label>Email</label>
+      <description>Email-сервис</description>
+    </entry>
+    <entry>
+      <code>browsing</code>
+      <label>Просмотр</label>
+      <description>Online-просмотр</description>
+    </entry>
+    <entry>
+      <code>fileAccess</code>
+      <label>Файловый доступ</label>
+      <description>Online-доступ к файлам</description>
+    </entry>
+  </codelist>
+  <codelist name="cit:CI_PresentationFormCode">
+    <entry>
+      <code>documentDigital</code>
+      <label>цифровой документ</label>
+      <description>Цифровое представление исходного текстового документа (в том числе, с иллюстрациями)</description>
+    </entry>
+    <entry>
+      <code>imageDigital</code>
+      <label>Цифровое изображение</label>
+      <description>Изображение в цифровой форме земной поверхности, объектов, расположенных на ней, полученное посредством
+        съёмки в различных зонах электромагнитного спектра</description>
+    </entry>
+    <entry>
+      <code>documentHardcopy</code>
+      <label>документ на твердом носителе</label>
+      <description>Представление текстового документа (в том числе, с иллюстрациями) на твердом носителе (бумага, фотоснимок и т.п.)</description>
+    </entry>
+    <entry>
+      <code>imageHardcopy</code>
+      <label>изображение на твердом носителе</label>
+      <description>Изображение на твердом носителе (бумага, фотографический материал и т.п.) земной поверхности, объектов, расположенных на ней, полученное посредством съёмки в различных зонах электромагнитного спектра</description>
+    </entry>
+    <entry>
+      <code>mapDigital</code>
+      <label>цифровая карта</label>
+      <description>Карта, представленная в растровой или векторной форме</description>
+    </entry>
+    <entry>
+      <code>mapHardcopy</code>
+      <label>карта на твердом носителе</label>
+      <description>Карта на твердом носителе (бумага, фотографический материал и т.п.)</description>
+    </entry>
+    <entry>
+      <code>modelDigital</code>
+      <label>цифровая модель</label>
+      <description>Многомерное цифровое представление характеристик, процессов и т.д.</description>
+    </entry>
+    <entry>
+      <code>modelHardcopy</code>
+      <label>физическая модель</label>
+      <description>Трехмерная физическая модель</description>
+    </entry>
+    <entry>
+      <code>profileDigital</code>
+      <label>цифровой профиль</label>
+      <description>Поперечное сечение (профиль) в цифровой форме</description>
+    </entry>
+    <entry>
+      <code>profileHardcopy</code>
+      <label>профиль на твердом носителе</label>
+      <description>Поперечное сечение (профиль) на твердом носителе (бумага и т.п.)</description>
+    </entry>
+    <entry>
+      <code>tableDigital</code>
+      <label>электронная таблица</label>
+      <description>Систематизированная (табличная) информация в электронном виде</description>
+    </entry>
+    <entry>
+      <code>tableHardcopy</code>
+      <label>таблица на твердом носителе</label>
+      <description>Систематизированная (табличная) информация на твердом носителе (бумага, фотоснимок и т.п.)</description>
+    </entry>
+    <entry>
+      <code>videoDigital</code>
+      <label>цифровое видео</label>
+      <description>Цифровая видеозапись</description>
+    </entry>
+    <entry>
+      <code>videoHardcopy</code>
+      <label>аналоговое видео</label>
+      <description>Видеозапись на плёнке</description>
+    </entry>
+    <entry>
+      <code>audioDigital</code>
+      <label>цифровое аудио</label>
+      <description>Цифровая аудиозапись</description>
+    </entry>
+    <entry>
+      <code>audioHardcopy</code>
+      <label>аналоговое аудио</label>
+      <description>Аудиозапись на плёнке</description>
+    </entry>
+    <entry>
+      <code>multimediaDigital</code>
+      <label>цифровое мультимедио</label>
+      <description>Цифровая мультимедийная (текст, звук, изображение) информация</description>
+    </entry>
+    <entry>
+      <code>multimediaHardcopy</code>
+      <label>аналоговое мультимедио</label>
+      <description>Мультимедийная (текст, звук, изображение) информация на плёнке</description>
+    </entry>
+    <entry>
+      <code>physicalObject</code>
+      <label>Физический объект</label>
+      <description>Физический объект, например, образцы породы или минералов, слайды для микроскопа</description>
+    </entry>
+    <entry>
+      <code>diagramDigital</code>
+      <label>цифровая диаграмма</label>
+      <description>Деловая графика (различные виды диаграмм) в цифровом виде</description>
+    </entry>
+    <entry>
+      <code>diagramHardcopy</code>
+      <label>аналоговая диаграмма</label>
+      <description>Деловая графика (различные виды диаграмм) на твердом носителе (бумага, фотоснимок и т.п.)</description>
+    </entry>
+  </codelist>
+  <codelist name="cit:CI_RoleCode" alias="roleCode">
+    <entry>
+      <code>resourceProvider</code>
+      <label>поставщик</label>
+      <description>Субъект, который предоставляет ресурс</description>
+    </entry>
+    <entry>
+      <code>custodian</code>
+      <label>хранитель</label>
+      <description>Субъект, который принимает на себя ответственность за данные и обеспечивает надлежащее обслуживание ресурса</description>
+    </entry>
+    <entry>
+      <code>owner</code>
+      <label>владелец</label>
+      <description>Владелец ресурса</description>
+    </entry>
+    <entry>
+      <code>user</code>
+      <label>пользователь</label>
+      <description>Субъект, который использует ресурс</description>
+    </entry>
+    <entry>
+      <code>distributor</code>
+      <label>распространитель</label>
+      <description>Субъект, который распространяет ресурс</description>
+    </entry>
+    <entry>
+      <code>originator</code>
+      <label>создатель</label>
+      <description>Субъект, который создал ресурс</description>
+    </entry>
+    <entry>
+      <code>pointOfContact</code>
+      <label>контактное лицо</label>
+      <description>Субъект, владеющий сведениями о ресурсе или способах его приобретения</description>
+    </entry>
+    <entry>
+      <code>principalInvestigator</code>
+      <label>главный исследователь</label>
+      <description>Субъект, ответственный за сбор информации и проведение испытаний</description>
+    </entry>
+    <entry>
+      <code>processor</code>
+      <label>обработчик</label>
+      <description>Субъект, который обрабатывает данные, внося изменения в ресурс</description>
+    </entry>
+    <entry>
+      <code>publisher</code>
+      <label>издатель</label>
+      <description>Субъект, который публикует (издает) ресурс</description>
+    </entry>
+    <entry>
+      <code>author</code>
+      <label>автор</label>
+      <description>Субъект - автор ресурса</description>
+    </entry>
+    <entry>
+      <code>sponsor</code>
+      <label>спонсор</label>
+      <description>Субъект, спонсирующий ресурс</description>
+    </entry>
+    <entry>
+      <code>coAuthor</code>
+      <label>соавтор</label>
+      <description>Субъект - соавтор ресурса</description>
+    </entry>
+    <entry>
+      <code>collaborator</code>
+      <label>сотрудник</label>
+      <description>Субъект, который помогает с выпуском ресурса</description>
+    </entry>
+    <entry>
+      <code>editor</code>
+      <label>редактор</label>
+      <description>Субъект, который рассмотрел или изменил ресурс, чтобы улучшить его содержание</description>
+    </entry>
+    <entry>
+      <code>mediator</code>
+      <label>посредник</label>
+      <description>Субъект, который обеспечивает доступ к ресурсу и кому ресурс предназначен или полезен</description>
+    </entry>
+    <entry>
+      <code>rightsHolder</code>
+      <label>правообладатель</label>
+      <description>Субъект, владеющий или управляющий правами на ресурс</description>
+    </entry>
+    <entry>
+      <code>contributor</code>
+      <label>соучастник</label>
+      <description>Сторона, вносящая вклад в ресурс</description>
+    </entry>
+    <entry>
+      <code>funder</code>
+      <label>источник финансирования</label>
+      <description>Сторона, обеспечивающая финансирование ресурса</description>
+    </entry>
+    <entry>
+      <code>stakeholder</code>
+      <label>акционер</label>
+      <description>Сторона, которая заинтересована в ресурсе или использовании ресурс</description>
+    </entry>
+  </codelist>
+  <codelist name="mdq:DQ_EvaluationMethodTypeCode">
+    <entry>
+      <code>directInternal</code>
+      <label>внутренний прямой</label>
+      <description>Метод оценки качества набора данных, основанный на сравнении групп данных внутри набора данных</description>
+    </entry>
+    <entry>
+      <code>directExternal</code>
+      <label>внешний прямой</label>
+      <description>Метод оценки качества набора данных, основанный на сравнении с внешним набором данных</description>
+    </entry>
+    <entry>
+      <code>indirect</code>
+      <label>косвенный</label>
+      <description>Метод оценки качества набора данных, базирующийся на внешних знаниях</description>
+    </entry>
+  </codelist>
+  <codelist name="mri:DS_AssociationTypeCode" alias="associationType">
+    <entry>
+      <code>crossReference</code>
+      <label>Перекрёстная ссылка на другую часть</label>
+      <description>Ссылка одного набора данных на другой</description>
+    </entry>
+    <entry>
+      <code>largerWorkCitation</code>
+      <label>Ссылка на главную часть</label>
+      <description>Ссылка на главную часть ресурса (набора данных, документации и т.п.)</description>
+    </entry>
+    <entry>
+      <code>partOfSeamlessDatabase</code>
+      <label>Ссылка на составную часть базы данных</label>
+      <description>Составная часть набора данных, хранящегося на компьютере</description>
+    </entry>
+    <entry>
+      <code>stereoMate</code>
+      <label>Ссылка на другую часть стереопары</label>
+      <description>Часть совокупности изображений, образующей при совместном использовании трёхмерное стереоизображение</description>
+    </entry>
+    <entry>
+      <code>isComposedOf</code>
+      <label>Ссылка на составную часть</label>
+      <description>Ссылка на ресурсы, которые являются частью данного ресурса</description>
+    </entry>
+    <entry>
+      <code>collectiveTitle</code>
+      <label>Ссылка на коллекцию</label>
+      <description>Общее название коллекции ресурсов. Примечание - название
+        идентифицирует элементы серии совместно, в сочетании с информацией
+        о том, какие тома доступны из источника описания</description>
+    </entry>
+    <entry>
+      <code>series</code>
+      <label>Сылка на серию</label>
+      <description>Связано с общим происхождением, например, продукции, выпущенная по определённой спецификации</description>
+    </entry>
+    <entry>
+      <code>dependency</code>
+      <label>Ссылка на зависимый ресурс</label>
+      <description>Связано через зависимость</description>
+    </entry>
+    <entry>
+      <code>revisionOf</code>
+      <label>Ссылка на предыдущий выпуск</label>
+      <description>Новая редакция (версия) существующего ресурса</description>
+    </entry>
+  </codelist>
+
+  <codelist name="mri:DS_InitiativeTypeCode" alias="initiativeType">
+    <entry>
+      <code>campaign</code>
+      <label>кампании</label>
+      <description>Серия организованных запланированных мероприятий</description>
+    </entry>
+    <entry>
+      <code>collection</code>
+      <label>коллекции</label>
+      <description>Накопление наборов данных, собранных для определенной цели</description>
+    </entry>
+    <entry>
+      <code>exercise</code>
+      <label>мероприятия</label>
+      <description>Выполнение функции или группы функций</description>
+    </entry>
+    <entry>
+      <code>experiment</code>
+      <label>эксперимента</label>
+      <description>Процесс, разработанный для того, чтобы определить, является ли что-то эффективным</description>
+    </entry>
+    <entry>
+      <code>investigation</code>
+      <label>исследования</label>
+      <description>Поиск или систематический запрос</description>
+    </entry>
+    <entry>
+      <code>mission</code>
+      <label>задания</label>
+      <description>Операция системы сбора данных</description>
+    </entry>
+    <entry>
+      <code>sensor</code>
+      <label>сенсора</label>
+      <description>Устройство или часть оборудования, которое обнаруживает или регистрирует</description>
+    </entry>
+    <entry>
+      <code>operation</code>
+      <label>операции</label>
+      <description>Действие, которое является частью серии действий</description>
+    </entry>
+    <entry>
+      <code>platform</code>
+      <label>платформы</label>
+      <description>Транспортный или иной носитель датчика</description>
+    </entry>
+    <entry>
+      <code>process</code>
+      <label>процесса</label>
+      <description>Метод выполнения чего-либо, включающий несколько шагов</description>
+    </entry>
+    <entry>
+      <code>program</code>
+      <label>программы</label>
+      <description>Планируемая деятельность</description>
+    </entry>
+    <entry>
+      <code>project</code>
+      <label>проекта</label>
+      <description>Организованное предприятие, исследование или разработка</description>
+    </entry>
+    <entry>
+      <code>study</code>
+      <label>обучения</label>
+      <description>Экспертиза или расследование</description>
+    </entry>
+    <entry>
+      <code>task</code>
+      <label>задачи</label>
+      <description>Часть работы</description>
+    </entry>
+    <entry>
+      <code>trial</code>
+      <label>испытания</label>
+      <description>Процесс тестирования, чтобы обнаружить или продемонстрировать что-то</description>
+    </entry>
+  </codelist>
+  <codelist name="gfc:FC_RoleType">
+    <entry>
+      <code>ordinary</code>
+      <label>Простой</label>
+      <description>Простое объединение</description>
+    </entry>
+    <entry>
+      <code>aggregation</code>
+      <label>Агрегация</label>
+      <description>Указывает на UML-агрегацию (роль части)</description>
+    </entry>
+    <entry>
+      <code>composition</code>
+      <label>Композиция</label>
+      <description>Указывает на UML-композицию (роль части)</description>
+    </entry>
+  </codelist>
+  <codelist name="mco:MD_ClassificationCode">
+    <entry>
+      <code>unclassified</code>
+      <label>Открытая информация</label>
+      <description>Для общего пользования</description>
+    </entry>
+    <entry>
+      <code>restricted</code>
+      <label>Не для общего пользования</label>
+      <description>Не для общего пользования</description>
+    </entry>
+    <entry>
+      <code>confidential</code>
+      <label>Конфиденциально</label>
+      <description>Доступно для тех, кому можно доверить информацию</description>
+    </entry>
+    <entry>
+      <code>secret</code>
+      <label>Секретно</label>
+      <description>Хранится или содержится в секрете, скрыто от всех, кроме избранной группы людей</description>
+    </entry>
+    <entry>
+      <code>topSecret</code>
+      <label>Совершенно секретно</label>
+      <description>Высочайшей секретности</description>
+    </entry>
+    <entry>
+      <code>SBU</code>
+      <label>Чувствительно, но несекретно</label>
+      <description>Хотя и несекретно, требует строгого контроля над распространением</description>
+    </entry>
+    <entry>
+      <code>forOfficialUseOnly</code>
+      <label>Для служебного пользования</label>
+      <description>Информация для официального пользования, определенная соответствующим регулирующим органом</description>
+    </entry>
+    <entry>
+      <code>protected</code>
+      <label>Защищенная</label>
+      <description>Информация, разглашение которой может привести к потерям</description>
+    </entry>
+    <entry>
+      <code>limitedDistribution</code>
+      <label>Ограниченного распространения</label>
+      <description>Распространение ограничено соответствующим регулирующим органом</description>
+    </entry>
+  </codelist>
+  <codelist name="mrc:MD_CoverageContentTypeCode">
+    <entry>
+      <code>image</code>
+      <label>Изображение</label>
+      <description>Числовое представление физического параметра, которое не является фактическим значением данного параметра</description>
+    </entry>
+    <entry>
+      <code>thematicClassification</code>
+      <label>Тематическая классификация</label>
+      <description>Закодированное значение без количественного смысла, используемое для представления физической величины</description>
+    </entry>
+    <entry>
+      <code>physicalMeasurement</code>
+      <label>Физическое измерение</label>
+      <description>Значение в физической единице измеряемой величины</description>
+    </entry>
+    <entry>
+      <code>auxillaryInformation</code>
+      <label>Вспомогательная информация</label>
+      <description>Данные, обычно физические измерения, используемые при расчете первичных физических измерений в наборе данных.
+        Например: Грид аэрозольной оптической толщины, используемый в расчете температуры поверхности моря
+      </description>
+    </entry>
+    <entry>
+      <code>qualityInformation</code>
+      <label>Информация о качестве</label>
+      <description>Данные, используемые для характеристики качества физических измерений в наборе данных. 
+	    Примечание: как правило, включены в gmi: QE_CoverageResult
+      </description>
+    </entry>
+    <entry>
+      <code>referenceInformation</code>
+      <label>Справочная информация</label>
+      <description>Данные, используемые для характеристики качества физических измерений в наборе данных. 
+	    Примечание: как правило, включены в gmi: QE_CoverageResult
+      </description>
+    </entry>
+    <entry>
+      <code>modelResult</code>
+      <label>Результат моделирования</label>
+      <description>Ресурсы с данными полученными в результате моделирования, в отличии от наблюденных или рассчитанных по данным наблюдений</description>
+    </entry>
+    <entry>
+      <code>coordinate</code>
+      <label>Система координат</label>
+      <description>Данные, используемые для координирования</description>
+    </entry>
+  </codelist>
+  <codelist name="mex:MD_DatatypeCode">
+    <entry>
+      <code>class</code>
+      <label>Класс</label>
+      <description>Описание группы объектов, делящих одинаковые атритубы, операциии, методы, отношения и поведение
+      </description>
+    </entry>
+    <entry>
+      <code>codelist</code>
+      <label>Список кодов</label>
+      <description>Перечисление, полезное для представления и ведения длинного списка величин
+      </description>
+    </entry>
+    <entry>
+      <code>enumeration</code>
+      <label>Перечисление</label>
+      <description>Тип данных, формирующих перечень последовательно нумерованных значений, нерасширяемый
+      </description>
+    </entry>
+    <entry>
+      <code>codelistElement</code>
+      <label>Элемент списка кодов</label>
+      <description>Разрешенное значение для перечисления или списка</description>
+    </entry>
+    <entry>
+      <code>abstractClass</code>
+      <label>Абстрактный класс</label>
+      <description>Класс, который не может быть непосредственно выделен</description>
+    </entry>
+    <entry>
+      <code>aggregateClass</code>
+      <label>Агрегированный класс</label>
+      <description>Класс, состоящий из классов, связанных отношением агрегата 
+      </description>
+    </entry>
+    <entry>
+      <code>specifiedClass</code>
+      <label>Определенный класс</label>
+      <description>Подкласс, который может быть заменен своим суперклассом
+      </description>
+    </entry>
+    <entry>
+      <code>datatypeClass</code>
+      <label>Класс типа данных</label>
+      <description>Класс с несколькими или отсутствием операций, сохраняющий 
+  	   абстрактное состояние другого класса для передачи, хранения, кодирования или постоянного хранения
+      </description>
+    </entry>
+    <entry>
+      <code>interfaceClass</code>
+      <label>Класс интерфейса</label>
+      <description>Именованный набор операций, определяющих поведение элемента
+      </description>
+    </entry>
+    <entry>
+      <code>unionClass</code>
+      <label>Объединеннный класс</label>
+      <description>Класс, описывающий один или несколько типов
+      </description>
+    </entry>
+    <entry>
+      <code>metaClass</code>
+      <label>Метакласс</label>
+      <description>Класс, чьи члены являются классами</description>
+    </entry>
+    <entry>
+      <code>typeClass</code>
+      <label>Класс типа</label>
+      <description>Класс, используемый для специфицикации домена значений объектов, вместе с операциями, применимыми к объектам. Тип может иметь атрибуты и ассоциации
+      </description>
+    </entry>
+    <entry>
+      <code>characterString</code>
+      <label>Символьная строка</label>
+      <description>Текстовая строка</description>
+    </entry>
+    <entry>
+      <code>integer</code>
+      <label>Целое</label>
+      <description>Числовое целочисленное поле</description>
+    </entry>
+    <entry>
+      <code>association</code>
+      <label>Связь</label>
+      <description>Семантические отношение между двумя классами, включающее связи между их объектами
+      </description>
+    </entry>
+  </codelist>
+  <codelist name="msr:MD_DimensionNameTypeCode">
+    <entry>
+      <code>row</code>
+      <label>Ось ординат</label>
+      <description>Ось ординат (y) </description>
+    </entry>
+    <entry>
+      <code>column</code>
+      <label>Ось абсцисс</label>
+      <description>Ось абсцисс (x)</description>
+    </entry>
+    <entry>
+      <code>vertical</code>
+      <label>Ось аппликат</label>
+      <description>Вертикальная ось (z)</description>
+    </entry>
+    <entry>
+      <code>track</code>
+      <label>Вдоль</label>
+      <description>Вдоль направления движения точки сканирования</description>
+    </entry>
+    <entry>
+      <code>crossTrack</code>
+      <label>Поперек</label>
+      <description>Поперёк направления движения точки сканирования</description>
+    </entry>
+    <entry>
+      <code>line</code>
+      <label>Направление</label>
+      <description>Полоса сканирования сенсора</description>
+    </entry>
+    <entry>
+      <code>sample</code>
+      <label>Выборка</label>
+      <description>Элемент вдоль линии сканирования</description>
+    </entry>
+    <entry>
+      <code>time</code>
+      <label>Ось времени</label>
+      <description>Длительность</description>
+    </entry>
+  </codelist>
+  <codelist name="msr:MD_GeometricObjectTypeCode">
+    <entry>
+      <code>complex</code>
+      <label>Комплекс</label>
+      <description>Набор геометрических примитивов, границы которых могут быть представлены объединением других примитивов
+      </description>
+    </entry>
+    <entry>
+      <code>composite</code>
+      <label>Композит</label>
+      <description>Объединение кривых, твердых тел и поверхностей</description>
+    </entry>
+    <entry>
+      <code>curve</code>
+      <label>Кривая</label>
+      <description>Ограниченный, 1-размерный геометрический примитив, представляющий неперерывную линию</description>
+    </entry>
+    <entry>
+      <code>point</code>
+      <label>Точка</label>
+      <description>Безразмерный геометрический примитив, представляющий позицию без экстента</description>
+    </entry>
+    <entry>
+      <code>solid</code>
+      <label>Тело</label>
+      <description>Ограниченный, связанный 3-размерный геометрический примитив,
+	  представляющий неперерывное изображение пространственного региона
+      </description>
+    </entry>
+    <entry>
+      <code>surface</code>
+      <label>Поверхность</label>
+      <description>Связанный, соединеный 2-размерный примитив,
+        представляющий непрерывное изображение плоскости
+      </description>
+    </entry>
+  </codelist>
+  <codelist name="mrc:MD_ImagingConditionCode">
+    <entry>
+      <code>blurredImage</code>
+      <label>Размытый снимок</label>
+      <description>Размытая часть изображения</description>
+    </entry>
+    <entry>
+      <code>cloud</code>
+      <label>Облачность</label>
+      <description>Часть изображения, частично закрытая облаком
+      </description>
+    </entry>
+    <entry>
+      <code>degradingObliquity</code>
+      <label>Наклон эклиптики</label>
+      <description>Острый угол между плоскостью эклиптикой (плоскостью земной орбитой) и плоскостью небесного экватора
+      </description>
+    </entry>
+    <entry>
+      <code>fog</code>
+      <label>Туман</label>
+      <description>Часть изображения, частично закрытая туманом
+      </description>
+    </entry>
+    <entry>
+      <code>heavySmokeOrDust</code>
+      <label>Сильное задымление или запыление</label>
+      <description>Часть изображения, закрыто сильным дымом или пылью
+      </description>
+    </entry>
+    <entry>
+      <code>night</code>
+      <label>Ночь</label>
+      <description>Изображение снято ночью</description>
+    </entry>
+    <entry>
+      <code>rain</code>
+      <label>Дождь</label>
+      <description>Изображение снято во время дождя</description>
+    </entry>
+    <entry>
+      <code>semiDarkness</code>
+      <label>Полутьма</label>
+      <description>Изображение снято в полутьме, в сумерках
+     </description>
+    </entry>
+    <entry>
+      <code>shadow</code>
+      <label>Тень</label>
+      <description>Часть изображения находится в тени</description>
+    </entry>
+    <entry>
+      <code>snow</code>
+      <label>Снег</label>
+      <description>Часть изображения закрыта снегом</description>
+    </entry>
+    <entry>
+      <code>terrainMasking</code>
+      <label>Затенение</label>
+      <description>Отсутствие данных в определенной точке или пространстве из-за топографических объектов, частично перекрывающих снимок от съёмочной камеры (датчика)
+      </description>
+    </entry>
+  </codelist>
+  <codelist name="mri:MD_KeywordTypeCode">
+    <entry>
+      <code>discipline</code>
+      <label>Дисцплина</label>
+      <description>Кодовое слово для инструкций или специальных знаний
+      </description>
+    </entry>
+    <entry>
+      <code>place</code>
+      <label>Место</label>
+      <description>Кодовое слово для обозначения места</description>
+    </entry>
+    <entry>
+      <code>stratum</code>
+      <label>Слой</label>
+      <description>Кодовое слово для обозначения слоя объектов
+      </description>
+    </entry>
+    <entry>
+      <code>temporal</code>
+      <label>Временной</label>
+      <description>Кодовое слово временного периода данных
+      </description>
+    </entry>
+    <entry>
+      <code>theme</code>
+      <label>Тема</label>
+      <description>Кодовое слово для обозначения темы или предмета
+      </description>
+    </entry>
+    <entry>
+      <code>dataCentre</code>
+      <label>Датацентр</label>
+      <description>Кодовое слово для обозначения архива, управляющего и распространяющего данные
+      </description>
+    </entry>
+    <entry>
+      <code>featureType</code>
+      <label>Тип объекта</label>
+      <description>Кодовое слово для обозначения ресурса, содержащего набор объектов с их характеристиками
+      </description>
+    </entry>
+    <entry>
+      <code>instrument</code>
+      <label>Инструмент</label>
+    <description>Кодовое слово для определения прибора измерения или сравнения физических характеристик
+      </description>
+    </entry>
+    <entry>
+      <code>platform</code>
+      <label>Платформа</label>
+      <description>Кодовое слово для определения поверхности, на которой был размещен инструмент
+      </description>
+    </entry>
+    <entry>
+      <code>process</code>
+      <label>Процесс</label>
+      <description>Кодовое слово для определения последовательности действий или естественных событий
+      </description>
+    </entry>
+    <entry>
+      <code>project</code>
+      <label>Проект</label>
+      <description>Кодовое слово для обозначения действий по созданию или модификации продукта или сервиса
+      </description>
+    </entry>
+    <entry>
+      <code>service</code>
+      <label>Сервис</label>
+      <description>Кодовое слово, определяемое действия одной стороны относительно второй
+      </description>
+    </entry>
+    <entry>
+      <code>product</code>
+      <label>Продукт</label>
+      <description>Кодовое слово, определяющее тип продукта</description>
+    </entry>
+    <entry>
+      <code>subTopicCategory</code>
+      <label>Подкатегория</label>
+      <description>Уточнение категории (темы) для целей классификации данных
+      </description>
+    </entry>
+    <entry>
+      <code>taxon</code>
+      <label>Таксон</label>
+      <description>Кодовое слово, определяемое таксономию ресурса</description>
+    </entry>
+  </codelist>
+  <codelist name="mmi:MD_MaintenanceFrequencyCode">
+    <entry>
+      <code>continual</code>
+      <label>Постоянный</label>
+      <description>Данные периодически и постоянно обновляются</description>
+    </entry>
+    <entry>
+      <code>daily</code>
+      <label>Ежедневно</label>
+      <description>Данные обновляются ежедневно</description>
+    </entry>
+    <entry>
+      <code>weekly</code>
+      <label>Еженедельно</label>
+      <description>Данные обновляются еженедельно</description>
+    </entry>
+    <entry>
+      <code>fortnightly</code>
+      <label>Раз в две недели</label>
+      <description>Данные обновляются раз в две недели</description>
+    </entry>
+    <entry>
+      <code>monthly</code>
+      <label>Ежемесячно</label>
+      <description>Данные обновляются ежемесячно</description>
+    </entry>
+    <entry>
+      <code>quarterly</code>
+      <label>Ежеквартально</label>
+      <description>Данные обновляются каждые три месяца</description>
+    </entry>
+    <entry>
+      <code>biannually</code>
+      <label>Дважды в год</label>
+      <description>Данные обновляются каждые полгода</description>
+    </entry>
+    <entry>
+      <code>annually</code>
+      <label>Ежегодно</label>
+      <description>Данные обновляются ежегодно</description>
+    </entry>
+    <entry>
+      <code>asNeeded</code>
+      <label>По мере необходимости</label>
+      <description>Данные обновляются по необходимости</description>
+    </entry>
+    <entry>
+      <code>irregular</code>
+      <label>Нерегулярно</label>
+      <description>Данные обновляются нерегулярно
+      </description>
+    </entry>
+    <entry>
+      <code>notPlanned</code>
+      <label>Не планируется</label>
+      <description>Обновление данных не планируется</description>
+    </entry>
+    <entry>
+      <code>unknown</code>
+      <label>Неизвестно</label>
+      <description>Частота обновления данных не известна
+      </description>
+    </entry>
+    <entry>
+      <code>periodic</code>
+      <label>Периодически</label>
+      <description>Ресурс обновляется нерегулярно</description>
+    </entry>
+    <entry>
+      <code>semimonthly</code>
+      <label>Дважды в месяц</label>
+      <description>Ресурс обновляется дважды в месяц</description>
+    </entry>
+    <entry>
+      <code>biennially</code>
+      <label>Раз за два года</label>
+      <description>Ресурс обновляется каждые 2 года</description>
+    </entry>
+  </codelist>
+  <codelist name="mrd:MD_MediumFormatCode">
+    <entry>
+      <code>cpio</code>
+      <label>CPIO</label>
+      <description>CoPy In/Out (формат файлов и комана в UNIX)</description>
+    </entry>
+    <entry>
+      <code>tar</code>
+      <label>TAR</label>
+      <description>Tape ARchive</description>
+    </entry>
+    <entry>
+      <code>highSierra</code>
+      <label>High sierra</label>
+      <description>Файловая система High sierra</description>
+    </entry>
+    <entry>
+      <code>iso9660</code>
+      <label>ISO9660</label>
+      <description>Файловая система CD-ROM
+      </description>
+    </entry>
+    <entry>
+      <code>iso9660RockRidge</code>
+      <label>ISO9660 Rock Ridge</label>
+      <description>Протокол обмена Rock ridge (UNIX)</description>
+    </entry>
+    <entry>
+      <code>iso9660AppleHFS</code>
+      <label>ISO9660 Apple HFS</label>
+      <description>Иерархическая файловая система (Macintosh)</description>
+    </entry>
+    <entry>
+      <code>udf</code>
+      <label>UDF</label>
+      <description>Universal Disk Format</description>
+    </entry>
+  </codelist>
+  <codelist name="mex:MD_ObligationCode">
+    <entry>
+      <code>mandatory</code>
+      <label>обязательно</label>
+      <description>Элемент является обязательным</description>
+    </entry>
+    <entry>
+      <code>optional</code>
+      <label>опционально</label>
+      <description>Элемент является необязательным</description>
+    </entry>
+    <entry>
+      <code>conditional</code>
+      <label>по условию</label>
+      <description>Элемент является обязательным, когда выполняются определённые условия</description>
+    </entry>
+  </codelist>
+  <codelist name="msr:MD_PixelOrientationCode">
+    <entry>
+      <code>center</code>
+      <label>Центр</label>
+      <description>Точка, лежащая посередине между нижним левым и правым верхним углами пикселя</description>
+    </entry>
+    <entry>
+      <code>lowerLeft</code>
+      <label>Нижний левый</label>
+      <description>Левый нижний угол – угол пикселя, ближайший к началу системы координат. Если два угла имеют одинаковое
+        расстояние до начала системы координат, берётся наименьшее значение по оси Х</description>
+    </entry>
+    <entry>
+      <code>lowerRight</code>
+      <label>Нижний правый</label>
+      <description>Правый нижний угол – следующий угол (против хода часовой стрелки) после левого нижнего угла</description>
+    </entry>
+    <entry>
+      <code>upperRight</code>
+      <label>Верхний правый</label>
+      <description>Правый верхний угол – следующий угол (против хода часовой стрелки) после правого нижнего угла</description>
+    </entry>
+    <entry>
+      <code>upperLeft</code>
+      <label>Верхний левый</label>
+      <description>Левый верхний угол – следующий угол (против хода часовой стрелки) после правого вернхего угла</description>
+    </entry>
+  </codelist>
+  <codelist name="mcc:MD_ProgressCode">
+    <entry>
+      <code>completed</code>
+      <label>завершенный</label>
+      <description>Создание данных завершено</description>
+    </entry>
+    <entry>
+      <code>historicalArchive</code>
+      <label>в архиве</label>
+      <description>Данные находятся в архиве
+      </description>
+    </entry>
+    <entry>
+      <code>obsolete</code>
+      <label>устаревший</label>
+      <description>Даннные больше не актуальны</description>
+    </entry>
+    <entry>
+      <code>onGoing</code>
+      <label>постоянно обновляемый</label>
+      <description>Данные обновляются непрерывно</description>
+    </entry>
+    <entry>
+      <code>planned</code>
+      <label>планируемый к созданию/обновлению</label>
+      <description>Установлена дата, на которую данные будут созданы или обновлены</description>
+    </entry>
+    <entry>
+      <code>required</code>
+      <label>требуемый</label>
+      <description>Данные должны быть созданы или обновлены</description>
+    </entry>
+    <entry>
+      <code>underDevelopment</code>
+      <label>в работе</label>
+      <description>Данные находятся в процессе создания или обновления</description>
+    </entry>
+    <entry>
+      <code>final</code>
+      <label>окончательный</label>
+      <description>Процесс завершен и изменения больше не принимаются</description>
+    </entry>
+    <entry>
+      <code>pending</code>
+      <label>ожидаемый</label>
+      <description>Данные еще не поступили заказчику</description>
+    </entry>
+    <entry>
+      <code>retired</code>
+      <label>не рекомендуемый</label>
+      <description>Объект больше не рекомендован к использованию. Он не заменен другим объектом</description>
+    </entry>
+    <entry>
+      <code>superseded</code>
+      <label>замененный</label>
+      <description>Заменены новым объектом</description>
+    </entry>
+    <entry>
+      <code>tentative</code>
+      <label>предварительный</label>
+      <description>Временные изменения, прежде чем ресурс станет окончательным
+      </description>
+    </entry>
+    <entry>
+      <code>valid</code>
+      <label>условный</label>
+      <description>Допустимый при определенных условиях</description>
+    </entry>
+    <entry>
+      <code>accepted</code>
+      <label>принятый</label>
+      <description>Согласован спонсором</description>
+    </entry>
+    <entry>
+      <code>notAccepted</code>
+      <label>не принятый</label>
+      <description>Отклонен спонсором</description>
+    </entry>
+    <entry>
+      <code>withdrawn</code>
+      <label>отозванный</label>
+      <description>Отозван</description>
+    </entry>
+    <entry>
+      <code>proposed</code>
+      <label>предложенный к созданию</label>
+      <description>Предложенный принять в разработку</description>
+    </entry>
+    <entry>
+      <code>deprecated</code>
+      <label>неактуальный</label>
+      <description>Ресурс устарел и заменен, использование только в исторических целях</description>
+    </entry>
+    <entry hideInEditMode="true">
+      <code>notobsolete</code>
+      <label>актуальный</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="mco:MD_RestrictionCode">
+    <entry>
+      <code>copyright</code>
+      <label>Авторское право</label>
+      <description>Исключительное право на публикацию, продукциию, продажу прав на литературное, музыкальное или художественное произведение, на использование торговой марки или ярлыка, предоставленное законом на определенный срок автору, композитору, художнику, дистрибьютору
+      </description>
+    </entry>
+    <entry>
+      <code>patent</code>
+      <label>Патент</label>
+      <description>Правительство гарантирует исключительное право производить, продавать, использовать или лицензировать изобретение или открытие
+      </description>
+    </entry>
+    <entry>
+      <code>patentPending</code>
+      <label>Ожидание патента</label>
+      <description>Произведеннаяь или проданная информация, ожидающая патентования</description>
+    </entry>
+    <entry>
+      <code>trademark</code>
+      <label>Торговая марка</label>
+      <description>Название, символ или иной способ идентификации продукции, официально зарегистрированный и юридически ограниченный к использованию владельцем или производителем
+      </description>
+    </entry>
+    <entry>
+      <code>license</code>
+      <label>Лицензия</label>
+      <description>Формальное разрешие на какую-либо деятельность</description>
+    </entry>
+    <entry>
+      <code>intellectualPropertyRights</code>
+      <label>Право интеллектуальной собственности</label>
+      <description>Право на получение финансовой выгоды от неосязаемой собственности или от контроля за распространением неосязаемой собственности, созданной в результате творческой деятельности
+      </description>
+    </entry>
+    <entry>
+      <code>restricted</code>
+      <label>Ограниченный</label>
+      <description>Не подлежит свободному распространению или открытию для широкой публики</description>
+    </entry>
+    <entry>
+      <code>otherRestrictions</code>
+      <label>Прочие ограничения</label>
+      <description>Ограничения не указаны</description>
+    </entry>
+    <entry>
+      <code>unrestricted</code>
+      <label>Неограниченный</label>
+      <description>Ограничения не существуют</description>
+    </entry>
+    <entry>
+      <code>licenceUnrestricted</code>
+      <label>Неограниченная лицензия</label>
+      <description>Не требуются формальные разрешения для использования ресурса
+      </description>
+    </entry>
+    <entry>
+      <code>licenceEndUser</code>
+      <label>Лицензия конечного пользователя</label>
+      <description>Формальное разрешение, необходимое для использования ресурса лицом, которое может отличаться от лица, купившего или заказавшего его
+      </description>
+    </entry>
+    <entry>
+      <code>licenceDistributor</code>
+      <label>Лицензия дистрибьютора</label>
+      <description>Официальное разрешение, необходимое физическому или юридическому лицу для коммерциализации и распространения ресурса
+      </description>
+    </entry>
+    <entry>
+      <code>private</code>
+      <label>Частный</label>
+      <description>Защищена прав личности или организации от наблюдения, вторжения, или внимания к ним
+      </description>
+    </entry>
+    <entry>
+      <code>statutory</code>
+      <label>В установленном порядке</label>
+      <description>В установленном законом порядке</description>
+    </entry>
+    <entry>
+      <code>confidential</code>
+      <label>Конфиденциальный</label>
+      <description>Не доступный для широкой публики. Примечание - содержит информацию, которая может нанести ущерб коммерческим, промышленным или национальным интересам
+      </description>
+    </entry>
+    <entry>
+      <code>SBU</code>
+      <label>Чувствительный, но не ограниченный</label>
+      <description>Несмотря на отсутствие ограничений, требуется контроль за распространением
+      </description>
+    </entry>
+    <entry>
+      <code>in-confidence</code>
+      <label>В конфиденциальном порядке</label>
+      <description>Конфиденциально</description>
+    </entry>
+  </codelist>
+
+  <codelist name="mcc:MD_ScopeCode">
+    <entry>
+      <code>attribute</code>
+      <label>Атрибут</label>
+      <description>Информация об атрибуте объекта</description>
+    </entry>
+    <entry>
+      <code>attributeType</code>
+      <label>Тип атрибута</label>
+      <description>Информация о типе атрибута объекта</description>
+    </entry>
+    <entry>
+      <code>collectionHardware</code>
+      <label>Устройства сбора</label>
+      <description>Информация об устройствах сбора данных</description>
+    </entry>
+    <entry>
+      <code>collectionSession</code>
+      <label>Сеанс сбора</label>
+      <description>Информация о сеансе сбора данных</description>
+    </entry>
+    <entry>
+      <code>dataset</code>
+      <label>Набор данных</label>
+      <description>Информация о наборе данных</description>
+    </entry>
+    <entry>
+      <code>series</code>
+      <label>Серия</label>
+      <description>Информация о серии данных</description>
+    </entry>
+    <entry>
+      <code>nonGeographicDataset</code>
+      <label>Негеографические данные</label>
+      <description>Информация о негеографическом наборе данных</description>
+    </entry>
+    <entry>
+      <code>dimensionGroup</code>
+      <label>Группа измерений</label>
+      <description>Информация о группе пространственных измерений</description>
+    </entry>
+    <entry>
+      <code>feature</code>
+      <label>Объект</label>
+      <description>Информация о пространственном объекте</description>
+    </entry>
+    <entry>
+      <code>featureType</code>
+      <label>Тип объекта</label>
+      <description>Информация о типе пространственного объекта</description>
+    </entry>
+    <entry>
+      <code>propertyType</code>
+      <label>Тип характеристики</label>
+      <description>Информация о типе характеристики пространственного объекта</description>
+    </entry>
+    <entry>
+      <code>fieldSession</code>
+      <label>Полевые измерения</label>
+      <description>Информация о полевых измерениях</description>
+    </entry>
+    <entry>
+      <code>software</code>
+      <label>Программное обеспечение</label>
+      <description>Информация о программном обеспечении</description>
+    </entry>
+    <entry>
+      <code>service</code>
+      <label>Сервис</label>
+      <description>Информация о возможностях и услугах, которые провайдер предоставляет пользователю через определенный интерфейс</description>
+    </entry>
+    <entry>
+      <code>model</code>
+      <label>Модель</label>
+      <description>Информация о копии либо имитации определенного объекта</description>
+    </entry>
+    <entry>
+      <code>tile</code>
+      <label>Тайл</label>
+      <description>Информация о тайле набора пространственных данных</description>
+    </entry>
+    <entry>
+      <code>metadata</code>
+      <label>Метаданные</label>
+      <description>Информация о метаданных</description>
+    </entry>
+    <entry>
+      <code>initiative</code>
+      <label>Инициатива</label>
+      <description>Информация об инициативе, проекте, мероприятии</description>
+    </entry>
+    <entry>
+      <code>sample</code>
+      <label>Образец</label>
+      <description>Информация об образце (выборке)</description>
+    </entry>
+    <entry>
+      <code>document</code>
+      <label>Документ</label>
+      <description>Информация о документе</description>
+    </entry>
+    <entry>
+      <code>repository</code>
+      <label>Хранилище</label>
+      <description>Информация о хранилище</description>
+    </entry>
+    <entry>
+      <code>aggregate</code>
+      <label>Агрегированный ресурс</label>
+      <description>Информация об агрегированном ресурсе</description>
+    </entry>
+    <entry>
+      <code>product</code>
+      <label>Производство</label>
+      <description>Метаданные, описывающие спецификацию производства данных ISO 19131
+      </description>
+    </entry>
+    <entry>
+      <code>collection</code>
+      <label>Коллекция</label>
+      <description>Информация о неструктурированном наборе</description>
+    </entry>
+    <entry>
+      <code>coverage</code>
+      <label>Покрытие</label>
+      <description>Информация о покрытии</description>
+    </entry>
+    <entry>
+      <code>application</code>
+      <label>Приложение</label>
+      <description>Информационный ресурс в составе определенного ПО доступный по сети</description>
+    </entry>
+
+    <entry>
+      <code>map</code>
+      <label>Карта</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>staticMap</code>
+      <label>Статическая карта</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>interactiveMap</code>
+      <label>Интерактивная карта</label>
+      <description></description>
+    </entry>
+
+    <!--entry hideInEditMode="true">
+      <code>map</code>
+      <label>Карта</label>
+      <description></description>
+    </entry>
+    <entry hideInEditMode="true">
+      <code>staticMap</code>
+      <label>Статическая карта</label>
+      <description></description>
+    </entry>
+    <entry hideInEditMode="true">
+      <code>interactiveMap</code>
+      <label>Интерактивная карта</label>
+      <description></description>
+    </entry-->
+  </codelist>
+  <codelist name="mcc:MD_SpatialRepresentationTypeCode">
+    <entry>
+      <code>vector</code>
+      <label>Вектор</label>
+      <description>Векторное представление географических данных
+      </description>
+    </entry>
+    <entry>
+      <code>grid</code>
+      <label>Грид/растр</label>
+      <description>Грид/растр для предоставления географических данных</description>
+    </entry>
+    <entry>
+      <code>textTable</code>
+      <label>Текст, таблица</label>
+      <description>Текстовое либо табличное представление географических данных
+      </description>
+    </entry>
+    <entry>
+      <code>tin</code>
+      <label>TIN</label>
+      <description>Нерегулярная сеть триангуляции</description>
+    </entry>
+    <entry>
+      <code>stereoModel</code>
+      <label>Стерео-модель</label>
+      <description>Трехмерный формат представления одинаковых
+        лучей пары перекрывающихся снимков
+      </description>
+    </entry>
+    <entry>
+      <code>video</code>
+      <label>Видео</label>
+      <description>Фрагмент видеозаписи</description>
+    </entry>
+  </codelist>
+  <codelist name="mri:MD_TopicCategoryCode" alias="topicCategory">
+    <entry>
+      <code>farming</code>
+      <label>Сельское хозяйство</label>
+      <description>Разведение животных и/или культивирование растений, например: агрокультура, ирригация, аквакультура, плантации, пастбища, ульи и болезни, поражающие урожай и скот
+      </description>
+    </entry>
+    <entry>
+      <code>biota</code>
+      <label>Флора и фауна</label>
+      <description>Флора и/или фауна в естественной среде, например: дикие животные, растительность, биология, экология, пустыни, морская жизнь, болота, среда обитания
+      </description>
+    </entry>
+    <entry>
+      <code>boundaries</code>
+      <label>Админстративно-территориальное деление, границы</label>
+      <description>Админстративно-территориальное и территориальное деление, например: политические и административные границы
+      </description>
+    </entry>
+    <entry>
+      <code>climatologyMeteorologyAtmosphere</code>
+      <label>Климатология и метеорология</label>
+      <description>Процессы и явления в атмосферере, например: покрытие облаками, погода, климат, состояние атмосферы, изменения климата, осадки
+      </description>
+    </entry>
+    <entry>
+      <code>economy</code>
+      <label>Экономика</label>
+      <description>Экономическая активность, условия и уровень занятости, например: производство, труд, доход, коммерция, промышленность, туризм и экотуризм, лесное хозяйство, рыбная ловля, коммерческая либо любительская охота, исследование или использование земных ресурсов, нефти и газа
+      </description>
+    </entry>
+    <entry>
+      <code>elevation</code>
+      <label>Рельеф и батиметрия</label>
+      <description>Высота над или под уровнем моря, например: высоты, батиметрия, цифровые модели рельефа, уклон и т.п.
+      </description>
+    </entry>
+    <entry>
+      <code>environment</code>
+      <label>Окружающая среда</label>
+      <description>Природные ресурсы, защита и консервация, например: загрязнение окружающей среды, хранение отходов и управление ими, экспертиза влияния на окружающую среду, мониторинг природных рисков, сдережение природы и ландшафтов
+      </description>
+    </entry>
+    <entry>
+      <code>geoscientificInformation</code>
+      <label>Данные наук о Земле</label>
+      <description>Информация, относящаяся к наукам о Земле, например: геофизические объекты и процессы, геология, минералогия, науки, связанные с пластами, структурой и происхождением минералов, риски
+        землетрясений, вулканической активности, оползней, данные о гравитации, почвах, многолетней мерзлоте, гидрологии, эрозии
+      </description>
+    </entry>
+    <entry>
+      <code>health</code>
+      <label>Здравохранение</label>
+      <description>Здоровье, медицинские службы, экология человека и безопасность, например: болезни и недомогания, факторы, влияющие на здоровье, гигиена, злоупотребление веществами, умственное и физическое здоровье
+      </description>
+    </entry>
+    <entry>
+      <code>imageryBaseMapsEarthCover</code>
+      <label>Базовые карты, покрытия</label>
+      <description>Базовые карты, например: топографические карты, земельное покрытие, мозаики ДДЗЗ, слой географических названий</description>
+    </entry>
+    <entry>
+      <code>intelligenceMilitary</code>
+      <label>Оборона</label>
+      <description>Военные базы, соединения, действия, например: казармы, плацы, военные перемещения, сбор информации
+      </description>
+    </entry>
+    <entry>
+      <code>inlandWaters</code>
+      <label>Внутренние воды</label>
+    <description>Например: реки и ледники, озера, предприятия по переработке воды, водопроводы</description>
+    </entry>
+    <entry>
+      <code>location</code>
+      <label>Координатные и адресные данные</label>
+      <description>Информации о позационировании и службах, например: адреса, геодезические сети, контрольные точки, почтовые зоны и службы, наименования
+      </description>
+    </entry>
+    <entry>
+      <code>oceans</code>
+      <label>Океанология</label>
+      <description>Свойства и характеристики объектов морей и океанов (исключая внутренние воды), например: приливы, приливные воды, данные о побережье, рифы
+      </description>
+    </entry>
+    <entry>
+      <code>planningCadastre</code>
+      <label>Кадастровые данные</label>
+      <description>Информация об использовании земель, например: карты использования земель, зональные карты, кадастровые исследования, владения участками
+      </description>
+    </entry>
+    <entry>
+      <code>society</code>
+      <label>Обществоведение</label>
+      <description>Характеристики общества и культуры, например: поселения, антропология, археология, образование, традиционные верования, традиции, демографические данные, зоны отдыха и
+        активности, уровень образования, преступность и полиция, данные о населении
+      </description>
+    </entry>
+    <entry>
+      <code>structure</code>
+      <label>Здания и сооружения</label>
+      <description>Конструкции, сооруженные человеком, например: здания, музеи, церкви, фабрики, жилые дома, монументы, магазины, башни
+      </description>
+    </entry>
+    <entry>
+      <code>transportation</code>
+      <label>Транспорт</label>
+      <description>Средства для перевоза людей и/или товаров, например: дороги, аэропорты/аэродромы, направления движения, тоннели, морские навигационные карты, положение транспортных или морских средств, аэронавигационные карты, железная дорога
+      </description>
+    </entry>
+    <entry>
+      <code>utilitiesCommunication</code>
+      <label>Инженерные коммуникации</label>
+      <description>Энергетическая, водная или система отходов, соотсетстствующая инфраструктура, например: гидроэлектрические, геотермальные, солнечные и ядерные источники энергии, очищение и перемещение воды, канализация и ее сброс, перемещение электричества и газа, обмен данными, телекоммуникация, радиообменные сети
+      </description>
+    </entry>
+    <entry>
+      <code>extraTerrestrial</code>
+      <label>Астрономия</label>
+      <description>Объекты более чем в 1000 км над поверхностью Земли
+      </description>
+    </entry>
+    <entry>
+      <code>disaster</code>
+      <label>Зоны бедствий</label>
+      <description>Информация о катастрофах, например: Место катастрофы, зона эвакуациии, меры по предупреждению, меры по возмещению ущерба
+      </description>
+    </entry>
+  </codelist>
+  <codelist name="msr:MD_TopologyLevelCode">
+    <entry>
+      <code>geometryOnly</code>
+      <label>Только геометрия</label>
+      <description>Геометрические объекты без дополнительной структуры, описывающей топологию</description>
+    </entry>
+    <entry>
+      <code>topology1D</code>
+      <label>Топология 1D</label>
+      <description>Одномерный топологический комплекс - обычно называемый цепочно-узловой топологией</description>
+    </entry>
+    <entry>
+      <code>planarGraph</code>
+      <label>Планарный граф</label>
+      <description>Одномерный планарный топологический комплекс. (Планарный граф - это граф, который может быть изображен на плоскости так, чтобы два его ребра не пересекались в вертексе)</description>
+    </entry>
+    <entry>
+      <code>fullPlanarGraph</code>
+      <label>Полный планарный граф</label>
+      <description>Двумерный топологический планарный комплекс. (Двумерный комплекс обычно называется полной топологией в картографической 2D среде)</description>
+    </entry>
+    <entry>
+      <code>surfaceGraph</code>
+   <label>Граф на поверхности</label>
+      <description>Одномерный топологический комплекс, изоморфный к подмножеству на поверхности. (Геометрический комплекс изоморфен к топологическому, если они имеют отношения один-к-одному, исключая пространственные и общие границы друг с другом)</description>
+    </entry>
+    <entry>
+      <code>fullSurfaceGraph</code>
+      <label>Граф полной поверхности</label>
+      <description>Двумерный топологический комплекс, изоморфный к подмножеству на поверхности</description>
+    </entry>
+    <entry>
+      <code>topology3D</code>
+      <label>Топология 3D</label>
+      <description>Трехмерный топологический комплекс. (Тополический комплекс - это коллекция топологических примитивов, замкнутых граничными операциями)</description>
+    </entry>
+    <entry>
+      <code>fullTopology3D</code>
+      <label>Полная топология 3D</label>
+      <description>Полное покрытие трехмерного эвклидова координатного пространства</description>
+    </entry>
+    <entry>
+      <code>abstract</code>
+      <label>Абстрактный</label>
+      <description>Топологический комплекс без определенной геометрической реализации</description>
+    </entry>
+  </codelist>
+  <codelist name="mrc:MI_BandDefinition">
+    <entry>
+      <code>3db</code>
+      <label>3db</label>
+      <description>TBD</description>
+    </entry>
+    <entry>
+      <code>halfMaximum</code>
+      <label>Полумаксимум</label>
+      <description>Описание: ширина равномерного распределения к расстоянию между двумя внешними точками распределения, с пиком посередине мощности
+      </description>
+    </entry>
+    <entry>
+      <code>fiftyPercent</code>
+      <label>50% процентов</label>
+      <description>Описание: разница между длинами волн между верхней и нижней границами на 50% (-3db) точек спектрального отзыва
+      </description>
+    </entry>
+    <entry>
+      <code>oneOverE</code>
+      <label>Единица, превышающая E</label>
+      <description>TBD</description>
+    </entry>
+    <entry>
+      <code>equivalentWidth</code>
+      <label>Эквивалентная ширина</label>
+      <description>TBD</description>
+    </entry>
+  </codelist>
+  <codelist name="mac:MI_ContextCode">
+    <entry>
+      <code>acquisition</code>
+      <label>Сбор данных</label>
+      <description>Событие, связанное со сбором данных</description>
+    </entry>
+    <entry>
+      <code>pass</code>
+      <label>Проход</label>
+      <description>Событие, связанное со сбором данных на маршруте</description>
+    </entry>
+    <entry>
+      <code>wayPoint</code>
+      <label>Попутно</label>
+      <description>Событие, связанное с попутным сбором данных</description>
+    </entry>
+  </codelist>
+  <codelist name="mac:MI_GeometryTypeCode">
+    <entry>
+      <code>areal</code>
+      <label>Регион</label>
+      <description>Совокупность полигонов, на территории которых собираются данные</description>
+    </entry>
+    <entry>
+      <code>strip</code>
+      <label>Полилиния</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>linear</code>
+      <label>Линия</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>point</code>
+      <label>Точка</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="mac:MI_ObjectiveTypeCode">
+    <entry>
+      <code>instantaneousCollection</code>
+      <label>Одноразовая съемка</label>
+      <description>Одиночная коллекция</description>
+    </entry>
+    <entry>
+      <code>persistentView</code>
+      <label>Продолжительная съемка</label>
+      <description>Множественныя коллекция</description>
+    </entry>
+    <entry>
+      <code>survey</code>
+      <label>Разновременная съемка</label>
+      <description>Сравнительная коллекция</description>
+    </entry>
+  </codelist>
+  <codelist name="mac:MI_OperationTypeCode">
+    <entry>
+      <code>real</code>
+      <label>Действительный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>simulated</code>
+      <label>Симулированный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>synthetic</code>
+      <label>Искуственный</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="mrc:MI_PolarisationOrientationCode">
+    <entry>
+      <code>horizontal</code>
+      <label>Горизонтальный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>vertical</code>
+      <label>Вертикальный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>leftCircular</code>
+      <label>Циклический влево</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>rightCircular</code>
+      <label>Циклический вправо</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>theta</code>
+      <label>Тета</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>phi</code>
+      <label>Пи</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="mac:MI_PriorityCode">
+    <entry>
+      <code>critical</code>
+      <label>Критическое значение</label>
+      <description>Решающее значение</description>
+    </entry>
+    <entry>
+      <code>highImportance</code>
+      <label>Высокое значение</label>
+      <description>Требует доступности ресурсов</description>
+    </entry>
+    <entry>
+      <code>mediumImportance</code>
+      <label>Среднее значение</label>
+      <description>Обычное значение обработки</description>
+    </entry>
+    <entry>
+      <code>lowImportance</code>
+      <label>Низкое значение</label>
+      <description>Будет завершено при доступности ресурсов</description>
+    </entry>
+    <entry>
+      <code>theta</code>
+      <label>Тета</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>phi</code>
+      <label>пи</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="mac:MI_SequenceCode">
+    <entry>
+      <code>start</code>
+      <label>В начале</label>
+      <description>В начале сбора данных</description>
+    </entry>
+    <entry>
+      <code>end</code>
+      <label>В конце</label>
+      <description>В конце сбора данных</description>
+    </entry>
+    <entry>
+      <code>instantaneous</code>
+      <label>В процессе</label>
+      <description>В процессе сбора данных</description>
+    </entry>
+  </codelist>
+  <codelist name="mrc:MI_TransferFunctionTypeCode">
+    <entry>
+      <code>linear</code>
+      <label>Линейный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>logarithmic</code>
+      <label>Логарифмический</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>exponential</code>
+      <label>Экспоненциальный</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="mac:MI_TriggerCode">
+    <entry>
+      <code>automatic</code>
+      <label>Автоматическое</label>
+      <description>Событие возникло в результате внешнего сигнала</description>
+    </entry>
+    <entry>
+      <code>manual</code>
+      <label>Ручное</label>
+      <description>Событие вызвано вручную</description>
+    </entry>
+    <entry>
+      <code>preProgrammed</code>
+      <label>Запрограммированное</label>
+      <description>Событие вызвано запланированным внутренним сигналом</description>
+    </entry>
+  </codelist>
+  <codelist name="reg:RE_AmendmentType">
+    <entry>
+      <code>supersession</code>
+      <label>Суперсессия</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>retirement</code>
+      <label>Не актуально</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="reg:RE_DecisionStatus">
+    <entry>
+      <code>pending</code>
+      <label>Не законченный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>tentative</code>
+      <label>Предварительный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>final</code>
+      <label>Окончательный</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="reg:RE_Disposition">
+    <entry>
+      <code>withdrawn</code>
+      <label>Отозванный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>accepted</code>
+      <label>Принятый</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>notAccepted</code>
+      <label>Не принятый</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="reg:RE_ItemStatus">
+    <entry>
+      <code>notValid</code>
+      <label>Не действительный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>valid</code>
+      <label>Действительный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>superseded</code>
+      <label>Замененный</label>
+      <description></description>
+    </entry>
+    <entry>
+      <code>retired</code>
+      <label>Устаревший</label>
+      <description></description>
+    </entry>
+  </codelist>
+  <codelist name="srv:SV_ParameterDirection">
+    <entry>
+      <code>in</code>
+      <label>Ввод</label>
+      <description>Параметр является вводным для значения сервиса
+      </description>
+    </entry>
+    <entry>
+      <code>out</code>
+      <label>Выходной</label>
+      <description>Параметр является выходным для значения сервиса
+      </description>
+    </entry>
+    <entry>
+      <code>in/out</code>
+      <label>Входной/выходной</label>
+      <description>Параметр является входным или выходным для значения сервиса
+      </description>
+    </entry>
+  </codelist>
+  <codelist name="mrs:MD_ReferenceSystemTypeCode">
+    <entry>
+      <code>compoundEngineeringParametric</code>
+      <label>Составная инженерная параметрическая</label>
+      <description>Составная пространственно-параметрическая система определения координат, соединающая 2-мерную инженерную и параметрическую координатные системы, например: [локальные] x, y и давление
+      </description>
+    </entry>
+    <entry>
+      <code>compoundEngineeringParametricTemporal</code>
+      <label>Составная инженерная параметрическая временная</label>
+      <description>Составная пространственно-параметрическая временная система определения координат, соединающая 2-мерную инженерную, параметрическую и временную координатные системы, например: [локальные] x, y, давление и время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundEngineeringTemporal</code>
+      <label>Составная инженерная временная</label>
+      <description>Составная пространственно-временная система отсчета координат, соединающая 2-мерную инженерную, параметрическую и временную координатные системы, например: [локальные] x, y и время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundEngineeringVertical</code>
+      <label>Составная инженерная вертикальная</label>
+      <description>Составная пространственная система отсчета координат, соединающая 2-мерную инженерную и вертикальную координатные системы, например: [локальные] x, y, высоту
+      </description>
+    </entry>
+    <entry>
+      <code>compoundEngineeringVerticalTemporal</code>
+      <label>Составная инженерная вертикальная временная</label>
+      <description>Составная пространственно-временная система отсчета координат, соединающая 2-мерную инженерную, вертикальную и временную координатные системы, например: [локальные] x, y, высоту и время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundGeographic2DParametric</code>
+      <label>Составная географическая двумерная (2D) параметрическая</label>
+      <description>Составная пространственно-временная система отсчета координат, соединающая 2-мерную географическую горизонтальную и параметрическую координатные системы, например: широта, долгота и давление
+      </description>
+    </entry>
+    <entry>
+      <code>compoundGeographic2DParametricTemporal</code>
+      <label>Составная географическая двумерная (2D) параметрическая временная</label>
+      <description>Составная пространственно-параметрическая временная система отсчета координат, соединающая 2-мерную географическую горизонтальную, параметрическую и временную координатные системы, например: широта, долгота, давление и время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundGeographic2DTemporal</code>
+      <label>Составная географическая двумерная (2D) временная</label>
+      <description>Составная пространственно-временная система отсчета координат, соединающая 2-мерную географическую горизонтальную и временную координатные системы, например: широта, долгота и время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundGeographic2DVertical</code>
+      <label>Составная географическая двумерная (2D) вертикальная</label>
+      <description>Составная пространственная система отсчета координат, соединающая 2-мерную географическую горизонтальную и вертикальную координатные системы, например: широта, долгота, [связанная с гравитацией] высота или глубина
+      </description>
+    </entry>
+    <entry>
+      <code>compoundGeographic2DVerticalTemporal</code>
+      <label>Составная географическая двумерная (2D) вертикальная временная</label>
+      <description>Составная пространственно-временная система отсчета координат, соединающая 2-мерную географеческую горизонтальную, вертикальную и временную временную координатные системы, например: широта, долгота, высота и время
+      </description>
+    </entry>
+    <entry>
+      С<code>compoundGeographic3DTemporal</code>
+      <label>Составная географическая трехмерная (3D) временная</label>
+      <description>Составная пространственно-временная система отсчета координат, соединающая 3-мерную географическую и временную координатные системы, например: широта, долгота, высота над эллипсоидом и время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundProjected2DParametric</code>
+      <label>Составная проективная двумерная (2D) параметрическая</label>
+      <description>Составная пространственно-параметрическая координатная система отсчета координат, соединающая проективную горизонтальную и параметрическую координатные системы, например: восточное направление, западное направление и плотность
+      </description>
+    </entry>
+    <entry>
+      <code>compoundProjected2DParametricTemporal</code>
+      <label>Составная проективная двумерная (2D) параметрическая временная</label>
+      <description>Составная пространственно-параметрическая временная координатная система отсчета координат, соединающая проективную горизонтальную, параметрическую и временную кооординатные системы, например: направление на восток, направление на север, плотность и время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundProjectedTemporal</code>
+      <label>Составная проективная временная</label>
+      <description>Составная пространственно-временная система отсчета координат, соединающая проективную горизонтальную и временную координатные системы, например: направление на восток, направление на север, время
+      </description>
+    </entry>
+    <entry>
+      <code>compoundProjectedVertical</code>
+      <label>Составная проективная вертикальная</label>
+      <description>Составная пространственная система отсчета координат, соединяющую горизонтальную проективную и вертикальную координатные системы, например: направление на восток, направление на север, [гравитационная] высота или глубина
+      </description>
+    </entry>
+    <entry>
+      <code>compoundProjectedVerticalTemporal</code>
+      <label>Составная проективная вертикальная временная</label>
+      <description>Составная пространственно-временная система отсчета координат, соединяющая горизонтальную проективную, вертикальную и временную координатные системы, например: направление на восток, направление на север, высота, глубина
+      </description>
+    </entry>
+    <entry>
+      <code>engineering</code>
+      <label>Инженерная</label>
+      <description>Система отсчета координат, основанная на инженерном датуме (датуме, определяющем отношение координатной системы к локальному, конкретному месту), например: [локальные] x,y
+      </description>
+    </entry>
+    <entry>
+      <code>engineeringDesign</code>
+      <label>Инженерная проектная</label>
+      <description>Инженерная система отсчета координат движущейся платформы, например: [локальные] x,y
+      </description>
+    </entry>
+    <entry>
+      <code>engineeringImage</code>
+      <label>Инженерная снимка</label>
+      <description>Инженерная система отсчета координат для изображения (снимка), инженерный датум которой определяет отношение координатной системы к снимку, например: ряд, колонка
+      </description>
+    </entry>
+    <entry>
+      <code>geodeticGeocentric</code>
+      <label>Геодезическая геоцентрическая (3D)</label>
+      <description>Геодезическая система отсчета координат, имеющая прямоугольную 3-мерную координатную систему, например: [геоцентрические] X,Y,Z
+      </description>
+    </entry>
+    <entry>
+      <code>geodeticGeographic2D</code>
+      <label>Геодезическая двумерная (2D)</label>
+      <description>Геодезическая система отсчета координат, имеющая 2-мерные эллипсоидальные координаты,
+        например: широта, долгота
+      </description>
+    </entry>
+    <entry>
+      <code>geodeticGeographic3D</code>
+      <label>Геодезическая трехмерная (3D)</label>
+      <description>Геодезическая система отсчета координат, имеющая 3-мерные эллипсоидальные координаты,
+        например: широта, долгота, высота над эллипсоидом
+      </description>
+    </entry>
+    <entry>
+      <code>geographicIdentifier</code>
+      <label>Географический идентификатор</label>
+      <description>Пространственная ссылка в форме ярлыка или кода, определяющих местоположение, например: почтовый код
+      </description>
+    </entry>
+    <entry>
+      <code>linear</code>
+      <label>Линейная</label>
+      <description>Координатная система, определяющая местоположение посредством задания расстояние от определенной точки вдоль сегмента линейного географического объекта, например: x км вдоль дороги
+      </description>
+    </entry>
+    <entry>
+      <code>parametric</code>
+      <label>Параметрическая</label>
+      <description>Координатная система, основанная на параметрическом датуме (датуме, определяющем отношение параметрической координатной системы к объекту), например: давление
+      </description>
+    </entry>
+    <entry>
+      <code>projected</code>
+      <label>Проективная</label>
+      <description>Картографическая система отсчета координат, полученная на основании 2-мерной геодезической системы отсчета преобразованием эллипсоидальных координат в прямоугольные с помощью картографической проекции, например: направление на восток, направление на север
+      </description>
+    </entry>
+    <entry>
+      <code>temporal</code>
+      <label>Временная</label>
+      <description>Система отсчета времени</description>
+    </entry>
+    <entry>
+      <code>vertical</code>
+      <label>Вертикальная</label>
+      <description>1-мерная система отсчета координат, основанная на вертикальном датуме (датуме, описывающем отношение гравитационных высот или глубин к Земли), например: гравитационная высота или глубина
+      </description>
+    </entry>
+  </codelist>
+  <codelist name="msr:MD_CellGeometryCode">
+    <entry>
+      <code>point</code>
+      <label>точка</label>
+      <description>Каждая ячейка, представляет собой точку</description>
+    </entry>
+    <entry>
+      <code>area</code>
+      <label>область</label>
+      <description>Каждая ячейка, представляет собой площадь</description>
+    </entry>
+    <entry>
+      <code>voxel</code>
+      <label>воксел</label>
+      <description>Элемент объемного изображения, содержащий значение элемента растра в трёхмерном пространстве.</description>
+    </entry>
+    <entry>
+      <code>stratum</code>
+      <label>стратум</label>
+      <description>Диапазон высоты одноточечного вертикального профиля</description>
+    </entry>
+  </codelist>
+  <codelist name="lan:MD_CharacterSetCode">
+    <entry>
+      <code>ucs2</code>
+      <label>UCS2</label>
+      <description>16-битная UCS-кодировка фиксированной длины, основанная на стандарте ISO/IEC 10646
+      </description>
+    </entry>
+    <entry>
+      <code>ucs4</code>
+      <label>UCS4</label>
+      <description>32-битная UCS-кодировка фиксированной длины, основанная на стандарте ISO/IEC 10646
+      </description>
+    </entry>
+    <entry>
+      <code>utf7</code>
+      <label>UTF7</label>
+      <description>7-битная UCS-кодировка компактная (UTF) переменной длины, основанная на стандарте ISO/IEC 10646
+      </description>
+    </entry>
+    <entry>
+      <code>utf8</code>
+      <label>UTF8</label>
+      <description>8-битная UCS-кодировка компактная (UTF) переменной длины, основанная на стандарте ISO/IEC 10646
+      </description>
+    </entry>
+    <entry>
+      <code>utf16</code>
+      <label>UTF16</label>
+      <description>16-битная UCS-кодировка компактная (UTF) переменной длины, основанная на стандарте ISO/IEC 10646
+      </description>
+    </entry>
+    <entry>
+      <code>8859part1</code>
+      <label>8859 Part 1</label>
+      <description>ISO/IEC 8859-1, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 1: Латинский алфавит номер 1
+      </description>
+    </entry>
+    <entry>
+      <code>8859part2</code>
+      <label>8859 Part 2</label>
+      <description>ISO/IEC 8859-2, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 2: Латинский алфавит номер 2
+      </description>
+    </entry>
+    <entry>
+      <code>8859part3</code>
+      <label>8859 Part 3</label>
+      <description>ISO/IEC 8859-3, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 3: Латинский алфавит номер 3
+      </description>
+    </entry>
+    <entry>
+      <code>8859part4</code>
+      <label>8859 Part 4</label>
+      <description>ISO/IEC 8859-4, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 4: Латинский алфавит номер 4
+      </description>
+    </entry>
+    <entry>
+      <code>8859part5</code>
+      <label>8859 Part 5</label>
+      <description>ISO/IEC 8859-5, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 5: Латинский/Кириллический алфавит
+      </description>
+    </entry>
+    <entry>
+      <code>8859part6</code>
+      <label>8859 Part 6</label>
+      <description>ISO/IEC 8859-6, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 6: Латинский/Aрабский алфавит
+      </description>
+    </entry>
+    <entry>
+      <code>8859part7</code>
+      <label>8859 Part 7</label>
+      <description>ISO/IEC 8859-7, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 7: Латинский/Греческий алфавит
+      </description>
+    </entry>
+    <entry>
+      <code>8859part8</code>
+      <label>8859 Part 8</label>
+      <description>ISO/IEC 8859-8, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 8: Латинский/Еврейский алфавит
+      </description>
+    </entry>
+    <entry>
+      <code>8859part9</code>
+      <label>8859 Part 9</label>
+      <description>ISO/IEC 8859-9, Информационные технологии - 8-битный одиночный кодированный набор символов - Часть 9: Латинский алфавит номер 5
+      </description>
+    </entry>
+    <entry>
+      <code>8859part10</code>
+      <label>8859 Part 10</label>
+      <description>ISO/IEC 8859-10, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 10: Латинский алфавит номер 6
+      </description>
+    </entry>
+    <entry>
+      <code>8859part11</code>
+      <label>8859 Part 11</label>
+      <description>ISO/IEC 8859-11, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 11: Латинский/Tайваньский алфавит
+      </description>
+    </entry>
+    <entry>
+      <code>8859part13</code>
+      <label>8859 Part 13</label>
+      <description>ISO/IEC 8859-13, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 13: Латинский алфавит номер 7
+      </description>
+    </entry>
+    <entry>
+      <code>8859part14</code>
+      <label>8859 Part 14</label>
+      <description>ISO/IEC 8859-14, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 14: Латинский алфавит номер 8 (Кельтский)
+      </description>
+    </entry>
+    <entry>
+      <code>8859part15</code>
+      <label>8859 Part 15</label>
+      <description>ISO/IEC 8859-15, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 15: Латинский алфавит номер 9
+      </description>
+    </entry>
+    <entry>
+      <code>8859part16</code>
+      <label>8859 Part 16</label>
+      <description>ISO/IEC 8859-16, Информационные технологии - 8-битный одиночный кодированный графический набор единичных символов - Часть 16: Латинский алфавит номер 10
+      </description>
+    </entry>
+    <entry>
+      <code>jis</code>
+      <label>JIS</label>
+      <description>Японская набор символов для передачи информации посредством линий телекоммуникаций
+      </description>
+    </entry>
+    <entry>
+      <code>shiftJIS</code>
+      <label>Shift JIS</label>
+      <description>Японский набор символов, используемый на MS-DOS машинах</description>
+    </entry>
+    <entry>
+      <code>eucJP</code>
+      <label>EUC JP</label>
+      <description>Японский набор символов, используемый на машинах под UNIX</description>
+    </entry>
+    <entry>
+      <code>usAscii</code>
+      <label>US ASCII</label>
+      <description>Американскаий набор символов ASCII (ISO 646 US)</description>
+    </entry>
+    <entry>
+      <code>ebcdic</code>
+      <label>EBCDIC</label>
+      <description>Набор символов мейнфрейма IBM</description>
+    </entry>
+    <entry>
+      <code>eucKR</code>
+      <label>EUC KR</label>
+      <description>Корейский набор символов</description>
+    </entry>
+    <entry>
+      <code>big5</code>
+      <label>Big 5</label>
+      <description>Традиционный китайский набор символов, используемый в Тайване, гонконгском Китае и на других территориях
+      </description>
+    </entry>
+    <entry>
+      <code>GB2312</code>
+      <label>GB2312</label>
+      <description>Упрощенный китайский набор символов</description>
+    </entry>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - -  Добавленное значение из профиля ЕБГД!-->
+    <entry>
+      <code>Windows-1251</code>
+      <label>Windows-1251</label>
+      <description>Стандартная кодировка Microsoft Windows/Кириллица (CP1251)</description>
+    </entry>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - -  Добавленное значение из профиля ЕБГД!-->
+    <entry>
+      <code>KOI8-R</code>
+      <label>KOI8-R</label>
+      <description>Кириллица, стандарт русской кодировки для UNIX-систем</description>
+    </entry>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - Добавленное значение из ТКП! -->
+    <entry>
+      <code>KOI8-U</code>
+      <label>KOI8-U</label>
+      <description>Кириллица, стандарт украинской кодировки для UNIX-систем</description>
+    </entry>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - Добавленное значение из ТКП! -->
+    <entry>
+      <code>СР866</code>
+      <label>СР866</label>
+      <description>Русская кодировка для MS-DOS</description>
+    </entry>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - Добавленное значение из ТКП! -->	
+  </codelist>
+
+  <codelist name="mrd:MD_MediumNameCode">
+    <entry>
+      <code>cdRom</code>
+      <label>CDROM</label>
+      <description>Лазерный CD-диск только для чтения</description>
+    </entry>
+    <entry>
+      <code>dvd</code>
+      <label>DVD</label>
+      <description>Лазерный DVD-диск перезаписываемый</description>
+    </entry>
+    <entry>
+      <code>dvdRom</code>
+      <label>DVDROM</label>
+      <description>Лазерный DVD-диск только для чтения</description>
+    </entry>
+    <entry>
+      <code>3halfInchFloppy</code>
+      <label>3,5 дюймовый магнитный диск</label>
+      <description>3,5 дюймовый магнитный диск</description>
+    </entry>
+    <entry>
+      <code>5quarterInchFloppy</code>
+      <label>5,25 дюймовый магнитный диск</label>
+      <description>5,25 дюймовый магнитный диск</description>
+    </entry>
+    <entry>
+      <code>7trackTape</code>
+      <label>7-дорожечная лента</label>
+      <description>7 дорожечная магнитная лента</description>
+    </entry>
+    <entry>
+      <code>9trackTape</code>
+      <label>9-дорожечная лента</label>
+      <description>9 дорожечная магнитная лента</description>
+    </entry>
+    <entry>
+      <code>3480Cartridge</code>
+      <label>Картридж3480</label>
+      <description>Картридж 3480</description>
+    </entry>
+    <entry>
+      <code>3490Cartridge</code>
+      <label>Картридж 3490</label>
+      <description>3Картридж 490</description>
+    </entry>
+    <entry>
+      <code>3490Cartridge</code>
+      <label>Картридж 3580</label>
+      <description>Картридж 3580</description>
+    </entry>
+    <entry>
+      <code>4mmCartridgeTape</code>
+      <label>Картриджная лента 4 mm</label>
+      <description>Магнитная лента 4 мм</description>
+    </entry>
+    <entry>
+      <code>8mmCartridgeTape</code>
+      <label>Картриджная лента 8 mm</label>
+      <description>Магнитная лента 8 мм</description>
+    </entry>
+    <entry>
+      <code>1quarterInchCartridgeTape</code>
+      <label>Магнитная лента 0,25 дюйма</label>
+      <description>Магнитная лента 0,25 дюйма</description>
+    </entry>
+    <entry>
+      <code>digitalLinearTap</code>
+      <label>Цифровая линейная лента</label>
+      <description>Полудюймовая магнитная лента для стримера</description>
+    </entry>
+    <entry>
+      <code>onLine</code>
+      <label>Онлайн</label>
+      <description>Прямая связь с ресурсом</description>
+    </entry>
+    <entry>
+      <code>satellite</code>
+      <label>Спутник</label>
+      <description>Связь через спутниковую коммуникационную систему
+      </description>
+    </entry>
+    <entry>
+      <code>telephoneLink</code>
+      <label>Телефонная свлязь</label>
+      <description>Связь по телефонной сети</description>
+    </entry>
+    <entry>
+      <code>hardcopy</code>
+      <label>Твердная копия</label>
+      <description>Публикация, дающую необходимую информацию
+      </description>
+    </entry>
+  </codelist>
+  <codelist name="srv:DCPList">
+    <entry>
+      <code>XML</code>
+      <label>XML</label>
+      <description>Протокол XML</description>
+    </entry>
+    <entry>
+      <code>CORBA</code>
+      <label>CORBA</label>
+      <description>Протокол CORBA</description>
+    </entry>
+    <entry>
+      <code>JAVA</code>
+      <label>JAVA</label>
+      <description>Протокол JAVA</description>
+    </entry>
+    <entry>
+      <code>COM</code>
+      <label>COM</label>
+      <description>Протокол COM</description>
+    </entry>
+    <entry>
+      <code>SQL</code>
+      <description>Протокол SQL</description>
+      <label>SQL</label>
+    </entry>
+    <entry>
+      <code>SOAP</code>
+      <label>SOAP</label>
+      <description>Протокол SOAP</description>
+    </entry>
+    <entry>
+      <code>Z3950</code>
+      <label>Z3950</label>
+      <description>Протокол Z3950</description>
+    </entry>
+    <entry>
+      <code>HTTP</code>
+      <label>HTTP</label>
+      <description>Протокол HTTP</description>
+    </entry>
+    <entry>
+      <code>FTP</code>
+      <label>FTP</label>
+      <description>Протокол FTP</description>
+    </entry>
+    <entry>
+      <code>WebServices</code>
+      <label>WebServices</label>
+      <description>Протокол WebServices</description>
+    </entry>
+  </codelist>
+  <codelist name="srv:SV_CouplingType">
+    <entry>
+      <code>loose</code>
+      <label>Утеряно</label>
+      <description>сервис фактически не связан с данными, т.е. класс MD_DataIdentification не описан
+      </description>
+    </entry>
+    <entry>
+      <code>mixed</code>
+      <label>Смешано</label>
+      <description>Сервис смешан с данными, т.е. MD_DataIdentification описывает ассоциированные данные, экземпляр сервиса может дополнительно работать с другими внешними данными
+      </description>
+    </entry>
+    <entry>
+      <code>tight</code>
+      <label>Прочная связь</label>
+      <description>Экземпляр сервиса прочно связан с данными, т.е. класс MD_DataIdentification. ДОЛЖЕН быть описан
+      </description>
+    </entry>
+  </codelist>
+
+  <codelist name="indeterminatePosition">
+    <entry>
+      <code>after</code>
+      <label>после</label>
+    </entry>
+    <entry>
+      <code>before</code>
+      <label>до</label>
+    </entry>
+    <entry>
+      <code>now</code>
+      <label>сейчас</label>
+    </entry>
+    <entry>
+      <code>unknown</code>
+      <label>не известно</label>
+    </entry>
+  </codelist>
+</codelists>

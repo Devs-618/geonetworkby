@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2001-2016 Food and Agriculture Organization of the
+  ~ United Nations (FAO-UN), United Nations World Food Programme (WFP)
+  ~ and United Nations Environment Programme (UNEP)
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or (at
+  ~ your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program; if not, write to the Free Software
+  ~ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+  ~
+  ~ Contact: Jeroen Ticheler - FAO - Viale delle Terme di Caracalla 2,
+  ~ Rome - Italy. email: geonetwork@osgeo.org
+  -->
+
+<strings>
+  <datacite.mandatory>Поля, обязательные для заполнения</datacite.mandatory>
+
+  <datacite.identifier.missing>Идентификатор отсутствует. Идентификатор - уникальный
+    строка, определяющая ресурс. Это поле является обязательным.
+  </datacite.identifier.missing>
+  <datacite.identifier.present>Идентификатор: </datacite.identifier.present>
+
+  <datacite.type.missing>Тип отсутствует. Проверьте раздел метаданных и установите уровень иерархии. Это поле является обязательным.
+  </datacite.type.missing>
+  <datacite.type.present>Тип ресурса: </datacite.type.present>
+
+  <datacite.title.missing>Название отсутствует. Название или имя, под которым
+    известен ресурс. Может быть названием набора данных или
+    программного обеспечения. Это поле является обязательным.
+  </datacite.title.missing>
+  <datacite.title.present>Название: </datacite.title.present>
+
+  <datacite.publicationDate.missing>Год публикации не указан. Год, когда данные были
+    или будут опубликованы, т.е. станут доступными. Проверяйте дату публикации в идентификации ресурса. Это поле является обязательным.
+  </datacite.publicationDate.missing>
+  <datacite.publicationDate.present>Дата публикации: </datacite.publicationDate.present>
+
+  <datacite.creator.missing>Отсутствует Создатель. Основные исследователи, задействованные
+    при создании данных или авторы публикации в приоритетном порядке (чтобы упомянуть нескольких авторов, повторите это
+    поле необходимое число раз). Обычно - это контакт с ролью 'Контактное лицо' или 'Хранитель' в разделе 'Идентификация ресурса'. Это поле является обязательным.
+  </datacite.creator.missing>
+  <datacite.creator.found> создатель(и) найден.</datacite.creator.found>
+
+  <datacite.publisher.missing>Отсутствует Издатель. Название организации, которая
+    хранит, архивирует, издает,
+    печатает, распространяет, выпускает,
+    выпускает или производит ресурс.
+    Обычно издатель - это первый контакт в разделе 'Распространение'. Это поле является обязательным.
+  </datacite.publisher.missing>
+  <datacite.publisher.present>Издатель: </datacite.publisher.present>
+</strings>

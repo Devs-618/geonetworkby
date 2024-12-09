@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+
+  <!-- XSD error translation -->
+  <invalidElement>Неверное содержимое элемента</invalidElement>
+  <onElementOf>Один из следующих элементов </onElementOf>
+  <isExpected>ожидается.</isExpected>
+  <isNotComplete> не закончен.</isNotComplete>
+  <elementLocated> Родительский элемент - это </elementLocated>
+  <missingElement>Садержит утерянный элемент </missingElement>
+  <invalidValue>Неверное или утерянное значение</invalidValue>
+  <notValidFor> недопустимое значение для </notValidFor>
+  <xsdErrorIs>XSD ошибка: </xsdErrorIs>
+  <inElement> в элементе </inElement>
+  <enum1>Значение </enum1>
+  <enum2> Недопустимо для поля </enum2>
+  <enum3>Потенциальные значения: </enum3>
+
+
+  <understandResource>Информация о наборе данных</understandResource>
+  <relatedResources>Связанные сервисы или данные</relatedResources>
+  <techInfo>Техническая информация</techInfo>
+  <contactInfo>Информация о контакте</contactInfo>
+  <mdContactInfo>Контакт о метаданных</mdContactInfo>
+  <refDate>Референсная дата</refDate>
+  <temporalRef>Временная информация</temporalRef>
+  <constraintInfo>Информация по ограничению к доступу</constraintInfo>
+  <xml_iso19139>Сохранить метаданные как ISO19139 XML файл</xml_iso19139>
+  <xml_iso19139Tooai_dc>Сохранить эти метаданные как OAI Dublin Core XML файл
+  </xml_iso19139Tooai_dc>
+  <resourceLineageTab>Происхождение</resourceLineageTab>
+
+  <advanced>Детальный вид</advanced>
+  <default>По умолчанию</default>
+  <simple>Сокращенный вид</simple>
+  <inspire>INSPIRE</inspire>
+  <inspireTheme>Темы INSPIRE</inspireTheme>
+  <inspireThemeMandatory>Темы INSPIRE*</inspireThemeMandatory>
+  <resource>Ресурс</resource>
+  <xml>XML</xml>
+  <metadata>Метаданные</metadata>
+  <identificationInfo>Идентификация</identificationInfo>
+  <distributionInfo>Распространение</distributionInfo>
+  <dataQualityInfo>Качество</dataQualityInfo>
+  <resourceLineage>Происхождение</resourceLineage>
+  <spatialRepresentationInfo>Простр. представление</spatialRepresentationInfo>
+  <referenceSystemInfo>Система коорд.</referenceSystemInfo>
+  <contentInfo>Содержимое</contentInfo>
+  <portrayalCatalogueInfo>Символизация</portrayalCatalogueInfo>
+  <metadataConstraints>Ограничения</metadataConstraints>
+  <metadataMaintenance>Обновления</metadataMaintenance>
+  <applicationSchemaInfo>Инф. о схеме</applicationSchemaInfo>
+  <acquisitionInformation>Информация о получении</acquisitionInformation>
+  <qualityMeasures>Измерение К.</qualityMeasures>
+
+  <bboxesSection>Географическое покрытие</bboxesSection>
+  <overviews>Предпросмотры</overviews>
+  <metadataInXML>XML</metadataInXML>
+  <providedBy>Предоставлено</providedBy>
+  <shareOnSocialSite>Поделиться в социальных сетях</shareOnSocialSite>
+  <viewMode>Виды</viewMode>
+  <linkToPortal> Ссылка на каталог</linkToPortal>
+  <linkToPortal-help></linkToPortal-help>
+  <citationProposal>Предложение цитаты</citationProposal>
+  <citationProposal-help>Предложение генерируется автоматически, Уточните, если авторы метаданных не соответствуют указанным условиям.</citationProposal-help>
+  <citationAdditional>При использовании ресурса в публикации приводите ссылки на соответствующие работы:</citationAdditional>  
+  <associatedResources>Связанные записи</associatedResources>
+
+
+  <add-resource-id>Полный идентификатор ресурса</add-resource-id>
+  <add-resource-idHelp>Составьте идентификатор ресурса с помощью идентификаторы каталога URL и
+    идентификатора метаданных (например,
+    http://www.organization.org/catalogue/5391bf69-44bc-4ea0-8cc0-6cf6c3bc81ae).
+  </add-resource-idHelp>
+  <add-extent-from-geokeywords>Построить экстент по данным ключевых слов</add-extent-from-geokeywords>
+  <add-one-extent-from-geokeywords>Определить один экстент по информации ключевых слов</add-one-extent-from-geokeywords>  
+  <add-extent-from-geokeywordsHelp>Анализируются соответствующие ключевые слова, и добавляется подходящий экстент</add-extent-from-geokeywordsHelp>
+  <extent>Географические границы</extent>
+  <spatialExtent>Пространственный экстент</spatialExtent>
+  <freeTextKeywords>Другие ключевые слова</freeTextKeywords>
+  <noThesaurusName>Ключевые слова</noThesaurusName>
+</strings>
