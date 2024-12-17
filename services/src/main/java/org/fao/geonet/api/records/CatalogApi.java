@@ -93,7 +93,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import java.net.URLEncoder;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.fao.geonet.api.ApiParams.*;
 import static org.fao.geonet.kernel.mef.MEFLib.Version.Constants.MEF_V1_ACCEPT_TYPE;
 import static org.fao.geonet.kernel.mef.MEFLib.Version.Constants.MEF_V2_ACCEPT_TYPE;
@@ -321,8 +323,8 @@ public class CatalogApi {
                     df.format(new Date()));
 
                 response.setHeader(HttpHeaders.CONTENT_DISPOSITION, String.format(
-                    "inline; filename=\"%s\"",
-                    fileName
+                    "attachment; filename*=UTF-8''%s",
+                    URLEncoder.encode(fileName, UTF_8)
                 ));
                 response.setHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(Files.size(file)));
                 response.setContentType(MEFLib.Version.Constants.MEF_V2_ACCEPT_TYPE);
@@ -578,7 +580,7 @@ public class CatalogApi {
         byte[] bom = new byte[]{(byte) 0xEF, (byte) 0xBB, (byte) 0xBF};
         httpResponse.getOutputStream().write(bom);
 
-        OutputStreamWriter writer = new OutputStreamWriter(httpResponse.getOutputStream(), StandardCharsets.UTF_8);
+        OutputStreamWriter writer = new OutputStreamWriter(httpResponse.getOutputStream(), UTF_8);
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
         if (StringUtils.isNotEmpty(loopElementXpath)) {
