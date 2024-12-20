@@ -66,10 +66,18 @@ public interface GroupRepository extends GeonetRepository<Group, Integer>, Group
     List<Group> findByLogo(@Nonnull String logo);
 
     /**
-     * Find groups with names ending with "_download"
+     * Find groups with names ending with suffix
      *
-     * @return list of groups with names ending in "_download"
+     * @return list of groups with names ending in suffix
      */
     @Nullable
     List<Group> findByNameEndingWith(@Nonnull String suffix);
+
+    /**
+     * Find groups with names starting with prefix
+     *
+     * @return list of groups with names starting with prefix
+     */
+    @Nullable
+    List<Group> findByNameStartingWith(@Nonnull String prefix);
 }

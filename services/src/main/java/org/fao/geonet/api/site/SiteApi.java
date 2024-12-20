@@ -74,6 +74,7 @@ import org.fao.geonet.utils.FilePathChecker;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.ProxyInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpEntity;
@@ -101,6 +102,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.apache.commons.fileupload.util.Streams.checkFileName;
 import static org.fao.geonet.api.ApiParams.API_CLASS_CATALOG_TAG;
@@ -154,6 +156,9 @@ public class SiteApi {
 
     @Autowired
     private OperationAllowedRepository operationAllowedRepository;
+
+    @Value("${download.group.prefix}")
+    private String groupPrefix;
 
     public static void reloadServices(ServiceContext context) throws Exception {
         GeonetContext gc = (GeonetContext) context.getHandlerContext(Geonet.CONTEXT_NAME);
@@ -974,12 +979,18 @@ public class SiteApi {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @Scheduled(cron = "0 0 0 * * SUN") // Каждое воскресенье в 00:00
+    @Scheduled(cron = "${download.delay}") // Каждое первое число месяца в 00:00
     @Async
-    protected void removeDownloadingOperationsAllowing(){
-        List<Group> downloadGroups = groupRepository.findByNameEndingWith("_download");
-        if (downloadGroups != null){
-        downloadGroups.forEach(d -> operationAllowedRepository.deleteAllByGroupId(d.getId()));
+    protected void removeDownloadingOperationsAllowing() {
+        List<Group> downloadGroups = groupRepository.findByNameStartingWith(groupPrefix);
+        if (downloadGroups != null) {
+            for (Group group : downloadGroups) {
+                List<OperationAllowed> downloadAllowed = operationAllowedRepository.findAllById_GroupId(group.getId())
+                    .stream()
+                    .filter(o -> o.getId().getOperationId() == 1)
+                    .collect(Collectors.toList());
+                operationAllowedRepository.deleteAll(downloadAllowed);
+            }
         }
     }
 }
