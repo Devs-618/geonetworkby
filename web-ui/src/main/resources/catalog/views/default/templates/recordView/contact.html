@@ -1,6 +1,14 @@
-<h2 data-translate="">resourceContact</h2>
+<h2
+  data-translate=""
+  data-ng-if="mdView.current.record.contactForResource && mdView.current.record.contactForResource.length > 0"
+>
+  resourceContact
+</h2>
 
-<div class="row" data-ng-if="mdView.current.record.contactForResource">
+<div
+  class="row"
+  data-ng-if="mdView.current.record.contactForResource && mdView.current.record.contactForResource.length > 0"
+>
   <div
     data-gn-metadata-contacts="mdView.current.record.contactForResource"
     data-gn-mode="role"
@@ -8,7 +16,10 @@
   ></div>
 </div>
 
-<div data-ng-if="mdView.current.record.resourceCredit" class="flex-row gn-margin-bottom">
+<div
+  data-ng-if="mdView.current.record.resourceCredit && mdView.current.record.resourceCredit.length > 0"
+  class="flex-row gn-margin-bottom"
+>
   <span class="badge badge-rounded" title="{{'credit' | translate}}">
     <i class="fa fa-fw fa-bookmark"></i>
   </span>
