@@ -142,4 +142,47 @@
     </gex:EX_Extent>
   </xsl:function>
 
+  <!-- Create an iso19115-3 extent fragment -->
+  <xsl:function name="gn:make-iso19115-3-extent" as="node()">
+    <xsl:param name="w" as="xs:string"/>
+    <xsl:param name="s" as="xs:string"/>
+    <xsl:param name="e" as="xs:string"/>
+    <xsl:param name="n" as="xs:string"/>
+    <xsl:param name="description" as="xs:string?"/>
+
+    <gex:EX_Extent>
+      <xsl:if test="normalize-space($description)!=''">
+        <gex:description>
+          <gco:CharacterString>
+            <xsl:value-of select="$description"/>
+          </gco:CharacterString>
+        </gex:description>
+      </xsl:if>
+      <gex:geographicElement>
+        <gex:EX_GeographicBoundingBox>
+          <gex:westBoundLongitude>
+            <gco:Decimal>
+              <xsl:value-of select="$w"/>
+            </gco:Decimal>
+          </gex:westBoundLongitude>
+          <gex:eastBoundLongitude>
+            <gco:Decimal>
+              <xsl:value-of select="$e"/>
+            </gco:Decimal>
+          </gex:eastBoundLongitude>
+          <gex:southBoundLatitude>
+            <gco:Decimal>
+              <xsl:value-of select="$s"/>
+            </gco:Decimal>
+          </gex:southBoundLatitude>
+          <gex:northBoundLatitude>
+            <gco:Decimal>
+              <xsl:value-of select="$n"/>
+            </gco:Decimal>
+          </gex:northBoundLatitude>
+        </gex:EX_GeographicBoundingBox>
+      </gex:geographicElement>
+    </gex:EX_Extent>
+  </xsl:function>  
+
 </xsl:stylesheet>

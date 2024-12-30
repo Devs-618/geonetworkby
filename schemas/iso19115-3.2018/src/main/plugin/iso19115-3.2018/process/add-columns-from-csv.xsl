@@ -29,7 +29,7 @@
                 xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
                 xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
                 xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 version="2.0"
@@ -42,9 +42,11 @@
     <msg id="a" xml:lang="eng">Add attribute table description from CSV</msg>
     <msg id="a" xml:lang="dut">Add attribute table description from CSV</msg>
     <msg id="a" xml:lang="fre">Ajouter le modèle de données (colonnes) à partir d'un fichier CSV</msg>
+    <msg id="a" xml:lang="rus">Добавьте схему данных (столбцы) из CSV-файла</msg>	
     <msg id="b" xml:lang="eng">Add columns from CSV for table </msg>
     <msg id="b" xml:lang="dut">Add columns from CSV for table </msg>
     <msg id="b" xml:lang="fre">Ajouter les colonnes à partir d'un fichier CSV pour la table </msg>
+    <msg id="b" xml:lang="rus">Добавить столбцы из CSV-файла в таблицу </msg>
   </xsl:variable>
 
   <!-- Process parameters and variables-->
@@ -72,7 +74,7 @@
             <suggestion process="add-columns-from-csv" id="{generate-id()}"
                         category="fcat" target="gfc:FC_FeatureType">
               <name>
-                <xsl:value-of select="concat(geonet:i18n($csv-info-loc, 'b', $guiLang), gfc:typeName)"/>
+                <xsl:value-of select="concat(gn:i18n($csv-info-loc, 'b', $guiLang), gfc:typeName)"/>
               </name>
               <operational>true</operational>
               <params>{
@@ -89,7 +91,7 @@
           <suggestion process="add-columns-from-csv" id="{generate-id()}"
                       category="fcat" target="gfc:FC_FeatureType">
             <name>
-              <xsl:value-of select="geonet:i18n($csv-info-loc, 'a', $guiLang)"/>
+              <xsl:value-of select="gn:i18n($csv-info-loc, 'a', $guiLang)"/>
             </name>
             <operational>true</operational>
             <params>{
@@ -254,6 +256,6 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
 </xsl:stylesheet>

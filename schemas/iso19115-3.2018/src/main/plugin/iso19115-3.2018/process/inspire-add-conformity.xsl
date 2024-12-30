@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
                 xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
@@ -23,6 +23,7 @@
   <xsl:variable name="inspire-conformity-loc">
     <msg id="a" xml:lang="eng"> INSPIRE theme(s) found. Run this task to add an INSPIRE conformity section.</msg>
     <msg id="a" xml:lang="fre"> thème(s) INSPIRE trouvé(s). Exécuter cette action pour ajouter une section conformité INSPIRE.</msg>
+    <msg id="a" xml:lang="rus"> Найдены темы INSPIRE. Запустите эту задачу, чтобы добавить раздел соответствия INSPIRE</msg>	
   </xsl:variable>
   
   
@@ -77,7 +78,7 @@
     <xsl:if test="$inspire-theme-found and
                   count($root//mdq:DQ_DomainConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title[contains(gco:CharacterString, 'INSPIRE')]) = 0">
       <suggestion process="inspire-add-conformity" category="keyword" target="keyword">
-        <name><xsl:value-of select="$inspire-theme-found"/> <xsl:value-of select="geonet:i18n($inspire-conformity-loc, 'a', $guiLang)"/></name>
+        <name><xsl:value-of select="$inspire-theme-found"/> <xsl:value-of select="gn:i18n($inspire-conformity-loc, 'a', $guiLang)"/></name>
         <operational>true</operational>
         <form/>
       </suggestion>
@@ -86,7 +87,7 @@
 
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
 
   <!-- ================================================================= -->

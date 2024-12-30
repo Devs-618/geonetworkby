@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
@@ -44,11 +44,12 @@
   <xsl:variable name="add-featureCat-loc">
     <msg id="a" xml:lang="eng">Create feature catalogue from download service (WFS or ESRI:REST): </msg>
     <msg id="a" xml:lang="fre">Ajouter le catalogue d'attribut à partir du service de téléchargement (WFS ou ESRI:REST) : </msg>
+    <msg id="a" xml:lang="rus">Создать каталог объектов по данным сервиса (WFS или ESRI:REST): </msg>	
   </xsl:variable>
 
 
   <xsl:variable name="featureCatIsReplacedBy"
-                select="geonet:parseBoolean($featureCatReplace)"/>
+                select="gn:parseBoolean($featureCatReplace)"/>
 
 
   <xsl:template name="list-create-featurecatalogue-from-wfs">
@@ -77,7 +78,7 @@
                   id="{concat($id, '-', position())}"
                   category="contentinfo"
                   target="link#{$protocol}#{$url[1]}#{$featureType[1]}">
-        <name><xsl:value-of select="geonet:i18n($add-featureCat-loc, 'a', $guiLang)"/><xsl:value-of select="concat($url[1], '#', $featureType[1])"/></name>
+        <name><xsl:value-of select="gn:i18n($add-featureCat-loc, 'a', $guiLang)"/><xsl:value-of select="concat($url[1], '#', $featureType[1])"/></name>
         <operational>true</operational>
         <params>{"featureCatWfsUrl":{"type":"text", "defaultValue":"<xsl:value-of select="$url[1]"/>"},
           "featureCatWfsFeatureType":{"type":"text", "defaultValue":"<xsl:value-of select="$featureType[1]"/>"},
@@ -97,7 +98,7 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
 
   <!-- Insert contact for the metadata -->
@@ -122,7 +123,7 @@
                 mdb:metadataExtensionInfo|
                 mdb:identificationInfo"/>
 
-      <xsl:copy-of select="geonet:make-iso19115-3.2018-featurecatalogue-from-wfs($featureCatWfsUrl)"/>
+      <xsl:copy-of select="gn:make-iso19115-3.2018-featurecatalogue-from-wfs($featureCatWfsUrl)"/>
 
       <xsl:if test="not($featureCatIsReplacedBy)">
         <xsl:apply-templates
@@ -151,7 +152,7 @@
    * Feature type description for ESRI:REST
    https://geoservices.wallonie.be/arcgis/rest/services/INDUSTRIES_SERVICES/ESRS/MapServer/0?f=json
    -->
-  <xsl:function name="geonet:make-iso19115-3.2018-featurecatalogue-from-wfs" as="node()?">
+  <xsl:function name="gn:make-iso19115-3.2018-featurecatalogue-from-wfs" as="node()?">
     <xsl:param name="featureCatWfsUrl" as="xs:string"/>
 
     <xsl:variable name="isEsri"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
@@ -43,14 +43,19 @@
   <xsl:variable name="spatineo-registration-loc">
     <msg id="a" xml:lang="eng">Register service in Spatineo monitor: </msg>
     <msg id="a" xml:lang="fre">Déclarer le service auprès de Spatineo monitor : </msg>
+    <msg id="a" xml:lang="rus">Зарегистрируйте службу в мониторе Spatineo: </msg>	
     <msg id="title" xml:lang="eng">Service health monitoring report for </msg>
     <msg id="title" xml:lang="fre">Rapport de disponibilité du service </msg>
+    <msg id="title" xml:lang="rus">Отчет о мониторинге работоспособности службы для </msg>	
     <msg id="abstract" xml:lang="eng">Service availability statistics for </msg>
     <msg id="abstract" xml:lang="fre">Statistiques de disponibilité du service </msg>
+    <msg id="abstract" xml:lang="rus">Статистика доступности услуг для </msg>	
     <msg id="provided" xml:lang="eng"> provided by Spatineo.</msg>
     <msg id="provided" xml:lang="fre"> fournies par Spatineo.</msg>
+    <msg id="provided" xml:lang="rus"> предоставлено Spatineo.</msg>	
     <msg id="ref" xml:lang="eng">See the related availability report.</msg>
     <msg id="ref" xml:lang="fre">Voir le rapport de disponibilité référencé.</msg>
+    <msg id="ref" xml:lang="rus">См. соответствующий отчет о доступности.</msg>	
   </xsl:variable>
 
   <xsl:template name="list-spatineo-registration">
@@ -84,7 +89,7 @@
                     id="{concat($id, '-', position())}"
                     category="contentinfo"
                     target="metadata">
-          <name><xsl:value-of select="geonet:i18n($spatineo-registration-loc, 'a', $guiLang)"/><xsl:value-of select="."/></name>
+          <name><xsl:value-of select="gn:i18n($spatineo-registration-loc, 'a', $guiLang)"/><xsl:value-of select="."/></name>
           <operational>true</operational>
           <params>{"spatineoUrl":{"type":"text", "defaultValue":"<xsl:value-of select="."/>"}}</params>
         </suggestion>
@@ -108,7 +113,7 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
   <xsl:template
     match="mdb:MD_Metadata"
@@ -162,7 +167,7 @@
                     <cit:title>
                       <gco:CharacterString>
                         <xsl:value-of select="concat(
-                              geonet:i18n($spatineo-registration-loc, 'title', $metadataLanguage),
+                              gn:i18n($spatineo-registration-loc, 'title', $metadataLanguage),
                               root/serviceType,
                               ' ', root/serviceTitle)"/>
                       </gco:CharacterString>
@@ -181,10 +186,10 @@
                 <mdq:abstract>
                   <gco:CharacterString>
                     <xsl:value-of select="concat(
-                              geonet:i18n($spatineo-registration-loc, 'abstract', $metadataLanguage),
+                              gn:i18n($spatineo-registration-loc, 'abstract', $metadataLanguage),
                               root/serviceType,
                               ' ', root/sourceURL,
-                              geonet:i18n($spatineo-registration-loc, 'provided', $metadataLanguage)
+                              gn:i18n($spatineo-registration-loc, 'provided', $metadataLanguage)
                               )"/></gco:CharacterString>
                 </mdq:abstract>
               </mdq:DQ_StandaloneQualityReportInformation>
@@ -197,7 +202,7 @@
                   <mdq:DQ_DescriptiveResult>
                     <mdq:statement>
                       <gco:CharacterString>
-                        <xsl:value-of select="geonet:i18n($spatineo-registration-loc, 'ref', $metadataLanguage)"/>
+                        <xsl:value-of select="gn:i18n($spatineo-registration-loc, 'ref', $metadataLanguage)"/>
                       </gco:CharacterString>
                     </mdq:statement>
                   </mdq:DQ_DescriptiveResult>

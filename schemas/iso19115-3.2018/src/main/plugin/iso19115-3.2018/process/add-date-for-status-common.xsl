@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
                 xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
@@ -27,6 +27,10 @@
     <msg id="b" xml:lang="fre">. Voulez-vous ajouter la date avec le type </msg>
     <msg id="c" xml:lang="fre"> ? (avec par défaut : </msg>
     <msg id="d" xml:lang="fre">)</msg>
+    <msg id="a" xml:lang="rus">Статус ресурса </msg>
+    <msg id="b" xml:lang="rus">. Хотите добавить дату </msg>
+    <msg id="c" xml:lang="rus"> ? (по умолчанию: </msg>
+    <msg id="d" xml:lang="rus">)</msg>
   </xsl:variable>
 
   <xsl:variable name="df"
@@ -73,13 +77,13 @@
         <suggestion process="add-date-for-status" id="{generate-id()}"
                     category="status" target="identification">
           <name><xsl:value-of select="concat(
-                geonet:i18n($add-date-loc, 'a', $guiLang),
+                gn:i18n($add-date-loc, 'a', $guiLang),
                 $statusLabel,
-                geonet:i18n($add-date-loc, 'b', $guiLang),
+                gn:i18n($add-date-loc, 'b', $guiLang),
                 $dateTypeLabel,
-                geonet:i18n($add-date-loc, 'c', $guiLang),
+                gn:i18n($add-date-loc, 'c', $guiLang),
                 $dateValueForStatus,
-                geonet:i18n($add-date-loc, 'd', $guiLang)
+                gn:i18n($add-date-loc, 'd', $guiLang)
                 )"/>
           </name>
           <operational>true</operational>
@@ -103,6 +107,6 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
 </xsl:stylesheet>

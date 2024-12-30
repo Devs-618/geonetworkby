@@ -33,7 +33,7 @@
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:translation="java:org.fao.geonet.translations.TranslationUtil"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
                 version="2.0"
@@ -94,7 +94,7 @@
         <suggestion process="translate" id="{generate-id()}"
                     category="metadata" target="MD_Metadata">
             <name>
-                <xsl:value-of select="geonet:i18n($translate-info-loc, 'a', $guiLang)"/>
+                <xsl:value-of select="gn:i18n($translate-info-loc, 'a', $guiLang)"/>
             </name>
             <operational>true</operational>
             <params>{

@@ -23,7 +23,7 @@
   -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:mda="http://standards.iso.org/iso/19115/-3/mda/1.0"
                 xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
                 xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
@@ -67,12 +67,17 @@
     <msg id="a" xml:lang="fre">Le service de visualisation </msg>
     <msg id="b" xml:lang="fre"> est décrit dans la section resource en ligne. Exécuter cette action pour mettre à jour l'étendue, les systèmes de projection ou les aperçus pour ce service et la couche nommée :
     </msg>
+    <msg id="a" xml:lang="rus">WMS-сервис </msg>
+    <msg id="b" xml:lang="rus"> описан в разделе онлайн-ресурса. Запустите, чтобы обновить экстент, CRS или графический обзор WMS-сервиса для слоя с именем:
+    </msg>
     <msg id="a" xml:lang="dut">Er is een verwijzing gevonden naar de WMS service </msg>
     <msg id="b" xml:lang="dut">. Gebruik deze functie om de dekking, de projectie of thumbnail af te leiden of bij te werken vanuit deze WMS-service voor de laag met de naam: </msg>
     <msg id="connectPoint" xml:lang="eng">WMS view service</msg>
     <msg id="connectPoint" xml:lang="fre">Service de visualisation WMS</msg>
+    <msg id="connectPoint" xml:lang="rus">WMS-сервис</msg>
     <msg id="connectPointDesc" xml:lang="eng">Service connect point URL</msg>
     <msg id="connectPointDesc" xml:lang="fre">Adresse de connexion au service de visualisation WMS</msg>
+    <msg id="connectPointDesc" xml:lang="rus">URL-адрес точки подключения сервиса</msg>
   </xsl:variable>
 
   <!-- Process parameters and variables-->
@@ -87,11 +92,11 @@
 
   <xsl:variable name="maxSrs" select="21"/>
 
-  <xsl:variable name="setExtentMode" select="geonet:parseBoolean($setExtent)"/>
-  <xsl:variable name="setAndReplaceExtentMode" select="geonet:parseBoolean($setAndReplaceExtent)"/>
-  <xsl:variable name="setCRSMode" select="geonet:parseBoolean($setCRS)"/>
+  <xsl:variable name="setExtentMode" select="gn:parseBoolean($setExtent)"/>
+  <xsl:variable name="setAndReplaceExtentMode" select="gn:parseBoolean($setAndReplaceExtent)"/>
+  <xsl:variable name="setCRSMode" select="gn:parseBoolean($setCRS)"/>
   <xsl:variable name="setDynamicGraphicOverviewMode"
-                select="geonet:parseBoolean($setDynamicGraphicOverview)"/>
+                select="gn:parseBoolean($setDynamicGraphicOverview)"/>
 
 
   <!-- Load the capabilities document if one oneline resource contains a protocol set to WMS
@@ -100,7 +105,7 @@
                 select="//cit:CI_OnlineResource[contains(cit:protocol/gco:CharacterString, 'OGC:WMS') and normalize-space(cit:linkage/*[1]/text()) = $wmsServiceUrl]"/>
   <xsl:variable name="capabilitiesDoc">
     <xsl:if test="$onlineNodes">
-      <xsl:copy-of select="geonet:get-wms-capabilities($wmsServiceUrl, '1.1.1')"/>
+      <xsl:copy-of select="gn:get-wms-capabilities($wmsServiceUrl, '1.1.1')"/>
     </xsl:if>
   </xsl:variable>
 
@@ -123,7 +128,7 @@
 
     <!-- Check if server is up and new value are available
      <xsl:variable name="capabilities"
-      select="geonet:get-wms-capabilities(gmd:linkage/gmd:URL, '1.1.1')"/>
+      select="gn:get-wms-capabilities(gmd:linkage/gmd:URL, '1.1.1')"/>
 -->
     <xsl:for-each select="$onlineResources">
       <xsl:variable name="url"
@@ -133,9 +138,9 @@
       <suggestion process="add-info-from-wms" id="{generate-id()}" category="onlineSrc"
                   target="link#{cit:protocol/gco:CharacterString}#{$url}#{$layerName}">
         <name>
-          <xsl:value-of select="geonet:i18n($wms-info-loc, 'a', $guiLang)"/><xsl:value-of
+          <xsl:value-of select="gn:i18n($wms-info-loc, 'a', $guiLang)"/><xsl:value-of
           select="$url"
-        /><xsl:value-of select="geonet:i18n($wms-info-loc, 'b', $guiLang)"/><xsl:value-of
+        /><xsl:value-of select="gn:i18n($wms-info-loc, 'b', $guiLang)"/><xsl:value-of
           select="$layerName"/>.
         </name>
         <operational>true</operational>
@@ -175,7 +180,7 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
 
   <!-- Here set extent and graphicOverview -->
@@ -264,7 +269,7 @@
               <mcc:fileName>
                 <gco:CharacterString>
                   <xsl:value-of
-                    select="geonet:get-wms-thumbnail-url($wmsServiceUrl, '1.1.1', $wmsLayerName,
+                    select="gn:get-wms-thumbnail-url($wmsServiceUrl, '1.1.1', $wmsLayerName,
                                 concat($wmsBbox/@minx, ',', $wmsBbox/@miny, ',', $wmsBbox/@maxx, ',', $wmsBbox/@maxy))"
                   />
                 </gco:CharacterString>
@@ -318,10 +323,10 @@
                   <gco:CharacterString>OGC:WMS</gco:CharacterString>
                 </cit:protocol>
                 <cit:name>
-                  <gco:CharacterString><xsl:value-of select="geonet:i18n($wms-info-loc, 'connectPoint', $guiLang)"/></gco:CharacterString>
+                  <gco:CharacterString><xsl:value-of select="gn:i18n($wms-info-loc, 'connectPoint', $guiLang)"/></gco:CharacterString>
                 </cit:name>
                 <cit:description>
-                  <gco:CharacterString><xsl:value-of select="geonet:i18n($wms-info-loc, 'connectPointDesc', $guiLang)"/></gco:CharacterString>
+                  <gco:CharacterString><xsl:value-of select="gn:i18n($wms-info-loc, 'connectPointDesc', $guiLang)"/></gco:CharacterString>
                 </cit:description>
                 <cit:function>
                   <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue=""/>
@@ -421,7 +426,7 @@
         <xsl:variable name="maxy" select="math:max($capabilitiesDoc//LatLonBoundingBox/@maxy)"/>
         <mri:extent>
           <xsl:copy-of
-            select="geonet:make-iso-extent(string($minx), string($miny), string($maxx), string($maxy), '')"/>
+            select="gn:make-iso19115-3-extent(string($minx), string($miny), string($maxx), string($maxy), '')"/>
         </mri:extent>
       </xsl:when>
       <xsl:otherwise>
@@ -444,12 +449,11 @@
 
   </xsl:template>
 
-
   <!-- Create a bounding box -->
   <xsl:template mode="create-bbox-for-wms" match="Layer">
     <xsl:for-each select="LatLonBoundingBox">
       <mri:extent>
-        <xsl:copy-of select="geonet:make-iso-extent(@minx, @miny, @maxx, @maxy, '')"/>
+        <xsl:copy-of select="gn:make-iso19115-3-extent(@minx, @miny, @maxx, @maxy, '')"/>
       </mri:extent>
     </xsl:for-each>
   </xsl:template>

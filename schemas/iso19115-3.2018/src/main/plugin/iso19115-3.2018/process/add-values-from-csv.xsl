@@ -23,7 +23,7 @@
   -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:gfc="http://standards.iso.org/iso/19110/gfc/1.1"
@@ -38,6 +38,7 @@
     <msg id="a" xml:lang="eng">Add codelist values from CSV for column</msg>
     <msg id="a" xml:lang="fre">Ajouter les valeurs à partir d'un fichier CSV pour la colonne </msg>
     <msg id="a" xml:lang="dut">Add codelist values from CSV for column</msg>
+    <msg id="a" xml:lang="rus">Добавить значения списка кодов из CSV</msg>	
   </xsl:variable>
 
   <!-- Process parameters and variables-->
@@ -62,7 +63,7 @@
       <suggestion process="add-values-from-csv" id="{generate-id()}"
                   category="fcat" target="gfc:carrierOfCharacteristics">
         <name>
-          <xsl:value-of select="concat(geonet:i18n($csv-add-values-info-loc, 'a', $guiLang), ' ', gfc:memberName)"/>
+          <xsl:value-of select="concat(gn:i18n($csv-add-values-info-loc, 'a', $guiLang), ' ', gfc:memberName)"/>
         </name>
         <operational>true</operational>
         <params>{
@@ -127,6 +128,6 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
 </xsl:stylesheet>

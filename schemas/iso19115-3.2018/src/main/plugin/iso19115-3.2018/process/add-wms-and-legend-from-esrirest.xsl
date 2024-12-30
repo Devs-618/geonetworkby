@@ -8,7 +8,7 @@
   xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
   xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
   xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
-  xmlns:geonet="http://www.fao.org/geonetwork"
+  xmlns:gn="http://www.fao.org/geonetwork"
   exclude-result-prefixes="#all">
 
 
@@ -37,8 +37,10 @@
   <xsl:variable name="add-wms-and-legend-from-esrirest-loc">
     <msg id="a" xml:lang="eng">Add WMS and legend links for ESRI REST service:</msg>
     <msg id="a" xml:lang="fre">Ajouter les liens vers le WMS et la légende pour le service ESRI REST :</msg>
+    <msg id="a" xml:lang="rus">Добавьте ссылки на WMS и легенду REST-сервиса ESRI:</msg>	
     <msg id="legendLabel" xml:lang="eng">Layer legend</msg>
     <msg id="legendLabel" xml:lang="fre">Légende des couches de données</msg>
+    <msg id="legendLabel" xml:lang="rus">Легенда слоя</msg>	
   </xsl:variable>
 
   <xsl:template name="list-add-wms-and-legend-from-esrirest">
@@ -74,7 +76,7 @@
                     id="{generate-id()}"
                     category="online" target="onLine">
           <name>
-            <xsl:value-of select="geonet:i18n($add-wms-and-legend-from-esrirest-loc, 'a', $guiLang)"/><xsl:value-of
+            <xsl:value-of select="gn:i18n($add-wms-and-legend-from-esrirest-loc, 'a', $guiLang)"/><xsl:value-of
             select="."/>
           </name>
           <operational>true</operational>
@@ -94,7 +96,7 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2">
+  <xsl:template match="gn:*" priority="2">
   </xsl:template>
 
   <xsl:template match="mrd:onLine[not($isWmsDefined)
@@ -165,7 +167,7 @@
           <mpc:portrayalCatalogueCitation>
             <cit:CI_Citation>
               <cit:title>
-                <gco:CharacterString><xsl:value-of select="geonet:i18n($add-wms-and-legend-from-esrirest-loc, 'legendLabel', $metadataLanguage)"/></gco:CharacterString>
+                <gco:CharacterString><xsl:value-of select="gn:i18n($add-wms-and-legend-from-esrirest-loc, 'legendLabel', $metadataLanguage)"/></gco:CharacterString>
               </cit:title>
               <cit:onlineResource>
                 <cit:CI_OnlineResource>

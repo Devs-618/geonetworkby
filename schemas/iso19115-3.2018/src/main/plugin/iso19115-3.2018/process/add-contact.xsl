@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
                 xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
@@ -23,15 +23,16 @@
   <xsl:variable name="add-contact-loc">
     <msg id="a" xml:lang="eng">Add '{{user.name}} {{user.surname}}' as contact for the metadata or the resource.</msg>
     <msg id="a" xml:lang="fre">Ajouter '{{user.name}} {{user.surname}}' en tant que contact pour la fiche ou la resource.</msg>
+    <msg id="a" xml:lang="rus">Добавьте '{{user.name}} {{user.surname}}' в качестве контакта для записи или ресурса</msg>
   </xsl:variable>
 
 
   <xsl:variable name="contactIsReplacedBy"
-                select="geonet:parseBoolean($contactReplace)"/>
+                select="gn:parseBoolean($contactReplace)"/>
   <xsl:variable name="isContactSetForMetadata"
-                select="geonet:parseBoolean($contactSetForMetadata)"/>
+                select="gn:parseBoolean($contactSetForMetadata)"/>
   <xsl:variable name="isContactSetForResource"
-                select="geonet:parseBoolean($contactSetForResource)"/>
+                select="gn:parseBoolean($contactSetForResource)"/>
 
 
 
@@ -55,7 +56,7 @@
                   id="{generate-id()}"
                   category="contact"
                   target="metadata">
-        <name><xsl:value-of select="geonet:i18n($add-contact-loc, 'a', $guiLang)"/></name>
+        <name><xsl:value-of select="gn:i18n($add-contact-loc, 'a', $guiLang)"/></name>
         <operational>true</operational>
         <params>{"contactRole":{"type":"codelist", "codelist": "roleCode", "defaultValue": "<xsl:value-of select="$contactRole"/>"},
                  "contactId":{"type": "expression", "defaultValue":"{{user.id}}"},
@@ -78,7 +79,7 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
 
   <!-- Insert contact for the metadata -->
@@ -95,7 +96,7 @@
 
       <xsl:if test="$isContactSetForMetadata and $contactId != ''">
         <mdb:contact>
-          <xsl:copy-of select="geonet:make-iso19115-3-contact($contactId, $contactRole)"/>
+          <xsl:copy-of select="gn:make-iso19115-3-contact($contactId, $contactRole)"/>
         </mdb:contact>
       </xsl:if>
 
@@ -146,7 +147,7 @@
 
       <xsl:if test="$isContactSetForResource and $contactId != ''">
         <mri:pointOfContact>
-          <xsl:copy-of select="geonet:make-iso19115-3-contact($contactId, $contactRole)"/>
+          <xsl:copy-of select="gn:make-iso19115-3-contact($contactId, $contactRole)"/>
         </mri:pointOfContact>
       </xsl:if>
 
@@ -180,11 +181,8 @@
     </xsl:copy>
   </xsl:template>
 
-
-
-
   <!-- Get database user info and create a contact -->
-  <xsl:function name="geonet:make-iso19115-3-contact" as="node()?">
+  <xsl:function name="gn:make-iso19115-3-contact" as="node()?">
     <xsl:param name="contactId" as="xs:string"/>
     <xsl:param name="contactRole" as="xs:string"/>
 
@@ -265,5 +263,5 @@
       </cit:CI_Responsibility>
     </xsl:if>
   </xsl:function>
-
+  
 </xsl:stylesheet>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
                 xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
@@ -18,6 +18,8 @@
     <msg id="b" xml:lang="eng">). Try to compute metadata extent using thesaurus.</msg>
     <msg id="a" xml:lang="fre">Certains mots clés sont de type géographique (ie. </msg>
     <msg id="b" xml:lang="fre">). Exécuter cette action pour essayer de calculer l'emprise à partir des thésaurus.</msg>
+    <msg id="a" xml:lang="rus">Есть ключевое слово типа 'place': </msg>
+    <msg id="b" xml:lang="rus">. Попробуйте вычислить экстент метаданных с помощью тезауруса.</msg>
   </xsl:variable>
 
   <!-- GeoNetwork base url -->
@@ -35,9 +37,9 @@
 
 
   <xsl:variable name="replaceMode"
-                select="geonet:parseBoolean($replace)"/>
+                select="gn:parseBoolean($replace)"/>
   <xsl:variable name="boundingAllMode"
-                select="geonet:parseBoolean($boundingAll)"/>
+                select="gn:parseBoolean($boundingAll)"/>
   <xsl:variable name="serviceUrl"
                 select="concat(substring($gurl, 1, string-length($gurl)-4), 'api/registries/vocabularies/search?_content_type=xml&amp;q=')"/>
 
@@ -65,8 +67,8 @@
                       and ../mri:type/*/@codeListValue='place']"/>
     <xsl:if test="$geoKeywords">
       <suggestion process="add-extent-from-geokeywords" id="{generate-id()}" category="keyword" target="extent">
-        <name><xsl:value-of select="geonet:i18n($add-extent-loc, 'a', $guiLang)"/><xsl:value-of select="string-join($geoKeywords/(gco:CharacterString|gcx:Anchor), ', ')"/>
-          <xsl:value-of select="geonet:i18n($add-extent-loc, 'b', $guiLang)"/></name>
+        <name><xsl:value-of select="gn:i18n($add-extent-loc, 'a', $guiLang)"/><xsl:value-of select="string-join($geoKeywords/(gco:CharacterString|gcx:Anchor), ', ')"/>
+          <xsl:value-of select="gn:i18n($add-extent-loc, 'b', $guiLang)"/></name>
         <operational>true</operational>
         <params>{"gurl":{"type":"string", "defaultValue":"<xsl:value-of select="$gurl"/>"},
           "lang":{"type":"string", "defaultValue":"<xsl:value-of select="$lang"/>"},
@@ -90,7 +92,7 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
   <xsl:template
           match="mdb:identificationInfo/*"
@@ -185,7 +187,7 @@
                       else  mri:descriptiveKeywords/*/mri:keyword[
                           normalize-space((gco:CharacterString|gcx:Anchor)) = $addExtentFor]">
         <xsl:call-template name="get-bbox">
-          <xsl:with-param name="word" select="gco:CharacterString"/>
+          <xsl:with-param name="word" select="gco:CharacterString|gcx:Anchor"/>
         </xsl:call-template>
       </xsl:for-each>
     </xsl:variable>
@@ -194,7 +196,7 @@
       <xsl:when test="$boundingAllMode">
         <mri:extent>
           <xsl:copy-of
-            select="geonet:make-iso-extent(
+            select="gn:make-iso19115-3-extent(
               string(min($extentList//gex:westBoundLongitude)),
               string(min($extentList//gex:southBoundLatitude)),
               string(max($extentList//gex:eastBoundLongitude)),
@@ -219,10 +221,10 @@
 
       <!-- It should be one but if one keyword is found in more
           thant one thesaurus, then each will be processed.-->
-      <xsl:for-each select="$keyword/response/keyword">
+      <xsl:for-each select="$keyword/response/keyword[1]">
         <xsl:if test="geo and geo/west != '' and geo/south != '' and geo/east != '' and geo/north != '' and count(value[text() = $word]) = 1">
           <mri:extent>
-            <xsl:copy-of select="geonet:make-iso19115-3-extent(geo/west, geo/south, geo/east, geo/north, $word)"/>
+            <xsl:copy-of select="gn:make-iso19115-3-extent(geo/west, geo/south, geo/east, geo/north, $word)"/>
           </mri:extent>
         </xsl:if>
       </xsl:for-each>
@@ -230,47 +232,5 @@
   </xsl:template>
 
 
-  <!-- Create an ISO 19139 extent fragment -->
-  <xsl:function name="geonet:make-iso19115-3-extent" as="node()">
-    <xsl:param name="w" as="xs:string"/>
-    <xsl:param name="s" as="xs:string"/>
-    <xsl:param name="e" as="xs:string"/>
-    <xsl:param name="n" as="xs:string"/>
-    <xsl:param name="description" as="xs:string?"/>
-
-    <gex:EX_Extent>
-      <xsl:if test="normalize-space($description)!=''">
-        <gex:description>
-          <gco:CharacterString>
-            <xsl:value-of select="$description"/>
-          </gco:CharacterString>
-        </gex:description>
-      </xsl:if>
-      <gex:geographicElement>
-        <gex:EX_GeographicBoundingBox>
-          <gex:westBoundLongitude>
-            <gco:Decimal>
-              <xsl:value-of select="$w"/>
-            </gco:Decimal>
-          </gex:westBoundLongitude>
-          <gex:eastBoundLongitude>
-            <gco:Decimal>
-              <xsl:value-of select="$e"/>
-            </gco:Decimal>
-          </gex:eastBoundLongitude>
-          <gex:southBoundLatitude>
-            <gco:Decimal>
-              <xsl:value-of select="$s"/>
-            </gco:Decimal>
-          </gex:southBoundLatitude>
-          <gex:northBoundLatitude>
-            <gco:Decimal>
-              <xsl:value-of select="$n"/>
-            </gco:Decimal>
-          </gex:northBoundLatitude>
-        </gex:EX_GeographicBoundingBox>
-      </gex:geographicElement>
-    </gex:EX_Extent>
-  </xsl:function>
 
 </xsl:stylesheet>

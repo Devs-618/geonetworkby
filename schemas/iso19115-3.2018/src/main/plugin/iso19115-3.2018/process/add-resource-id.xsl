@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:exslt="http://exslt.org/common"
-                xmlns:geonet="http://www.fao.org/geonetwork"
+                xmlns:gn="http://www.fao.org/geonetwork"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
                 xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
@@ -10,12 +10,13 @@
                 xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
                 version="2.0" exclude-result-prefixes="#all">
 
-  <xsl:import href="../../iso19139/process/process-utility.xsl"/>
+  <xsl:import href="process-utility.xsl"/>
 
   <!-- i18n information -->
   <xsl:variable name="add-resource-id-loc">
     <msg id="a" xml:lang="eng">Current record does not contain resource identifier. Compute resource identifier from metadata record identifier.</msg>
     <msg id="a" xml:lang="fre">Cette fiche ne contient pas d'identifiant pour la ressource. Calculer l'identifiant à partir de l'identifiant de la fiche.</msg>
+    <msg id="a" xml:lang="rus">Текущая запись не содержит идентификатор ресурса. Вычислить идентификатор ресурса на основе идентификатора записи метаданных.</msg>	
   </xsl:variable>
 
 
@@ -38,7 +39,7 @@
             cit:CI_Citation/cit:identifier/*/mcc:code[gco:CharacterString != '']) > 0"/>
     <xsl:if test="not($hasResourceId)">
       <suggestion process="add-resource-id" id="{generate-id()}" category="identification" target="identification">
-        <name><xsl:value-of select="geonet:i18n($add-resource-id-loc, 'a', $guiLang)"/></name>
+        <name><xsl:value-of select="gn:i18n($add-resource-id-loc, 'a', $guiLang)"/></name>
         <operational>true</operational>
       </suggestion>
     </xsl:if>
@@ -56,7 +57,7 @@
   </xsl:template>
 
   <!-- Remove geonet:* elements. -->
-  <xsl:template match="geonet:*" priority="2"/>
+  <xsl:template match="gn:*" priority="2"/>
 
   <xsl:template
           match="mdb:identificationInfo/*/mri:citation/
