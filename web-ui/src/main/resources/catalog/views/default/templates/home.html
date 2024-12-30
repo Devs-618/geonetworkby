@@ -119,12 +119,13 @@
 >
   <div data-ng-class="fluidLayout ? 'container-fluid' : 'container'">
     <div data-ng-show="homeFacet.list.length > 0">
-      <div
-        style="display: flex; margin: 0 10px 0 0"
-        data-ng-show="homeFacet.list.length > 1"
-      >
-        <h1 style="margin: 10px 10px 0 0">
-          <span data-translate="">browseBy</span>
+      <div class="row">
+        <h1 class="col-md-12">
+          <span data-translate="" data-ng-if="homeFacet.list.length > 2">browseBy</span>
+          <span data-ng-if="homeFacet.list.length < 3" data-translate="">
+            {{::getFacetLabel(searchInfo.aggregations[homeFacet.list[0]], 'facet-' +
+            homeFacet.list[0])}}
+          </span>
         </h1>
         <div class="gn-topic-select">
           <label
@@ -140,7 +141,7 @@
               data-ng-model="homeFacet.key"
               data-ng-value="facetKey"
             />
-            <span data-translate="">{{::('facet-' + facetKey) | facetKeyTranslator}}</span
+            <span data-translate="">{{::getFacetLabel(agg, 'facet-' + facetKey)}}</span
             >&nbsp;
           </label>
         </div>
@@ -158,7 +159,8 @@
     <!--div data-ng-show="searchInfo.aggregations[homeFacet.lastKey].buckets.length > 0">
       <div class="row">
         <h1 class="col-md-12" data-translate="">
-          {{('facet-' + homeFacet.lastKey) | facetKeyTranslator}}
+          {{getFacetLabel(searchInfo.aggregations[homeFacet.lastKey], 'facet-' +
+          homeFacet.lastKey)}}
         </h1>
       </div>
       <div class="row">
