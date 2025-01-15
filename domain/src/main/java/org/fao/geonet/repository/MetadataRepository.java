@@ -24,11 +24,13 @@
 package org.fao.geonet.repository;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.fao.geonet.domain.Metadata;
+import org.fao.geonet.domain.MetadataCategory;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -122,4 +124,13 @@ public interface MetadataRepository extends GeonetRepository<Metadata, Integer>,
         @Param("pattern") String search,
         @Param("replace") String replace,
         @Param("flags") String flags);
+
+    /**
+     * Найти все метаданные, принадлежащие заданной категории по её ID.
+     *
+     * @param categoryId идентификатор категории, по которому выполняется фильтрация
+     * @return список метаданных, соответствующих заданной категории
+     */
+    @Query("SELECT DISTINCT m FROM Metadata m JOIN m.metadataCategories c WHERE c.id = :categoryId")
+    List<Metadata> findAllByCategoryId(@Param("categoryId") Integer categoryId);
 }

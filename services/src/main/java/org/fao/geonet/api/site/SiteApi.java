@@ -983,14 +983,19 @@ public class SiteApi {
     @Async
     protected void removeDownloadingOperationsAllowing() {
         List<Group> downloadGroups = groupRepository.findByNameStartingWith(groupPrefix);
+        List<Metadata> metadataList = metadataRepository.findAllByCategoryId(100);
+        List<OperationAllowed> operationsForRemoveList = new ArrayList<>();
         if (downloadGroups != null) {
             for (Group group : downloadGroups) {
-                List<OperationAllowed> downloadAllowed = operationAllowedRepository.findAllById_GroupId(group.getId())
-                    .stream()
-                    .filter(o -> o.getId().getOperationId() == 1)
-                    .collect(Collectors.toList());
-                operationAllowedRepository.deleteAll(downloadAllowed);
+                for (Metadata metadata : metadataList) {
+                    OperationAllowed operationAllowed = operationAllowedRepository
+                        .findOneById_GroupIdAndId_MetadataIdAndId_OperationId(group.getId(), metadata.getId(), 1);
+                    if (operationAllowed != null) {
+                        operationsForRemoveList.add(operationAllowed);
+                    }
+                }
             }
+            operationAllowedRepository.deleteAll(operationsForRemoveList);
         }
     }
 }
