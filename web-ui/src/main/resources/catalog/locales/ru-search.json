@@ -366,6 +366,7 @@
     "shareByEmail": "Поделиться по Email",
     "zoomto": "Приблизить к",
     "recordNotFound": "Запись с идентификатором <strong>{{uuid}}</strong> не найдена или недоступна для Вас",
+    "trySignIn": "Попробуйте <a href=\"{{signInFormAction}}?_csrf={{csrf}}&redirectUrl={{redirectUrlAfterSign}}\">войти</a>, если у вас есть учетная запись.",
     "intersectWith": "Пересекается с",
     "fullyOutsideOf": "Полностью за пределами",
     "encloses": "Включает",

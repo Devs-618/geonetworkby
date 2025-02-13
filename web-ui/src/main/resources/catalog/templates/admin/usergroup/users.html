@@ -523,7 +523,7 @@
               </div>
             </fieldset>
 
-            <fieldset data-ng-if="user.isUserAdminOrMore()">
+            <fieldset data-ng-if="user.isUserAdminOrMore() && isUserProfileUpdateEnabled">
               <legend data-translate="">defineUserGroupsPerProfile</legend>
               <input
                 type="hidden"
