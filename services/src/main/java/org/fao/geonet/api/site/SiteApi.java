@@ -102,7 +102,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.apache.commons.fileupload.util.Streams.checkFileName;
 import static org.fao.geonet.api.ApiParams.API_CLASS_CATALOG_TAG;
@@ -159,6 +158,9 @@ public class SiteApi {
 
     @Value("${download.group.prefix}")
     private String groupPrefix;
+
+    @Value("${download.metadatacateg.id}")
+    private int downloadMetadataCategId;
 
     public static void reloadServices(ServiceContext context) throws Exception {
         GeonetContext gc = (GeonetContext) context.getHandlerContext(Geonet.CONTEXT_NAME);
@@ -1026,7 +1028,7 @@ public class SiteApi {
     @Async
     protected void removeDownloadingOperationsAllowing() {
         List<Group> downloadGroups = groupRepository.findByNameStartingWith(groupPrefix);
-        List<Metadata> metadataList = metadataRepository.findAllByCategoryId(100);
+        List<Metadata> metadataList = metadataRepository.findAllByCategoryId(downloadMetadataCategId);
         List<OperationAllowed> operationsForRemoveList = new ArrayList<>();
         if (downloadGroups != null) {
             for (Group group : downloadGroups) {
