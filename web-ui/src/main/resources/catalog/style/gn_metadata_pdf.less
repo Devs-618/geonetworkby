@@ -6,25 +6,25 @@
     display: block;
     list-style: none;
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
   }
   a {
     text-decoration: none;
     color: #000000;
   }
-  button  {
+  button {
     display: none;
   }
 }
+
 .gn-metadata-view {
-  /*Mailto links are not created by flying saucer */
+  /* Mailto links are not created by flying saucer */
   a[href^="mailto:"] {
     text-decoration: none;
     color: #000000;
   }
-
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 20px;
   h1,
   h2,
   h3,
@@ -34,11 +34,11 @@
     line-height: 1.1;
   }
   h1 {
-    font-size: 24px;
+    font-size: 28px;
   }
   h3 {
     color: #3071a9;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: normal;
     font-family: "Arial Bold", "Helvetica Bold", Arial, Helvetica, sans-serif;
   }
@@ -63,10 +63,6 @@
       margin-bottom: 5px;
     }
   }
-  /*
-  Extent is already displayed in main view usually.
-  Social and associated resources require JS.
-  So hidden from side bar in PDF output. */
   .gn-md-side-extent,
   .gn-md-side-social,
   .gn-md-side-associated,
@@ -87,11 +83,11 @@
     clear: left;
     width: 300px;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 20px;
     box-sizing: border-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    word-wrap: break-word;
+    word-break: break-word;
     float: left;
   }
   dd {
@@ -99,7 +95,7 @@
     margin-left: 300px;
     padding-left: 10px;
     border-left: 1px solid #999999;
-    font-size: 13px;
+    font-size: 20px;
     ul {
       padding-left: 01.5em;
       margin: 0;
@@ -114,9 +110,6 @@
   .entry {
     margin: 10px 0 20px 0;
   }
-  // div.md-text {
-  //   border-spacing: 10px 0;
-  // }
   ul.container-list {
     list-style-type: none;
     background: #eeeeee;
@@ -146,7 +139,6 @@
     display: none;
   }
   .extent {
-    /** page-break-before: always; **/
     img {
       border: 1px solid #ccc;
       margin-top: 20px;
@@ -167,8 +159,6 @@
         border: 0;
         padding: 10px;
         margin: 0;
-        // width: 100px;
-        background: #fff;
       }
       span.input-group-addon {
         background-color: #eeeeee;
@@ -182,3 +172,4 @@
     }
   }
 }
+

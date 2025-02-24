@@ -82,6 +82,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.Callable;
 
@@ -219,19 +221,9 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
         final HttpServletRequest servletRequest) throws Exception {
 
         Locale locale = languageUtils.parseAcceptLanguage(servletRequest.getLocales());
+        String acceptHeader = StringUtils.isBlank(request.getHeader(HttpHeaders.ACCEPT))
+            ? MediaType.TEXT_HTML_VALUE : request.getHeader(HttpHeaders.ACCEPT);
 
-        String acceptHeader = StringUtils.isBlank(request.getHeader(HttpHeaders.ACCEPT)) ? MediaType.TEXT_HTML_VALUE : request.getHeader(HttpHeaders.ACCEPT);
-
-        // TODO :
-        // if text/html > xsl_view
-        // if application/pdf > xsl_view and PDF output
-        // if application/x-gn-<formatterId>+(xml|html|pdf|text)
-        // Force PDF output when URL parameter is set.
-        // This is useful when making GET link to PDF which
-        // can not use headers.
-        if (MediaType.ALL_VALUE.equals(acceptHeader)) {
-            acceptHeader = MediaType.TEXT_HTML_VALUE;
-        }
         if (formatType == null) {
             formatType = FormatType.findByFormatterKey(formatterId);
         }
@@ -256,54 +248,70 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
         }
 
         AbstractMetadata metadata = ApiUtils.canViewRecord(metadataUuid, approved, servletRequest);
-
         if (approved) {
             metadata = ApplicationContextHolder.get().getBean(MetadataRepository.class).findOneByUuid(metadataUuid);
         }
 
-
         final ServiceContext context = createServiceContext(
-            language,
-            formatType,
+            language, formatType,
             request.getNativeRequest(HttpServletRequest.class));
 
-        Boolean hideWithheld = !context.getBean(AccessManager.class).canEdit(context, String.valueOf(metadata.getId()));
+        Boolean hideWithheld = !context.getBean(AccessManager.class)
+            .canEdit(context, String.valueOf(metadata.getId()));
+
         Key key = new Key(metadata.getId(), language, formatType, formatterId, hideWithheld, width);
         final boolean skipPopularityBool = false;
 
         ISODate changeDate = metadata.getDataInfo().getChangeDate();
 
-        Validator validator;
-
+        String formattedDate = null;
         if (changeDate != null) {
-            final long changeDateAsTime = changeDate.toDate().getTime();
-            long roundedChangeDate = changeDateAsTime / 1000 * 1000;
-            if (request.checkNotModified(language, roundedChangeDate) &&
+            Date date = changeDate.toDate();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            formattedDate = sdf.format(date);
+        }
+
+        ISODate formattedISODate = null;
+        if (formattedDate != null) {
+            try {
+                SimpleDateFormat sdfForISO = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                sdfForISO.setTimeZone(TimeZone.getTimeZone("UTC"));
+                Date parsedDate = sdfForISO.parse(formattedDate);
+
+                formattedISODate = new ISODate(parsedDate.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (formattedISODate != null) {
+            metadata.getDataInfo().setChangeDate(formattedISODate);
+        }
+
+        Validator validator;
+        if (formattedISODate != null) {
+            final long formattedDateAsTime = formattedISODate.toDate().getTime();
+            long roundedFormattedDate = formattedDateAsTime / 1000 * 1000;
+            if (request.checkNotModified(language, roundedFormattedDate) &&
                 context.getBean(CacheConfig.class).allowCaching(key)) {
                 if (!skipPopularityBool && approved) {
                     context.getBean(DataManager.class).increasePopularity(context, String.valueOf(metadata.getId()));
                 }
                 return;
             }
-            validator = new ChangeDateValidator(changeDateAsTime);
+            validator = new ChangeDateValidator(formattedDateAsTime);
         } else {
             validator = new NoCacheValidator();
         }
-        final FormatMetadata formatMetadata = new FormatMetadata(context, key, request);
 
+        final FormatMetadata formatMetadata = new FormatMetadata(context, key, request);
         byte[] bytes;
         if (hasNonStandardParameters(request)) {
-            // the http headers can cause a formatter to output custom output due to the parameters.
-            // because it is not known how the parameters may affect the output then we have two choices
-            // 1. make a unique cache for each configuration of parameters
-            // 2. don't cache anything that has extra parameters beyond the standard parameters used to
-            //    create the key
-            // #1 has a major flaw because an attacker could simply make new requests always changing the parameters
-            // and completely swamp the cache.  So we go with #2.  The formatters are pretty fast so it is a fine solution
             bytes = formatMetadata.call().data;
         } else {
             bytes = context.getBean(FormatterCache.class).get(key, validator, formatMetadata, false);
         }
+
         if (bytes != null) {
             if (!skipPopularityBool && approved) {
                 context.getBean(DataManager.class).increasePopularity(context, String.valueOf(metadata.getId()));
@@ -313,7 +321,6 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
                 request.getNativeResponse(HttpServletResponse.class), formatType, bytes);
         }
     }
-
 
     /**
      * @param lang     ui language
