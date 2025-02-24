@@ -274,21 +274,18 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
         ISODate formattedISODate = null;
         if (formattedDate != null) {
             try {
-                // Преобразуем отформатированную строку в Date
                 SimpleDateFormat sdfForISO = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                sdfForISO.setTimeZone(TimeZone.getTimeZone("UTC"));  // Устанавливаем временную зону UTC
+                sdfForISO.setTimeZone(TimeZone.getTimeZone("UTC"));
                 Date parsedDate = sdfForISO.parse(formattedDate);
 
-                // Создаем ISODate, передавая миллисекунды из Date
                 formattedISODate = new ISODate(parsedDate.getTime());
             } catch (ParseException e) {
-                e.printStackTrace(); // В случае ошибки преобразования даты
+                e.printStackTrace();
             }
         }
 
-// Заменяем старое значение на новое отформатированное значение
         if (formattedISODate != null) {
-            metadata.getDataInfo().setChangeDate(formattedISODate);  // Обновляем дату в метаданных
+            metadata.getDataInfo().setChangeDate(formattedISODate);
         }
 
         Validator validator;
