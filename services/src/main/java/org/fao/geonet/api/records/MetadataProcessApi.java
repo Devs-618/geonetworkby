@@ -51,6 +51,7 @@ import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.output.XMLOutputter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -75,6 +76,8 @@ import static org.fao.geonet.api.ApiParams.*;
 @ReadWriteController
 public class MetadataProcessApi {
 
+    @Value("${tomcat.site.url}")
+    private String tomcatUrl;
     public static final String XSL_SUGGEST_FILE = "suggest.xsl";
     @Autowired
     LanguageUtils languageUtils;
@@ -189,9 +192,8 @@ public class MetadataProcessApi {
         Element processedMetadata;
         Element beforeMetadata = dm.getMetadata(context, Integer.toString(metadata.getId()), false, false, false);
         try {
-            final String siteURL = sm.getSiteURL(context);
             processedMetadata = XslProcessUtils.process(context, String.valueOf(metadata.getId()), process, save, true,
-                true, report, siteURL, request.getParameterMap());
+                true, report, tomcatUrl, request.getParameterMap());
             if (processedMetadata == null) {
                 throw new BadParameterEx("Processing failed",
                     "Not found:" + report.getNumberOfRecordNotFound() + ", Not owner:"

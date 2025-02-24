@@ -10,12 +10,19 @@ import org.fao.geonet.util.XslUtil;
 import org.fao.geonet.utils.Log;
 import org.springframework.stereotype.Component;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
 class PdfOrHtmlResponseWriter {
+
+    @Value("${tomcat.site.url}")
+    private String tomcatUrl;
+
+    @Value("${export.pdf.font.name}")
+    private String setFont;
 
     void writeOutResponse(ServiceContext context, String metadataUuid, String lang, HttpServletResponse response, FormatType formatType, byte[] formattedMetadata) throws Exception {
         response.setContentType(formatType.contentType);
@@ -38,13 +45,12 @@ class PdfOrHtmlResponseWriter {
         try {
             XslUtil.setNoScript();
             ITextRenderer renderer = new ITextRenderer();
-            renderer.getFontResolver().addFont("font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            String siteUrl = context.getBean(SettingManager.class).getSiteURL(lang);
+            renderer.getFontResolver().addFont("font/" + setFont + ".ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             MapRenderer mapRenderer = new MapRenderer(context);
-            renderer.getSharedContext().setReplacedElementFactory(new ImageReplacedElementFactory(siteUrl.replace("/" + lang + "/", "/eng/"), renderer.getSharedContext()
+            renderer.getSharedContext().setReplacedElementFactory(new ImageReplacedElementFactory(tomcatUrl.replace("/" + lang + "/", "/eng/"), renderer.getSharedContext()
                 .getReplacedElementFactory(), mapRenderer));
             renderer.getSharedContext().setDotsPerPixel(13);
-            renderer.setDocumentFromString(htmlContent, siteUrl);
+            renderer.setDocumentFromString(htmlContent, tomcatUrl);
             renderer.layout();
             renderer.createPDF(response.getOutputStream());
         } catch (final Exception e) {
