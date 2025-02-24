@@ -1009,9 +1009,7 @@
                 priority="100"/>
 
   <!-- Date -->
-  <xsl:template mode="render-field"
-                match="cit:date|mdb:dateInfo"
-                priority="100">
+  <xsl:template mode="render-field" match="cit:date|mdb:dateInfo" priority="100">
     <dl class="gn-date">
       <dt>
         <xsl:call-template name="render-field-label">
@@ -1020,8 +1018,14 @@
         </xsl:call-template>
       </dt>
       <dd>
-        <xsl:apply-templates mode="render-value"
-                             select="*/cit:date/*"/>
+        <xsl:choose>
+          <xsl:when test="contains(*/cit:date, 'T')">
+            <xsl:value-of select="substring-before(*/cit:date, 'T')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="*/cit:date"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </dd>
     </dl>
   </xsl:template>
