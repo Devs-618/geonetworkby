@@ -22,32 +22,18 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>geonetwork</artifactId>
-    <groupId>org.geonetwork-opensource</groupId>
-    <version>4.4.7-SNAPSHOT</version>
-  </parent>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:gn-fn-dublin-test="http://geonetwork-opensource.org/xsl/functions/profiles/dublin-test"
+                version="2.0"
+                exclude-result-prefixes="#all">
+  <xsl:import href="../../iso19139/layout/utility-vacuum.xsl"/>
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.geonetwork-opensource.schemas</groupId>
-  <artifactId>gn-schemas</artifactId>
-  <name>GeoNetwork schema plugins</name>
-  <packaging>pom</packaging>
+  <!-- Vacuum utility rely on ISO19139 one. -->
+  <xsl:function name="gn-fn-dublin-test:vacuum" as="node()">
+    <xsl:param name="metadata" as="node()"/>
+    <xsl:for-each select="$metadata/*">
+      <xsl:apply-templates mode="vacuum-iso19139"
+                           select="."/>
+    </xsl:for-each>
+  </xsl:function>
 
-  <modules>
-    <module>schema-core</module>
-    <module>csw-record</module>
-    <module>dublin-core</module>
-    <module>iso19110</module>
-    <module>iso19139</module>
-    <module>iso19115-3.2018</module>
-    <module>dublin-test</module>
-  </modules>
-
-  <properties>
-    <rootProjectDir>../..</rootProjectDir>
-  </properties>
-</project>
+</xsl:stylesheet>

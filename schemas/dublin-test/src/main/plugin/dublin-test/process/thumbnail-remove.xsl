@@ -22,32 +22,22 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>geonetwork</artifactId>
-    <groupId>org.geonetwork-opensource</groupId>
-    <version>4.4.7-SNAPSHOT</version>
-  </parent>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:geonet="http://www.fao.org/geonetwork"
+                exclude-result-prefixes="#all"
+                version="2.0">
+  <xsl:param name="thumbnail_url"/>
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.geonetwork-opensource.schemas</groupId>
-  <artifactId>gn-schemas</artifactId>
-  <name>GeoNetwork schema plugins</name>
-  <packaging>pom</packaging>
+  <xsl:template match="@*|node()">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
 
-  <modules>
-    <module>schema-core</module>
-    <module>csw-record</module>
-    <module>dublin-core</module>
-    <module>iso19110</module>
-    <module>iso19139</module>
-    <module>iso19115-3.2018</module>
-    <module>dublin-test</module>
-  </modules>
-
-  <properties>
-    <rootProjectDir>../..</rootProjectDir>
-  </properties>
-</project>
+  <xsl:template match="geonet:*|
+                       dct:references[text() = $thumbnail_url]|
+                       dc:relation[text() = $thumbnail_url]"
+                priority="2"/>
+</xsl:stylesheet>

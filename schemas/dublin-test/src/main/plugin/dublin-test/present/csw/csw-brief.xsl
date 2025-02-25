@@ -22,32 +22,32 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>geonetwork</artifactId>
-    <groupId>org.geonetwork-opensource</groupId>
-    <version>4.4.7-SNAPSHOT</version>
-  </parent>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+                xmlns:geonet="http://www.fao.org/geonetwork"
+                version="1.0">
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.geonetwork-opensource.schemas</groupId>
-  <artifactId>gn-schemas</artifactId>
-  <name>GeoNetwork schema plugins</name>
-  <packaging>pom</packaging>
+  <xsl:template match="simpledt">
+    <xsl:variable name="info" select="geonet:info"/>
+    <csw:BriefRecord>
+      <xsl:for-each select="dc:identifier">
+        <dc:identifier>
+          <xsl:value-of select="."/>
+        </dc:identifier>
+      </xsl:for-each>
 
-  <modules>
-    <module>schema-core</module>
-    <module>csw-record</module>
-    <module>dublin-core</module>
-    <module>iso19110</module>
-    <module>iso19139</module>
-    <module>iso19115-3.2018</module>
-    <module>dublin-test</module>
-  </modules>
+      <!-- Change for CSW 2.0.2 - title is mandatory -->
+      <dc:title>
+        <xsl:for-each select="dc:title">
+          <xsl:value-of select="."/>
+        </xsl:for-each>
+      </dc:title>
 
-  <properties>
-    <rootProjectDir>../..</rootProjectDir>
-  </properties>
-</project>
+      <xsl:for-each select="dc:type">
+        <dc:type>
+          <xsl:value-of select="."/>
+        </dc:type>
+      </xsl:for-each>
+    </csw:BriefRecord>
+  </xsl:template>
+</xsl:stylesheet>

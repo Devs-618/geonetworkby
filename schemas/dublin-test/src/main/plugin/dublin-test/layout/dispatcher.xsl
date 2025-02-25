@@ -22,32 +22,30 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>geonetwork</artifactId>
-    <groupId>org.geonetwork-opensource</groupId>
-    <version>4.4.7-SNAPSHOT</version>
-  </parent>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                version="2.0"
+                exclude-result-prefixes="#all">
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.geonetwork-opensource.schemas</groupId>
-  <artifactId>gn-schemas</artifactId>
-  <name>GeoNetwork schema plugins</name>
-  <packaging>pom</packaging>
+  <xsl:include href="layout.xsl"/>
+  <xsl:include href="evaluate.xsl"/>
 
-  <modules>
-    <module>schema-core</module>
-    <module>csw-record</module>
-    <module>dublin-core</module>
-    <module>iso19110</module>
-    <module>iso19139</module>
-    <module>iso19115-3.2018</module>
-    <module>dublin-test</module>
-  </modules>
+  <xsl:template name="get-dublin-test-is-service">
+    <xsl:value-of select="false()"/>
+  </xsl:template>
 
-  <properties>
-    <rootProjectDir>../..</rootProjectDir>
-  </properties>
-</project>
+  <!--
+    Load the schema configuration for the editor.
+      -->
+  <xsl:template name="get-dublin-test-configuration">
+    <xsl:copy-of select="document('config-editor.xml')"/>
+  </xsl:template>
+
+
+  <!-- Dispatching to the profile mode  -->
+  <xsl:template name="dispatch-dublin-test">
+    <xsl:param name="base" as="node()"/>
+
+    <xsl:apply-templates mode="mode-dublin-test" select="$base"/>
+  </xsl:template>
+
+</xsl:stylesheet>
