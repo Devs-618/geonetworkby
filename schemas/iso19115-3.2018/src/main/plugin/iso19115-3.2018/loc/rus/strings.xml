@@ -54,16 +54,16 @@
   <qualityMeasures>Измерение К.</qualityMeasures>
 
   <bboxesSection>Географическое покрытие</bboxesSection>
-  <overviews>Предпросмотры</overviews>
+  <overviews> </overviews>
   <metadataInXML>XML</metadataInXML>
   <providedBy>Предоставлено</providedBy>
   <shareOnSocialSite>Поделиться в социальных сетях</shareOnSocialSite>
   <viewMode>Виды</viewMode>
   <linkToPortal> Ссылка на каталог</linkToPortal>
-  <linkToPortal-help></linkToPortal-help>
+  <linkToPortal-help> </linkToPortal-help>
   <citationProposal>Предложение цитаты</citationProposal>
   <citationProposal-help>Предложение генерируется автоматически, Уточните, если авторы метаданных не соответствуют указанным условиям.</citationProposal-help>
-  <citationAdditional>При использовании ресурса в публикации приводите ссылки на соответствующие работы:</citationAdditional>  
+  <citationAdditional>При использовании ресурса в публикации приводите ссылки на соответствующие работы:</citationAdditional>
   <associatedResources>Связанные записи</associatedResources>
 
 
@@ -73,7 +73,7 @@
     http://www.organization.org/catalogue/5391bf69-44bc-4ea0-8cc0-6cf6c3bc81ae).
   </add-resource-idHelp>
   <add-extent-from-geokeywords>Построить экстент по данным ключевых слов</add-extent-from-geokeywords>
-  <add-one-extent-from-geokeywords>Определить один экстент по информации ключевых слов</add-one-extent-from-geokeywords>  
+  <add-one-extent-from-geokeywords>Определить один экстент по информации ключевых слов</add-one-extent-from-geokeywords>
   <add-extent-from-geokeywordsHelp>Анализируются соответствующие ключевые слова, и добавляется подходящий экстент</add-extent-from-geokeywordsHelp>
   <extent>Географические границы</extent>
   <spatialExtent>Пространственный экстент</spatialExtent>
