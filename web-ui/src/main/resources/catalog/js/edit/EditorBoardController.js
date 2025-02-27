@@ -116,6 +116,17 @@
         }
       });
 
+      //onlyMyRecord before input Search
+      $scope.$watch('onlyMyRecord.is', function(n, o) {
+        if (n !== o) {
+          n ? setOwner() : unsetOwner();
+        }
+      });
+
+      var unsetOwner = function() {
+        delete $scope.searchObj.params['owner'];
+      };
+
       // Transfert the scope to the popup
       $scope.getScope = function (currentMd) {
         $scope.md = currentMd;
@@ -172,6 +183,14 @@
           $route.current = lastRoute; //Does the actual prevention of routing
         }
       });
+
+      //onlyMyRecord before input Search
+      $scope.setOnlyMyRecord = function() {
+        $scope.onlyMyRecord = {
+          is: gnGlobalSettings.gnCfg.mods.editor.isUserRecordsOnly
+        };
+      };
+      $scope.setOnlyMyRecord();
 
       // Refresh list when privileges are updated
       $scope.$on("PrivilegesUpdated", function (event, data) {
