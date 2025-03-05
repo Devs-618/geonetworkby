@@ -630,6 +630,11 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.geonetwork-opensource.schemas</groupId>
+      <artifactId>gn-schema-iso19115-test-3.2018</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.xmlunit</groupId>
       <artifactId>xmlunit-matchers</artifactId>
       <version>${xmlunit.version}</version>
@@ -640,7 +645,7 @@
   <build>
     <plugins>
       <!-- Generate a properties file with the commit hash to be displayed on the admin.console -->
-	    <plugin>
+      <plugin>
         <groupId>io.github.git-commit-id</groupId>
         <artifactId>git-commit-id-maven-plugin</artifactId>
         <version>4.9.9</version>
@@ -649,7 +654,7 @@
             <phase>initialize</phase>
             <id>get-the-git-infos</id>
             <goals>
-                <goal>revision</goal>
+              <goal>revision</goal>
             </goals>
           </execution>
         </executions>
@@ -1167,6 +1172,13 @@
                       <overWrite>false</overWrite>
                       <outputDirectory>${schema-plugins.dir}</outputDirectory>
                     </artifactItem>
+                    <artifactItem>
+                      <groupId>org.geonetwork-opensource.schemas</groupId>
+                      <artifactId>gn-schema-iso19115-test-3.2018</artifactId>
+                      <type>zip</type>
+                      <overWrite>false</overWrite>
+                      <outputDirectory>${schema-plugins.dir}</outputDirectory>
+                    </artifactItem>
                   </artifactItems>
                 </configuration>
               </execution>
@@ -1199,17 +1211,17 @@
                   <goal>run</goal>
                 </goals>
                 <configuration>
-                    <!-- Copy all the src/main/plugin folders in schemas to the webapp folder
-                    in order to be loaded by the application when running mvn jetty:run.
-                    -->
+                  <!-- Copy all the src/main/plugin folders in schemas to the webapp folder
+                  in order to be loaded by the application when running mvn jetty:run.
+                  -->
                   <target description="copy from schemas to schema_plugins folder">
                     <copy todir="${schema-plugins.dir}" preservelastmodified="true">
                       <fileset dir="${basedir}/../schemas/">
                         <include name="**/src/main/plugin/**"/>
                       </fileset>
                       <regexpmapper handledirsep="yes"
-                        from="^[-_\.a-zA-Z0-9]+/src/main/plugin/(.*)"
-                          to="\1" />
+                                    from="^[-_\.a-zA-Z0-9]+/src/main/plugin/(.*)"
+                                    to="\1" />
                     </copy>
                   </target>
                 </configuration>
@@ -1241,6 +1253,10 @@
                       <targetPath>${schema-plugins.dir}</targetPath>
                     </resource>
                     -->
+                    <resource>
+                      <directory>${project.basedir}/../schemas/iso19115-test-3.2018/src/main/plugin</directory>
+                      <targetPath>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins</targetPath>
+                    </resource>
                   </resources>
                 </configuration>
               </execution>

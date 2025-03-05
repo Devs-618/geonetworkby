@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:fn="http://www.w3.org/2005/02/xpath-functions" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:gml="http://www.opengis.net/gml#" xmlns:grg="http://www.isotc211.org/schemas/grg/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:void="http://rdfs.org/ns/void#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xdt="http://www.w3.org/2005/02/xpath-datatypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <skos:ConceptScheme rdf:about="http://www.mysite.org/thesaurus/onpd">
+    <dc:title>Обязательные наборы пространственных данных</dc:title>
+    <dc:description>Создано по данным Постановления СМ Республики Беларусь №32 16-01-2024</dc:description>
+    <dcterms:issued>2019-03-05 12:00:00</dcterms:issued>
+    <dcterms:modified>2019-04-05 12:00:00</dcterms:modified>
+    <skos:hasTopConcept rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype" />
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype">
+    <dc:title>Виды обязательных наборов пространственных данных</dc:title>
+    <dc:description>Виды обязательных наборов пространственных данных НИПД РБ</dc:description>
+    <skos:prefLabel xml:lang="en">ONPD types</skos:prefLabel>
+    <skos:prefLabel xml:lang="ru">Виды НОПД</skos:prefLabel>
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd">
+    <skos:prefLabel xml:lang="en">Base Spacial Datasets</skos:prefLabel>
+    <skos:prefLabel xml:lang="ru">Наборы базовых пространственных данных</skos:prefLabel>
+    <dc:description>Наборы базовых пространственных данных НИПД РБ</dc:description>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/01_GCRS" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/02_GeoPoints" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/03_MapCS" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/04_Borders" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/05_ATETE" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/06_Hydro" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/07_Transport" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/08_Flora" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/09_DTM" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/10_RemoteSensing" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/11_GeoNames" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/12_Adress" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/13_Parcels" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/14_Lands" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/15_OOPT" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/16_Buildings" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd">
+    <skos:prefLabel xml:lang="en">Spacial Tematic Datasets</skos:prefLabel>
+    <skos:prefLabel xml:lang="ru">Наборы тематических пространственных данных</skos:prefLabel>
+    <dc:description>Наборы тематических пространственных данных НИПД РБ</dc:description>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/17_Helth" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/18_Demography" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/19_Soil" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/20_GeoDymamics" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/21_Bio" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/22_Waste" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/23_Air" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/24_Emergency" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/25_Tourism" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/26_Culture" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/27_Fishing" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/28_Chernobyl" />
+    <skos:narrower rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/29_Disability" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/01_GCRS">
+    <skos:prefLabel xml:lang="ru">01 Системы координат</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">01_CS</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Системы отсчета координат, высот, гравиметрических измерений</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/02_GeoPoints">
+    <skos:prefLabel xml:lang="ru">02 Геодезические пункты</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">02_GeoPoints</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Сведения о геодезических пунктах ГГС, ГНС, ГГрС</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/03_MapCS">
+    <skos:prefLabel xml:lang="ru">03 Картографические проекции</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">03_MapCS</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Картографические проекции для построения общегеографических, тематических и специальных карт и планов на территорию Республики Беларусь</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/04_Borders">
+    <skos:prefLabel xml:lang="ru">04 Госграница</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">04_Borders</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Cведения о прохождении линии Государственной границы Республики Беларусь</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/05_ATETE">
+    <skos:prefLabel xml:lang="ru">05 АТЕ и ТЕ Республики Беларусь (наименования и границы)</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">05_ATE</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Административно-территориальные и территориальные единицы Республики Беларусь (наименования и границы)</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/06_Hydro">
+    <skos:prefLabel xml:lang="ru">06 Объекты гидрографии, в том числе ГТС</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">06_Hydrology and Hydrotechnic constractions</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Объекты гидрографии, в том числе ГТС</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/07_Transport">
+    <skos:prefLabel xml:lang="ru">07 Транспортные сети и объекты транспортной инфраструктуры</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">07_Transport</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Транспортные сети и объекты транспортной инфраструктуры</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/08_Flora">
+    <skos:prefLabel xml:lang="ru">08 Растительный покров</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">08_Flora</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Сведения о растительном покрове</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/09_DTM">
+    <skos:prefLabel xml:lang="ru">09 Цифровые модели рельефа суши</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">09_DTM</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">ЦМР по данным цифровых топографических карт и планов</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/10_RemoteSensing">
+    <skos:prefLabel xml:lang="ru">10 Материалы и данные ДЗЗ</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">10_RemoteSensing</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Материалы и данные ДЗЗ</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/11_GeoNames">
+    <skos:prefLabel xml:lang="ru">11 Наименования географических объектов</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">11_GeoNames</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Наименования географических объектов по данным Государственного каталога наименований географических объектов РБ</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/12_Adress">
+    <skos:prefLabel xml:lang="ru">12 Адреса</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">12_Adress</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Сведения об адресах по данным Реестра адресов</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/13_Parcels">
+    <skos:prefLabel xml:lang="ru">13 Земельные участки</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">13_Parcels</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Земельные участки</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/14_Lands">
+    <skos:prefLabel xml:lang="ru">14 Виды земель</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">14_Lands</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Виды земель</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/15_OOPT">
+    <skos:prefLabel xml:lang="ru">15 Территории специального режима использования</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">15_OOPT</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Территории специального режима использования</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd/16_Buildings">
+    <skos:prefLabel xml:lang="ru">16 Капитальные строения</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">16_Buildings</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Капитальные строения (здания, сооружения), в том числе инженерные коммуникации</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/nbpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/17_Helth">
+    <skos:prefLabel xml:lang="ru">17 Здоровье населения</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">17_Helth</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Здоровье и безопасность жизнедеятельности</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/18_Demography">
+    <skos:prefLabel xml:lang="ru">18 Демография</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">18_Demography</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Демография</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/19_Soil">
+    <skos:prefLabel xml:lang="ru">19 Почвы</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">19_Soil</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Почвы</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/20_GeoDymamics">
+    <skos:prefLabel xml:lang="ru">20 Недра</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">20_GeoDynamics</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Недра</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/21_Bio">
+    <skos:prefLabel xml:lang="ru">21 Биоразнообразие</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">21_Bio</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Биологическое разнообразие</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/22_Waste">
+    <skos:prefLabel xml:lang="ru">22 Отходы</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">22_Waste</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Отходы</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/23_Air">
+    <skos:prefLabel xml:lang="ru">23 Воздух</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">23_Air</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Атмосферный воздух</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/24_Emergency">
+    <skos:prefLabel xml:lang="ru">24 ЧС</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">24_Emergency</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Чрезвычайные ситуации</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/25_Tourism">
+    <skos:prefLabel xml:lang="ru">25 Туризм</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">25_Tourism</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Туристические ресурсы</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/26_Culture">
+    <skos:prefLabel xml:lang="ru">26 Культурные ценности</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">26_Culture</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Недвижимые материальные историко-культурные ценности</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/27_Fishing">
+    <skos:prefLabel xml:lang="ru">27 Рыболовство и рыбоводство</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">27_Fishing</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Рыболовство и рыбоводство</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/28_Chernobyl">
+    <skos:prefLabel xml:lang="ru">28 Последствия катастрофы на ЧАЭС</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">28_Chernobyl</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Сведения о территориях, подвергшихся радиоактивному загрязнению в результате катастрофы на Чернобыльской АЭС</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+  <skos:Concept rdf:about="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd/29_Disability">
+    <skos:prefLabel xml:lang="ru">29 Доступная среда</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">29_Disability"</skos:prefLabel>
+    <skos:scopeNote xml:lang="ru">Сведения о доступности объектов социальной инфраструктуры в Республике Беларусь</skos:scopeNote>
+    <skos:broader rdf:resource="http://www.mysite.org/thesaurus/onpd#onpdtype/ntpd" />
+  </skos:Concept>
+</rdf:RDF>
+
