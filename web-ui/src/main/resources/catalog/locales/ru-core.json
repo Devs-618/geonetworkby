@@ -590,5 +590,6 @@
     "download": "Скачать",
     "links": "Ссылки",
 	"List": "Список",
-	"Table": "Таблица"
+	"Table": "Таблица",
+    "saveToFile": "Save to file."
 }
