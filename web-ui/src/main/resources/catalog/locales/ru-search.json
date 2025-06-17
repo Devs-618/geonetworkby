@@ -552,6 +552,7 @@
     "addLayerPrefix": "Добавить слой",
     "addLayerPostfix": "на карту",
     "submit": "Согласовать",
+    "additionalLinks": "Дополнительные ссылки",
     "indexingErrorMsg-invalidBounds": "Предупреждение: В поле resourcesTemporalDateRange не определены или недопустимы значения диапазона дат. Диапазон дат не проиндексирован",
     "indexingErrorMsg-invalidDateFormat": "Предупреждение: Дата {{dateType}} со значением '{{date}}' имеет недопустимый формат",
     "indexingErrorMsg-keywordNotFoundInThesaurus": "Предупреждение: Ключевое слово {{keyword}} не найдено в {{thesaurus}}",

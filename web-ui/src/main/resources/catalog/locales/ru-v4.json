@@ -269,6 +269,7 @@
   "format-zip": "ZIP",
   "facet-geometry": "Пространственный фильтр",
   "usingCswFromNode": "Использовать портал CSW: ",
+  "inspireValidationUsingPortalOnlyForPublicRecord": "Проверка INSPIRE с портала доступна только для публичных записей (доступных напрямую через службу CSW).",
   "validateInspireUsingNode": "Удаленная проверка INSPIRE с помощью портала ",
   "noINSPIRETestTokenAvailable": "Валидатор INSPIRE вернул пустой токен. Результат проверки невозможно получить. Проверьте конфигурацию и API-ключ или повторите попытку позже",
   "system/localrating/notificationLevel": "Уровень уведомления о рейтинге",

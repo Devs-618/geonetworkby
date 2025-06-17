@@ -117,14 +117,14 @@
       });
 
       //onlyMyRecord before input Search
-      $scope.$watch('onlyMyRecord.is', function(n, o) {
+      $scope.$watch("onlyMyRecord.is", function (n, o) {
         if (n !== o) {
           n ? setOwner() : unsetOwner();
         }
       });
 
-      var unsetOwner = function() {
-        delete $scope.searchObj.params['owner'];
+      var unsetOwner = function () {
+        delete $scope.searchObj.params["owner"];
       };
 
       // Transfert the scope to the popup
@@ -185,7 +185,7 @@
       });
 
       //onlyMyRecord before input Search
-      $scope.setOnlyMyRecord = function() {
+      $scope.setOnlyMyRecord = function () {
         $scope.onlyMyRecord = {
           is: gnGlobalSettings.gnCfg.mods.editor.isUserRecordsOnly
         };
