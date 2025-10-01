@@ -445,6 +445,14 @@
                     }
                   }
                 },
+                aggs: {
+                  keep_nonzero: {
+                    bucket_selector: {
+                      buckets_path: { count: "_count" },
+                      script: "params.count > 0"
+                    }
+                  }
+                },
                 meta: {
                   decorator: {
                     type: "icon",
@@ -1048,6 +1056,23 @@
                   collapsed: true
                 }
               },
+              "indexingErrorMsg.type": {
+                terms: {
+                  field: "indexingErrorMsg.type",
+                  size: 2
+                },
+                meta: {
+                  collapsed: true,
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-fw ",
+                    map: {
+                      error: "fa-exclamation-circle",
+                      warning: "fa-exclamation-triangle"
+                    }
+                  }
+                }
+              },
               sourceCatalogue: {
                 terms: {
                   field: "sourceCatalogue",
@@ -1241,6 +1266,14 @@
                       query_string: {
                         query: "+linkProtocol:/OGC:WFS.*/"
                       }
+                    }
+                  }
+                },
+                aggs: {
+                  keep_nonzero: {
+                    bucket_selector: {
+                      buckets_path: { count: "_count" },
+                      script: "params.count > 0"
                     }
                   }
                 }

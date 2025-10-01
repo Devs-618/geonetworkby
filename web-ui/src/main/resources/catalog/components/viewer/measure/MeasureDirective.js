@@ -137,20 +137,20 @@
 
       var initInteraction = function (map) {
         var deregisterFeature;
-
+      
         var featureOverlay = new ol.layer.Vector({
           source: new ol.source.Vector(),
           map: map,
-          style: options.drawStyleFunction
+          style: options.styleFunction
         });
-
-        // define the draw interaction used for measure
+      
+        // Используем Polygon как изначально
         mInteraction = new ol.interaction.Draw({
           type: "Polygon",
           features: featureOverlay.getSource().getFeatures(),
           style: options.drawStyleFunction
         });
-
+      
         Object.defineProperty(mInteraction, "active", {
           get: function () {
             return map.getInteractions().getArray().indexOf(mInteraction) >= 0;
@@ -164,37 +164,32 @@
             }
           }
         });
-
+      
         mInteraction.on(
           "drawstart",
           function (evt) {
             featureOverlay.getSource().clear();
-
             areaFeature = evt.feature;
-            var firstPoint = areaFeature.getGeometry().getCoordinates()[0][0];
-            distFeature = new ol.Feature(new ol.geom.LineString([firstPoint]));
-
+      
             deregisterFeature = areaFeature.on("change", function (evt) {
-              var feature = evt.target;
-              var lineCoords = feature.getGeometry().getCoordinates()[0].slice(0, -1);
-
-              distFeature.getGeometry().setCoordinates(lineCoords);
               updateMeasuresFn();
             });
           },
           this
         );
-
+      
         mInteraction.on(
           "drawend",
           function (evt) {
-            var lineCoords = evt.feature.getGeometry().getCoordinates()[0];
-            lineCoords.pop();
-            distFeature.getGeometry().setCoordinates(lineCoords);
-
+            // После завершения рисования обновляем измерения
             updateMeasuresFn();
-            featureOverlay.getSource().addFeature(distFeature);
-            ol.Observable.unByKey(deregisterFeature);
+            
+            // Добавляем финальную фичу в оверлей
+            featureOverlay.getSource().addFeature(areaFeature);
+            
+            if (deregisterFeature) {
+              ol.Observable.unByKey(deregisterFeature);
+            }
           },
           this
         );
@@ -213,9 +208,20 @@
 
         // Update values of measures from features
         updateMeasuresFn = function () {
+          if (!areaFeature || !areaFeature.getGeometry()) return;
+          
           scope.$apply(function () {
-            measureObj.distance = getGeodesicLength(distFeature.getGeometry());
-            measureObj.surface = getGeodesicArea(areaFeature.getGeometry());
+            var polygon = areaFeature.getGeometry();
+            
+            // Для расстояния создаем LineString из координат полигона
+            var coordinates = polygon.getCoordinates()[0];
+            
+            // OpenLayers автоматически замыкает полигон, добавляя первую точку в конец
+            // Используем все точки включая замыкающую для точного расчета
+            var lineString = new ol.geom.LineString(coordinates);
+            
+            measureObj.distance = getGeodesicLength(lineString);
+            measureObj.surface = getGeodesicArea(polygon);
           });
         };
         initInteraction(map);
