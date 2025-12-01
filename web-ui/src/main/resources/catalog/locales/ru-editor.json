@@ -10,6 +10,7 @@
     "contactRole": "Роль контакта",
     "addConcept": "Добавить понятие в список ключевых слов",
     "moveToTopConcept": "В верх списка",
+    "browseThesaurus": "Browse vocabulary",
     "addContact": "Добавить контактные данные",
     "addContactAsLink-help": "Добавить ссылку на запись в справочнике контактных данных. Контактные данные будут обновлены при обновлении справочника",
     "addContactAsText-help": "Режим по умолчанию. Добавьте контактные данные в запись",
@@ -126,6 +127,8 @@
     "errors": "с ошибками",
 	"success": "успешно",
 	"successes": "успешно",
+    "warning": "warning",
+    "warnings": "warnings",
     "serviceDetachedToCurrentRecord": "Отдельный сервис к текущей записи?",
     "featureCatalog": "Каталог объектов",
     "file": "Файл",
@@ -337,6 +340,7 @@
     "validationReport": "Проверка",
     "runValidation": "Запустить проверку",
     "validationServiceError": "Ошибка сервера",
+    "validationServiceErrorHeader": "Schematron error occurred, rules could not be verified.",
     "validationServiceErrorDetail": "Пожалуйста, просмотрите log-файлы сервера для получения дополнительной информации",
     "fixedOnTop": "Всегда сверху",
     "whoCanAccess": "Кто имеет доступ",
@@ -473,5 +477,8 @@
     "validationErrorLabel": "ошибки",
     "metadataDuplicatedField-title": "Заголовок метаданных используется в другой записи метаданных.",
     "metadataDuplicatedField-altTitle": "Альтернативный заголовок метаданных используется в другой записи метаданных.",
-    "metadataDuplicatedField-identifier": "Идентификатор ресурса метаданных используется в другой записи метаданных."
+    "metadataDuplicatedField-identifier": "Идентификатор ресурса метаданных используется в другой записи метаданных.",
+    "indexingIssues": "Indexing issues",
+    "indexingErrors": "Errors",
+    "indexingWarnings": "Warnings"
 }

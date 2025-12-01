@@ -137,20 +137,20 @@
 
       var initInteraction = function (map) {
         var deregisterFeature;
-      
+
         var featureOverlay = new ol.layer.Vector({
           source: new ol.source.Vector(),
           map: map,
           style: options.styleFunction
         });
-      
+
         // Используем Polygon как изначально
         mInteraction = new ol.interaction.Draw({
           type: "Polygon",
           features: featureOverlay.getSource().getFeatures(),
           style: options.drawStyleFunction
         });
-      
+
         Object.defineProperty(mInteraction, "active", {
           get: function () {
             return map.getInteractions().getArray().indexOf(mInteraction) >= 0;
@@ -164,29 +164,29 @@
             }
           }
         });
-      
+
         mInteraction.on(
           "drawstart",
           function (evt) {
             featureOverlay.getSource().clear();
             areaFeature = evt.feature;
-      
+
             deregisterFeature = areaFeature.on("change", function (evt) {
               updateMeasuresFn();
             });
           },
           this
         );
-      
+
         mInteraction.on(
           "drawend",
           function (evt) {
             // После завершения рисования обновляем измерения
             updateMeasuresFn();
-            
+
             // Добавляем финальную фичу в оверлей
             featureOverlay.getSource().addFeature(areaFeature);
-            
+
             if (deregisterFeature) {
               ol.Observable.unByKey(deregisterFeature);
             }
@@ -209,17 +209,17 @@
         // Update values of measures from features
         updateMeasuresFn = function () {
           if (!areaFeature || !areaFeature.getGeometry()) return;
-          
+
           scope.$apply(function () {
             var polygon = areaFeature.getGeometry();
-            
+
             // Для расстояния создаем LineString из координат полигона
             var coordinates = polygon.getCoordinates()[0];
-            
+
             // OpenLayers автоматически замыкает полигон, добавляя первую точку в конец
             // Используем все точки включая замыкающую для точного расчета
             var lineString = new ol.geom.LineString(coordinates);
-            
+
             measureObj.distance = getGeodesicLength(lineString);
             measureObj.surface = getGeodesicArea(polygon);
           });

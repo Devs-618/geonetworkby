@@ -1,5 +1,5 @@
 //=============================================================================
-//===	Copyright (C) 2001-2007 Food and Agriculture Organization of the
+//===	Copyright (C) 2001-2025 Food and Agriculture Organization of the
 //===	United Nations (FAO-UN), United Nations World Food Programme (WFP)
 //===	and United Nations Environment Programme (UNEP)
 //===
@@ -21,17 +21,22 @@
 //===	Rome - Italy. email: geonetwork@osgeo.org
 //==============================================================================
 
-package org.fao.geonet.kernel.harvest.harvester.geonet;
+package org.fao.geonet.kernel.harvest.harvester.geonet.v4;
 
+import java.sql.SQLException;
 import org.fao.geonet.Logger;
 import org.fao.geonet.kernel.harvest.harvester.AbstractHarvester;
 import org.fao.geonet.kernel.harvest.harvester.HarvestResult;
+import org.fao.geonet.kernel.harvest.harvester.geonet.Group;
 import org.jdom.Element;
 
-import java.sql.SQLException;
-
-public class GeonetHarvester extends AbstractHarvester<HarvestResult, GeonetParams> {
-    public static final String TYPE = "geonetwork";
+/**
+ * The Geonet40Harvester class is responsible for harvesting metadata from a GeoNetwork 4.x server.
+ * It extends the AbstractHarvester to provide specific functionality related to interacting
+ * with GeoNetwork version 4.x, including parameter management and storing harvested node details.
+ */
+public class Geonet40Harvester extends AbstractHarvester<HarvestResult, GeonetParams> {
+    public static final String TYPE = "geonetwork40";
 
     @Override
     protected GeonetParams createParams() {
@@ -39,6 +44,7 @@ public class GeonetHarvester extends AbstractHarvester<HarvestResult, GeonetPara
     }
 
 
+    @Override
     protected void storeNodeExtra(GeonetParams params, String path,
                                   String siteId, String optionsId) throws SQLException {
         setParams(params);
@@ -57,14 +63,12 @@ public class GeonetHarvester extends AbstractHarvester<HarvestResult, GeonetPara
 
             harvesterSettingsManager.add("id:" + searchID, "freeText", s.freeText);
             harvesterSettingsManager.add("id:" + searchID, "title", s.title);
-            harvesterSettingsManager.add("id:" + searchID, "abstract", s.abstrac);
+            harvesterSettingsManager.add("id:" + searchID, "abstract", s.abstractText);
             harvesterSettingsManager.add("id:" + searchID, "keywords", s.keywords);
-            harvesterSettingsManager.add("id:" + searchID, "digital", s.digital);
-            harvesterSettingsManager.add("id:" + searchID, "hardcopy", s.hardcopy);
             harvesterSettingsManager.add("id:" + searchID, "sourceUuid", s.sourceUuid);
-            harvesterSettingsManager.add("id:" + searchID, "sourceName", s.sourceName);
-            harvesterSettingsManager.add("id:" + searchID, "anyField", s.anyField);
-            harvesterSettingsManager.add("id:" + searchID, "anyValue", s.anyValue);
+            harvesterSettingsManager.add("id:" + searchID, "categories", s.categories);
+            harvesterSettingsManager.add("id:" + searchID, "schemes", s.schemes);
+            harvesterSettingsManager.add("id:" + searchID, "groupOwners", s.groupOwners);
         }
 
         //--- store group mapping
@@ -77,14 +81,15 @@ public class GeonetHarvester extends AbstractHarvester<HarvestResult, GeonetPara
         }
     }
 
+    @Override
     public void addHarvestInfo(Element info, String id, String uuid) {
         super.addHarvestInfo(info, id, uuid);
 
         String small = context.getBaseUrl() + "/" + params.getNode()
-            + "/en/resources.get?access=public&id=" + id + "&fname=";
+            + "/api/records/" + uuid + "/attachments/";
 
         String large = context.getBaseUrl() + "/" + params.getNode()
-            + "/en/graphover.show?access=public&id=" + id + "&fname=";
+            + "/api/records/" + uuid + "/attachments/";
 
         info.addContent(new Element("smallThumbnail").setText(small));
         info.addContent(new Element("largeThumbnail").setText(large));
