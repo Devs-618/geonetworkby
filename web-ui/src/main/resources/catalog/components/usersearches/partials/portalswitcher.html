@@ -3,10 +3,11 @@
   role="menuitem"
   data-ng-show="showPortalSwitcher && ((portals | filter: {listableInHeaderSelector: true}).length > 0 || nodeId != 'srv')"
 >
+  <!-- Десктопная версия -->
   <a
     title="{{'portals' | translate}}"
     href
-    class="dropdown-toggle gn-menuheader-xs"
+    class="dropdown-toggle gn-menuheader-xs hidden-xs"
     role="button"
     data-toggle="dropdown"
     aria-haspopup="true"
@@ -15,7 +16,7 @@
     <span translate class="sr-only">portals</span>
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu gn-menu-xs clearfix">
+  <ul class="dropdown-menu gn-menu-xs clearfix hidden-xs">
     <li class="gn-menuitem-xs" role="menuitem" data-ng-if="nodeId != 'srv'">
       <a href="../../srv/{{lang}}/catalog.search#/home">
         <img
@@ -52,4 +53,30 @@
       </a>
     </li>
   </ul>
+
+  <!-- Мобильная версия -->
+  <div class="visible-xs-block">
+    <select
+      class="form-control gn-mobile-select"
+      data-ng-model="selectedPortal"
+      data-ng-change="switchPortal(selectedPortal)"
+      style="margin: 5px 10px; width: calc(100% - 20px)"
+    >
+      <option value="" disabled selected>{{'portals' | translate}}</option>
+
+      <option
+        data-ng-if="nodeId != 'srv'"
+        value="../../srv/{{lang}}/catalog.search#/home"
+      >
+        {{::info['system/site/name']}}
+      </option>
+
+      <option
+        data-ng-repeat="p in portals | filter: {listableInHeaderSelector: true} |orderBy:sortByLabel"
+        value="../../{{p.uuid}}/{{lang}}/catalog.search"
+      >
+        {{::p.label[lang]}}
+      </option>
+    </select>
+  </div>
 </li>

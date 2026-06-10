@@ -1,0 +1,184 @@
+<div data-ng-controller="GnMdViewController">
+  <!--<pre>
+  {{mdView.current.record}}
+  </pre>-->
+
+  <div
+    data-ng-if="mdView.current.record.draft == 'e' || mdView.current.record.draft == 'y'"
+    data-ng-show="user.canEditRecord(mdView.current.record)"
+    class="bg-info see-draft-alert"
+  >
+    <!-- If draft exists, show a link -->
+    <a
+      data-ng-if="mdView.current.record.draft == 'e'"
+      class="see-draft see-draft-not-approved"
+      title=" {{('status-' + mdView.current.record.mdStatus) | translate}}"
+      data-ng-href="#/metadraf/{{mdView.current.record.uuid}}"
+      data-ng-show="user.canEditRecord(mdView.current.record)"
+    >
+      {{'seeDraft' | translate}}
+    </a>
+
+    <!-- If approved exists, show a link -->
+    <a
+      data-ng-if="mdView.current.record.draft == 'y'"
+      class="see-draft see-draft-approved"
+      title=" {{('status-' + mdView.current.record.mdStatus) | translate}}"
+      data-ng-href="#/metadata/{{mdView.current.record.uuid}}"
+      data-ng-show="user.canEditRecord(mdView.current.record)"
+    >
+      {{'seeNoDraft' | translate}}
+    </a>
+  </div>
+
+  <div class="container">
+    <div
+      class="alert alert-warning"
+      data-ng-hide="!mdView.loadDetailsFinished || mdView.current.record"
+    >
+      <span
+        data-translate=""
+        data-translate-values="{uuid: '{{recordIdentifierRequested | htmlToPlaintext}}'}"
+      >
+        recordNotFound
+      </span>
+      <span
+        data-ng-hide="user"
+        data-translate=""
+        data-translate-values="{signInFormAction: '{{signInFormAction}}', csrf: '{{csrf}}', redirectUrlAfterSign: '{{redirectUrlAfterSign}}'}"
+      >
+        trySignIn
+      </span>
+    </div>
+    <div class="row" data-ng-show="!mdView.loadDetailsFinished">
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+    </div>
+
+    <!-- status message on top -->
+    <div data-ng-repeat="c in mdView.current.record.cl_status track by $index">
+      <div
+        data-ng-show="showStatusTopBarFor.indexOf(c.key) !== -1"
+        title="{{c.key | translate}}"
+        class="gn-status-stamp-top gn-status-bg gn-status-{{c.key}}-bg"
+      >
+        <span class="gn-status gn-status-mdview">{{c.key | translate}}</span>
+      </div>
+    </div>
+    <!-- status message as watermark -->
+    <div data-ng-repeat="c in mdView.current.record.cl_status track by $index">
+      <div
+        data-ng-show="showStatusWatermarkFor.indexOf(c.key) !== -1"
+        title="{{c.key | translate}}"
+        class="gn-status-stamp"
+      >
+        <span class="gn-status gn-status-mdview gn-status-{{c.key}}"
+          >{{c.key | translate}}</span
+        >
+      </div>
+    </div>
+
+    <div class="row gn-md-view" data-ng-show="mdView.current.record">
+      <div class="btn-toolbar hidden-print" role="toolbar">
+        <!-- back -->
+        <div class="btn-group" role="group">
+          <button
+            class="btn btn-default"
+            data-ng-click="closeRecord(mdView.current.record)"
+          >
+            <span class="fa fa-fw fa-search"></span>
+            {{'backTo' + (fromView || 'search') | translate}}
+          </button>
+        </div>
+
+        <div class="pull-right">
+          <ul class="nav navbar-nav gn-menu-xs" role="menu">
+            <li data-ng-repeat="menu in recordviewMenu">
+              <!--record view menu static pages-->
+              <div
+                data-ng-if="isPage(menu)"
+                gn-static-page-menu="menu"
+                language="{{lang}}"
+                section="record_view_menu"
+              ></div>
+
+              <!-- edit -->
+              <div
+                data-ng-if="menu == 'gn-recordview-edit-menu'"
+                gn-record-view-edit-menu=""
+              ></div>
+
+              <!-- delete -->
+              <div
+                data-ng-if="menu == 'gn-recordview-delete-menu'"
+                gn-record-view-delete-menu=""
+              ></div>
+
+              <!-- manage -->
+              <div
+                data-ng-if="menu == 'gn-recordview-manage-menu' && mdView.current.record"
+                class="gn-md-actions-btn pull-left"
+                data-gn-md-actions-menu="mdView.current.record"
+              ></div>
+
+              <!-- display mode -->
+              <div
+                data-ng-if="menu == 'gn-recordview-display-menu'"
+                gn-record-view-display-mode-menu=""
+              ></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        data-ng-show="gnMdViewObj.usingFormatter"
+        id="gn-metadata-display"
+        class="gn-metadata-display"
+      ></div>
+
+      <div data-ng-show="!gnMdViewObj.usingFormatter" class="gn-metadata-display">
+        <div data-ng-switch on="mdView.current.record.resourceType[0]">
+          <div data-ng-switch-when="series">
+            <div
+              ng-include="'../../catalog/views/default/templates/recordView/type-series.html'"
+            ></div>
+          </div>
+          <div data-ng-switch-when="service">
+            <div
+              ng-include="'../../catalog/views/default/templates/recordView/type-service.html'"
+            ></div>
+          </div>
+          <div data-ng-switch-when="model">
+            <div data-ng-switch on="md.standardNameObject.default">
+              <div data-ng-switch-when="ISO 19115-test-3">
+                <div
+                ng-include="'../../catalog/views/geoby/templates/recordView/type-applications.html'"
+                ></div>
+              </div>
+              <div data-ng-switch-default>
+                <div
+                ng-include="'../../catalog/views/geoby/templates/recordView/type-applications.html'"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <!-- <div data-ng-switch-when="map">
+            <div data-ng-switch on="md.standardNameObject.default">
+              <div data-ng-switch-when="ISO 19115:2003/19139">
+                <h1>Test</h1>
+              </div>
+              <div data-ng-switch-default>
+                <h1>test2</h1>
+              </div>
+            </div>
+          </div> -->
+          <div data-ng-switch-default>
+            <div
+              ng-include="'../../catalog/views/default/templates/recordView/type-dataset.html'"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

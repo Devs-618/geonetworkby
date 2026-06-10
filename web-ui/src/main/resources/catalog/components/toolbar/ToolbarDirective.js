@@ -65,6 +65,9 @@
           $scope.isPage = function (page) {
             return angular.isObject(page) || page.indexOf("gn-") === -1;
           };
+          $scope.closeNavbar = function () {
+            $("#navbar").collapse("hide");
+          };
         }
       };
     }

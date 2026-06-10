@@ -1,0 +1,141 @@
+@import "../../../style/gn_search.less";
+// card lists
+@import "../../default/less/gn_card_default.less";
+// variables for manipulating the theme
+@import "../../default/less/gn_variables_default.less"; // must be last
+
+.gn-compare-view{
+  overflow-x: scroll;
+  width: 100%;
+  table{
+    tr{
+      td:first-child{
+        min-width: 150px;
+      }
+      td{
+        min-width: 320px;
+      }
+    }
+  }
+}
+
+.gn-row-results {
+  padding-top: 15px;
+  // background-color: @gn-results-background-color;
+  background-color: #F3F7FD;
+
+  .gn-record-selected {
+    background-color: darken(@panel-default-heading-bg, 15%);
+  }
+  .gn-md-select {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0px 5px;
+    background: none;
+    border-right: 1px solid @panel-default-border;
+    input {
+      margin: 0px;
+    }
+  }
+  .list-group {
+    margin-bottom: 0px;
+  }
+
+  .gn-md-category {
+    display: flex;
+    margin-left: 12px;
+    font-size: 22px;
+    i {
+      margin-right: 5px;
+    }
+  }
+}
+
+.gn-row-tools {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+
+  .btn-default {
+    border: 0;
+    border-radius: 0;
+    &:hover, &:focus, &:active {
+      background: 0;
+      box-shadow: none;
+      border-color: #ddd;
+    }
+    &:focus {
+      outline: @gn-outline;
+    }
+  }
+  .pagination {
+    > li > a, .pagination > li > span {
+      border: 0;
+      color: @btn-default-color;
+      &:hover {
+        color: @brand-primary;
+        background: none;
+      }
+      &:focus {
+        box-shadow: none;
+        background: none;
+        outline: @gn-outline;
+      }
+    }
+  }
+  .dropdown-menu > li > a {
+    padding: 8px 20px;
+    display: block;
+  }
+}
+
+ul.gn-resultview, [data-gn-user-searches-list] {
+  .gn-source-logo {
+    margin-left: 5px;
+    z-index: 10;
+    height: 20px;
+    float: right;
+  }
+}
+
+.application-form .panel {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border-radius: 6px;
+  margin-bottom: 25px;
+}
+.application-form .panel-heading {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 12px 15px;
+}
+.application-form .panel-heading .panel-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #31708f;
+}
+.application-form .control-label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+  display: inline-block;
+  border-left: 3px solid #337ab7;
+  padding-left: 10px;
+}
+.application-form .well-sm {
+  background-color: #fafafa;
+  margin-bottom: 0;
+}
+.application-form .list-group-item {
+  border: none;
+  padding: 6px 0;
+  background: transparent;
+}
+.application-form .label-info {
+  background-color: #5bc0de;
+  font-size: 90%;
+}
+.status-box, .thumbnail-box, .summary-box {
+  background: #f9f9f9;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}

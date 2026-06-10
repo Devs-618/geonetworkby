@@ -1,0 +1,102 @@
+@import "../../default/less/gn_search_default.less";
+@import "./gn_navbar_geoby.less";
+@import "gn_layout_geoby.less";
+// styling for a single result: metadata view
+@import "gn_result_geoby.less";
+@import "gn_results_geoby.less";
+// topics, categories and Inspire
+@import "gn_topics_geoby.less";
+// card lists
+@import "gn_card_geoby.less";
+@import "gn_facets_geoby.less";
+
+[data-ng-search-form] {
+    .gn-top-search {
+      position: relative;
+      padding-top: 2em;
+      padding-bottom: 2em;
+    //   background-color: @gn-search-background-color;
+      background-color: #f3f7fd;
+      [typeahead] {
+        vertical-align: middle;
+        display: inline-block;
+      }
+      [typeahead-popup] {
+        text-align: left;
+      }
+      .inner-spinner {
+        position: absolute;
+        top: 1.75em;
+        left: 50%;
+        margin-left: 64px;
+      }
+      .gn-form-any {
+        input[type="text"], button {
+          height: 36px;
+        }
+        button.btn-lg, input[type="text"].input-lg {
+          height: 46px;
+        }
+        input[type="text"].input-lg {
+          box-shadow: none;
+          &:focus {
+            border-color: @gn-search-outline-color;
+            box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset, rgba(@gn-search-outline-color-red, @gn-search-outline-color-green, @gn-search-outline-color-blue, 0.6) 0px 0px 8px;
+          }
+        }
+        .btn-search {
+          background-color: @gn-search-button-background-color;
+          border-color: @gn-search-button-border-color;
+          color: @gn-search-button-color;
+          &:hover {
+            background-color: darken(@gn-search-button-background-color, 10%);
+            border-color: darken(@gn-search-button-background-color, 15%);
+          }
+        }
+        .dropdown-menu {
+          margin: 0;
+          border-radius: 0;
+        }
+        .dropdown-menu > li > a {
+          padding: 6px 16px;
+        }
+        .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+          color: @dropdown-link-hover-color;
+          background-color: @dropdown-link-hover-bg;
+        }
+        .btn-reset {
+          border-left-color: #fff;
+          &:hover {
+            background: transparent;
+          }
+        }
+        .btn-favorites {
+          .btn {
+            border-right-color: #fff;
+          }
+          .text-warning {
+            color: #ffc107;
+          }
+        }
+        .btn-advanced {
+          &.active {
+            box-shadow: none;
+            background-color: @panel-default-heading-bg;
+            border-color: @input-border;
+            border-bottom-color: @panel-default-heading-bg;
+          }
+        }
+      }
+    }
+    .loading {
+      position: absolute;
+      top: 1.8em;
+      font-size: 40px;
+      left: 46%;
+      text-shadow: 0 0 1px white;
+      z-index: 200;
+      background: rgba(255,255,255,.7);
+      border-radius: 1em;
+      padding: .2em;
+    }
+  }

@@ -50,6 +50,12 @@
             getPortals();
           }
 
+          scope.switchPortal = function (url) {
+            if (url) {
+              window.location.href = url;
+            }
+          };
+
           scope.sortByLabel = function (portal) {
             return portal.label[scope.lang];
           };

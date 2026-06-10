@@ -1,21 +1,40 @@
 <div class="dropdown" data-ng-show="isHidden()" data-ng-model="lang">
-  <button
-    class="btn btn-default dropdown-toggle"
-    type="button"
-    id="language-switcher"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="true"
-  >
-    {{langLabels[lang]}}
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="language-switcher">
-    <li
-      data-ng-repeat="(key, value) in langs"
-      data-ng-class="{'active': key == lang, '': key != lang}"
+  <!-- Десктопная версия - существующий dropdown -->
+  <div class="hidden-xs">
+    <button
+      class="btn btn-default dropdown-toggle"
+      type="button"
+      id="language-switcher"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="true"
     >
-      <a data-ng-click="switchLanguage(key)" href>{{langLabels[key]}}</a>
-    </li>
-  </ul>
+      {{langLabels[lang] | limitTo:3}}
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="language-switcher">
+      <li
+        data-ng-repeat="(key, value) in langs"
+        data-ng-class="{'active': key == lang, '': key != lang}"
+      >
+        <a data-ng-click="switchLanguage(key)" href>{{langLabels[key]}}</a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Мобильная версия - нативный select -->
+  <div class="visible-xs-block" style="width: 100%; padding: 0 10px;">
+    <select 
+      class="form-control"
+      data-ng-model="lang"
+      data-ng-change="switchLanguage(lang)"
+      style="width: 100%;">
+      <option 
+        data-ng-repeat="(key, value) in langs" 
+        value="{{key}}"
+        data-ng-selected="key == lang">
+        {{langLabels[key]}}
+      </option>
+    </select>
+  </div>
 </div>

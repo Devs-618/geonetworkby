@@ -4,7 +4,6 @@
       class="hidden-sm hidden-md hidden-lg pull-left gn-logo-link"
       data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}"
       data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}"
-      ng-click="closeNavbar()"
     >
       <img
         class="gn-logo"
@@ -15,7 +14,6 @@
     <a
       class="hidden-sm hidden-md hidden-lg btn btn-link pull-left"
       data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}"
-      ng-click="closeNavbar()"
     >
       <span
         class="gn-name"
@@ -41,28 +39,20 @@
   </div>
   <div id="navbar" class="navbar-accessible navbar-collapse collapse">
     <ul class="nav navbar-nav gn-menu-xs" role="menu">
-      <li data-ng-repeat-start="menu in toolbarMenu"></li>
-      <li data-ng-if="menu == 'gn-site-name-menu'" gn-site-name-menu=""  ng-click="closeNavbar()"></li>
-      <li data-ng-if="menu == 'gn-portal-switcher'" gn-portal-switcher=""></li>
-      <li data-ng-if="menu == 'gn-search-menu'" gn-search-menu="" ng-click="closeNavbar()"></li>
-      <li data-ng-if="menu == 'gn-map-menu'" gn-map-menu="" ng-click="closeNavbar()"></li>
-      <li data-ng-if="menu == 'gn-contribute-menu'" gn-contribute-menu=""></li>
-      <li data-ng-if="menu == 'gn-admin-menu'" gn-admin-menu=""></li>
-      <li
-        data-ng-if="isPage(menu)"
-        gn-static-page-menu="menu"
-        language="{{lang}}"
-        section="top"
-      ></li>
-      <ul
-        data-ng-if="menu == 'gn-static-pages-list-viewer'"
-        gn-static-pages-list-viewer=""
-        language="{{lang}}"
-        section="top"
-        class="nav navbar-nav gn-menu-xs"
-      ></ul>
-      <li data-ng-repeat-end=""></li>
+      <li>
+        <a href="https://nipd.by/"
+          ><img src="../../images/logos/.png?random1770726748511" alt="nipd.by"
+        /></a>
+      </li>
+      <li gn-site-name-menu=""></li>
+      <li gn-portal-switcher=""></li>
+      <li gn-search-menu=""></li>
+      <li gn-map-menu=""></li>
+      <li gn-contribute-menu=""></li>
+      <li gn-admin-menu=""></li>
+      <li gn-static-pages-list-viewer data-section="top" data-language="{{lang}}"></li>
     </ul>
+
     <div class="navbar-right">
       <ul gn-signin-menu=""></ul>
       <div gn-languages-menu=""></div>

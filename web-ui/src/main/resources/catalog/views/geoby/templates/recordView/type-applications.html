@@ -1,0 +1,337 @@
+<div class="container-fluid application-form">
+  <!-- Заголовок заявки -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <i class="fa fa-file-text-o"></i>
+            Заявка на метаданные: {{mdView.current.record.resourceType[0] || 'Заявка'}}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 1: Основная информация (как карточка заявки) -->
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <!-- Левая колонка: заголовок и описание -->
+        <div class="col-md-8">
+          <div class="form-group">
+            <label class="control-label">Название заявки / ресурса</label>
+            <div
+              class="well well-sm"
+              ng-include="'../../catalog/views/default/templates/recordView/title.html'"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Правая колонка: статус, эскизы, краткое описание -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <label class="control-label">Статус</label>
+            <div
+              class="status-box"
+              ng-include="'../../catalog/views/default/templates/recordView/status.html'"
+            ></div>
+          </div>
+
+          <div gn-record-is-replaced-by="mdView.current.record.uuid"></div>
+
+          <div class="form-group">
+            <label class="control-label">Превью / Эскизы</label>
+            <div
+              class="thumbnail-box"
+              ng-include="'../../catalog/views/default/templates/recordView/thumbnails.html'"
+            ></div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label">Краткая информация</label>
+            <div
+              class="summary-box"
+              ng-include="'../../catalog/views/default/templates/recordView/summary.html'"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 2: Пространственные данные / Экстент (как раздел заявки) -->
+  <div
+    class="panel panel-default"
+    data-ng-if="mdView.current.record.geom || mdView.current.record.extentDescriptionObject || mdView.current.record.extentIdentifierObject"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <i class="fa fa-map-marker"></i> Пространственные данные / Местоположение
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <div data-ng-if="mdView.current.record.geom">
+            <label class="control-label">Карта / Экстент</label>
+            <div data-gn-data-preview="mdView.current.record"></div>
+          </div>
+
+          <div
+            data-ng-repeat="t in ['extentDescription', 'extentIdentifier']"
+            data-ng-if="mdView.current.record[t + 'Object']"
+          >
+            <label class="control-label"
+              >{{t === 'extentDescription' ? 'Описание экстента' : 'Идентификатор
+              экстента'}}</label
+            >
+            <ul
+              class="list-group"
+              data-ng-repeat="c in mdView.current.record[t + 'Object']"
+            >
+              <li class="list-group-item">
+                <i class="fa fa-fw fa-location-pin"></i> {{c.default}}
+              </li>
+            </ul>
+          </div>
+
+          <div
+            data-gn-keyword-badges="mdView.current.record"
+            data-thesaurus="viewConfig.locationThesaurus"
+          ></div>
+        </div>
+        <div class="col-md-4" data-ng-if="!showDataBrowser">
+          <label class="control-label">Доп. пространственная информация</label>
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/spatial.html'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 3: Ссылки на данные (Загрузки, API, и т.д.) -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title"><i class="fa fa-download"></i> Доступ к данным и ссылки</h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/downloads.html'"
+          ></div>
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/constraints.html'"
+          ></div>
+        </div>
+        <div class="col-md-4">
+          <!-- Формат -->
+          <div data-ng-if="mdView.current.record.format" class="form-group">
+            <label class="control-label">Форматы данных</label>
+            <ul class="list-inline">
+              <li data-ng-repeat="f in mdView.current.record.format track by $index">
+                <a
+                  data-gn-search-filter-popup-link="format"
+                  data-filter="f"
+                  class="label label-info"
+                  >{{f}}</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="form-group"
+            data-ng-if="mdView.current.record.contactForDistribution"
+            data-gn-metadata-contacts="mdView.current.record.contactForDistribution"
+            data-gn-mode="default"
+            data-type="distribution"
+            data-layout="icon"
+          ></div>
+
+          <div
+            data-ng-if="mdView.current.record.related.uuids"
+            data-gn-related="mdView.current.record"
+            data-user="user"
+            data-layout="card"
+            data-types="services"
+            data-title="'<i class=\'fa fa-cogs\'></i> Сервисы'"
+          ></div>
+          <div
+            data-ng-if="mdView.current.record.related.uuids"
+            data-gn-related="mdView.current.record"
+            data-user="user"
+            data-layout="card"
+            data-size="4"
+            data-types="datasets"
+            data-title="'<i class=\'fa fa-database\'></i> Наборы данных'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 4: Техническая информация -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <i class="fa fa-info-circle"></i> Техническая информация
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/technical.html'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 5: Каталог объектов (если есть) -->
+  <div
+    class="panel panel-default"
+    data-ng-if="mdView.current.record.featureTypes.length || mdView.current.record.related.fcats.length > 0"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title"><i class="fa fa-tasks"></i> Каталог объектов</h4>
+    </div>
+    <div class="panel-body">
+      <div
+        ng-include="'../../catalog/views/default/templates/recordView/featurecatalogue.html'"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Блок 6: Происхождение (Lineage) и источники -->
+  <div
+    class="panel panel-default"
+    data-ng-if="mdView.current.record.lineage || mdView.current.record.sourceDescription || mdView.current.record.supplementalInformation"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <i class="fa fa-sitemap"></i> Происхождение и источники данных
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/lineage.html'"
+          ></div>
+        </div>
+        <div
+          ng-include="'../../catalog/views/default/templates/recordView/sources.html'"
+          data-gn-include-and-replace=""
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 7: Качество данных -->
+  <div
+    class="panel panel-default"
+    data-ng-if="mdView.current.record.specificationConformance || mdView.current.record.measure || mdView.current.record.processSteps"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <i class="fa fa-check-circle"></i> Качество данных и соответствие
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/quality.html'"
+          ></div>
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/measures.html'"
+          ></div>
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/processsteps.html'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 8: Контакты и атрибуция -->
+  <div
+    class="panel panel-default"
+    data-ng-if="mdView.current.record.contactForResource || mdView.current.record.resourceCredit"
+  >
+    <div class="panel-heading">
+      <h4 class="panel-title"><i class="fa fa-address-card"></i> Контакты и атрибуция</h4>
+    </div>
+    <div class="panel-body">
+      <div
+        ng-include="'../../catalog/views/default/templates/recordView/contact.html'"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Блок 9: Связанные записи -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title"><i class="fa fa-link"></i> Связанные ресурсы</h4>
+    </div>
+    <div class="panel-body">
+      <div
+        data-ng-if="mdView.current.record.related.uuids"
+        data-gn-related="mdView.current.record"
+        data-user="user"
+        data-layout="card"
+        data-types="children"
+        data-size="20"
+        data-title="'Составные части серии'"
+      ></div>
+      <div
+        ng-include="'../../catalog/views/default/templates/recordView/related.html'"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Блок 10: Метаданные (информация о самой заявке) -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <i class="fa fa-cloud-upload"></i> Информация о метаданных / заявке
+      </h4>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/metadatacontact.html'"
+          ></div>
+        </div>
+        <div class="col-md-4">
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/metadata.html'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок 11: Поделиться и футер (только для печати/экспорта) -->
+  <div class="row hidden-print">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+          <div
+            ng-include="'../../catalog/views/default/templates/recordView/share.html'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="hidden-print"
+    ng-include="'../../catalog/views/default/templates/recordView/footer.html'"
+  ></div>
+</div>
