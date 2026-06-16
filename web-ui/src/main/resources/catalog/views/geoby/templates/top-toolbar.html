@@ -1,9 +1,18 @@
 <div data-ng-class="fluidHeaderLayout ? 'container-fluid' : 'container'">
   <div class="navbar-header">
     <a
+      href="https://nipd.by/"
+      class="hidden-sm hidden-md hidden-lg pull-left gn-logo-link"
+      ng-if="isNipdPortal()"
+      ><img src="../../catalog/views/geoby/images/logoNipd.png" alt="nipd.by" style="height: 40px"
+    /></a>
+
+    <a
       class="hidden-sm hidden-md hidden-lg pull-left gn-logo-link"
       data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}"
       data-ng-hide="{{gnCfg.mods.header.isLogoInHeader}}"
+      ng-click="closeNavbar()"
+      ng-if="!isNipdPortal()"
     >
       <img
         class="gn-logo"
@@ -14,12 +23,13 @@
     <a
       class="hidden-sm hidden-md hidden-lg btn btn-link pull-left"
       data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}"
+      ng-click="closeNavbar()"
     >
       <span
         class="gn-name"
         data-ng-class="authenticated && user.isEditorOrMore() ? 'gn-truncate' : ''"
         title="{{info['system/site/name']}}"
-        >{{info['node/name'] || info['system/site/name']}}</span
+        >{{info['node/name'] || info['system/site/name'] | limitTo:40}}</span
       >
     </a>
     <button
@@ -39,18 +49,26 @@
   </div>
   <div id="navbar" class="navbar-accessible navbar-collapse collapse">
     <ul class="nav navbar-nav gn-menu-xs" role="menu">
-      <li>
-        <a href="https://nipd.by/"
-          ><img src="../../images/logos/.png?random1770726748511" alt="nipd.by"
+      <li class="hidden-xs">
+        <a href="https://nipd.by/" style="padding: 0 0 0 10px"
+          ><img
+            src="../../catalog/views/geoby/images/logoNipd.png"
+            alt="nipd.by"
+            style="height: 50px"
         /></a>
       </li>
       <li gn-site-name-menu=""></li>
       <li gn-portal-switcher=""></li>
-      <li gn-search-menu=""></li>
-      <li gn-map-menu=""></li>
+      <li gn-search-menu="" ng-click="closeNavbar()"></li>
+      <li gn-map-menu="" ng-click="closeNavbar()"></li>
       <li gn-contribute-menu=""></li>
       <li gn-admin-menu=""></li>
-      <li gn-static-pages-list-viewer data-section="top" data-language="{{lang}}"></li>
+      <ul
+        gn-static-pages-list-viewer=""
+        language="{{lang}}"
+        section="top"
+        class="nav navbar-nav gn-menu-xs"
+      ></ul>
     </ul>
 
     <div class="navbar-right">
