@@ -71,6 +71,17 @@
       outline: 2px auto -webkit-focus-ring-color;
     }
   }
+  .navbar-nav > li :last-child{
+    a, .navbar-nav > .open > a, .navbar-nav > .active > a {
+      background-color: #82BAB1;
+      color: #fff;
+      border-radius: 40px;
+      &:hover, &:focus {
+        color: #82BAB1;
+        background-color: #E2EFEF;
+      }
+    }
+  }
   .btn {
     &:focus {
       outline: 2px auto -webkit-focus-ring-color;
